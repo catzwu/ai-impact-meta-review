@@ -494,6 +494,12 @@ def api_export():
                 for k in ("onet_code", "onet_label", "confidence", "notes"):
                     if k in merged:
                         merged[k] = r.get(k, merged[k])
+                # Re-derive mapping_type from the (possibly edited) onet_code
+                code = (merged.get("onet_code") or "").strip()
+                if code.startswith("WA-"):
+                    merged["mapping_type"] = "work_activity"
+                elif code:
+                    merged["mapping_type"] = "occupation"
                 w.writerow(merged)
                 written[kind] += 1
     return jsonify({"ok": True, "written": written})
@@ -598,6 +604,10 @@ def api_run():
         params = RA.RunParams(
             metric=body.get("metric", "speed"),
             beta=float(body.get("beta", 2.5)),
+            aggregate_to_socmajor=bool(body.get("aggregate_to_socmajor", False)),
+            manual_prune=bool(body.get("manual_prune", True)),
+            excluded_soc_majors=list(body.get("excluded_soc_majors", RA.DEFAULT_EXCLUDED_SOCS)),
+            activity_weight_threshold=float(body.get("activity_weight_threshold", 10.0)),
             alpha=float(body.get("alpha", 0.7)),
             hops=int(body.get("hops", 4)),
             c_occ=float(body.get("c_occ", 1.0)),
@@ -625,6 +635,12 @@ def api_run():
         raw = dict(r["raw"])
         raw["onet_code"] = r.get("onet_code", raw.get("onet_code", ""))
         raw["onet_label"] = r.get("onet_label", raw.get("onet_label", ""))
+        # Derive mapping_type from the code shape so dropdown edits don't desync it.
+        code = (raw.get("onet_code") or "").strip()
+        if code.startswith("WA-"):
+            raw["mapping_type"] = "work_activity"
+        elif code:
+            raw["mapping_type"] = "occupation"
         (speed_raw if r["kind"] == "speed" else quality_raw).append(raw)
     occ_rows, act_rows = BUF.collect_from_iters(speed_raw, quality_raw)
     meta = RA.run(params, occ_rows=occ_rows, act_rows=act_rows)
@@ -636,6 +652,35 @@ def api_run():
 @app.route("/api/runs")
 def api_runs():
     return jsonify({"runs": RA.list_runs()})
+
+
+@app.route("/api/heatmap_data")
+def api_heatmap_data():
+    """SOC-major × activity weight matrix + observed overlays for the given metric.
+    Pulled from the LIVE review table (so observed overlays reflect deletes/edits)."""
+    try:
+        metric = request.args.get("metric", "speed")
+        beta = float(request.args.get("beta", 2.5))
+    except Exception as e:  # noqa: BLE001
+        return jsonify({"ok": False, "error": str(e)}), 400
+    state = _load_state()
+    rows = _apply_state(_build_rows(), state)
+    speed_raw, quality_raw = [], []
+    for r in rows:
+        if r["_deleted"]:
+            continue
+        raw = dict(r["raw"])
+        raw["onet_code"] = r.get("onet_code", raw.get("onet_code", ""))
+        raw["onet_label"] = r.get("onet_label", raw.get("onet_label", ""))
+        code = (raw.get("onet_code") or "").strip()
+        if code.startswith("WA-"):
+            raw["mapping_type"] = "work_activity"
+        elif code:
+            raw["mapping_type"] = "occupation"
+        (speed_raw if r["kind"] == "speed" else quality_raw).append(raw)
+    occ_rows, act_rows = BUF.collect_from_iters(speed_raw, quality_raw)
+    data = RA.heatmap_data(beta, metric, occ_rows=occ_rows, act_rows=act_rows)
+    return jsonify({"ok": True, **data})
 
 
 @app.route("/api/results/<run_id>")
@@ -1392,13 +1437,7 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
   <a href="/results" style="margin-left:auto;">Past runs →</a>
 </header>
 <main>
-  <div class="card">
-    <h2>Inputs</h2>
-    <div style="font-size:13px; color:#555; line-height:1.6;">
-      Aggregates the <b>live review table</b> on the fly (with deletes, merges, and O*NET edits applied) — no need to export CSVs first.
-      <div id="liveCount" style="margin-top:6px; color:#888; font-size:12px;">checking current table…</div>
-    </div>
-  </div>
+  <div id="liveCount" style="color:#666; font-size:12px; margin: 0 0 12px 4px;">checking current table…</div>
 
   <div class="card">
     <h2>Metric</h2>
@@ -1410,26 +1449,41 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
   </div>
 
   <div class="card">
-    <h2>Core parameters</h2>
+    <h2>Pruning: O*NET coverage</h2>
+    <div style="font-size:12px; color:#666; line-height:1.5; margin-bottom:8px;">
+      Heatmap of mean Stage-B weight per SOC major group × activity. Green vertical lines = observed activities for this metric.
+      Cyan horizontal lines = SOC majors containing an observed occupation. Translucent gray = deselected (excluded from analysis).
+      Click a row label or its checkbox to toggle.
+    </div>
+    <div id="heatmap" style="overflow:auto;"></div>
+
+    <div style="display:flex; gap:18px; margin:14px 0 6px; align-items:baseline;">
+      <label style="font-weight:500;">Activity weight threshold</label>
+      <input type="number" id="weightThreshold" value="10" step="0.5" min="0" style="width:80px; padding:5px 7px;"/>
+      <div class="help" style="color:#888; font-size:12px;">activities whose summed weight (over selected occupations) is below this are dropped</div>
+    </div>
+    <div id="barchart" style="overflow:auto;"></div>
+    <div id="pruneSummary" style="margin-top:10px; padding:8px 12px; background:#f0f4f8; border-radius:4px; font-size:13px; color:#333;"></div>
+
+    <div style="margin-top:14px; padding:10px 12px; border:1px solid #e0e0e0; border-radius:4px; background:#fafafa;">
+      <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+        <input type="checkbox" id="aggToSocmajor"/>
+        <span style="font-size:13px; font-weight:500;">Run with SOC major groups as the unit</span>
+      </label>
+      <div style="margin-left:24px; margin-top:3px; color:#888; font-size:12px;">
+        Off (default): the analysis runs over the ~894 individual O*NET occupations.
+        On: occupations are collapsed to the 22 SOC major groups (means for the W matrix; pooled means / IV-weighted when SEs available for observations). The output occupation table will have one row per SOC major instead of one per occupation.
+      </div>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary>Advanced parameters</summary>
     <div class="row">
       <label>Specificity (β)</label>
       <div class="ctl">
         <input type="number" id="beta" value="2.5" step="0.1" min="0.1"/>
         <div class="help">Stage B softmax temperature. Higher = each occupation concentrates on fewer activities. Default 2.5 ≈ 7 effective activities/occupation.</div>
-      </div>
-    </div>
-    <div class="row">
-      <label>Occupation prune strength</label>
-      <div class="ctl">
-        <input type="number" id="c_occ" value="1.0" step="0.1"/>
-        <div class="help">Stage C — c_occ × median reachability. Default prunes ~894→448.</div>
-      </div>
-    </div>
-    <div class="row">
-      <label>Prune activities</label>
-      <div class="ctl">
-        <input type="checkbox" id="prune_activities"/>
-        <span style="font-size:12px; color:#888;">default OFF — keep all 41 activities</span>
       </div>
     </div>
     <div class="row">
@@ -1439,33 +1493,30 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
         <div class="help">Stage D — reference precision; higher pulls estimates harder toward observed values.</div>
       </div>
     </div>
-  </div>
-
-  <div class="card" id="baselineCard">
-    <h2>AIOE baseline (speed only)</h2>
-    <div class="row">
-      <label>Use baseline</label>
-      <div class="ctl">
-        <input type="checkbox" id="use_baseline" checked/>
-        <span style="font-size:12px; color:#888;">Felten et al. AIOE moment-matched to observed mean/SD</span>
+    <div id="baselineCard">
+      <div class="row" style="margin-top:14px;">
+        <label>AIOE baseline (speed only)</label>
+        <div class="ctl">
+          <input type="checkbox" id="use_baseline" checked/>
+          <span style="font-size:12px; color:#888;">Felten et al. AIOE moment-matched to observed mean/SD</span>
+        </div>
+      </div>
+      <div class="row">
+        <label>Baseline strength (Ω<sub>base</sub>)</label>
+        <div class="ctl">
+          <input type="number" id="omega_base" value="0.5" step="0.1" min="0"/>
+          <div class="help">0.1 ≈ tiebreaker · 0.5 ≈ balanced · 1.0 ≈ AIOE-led · 5.0 ≈ AIOE-replaces-graph.</div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <label>Baseline strength (Ω<sub>base</sub>)</label>
-      <div class="ctl">
-        <input type="number" id="omega_base" value="0.5" step="0.1" min="0"/>
-        <div class="help">0.1 ≈ tiebreaker · 0.5 ≈ balanced · 1.0 ≈ AIOE-led · 5.0 ≈ AIOE-replaces-graph.</div>
-      </div>
-    </div>
-  </div>
-
-  <details class="card">
-    <summary>Advanced parameters</summary>
-    <div class="row"><label>α (PageRank damping)</label><div class="ctl"><input type="number" id="alpha" value="0.7" step="0.05"/></div></div>
-    <div class="row"><label>K (hops)</label><div class="ctl"><input type="number" id="hops" value="4" step="1"/></div></div>
-    <div class="row"><label>c_act (activity prune)</label><div class="ctl"><input type="number" id="c_act" value="1.5" step="0.1"/></div></div>
-    <div class="row"><label>σ<sub>ref</sub></label><div class="ctl"><input type="number" id="sigma_ref" value="0.1" step="0.01"/></div></div>
+    <div class="row" style="margin-top:14px;"><label>σ<sub>ref</sub></label><div class="ctl"><input type="number" id="sigma_ref" value="0.1" step="0.01"/></div></div>
     <div class="row"><label>ε (regularizer)</label><div class="ctl"><input type="number" id="eps" value="0.000001" step="0.000001"/></div></div>
+    <!-- legacy network-prune knobs, hidden (path retained for reproducibility) -->
+    <input type="hidden" id="alpha" value="0.7"/>
+    <input type="hidden" id="hops" value="4"/>
+    <input type="hidden" id="c_occ" value="1.0"/>
+    <input type="hidden" id="c_act" value="1.5"/>
+    <input type="hidden" id="prune_activities" value="false"/>
   </details>
 
   <div class="card">
@@ -1478,6 +1529,8 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
   </div>
 </main>
 <script>
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
 // Show live count of speed/quality rows that will feed the run (after deletes/merges)
 (async function showLiveCount(){
   try {
@@ -1501,21 +1554,203 @@ document.querySelectorAll('#metricSeg button').forEach(b=>{
     document.getElementById('baselineCard').style.opacity = METRIC==='speed' ? 1 : 0.4;
     document.getElementById('use_baseline').disabled = METRIC!=='speed';
     document.getElementById('omega_base').disabled = METRIC!=='speed';
+    loadHeatmap();  // observed overlays depend on metric
   };
 });
 function resetDefaults() {
   document.getElementById('beta').value=2.5;
-  document.getElementById('c_occ').value=1.0;
-  document.getElementById('prune_activities').checked=false;
   document.getElementById('omega_ref').value=100;
   document.getElementById('use_baseline').checked=true;
   document.getElementById('omega_base').value=0.5;
-  document.getElementById('alpha').value=0.7;
-  document.getElementById('hops').value=4;
-  document.getElementById('c_act').value=1.5;
   document.getElementById('sigma_ref').value=0.1;
   document.getElementById('eps').value=0.000001;
+  document.getElementById('weightThreshold').value=10;
+  EXCLUDED = new Set(HEAT ? HEAT.default_excluded_socs : []);
+  renderCharts();
 }
+
+// ---------- Heatmap + bar chart ----------
+let HEAT = null;
+let EXCLUDED = new Set();
+
+async function loadHeatmap() {
+  const beta = parseFloat(document.getElementById('beta').value) || 2.5;
+  const url = `/api/heatmap_data?metric=${METRIC}&beta=${beta}`;
+  const r = await (await fetch(url)).json();
+  if (!r.ok) { document.getElementById('heatmap').innerHTML = `<div style="color:#a00;">${r.error}</div>`; return; }
+  HEAT = r;
+  if (EXCLUDED.size === 0) EXCLUDED = new Set(r.default_excluded_socs);
+  renderCharts();
+}
+
+function vColor(v, vmax) {
+  // viridis-ish ramp
+  const stops = [[68,1,84],[59,82,139],[33,144,141],[93,200,99],[253,231,37]];
+  const t = Math.max(0, Math.min(1, v / vmax));
+  const idx = t * (stops.length-1);
+  const i = Math.floor(idx), f = idx - i;
+  const a = stops[i], b = stops[Math.min(i+1, stops.length-1)];
+  return `rgb(${Math.round(a[0]+(b[0]-a[0])*f)},${Math.round(a[1]+(b[1]-a[1])*f)},${Math.round(a[2]+(b[2]-a[2])*f)})`;
+}
+
+function renderHeatmap() {
+  if (!HEAT) return;
+  const rowOrder = HEAT.row_order, colOrder = HEAT.col_order;
+  const rows = rowOrder.map(i => HEAT.soc_groups[i]);
+  const cols = colOrder.map(j => HEAT.activities[j]);
+  const W = HEAT.weights;
+  const cell = 18;
+  const labelW = 240, topPad = 12, bottomLabelH = 200, padR = 30;
+  const labelH = topPad;
+  const width  = labelW + cols.length * cell + padR;
+  const height = labelH + rows.length * cell + bottomLabelH + 16;
+  // vmax = 99th percentile of non-zero
+  const vals = []; W.forEach(row => row.forEach(v => { if (v > 0) vals.push(v); }));
+  vals.sort((a,b)=>a-b); const vmax = vals[Math.floor(vals.length*0.99)] || 1;
+
+  // build cells
+  let cellsSvg = '';
+  for (let ri = 0; ri < rows.length; ri++) {
+    const r = rows[ri];
+    const realRow = rowOrder[ri];
+    for (let ci = 0; ci < cols.length; ci++) {
+      const v = W[realRow][colOrder[ci]];
+      const x = labelW + ci * cell, y = labelH + ri * cell;
+      cellsSvg += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${vColor(v, vmax)}"/>`;
+      if (v >= 0.06) {
+        const col = (v < vmax * 0.4) ? '#fff' : '#222';
+        cellsSvg += `<text x="${x+cell/2}" y="${y+cell/2+3}" text-anchor="middle" font-size="8" fill="${col}">${v.toFixed(2)}</text>`;
+      }
+    }
+  }
+  // gray overlay for deselected SOC rows
+  let overlaySvg = '';
+  rows.forEach((r, ri) => {
+    if (EXCLUDED.has(r.code)) {
+      overlaySvg += `<rect x="${labelW}" y="${labelH+ri*cell}" width="${cols.length*cell}" height="${cell}" fill="rgba(180,180,180,0.55)"/>`;
+    }
+  });
+  // observed overlays
+  let lineSvg = '';
+  cols.forEach((c, ci) => {
+    if (c.observed) {
+      const x = labelW + ci*cell + cell/2;
+      lineSvg += `<line x1="${x}" y1="${labelH}" x2="${x}" y2="${labelH+rows.length*cell}" stroke="#39FF14" stroke-width="2"/>`;
+    }
+  });
+  rows.forEach((r, ri) => {
+    if (r.observed && !EXCLUDED.has(r.code)) {
+      const y = labelH + ri*cell + cell/2;
+      lineSvg += `<line x1="${labelW}" y1="${y}" x2="${labelW+cols.length*cell}" y2="${y}" stroke="#00E5FF" stroke-width="2"/>`;
+    }
+  });
+  // row labels with checkboxes (HTML overlay because checkboxes in SVG are clunky)
+  const rowLabels = rows.map((r, ri) => {
+    const y = labelH + ri*cell;
+    const fade = EXCLUDED.has(r.code) ? 'color:#aaa;' : '';
+    const bold = r.observed ? 'font-weight:600; color:#0077aa;' : '';
+    return `<div style="position:absolute; left:0; top:${y}px; height:${cell}px; width:${labelW-6}px;
+                       display:flex; align-items:center; gap:5px; font-size:11px; ${fade}${bold} cursor:pointer;"
+                 onclick="toggleSoc('${r.code}')">
+              <input type="checkbox" ${EXCLUDED.has(r.code)?'':'checked'} onclick="event.stopPropagation(); toggleSoc('${r.code}');" style="margin:0 4px;">
+              <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(r.name)} (n=${r.n})">
+                ${escapeHtml(r.name)} <span style="color:#999; font-weight:400;">(n=${r.n})</span>
+              </span>
+            </div>`;
+  }).join('');
+  // column labels rotated downward beneath the grid
+  const colLabelY = labelH + rows.length * cell + 6;
+  const colLabels = cols.map((c, ci) => {
+    const x = labelW + ci*cell + cell/2;
+    const fill = c.observed ? '#1a9850' : '#444';
+    const fw = c.observed ? '600' : '400';
+    return `<text x="${x}" y="${colLabelY}" font-size="10" fill="${fill}" font-weight="${fw}"
+                  transform="rotate(60 ${x} ${colLabelY})" text-anchor="start">${escapeHtml(c.name)}</text>`;
+  }).join('');
+
+  document.getElementById('heatmap').innerHTML = `
+    <div style="position:relative; width:${width}px;">
+      ${rowLabels}
+      <svg width="${width}" height="${height}" style="display:block;">
+        ${cellsSvg}${overlaySvg}${lineSvg}${colLabels}
+      </svg>
+      <div style="display:flex; gap:18px; font-size:11px; color:#666; margin-top:6px;">
+        <span><span style="display:inline-block; width:10px; height:2px; background:#39FF14; vertical-align:middle;"></span> observed activity</span>
+        <span><span style="display:inline-block; width:10px; height:2px; background:#00E5FF; vertical-align:middle;"></span> SOC with observed occupation</span>
+        <span><span style="display:inline-block; width:10px; height:10px; background:rgba(180,180,180,0.55); vertical-align:middle;"></span> deselected (excluded)</span>
+      </div>
+    </div>`;
+}
+
+function renderBarChart() {
+  if (!HEAT) return;
+  const threshold = parseFloat(document.getElementById('weightThreshold').value) || 10;
+  // Compute each activity's summed weight across NON-excluded SOC majors' occupations
+  // total = Σ_g (W_g[j] * n_g)  for g not excluded
+  const acts0 = HEAT.activities.map((a, j) => {
+    let s = 0;
+    HEAT.soc_groups.forEach((g, i) => {
+      if (!EXCLUDED.has(g.code)) s += HEAT.weights[i][j] * g.n;
+    });
+    return {...a, j, total: s};
+  });
+  // Sort by total weight, descending
+  const acts = acts0.slice().sort((x, y) => y.total - x.total);
+  const sums = acts.map(a => a.total);
+  const vmax = Math.max(...sums, 1);
+  const barH = 14;
+  const labelW = 240, plotW = 480, padL = 8, padT = 12;
+  const height = padT + acts.length * barH + 16;
+
+  let bars = '';
+  acts.forEach((a, i) => {
+    const w = (sums[i] / vmax) * plotW;
+    const y = padT + i * barH;
+    const below = sums[i] < threshold;
+    const fill = a.observed ? '#0a6c2c' : '#4C72B0';   // green = given/observed; blue = other
+    const opacity = below ? 0.35 : 1.0;
+    bars += `<rect x="${labelW}" y="${y+1}" width="${w}" height="${barH-3}" fill="${fill}" opacity="${opacity}"/>`;
+    bars += `<text x="${labelW + w + 4}" y="${y+barH-3}" font-size="9" fill="${below?'#999':'#333'}">${sums[i].toFixed(1)}</text>`;
+    const tcol = a.observed ? '#0a6c2c' : '#333';
+    bars += `<text x="${labelW-4}" y="${y+barH-3}" font-size="10" fill="${tcol}" text-anchor="end" font-weight="${a.observed?'600':'400'}">${escapeHtml(a.name)}</text>`;
+  });
+  // threshold line
+  const tx = labelW + (threshold / vmax) * plotW;
+  bars += `<line x1="${tx}" y1="${padT}" x2="${tx}" y2="${padT + acts.length*barH}" stroke="#a00" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  bars += `<text x="${tx + 3}" y="${padT - 2}" font-size="10" fill="#a00">threshold = ${threshold.toFixed(1)}</text>`;
+
+  document.getElementById('barchart').innerHTML = `
+    <svg width="${labelW + plotW + 70}" height="${height}" style="display:block;">${bars}</svg>
+    <div style="font-size:11px; color:#666; margin-top:4px;">
+      Bars below the red dashed line are dropped. Green label/bar = observed (given).
+    </div>`;
+
+  // Bottom summary: how many occupations and activities will feed the analysis
+  let occTotal = 0, occIncluded = 0;
+  HEAT.soc_groups.forEach(g => {
+    occTotal += g.n;
+    if (!EXCLUDED.has(g.code)) occIncluded += g.n;
+  });
+  const actTotal = HEAT.activities.length;
+  // observed activities are always kept even if below threshold
+  const actIncluded = acts.filter(a => a.observed || a.total >= threshold).length;
+  const socIncluded = HEAT.soc_groups.length - EXCLUDED.size;
+  document.getElementById('pruneSummary').innerHTML =
+    `<b>Included in analysis:</b> ${occIncluded.toLocaleString()} of ${occTotal.toLocaleString()} occupations ` +
+    `(${socIncluded} of ${HEAT.soc_groups.length} SOC major groups) · ` +
+    `${actIncluded} of ${actTotal} activities`;
+}
+
+function renderCharts() { renderHeatmap(); renderBarChart(); }
+
+function toggleSoc(code) {
+  if (EXCLUDED.has(code)) EXCLUDED.delete(code); else EXCLUDED.add(code);
+  renderCharts();
+}
+
+document.getElementById('weightThreshold').addEventListener('input', renderBarChart);
+document.getElementById('beta').addEventListener('change', loadHeatmap);
+loadHeatmap();
 document.getElementById('runBtn').onclick = async ()=>{
   const btn = document.getElementById('runBtn');
   const status = document.getElementById('status');
@@ -1524,14 +1759,13 @@ document.getElementById('runBtn').onclick = async ()=>{
   const payload = {
     metric: METRIC,
     beta: parseFloat(document.getElementById('beta').value),
-    c_occ: parseFloat(document.getElementById('c_occ').value),
-    prune_activities: document.getElementById('prune_activities').checked,
+    aggregate_to_socmajor: document.getElementById('aggToSocmajor').checked,
+    manual_prune: true,
+    excluded_soc_majors: Array.from(EXCLUDED),
+    activity_weight_threshold: parseFloat(document.getElementById('weightThreshold').value),
     omega_ref: parseFloat(document.getElementById('omega_ref').value),
     use_baseline: document.getElementById('use_baseline').checked,
     omega_base: parseFloat(document.getElementById('omega_base').value),
-    alpha: parseFloat(document.getElementById('alpha').value),
-    hops: parseInt(document.getElementById('hops').value),
-    c_act: parseFloat(document.getElementById('c_act').value),
     sigma_ref: parseFloat(document.getElementById('sigma_ref').value),
     eps: parseFloat(document.getElementById('eps').value),
   };
@@ -1569,13 +1803,13 @@ RESULTS_INDEX_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>
 <main>
   <table id="t"><thead><tr>
     <th>Run ID</th><th>Started</th><th>Metric</th><th>β</th><th>Ω_ref</th><th>Baseline</th>
-    <th>Obs (occ/act)</th><th>Kept (occ/act)</th><th>Unmatched</th>
+    <th>Obs (occ/act)</th><th>Kept (occ/act)</th>
   </tr></thead><tbody id="tb"></tbody></table>
 </main>
 <script>
 fetch('/api/runs').then(r=>r.json()).then(d=>{
   const tb = document.getElementById('tb');
-  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="9" style="text-align:center; padding:20px; color:#888;">No runs yet. <a href="/run">Start one</a>.</td></tr>'; return; }
+  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="8" style="text-align:center; padding:20px; color:#888;">No runs yet. <a href="/run">Start one</a>.</td></tr>'; return; }
   tb.innerHTML = d.runs.map(r=>{
     const p = r.params||{};
     return `<tr onclick="location.href='/results/${encodeURIComponent(r.run_id)}'">
@@ -1586,7 +1820,6 @@ fetch('/api/runs').then(r=>r.json()).then(d=>{
       <td>${r.baseline_active ? `yes (Ω<sub>b</sub>=${p.omega_base})` : '—'}</td>
       <td>${r.n_observed_occ}/${r.n_observed_act}</td>
       <td>${r.n_kept_occ}/${r.n_kept_act}</td>
-      <td>${(r.unmatched_occ_codes||[]).length + (r.unmatched_act_labels||[]).length}</td>
     </tr>`;
   }).join('');
 });
@@ -1631,7 +1864,7 @@ RESULTS_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run re
       <button data-v="occ" class="active">Occupations</button>
       <button data-v="act">Activities</button>
     </div>
-    <label>std ≤ <input type="number" id="stdFilter" value="0.5" step="0.05" style="width:60px;"/></label>
+    <label>std ≤ <input type="number" id="stdFilter" value="5" step="0.05" style="width:60px;"/></label>
     <label><input type="checkbox" id="onlyObserved"/> only observed</label>
     <label>search <input type="text" id="search" placeholder="title/code…"/></label>
     <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export view as CSV</button>

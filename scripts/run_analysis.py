@@ -51,20 +51,131 @@ SOFTWARE_DEV_AVG = ("15-1132", "15-1133")  # 15-1252.00 ← avg
 RADIOLOGIST_REMAP = ("29-1224.00", "29-1069")  # 29-1224.00 ← 29-1069
 
 
+SOC_NAMES = {
+    "11":"Management","13":"Business & Financial","15":"Computer & Math",
+    "17":"Architecture & Engineering","19":"Life, Physical, Social Science",
+    "21":"Community & Social Service","23":"Legal","25":"Education",
+    "27":"Arts, Design, Media","29":"Healthcare Practitioners","31":"Healthcare Support",
+    "33":"Protective Service","35":"Food Prep & Serving","37":"Building & Grounds Cleaning",
+    "39":"Personal Care & Service","41":"Sales","43":"Office & Admin Support",
+    "45":"Farming, Fishing, Forestry","47":"Construction & Extraction",
+    "49":"Installation, Maint, Repair","51":"Production","53":"Transportation & Material Moving",
+}
+DEFAULT_EXCLUDED_SOCS = ["37", "45", "47", "49", "51", "53"]
+PHYS_ACTS = {
+    "Handling and Moving Objects", "Performing General Physical Activities",
+    "Controlling Machines and Processes", "Operating Vehicles, Mechanized Devices, or Equipment",
+    "Repairing and Maintaining Mechanical Equipment", "Repairing and Maintaining Electronic Equipment",
+    "Inspecting Equipment, Structures, or Materials",
+}
+
+# Cache the heavy matrix build (reads a 73k-row xlsx)
+_HEAT_CACHE: dict[float, dict] = {}
+
+
 @dataclass
 class RunParams:
     metric: str = "speed"            # "speed" or "quality"
     beta: float = 2.5                # Stage B specificity
-    alpha: float = 0.7               # Stage C PageRank damping
-    hops: int = 4                    # Stage C
-    c_occ: float = 1.0               # Stage C occupation prune strength
-    prune_activities: bool = False   # Stage C — default False (keep all 41)
-    c_act: float = 1.5               # Stage C activity prune strength (used iff prune_activities)
-    omega_ref: float = 100.0         # Stage D observation trust
-    sigma_ref: float = 0.1           # Stage D
-    eps: float = 1e-6                # Stage D regularizer
-    use_baseline: bool = True        # AIOE baseline (speed only)
-    omega_base: float = 0.5          # baseline strength
+    # Analysis unit: False (default) = run on the 894 individual occupations;
+    # True = collapse to the 22 SOC major groups.
+    aggregate_to_socmajor: bool = False
+    # Pruning: manual SOC-major-group selection + per-activity weight threshold.
+    # (The old network-based prune is still available via legacy params below but
+    # manual_prune=True is the default path now.)
+    manual_prune: bool = True
+    excluded_soc_majors: list = field(default_factory=lambda: list(DEFAULT_EXCLUDED_SOCS))
+    activity_weight_threshold: float = 10.0
+    # Legacy network-prune params (used only when manual_prune=False)
+    alpha: float = 0.7
+    hops: int = 4
+    c_occ: float = 1.0
+    prune_activities: bool = False
+    c_act: float = 1.5
+    omega_ref: float = 100.0
+    sigma_ref: float = 0.1
+    eps: float = 1e-6
+    use_baseline: bool = True
+    omega_base: float = 0.5
+
+
+def _build_W(beta: float):
+    """Return (W, W_raw_df, occ_codes, occ_titles, activities, soc_groups, soc_agg, ordering).
+    Cached by beta."""
+    key = round(float(beta), 4)
+    if key in _HEAT_CACHE:
+        return _HEAT_CACHE[key]
+    W_raw = PIPELINE.build_composite_matrix(str(ONET_XLSX_PATH))
+    occ_codes = W_raw.index.get_level_values(0).to_numpy()
+    occ_titles = W_raw.index.get_level_values(1).to_numpy()
+    activities = W_raw.columns.to_numpy()
+    W = PIPELINE.softmax_rows(W_raw.values, beta=key)
+    major = np.array([c[:2] for c in occ_codes])
+    groups = sorted(set(major))
+    agg = np.vstack([W[major == g].mean(0) for g in groups])  # 22 x 41
+    counts = [int((major == g).sum()) for g in groups]
+    # Hierarchical clustering for stable display ordering (rows and cols)
+    try:
+        from scipy.cluster.hierarchy import linkage, leaves_list
+        col_order = leaves_list(linkage(agg.T, method="ward")).tolist()
+        row_order = leaves_list(linkage(agg,   method="ward")).tolist()
+    except Exception:
+        col_order = list(range(agg.shape[1]))
+        row_order = list(range(agg.shape[0]))
+    cached = {
+        "W": W, "W_raw": W_raw, "occ_codes": occ_codes, "occ_titles": occ_titles,
+        "activities": activities, "soc_groups": groups, "soc_counts": counts,
+        "major": major, "soc_agg": agg, "col_order": col_order, "row_order": row_order,
+    }
+    _HEAT_CACHE[key] = cached
+    return cached
+
+
+def heatmap_data(beta: float, metric: str,
+                 occ_rows: Optional[list[dict]] = None,
+                 act_rows: Optional[list[dict]] = None) -> dict:
+    """Compute the heatmap JSON payload — clustered SOC-major × activity matrix
+    plus the observed overlays for the given metric."""
+    H = _build_W(beta)
+    metric_col, _, _ = _metric_cols(metric)
+
+    # Determine observed activities and observed-occupation SOC majors from the
+    # in-memory aggregated rows (or fall back to the on-disk CSVs).
+    if occ_rows is None or act_rows is None:
+        occ_rows = pd.read_csv(OCC_OBS).to_dict(orient="records")
+        act_rows = pd.read_csv(ACT_OBS).to_dict(orient="records")
+
+    obs_acts = set()
+    for r in act_rows:
+        v = r.get(metric_col)
+        if v not in (None, "") and not (isinstance(v, float) and pd.isna(v)):
+            obs_acts.add(str(r.get("label", "")))
+    obs_socs = set()
+    for r in occ_rows:
+        v = r.get(metric_col)
+        if v not in (None, "") and not (isinstance(v, float) and pd.isna(v)):
+            code = str(r.get("code", ""))
+            for k, v2 in DEFAULT_SOC_REMAP.items():
+                if code == k: code = v2
+            if len(code) >= 2:
+                obs_socs.add(code[:2])
+
+    return {
+        "soc_groups": [
+            {"code": g, "name": SOC_NAMES.get(g, g), "n": H["soc_counts"][i],
+             "observed": g in obs_socs}
+            for i, g in enumerate(H["soc_groups"])
+        ],
+        "activities": [
+            {"name": a, "observed": a in obs_acts, "is_physical": a in PHYS_ACTS}
+            for a in H["activities"]
+        ],
+        "weights": H["soc_agg"].tolist(),                 # rows = soc_groups order, cols = activities order
+        "col_order": H["col_order"],
+        "row_order": H["row_order"],
+        "default_excluded_socs": list(DEFAULT_EXCLUDED_SOCS),
+        "physical_activities": sorted(list(PHYS_ACTS)),
+    }
 
 
 def _aggregate_aioe_baseline(occ_codes: np.ndarray, obs_mean: float, obs_sd: float) -> np.ndarray:
@@ -167,7 +278,7 @@ def run(params: RunParams, run_id: Optional[str] = None,
     obs_occ, obs_act = np.isfinite(f), np.isfinite(g)
     n_obs_occ, n_obs_act = int(obs_occ.sum()), int(obs_act.sum())
 
-    # AIOE baseline (speed only)
+    # AIOE baseline (speed only) — computed BEFORE optional SOC-major collapse
     base = None
     baseline_active = False
     if params.use_baseline and params.metric == "speed" and FELTEN_AIOE_PATH.exists():
@@ -179,16 +290,85 @@ def run(params: RunParams, run_id: Optional[str] = None,
         base = _aggregate_aioe_baseline(occ_codes, obs_mean, obs_sd)
         baseline_active = True
 
+    # Optional: collapse the 894 individual occupations to 22 SOC major groups.
+    # Aggregate W (row-mean per major), pool observations (inverse-variance weighted
+    # when SEs available; simple mean otherwise), and average the AIOE baseline
+    # within each major.
+    socmajor_aggregated = False
+    socmajor_group_sizes: Optional[np.ndarray] = None
+    if params.aggregate_to_socmajor:
+        socmajor_aggregated = True
+        major = np.array([str(c)[:2] for c in occ_codes])
+        groups = sorted(set(major))
+        m = len(groups)
+        socmajor_group_sizes = np.array([int((major == g).sum()) for g in groups], dtype=float)
+        W_agg = np.vstack([W[major == g].mean(0) for g in groups])
+        f_agg = np.full(m, np.nan); fn_agg = np.full(m, np.nan); fse_agg = np.full(m, np.nan)
+        base_agg = np.full(m, np.nan) if base is not None else None
+        for gi, gcode in enumerate(groups):
+            mask = (major == gcode) & np.isfinite(f)
+            if mask.any():
+                vals = f[mask]; ses = fse[mask]; ns = fn[mask]
+                has_se = np.isfinite(ses) & (ses > 0)
+                if has_se.all() and len(vals) > 0:
+                    w = 1.0 / ses[has_se]**2
+                    f_agg[gi]   = float(np.sum(w * vals[has_se]) / np.sum(w))
+                    fse_agg[gi] = float(np.sqrt(1.0 / np.sum(w)))
+                else:
+                    f_agg[gi] = float(np.mean(vals))
+                valid_n = ns[np.isfinite(ns)]
+                if valid_n.size:
+                    fn_agg[gi] = float(np.sum(valid_n))
+            if base is not None:
+                bmask = (major == gcode) & np.isfinite(base)
+                if bmask.any():
+                    base_agg[gi] = float(np.mean(base[bmask]))
+        # Swap into the per-occupation slots so the rest of the pipeline is unchanged.
+        W = W_agg
+        occ_codes = np.array(groups)
+        occ_titles = np.array([SOC_NAMES.get(g, g) for g in groups])
+        f, fn, fse = f_agg, fn_agg, fse_agg
+        base = base_agg
+        obs_occ = np.isfinite(f)
+        n_obs_occ = int(obs_occ.sum())
+
     # Stage C: prune
-    Wf, ko, ka, occ_reach, act_reach = PIPELINE.prune_graph(
-        W, obs_occ, obs_act, c_occ=params.c_occ, c_act=params.c_act,
-        alpha=params.alpha, K=params.hops,
-    )
-    if not params.prune_activities:
-        ka = np.ones(n, dtype=bool)
+    excluded_set = set(params.excluded_soc_majors or [])
+    if params.manual_prune:
+        # Manual SOC-major-group selection + per-activity weight threshold.
+        major = np.array([str(c)[:2] for c in occ_codes])
+        ko = ~np.isin(major, list(excluded_set))
+        # Observed occupations always kept (don't accidentally drop a given).
+        ko = ko | obs_occ
+        # Per-activity total weight across the kept occupations.
+        # In SOC-major-aggregated mode, W stores per-group MEAN weights; multiply by
+        # group size so the threshold semantic matches the bar chart and the
+        # occupation-level mode (Σ over individual occupations).
+        if socmajor_aggregated and socmajor_group_sizes is not None:
+            col_weight = (W[ko] * socmajor_group_sizes[ko, None]).sum(axis=0)
+        else:
+            col_weight = W[ko].sum(axis=0)
+        ka = col_weight >= float(params.activity_weight_threshold)
+        # Observed activities always kept.
+        ka = ka | obs_act
+        if not ka.any():
+            ka = np.ones(n, dtype=bool)
+        if not ko.any():
+            ko = np.ones(m, dtype=bool)
         Wf = W[np.ix_(ko, ka)]
         rs = Wf.sum(axis=1, keepdims=True)
         Wf = np.where(rs > 0, Wf / rs, 0)
+        occ_reach = act_reach = None
+    else:
+        Wf, ko, ka, occ_reach, act_reach = PIPELINE.prune_graph(
+            W, obs_occ, obs_act, c_occ=params.c_occ, c_act=params.c_act,
+            alpha=params.alpha, K=params.hops,
+        )
+        if not params.prune_activities:
+            ka = np.ones(n, dtype=bool)
+            Wf = W[np.ix_(ko, ka)]
+            rs = Wf.sum(axis=1, keepdims=True)
+            Wf = np.where(rs > 0, Wf / rs, 0)
 
     f_k, g_k = f[ko], g[ka]
     fn_k, fse_k, gn_k, gse_k = fn[ko], fse[ko], gn[ka], gse[ka]
@@ -271,6 +451,7 @@ def run(params: RunParams, run_id: Optional[str] = None,
         "se_col": se_col,
         "n_col": n_col,
         "data_source": data_source,
+        "socmajor_aggregated": socmajor_aggregated,
     }
     (out_dir / "run.json").write_text(json.dumps(meta, indent=2))
     return meta
