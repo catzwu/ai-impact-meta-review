@@ -1,0 +1,387 @@
+{
+  "citation_key": "vaccaro_2024_human_ai_synergy",
+  "authors": [
+    "Michelle Vaccaro",
+    "Abdullah Almaatouq",
+    "Thomas Malone"
+  ],
+  "title": "When combinations of humans and AI are useful: A systematic review and meta-analysis",
+  "year": 2024,
+  "venue": "Nature Human Behaviour",
+  "study_design_description": "A preregistered systematic review and meta-analysis of 106 experimental studies reporting 370 effect sizes, conducted in accord with Kitchenham guidelines and PRISMA standards. Studies were searched from the ACM Digital Library, Web of Science, and AIS eLibrary for publications between January 2020 and June 2023. Each study was required to include an original human-participants experiment evaluating the performance of humans alone, AI alone, and human\u2013AI combinations. A three-level meta-analytic random-effects model was used to account for dependencies in effect sizes nested within experiments.",
+  "primary_task_description": "The meta-analysis synthesized 370 unique effect sizes from 106 experiments examining task performance across three conditions: human alone, AI alone, and human\u2013AI combinations. Tasks varied widely across studies and were coded by type (decision vs. creation), data type, output, and other characteristics. Performance was measured using quantitative metrics such as task accuracy, error, and quality.",
+  "population_description": "The studies in the dataset come from different samples of people\u2014some involving doctors, others crowdworkers, and still others students. Specific participant demographics varied across the 106 included experiments.",
+  "arms": [
+    {
+      "arm_name": "human_alone",
+      "description": "Humans performing the task without AI assistance",
+      "n": null
+    },
+    {
+      "arm_name": "ai_alone",
+      "description": "AI systems performing the task without human involvement",
+      "n": null
+    },
+    {
+      "arm_name": "human_ai_combination",
+      "description": "Humans and AI working together to perform the task",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "human_ai_synergy",
+      "outcome_description": "The human\u2013AI group performs better than both the human alone and the AI alone, analogous to strong synergy in human groups. Measured as the standardized mean difference (Hedges' g) between the performance of the human\u2013AI system and the baseline (whichever of human alone or AI alone performed better on average).",
+      "measurement_unit": "Hedges' g (standardized effect size)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "outcome_description": "The human\u2013AI group performs better than the human alone. Measured as the standardized mean difference (Hedges' g) between the performance of the human\u2013AI system and the baseline of the human alone.",
+      "measurement_unit": "Hedges' g (standardized effect size)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "task_accuracy",
+      "outcome_description": "Accuracy of task performance, one of the quantitative measures used across studies",
+      "measurement_unit": "percent or proportion correct",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = \u22120.23",
+      "regression_coefficient": null,
+      "test_statistic": "t92 = \u22122.89",
+      "p_value": "p = 0.005",
+      "confidence_interval": "95% CI, \u22120.39 to \u22120.07",
+      "verbatim_quote": "The overall pooled effect was negative (g = \u22120.23; t92 = \u22122.89; two-tailed P = 0.005; 95% confidence interval (CI), \u22120.39 to \u22120.07) and considered small according to conventional interpretations"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.64",
+      "regression_coefficient": null,
+      "test_statistic": "t98 = 11.87",
+      "p_value": "p = 0.000",
+      "confidence_interval": "95% CI, 0.53 to 0.74",
+      "verbatim_quote": "The human\u2013AI systems performed significantly better than humans alone, and this pooled effect size was positive (g = 0.64; t98 = 11.87; two-tailed P = 0.000; 95% CI, 0.53 to 0.74) and medium to large"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderated by task type: decision tasks",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = \u22120.27",
+      "regression_coefficient": null,
+      "test_statistic": "t104 = \u22123.20",
+      "p_value": "p = 0.002",
+      "confidence_interval": "95% CI, \u22120.44 to \u22120.10",
+      "verbatim_quote": "Among decision tasks\u2014those in which participants decided between a finite set of options\u2014the pooled effect size for human\u2013AI synergy was significantly negative (g = \u22120.27; t104 = \u22123.20; two-tailed P = 0.002; 95% CI, \u22120.44 to \u22120.10), which indicates performance losses from combining humans and AI"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderated by task type: creation tasks",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.19",
+      "regression_coefficient": null,
+      "test_statistic": "t104 = 1.35",
+      "p_value": "p = 0.180",
+      "confidence_interval": "95% CI, \u22120.09 to 0.48",
+      "verbatim_quote": "Among creation tasks\u2014those in which participants created some sort of open-response content\u2014the pooled effect size for human\u2013AI synergy was positive (g  = 0.19; t104 = 1.35; two-tailed P = 0.180; 95% CI, \u22120.09 to 0.48), pointing to synergy between humans and AI"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderated by relative performance: human alone outperformed ai alone",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.46",
+      "regression_coefficient": null,
+      "test_statistic": "t104 = 5.06",
+      "p_value": "p = 0.000",
+      "confidence_interval": "95% CI, 0.28 to 0.66",
+      "verbatim_quote": "when the human alone outperformed the AI alone, the combined human\u2013AI system outperformed both alone with an average pooled effect size for human\u2013AI synergy of g = 0.46 (t104 = 5.06; two-tailed P  = 0.000; 95% CI, 0.28 to 0.66), a medium-sized effect"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderated by relative performance: ai alone outperformed human alone",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = \u22120.54",
+      "regression_coefficient": null,
+      "test_statistic": "t104 = \u22126.20",
+      "p_value": "p = 0.000",
+      "confidence_interval": "95% CI, \u22120.71 to \u22120.37",
+      "verbatim_quote": "when the AI alone outperformed the human alone, performance losses occurred in the combined system relative to the AI alone, with a negative effect size for human\u2013AI synergy of g = \u22120.54 (t104 = \u22126.20; two-tailed P = 0.000; 95% CI, \u22120.71 to \u22120.37), a medium-sized effect"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, moderated by relative performance: ai alone outperformed human alone",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.74",
+      "regression_coefficient": null,
+      "test_statistic": "t104 = 13.50",
+      "p_value": "p = 0.000",
+      "confidence_interval": "95% CI, 0.63 to 0.85",
+      "verbatim_quote": "When the AI outperformed the human alone, greater performance gains tended to occur in the human\u2013AI systems relative to the human alone, and the pooled effect size for human augmentation was positive and medium to large in magnitude (g = 0.74; t104 = 13.50; two-tailed P = 0.000; 95% CI, 0.63 to 0.85)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), sensitivity analysis clustering at paper level",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = \u22120.22",
+      "regression_coefficient": null,
+      "test_statistic": "t67 = \u22122.46",
+      "p_value": "p = 0.017",
+      "confidence_interval": "95% CI, \u22120.41 to \u22120.04",
+      "verbatim_quote": "Using this approach, we found a comparable overall effect size for human\u2013AI synergy (g  = \u22120.22; t67 = \u22122.46; two-tailed P = 0.017; 95% CI, \u22120.41 to \u22120.04) and for human augmentation (g = 0.65; t69 = 9.96; two-tailed P = 0.000; 95% CI, 0.52 to 0.78)"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, sensitivity analysis clustering at paper level",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.65",
+      "regression_coefficient": null,
+      "test_statistic": "t69 = 9.96",
+      "p_value": "p = 0.000",
+      "confidence_interval": "95% CI, 0.52 to 0.78",
+      "verbatim_quote": "Using this approach, we found a comparable overall effect size for human\u2013AI synergy (g  = \u22120.22; t67 = \u22122.46; two-tailed P = 0.017; 95% CI, \u22120.41 to \u22120.04) and for human augmentation (g = 0.65; t69 = 9.96; two-tailed P = 0.000; 95% CI, 0.52 to 0.78)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), sensitivity analysis excluding outliers",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = \u22120.25",
+      "regression_coefficient": null,
+      "test_statistic": "t104 = \u22123.45",
+      "p_value": "p = 0.001",
+      "confidence_interval": "95% CI, \u22120.39 to \u22120.11",
+      "verbatim_quote": "We performed a sensitivity re-analysis on a dataset excluding these effect sizes, which resulted in similar effect sizes for human\u2013AI synergy (g  = \u22120.25; t104 = \u22123.45; two-tailed P = 0.001; 95% CI, \u22120.39 to \u22120.11) and human augmentation (g = 0.60; t104 = 12.60; two-tailed P = 0.000; 95% CI, 0.50 to 0.69)"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, sensitivity analysis excluding outliers",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.60",
+      "regression_coefficient": null,
+      "test_statistic": "t104 = 12.60",
+      "p_value": "p = 0.000",
+      "confidence_interval": "95% CI, 0.50 to 0.69",
+      "verbatim_quote": "We performed a sensitivity re-analysis on a dataset excluding these effect sizes, which resulted in similar effect sizes for human\u2013AI synergy (g  = \u22120.25; t104 = \u22123.45; two-tailed P = 0.001; 95% CI, \u22120.39 to \u22120.11) and human augmentation (g = 0.60; t104 = 12.60; two-tailed P = 0.000; 95% CI, 0.50 to 0.69)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), sensitivity analysis excluding estimated effect sizes",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = \u22120.21",
+      "regression_coefficient": null,
+      "test_statistic": "t98 = \u22122.59",
+      "p_value": "p = 0.011",
+      "confidence_interval": "95% CI, \u22120.36 to \u22120.05",
+      "verbatim_quote": "we conducted a sensitivity re-analysis on a dataset that omits the effect sizes we estimated, using either WebPlotDigitizer or the information provided by the authors in their paper, and again we found almost identical results for human\u2013AI synergy ( g = \u22120.21; t98 = \u22122.59; two-tailed P  = 0.011; 95% CI, \u22120.36 to \u22120.05) and human augmentation (g = 0.64; t98 = 11.73; two-tailed P = 0.000; 95% CI, 0.53 to 0.75)"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, sensitivity analysis excluding estimated effect sizes",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.64",
+      "regression_coefficient": null,
+      "test_statistic": "t98 = 11.73",
+      "p_value": "p = 0.000",
+      "confidence_interval": "95% CI, 0.53 to 0.75",
+      "verbatim_quote": "we conducted a sensitivity re-analysis on a dataset that omits the effect sizes we estimated, using either WebPlotDigitizer or the information provided by the authors in their paper, and again we found almost identical results for human\u2013AI synergy ( g = \u22120.21; t98 = \u22122.59; two-tailed P  = 0.011; 95% CI, \u22120.36 to \u22120.05) and human augmentation (g = 0.64; t98 = 11.73; two-tailed P = 0.000; 95% CI, 0.53 to 0.75)"
+    },
+    {
+      "outcome_name": "task_accuracy",
+      "arm_comparison": "ai_alone vs human_alone vs human_ai_combination, fake hotel review detection task",
+      "means_and_sds": {
+        "ai_alone": {
+          "mean": 73,
+          "sd": null,
+          "se": null
+        },
+        "human_alone": {
+          "mean": 55,
+          "sd": null,
+          "se": null
+        },
+        "human_ai_combination": {
+          "mean": 69,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For fake hotel review detection, the researchers found that the AI alone achieved an accuracy of 73%, the human alone achieved an accuracy of 55% and the human\u2013AI system achieved an accuracy of 69%"
+    },
+    {
+      "outcome_name": "task_accuracy",
+      "arm_comparison": "ai_alone vs human_alone vs human_ai_combination, bird image classification task",
+      "means_and_sds": {
+        "ai_alone": {
+          "mean": 73,
+          "sd": null,
+          "se": null
+        },
+        "human_alone": {
+          "mean": 81,
+          "sd": null,
+          "se": null
+        },
+        "human_ai_combination": {
+          "mean": 90,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "for bird image classification, the AI alone achieved an accuracy of 73%, the human alone achieved an accuracy of 81% and the human\u2013AI system achieved an accuracy of 90%"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderation test by task type",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(1,104) = 7.84",
+      "p_value": "p = 0.006",
+      "confidence_interval": null,
+      "verbatim_quote": "we found that the type of task significantly moderated human\u2013AI synergy (F 1,104 = 7.84, two-tailed P = 0.006)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderation test by data type",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(4,101) = 15.24",
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "the type of data involved in the task significantly moderated both human\u2013AI synergy (F 4,101 = 15.24, two-tailed P = 0.000) and human augmentation (F4,101 = 6.52, two-tailed P = 0.000)"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, moderation test by data type",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(4,101) = 6.52",
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "the type of data involved in the task significantly moderated both human\u2013AI synergy (F 4,101 = 15.24, two-tailed P = 0.000) and human augmentation (F4,101 = 6.52, two-tailed P = 0.000)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderation test by relative performance of human vs AI",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(1,104) = 81.79",
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "we found that the performance of the human and AI relative to each other impacted both human\u2013AI synergy (F1,104 = 81.79, two-tailed P = 0.000) and human augmentation ( F1,104  = 24.35, two-tailed P = 0.000)"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, moderation test by relative performance of human vs AI",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(1,104) = 24.35",
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "we found that the performance of the human and AI relative to each other impacted both human\u2013AI synergy (F1,104 = 81.79, two-tailed P = 0.000) and human augmentation ( F1,104  = 24.35, two-tailed P = 0.000)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderation test by type of AI",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(2,103) = 3.77",
+      "p_value": "p = 0.026",
+      "confidence_interval": null,
+      "verbatim_quote": "we found that the type of AI involved in the experiment (F2,103  = 3.77, two-tailed P  = 0.026) and the year of publication (F3,102 = 3.65, two-tailed P = 0.015) moderated human\u2013AI synergy, and the experimental design moderated human augmentation (F1,104 = 4.90, two-tailed P = 0.029)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), moderation test by year of publication",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(3,102) = 3.65",
+      "p_value": "p = 0.015",
+      "confidence_interval": null,
+      "verbatim_quote": "we found that the type of AI involved in the experiment (F2,103  = 3.77, two-tailed P  = 0.026) and the year of publication (F3,102 = 3.65, two-tailed P = 0.015) moderated human\u2013AI synergy, and the experimental design moderated human augmentation (F1,104 = 4.90, two-tailed P = 0.029)"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, moderation test by experimental design",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(1,104) = 4.90",
+      "p_value": "p = 0.029",
+      "confidence_interval": null,
+      "verbatim_quote": "we found that the type of AI involved in the experiment (F2,103  = 3.77, two-tailed P  = 0.026) and the year of publication (F3,102 = 3.65, two-tailed P = 0.015) moderated human\u2013AI synergy, and the experimental design moderated human augmentation (F1,104 = 4.90, two-tailed P = 0.029)"
+    },
+    {
+      "outcome_name": "human_ai_synergy",
+      "arm_comparison": "human_ai_combination vs best of (human_alone or ai_alone), publication bias test Egger's regression",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = \u22120.67 (SE 0.86)",
+      "test_statistic": "t104 = \u22120.78",
+      "p_value": "p = 0.438",
+      "confidence_interval": "95% CI, \u22122.39 to 1.04",
+      "verbatim_quote": "Egger's regression did not indicate evidence of publication bias in the sample (\u03b2 = \u22120.67; t104 = \u22120.78; two-tailed P = 0.438; 95% CI, \u22122.39 to 1.04), nor did the rank correlation test (\u03c4 = 0.05, two-tailed P = 0.121)"
+    },
+    {
+      "outcome_name": "human_augmentation",
+      "arm_comparison": "human_ai_combination vs human_alone, publication bias test Egger's regression",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 1.96 (SE 0.60)",
+      "test_statistic": "t104 = 3.24",
+      "p_value": "p = 0.002",
+      "confidence_interval": "95% CI, 0.76 to 3.16",
+      "verbatim_quote": "In this case, Egger's regression does point to publication bias in the sample (\u03b2 = 1.96; t104 = 3.24; two-tailed P = 0.002; 95% CI, 0.76 to 3.16), as does the rank correlation test (\u03c4 = 0.19, two-tailed P = 0.000)"
+    }
+  ],
+  "notes": "This is a preregistered systematic review and meta-analysis, not a single original experiment. It synthesizes 370 effect sizes from 106 experimental studies published between January 2020 and June 2023. The primary finding is that human-AI combinations performed significantly worse than the best of humans or AI alone on average (g = \u22120.23, p = 0.005), but significantly better than humans alone (g = 0.64, p = 0.000). Key moderators include task type (decision tasks showed losses, creation tasks showed gains) and relative performance of humans vs. AI. The paper found evidence of publication bias favoring studies showing human augmentation (p = 0.002) but not for synergy outcomes. High heterogeneity was observed (I\u00b2 = 97.7% for synergy, 93.8% for augmentation). The sample sizes reported (n = 34 for creation tasks) refer to the number of studies in subgroups, not individual participant counts. Most human-AI systems involved humans making final decisions after receiving AI input.",
+  "_paper_id": "vaccaro-meta"
+}

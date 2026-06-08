@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The participants are software developers implementing an HTTP server in JavaScript\u2014a specific, well-defined programming task. The study measures their productivity on this discrete coding activity (writing code to pass 12 tests), not their performance across the full breadth of software development work. This narrow focus on 'implementing an HTTP server' maps best to the generalized work activity of 'Working with Computers' rather than to the broader Software Developer occupation, which encompasses requirements gathering, design, testing, deployment, and maintenance.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "peng_2023_copilot_productivity"
+}

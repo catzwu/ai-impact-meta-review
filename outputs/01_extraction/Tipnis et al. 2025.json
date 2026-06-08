@@ -1,0 +1,437 @@
+{
+  "citation_key": "tipnis_2025_ai_philanthropy",
+  "authors": [
+    "Vinit S. Tipnis",
+    "Eunae Yoo",
+    "Gloria Urrea",
+    "Fei Gao"
+  ],
+  "title": "AI-Powered Philanthropy: Carryover Effects on Volunteer Engagement",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "The study adopts a multi-method approach combining a quasi-natural experiment using a difference-in-differences (DID) design and a changes-in-changes (CIC) estimation approach. The quasi-natural experiment emerged during the Turkey-Syria earthquake in February 2023, when the Humanitarian OpenStreetMap Team Tasking Manager (HOTTM) set Rapid (an AI tool) as the default editor for volunteers, creating an exogenous introduction of AI. The adoption period is defined from February 6 to March 7, 2023. The study focuses on carryover effects after the adoption period rather than direct effects during it. A matched sample of 360 treated and 360 control volunteers was constructed using covariate exact matching (CEM), and the full sample of 836 treated and 32,298 control volunteers was used for CIC analysis.",
+  "primary_task_description": "HOTTM volunteers' primary task is to trace infrastructure (e.g., buildings, roads, waterways) on satellite imagery of areas of interest using a mapping editor. Volunteers log onto HOTTM, select a project, read its description and mapping requirements, then select a task and trace the required infrastructure on satellite imagery. In the online experiment component, participants were asked to create a social media post for an NPO's outreach campaign, an unpaid and optional task where participants view sample posts demonstrating desired content and style, then write their own post to accompany an image about the NPO.",
+  "population_description": "The study uses two populations: (1) HOTTM volunteers: 836 treated volunteers who used Rapid for the first time during the adoption period and had prior contributions to HOTTM before the adoption period, and 32,298 control volunteers who were active on HOTTM prior to the adoption period (defined as contributing within 431 days of February 6, 2023). The final dataset consists of 836 treated volunteers who performed 151,929 tasks and 32,298 control volunteers who performed 1,156,124 tasks. A matched sample of 360 treated and 360 control volunteers was created using CEM. (2) Online experiment: 600 participants (49.5% female, Mage = 44.2, SDage = 13.5) recruited for the online experiment, with 108 participants (58.3% female, Mage = 46.0, SDage = 14.4) choosing to do the volunteering task.",
+  "arms": [
+    {
+      "arm_name": "rapid_ai_treated",
+      "description": "Treated volunteers who used Rapid (an AI tool) for the first time during the adoption period (February 6 to March 7, 2023). Rapid was set as the default editor for volunteers contributing to projects during the Turkey-Syria earthquake response.",
+      "n": 836
+    },
+    {
+      "arm_name": "control",
+      "description": "Active volunteers who were not introduced to Rapid and contributed to HOTTM prior to the adoption period, defined as contributing within 431 days of February 6, 2023.",
+      "n": 32298
+    },
+    {
+      "arm_name": "ai_assisted_experiment",
+      "description": "In the online experiment, AI-assisted participants had the text box pre-filled with content generated using ChatGPT's GPT-4o free version for writing a social media post, following the same instructions given to participants.",
+      "n": 53
+    },
+    {
+      "arm_name": "control_experiment",
+      "description": "In the online experiment, control participants received an empty text box to write the social media post from scratch.",
+      "n": 55
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "monthly_task_contributions",
+      "outcome_description": "The number of tasks completed on HOTTM by a volunteer in a given month. This serves as a quantitative measure of volunteer participation and engagement on the platform.",
+      "measurement_unit": "tasks per month",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "perceived_impact_of_volunteering",
+      "outcome_description": "Composite score averaging three statements on a 1-7 scale: \"Volunteering my time makes a difference in the lives of the kids served by the Educational NPO,\" \"Volunteering for the Educational NPO is an effective way for me to make a difference,\" and \"It is easy for me to imagine how volunteering my time will benefit the Educational NPO.\" Cronbach's alpha = 0.88.",
+      "measurement_unit": "rubric 1-7",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_effort",
+      "outcome_description": "Composite score averaging two statements on a 1-7 scale: \"I put significant effort into helping the Educational NPO\" and \"I was thorough in helping the Educational NPO.\" Cronbach's alpha = 0.84.",
+      "measurement_unit": "rubric 1-7",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "outcome_description": "Number of tasks completed per week by volunteers at different experience percentiles (20th, 30th, 40th, 50th, 60th, 70th, 80th, 90th percentiles), measured after the adoption period.",
+      "measurement_unit": "tasks per week",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21.3% reduction in monthly engagement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.240 (SE 0.052)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Based on its negative and statistically significant estimate, we find that introduction to AI leads to a negative carryover effect (\u22120.240, p <0.01). Specifically, compared to a control volunteer, a treated volunteer reduces their monthly engagement by an average of 21.3%."
+    },
+    {
+      "outcome_name": "perceived_effort",
+      "arm_comparison": "ai_assisted_experiment vs control_experiment",
+      "means_and_sds": {
+        "ai_assisted_experiment": {
+          "mean": 4.6,
+          "sd": null,
+          "se": 0.237
+        },
+        "control_experiment": {
+          "mean": 5.6,
+          "sd": null,
+          "se": 0.15
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that AI-assisted volunteers report a lower perceived effort (4.6, S.E. = 0.237) compared to the control condition (5.6, S.E. = 0.150), and this difference is statistically significant ( p <0.01)."
+    },
+    {
+      "outcome_name": "perceived_impact_of_volunteering",
+      "arm_comparison": "ai_assisted_experiment vs control_experiment",
+      "means_and_sds": {
+        "ai_assisted_experiment": {
+          "mean": 5.0,
+          "sd": null,
+          "se": 0.206
+        },
+        "control_experiment": {
+          "mean": 5.5,
+          "sd": null,
+          "se": 0.151
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "AI-assisted volunteers report a lower perceived impact of volunteering (5.0, S.E. = 0.206) compared to the control condition (5.5, S.E. = 0.151), and this difference is statistically significant ( p <0.05)."
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 20th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19.99 tasks per week reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Specifically, volunteers at the 20th percentile reduce their contributions by 19.99 tasks per week ( p <0.05)"
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 30th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21.37 tasks per week reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "while those at the 30th, 40th, and 50th percentiles exhibit reductions of 21.37 ( p <0.01)"
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 40th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18.02 tasks per week reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "while those at the 30th, 40th, and 50th percentiles exhibit reductions of 21.37 ( p <0.01), 18.02 ( p <0.01)"
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 50th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "16.39 tasks per week reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "while those at the 30th, 40th, and 50th percentiles exhibit reductions of 21.37 ( p <0.01), 18.02 ( p <0.01), and 16.39 ( p <0.01) tasks after the adoption period, respectively."
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 60th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "7.34 tasks per week reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The negative effect persists through the 60th percentile with a reduction of 7.34 tasks ( p <0.05)."
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 70th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.32 tasks per week increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.530",
+      "confidence_interval": null,
+      "verbatim_quote": "At the 70th percentile, the effect becomes positive but statistically insignificant (2.32 tasks; p = 0.530)."
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 80th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12.97 tasks per week increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "volunteers at the 80th percentile increase contributions by 12.97 tasks (p <0.01)"
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "arm_comparison": "rapid_ai_treated vs control at 90th percentile",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21.69 tasks per week increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "and those at the 90th percentile do so by 21.69 tasks ( p <0.01)."
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (matched sample, full observation window)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.240 (SE 0.052)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.240*** (0.052), ln(T enureit) -0.522*** (0.026), ln(CumulP rojit) 0.755*** (0.140), Observations 14,860, Volunteers 720, Within R2 0.21"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (matched sample, months 1-3 post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.257 (SE 0.073)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.257*** (0.073), Observations 7,734, Volunteers 410, Within R2 0.27"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (matched sample, months 4-6 post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.244 (SE 0.085)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.244*** (0.085), Observations 6,742, Volunteers 378, Within R2 0.28"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (matched sample, months 7-12 post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.162 (SE 0.095)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.162* (0.095), Observations 11,428, Volunteers 372, Within R2 0.24"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (matched sample, months 13+ post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.350 (SE 0.148)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.350** (0.148), Observations 3,572, Volunteers 244, Within R2 0.37"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (full sample, CIC analysis)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.165 (SE 0.029)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.165*** (0.029), Observations 36,196, Volunteers 1,672, Within R2 0.12"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (matched sample, robustness check)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.243 (SE 0.056)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.243*** (0.056), Observations 13,986, Volunteers 678, Within R2 0.22"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (matched sample, alternative specification)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.147 (SE 0.033)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.147*** (0.033), Observations 14,258, Volunteers 688, Within R2 0.20"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (parallel trends test, pre-period)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.004 (SE 0.024)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.004 (0.024)"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (parallel trends test, pre-period lag 2)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.003 (SE 0.020)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.003 (0.020)"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (parallel trends test, pre-period lag 3)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.002 (SE 0.019)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.002 (0.019)"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (parallel trends test, pre-period lag 4)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.002 (SE 0.013)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.002 (0.013)"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (intensity analysis)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated Intensity = -0.0013 (SE 0.0005)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedIntensityit -0.0013** (0.0005), Observations 14,860, Volunteers 720, Within R2 0.20"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (less experienced volunteers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.155 (SE 0.036)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.155*** (0.036), Observations 8,422, Volunteers 420, Within R2 0.25"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (more experienced volunteers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treated = -0.282 (SE 0.083)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "T reatedit -0.282*** (0.083), Observations 6,932, Volunteers 322, Within R2 0.18"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (by task difficulty: easy tasks)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "ln(Easy Tasks) = -0.179 (SE 0.046)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ln(EasyT asksit) -0.179*** (0.046)"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (by task difficulty: moderate tasks)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "ln(Moderate Tasks) = -0.100 (SE 0.042)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "ln(M oderateT asksit) -0.100** (0.042)"
+    },
+    {
+      "outcome_name": "monthly_task_contributions",
+      "arm_comparison": "rapid_ai_treated vs control (by task difficulty: challenging tasks)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "ln(Challenging Tasks) = -0.019 (SE 0.009)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "ln(ChallengingT asksit) -0.019** (0.009)"
+    }
+  ],
+  "notes": "The study combines a quasi-natural experiment (DID design) using HOTTM platform data with an online controlled experiment and heterogeneous treatment effects analysis (CIC). The main finding is a negative carryover effect of AI introduction on volunteer engagement (21.3% reduction on average), with heterogeneous effects by volunteer experience level: negative for less experienced volunteers (20th-60th percentiles), positive for highly experienced volunteers (80th-90th percentiles). The mechanism is theorized to be impact philanthropy\u2014volunteers' motivation to personally make a meaningful difference. The paper acknowledges potential selection bias since volunteers were not randomly assigned to treatment but rather chose projects that had Rapid set as the default editor; however, 95.6% of treated volunteers used the default editor. The study does not account for the quality of Rapid's AI suggestions or the proportion of time spent using Rapid within tasks. Experience on HOTTM is highly skewed with almost 99% of volunteers having very little experience. When applying CEM matching across multiple variables on small sub-samples, substantial power was lost. Regression coefficients are reported in log-linear form (log of task count as outcome). The online experiment had 108 participants (55 control, 53 AI-assisted) who chose to complete the voluntary social media writing task out of 600 total participants.",
+  "_paper_id": "Tipnis et al. 2025"
+}

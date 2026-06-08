@@ -1,0 +1,50 @@
+{
+  "_paper_id": "doshi hauser",
+  "citation_key": "doshi_2024_generative_creativity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "human_only",
+    "ai_arm_name": "human_with_five_genai_ideas",
+    "ai_arm_selection_rationale": "Selected human_with_five_genai_ideas over human_with_one_genai_idea because it shows larger effect (8.1% vs 5.4% increase in novelty) and represents more capable AI assistance (access to up to 5 ideas vs 1). This is the strongest AI condition tested.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 95,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 98,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.021,
+    "extraction_confidence": "low",
+    "notes": "SALVAGE PASS: Found n_human=95 from table S1 (Human-only condition). The paper reports regression coefficients (b=0.311, p<0.001 for five-ideas condition; b=0.207, p=0.021 for one-idea condition) but does not provide means, SDs, t-statistics, F-statistics, or effect sizes. The only exact p-value available is p=0.021 for the one-idea condition; the five-ideas condition reports only 'p < 0.001' (inequality). Without means+SDs, t-statistics, F-statistics, or reported effect sizes, we can only provide sample sizes and the exact p-value from the weaker comparison. This is Level F extraction (p-value + n only), which yields very low precision for effect size estimation. The p-value of 0.021 is from the one-idea comparison, not the five-ideas comparison we selected as the AI arm, further reducing confidence.",
+    "source_quotes": [
+      "writers in the Human with five GenAI ideas condition show an increase in novelty of 8.1% (b = 0.311, P < 0.001) over writers without generative AI access",
+      "writers in the Human with one GenAI idea condition experience an increase of 5.4% (b = 0.207, P = 0.021, see table S3) over writers without generative AI access",
+      "table S1: Human-only condition n=95, Human with one GenAI idea n=100, Human with five GenAI ideas n=98"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "SALVAGE PASS: Found n_human=95 from table S1 (Human-only condition). The paper reports regression coefficients (b=0.311, p<0.001 for five-ideas condition; b=0.207, p=0.021 for one-idea condition) but does not provide means, SDs, t-statistics, F-statistics, or effect sizes. The only exact p-value available is p=0.021 for the one-idea condition; the five-ideas condition reports only 'p < 0.001' (inequality). Without means+SDs, t-statistics, F-statistics, or reported effect sizes, we can only provide sample sizes and the exact p-value from the weaker comparison. This is Level F extraction (p-value + n only), which yields very low precision for effect size estimation. The p-value of 0.021 is from the one-idea comparison, not the five-ideas comparison we selected as the AI arm, further reducing confidence. | insufficient numbers for d",
+    "n_human": 95,
+    "n_ai": 98,
+    "direction_convention": "larger_is_better"
+  }
+}

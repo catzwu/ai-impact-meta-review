@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is analyzing audit case information to identify fraud risk factors and modify audit plans\u2014core analytical work activities. The paper explicitly states participants 'review background information about an audit client, industry and macroeconomic trends, sales and receivables details, and preliminary analytical procedures, then identify and list any fraud risk factors.' This is quintessential data analysis work. While the participants are auditors by occupation, the study measures their performance on a specific analytical task (fraud risk assessment), not their performance across the full breadth of auditing duties. The GenAI tool (chatbot) is the experimental treatment affecting how they perform this analytical work activity, not a measure of overall occupational performance.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-05",
+      "onet_label": "Evaluating Information to Determine Compliance with Standards"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "13-2011.00",
+      "onet_label": "Accountants and Auditors"
+    }
+  ],
+  "citation_key": "christensen_2025_fraud_risk"
+}

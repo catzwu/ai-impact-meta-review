@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study states 'Each participant underwent three rounds of tasks' with randomized order to prevent fatigue effects, indicating all 32 participants completed multiple conditions rather than being randomly assigned to separate groups. This is a within-subject design where the same participants complete all experimental arms.",
+  "citation_key": "ju_2023_generative_ai_learning"
+}

@@ -1,0 +1,53 @@
+{
+  "_paper_id": "2311.05629v1",
+  "citation_key": "ju_2023_generative_ai_learning",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Manual",
+    "ai_arm_name": "AI",
+    "ai_arm_selection_rationale": "The 'AI' arm represents full AI assistance for writing tasks, which is the primary human+AI intervention. The 'Active' arm is AI-assisted reading only, making 'AI' the stronger AI intervention. This is a within-subject design where each participant completed all three conditions (Manual, AI, Active) in randomized order.",
+    "direction_convention": "larger_is_better",
+    "m_human": 0.667,
+    "sd_human": 0.266287,
+    "se_human": null,
+    "n_human": 32,
+    "m_ai": 0.484,
+    "sd_ai": 0.287588,
+    "se_ai": null,
+    "n_ai": 32,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.002459,
+    "extraction_confidence": "medium",
+    "notes": "This is a within-subject design where 32 participants each completed three conditions (Manual, AI, Active) in randomized order. The paper states 'A total of 32 college-educated individuals were recruited' and 'Each participant underwent three rounds of tasks'. The means (Manual: 66.7%, AI: 48.4%) and SDs (Manual: 0.266287, AI: 0.287588) are reported. The p-value is exact (0.002459). However, the SD of the paired difference scores is not reported, nor is a paired t-statistic or correlation between conditions. Python will need to compute the effect size using the available statistics with appropriate paired-design adjustments. The regression in Table 3 shows AI Dummy coefficient of -0.251 (p<0.01), which represents the adjusted effect controlling for covariates, but this is not a direct standardized effect size.",
+    "source_quotes": [
+      "A total of 32 college-educated individuals were recruited from the online platform Prolific, evenly split with 16 males and 16 females.",
+      "Each participant underwent three rounds of tasks which entailed reading a paper, crafting a summary based on a given prompt, and answering five questions pertinent to the paper.",
+      "In the study, participants who tackled writing assignments without any external assistance achieved an average grade of 66.7%. Conversely, those fully reliant on AI for crafting their assignments scored an average of 48.4%.",
+      "The standard deviations for the Active, AI, and Manual groups are 0.3178209, 0.287588, and 0.266287, respectively.",
+      "The observed differences are statistically significant at the 5% level, with p-values of 0.002459 between the AI and Manual groups",
+      "After adjusting for background knowledge and demographic factors, complete reliance on AI for writing tasks led to a 25.1% reduction in accuracy."
+    ]
+  },
+  "computed": {
+    "cohens_d": -0.6603107880027373,
+    "hedges_g": -0.6522908189176838,
+    "variance": 0.06431508970614408,
+    "computation_method": "means_and_sds",
+    "confidence": "medium",
+    "notes": "This is a within-subject design where 32 participants each completed three conditions (Manual, AI, Active) in randomized order. The paper states 'A total of 32 college-educated individuals were recruited' and 'Each participant underwent three rounds of tasks'. The means (Manual: 66.7%, AI: 48.4%) and SDs (Manual: 0.266287, AI: 0.287588) are reported. The p-value is exact (0.002459). However, the SD of the paired difference scores is not reported, nor is a paired t-statistic or correlation between conditions. Python will need to compute the effect size using the available statistics with appropriate paired-design adjustments. The regression in Table 3 shows AI Dummy coefficient of -0.251 (p<0.01), which represents the adjusted effect controlling for covariates, but this is not a direct standardized effect size.",
+    "n_human": 32,
+    "n_ai": 32,
+    "direction_convention": "larger_is_better"
+  }
+}

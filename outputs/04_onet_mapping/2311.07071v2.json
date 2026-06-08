@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants are artists on an outsourcing platform who create original artwork across multiple categories (character design, avatars, posters, UI, etc.). The primary task description explicitly states artists 'complete the task' of creating commissioned art based on consumer specifications. This is fundamentally creative work requiring original artistic production, which maps directly to 'Thinking Creatively' \u2014 developing and executing original ideas in visual/artistic domains.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-04",
+      "onet_label": "Drafting, Laying Out, and Specifying Technical Devices, Parts, and Equipment"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "27-1014.00",
+      "onet_label": "Special Effects Artists and Animators"
+    }
+  ],
+  "citation_key": "zhang_2024_generative_equilibrium"
+}

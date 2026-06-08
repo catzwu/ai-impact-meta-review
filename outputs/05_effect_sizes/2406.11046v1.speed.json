@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2406.11046v1",
+  "citation_key": "quispe_2024_chatgpt_software",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "Control (ChatGPT not available)",
+    "ai_arm_name": "Treatment (ChatGPT available)",
+    "ai_arm_selection_rationale": "This is a natural experiment comparing countries where ChatGPT was available vs. banned. The treatment group consists of 120 countries with ChatGPT access, control group is 27 countries without access.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 741.5,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 27,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 120,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 899.268,
+    "regression_coefficient_se": 147.395,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 741.5,
+    "extraction_confidence": "high",
+    "notes": "Primary outcome is 'Num Pushes per 100k' (git pushes per 100,000 people). Table 6.1 Panel A reports DID coefficient of 899.268*** (SE=147.395) with baseline mean of 741.5. This is a level-transformed outcome (not log), so the coefficient represents the absolute increase in pushes per 100k. The baseline mean is explicitly stated as 'Baseline Mean Outcome 741.5'. The outcome is a throughput measure (more pushes = more productivity), so larger_is_better. Sample sizes: N0=27 control units, N1=120 treatment units across 13 time periods (11 pre-treatment, 2 post-treatment), total observations=2352. SC and SDID methods also reported but DID is most straightforward for extraction.",
+    "source_quotes": [
+      "Panel A. Num Pushes per 100k\nChat GPT Available 899.268***\n(147.395)",
+      "Baseline Mean Outcome 741.5",
+      "This design consists of 120 treatment units and 27 control units; 11 pre-treatment periods and 2 treatment periods.",
+      "The DID estimation shows an increase of approximately 899.268 pushes, which is highly significant with a standard error of 147.395.",
+      "Panel A outcome is The number of times developers in a given economy uploaded code to GitHub per 100,000 people."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.7942445423083856,
+    "log_ratio_variance": 0.008069955652906968,
+    "percent_change_equivalent": 1.2127687120701283,
+    "direction_convention": "larger_is_better",
+    "computation_method": "regression_coef_level_with_baseline",
+    "confidence": "medium",
+    "notes": "Primary outcome is 'Num Pushes per 100k' (git pushes per 100,000 people). Table 6.1 Panel A reports DID coefficient of 899.268*** (SE=147.395) with baseline mean of 741.5. This is a level-transformed outcome (not log), so the coefficient represents the absolute increase in pushes per 100k. The baseline mean is explicitly stated as 'Baseline Mean Outcome 741.5'. The outcome is a throughput measure (more pushes = more productivity), so larger_is_better. Sample sizes: N0=27 control units, N1=120 treatment units across 13 time periods (11 pre-treatment, 2 post-treatment), total observations=2352. SC and SDID methods also reported but DID is most straightforward for extraction.",
+    "n_human": 27,
+    "n_ai": 120
+  }
+}

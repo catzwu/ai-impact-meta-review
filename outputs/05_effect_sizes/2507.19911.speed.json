@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2507.19911",
+  "citation_key": "kikuchi_2025_ai_spatial",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper is a theoretical and empirical framework study analyzing AI-driven spatial distribution dynamics in Tokyo. It does not contain a controlled experiment comparing human-only vs. human+AI task performance. The study examines spatial agglomeration effects of AI adoption across Tokyo's wards and industries using observational data (2000-2023) and causal inference methods (DiD, event studies, synthetic control, IV, PSM). The 'treatment' is AI implementation at the ward-industry level, not individual human task performance. The primary outcomes are spatial concentration measures (agglomeration indices, Gini coefficients, HHI) and productivity at the regional level, not individual speed/throughput metrics. While the paper reports that 'AI implementation increases agglomeration concentration by 4.2-5.2 percentage points' and discusses productivity effects, these are macro-level spatial economics findings, not micro-level human task completion speed comparisons. There is no human-only baseline arm performing tasks, and no human+AI arm performing the same tasks faster.",
+    "direction_convention": null,
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a spatial economics paper studying AI adoption effects on regional agglomeration patterns in Tokyo, not a human task performance study. The paper uses difference-in-differences and other causal methods to estimate how AI implementation affects spatial concentration of economic activity across Tokyo's 23 wards and 6 industries over 2000-2023. The 'treatment effect' of 0.045 (4.5 percentage points, Table 2) refers to change in spatial concentration indices, not individual human productivity. The heterogeneous effects by industry AI-readiness (Table 3: high-readiness +8.4pp, low-readiness +1.2pp) are also spatial concentration measures. The paper does discuss that 'aggressive AI adoption can offset 60-80% of aging-related productivity declines' (page 2, 23) but this is a prediction from machine learning models about aggregate regional productivity, not a measured speed outcome from controlled human experiments. No individual-level task completion data, no human-only vs human+AI comparison arms, no speed/throughput measurements exist in this paper. The study is fundamentally about economic geography and spatial distribution, not human-AI collaboration on tasks.",
+    "source_quotes": [
+      "AI implementation increases agglomeration concentration by 4.2-5.2 percentage points, with heterogeneous effects across industries: high AI-readiness sectors experience 8.4 percentage point increases, while low AI-readiness sectors show 1.2 percentage point gains.",
+      "Machine learning predictions demonstrate that aggressive AI adoption can offset 60-80% of aging-related productivity declines.",
+      "The Difference-in-Differences estimate of 0.045 indicates AI implementation increases concentration by 4.5 percentage points, representing a 12.3% increase over baseline levels.",
+      "This paper develops the first comprehensive theoretical and empirical framework for analyzing AI-driven spatial distribution dynamics in metropolitan areas undergoing demographic transition.",
+      "Using Tokyo as our empirical laboratory, we implement rigorous causal identification through five complementary econometric strategies"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This is a spatial economics paper studying AI adoption effects on regional agglomeration patterns in Tokyo, not a human task performance study. The paper uses difference-in-differences and other causal methods to estimate how AI implementation affects spatial concentration of economic activity across Tokyo's 23 wards and 6 industries over 2000-2023. The 'treatment effect' of 0.045 (4.5 percentage points, Table 2) refers to change in spatial concentration indices, not individual human productivity. The heterogeneous effects by industry AI-readiness (Table 3: high-readiness +8.4pp, low-readiness +1.2pp) are also spatial concentration measures. The paper does discuss that 'aggressive AI adoption can offset 60-80% of aging-related productivity declines' (page 2, 23) but this is a prediction from machine learning models about aggregate regional productivity, not a measured speed outcome from controlled human experiments. No individual-level task completion data, no human-only vs human+AI comparison arms, no speed/throughput measurements exist in this paper. The study is fundamentally about economic geography and spatial distribution, not human-AI collaboration on tasks. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

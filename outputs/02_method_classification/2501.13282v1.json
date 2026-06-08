@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study describes a 'two-week controlled trial' but provides no evidence of random assignment to AI vs. no-AI conditions. The 126 engineers were 'stratified across technical specializations, experience levels, geographical locations, and technology stacks' through a 'structured recruitment process,' suggesting selection rather than randomization. This is followed by 'full-scale deployment,' indicating all participants received the intervention.",
+  "citation_key": "bakal_2025_copilot_productivity"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants are researchers conducting a meta-analysis who are 'mapping Claude.ai conversations to occupational categories' and 'identify[ing] current AI usage patterns.' This core task involves systematically analyzing large datasets (millions of conversations) to extract patterns, categorize information, and draw conclusions about economic impacts. While the researchers may also be writing and presenting findings, the primary substantive work described is the analytical categorization and pattern identification from data.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-2051.00",
+      "onet_label": "Data Scientists"
+    }
+  ],
+  "citation_key": "handa_2025_economic_tasks"
+}

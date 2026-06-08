@@ -1,0 +1,51 @@
+{
+  "_paper_id": "PublishedImpactofArtificialIntelligenceonEmployeesProductivityinTechnological",
+  "citation_key": "chukwuka_2025_ai_productivity",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "Control (No AI)",
+    "ai_arm_name": "Treatment (AI Access)",
+    "ai_arm_selection_rationale": "The study has a single AI treatment arm where employees had access to AI tools in their technological organizations. This is compared against a control group without AI access.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 108,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 108,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": 9.11,
+    "reported_t_df": 4,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "This is a descriptive survey study of 156 employees in technological firms in Delta State, Nigeria, with 108 questionnaires returned (69% response rate). The study tests three hypotheses using one-sample t-tests. For Hypothesis 1 (AI has positive and significant effect on employee productivity), the calculated t-value is 9.110 with df=4, table t-value=1.812, leading to rejection of null hypothesis. The study design appears to be cross-sectional comparing employees in organizations with AI vs without AI, though the exact arm structure is not entirely clear from the methodology section. The sample size of 108 appears to represent the total respondents, and the statistical tests suggest comparison conditions, but raw means and SDs for productivity outcomes are not reported in the results tables. The study reports Likert-scale survey responses but does not provide the aggregated mean productivity scores that would allow direct effect size calculation. The t-statistic from Hypothesis 1 is the strongest quantitative evidence available for the AI effect on productivity.",
+    "source_quotes": [
+      "From table I above, out of 156 copies of questionnaires that were distributed, 108 were returned, this represent 69%.",
+      "From the above one sample t-test table, the five questions give a positive result. The calculated t-value is 9.110 while the table t-value is 1.812. This means that calculated t-value if greater than the Table t-value (9.110>1.812). We therefore reject null hypothesis and uphold alternative hypothesis which states that Artificial Intelligence (AI) has a positive and significant effect on employee's productivity.",
+      "The population of the study consists of the 156 employees and technological firm owners in Asaba, Delta State, Nigeria.",
+      "This study adopted a descriptive survey research method through the use of primary data source instruments of questionnaires shared to over 150 employees of technological firms in Delta state."
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": "larger_is_better",
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This is a descriptive survey study of 156 employees in technological firms in Delta State, Nigeria, with 108 questionnaires returned (69% response rate). The study tests three hypotheses using one-sample t-tests. For Hypothesis 1 (AI has positive and significant effect on employee productivity), the calculated t-value is 9.110 with df=4, table t-value=1.812, leading to rejection of null hypothesis. The study design appears to be cross-sectional comparing employees in organizations with AI vs without AI, though the exact arm structure is not entirely clear from the methodology section. The sample size of 108 appears to represent the total respondents, and the statistical tests suggest comparison conditions, but raw means and SDs for productivity outcomes are not reported in the results tables. The study reports Likert-scale survey responses but does not provide the aggregated mean productivity scores that would allow direct effect size calculation. The t-statistic from Hypothesis 1 is the strongest quantitative evidence available for the AI effect on productivity. | no usable numbers",
+    "n_human": 108,
+    "n_ai": 108
+  }
+}

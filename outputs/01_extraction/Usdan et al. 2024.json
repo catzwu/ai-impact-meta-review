@@ -1,0 +1,699 @@
+{
+  "citation_key": "usdan_2024_generative_writing",
+  "authors": [
+    "Jordan H. Usdan",
+    "Harley Chang",
+    "Allison E. Connell Pensky"
+  ],
+  "title": "Generative AI's Impact on Graduate Student Writing Productivity and Quality",
+  "year": 2024,
+  "venue": null,
+  "study_design_description": "A mixed-methods study comparing students' performance on professional writing tasks conducted without and with genAI assistance. All participants completed three writing assignments in the order of no genAI, full genAI, and genAI-assisted. The first assignment represented the no genAI condition, the second was the full genAI condition (serving as an instructional tool), and the third was the genAI-assisted condition. Due to logistical and pedagogical constraints, the order of writing conditions was not counterbalanced. A 2\u00d72 mixed-model ANOVA tested for differences in writing time, writing performance, and perceived writing competency across writing conditions and English language status.",
+  "primary_task_description": "A sequence of professional memo writing exercises involving five core professional research and writing sub-tasks: summarization of a news article, web research to find survey results, analysis and synthesis of different survey results, policy development, and critical analysis. The assignment prompt was written as if from a different stakeholder (e.g., the CEO), highlighted an observation about AI based on a research study or headline, shared two results from the source, requested a deliverable that summarizes the cited source, called on the student to do additional research to assess the representativeness of the results, required them to explain the risks and benefits of the generative AI in the particular context, and finally to present a well-argued policy for the specific work context.",
+  "population_description": "Participants were 27 graduate students (one student opted out of the initial 28) enrolled in a 7-week graduate elective class at Carnegie Mellon University during the spring 2024 term. Participants were from a variety of academic disciplines including information systems and public policy (63%), business (25.9%), computer science (7.4%), and humanities (3.7%). One participant was enrolled in a doctoral program and all remaining participants were in Master's programs. Fifteen participants (55.6%) self-reported being English as a Second Language (ESL) student while 12 participants (44.4%) were native English speakers. Eleven participants (40.7%) self-reported having an extensive technical background in computer science or programming. Twenty-three (85.2%) participants reported having prior experience using ChatGPT or other AI to help with their coursework.",
+  "arms": [
+    {
+      "arm_name": "no_genai",
+      "description": "First assignment completed without genAI assistance. Participants were randomly assigned writing assignment version A, B, or C to complete the first week of classes.",
+      "n": null
+    },
+    {
+      "arm_name": "genai_assisted",
+      "description": "Third writing assignment completed with genAI assistance. After instruction on how to effectively co-author with genAI, students were given their third writing assignment and could choose whether to complete it with genAI assistance or independently without genAI. Every student chose to use genAI as an assistant.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "writing_time",
+      "outcome_description": "Students were asked to keep track of how long they were actively engaged in completing their memo writing assignments (both research and writing) and to submit this time along with their deliverable.",
+      "measurement_unit": "minutes",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "overall_grade",
+      "outcome_description": "Writing performance was defined by students' earned grades on a standardized grading rubric. All rubric criteria were scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient). The maximum grade on each memo assignment was 24 points.",
+      "measurement_unit": "percentage or points (0-24)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "summarization_quality",
+      "outcome_description": "Quality of summarization was a single criterion on the grading rubric, scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "external_survey_research",
+      "outcome_description": "External survey findings involved two criteria of quality of external survey research as well as integration and analysis of survey results, scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "external_survey_analysis",
+      "outcome_description": "Analysis of survey results, one of two criteria under external survey findings, scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "policy_articulation",
+      "outcome_description": "Policy recommendation involved three criteria of articulation of their policy, how logical and comprehensive their policy was, and how well they argued and supported their policy with analysis. Articulation of policy was scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "policy_logic_and_holistics",
+      "outcome_description": "How logical and comprehensive the policy was, one of three criteria under policy recommendation, scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "policy_argument",
+      "outcome_description": "How well students argued and supported their policy with analysis, one of three criteria under policy recommendation, scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "style_flow_concision",
+      "outcome_description": "Writing style had two criteria of style, flow, and concision as well as organization, scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "organization",
+      "outcome_description": "Organization, one of two criteria under writing style, scored on a scale of 1 (insufficient), 2 (sufficient), or 3 (proficient).",
+      "measurement_unit": "rubric 1-3",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "outcome_description": "Students self-evaluated their professional English writing competency compared to other graduate students at CMU on a scale of 1 (worse than almost all graduate students at CMU) to 5 (better than almost all graduate students at CMU).",
+      "measurement_unit": "scale 1-5",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "genai_usefulness_summarization",
+      "outcome_description": "Students self-reported how useful the AI tool was for the summarization sub-task on a scale of 1 (not useful) to 4 (very useful).",
+      "measurement_unit": "scale 1-4",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "genai_usefulness_writing",
+      "outcome_description": "Students self-reported how useful the AI tool was for the writing sub-task on a scale of 1 (not useful) to 4 (very useful).",
+      "measurement_unit": "scale 1-4",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "genai_usefulness_web_research",
+      "outcome_description": "Students self-reported how useful the AI tool was for the web research sub-task on a scale of 1 (not useful) to 4 (very useful).",
+      "measurement_unit": "scale 1-4",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "genai_usefulness_policy_development",
+      "outcome_description": "Students self-reported how useful the AI tool was for the policy development sub-task on a scale of 1 (not useful) to 4 (very useful).",
+      "measurement_unit": "scale 1-4",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "genai_usefulness_analysis",
+      "outcome_description": "Students self-reported how useful the AI tool was for the analysis sub-task on a scale of 1 (not useful) to 4 (very useful).",
+      "measurement_unit": "scale 1-4",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_speed_improvement",
+      "outcome_description": "Students self-reported how much they believe their research and writing speed improved from the first to the third assignment on a scale of 1 (did not improve) to 5 (significantly improved).",
+      "measurement_unit": "scale 1-5",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_quality_improvement",
+      "outcome_description": "Students self-reported how much they believe their research and writing quality improved from the first to the third assignment on a scale of 1 (did not improve) to 5 (significantly improved).",
+      "measurement_unit": "scale 1-5",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "attribution_improvement_to_ai",
+      "outcome_description": "Students self-reported how much they attribute any improvement in writing quality and/or speed to the use of AI versus experience gained in completing similar assignments on a scale of 1 (100% from completing similar assignments) to 10 (100% from using the AI tool), with 5 representing 50/50 improvement.",
+      "measurement_unit": "scale 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "value_quality_vs_speed",
+      "outcome_description": "Students self-reported how much they value the benefits of AI tools to their writing quality versus speed on a scale of 1 (100% value quality) to 10 (100% value speed), with 5 representing equally value quality and speed improvement.",
+      "measurement_unit": "scale 1-10",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "writing_time",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {
+        "no_genai": {
+          "mean": 191.8,
+          "sd": 130.3,
+          "se": null
+        },
+        "genai_assisted": {
+          "mean": 68.1,
+          "sd": 28.4,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "64.5% reduction in writing time",
+      "standardized_effect_reported": "\u03b7\u00b2 = .50",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,23) = 23.15",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "There was a significant main effect of writing condition on writing time (f(1,23) = 23.15, p < .001, \u03b7p2 = .50) showing that students spent significantly less time writing their memo when they used genAI assistance. On average, genAI assistance reduced the time spent completing their policy memo assignment by 64.5%."
+    },
+    {
+      "outcome_name": "writing_time",
+      "arm_comparison": "native_english_speakers vs esl",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .05",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,23) = 1.09",
+      "p_value": "p = .31",
+      "confidence_interval": null,
+      "verbatim_quote": "There was no main effect of English language status (f(1,23) = 1.09, p = .31, \u03b7p2 = .05) meaning native English speakers and ESL students spent comparable time preparing their memo writing assignments."
+    },
+    {
+      "outcome_name": "writing_time",
+      "arm_comparison": "writing_condition \u00d7 english_language_status",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .02",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,23) = .45",
+      "p_value": "p = .51",
+      "confidence_interval": null,
+      "verbatim_quote": "There was no interaction between writing condition and English language status on writing time (f(1,23) = .45, p = .51, \u03b7p2 = .02) meaning, statistically, the amount of time saved writing with genAI assistance did not differ between native English speakers and ESL students (see Figure 2)."
+    },
+    {
+      "outcome_name": "overall_grade",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {
+        "no_genai": {
+          "mean": 88.3,
+          "sd": 10.3,
+          "se": null
+        },
+        "genai_assisted": {
+          "mean": 94.1,
+          "sd": 8.0,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "improvement from B+ to A",
+      "standardized_effect_reported": "\u03b7\u00b2 = .16",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,25) = 4.74",
+      "p_value": "p = .04",
+      "confidence_interval": null,
+      "verbatim_quote": "There was a significant main effect of writing condition (f(1,25) = 4.74, p = .04, \u03b7p2 = .16) indicating that students earned higher grades on the assignment prepared with genAI assistance. On average, students' grades change from a B+ (M = 88.3%, SD = 10.3%) without genAI to an A (M = 94.1%, SD = 8.0%) with genAI assistance."
+    },
+    {
+      "outcome_name": "overall_grade",
+      "arm_comparison": "native_english_speakers vs esl",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .01",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,25) = .35",
+      "p_value": "p = .56",
+      "confidence_interval": null,
+      "verbatim_quote": "There was no main effect of English language status (f(1,25) = .35, p = .56, \u03b7p2 = .01) meaning ESL students and native English speakers earned equivalent assignment grades."
+    },
+    {
+      "outcome_name": "overall_grade",
+      "arm_comparison": "writing_condition \u00d7 english_language_status",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .01",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,25) = .12",
+      "p_value": "p = .74",
+      "confidence_interval": null,
+      "verbatim_quote": "There was no interaction of writing condition and English language status (f(1,25) = .12, p = .74, \u03b7p2 = .01) meaning the amount of change in assignment grades did not differ between native English speakers and ESL students (see Figure 3)."
+    },
+    {
+      "outcome_name": "organization",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .13",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = 3.96",
+      "p_value": "p = .06",
+      "confidence_interval": null,
+      "verbatim_quote": "Organization: f(1,26) = 3.96, p = .06, \u03b7p2 = .13"
+    },
+    {
+      "outcome_name": "style_flow_concision",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .11",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = 3.25",
+      "p_value": "p = .08",
+      "confidence_interval": null,
+      "verbatim_quote": "Style, flow, and concision: f(1,26) = 3.25, p = .08, \u03b7p2 = .11"
+    },
+    {
+      "outcome_name": "external_survey_research",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .08",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = 2.36",
+      "p_value": "p = .14",
+      "confidence_interval": null,
+      "verbatim_quote": "External survey research: f(1,26) = 2.36, p = .14, \u03b7p2 = .08"
+    },
+    {
+      "outcome_name": "summarization_quality",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .07",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = 2.08",
+      "p_value": "p = .16",
+      "confidence_interval": null,
+      "verbatim_quote": "Summarization: f(1,26) = 2.08, p = .16, \u03b7p2 = .07"
+    },
+    {
+      "outcome_name": "external_survey_analysis",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .05",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = 1.41",
+      "p_value": "p = .25",
+      "confidence_interval": null,
+      "verbatim_quote": "External survey analysis: f(1,26) = 1.41, p = .25, \u03b7p2 = .05"
+    },
+    {
+      "outcome_name": "policy_argument",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .04",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = 1.15",
+      "p_value": "p = .29",
+      "confidence_interval": null,
+      "verbatim_quote": "Policy argument: f(1,26) = 1.15, p = .29, \u03b7p2 = .04"
+    },
+    {
+      "outcome_name": "policy_articulation",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .03",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = .68",
+      "p_value": "p = .42",
+      "confidence_interval": null,
+      "verbatim_quote": "Policy articulation: f(1,26) = .68, p = .42, \u03b7p2 = .03"
+    },
+    {
+      "outcome_name": "policy_logic_and_holistics",
+      "arm_comparison": "genai_assisted vs no_genai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .00",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,26) = .06",
+      "p_value": "p = .81",
+      "confidence_interval": null,
+      "verbatim_quote": "Policy logic and holistics: f(1,26) = .06, p = .81, \u03b7p2 = .00"
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "arm_comparison": "native_english_speakers vs esl",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .26",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,25) = 8.70",
+      "p_value": "p = .007",
+      "confidence_interval": null,
+      "verbatim_quote": "There was a significant effect of English language status on perceived writing competency (f(1,25) = 8.70, p = .007, \u03b7p2 = .26) with ESL students reporting lower perceived competency than native English speakers."
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "arm_comparison": "pre vs post",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .05",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,25) = 1.44",
+      "p_value": "p = .24",
+      "confidence_interval": null,
+      "verbatim_quote": "There was no main effect of time (f(1,25) = 1.44, p = .24, \u03b7p2 = .05) indicating that students' perceived writing competency did not significantly change from the beginning to the end of the course."
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "arm_comparison": "english_language_status \u00d7 time",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "\u03b7\u00b2 = .14",
+      "regression_coefficient": null,
+      "test_statistic": "f(1,25) = 3.99",
+      "p_value": "p = .06",
+      "confidence_interval": null,
+      "verbatim_quote": "There was, however, a marginally significant interaction between English language status and time (f(1,25) = 3.99, p = .06, \u03b7p2 = .14, see Figure 4)."
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "arm_comparison": "native_english_speakers vs esl (pre)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 1.35",
+      "regression_coefficient": null,
+      "test_statistic": "t(25) = 3.49",
+      "p_value": "p = .002",
+      "confidence_interval": null,
+      "verbatim_quote": "Follow-up pairwise testing found that coming into the course, ESL students self-evaluated their English writing competency significantly lower than did native English speakers (t(25) = 3.49, p = .002, d = 1.35)."
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "arm_comparison": "native_english_speakers vs esl (post)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = .41",
+      "regression_coefficient": null,
+      "test_statistic": "t(25) = 1.07",
+      "p_value": "p = .30",
+      "confidence_interval": null,
+      "verbatim_quote": "By the end of the semester, this difference had disappeared (t(25) = 1.07, p = .30, d = .41) with ESL students reporting equivalent perceived writing competency to their native English speaking peers."
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "arm_comparison": "esl pre vs post",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = .54",
+      "regression_coefficient": null,
+      "test_statistic": "t(14) = -2.09",
+      "p_value": "p = .06",
+      "confidence_interval": null,
+      "verbatim_quote": "Additionally, ESL students showed a marginally significant increase in their perceived writing competency over time (t(14) = -2.09, p = .06, d = .54) whereas native English speaking students did not change in their perceived competency (t(11) = .69, p = .50, d = .20)."
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "arm_comparison": "native_english_speakers pre vs post",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = .20",
+      "regression_coefficient": null,
+      "test_statistic": "t(11) = .69",
+      "p_value": "p = .50",
+      "confidence_interval": null,
+      "verbatim_quote": "whereas native English speaking students did not change in their perceived competency (t(11) = .69, p = .50, d = .20)."
+    },
+    {
+      "outcome_name": "genai_usefulness_summarization",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 3.52,
+          "sd": 0.75,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Students found the genAI's assistance to be the most useful for summarization (M = 3.52 (max = 4), SD = .75)"
+    },
+    {
+      "outcome_name": "genai_usefulness_writing",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 3.5,
+          "sd": 0.71,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "and assistance in writing (M = 3.50, SD = .71)."
+    },
+    {
+      "outcome_name": "genai_usefulness_web_research",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 3.08,
+          "sd": 0.81,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The tool's usefulness for the sub-tasks of web research (M = 3.08, SD = .81)"
+    },
+    {
+      "outcome_name": "genai_usefulness_policy_development",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 3.04,
+          "sd": 0.82,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "policy development (M = 3.04, SD = .82)"
+    },
+    {
+      "outcome_name": "genai_usefulness_analysis",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 2.87,
+          "sd": 0.92,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "and analysis (M = 2.87, SD = .92) was a bit lower."
+    },
+    {
+      "outcome_name": "genai_usefulness_writing",
+      "arm_comparison": "native_english_speakers vs esl",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(24) = -2.09",
+      "p_value": "p = .047",
+      "confidence_interval": null,
+      "verbatim_quote": "ESL students found the genAI tool to be significantly more useful in the writing process than did native English speaking students (t(24) = -2.09, p = .047)."
+    },
+    {
+      "outcome_name": "perceived_speed_improvement",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 4.44,
+          "sd": 1.01,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "They reported feeling their speed had improved considerably (M = 4.44 (max = 5), SD = 1.01)."
+    },
+    {
+      "outcome_name": "perceived_speed_improvement",
+      "arm_comparison": "native_english_speakers vs esl",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(15.92) = 2.60",
+      "p_value": "p = .02",
+      "confidence_interval": null,
+      "verbatim_quote": "Native English speaking students reported feeling more significant improvement in their speed than did ESL students (t(15.92) = 2.60, p = .02)."
+    },
+    {
+      "outcome_name": "perceived_quality_improvement",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 3.74,
+          "sd": 0.76,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "They reported feeling like their quality had somewhat improved (M = 3.74 (max = 5), SD = .76)."
+    },
+    {
+      "outcome_name": "perceived_quality_improvement",
+      "arm_comparison": "native_english_speakers vs esl",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(25) = -.96",
+      "p_value": "p = .35",
+      "confidence_interval": null,
+      "verbatim_quote": "This sense of improvement in quality was slightly higher in ESL than native English speaking students though this failed to reach statistical significance (t(25) = -.96, p = .35)."
+    },
+    {
+      "outcome_name": "perceived_quality_improvement",
+      "arm_comparison": "perceived_quality_improvement vs change_in_total_assignment_grade",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "R\u00b2 = .20",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = .02",
+      "confidence_interval": null,
+      "verbatim_quote": "This perception of quality significantly correlated with the change in total assignment grade from assignment 1 (no genAI) to assignment 3 (genAI-assisted) (r(27) = .45, p = .02, R2 = .20) such that students who perceived a greater improvement in their writing quality showed a larger increase in their grade."
+    },
+    {
+      "outcome_name": "value_quality_vs_speed",
+      "arm_comparison": "overall",
+      "means_and_sds": {
+        "overall": {
+          "mean": 6.7,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When asked \"How do you value the benefits of AI tools to your research/writing quality versus speed?\" with response anchors of 1 = 100% value quality, 5 = equally value quality and speed, and 10 = 100% value speed, the average was 6.7."
+    },
+    {
+      "outcome_name": "writing_time",
+      "arm_comparison": "esl no_genai vs native_english_speakers no_genai",
+      "means_and_sds": {
+        "esl_no_genai": {
+          "mean": 212.36,
+          "sd": 116.75,
+          "se": null
+        },
+        "native_english_speakers_no_genai": {
+          "mean": 165.64,
+          "sd": 147.32,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "47 minute gap on first assignment",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In productivity, ESL students spent on average 212.36 minutes (SD = 116.75 min) preparing their first assignment without genAI, while native English speaking students spent on average 165.64 minutes (SD = 147.32 min)."
+    },
+    {
+      "outcome_name": "writing_time",
+      "arm_comparison": "esl genai_assisted vs native_english_speakers genai_assisted",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10 minutes longer for ESL students",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "With genAI assistance, ESL students closed the time to completion gap, averaging only 10 minutes longer to complete the assignment compared to native English speakers, down from an average 47 minute gap on the first assignment."
+    },
+    {
+      "outcome_name": "overall_grade",
+      "arm_comparison": "esl no_genai vs native_english_speakers no_genai",
+      "means_and_sds": {
+        "esl_no_genai": {
+          "mean": 85,
+          "sd": null,
+          "se": null
+        },
+        "native_english_speakers_no_genai": {
+          "mean": 87,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The observed data show ESL students had an 85% average grade on the no-genAI assignment compared to 87% for native English speaking students."
+    },
+    {
+      "outcome_name": "overall_grade",
+      "arm_comparison": "esl genai_assisted vs native_english_speakers genai_assisted",
+      "means_and_sds": {
+        "esl_genai_assisted": {
+          "mean": 93.9,
+          "sd": null,
+          "se": null
+        },
+        "native_english_speakers_genai_assisted": {
+          "mean": 94.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the final assignment with genAI assistance, cohorts earned equivalent grades (MNative = 94.4%, MESL = 93.9%)."
+    }
+  ],
+  "notes": "Study design: Mixed-methods study with 27 graduate students (one opted out of initial 28) at Carnegie Mellon University. Participants completed three writing assignments in fixed order: no genAI (Assignment 1), full genAI (Assignment 2, instructional tool only), and genAI-assisted (Assignment 3). Due to logistical and pedagogical constraints, the order of writing conditions was not counterbalanced. The paper notes this as a limitation for causal inference. Sample size limitations: The small sample size (n=27) limited statistical power to detect all possible effects and disaggregated analyses. Grading bias: The grading rubric was implemented by the professor who was not blinded to condition, though this was mitigated by a detailed rubric. Multiple comparisons: The reported p-values are uncorrected for multiple comparisons. Confounding: While significant effects on writing speed and quality were found, the paper acknowledges that other factors (e.g., repeated practice) could have partially contributed to improvements, though students attributed improvement more to genAI than practice. Sample characteristics: 85.2% of participants had prior experience using genAI for coursework, representing a self-selected group interested in an AI elective. Arm-level sample sizes (n) are not explicitly stated in the quotes for the no_genai and genai_assisted arms; the total sample was 27 participants, but the quotes do not specify how many completed each assignment. Differential effects: While not statistically significant, ESL students showed slightly greater improvements in both productivity and performance with genAI assistance, suggesting a potential equity benefit. Correlation analysis: Perceived quality improvement significantly correlated with actual grade change (r=.45, p=.02, R\u00b2=.20).",
+  "_paper_id": "Usdan et al. 2024"
+}

@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2403.01770v1",
+  "citation_key": "nakavachara_2024_chatgpt_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": 0.43,
+    "sd_difference_within_subject": 1.98,
+    "human_arm_name": "no_chatgpt",
+    "ai_arm_name": "chatgpt",
+    "ai_arm_selection_rationale": "This is a within-subjects crossover design where all 121 participants completed writing analysis tasks both with and without ChatGPT. The comparison is between the 'with ChatGPT' and 'without ChatGPT' conditions completed by the same participants.",
+    "direction_convention": "larger_is_better",
+    "m_human": 5.33,
+    "sd_human": 1.47,
+    "se_human": null,
+    "n_human": 121,
+    "m_ai": 5.75,
+    "sd_ai": 1.47,
+    "se_ai": null,
+    "n_ai": 121,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "Within-subjects crossover design with n=121. The prior pass missed the SD of difference scores, which is reported in Table 4, Panel A as 1.98. Individual condition means and SDs are reported in Table 3, Panel A: Writing Analysis - No ChatGPT (M=5.33, SD=1.47) and Writing Analysis - With ChatGPT (M=5.75, SD=1.47). The mean difference is 0.43 points (out of 10). With the SD of differences now available, Hedges' g can be computed for this paired design.",
+    "source_quotes": [
+      "Score Diff = With ChatGPT - No ChatGPT 121 0.43 1.98 -5.00 5.17",
+      "Writing Analysis - No ChatGPT 121 5.33 1.47 1.42 8.92",
+      "Writing Analysis - With ChatGPT 121 5.75 1.47 1.42 8.75",
+      "On average, the score with ChatGPT is higher than the score without ChatGPT by 0.43 (out of a total possible score of 10)"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.2857142857142857,
+    "hedges_g": 0.2848204975420825,
+    "variance": 0.016593282781388066,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Within-subjects crossover design with n=121. The prior pass missed the SD of difference scores, which is reported in Table 4, Panel A as 1.98. Individual condition means and SDs are reported in Table 3, Panel A: Writing Analysis - No ChatGPT (M=5.33, SD=1.47) and Writing Analysis - With ChatGPT (M=5.75, SD=1.47). The mean difference is 0.43 points (out of 10). With the SD of differences now available, Hedges' g can be computed for this paired design.",
+    "n_human": 121,
+    "n_ai": 121,
+    "direction_convention": "larger_is_better"
+  }
+}

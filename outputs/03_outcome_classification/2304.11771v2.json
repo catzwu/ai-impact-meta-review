@@ -1,0 +1,67 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "resolutions_per_hour",
+      "category": "both",
+      "operationalization": "Count of successfully resolved chats per agent per hour, measured from platform logs"
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "category": "speed",
+      "operationalization": "Mean duration in minutes from chat start to completion per agent, measured from platform timestamps"
+    },
+    {
+      "outcome_name": "chats_per_hour",
+      "category": "speed",
+      "operationalization": "Count of chats handled per agent per hour, accounting for concurrent multitasking, from platform logs"
+    },
+    {
+      "outcome_name": "resolution_rate",
+      "category": "quality",
+      "operationalization": "Percentage of chats marked as successfully resolved out of total chats handled by agent"
+    },
+    {
+      "outcome_name": "net_promoter_score",
+      "category": "other",
+      "operationalization": "Customer satisfaction metric: percentage who would recommend minus percentage who would not, from post-chat surveys. This measures customer satisfaction, not the quality of the technical solution or agent output."
+    },
+    {
+      "outcome_name": "comprehensibility_score",
+      "category": "quality",
+      "operationalization": "Rubric score 1-5 rating how cogent and understandable the agent's text is, evaluation method not specified"
+    },
+    {
+      "outcome_name": "native_fluency",
+      "category": "quality",
+      "operationalization": "Binary or scaled assessment of whether agent text resembles native American English, measurement method not specified"
+    },
+    {
+      "outcome_name": "customer_sentiment",
+      "category": "other",
+      "operationalization": "Sentiment score -1 to 1 measuring customer emotional tone, measurement method not specified. This captures customer emotional state, not output quality."
+    },
+    {
+      "outcome_name": "agent_sentiment",
+      "category": "other",
+      "operationalization": "Sentiment score -1 to 1 measuring agent emotional tone, measurement method not specified. This captures agent well-being/affect, not output quality."
+    },
+    {
+      "outcome_name": "manager_escalation_requests",
+      "category": "other",
+      "operationalization": "Percentage of chats where customer requests manager/supervisor, aggregated monthly. This measures customer dissatisfaction/escalation behavior, not output quality per se."
+    },
+    {
+      "outcome_name": "worker_attrition",
+      "category": "other",
+      "operationalization": "Percentage of workers who leave employment, particularly among newer workers. This measures retention/turnover, not output quality."
+    },
+    {
+      "outcome_name": "textual_similarity",
+      "category": "other",
+      "operationalization": "Cosine similarity 0-1 comparing language patterns between high-skill and low-skill workers. This measures skill convergence, not output quality or speed."
+    }
+  ],
+  "primary_speed_outcome": "average_handle_time",
+  "primary_quality_outcome": "resolution_rate",
+  "citation_key": "brynjolfsson_2024_generative_ai"
+}

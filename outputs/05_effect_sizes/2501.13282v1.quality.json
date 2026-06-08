@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2501.13282v1",
+  "citation_key": "bakal_2025_copilot_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "After thorough re-read, this is a single-arm observational deployment study of GitHub Copilot at Zoominfo. There is no human-only baseline or control condition. The study reports acceptance rates (33% suggestions, 20% lines), developer satisfaction scores (72%), and survey responses, but these are all measurements of the Copilot-using condition only. The paper explicitly states it uses 'acceptance rate of shown suggestions' as the productivity measure (\u00a76), which is an AI-specific metric that cannot exist without the AI tool. No pre-post comparison, no control group, no crossover design is present. The trial phases (\u00a75) describe evaluation methodology but all participants used Copilot throughout the trial period. Survey responses compare subjective ratings but provide no quantitative baseline measurements from a no-AI condition.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "This is definitively a single-arm deployment study with no control condition. The paper reports: (1) Acceptance rates for Copilot suggestions (33% suggestions, 20% lines) - these are AI-specific metrics with no human baseline; (2) Developer satisfaction surveys showing 72% positive sentiment, mean ratings of 8.0/10 satisfaction and 7.6/10 productivity improvement - but these are subjective ratings of the AI tool, not comparisons to a no-AI baseline; (3) Survey responses indicating 90% report time reduction with median 20%, 63% complete more tasks, 77% report improved quality - again, these are self-reported perceptions about using Copilot, not measured differences vs. a control. The study design (\u00a75) describes a 4-phase rollout (initial assessment with 5 engineers, trial recruitment, 2-week trial with 126 engineers, full rollout) but all phases involve using Copilot. No pre-deployment baseline measurements, no control group, no A/B testing, no crossover design is described. The paper explicitly positions itself as an 'evaluation and deployment' study (\u00a71, \u00a75) documenting enterprise adoption, not a controlled experiment.",
+    "source_quotes": [
+      "The impact of GitHub Copilot on developer productivity seems difficult to measure after a short-term usage. As such, we resorted to a measure that was recommended by GitHub after it was found to be a 'better predictor of perceived productivity' [34]: Acceptance rate of shown suggestions.",
+      "The results show an average acceptance rate of 33% for suggestions and 20% for lines of code, with high developer satisfaction scores of 72%.",
+      "We conducted a two-week controlled trial from August 15th to August 29th, 2023, with 126 participating engineers actively integrating GitHub Copilot into their daily development workflows.",
+      "Mean satisfaction rating: 8.0 out of 10, and Mean productivity improvement rating: 7.6 out of 10.",
+      "90% respondents stated that GitHub Copilot reduces the amount of time it takes to complete their tasks with a median reduction of 20%."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This is definitively a single-arm deployment study with no control condition. The paper reports: (1) Acceptance rates for Copilot suggestions (33% suggestions, 20% lines) - these are AI-specific metrics with no human baseline; (2) Developer satisfaction surveys showing 72% positive sentiment, mean ratings of 8.0/10 satisfaction and 7.6/10 productivity improvement - but these are subjective ratings of the AI tool, not comparisons to a no-AI baseline; (3) Survey responses indicating 90% report time reduction with median 20%, 63% complete more tasks, 77% report improved quality - again, these are self-reported perceptions about using Copilot, not measured differences vs. a control. The study design (\u00a75) describes a 4-phase rollout (initial assessment with 5 engineers, trial recruitment, 2-week trial with 126 engineers, full rollout) but all phases involve using Copilot. No pre-deployment baseline measurements, no control group, no A/B testing, no crossover design is described. The paper explicitly positions itself as an 'evaluation and deployment' study (\u00a71, \u00a75) documenting enterprise adoption, not a controlled experiment. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

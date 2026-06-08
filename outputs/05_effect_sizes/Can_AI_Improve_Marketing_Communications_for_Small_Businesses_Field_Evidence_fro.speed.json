@@ -1,0 +1,53 @@
+{
+  "_paper_id": "Can_AI_Improve_Marketing_Communications_for_Small_Businesses_Field_Evidence_fro",
+  "citation_key": "goetz_2025_ai_marketing",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "human_arm_name": "Control (no ChatGPT)",
+    "ai_arm_name": "Treatment (ChatGPT adoption)",
+    "ai_arm_selection_rationale": "This is a difference-in-differences natural experiment studying therapists who adopted ChatGPT (treatment) vs. those who did not (control). The treatment arm represents practices that used ChatGPT to rewrite their practice descriptions.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 0.063,
+    "sd_human": null,
+    "se_human": 0.0069,
+    "n_human": 1062,
+    "m_ai": 0.0794,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1062,
+    "reported_percent_change": 0.25,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.0164,
+    "regression_coefficient_se": 0.0069,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 0.063,
+    "extraction_confidence": "high",
+    "notes": "Primary outcome is 'Demand Waitlist' (binary indicator for whether practice has a waitlist). Table 2 Column 1 reports Adopt coefficient of 0.0164** (SE=0.0069). Paper states this represents '1.6 percentage point increase in the probability of having a waitlist' and '25% increase over the baseline propensity' (page 13). Baseline propensity is 0.063 from Table 1. Treatment effect: 0.063 + 0.0164 = 0.0794. This is a difference-in-differences design with matched treatment (n=1062 adopters) and control practices (n=4248 matched controls with 4:1 ratio, but treated as paired in DiD framework). The outcome is a binary waitlist indicator where higher values indicate greater demand.",
+    "source_quotes": [
+      "On average, I find that providers who re-write their practice description using the LLM increase their propensity to have a waitlist by 1.6 percentage points, reflecting a 25% increase over the baseline propensity.",
+      "Adopt 0.0164** (0.0069)",
+      "The average share of individuals in the sample who have a waitlist is 0.063",
+      "Demand Waitlist 0.05 (0.21) [Treated Units Mean]",
+      "Demand Waitlist 0.07 (0.25) [Control Units Mean]",
+      "Demand Waitlist 0.06 (0.24) [All Units Mean]"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.23136364186155733,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.2603174603174603,
+    "direction_convention": "larger_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Primary outcome is 'Demand Waitlist' (binary indicator for whether practice has a waitlist). Table 2 Column 1 reports Adopt coefficient of 0.0164** (SE=0.0069). Paper states this represents '1.6 percentage point increase in the probability of having a waitlist' and '25% increase over the baseline propensity' (page 13). Baseline propensity is 0.063 from Table 1. Treatment effect: 0.063 + 0.0164 = 0.0794. This is a difference-in-differences design with matched treatment (n=1062 adopters) and control practices (n=4248 matched controls with 4:1 ratio, but treated as paired in DiD framework). The outcome is a binary waitlist indicator where higher values indicate greater demand. | SDs/SEs missing; variance not computable",
+    "n_human": 1062,
+    "n_ai": 1062
+  }
+}

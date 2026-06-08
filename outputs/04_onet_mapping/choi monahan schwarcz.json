@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "23-1011.00",
+  "onet_label": "Lawyers",
+  "mapping_confidence": "high",
+  "rationale": "The participants are law students performing authentic legal work tasks that span the core responsibilities of practicing attorneys: drafting complaints, contracts, policy documents, and legal memoranda. While the participants are technically students, they are doing the substantive work of lawyers across multiple practice areas (litigation, transactional, employment law, product liability). The paper explicitly states these tasks 'typify work performed by young attorneys,' and the study measures productivity on actual attorney work outputs, not student learning activities. This maps to the occupation rather than a narrow work activity because participants engage in the full range of diverse legal work.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-30",
+      "onet_label": "Documenting/Recording Information"
+    }
+  ],
+  "citation_key": "choi_2023_lawyering_ai"
+}

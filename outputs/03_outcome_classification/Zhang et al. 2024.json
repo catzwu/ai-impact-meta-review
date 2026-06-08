@@ -1,0 +1,62 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "valid_watches",
+      "category": "other",
+      "operationalization": "Count of viewer watches meeting platform-defined duration thresholds (full duration for 3-7s videos; \u22657s for longer videos), measured over first two weeks post-posting"
+    },
+    {
+      "outcome_name": "watch_duration",
+      "category": "other",
+      "operationalization": "Cumulative viewer watch time in minutes for each video over the first two weeks after posting"
+    },
+    {
+      "outcome_name": "video_has_title",
+      "category": "other",
+      "operationalization": "Binary indicator of whether a posted video includes a title, measured as probability across videos"
+    },
+    {
+      "outcome_name": "video_has_tags",
+      "category": "other",
+      "operationalization": "Binary indicator of whether a posted video includes hashtags, measured as probability across videos"
+    },
+    {
+      "outcome_name": "auc_shares",
+      "category": "quality",
+      "operationalization": "Area Under the ROC Curve measuring recommender model's predictive accuracy for viewer sharing behavior, 0-1 scale"
+    },
+    {
+      "outcome_name": "auc_likes",
+      "category": "quality",
+      "operationalization": "Area Under the ROC Curve measuring recommender model's predictive accuracy for viewer liking behavior, 0-1 scale"
+    },
+    {
+      "outcome_name": "auc_follows",
+      "category": "quality",
+      "operationalization": "Area Under the ROC Curve measuring recommender model's predictive accuracy for viewer following behavior, 0-1 scale"
+    },
+    {
+      "outcome_name": "lexical_density",
+      "category": "quality",
+      "operationalization": "Proportion of content words (nouns, verbs, adjectives) to total words in video title text"
+    },
+    {
+      "outcome_name": "lexical_variation",
+      "category": "quality",
+      "operationalization": "Ratio of unique words to total words in video title text"
+    },
+    {
+      "outcome_name": "entropy",
+      "category": "quality",
+      "operationalization": "Entropy measure of linguistic diversity in video title text"
+    },
+    {
+      "outcome_name": "hhi",
+      "category": "other",
+      "operationalization": "Herfindahl-Hirschman Index measuring concentration/diversity of viewership distribution across platform videos"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "lexical_density",
+  "citation_key": "zhang_2024_ai_metadata"
+}

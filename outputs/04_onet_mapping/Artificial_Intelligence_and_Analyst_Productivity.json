@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "13-2051.00",
+  "onet_label": "Financial and Investment Analysts",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are equity research analysts at investment banks who produce earnings forecasts by analyzing financial data, company reports, and market information. This directly corresponds to the occupation of Financial and Investment Analysts, whose core work involves analyzing financial information to make investment recommendations and forecasts. The task description emphasizes the analysts' comprehensive research process\u2014not a narrow activity like 'analyzing data' in general, but the full professional role of equity analysts conducting financial research.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-22",
+      "onet_label": "Getting Information"
+    }
+  ],
+  "citation_key": "shanthikumar_2024_ai_analyst"
+}

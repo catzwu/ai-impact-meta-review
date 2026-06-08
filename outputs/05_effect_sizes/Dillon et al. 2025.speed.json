@@ -1,0 +1,48 @@
+{
+  "_paper_id": "Dillon et al. 2025",
+  "citation_key": "dillon_2025_shifting_work",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "copilot_access",
+    "ai_arm_selection_rationale": "Only one AI arm (copilot_access) providing Microsoft 365 Copilot access; control arm represents no AI assistance baseline.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 11.7,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 3453,
+    "m_ai": 10.3,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 3684,
+    "reported_percent_change": -0.12,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "The paper reports both ITT (intent-to-treat) and LATE (local average treatment effect) estimates. Using ITT estimates: 1.4 fewer hours per week represents a 12% decline. The means provided are: control (pre-period baseline) = 11.7 hours, copilot_access (post-period) = 10.3 hours. The 12% reduction is signed negative because time decreased (smaller is better for time-based outcomes). LATE estimates show 2 fewer hours (17% decline) but ITT is more conservative and standard for primary analysis.",
+    "source_quotes": [
+      "In the pre-period, the average worker spent 11.7 hours per week reading and responding to emails.",
+      "Our intent-to-treat (LATE) estimates show workers with access to Copilot spent an average of 1.4 (2) fewer hours per week in email sessions over post-period months 4-6, a 12% (17%) decline from their pre-period average."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.1274449465681203,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.13592233009708732,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "The paper reports both ITT (intent-to-treat) and LATE (local average treatment effect) estimates. Using ITT estimates: 1.4 fewer hours per week represents a 12% decline. The means provided are: control (pre-period baseline) = 11.7 hours, copilot_access (post-period) = 10.3 hours. The 12% reduction is signed negative because time decreased (smaller is better for time-based outcomes). LATE estimates show 2 fewer hours (17% decline) but ITT is more conservative and standard for primary analysis. | SDs/SEs missing; variance not computable",
+    "n_human": 3453,
+    "n_ai": 3684
+  }
+}

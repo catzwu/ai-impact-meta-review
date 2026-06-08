@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study states 'each group using GPT-4 on two of the four tasks and refraining from using AI on the remaining two tasks,' meaning the same participants completed tasks both with and without AI assistance. This is a within-subject design where participants serve as their own controls across the four tasks.",
+  "citation_key": "choi_2023_lawyering_ai"
+}

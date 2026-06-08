@@ -1,0 +1,50 @@
+{
+  "_paper_id": "jiaetal",
+  "citation_key": "jia_2024_ai_augments_creativity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Human agents on their own",
+    "ai_arm_name": "AI-human Hybrids",
+    "ai_arm_selection_rationale": "The study compares AI-human hybrid teams (where AI handles lead generation and humans handle sales persuasion) against human agents working independently. Figure 6 shows the primary comparison for customer purchase rate between 'Human agents on their own' (0.028) and 'AI-human Hybrids' (0.045). The paper states this difference is statistically significant (p = 0.012). The experimental design randomly assigned 40 agents (20 top, 20 bottom) to either work with AI assistance or independently, and 3,144 customers were randomly assigned across conditions. This is the main human+AI collaboration comparison in the study.",
+    "direction_convention": "larger_is_better",
+    "m_human": 0.028,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 1572,
+    "m_ai": 0.045,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1572,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.012,
+    "extraction_confidence": "medium",
+    "notes": "Figure 6 caption states 'D4>0 (p = 0.012)', indicating the difference between AI-human Hybrids (0.045) and Human agents on their own (0.028) is statistically significant. The sample sizes are inferred from the experimental design: 3,144 total customers were randomly assigned, with approximately half (1,572) to each of the two main conditions (AI-human Hybrids vs. Human agents on their own). The paper reports means but not SDs for this comparison. The error bars in Figure 6 appear to show standard errors but exact values are not provided in the text. The p-value of 0.012 is exact as reported in the figure caption.",
+    "source_quotes": [
+      "Figure 6. Comparison of performance outcomes. Customer Purchase Rate. Human agents on their own: 0.028. AI-human Hybrids: 0.045. D4>0 (p = 0.012)",
+      "We used double randomization: 3,144 customers were randomly assigned to be served by AI human teams or human agents alone, and 40 human agents were randomly assigned to work in AI human teams or independently.",
+      "We find that customers served by an AI-assisted sales agent are almost twice as likely to make a purchase than those served by sales agents alone, and this difference is statistically significantly different from 0 (p < 0.05)."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Figure 6 caption states 'D4>0 (p = 0.012)', indicating the difference between AI-human Hybrids (0.045) and Human agents on their own (0.028) is statistically significant. The sample sizes are inferred from the experimental design: 3,144 total customers were randomly assigned, with approximately half (1,572) to each of the two main conditions (AI-human Hybrids vs. Human agents on their own). The paper reports means but not SDs for this comparison. The error bars in Figure 6 appear to show standard errors but exact values are not provided in the text. The p-value of 0.012 is exact as reported in the figure caption. | insufficient numbers for d",
+    "n_human": 1572,
+    "n_ai": 1572,
+    "direction_convention": "larger_is_better"
+  }
+}

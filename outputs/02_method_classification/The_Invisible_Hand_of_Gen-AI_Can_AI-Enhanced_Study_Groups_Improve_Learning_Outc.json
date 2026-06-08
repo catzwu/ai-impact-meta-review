@@ -1,0 +1,6 @@
+{
+  "classification": "field_experiment",
+  "confidence": "high",
+  "rationale": "The study randomly assigned entire course sections to different AI treatment conditions in a real educational setting ('four sections of an introductory macroeconomics course, all taught by the same instructor'). This is a cluster-randomized field experiment conducted in an authentic work/learning environment rather than a controlled lab, with students completing actual coursework over a full semester.",
+  "citation_key": "babaei_balderlou_2025_ai_study_groups"
+}

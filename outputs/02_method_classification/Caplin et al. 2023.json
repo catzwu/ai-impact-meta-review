@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The treatment group received AI predictions in specific blocks (2, 3, 5, and 8) while 'control blocks allowed baseline ability estimation,' indicating the same participants completed both AI-assisted and non-AI-assisted blocks. This is a within-subject design where treated participants serve as their own controls across different blocks of the task.",
+  "citation_key": "caplin_2024_ability_beliefs_calibration"
+}

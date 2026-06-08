@@ -1,0 +1,67 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "acceptance_rate_suggestions",
+      "category": "other",
+      "operationalization": "Ratio of suggestions accepted by developer to total suggestions shown, averaged across team members; partial acceptance counts as full acceptance."
+    },
+    {
+      "outcome_name": "acceptance_rate_lines_of_code",
+      "category": "other",
+      "operationalization": "Ratio of lines of code accepted from Copilot suggestions to total lines of code shown in suggestions."
+    },
+    {
+      "outcome_name": "developer_satisfaction",
+      "category": "other",
+      "operationalization": "Net satisfaction score: difference between positive sentiment scores and negative sentiment scores on five-category scale from Very satisfied to Very unsatisfied."
+    },
+    {
+      "outcome_name": "overall_experience_rating",
+      "category": "other",
+      "operationalization": "Self-reported rating of overall experience with GitHub Copilot on 1-10 scale."
+    },
+    {
+      "outcome_name": "productivity_improvement_rating",
+      "category": "other",
+      "operationalization": "Self-reported rating of perceived productivity improvement when using GitHub Copilot on 1-10 scale."
+    },
+    {
+      "outcome_name": "code_standards_alignment",
+      "category": "quality",
+      "operationalization": "Assessment of how well GitHub Copilot suggestions align with existing coding standards, rated categorically from good to excellent."
+    },
+    {
+      "outcome_name": "security_vulnerability_assessment_confidence",
+      "category": "other",
+      "operationalization": "Self-reported confidence in assessing security vulnerabilities when using GitHub Copilot on 1-10 scale."
+    },
+    {
+      "outcome_name": "sensitive_information_exposure_awareness",
+      "category": "other",
+      "operationalization": "Self-reported awareness of sensitive information exposure risks when using GitHub Copilot on 1-10 scale."
+    },
+    {
+      "outcome_name": "security_consideration_in_development",
+      "category": "other",
+      "operationalization": "Self-reported consideration of security in development practices when using GitHub Copilot on 1-10 scale."
+    },
+    {
+      "outcome_name": "time_reduction_perception",
+      "category": "other",
+      "operationalization": "Percentage of respondents reporting time reduction and median percentage reduction in task completion time when using GitHub Copilot."
+    },
+    {
+      "outcome_name": "task_completion_per_sprint",
+      "category": "other",
+      "operationalization": "Percentage of respondents reporting ability to complete more tasks per sprint when using GitHub Copilot."
+    },
+    {
+      "outcome_name": "work_quality_improvement",
+      "category": "other",
+      "operationalization": "Percentage of respondents reporting improved work quality when using GitHub Copilot."
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "code_standards_alignment",
+  "citation_key": "bakal_2025_copilot_productivity"
+}

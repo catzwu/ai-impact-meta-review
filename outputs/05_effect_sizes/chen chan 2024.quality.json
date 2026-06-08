@@ -1,0 +1,51 @@
+{
+  "_paper_id": "chen chan 2024",
+  "citation_key": "chen_2024_llm_creative",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "No-AI",
+    "ai_arm_name": "Sounding board",
+    "ai_arm_selection_rationale": "The study has two AI arms: 'Sounding board' and 'Ghostwriter'. The sounding board modality shows positive effects for non-experts (2.296 more clicks, p<0.05) while ghostwriter shows negative effects overall (-3.014 clicks, p<0.001). Since the research question focuses on beneficial AI collaboration, and sounding board represents a more successful modality, I select it as the best AI arm. Table 1 provides summary statistics: No-AI has M=16.2, SD=6.6, N=117; Sounding board has M=16.4, SD=6.2, N=122.",
+    "direction_convention": "larger_is_better",
+    "m_human": 16.2,
+    "sd_human": 6.6,
+    "se_human": null,
+    "n_human": 117,
+    "m_ai": 16.4,
+    "sd_ai": 6.2,
+    "se_ai": null,
+    "n_ai": 122,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "Summary statistics extracted from Table 1 on page 13. The table provides mean ad clicks and standard deviations for each condition. No-AI (Control): Mean=16.2, SD=6.6, N=117. Sounding board: Mean=16.4, SD=6.2, N=122. Ghostwriter: Mean=13.0, SD=5.0, N=116. The prior extraction missed these descriptive statistics which are clearly presented in the summary table. The regression models in Table A2 show the sounding board effect is not significant overall (\u03b2=0.140, p>0.1 in Model 4) but is significant for non-experts specifically (\u03b2=2.296, p<0.05 in Model 5). The means and SDs allow computation of Hedges' g using Level A data.",
+    "source_quotes": [
+      "Table 1: Summary Statistics - No-AI (N=117) Mean Std. Dev. ... Ad Clicks 16.2 6.6",
+      "Table 1: Summary Statistics - Sounding board (N=122) Mean Std. Dev. ... Ad Clicks 16.4 6.2",
+      "Table A2 Model 4: Condition [Sounding board] 0.140 (0.828)",
+      "Model 6 demonstrates a significant increase of 2.4 advertisement clicks for non-experts employing LLM as a sounding board compared to the control group (p < 0.05)."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.031255345166411465,
+    "hedges_g": 0.031156331401364753,
+    "variance": 0.01663984380256031,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Summary statistics extracted from Table 1 on page 13. The table provides mean ad clicks and standard deviations for each condition. No-AI (Control): Mean=16.2, SD=6.6, N=117. Sounding board: Mean=16.4, SD=6.2, N=122. Ghostwriter: Mean=13.0, SD=5.0, N=116. The prior extraction missed these descriptive statistics which are clearly presented in the summary table. The regression models in Table A2 show the sounding board effect is not significant overall (\u03b2=0.140, p>0.1 in Model 4) but is significant for non-experts specifically (\u03b2=2.296, p<0.05 in Model 5). The means and SDs allow computation of Hedges' g using Level A data.",
+    "n_human": 117,
+    "n_ai": 122,
+    "direction_convention": "larger_is_better"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "15-1252.00",
+  "onet_label": "Software Developers",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are software developers performing their actual occupational duties: 'building a wide range of software products and services, including engineering, designing, and testing.' They work on real codebases across Microsoft, Accenture, and another company, submitting pull requests, commits, and builds as part of their regular work. This is not a narrow task study but developers doing the full scope of their job across 4,867 participants in real workplace settings.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1299.08",
+      "onet_label": "Computer Systems Engineers/Architects"
+    }
+  ],
+  "citation_key": "cui_2025_generative_ai_developers"
+}

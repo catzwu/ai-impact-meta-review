@@ -1,0 +1,6 @@
+{
+  "classification": "field_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly states it is \"A randomized field experiment was conducted at a large telemarketing company in Asia\" with double randomization of both customers and agents. This is a randomized study conducted in a real work setting (telemarketing company), making it a field experiment rather than a lab task or simple RCT.",
+  "citation_key": "jia_2024_ai_augments_creativity"
+}

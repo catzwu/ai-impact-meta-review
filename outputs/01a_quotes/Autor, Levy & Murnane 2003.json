@@ -1,0 +1,97 @@
+{
+  "citation_key": "autor_2003_computerization_skills",
+  "authors": [
+    "David H. Autor",
+    "Frank Levy",
+    "Richard J. Murnane"
+  ],
+  "title": "The Skill Content of Recent Technological Change: An Empirical Exploration",
+  "year": 2003,
+  "venue": "NBER Working Paper No. 8337",
+  "quotes": {
+    "study_design": [
+      "The objective of this paper is to propose and test a model of how the computerization of workplace tasks alters job content and thereby human skill demands.",
+      "We build the model from an understanding of what computers do \u2013 by which we mean the tasks that present computer technology is particularly suited to performing.",
+      "By conceptualizing and measuring job skill demands in terms of job tasks rather than the educational credentials of workers performing those tasks, we believe our analysis makes three contributions.",
+      "We use all observations on non-institutionalized, employed workers, ages 18 \u2013 64.",
+      "In measuring changes in task requirements, we exploit two sources of variation. The first consists of changes over time in the occupational distribution of employment economy-wide, within industries, and within-education groups within industries, holding task content within occupations at its DOT 1977 level.",
+      "Variation along the extensive margin does not, however, account for changes in task content within occupations such as is described in Levy and Murnane (1996), and is accordingly likely to provide an incomplete picture of changing job task requirements. Hence, we exploit changes between 1977 and 1991 in skill content measures within occupations \u2013 the 'intensive' margin \u2013 using matched occupations from the Revised Fourth Edition of the Dictionary of Occupational Titles."
+    ],
+    "task": [
+      "For purposes of our framework, it is useful to conceptualize a job as a series of tasks: moving an object, executing a calculation, communicating a piece of information, resolving a discrepancy.",
+      "We focus first on the computerization of manual tasks and subsequently discuss information processing (cognitive) tasks.",
+      "Many manual tasks that humans perform (or used to perform) at their jobs can be specified in straightforward computer code and accomplished by machines, for example, monitoring the temperature of a steel finishing line or moving a windshield into place on an assembly line.",
+      "In this paper we refer to such tasks requiring visual and manual skills as 'non-routine manual activities.'",
+      "We emphasize the phrase non-routine because if a manual task is sufficiently well specified or performed in a well-controlled environment, it often can be automated despite the seeming need for visual or manual skills that at present are poorly simulated by machines (as, for example, in the case of industrial robots on assembly lines)."
+    ],
+    "population": [
+      "We use all observations on non-institutionalized, employed workers, ages 18 \u2013 64.",
+      "For our industry analysis, these individual worker observations are aggregated to the level of 140 consistent Census industries spanning all sectors of the economy to provide indicators of average task requirements by industry for 1960, 1970, 1980, 1990 and 1998.",
+      "All individual and industry level analyses are performed using as weights full-time equivalent hours of labor supply, which is the product of the individual Census or CPS sampling weight times hours of work in the sample reference week and, for Census samples, weeks of work in the previous year."
+    ],
+    "arms": [],
+    "outcome_definitions": [
+      "To measure non-routine cognitive tasks, we employ two variables, one to capture interactive and managerial skills and the other to capture analytic reasoning skills. The variable DCP codes the extent to which occupations involve Direction, Control, and Planning of activities.",
+      "The variable GED-MATH, our second measure of non-routine cognitive tasks, codes the quantitative skills ranging from arithmetic to advanced mathematics that are required in occupations.",
+      "We identified STS, the acronym for adaptability to work requiring Set limits, Tolerances, or Standards, as an indicator of routine cognitive tasks and selected the variable FINGDEX (an abbreviation of Finger Dexterity) as an indicator of routine manual activity.",
+      "Finally, we selected EYEHAND, short for Eye-Hand-Foot coordination, as a measure of non-routine motor tasks.",
+      "In this figure and the remainder of the analysis, each DOT measure is scaled from zero to ten with higher values indicating greater task input.",
+      "where 19971959, \u2212\u0394 kC  is the percentage point change between 1959 and 1997 in the share of industry k  employees using a computer on the job, 1959,kT  is a measure of industry task intensity in 1959 from the DOT, and e  is an error term.",
+      "where jktjkjk TTT \u2212=\u0394 tt  is the change in industry input of task j  between years t  and t  and kC\u0394  is the change between 1984 and 1997 in the percentage of industry workers using a computer at their jobs as estimated from the October Current Population Survey supplements of these years."
+    ],
+    "statistical_results": [
+      "Industries intensive in non-routine cognitive tasks and intensive in routine cognitive and routine motor tasks in 1959 computerized significantly more than other industries over the subsequent four decades.",
+      "Conversely, industries intensive in non-routine manual tasks computerized substantially less than others.",
+      "The proportion of the labor force employed in occupations that made intensive use of non-routine cognitive tasks \u2013 both interactive and analytic \u2013 increased substantially.",
+      "In contrast, the percentage of the labor force employed in occupations intensive in routine cognitive, routine manual and non-routine manual activities declined over the period.",
+      "while both measures of non-routine cognitive tasks trended upward during the 1960s, the upward trend in each accelerated substantially thereafter, and was most rapid during the 1980s and 1990s.",
+      "Equally notably, routine cognitive and routine manual tasks were both increasing during the 1960s, prior to commencing a decline in the 1970s, which became more rapid in each subsequent decade.",
+      "Both measures of non-routine cognitive task input \u2013 interactive and analytic \u2013 show strong within-industry growth after the 1970s.",
+      "For the non-routine cognitive/interactive task measure, the growth in economy-wide input of this task over four decades is almost entirely a within-industry phenomenon; moreover, the rate of within-industry growth accelerates from decade to decade.",
+      "During the 1960s, both forms of input increased due to a combination of between- and within-industry shifts. In the 1970s, however, within-industry input of both tasks declined, with the rate of decline accelerating.",
+      "Industries that computerized relatively rapidly during the 1980s and 1990s increased the share of jobs requiring non-routine cognitive/analytic task input during these decades more than did other industries. However, this was not the case for prior decades.",
+      "As illustrated in Figure 2, during the 1960s and 1970s, the industries that became the rapidly computerizing industries did not differentially increase input of non-routine cognitive/analytic tasks.",
+      "the estimated impact of computerization on both measures of non-routine cognitive tasks accounts for eighty to one hundred percent of the observed within-industry growth in input of these tasks over 1980 \u2013 1998.",
+      "Beginning in the 1970s, these same sectors undertook rapid reductions in routine cognitive and routine manual task input. As above, the impact of computerization accounts for all of the observed within-industry reduction in routine task input between 1970 and 1990.",
+      "Consistent with our framework, there is no significant evidence that rapidly computerizing industries decreased their use of non-routine manual tasks more rapidly than did other industries during this period.",
+      "The NIPA measure of computer investment consistently predicts relative declines in industry employment of both routine cognitive and manual tasks and relative growth in employment of non-routine cognitive tasks, both analytic and interactive.",
+      "computer investment can more than fully explain the trend increase in both measures of non-routine cognitive task input since the 1960s, and accounts for over eighty percent of the trend decline in routine cognitive and manual tasks.",
+      "Industries that rapidly computerized during the 1980s and 1990s undertook large relative increases in the share of jobs requiring high levels of non-routine cognitive/interactive and cognitive/analytic task input, and decreased the share requiring routine cognitive and manual tasks.",
+      "industry-level computerization is associated with within-industry shifts towards non-routine and against routine tasks within essentially all education groups.",
+      "In all but the case of non-routine manual tasks, within education group task upgrading explains a substantial share \u2013 45 to 91 percent \u2013 of observed within-industry task upgrading over these two decades.",
+      "A regression of the routine cognitive task measure on occupational computerization reveals that input of this task declined by substantially more in rapidly computerizing occupations.",
+      "Comparison of the intercept of this regression to the weighted mean of the dependent variable indicates that the implied impact of computerization is more than sufficient to explain the observed mean shift against routine cognitive tasks over 1977 to 1991.",
+      "A second notable pattern is the positive relationship between occupational computerization and the input of non-routine cognitive/analytic tasks.",
+      "Even though the average level of non-routine cognitive/analytic tasks declined slightly within occupations, the level increased significantly in rapidly computerizing occupations.",
+      "Finally, the input of cognitive/interactive tasks increased within occupations (Column 2), and this shift was significantly greater in more rapidly computerizing industries.",
+      "We find little relationship between computerization and changes in the routine manual task content of occupations, however.",
+      "Interestingly, computerization predicts significant increases in the non-routine manual task content of occupations, a pattern also noted at the industry level.",
+      "Comparison across the two specifications in each panel demonstrates that the relationship between computerization and within-occupation task change is quite insensitive to inclusion of the college graduate employment share measure.",
+      "task changes on the extensive margin attributable to computerization explain 1.8 percentage points of the growth in college vs. non-college employment over 1980 \u2013 1998 and explain 2.0 percentage points of this growth over 1970 \u2013 1998.",
+      "Slightly more than half of this contribution is accounted for by shifts favoring non-routine cognitive tasks, with the remainder explained by shifts against routine cognitive and manual tasks.",
+      "Adding the effect of changes along the intensive margin, tmT\u0394\u02c6 , more than doubles the magnitude of this impact. Computerization is estimated to have increased the college graduate employment share by 5.0 percentage points over 1980 \u2013 1998 and 5.3 percentage points over 1970 \u2013 1998.",
+      "Moreover, because the intensive margin change is only measured during 1977 to 1991, it is likely that a longer time series would show that these shifts have even greater explanatory power.",
+      "For reference, the estimate of 5.0 percentage points can be compared to the actual change in college graduate employment between 1980 and 1998, which is 6.83 percentage points.",
+      "For the period 1980 \u2013 1998, task shifts induced by computerization are estimated to have increased log relative college demand by 2.8 log points annually (Table 10, Panel C). Comparing this number to the estimated economy-wide shift of 6.7 log points over this period, we find that changes in task content explain approximately 40 percent of the observed shift.",
+      "Notably, more than half of this impact is accounted for by (normally unobservable) shifts along the intensive margin.",
+      "The analogous calculation for the three-decade interval finds that computer-induced task shifts explain approximately 30 percent of the demand shift favoring college graduates over 1970 \u2013 1998."
+    ],
+    "ambiguity_or_caveats": [
+      "Although the DOT provides unique, observational measures of occupational task requirements, it has a number of well-known limitations documented by Miller et al (1980). These include limited sampling of occupations (particularly in the service sector), imprecise definitions of measured constructs, and omission of important job skills.",
+      "One result of these problems is that DOT measures of the skills required in particular occupations are likely to be imprecisely estimated, particularly for occupations outside of manufacturing.",
+      "Despite these limitations, the DOT contains to our knowledge the best time series information available on the skill requirements for detailed occupations economy-wide.",
+      "In the Revised Fourth Edition of the DOT, only a subset of occupations was reevaluated by DOT examiners, and moreover the year of reevaluation varied among occupations.",
+      "Measured changes along the intensive margin are therefore likely to provide a conservative picture of the total change in occupational task content.",
+      "The weighted fraction of employment reevaluated between 1978 and 1990 in our data is 73 percent, with 32 percent reevaluated between 1978 and 1984 and 41 percent reevaluated between 1985 and 1990. Occupations were chosen for reevaluation by DOT examiners partly on the expectation that their content had changed since the previous evaluation. Hence, the subset that was reevaluated may have changed more than the subset that was not.",
+      "While we believe the selected measures are the most appropriate available from the DOT, we are sensitive to the concern that our choice of variables could be viewed as arbitrary (or worse).",
+      "Two caveats apply to these estimates. First, given the limitations of the DOT discussed earlier, estimates of l  are likely to be biased towards zero by measurement error. This will reduce our estimates of tcN\u0394 . Second, because equation (15) is a fixed coefficients model of education demand as a function of job tasks, it neglects task prices.",
+      "To the degree that the implicit prices of non-routine tasks have risen (fallen) since 1970, our calculations will under- (over-) state accompanying demand shifts favoring non-routine tasks, and vice versa for measured demand shifts against routine tasks.",
+      "In interpreting these estimates, we note that relative demand for college-educated labor in the U.S. increased substantially from the 1940s through the 1960s, decades prior to computerization (cf., Acemoglu, forthcoming; Autor, Katz and Krueger, 1998; Johnson, 1997; and Mishel, Bernstein and Schmitt, 1997).",
+      "Hence, a claim that computerization has increased the relative demand for educated labor requires evidence that computerization has accelerated demand growth beyond trends prevailing during the 1960s and earlier.",
+      "This result should be interpreted carefully. It is unlikely that computerization directly increases demand for non-routine manual tasks; rather, the share of human labor devoted to non-routine manual tasks is likely to rise mechanically as routine tasks are displaced."
+    ]
+  },
+  "notes": "This is an empirical research paper analyzing how computerization has altered the task content of jobs and contributed to increased demand for college-educated labor. The paper uses data from the Dictionary of Occupational Titles (DOT) from 1960-1998, Census IPUMS samples, and Current Population Survey (CPS) data. The analysis employs both extensive margin (occupational composition shifts) and intensive margin (within-occupation task content changes) approaches. The paper develops a theoretical framework predicting that computers are more substitutable for routine tasks than non-routine tasks, and tests this framework empirically using industry-level and occupation-level data. Key findings show that computerization accounts for approximately 30-40% of the observed shift in relative demand favoring college-educated workers over 1970-1998.",
+  "_paper_id": "Autor, Levy & Murnane 2003",
+  "_source_pdf": "papers/Autor, Levy & Murnane 2003.pdf"
+}

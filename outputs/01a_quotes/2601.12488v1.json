@@ -1,0 +1,59 @@
+{
+  "citation_key": "zhang_2026_generative_bifurcation",
+  "authors": [
+    "Yukun Zhang",
+    "Tianyang Zhang"
+  ],
+  "title": "Generative AI as a Non-Convex Supply Shock: Market Bifurcation and Welfare Analysis",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "Methodologically, we proceed in three steps. First, we construct a static model of vertical differentiation to characterize the asymptotic equilibrium. Second, to understand the path dependence, we model the skill evolution of creators as a Mean Field Game governed by a Fokker-Planck equation. Third, to capture heterogeneity and bounded rationality, we instantiate these dynamics in a large-scale Agent-Based Model (ABM) calibrated to the \"Goldilocks\" regime of late 2025\u2014a state where human survival is possible but precarious.",
+      "While the theoretical framework in Section 3 characterizes the asymptotic properties of the equilibrium, it relies on assumptions of perfect rationality and continuous adjustment. To investigate the transitional dynamics\u2014specifically the \"Shock Therapy\" phenomenon and the friction costs of reallocation\u2014we employ a discrete-time Agent-Based Model (ABM). This computational laboratory, which we term the \"Goldilocks V4.0\" environment, relaxes the continuum assumption to allow for bounded rationality, heterogeneity, and path dependence."
+    ],
+    "task": [
+      "The simulation environment consists of a population of \ud835\udc41\ud835\udc3b =50 human creators, \ud835\udc41\ud835\udc34=3 foundational AI models, and \ud835\udc41\ud835\udc36 =1, 000 consumers, interacting over \ud835\udc47=200 periods."
+    ],
+    "population": [
+      "The simulation environment consists of a population of \ud835\udc41\ud835\udc3b =50 human creators, \ud835\udc41\ud835\udc34=3 foundational AI models, and \ud835\udc41\ud835\udc36 =1, 000 consumers, interacting over \ud835\udc47=200 periods.",
+      "Consider a continuum of consumers with measure normalized to 1, indexed by their taste for quality \ud835\udf03\u223c\ud835\udc48[0, \u00af\ud835\udf03]."
+    ],
+    "arms": [
+      "Creators differ in their initial skill endowment \ud835\udc60\u2208[0,\u00af\ud835\udc60] , distributed with density \ud835\udc54(\ud835\udc60) . They minimize costs by choosing between two technologies \ud835\udc57\u2208{\ud835\udc3b,\ud835\udc34}: 1.Human Technology (\ud835\udc3b):Convex costs \ud835\udc36\ud835\udc3b(\ud835\udc5e)= 1 2\ud835\udefe\ud835\udc5e 2, representing cognitive fatigue. Quality is strictly increasing in skill, \ud835\udc5e\ud835\udc3b(\ud835\udc60)=\ud835\udefc\ud835\udc60 . 2.AI Technology ( \ud835\udc34):Linear costs \ud835\udc36\ud835\udc34(\ud835\udc5e)=\ud835\udc50 \ud835\udc34\ud835\udc5e+\ud835\udf05 for \ud835\udc5e\u2264\u00af\ud835\udc5e \ud835\udc34, and infinite otherwise. AI separates marginal cost from skill, but imposes a quality ceiling \u00af\ud835\udc5e\ud835\udc34."
+    ],
+    "outcome_definitions": [
+      "Let \ud835\udc37\ud835\udc34 denote the aggregate volume of AI-generated content in the market equilibrium.",
+      "The indirect utility of a consumer of type \ud835\udf03 is given by: \ud835\udc48(\ud835\udf03,\ud835\udc5e,\ud835\udc5d,\ud835\udc37 \ud835\udc34)=\ud835\udf03\ud835\udc5e\u2212\ud835\udc5d\u2212\ud835\udefdln(1+\ud835\udf02\ud835\udc37 \ud835\udc34)| {z } \u03a6(\ud835\udc37 \ud835\udc34) where \u03a6(\ud835\udc37\ud835\udc34) represents the information pollution penalty.",
+      "Total Welfare \ud835\udc4a is the sum of Consumer Surplus (\ud835\udc36\ud835\udc46) and Producer Surplus (\ud835\udc43\ud835\udc46).",
+      "The Herfindahl-Hirschman Index (HHI) rose monotonically from 0.0174 to 0.1462, indicating a structural shift from atomistic competition to an oligopoly dominated by foundation models."
+    ],
+    "statistical_results": [
+      "The GenAI supply shock precipitates a profound price compression, with the weighted average transaction price falling by 72.3%.",
+      "The market bifurcates into two distinct pricing regimes: human creators are compelled to reduce prices (\ud835\udc5d\ud835\udc3b :2.32\u21922.00 ) to defend the premium segment, while AI content anchors the low-end market at near-marginal cost (\ud835\udc5d\ud835\udc34=1.10).",
+      "The Spearman rank correlation between \ud835\udf03 and human preference is \ud835\udf0c=0.937 (\ud835\udc5d <0.0001), confirming that the market achieves perfect sorting despite the presence of information pollution.",
+      "The exit rate peaks at 60% during this interval, validating the presence of severe transitional coordination failures.",
+      "A residual cohort of survivors (approx. 18.0% of the initial stock) successfully pivots to high-creativity niches, stabilizing the human market share at 16.4%.",
+      "The average technical skill of the human pool decreased by 0.120.",
+      "The average creative skill increased by 0.148.",
+      "The ratio of creative-to-technical skill for survivors was 2.71 times higher than for those who exited (confirming Hypothesis H2).",
+      "Table 2 summarizes the equilibrium metrics. The GenAI supply shock precipitates a profound price compression, with the weighted average transaction price falling by 72.3%. The market bifurcates into two distinct pricing regimes: human creators are compelled to reduce prices (\ud835\udc5d\ud835\udc3b :2.32\u21922.00 ) to defend the premium segment, while AI content anchors the low-end market at near-marginal cost (\ud835\udc5d\ud835\udc34=1.10).",
+      "Eq. Price (\ud835\udc5d\u2217) \ud835\udc5d \ud835\udc3b =2.32 \ud835\udc5d \ud835\udc3b =2.00,\ud835\udc5d \ud835\udc34=1.10 Avg.\u219372.3%",
+      "Market Share (\ud835\udc37) \ud835\udc37 \ud835\udc3b =14.4% \ud835\udc37 \ud835\udc3b =12.8%,\ud835\udc37 \ud835\udc34=35.4% Coverage\u00d72.35",
+      "Consumer Surplus (\ud835\udc36\ud835\udc46) 0.132 0.558 +321.2%",
+      "Total Welfare (\ud835\udc4a) 0.264 0.952 +261.1%",
+      "The significant expansion of total market coverage (from 14.4% to 48.2%) indicates that GenAI activates latent demand among low-\ud835\udf03 consumers who were previously priced out."
+    ],
+    "ambiguity_or_caveats": [
+      "This paper proposes a Three-Layer General Equilibrium Framework to analyze the economic impact of Generative AI supply shocks. By integrating analytical vertical differentiation (Layer 1), mean-field evolutionary dynamics (Layer 2), and large-scale agent-based simulation (Layer 3/Evidence), we resolve the tension between the productivity gains of automation and the coordination costs of information pollution.",
+      "While the theoretical framework in Section 3 characterizes the asymptotic properties of the equilibrium, it relies on assumptions of perfect rationality and continuous adjustment.",
+      "The validity of the simulation results relies on a calibration grounded in the stylized facts of the Generative AI market as of late 2025. We adopt a \"Goldilocks\" calibration strategy: parameters are tuned to a regime where the survival rate of human creators is strictly positive but less than unity (0< \ud835\udc46\ud835\udc5f\ud835\udc4e\ud835\udc61\ud835\udc52 <1 ), ensuring the model captures a competitive selection process rather than a trivial extinction or status quo outcome.",
+      "While Table 2 reports a net positive welfare gain in the baseline calibration, sensitivity analysis reveals the latent cost of information pollution.",
+      "This suggests that while the V4.0 equilibrium achieves Pareto efficiency, it sits on a precarious edge where governance failures could easily precipitate a return to the \"Ecological Collapse\" regime.",
+      "The central tension of the GenAI era is therefore not scarcity, but discoverability. As the cost of producing \"plausible but mediocre\" content vanishes, platforms face a flood of synthetic noise that degrades the matching efficiency between consumers and high-quality creators."
+    ]
+  },
+  "notes": "This is a theoretical and computational paper with no original empirical experiments on human subjects. It develops a three-layer framework combining static vertical differentiation models, mean-field game dynamics (Fokker-Planck equations), and agent-based simulations. The paper analyzes how generative AI as a non-convex supply shock reshapes market structure, creates information pollution externalities, and affects welfare. Key findings include: (1) market bifurcation into exit/AI/human segments creating a \"middle-class hollow\"; (2) non-monotonic \"shock therapy\" transition with temporary ecological collapse; (3) asymmetric skill reconfiguration where humans survive by shifting from technical to creative tasks; (4) inverted-U welfare relationship under high pollution sensitivity. The ABM is calibrated to late 2025 stylized facts with 50 human creators, 3 AI models, and 1,000 consumers over 200 periods.",
+  "_paper_id": "2601.12488v1",
+  "_source_pdf": "papers/2601.12488v1.pdf"
+}

@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "exam_score",
+      "category": "quality",
+      "operationalization": "Points earned on three in-person, proctored exams (out of 20, with possible extra credit), assessing individual understanding of macroeconomics material"
+    },
+    {
+      "outcome_name": "understanding_self_report",
+      "category": "other",
+      "operationalization": "Student self-reported perceptions of their understanding, measured on a scale after the second and third exams"
+    },
+    {
+      "outcome_name": "critical_thinking_self_report",
+      "category": "other",
+      "operationalization": "Student self-reported perceptions of their critical thinking, measured on a scale after the second and third exams"
+    },
+    {
+      "outcome_name": "attendance",
+      "category": "other",
+      "operationalization": "Percentage of classes attended by each student throughout the course"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "exam_score",
+  "citation_key": "babaei_balderlou_2025_ai_study_groups"
+}

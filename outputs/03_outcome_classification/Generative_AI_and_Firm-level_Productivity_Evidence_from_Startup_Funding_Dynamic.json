@@ -1,0 +1,47 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "time_to_initial_funding",
+      "category": "speed",
+      "operationalization": "continuous months from incorporation date to initial deal date, measured from company records"
+    },
+    {
+      "outcome_name": "time_to_second_funding",
+      "category": "speed",
+      "operationalization": "continuous months from incorporation to second funding round, measured from company records"
+    },
+    {
+      "outcome_name": "time_to_third_funding",
+      "category": "speed",
+      "operationalization": "continuous months from incorporation to third funding round, measured from company records"
+    },
+    {
+      "outcome_name": "deal_size",
+      "category": "other",
+      "operationalization": "dollar amount of funding in investment rounds; reflects investor valuation and capital access, not task speed or quality"
+    },
+    {
+      "outcome_name": "syndication",
+      "category": "other",
+      "operationalization": "indicator of whether multiple investors participate in funding rounds; reflects investor risk-sharing behavior, not task speed or quality"
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "category": "other",
+      "operationalization": "count of software developers employed at time of initial funding; reflects hiring/staffing decisions, not task speed or quality"
+    },
+    {
+      "outcome_name": "time_to_funding_per_employee",
+      "category": "speed",
+      "operationalization": "months to initial funding divided by total employee count, measuring time-efficiency scaled by workforce size"
+    },
+    {
+      "outcome_name": "deal_size_per_employee",
+      "category": "other",
+      "operationalization": "funding amount divided by total employee count; reflects capital efficiency but not task speed or quality"
+    }
+  ],
+  "primary_speed_outcome": "time_to_initial_funding",
+  "primary_quality_outcome": null,
+  "citation_key": "asam_2025_generative_startup"
+}

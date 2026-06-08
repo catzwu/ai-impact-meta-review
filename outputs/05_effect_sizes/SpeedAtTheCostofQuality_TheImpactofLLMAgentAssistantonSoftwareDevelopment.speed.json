@@ -1,0 +1,50 @@
+{
+  "_paper_id": "SpeedAtTheCostofQuality_TheImpactofLLMAgentAssistantonSoftwareDevelopment",
+  "citation_key": "he_2026_cursor_velocity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "cursor_adoption",
+    "ai_arm_selection_rationale": "Only one AI arm present: repositories adopting Cursor AI coding assistant. Control arm is matched never-treated repositories.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 1380,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 806,
+    "reported_percent_change": 0.0263,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.026,
+    "regression_coefficient_se": 0.0429,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a difference-in-differences natural experiment using propensity score matching. The regression coefficient 0.0260 represents the treatment effect. The outcome is count data (commits), and given the small coefficient magnitude (~2.6%) and the fact that the effect_in_outcome_units matches the coefficient closely, this appears to be a log-transformed or asinh-transformed outcome (common for count data in DiD models). Treating as log-transformed. The verbatim quote shows \u00b14.40% which appears to be a confidence interval width but is not explicitly labeled as 95% CI bounds, so not populating CI fields. Additional time-varying effects reported for months 1 and 2 show larger initial impacts (+55.4% and +14.5%) but the primary overall effect is +2.63%.",
+    "source_quotes": [
+      "Commits 0.0260 *** (0.0429) +2.63% (\u00b14.40%)",
+      "The models estimate a 55.4% increase in commits in the first month, a 14.5% increase in commits in the second month",
+      "Repositories adopting Cursor, identified by committing Cursor configuration files to their git system between January 2024 and March 2025.",
+      "Matched \"never-treated\" repositories not using Cursor during the observation period, selected via propensity score matching."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.025960101669531624,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.02629999999999999,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment using propensity score matching. The regression coefficient 0.0260 represents the treatment effect. The outcome is count data (commits), and given the small coefficient magnitude (~2.6%) and the fact that the effect_in_outcome_units matches the coefficient closely, this appears to be a log-transformed or asinh-transformed outcome (common for count data in DiD models). Treating as log-transformed. The verbatim quote shows \u00b14.40% which appears to be a confidence interval width but is not explicitly labeled as 95% CI bounds, so not populating CI fields. Additional time-varying effects reported for months 1 and 2 show larger initial impacts (+55.4% and +14.5%) but the primary overall effect is +2.63%. | CI missing; variance not computable",
+    "n_human": 1380,
+    "n_ai": 806
+  }
+}

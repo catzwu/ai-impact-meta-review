@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study is explicitly described as 'An observational study' that uses 'regression models with user and quarter-of-year fixed effects, comparing the output of the same programmer at different points of AI adoption.' While it includes fixed effects to control for confounds, there is no randomization or quasi-experimental identification strategy\u2014it compares naturally occurring AI users vs. non-users over time.",
+  "citation_key": "daniotti_2025_ai_code"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The study measures the productivity of GitHub users who are 'storage of and joint work on coding projects' and whose 'modifications to a GitHub repository' involve 'details about the kind and substance of the modification, the files and code lines affected.' These participants are performing software development work\u2014writing, modifying, and managing code. While 'Software Developers' (15-1252.00) is a strong occupation match, the task is sufficiently narrow and well-defined (coding on GitHub) that the work activity 'Working with Computers' is the most appropriate mapping, as it captures the core computer-based programming work without assuming the full breadth of a software developer role.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "kreitmeir_2024_chatgpt_productivity"
+}

@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2510.07933",
+  "citation_key": "wojak_2025_insurance_purchasing",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "No online insurance purchase experience",
+    "ai_arm_name": "Multiple online insurance purchases",
+    "ai_arm_selection_rationale": "This is not a human vs. AI study. The paper examines consumer behavior regarding online insurance purchasing channels. The 'arms' are experience levels with online purchasing: 'No' (12%), 'Only once' (30%), and 'More than once' (58%). The most experienced group ('More than once') represents the highest adoption of digital channels, which is the focus of the study. However, this is NOT a controlled experiment comparing human-only vs. human+AI performance on a task.",
+    "direction_convention": null,
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 12,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 58,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This paper does NOT report a human vs. AI productivity experiment. It is a survey study (n=100) examining Polish consumers' preferences for online vs. traditional insurance distribution channels. The paper reports descriptive statistics (percentages choosing different channels, rating importance of factors like price, trust, convenience) but NO speed/productivity metrics comparing human-only vs. human+AI task completion. The 'arms' identified in prior extraction appear to be survey response categories (experience levels with online purchasing), not experimental conditions. There is no primary outcome measuring task completion time, throughput, or any productivity metric. The paper discusses factors influencing channel choice (Figure 5 shows price, convenience, personal contact preferences) and barriers to online adoption (Figure 6 shows security concerns, trust issues), but provides no quantitative speed or quality measurements suitable for effect size calculation. This paper should be excluded from a meta-analysis of AI-augmented human productivity.",
+    "source_quotes": [
+      "The research uses a quantitative approach based on a structured online survey of 100 respondents.",
+      "The results show a clear increase in the use and acceptance of online channels, especially for simple insurance products.",
+      "As many as 70% of respondents consider price to be an important or very important element when choosing a policy purchase channel.",
+      "As many as 60 per cent of respondents find online insurance purchases more attractive than traditional methods.",
+      "The largest number of respondents ticked the answer 'more than once', confirming the growing popularity and acceptance of digital channels"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This paper does NOT report a human vs. AI productivity experiment. It is a survey study (n=100) examining Polish consumers' preferences for online vs. traditional insurance distribution channels. The paper reports descriptive statistics (percentages choosing different channels, rating importance of factors like price, trust, convenience) but NO speed/productivity metrics comparing human-only vs. human+AI task completion. The 'arms' identified in prior extraction appear to be survey response categories (experience levels with online purchasing), not experimental conditions. There is no primary outcome measuring task completion time, throughput, or any productivity metric. The paper discusses factors influencing channel choice (Figure 5 shows price, convenience, personal contact preferences) and barriers to online adoption (Figure 6 shows security concerns, trust issues), but provides no quantitative speed or quality measurements suitable for effect size calculation. This paper should be excluded from a meta-analysis of AI-augmented human productivity. | no usable numbers",
+    "n_human": 12,
+    "n_ai": 58
+  }
+}

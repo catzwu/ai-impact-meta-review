@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study explicitly describes itself as 'A randomized controlled trial (RCT)' with participants 'randomly assigned to receive access to a GPT-4-powered AI assistant' versus business training guides. This is a randomized experiment conducted in a real-world setting with actual entrepreneurs running their businesses, but it is not a workplace field experiment in the traditional sense\u2014it's a randomized intervention delivered remotely via WhatsApp to geographically dispersed small business owners.",
+  "citation_key": "otis_2024_ai_entrepreneurship"
+}

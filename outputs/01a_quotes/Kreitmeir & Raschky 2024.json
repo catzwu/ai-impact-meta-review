@@ -1,0 +1,102 @@
+{
+  "citation_key": "kreitmeir_2024_chatgpt_productivity",
+  "authors": [
+    "David Kreitmeir",
+    "Paul A. Raschky"
+  ],
+  "title": "The Heterogeneous Productivity Effects of Generative AI",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "We analyse the individual productivity effects of Italy's ban on ChatGPT, a generative pretrained transformer chatbot.",
+      "In particular, we exploit Italy's sudden announcement of a ChatGPT ban as a natural experiment to examine the ban's short-run effects on GitHub users' productivity.",
+      "To analyse the effect of the Italian ChatGPT ban on GitHub users' output, we estimate variants of the following difference-in-difference (DID) specification",
+      "To check for potential pre-trends and investigate how the estimated effect evolves over time, rather than averaging over the whole window as in the generalized DID specification, we also estimate the following event-study specification"
+    ],
+    "task": [
+      "We compile data on the daily coding output quantity and quality of over 36,000 GitHub users in Italy and other European countries",
+      "GitHub is the world's largest online code hosting platform, used for storage of and joint work on coding projects (so-called repositories).",
+      "All modifications to a GitHub repository are automatically timestamped and stored, and GitHub permits tracking of any iterations of specific files and lines of code.",
+      "Every action taken by a team member is automatically recorded, with details about the kind and substance of the modification, the files and code lines affected, and the date the changes were performed."
+    ],
+    "population": [
+      "We compile data on the daily coding output quantity and quality of over 36,000 GitHub users in Italy and other European countries",
+      "We access individual-level, real-time activity data from the GitHub Archive for GitHub users in Italy (treatment) and Austria, France, and Spain (control) in the week prior to and that immediately after the ChatGPT ban in Italy (March 27\u2013April 9, 2023).",
+      "Our final list of package contributors and owners comprises 483 , 855 unique GitHub user accounts, of which 5 , 916 are part of our baseline sample.",
+      "The \"Less experienced\" sample includes all Github user accounts created after or in 2017 (median), while the \"Experienced\" sample comprises all GitHub user accounts created before 2017.",
+      "The \"Pkg. contributor\" sample comprises all GitHub user accounts that are the owner and/or contributor to a (analytical) programming package repository."
+    ],
+    "arms": [
+      "Dit is the treatment indicator variable equaling 1 for Italian users in the first four work days post the ChatGPT ban.",
+      "To account for the Easter break starting with Good Friday on 7 April\u2014a public holiday in all four sample countries\u2014 we restrict the post-treatment period to Monday 3 April to Thursday 6 April and the corresponding pre-period to Monday 27 March to Thursday 30 March.",
+      "Among the affected users in Italy, we find a short-term increase in output quantity and quality for less experienced users and a decrease in productivity on more routine tasks for experienced users."
+    ],
+    "outcome_definitions": [
+      "The first group captures output quantity and quality and includes aggregate Output limited to \"productive\" actions, aggregate Output as defined by Shen (2023), aggregate Output as defined by Holub and Thies (2023), and the Pull request (PR) merge ratio quantifying how many of a user's suggested code edits were accepted by the repository (project) owners.",
+      "The second group gauges task choice and complexity and comprises PR opened, Avg. lines added per opened PR , Avg. lines added per merged PR , Easy issue closed, and Interactive activity.",
+      "On a daily basis, GitHub actions are relatively rare events at the user level. Hence, we transform each count variable into a binary indicator that equals 1 if one of the actions in a category is recorded for the user on a given day, and 0 otherwise.",
+      "Output # Commits [ PushEvent$.size] + # Issues closed [IssuesEvent$.action == 'closed']+ # Pull requests closed [PullRequestEvent$.action == 'closed'] + # Releases [ReleaseEvent]",
+      "Pull Requests (PRs) merged # Closed pull requests that were merged [PullRequestEvent$.pull request.merged == 'true' & PullRequestEvent$.action == 'closed']",
+      "PR merge ratio ( # Closed pull requests that were merged [PullRequestEvent$.pull request.merged == 'true' & PullRequestEvent$.action == 'closed']) / (# Pull Requests closed [ PullRequestEvent$.action == 'closed'])"
+    ],
+    "statistical_results": [
+      "Among the affected users in Italy, we find a short-term increase in output quantity and quality for less experienced users and a decrease in productivity on more routine tasks for experienced users.",
+      "For this group of users, the likelihood that we observe any output-related activity on GitHub is approximately 10% higher for the two business days following the ban.",
+      "Overall Treated \u00d7Post 0.0062 0.0102 0.0090 -0.0045** 0.0045 (N = 290,864)",
+      "Less experienced Treated\u00d7Post 0.0193* 0.0216** 0.0203* -0.0017 0.0118*** (N = 149,680)",
+      "Experienced Treated \u00d7Post -0.0079 -0.0020 -0.0030 -0.0077* -0.0034 (N = 141,184)",
+      "Pkg. contributor Treated\u00d7Post 0.0181 0.0164 0.0270 -0.0151* 0.0113 (N = 47,328)",
+      "Less experienced Treated\u00d7Post 0.0040 0.0211 0.0456*** -0.0004 0.0037 (N = 149,680)",
+      "Experienced Treated \u00d7Post -0.0046 -0.0324 -0.0031 -0.0003 -0.0028 (N = 141,184)",
+      "Pkg. contributor Treated\u00d7Post -0.0221* -0.0933* 0.0226 -0.0021* 0.0127 (N = 47,328)",
+      "Importantly, a joint F-test of whether all coefficients prior to the ban are jointly zero cannot be rejected at conventional levels for any outcome, alleviating concerns about preexisting trends.",
+      "Further, the event-study results reveal that the treatment effect for less experienced users peaked two days after the ban.",
+      "We show that our results are largely robust to alternative measures for output quantity ( Any Event and Commit), output quality ( PR merged and PR merge ratio (Holub and Thies, 2023) ) as well as task complexity ( Avg. files edited per merged PR).",
+      "The estimated placebo treatment effects are presented in Table C.5 and are relatively small in magnitude and vastly insignificant.",
+      "Importantly, we don't find the heterogeneous effects across users uncovered in our baseline analysis.",
+      "Our second placebo treatment period spans the work week prior to Good Friday on 15 April 2022. Reassuringly, our placebo estimates (Table C.6) are again exceedingly insignificant and do not follow a clear and comparable pattern to our baseline results.",
+      "For less experienced users, we still observe a positive and significant effect on output quantity and quality, while the likelihood of closing an issue for is still negatively affected by the ban.",
+      "Interestingly, we now also find some suggestive evidence for the negative impact of the ban on experienced users' output quantity relative to that of their European peers working on the same repository.",
+      "Moreover, we find additional support for the negative effect of the ban on experienced users when conditioning on programming language and restrict our attention to highly complex official package repositories (Table D.3).",
+      "In particular, we show in Figure C.6 that our results are robust to excluding users from each of the control group countries.",
+      "Importantly, output quantity as defined in Shen (2023) and, in particular, output quality retain their significance even after correcting for multiple hypothesis testing.",
+      "Overall Treated \u00d7 Post -0.0010 -0.0007 0.0029* -0.0007 -0.0002 (N = 239,912)",
+      "Less experienced Treated\u00d7 Post 0.0019 0.0014 0.0047** 0.0007 0.0014*** (N = 86,200)",
+      "Experienced Treated \u00d7 Post -0.0027** -0.0019 0.0018 -0.0016** -0.0011 (N = 153,712)",
+      "Pkg. contributor Treated\u00d7 Post -0.0036 -0.0021 0.0011 -0.0025** 0.0001 (N = 63,064)",
+      "Treated\u00d7Post -0.0042** -0.0022 -0.0007 -0.0021** -0.0011 (0.0021) (0.0021) (0.0040) (0.0009) (0.0007) Overall (N = 33,512)",
+      "Treated\u00d7Post -0.0004 0.0017 0.0027 -0.0019* 0.0004 (0.0029) (0.0028) (0.0057) (0.0010) (0.0007) Less experienced (N = 12,784)",
+      "Treated\u00d7Post -0.0069** -0.0048* -0.0031 -0.0023* -0.0021* (0.0029) (0.0029) (0.0056) (0.0013) (0.0011) Experienced (N = 20,728)",
+      "The estimated effect on April 3 is sizeable: the share of searches on VPNs increases by 52.2 percentage points.",
+      "On average, the share of queries on VPNs was 20.6 percentage points higher in Italy over the workweek.",
+      "the average treatment effect on the number of Italian TOR bridge users is positive and significant on the first workday after the ban.",
+      "Usage of TOR bridges remained elevated for the entire workweek, with an increase in user numbers\u2014on average\u2014of approximately 9.4 percentage points."
+    ],
+    "ambiguity_or_caveats": [
+      "There are a number of reasons to expect that the ban did not have an effect on software developers. During the ban access to other Natural Language Processing (NLP) powered tools that are powered by Open AI, such as GitHub CoPilot, was not affected.",
+      "In contrast to ChatGPT which was trained on the universe of available online text corpus, GitHub Copilot was specifically trained only on code-repositories and build to produce context-aware codes.",
+      "It is important to note, that our study only estimates the effects of a ban of ChatGPT on developer's output and not a ban on all LLM based coding support tools.",
+      "Alternative generative AI tools such as Claude and Bard which were launched a few weeks prior to the ban were still accessible.",
+      "There were also multiple ways for programmers to immediately circumvent the ban (i.e. VPN) and guides on how to do that where shared online.",
+      "Whether the ban was effective or not is ultimately an empirical question, which this paper aims to shed light on.",
+      "To use GitHub actions as a measure for developers' productivity, we need to ensure that the ban did not affect developers' working hours.",
+      "While it is not possible to have data on exact working hours for developers, we are still able to check if time spent on GitHub activity during the day has changed between the pre and post period.",
+      "Data from public GitHub repositories include code and software projects from a variety of organisations and individuals. Some of these are open-source development projects (e.g., APIs) from private-sector companies, some are general open-source projects developed by a community of volunteers (and therefore are closer in character to public goods), and others are owned by research organisations or individual developers. Given data limitations, it is not possible to distinguish the type of project.",
+      "It is possible that some Italian users immediately used tools (e.g., VPNs) to circumvent the ban.",
+      "Despite the easy access to circumvention technology, many corporations and organisations actually prohibit the use of VPN and TOR tools on their devices and networks, implying that their use may be limited to mainly private devices and home networks.",
+      "More importantly, we still find systematic effects on output despite this circumvention activity, and one can interpret our results as a lower bound.",
+      "Another concern is that our finding of heterogeneity between less experienced and experienced users could be driven by the latter's greater skill in circumventing the ban.",
+      "However, the systematic effects of the ban on tasks related to closing issues and the negative output effect detected in repository-level analysis suggests that this is not the case.",
+      "There are a number of follow-up questions that we are unable to empirically analyse because of limitations in the data.",
+      "First, while generative AI might disrupt the production flow of less experienced workers by providing faulty results, another possibility is that ChatGPT is simply a distraction.",
+      "While it is not clear how this would explain the effect heterogeneity, more detailed data on the actual use of ChatGPT could help inform the design of workplace policies around generative AI.",
+      "Second, more detailed data would also shed light on the question of why, after the initial increase in output and quality, we observe a decrease in the effect size for less experienced users in subsequent days.",
+      "One explanation, in line with the conclusions of Kabir et al. (2024) and Li et al. (2023), could be that less experienced users still prefer to use ChatGPT as a support tool because it generates accessible and easy-to-use responses and because the costs of pursuing alternative solutions (e.g., acquiring the necessary coding skills) is relatively high.",
+      "Finally, our study provides evidence on the productivity effects of (the ban on) generative AI in only the very short run because the ban was short-lived and circumventing it was relatively easy."
+    ]
+  },
+  "notes": "This is an observational study using a natural experiment (Italy's ChatGPT ban on April 1, 2023) in a difference-in-differences framework. The paper examines heterogeneous effects by worker experience level (less experienced vs. experienced developers). Results show that the ban increased output quantity and quality for less experienced users but had negative effects on routine tasks for experienced users. The study also documents evidence of users circumventing the ban using VPNs and TOR networks.",
+  "_paper_id": "Kreitmeir & Raschky 2024",
+  "_source_pdf": "papers/Kreitmeir & Raschky 2024.pdf"
+}

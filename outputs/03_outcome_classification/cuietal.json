@@ -1,0 +1,62 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "pull_requests_completed",
+      "category": "speed",
+      "operationalization": "count of pull requests completed per developer per week, tracked via GitHub platform"
+    },
+    {
+      "outcome_name": "commits",
+      "category": "speed",
+      "operationalization": "count of commits made per developer per week, tracked via version control system"
+    },
+    {
+      "outcome_name": "builds",
+      "category": "speed",
+      "operationalization": "count of code compilation attempts per developer per week"
+    },
+    {
+      "outcome_name": "build_success_rate",
+      "category": "quality",
+      "operationalization": "proportion of builds that compile successfully without errors"
+    },
+    {
+      "outcome_name": "pr_approval_rate",
+      "category": "quality",
+      "operationalization": "proportion of reviewers who approved a given pull request"
+    },
+    {
+      "outcome_name": "pr_at_least_one_approval",
+      "category": "quality",
+      "operationalization": "binary indicator of whether a pull request received at least one reviewer approval"
+    },
+    {
+      "outcome_name": "pr_comments",
+      "category": "other",
+      "operationalization": "count of comments received per pull request; reflects controversy or revision needs, not direct quality of code output"
+    },
+    {
+      "outcome_name": "merge_conflicts",
+      "category": "quality",
+      "operationalization": "count of merge conflicts per pull request or per file, proxy for code modularity"
+    },
+    {
+      "outcome_name": "pr_time_to_merge",
+      "category": "speed",
+      "operationalization": "elapsed time from pull request submission to merge into codebase"
+    },
+    {
+      "outcome_name": "copilot_adoption_rate",
+      "category": "other",
+      "operationalization": "proportion of developers who adopted GitHub Copilot during study period; measures adoption behavior, not output speed or quality"
+    },
+    {
+      "outcome_name": "copilot_suggestions_accepted",
+      "category": "other",
+      "operationalization": "count of Copilot code suggestions accepted by developer; measures tool usage, not direct output speed or quality"
+    }
+  ],
+  "primary_speed_outcome": "pull_requests_completed",
+  "primary_quality_outcome": "build_success_rate",
+  "citation_key": "cui_2025_generative_ai_developers"
+}

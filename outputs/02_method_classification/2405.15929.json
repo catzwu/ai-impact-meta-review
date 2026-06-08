@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "medium",
+  "rationale": "The study combines multiple methodological approaches: a generative adversarial network framework applied to observational company data (2195 consumers' order histories from October 2017 to August 2018), web-based experiments to verify the method, and an online survey on Credamo with 288 respondents for direct consumer evaluation. The description does not clearly indicate randomization or a specific experimental design that fits the standard taxonomy categories; it appears to be a mixed-methods computational study with observational data and validation surveys.",
+  "citation_key": "li_2025_product_design"
+}

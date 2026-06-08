@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Autor, Levy & Murnane 2003",
+  "citation_key": "autor_2003_computerization_skills",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper is a conceptual/theoretical piece about how computerization affects the task content of jobs. It does not report an experiment comparing human-only vs. human+AI performance on any outcome. Instead, it uses observational data (Census, CPS, Dictionary of Occupational Titles) to analyze economy-wide trends in task composition from 1960\u20131998. The 'outcomes' are aggregate measures of task input (e.g., routine cognitive tasks, non-routine cognitive tasks) at the industry or occupation level, not individual worker performance metrics. There are no experimental arms, no baseline vs. intervention comparison, and no statistics (means, SDs, t-tests, etc.) for a quality or speed outcome in the sense required by the extraction schema. The paper does report regression coefficients and correlations between computerization and task shifts, but these are macro-level associations, not effect sizes for individual performance. Therefore, no arm pair is resolvable.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After full re-read: This is an observational economics paper analyzing how computer adoption (measured at industry/occupation level from CPS surveys) correlates with changes in the task content of jobs (measured via DOT task scales aggregated to industries/occupations). It does not report an experiment with human subjects performing tasks with vs. without AI assistance. The 'outcomes' are aggregate task measures (e.g., mean industry score on 'routine cognitive tasks'), not individual performance on a quality or speed metric. Tables report regression coefficients (e.g., Table 5: coefficient of industry computerization on change in task measure), R\u00b2, and standard errors, but these describe macro trends, not individual-level treatment effects. No means, SDs, or t-statistics for a human-only vs. human+AI comparison exist because no such comparison was conducted. The prior pass correctly identified that no speed or quality primary outcome (in the experimental sense) is present. This paper is out of scope for the extraction task.",
+    "source_quotes": [
+      "The objective of this paper is to propose and test a model of how the computerization of workplace tasks alters job content and thereby human skill demands. We build the model from an understanding of what computers do \u2013 by which we mean the tasks that present computer technology is particularly suited to performing.",
+      "Using representative observational metrics of job tasks from the Dictionary of Occupational Titles (DOT), we analyze the degree to which technological change has altered the cognitive and manual content of jobs between 1960 and 1998.",
+      "Table 5. OLS Estimates of the Relationship between Industry Computerization and Industry Task Input, 1960 - 1998. Dependent Variables: 10 x (Annual Change in Task Measure)",
+      "Industries that computerized relatively rapidly during the 1980s and 1990s increased the share of jobs requiring non-routine cognitive/analytic task input during these decades more than did other industries."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After full re-read: This is an observational economics paper analyzing how computer adoption (measured at industry/occupation level from CPS surveys) correlates with changes in the task content of jobs (measured via DOT task scales aggregated to industries/occupations). It does not report an experiment with human subjects performing tasks with vs. without AI assistance. The 'outcomes' are aggregate task measures (e.g., mean industry score on 'routine cognitive tasks'), not individual performance on a quality or speed metric. Tables report regression coefficients (e.g., Table 5: coefficient of industry computerization on change in task measure), R\u00b2, and standard errors, but these describe macro trends, not individual-level treatment effects. No means, SDs, or t-statistics for a human-only vs. human+AI comparison exist because no such comparison was conducted. The prior pass correctly identified that no speed or quality primary outcome (in the experimental sense) is present. This paper is out of scope for the extraction task. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "productivity",
+      "category": "speed",
+      "operationalization": "Total coins produced by all agents over the full episode (1000 or 3000 timesteps), summed across all agents"
+    },
+    {
+      "outcome_name": "income_equality",
+      "category": "other",
+      "operationalization": "1 minus Gini index computed from agent incomes at episode end; measures distributional equity, not output speed or quality"
+    },
+    {
+      "outcome_name": "equality_productivity_product",
+      "category": "both",
+      "operationalization": "Multiplicative composite of income_equality and productivity; combines distributional equity with throughput into single metric"
+    },
+    {
+      "outcome_name": "inverse_income_weighted_utility",
+      "category": "other",
+      "operationalization": "Social welfare function using inverse post-tax endowments as weights, computed at episode end; normative welfare measure, not output performance"
+    }
+  ],
+  "primary_speed_outcome": "productivity",
+  "primary_quality_outcome": null,
+  "citation_key": "zheng_2020_ai_economist"
+}

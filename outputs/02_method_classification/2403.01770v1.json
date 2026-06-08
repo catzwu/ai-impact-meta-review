@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study explicitly states that participants 'completed two sessions of writing analysis tasks... and two sessions of math & data analysis tasks, each comparing performance with and without ChatGPT access.' This indicates the same participants performed tasks both with and without AI assistance, which is the defining characteristic of a within-subject design.",
+  "citation_key": "nakavachara_2024_chatgpt_productivity"
+}

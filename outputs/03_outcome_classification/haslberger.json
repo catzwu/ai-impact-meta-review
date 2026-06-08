@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "email_task_time",
+      "category": "speed",
+      "operationalization": "Time in seconds from task start to completion, measured by experimental platform, top-coded at 900 seconds"
+    },
+    {
+      "outcome_name": "assessment_task_time",
+      "category": "speed",
+      "operationalization": "Time in seconds from task start to completion, measured by experimental platform, top-coded at 900 seconds"
+    },
+    {
+      "outcome_name": "comprehension_task_time",
+      "category": "speed",
+      "operationalization": "Time in seconds from task start to completion, measured by experimental platform, top-coded at 900 seconds"
+    },
+    {
+      "outcome_name": "email_task_score",
+      "category": "quality",
+      "operationalization": "Five-point rubric score evaluating answer quality, graded by GPT-4 using a detailed grading scheme"
+    },
+    {
+      "outcome_name": "assessment_task_score",
+      "category": "quality",
+      "operationalization": "Five-point rubric score evaluating answer quality, graded by GPT-4 using a detailed grading scheme"
+    },
+    {
+      "outcome_name": "comprehension_task_score",
+      "category": "quality",
+      "operationalization": "Five-point rubric score evaluating answer quality, graded by GPT-4 using a detailed grading scheme"
+    }
+  ],
+  "primary_speed_outcome": "email_task_time",
+  "primary_quality_outcome": "email_task_score",
+  "citation_key": "haslberger_2025_ai_productivity"
+}

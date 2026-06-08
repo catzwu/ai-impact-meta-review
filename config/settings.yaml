@@ -1,0 +1,75 @@
+# Pipeline configuration
+
+# Default model
+model: claude-sonnet-4-5
+# Alternate model for sensitivity checks
+sensitivity_model: claude-haiku-4-5-20251001
+
+# Per-stage model overrides
+stage_models:
+  extract_quotes: claude-haiku-4-5-20251001
+  structure: claude-sonnet-4-5
+  classify_method: claude-sonnet-4-5
+  classify_outcome: claude-sonnet-4-5
+  map_onet: claude-sonnet-4-5
+  compute_speed: claude-sonnet-4-5
+  compute_quality: claude-sonnet-4-5
+
+# Temperatures: 0 for extraction/classification/computation.
+temperatures:
+  extract_quotes: 0.0
+  structure: 0.0
+  classify_method: 0.0
+  classify_outcome: 0.0
+  map_onet: 0.0
+  compute_speed: 0.0
+  compute_quality: 0.0
+
+# Max tokens for each LLM call
+max_tokens:
+  extract_quotes: 16000
+  structure: 32000
+  classify_method: 2000
+  classify_outcome: 4000
+  map_onet: 2000
+  compute_speed: 4000
+  compute_quality: 4000
+
+# Concurrency: number of papers processed in parallel within a stage.
+concurrency: 6
+
+# Stages to run by default
+stages:
+  - extract_quotes    # 1a: verbatim quote pull from PDF
+  - structure         # 1b: organize quotes into the canonical schema
+  - classify_method
+  - classify_outcome
+  - map_onet
+  - compute_effects   # runs both 5a (speed) and 5b (quality)
+  - assemble
+
+# API retry behavior
+retry:
+  max_attempts: 5
+  initial_backoff_seconds: 2.0
+  max_backoff_seconds: 60.0
+
+# Pricing (USD per 1M tokens). Update as needed.
+pricing:
+  claude-sonnet-4-5:
+    input: 3.00
+    output: 15.00
+  claude-opus-4-7:
+    input: 15.00
+    output: 75.00
+  claude-haiku-4-5-20251001:
+    input: 1.00
+    output: 5.00
+
+# Sensitivity check
+sensitivity:
+  sample_size: 10
+  stratify: true
+  models:
+    - claude-sonnet-4-5
+    - claude-haiku-4-5-20251001

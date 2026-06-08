@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Brynjolfsson, Li & Raymond 2025",
+  "citation_key": "brynjolfsson_2023_generative_ai",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "never_treated",
+    "ai_arm_name": "treated_post",
+    "ai_arm_selection_rationale": "This is a natural experiment with staggered rollout. The human-only baseline is 'never_treated' (agents who never received AI access during the study period). The AI arm is 'treated_post' (agents after receiving AI tool access). The 'treated_pre' arm represents the same agents before treatment and is used for difference-in-differences estimation, but the primary comparison for the overall effect is treated_post vs never_treated.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 1.7,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 2.5,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1636,
+    "reported_percent_change": 0.14,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a natural experiment with staggered AI tool rollout. The paper reports multiple specifications with different fixed effects. The overall effect (14% increase, from 1.7 to 2.5 chats/hour) is reported for the main comparison. More conservative estimates with agent and tenure fixed effects show 13.8% increase (0.30 chats). The paper also reports heterogeneous effects by skill quintile (34% for lowest, 0% for highest) and tenure (46% for <1 month, 0% for >1 year). I extracted the overall/average effect as the primary statistic. Sample size n is only reported for treated_post arm (1636); n for never_treated is not explicitly stated.",
+    "source_quotes": [
+      "Access to the tool increases productivity, as measured by issues resolved per hour, by 14% on average, including a 34% improvement for novice and low-skilled workers but with minimal impact on experienced and highly skilled workers.",
+      "Treated agents have higher resolutions per hour prior to AI model deployment (2.0 chats) relative to never treated agents (1.7).",
+      "In Column 1, we show that, controlling for time and location fixed effects, access to AI recommendations increases resolutions per hour by 0.47 chats, up 22.2% from an average of 2.12.",
+      "As we add controls, our effects fall slightly, so that, with agent and tenure fixed effects, we find that the deployment of AI increases RPH by 0.30 chats or 13.8%."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.38566248081198473,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.47058823529411775,
+    "direction_convention": "larger_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "This is a natural experiment with staggered AI tool rollout. The paper reports multiple specifications with different fixed effects. The overall effect (14% increase, from 1.7 to 2.5 chats/hour) is reported for the main comparison. More conservative estimates with agent and tenure fixed effects show 13.8% increase (0.30 chats). The paper also reports heterogeneous effects by skill quintile (34% for lowest, 0% for highest) and tenure (46% for <1 month, 0% for >1 year). I extracted the overall/average effect as the primary statistic. Sample size n is only reported for treated_post arm (1636); n for never_treated is not explicitly stated. | SDs/SEs missing; variance not computable",
+    "n_human": null,
+    "n_ai": 1636
+  }
+}

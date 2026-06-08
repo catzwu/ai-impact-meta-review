@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study uses a randomized between-subject design with participants recruited from Prolific completing an online task (crafting advertisement copies). This is randomized but neither a controlled lab setting nor a real work setting, fitting the 'rct' category for online randomized experiments.",
+  "citation_key": "chen_2024_llm_creative"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "23-1011.00",
+  "onet_label": "Lawyers",
+  "mapping_confidence": "high",
+  "rationale": "The participants performed 'four realistic legal tasks that typify work performed by young attorneys' including drafting complaints, contracts, employee handbook sections, and legal memoranda. These are core lawyering activities spanning litigation, transactional work, and legal research. While the participants were law students, they were explicitly performing the work of 'young attorneys' in a realistic simulation of legal practice. This maps to the occupation rather than a narrow activity because the tasks span the diverse work lawyers do (drafting, research, client advisement).",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-30",
+      "onet_label": "Documenting/Recording Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "23-2011.00",
+      "onet_label": "Paralegals and Legal Assistants"
+    }
+  ],
+  "citation_key": "choi_2023_lawyering_ai"
+}

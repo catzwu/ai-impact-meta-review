@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "average_price",
+      "category": "other",
+      "operationalization": "Average lower bound of price range for orders in each category-week, measured in Chinese yuan"
+    },
+    {
+      "outcome_name": "order_volume",
+      "category": "speed",
+      "operationalization": "Count of orders per category-week on the platform"
+    },
+    {
+      "outcome_name": "overall_revenue",
+      "category": "other",
+      "operationalization": "Total monetary value of completed transactions per category-week, measured in Chinese yuan"
+    },
+    {
+      "outcome_name": "log_price",
+      "category": "other",
+      "operationalization": "Natural logarithm of average price"
+    },
+    {
+      "outcome_name": "log_volume",
+      "category": "speed",
+      "operationalization": "Natural logarithm of order volume"
+    },
+    {
+      "outcome_name": "log_revenue",
+      "category": "other",
+      "operationalization": "Natural logarithm of overall revenue"
+    }
+  ],
+  "primary_speed_outcome": "order_volume",
+  "primary_quality_outcome": null,
+  "citation_key": "zhang_2024_generative_equilibrium"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "41-3021.00",
+  "onet_label": "Insurance Sales Agents",
+  "mapping_confidence": "medium",
+  "rationale": "The participants are outbound sales agents making cold calls to sell financial products (credit cards) through a structured lead generation and persuasion process. While O*NET lacks a specific 'Credit Card Sales Agent' occupation, Insurance Sales Agents (41-3021.00) is the closest match among financial sales roles, as it involves similar outbound contact, product explanation, needs assessment, and persuasion to close sales of financial products. The work involves the full sales cycle from prospecting to closing, which distinguishes it from narrower activities like 'Selling or Influencing Others' (WA-18). The study measures these agents doing their actual job across diverse sales activities, not a single isolated task.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "41-3091.00",
+      "onet_label": "Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-18",
+      "onet_label": "Selling or Influencing Others"
+    }
+  ],
+  "citation_key": "jia_2024_ai_augments_creativity"
+}

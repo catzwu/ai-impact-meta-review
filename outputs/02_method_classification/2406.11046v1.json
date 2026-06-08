@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly states it 'utilizes natural experiments where some governments banned ChatGPT' and employs quasi-experimental methods including 'Difference-in-Differences (DID), Synthetic Control (SC), and Synthetic Difference-in-Differences (SDID) methods to analyze quasi-experimental data.' This is a clear natural experiment design leveraging policy variation across countries.",
+  "citation_key": "quispe_2024_chatgpt_software"
+}

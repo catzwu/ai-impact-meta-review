@@ -1,0 +1,47 @@
+{
+  "_paper_id": "OSFPreprint-Hansenetal.2024AI-promptedpeerfeedback_CananAIfeedbackcoachenhancepeerfeedbackquality",
+  "citation_key": "hansen_2024_ai_peer_feedback",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control_group_1_no_ai",
+    "ai_arm_name": "intervention_group_1_ai_enabled",
+    "ai_arm_selection_rationale": "Selected intervention_group_1_ai_enabled as the AI arm (n=20) vs control_group_1_no_ai as the human-only baseline (n=26). This is the only direct comparison reported in the statistics.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 26,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 20,
+    "reported_t": 2.014,
+    "reported_t_df": 44,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.203,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.044,
+    "extraction_confidence": "high",
+    "notes": "The verbatim quote states 'their feedback was significantly less criteria-based' for the AI group, which suggests the AI group had LOWER criteria-based feedback. However, the positive d=0.203 and positive t=2.014 indicate the AI group had HIGHER values. The language may be describing the control group. Given the statistical direction (positive t and d), I'm treating larger values as better (more criteria-based feedback). The comparison is between iteration 1 intervention (AI) vs iteration 1 control (no AI).",
+    "source_quotes": [
+      "their feedback was significantly less criteria-based, t(44)= 2.014, p=.044, d=0.203"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.599013637959553,
+    "hedges_g": 0.5887448327373892,
+    "variance": 0.08922218218097332,
+    "computation_method": "t_statistic",
+    "confidence": "high",
+    "notes": "The verbatim quote states 'their feedback was significantly less criteria-based' for the AI group, which suggests the AI group had LOWER criteria-based feedback. However, the positive d=0.203 and positive t=2.014 indicate the AI group had HIGHER values. The language may be describing the control group. Given the statistical direction (positive t and d), I'm treating larger values as better (more criteria-based feedback). The comparison is between iteration 1 intervention (AI) vs iteration 1 control (no AI).",
+    "n_human": 26,
+    "n_ai": 20,
+    "direction_convention": "larger_is_better"
+  }
+}

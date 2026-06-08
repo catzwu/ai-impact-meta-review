@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are researchers conducting systematic text analysis of SEC filings, counting keyword occurrences, and constructing quantitative measures from unstructured data. This is quintessential data analysis work. The verbatim task description states they perform 'systematic text analysis' and construct measures through data processing. This maps clearly to the generalized work activity of analyzing data rather than any specific occupation.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-2051.00",
+      "onet_label": "Data Scientists"
+    }
+  ],
+  "citation_key": "kikuchi_2026_innovation_tax"
+}

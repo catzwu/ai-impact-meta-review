@@ -1,0 +1,340 @@
+{
+  "citation_key": "he_2026_cursor_velocity",
+  "authors": [
+    "Hao He",
+    "Courtney Miller",
+    "Shyam Agarwal",
+    "Christian K\u00e4stner",
+    "Bogdan Vasilescu"
+  ],
+  "title": "Speed at the Cost of Quality: How Cursor AI Increases Short-Term Velocity and Long-Term Complexity in Open-Source Projects",
+  "year": 2026,
+  "venue": "23rd International Conference on Mining Software Repositories (MSR '26)",
+  "study_design_description": "A difference-in-differences (DiD) design with staggered adoption comparing repositories that adopt Cursor at different times to a matched control group that never adopts during the observation period. The study uses propensity score matching to select 1,380 similar repositories from those never adopting Cursor, incorporating dynamic history of repository characteristics over six months preceding potential adoption. Treatment effects are estimated using the Borusyak et al. imputation estimator, a modern DiD approach designed for staggered adoption. Panel generalized method of moments (GMM) models are also used to test temporal interactions between outcomes.",
+  "primary_task_description": "Estimating the causal effects of adopting Cursor on development velocity and code quality, both of which are considered important project outcomes, are commonly measured in prior research, and are closely tied to perceived overall project productivity.",
+  "population_description": "806 repositories that adopted the modern Cursor client, identified by scanning Cursor configuration files across GitHub, with most adoptions happening between August 2024 and March 2025. Repositories were filtered to require at least 10 stars at collection time to exclude non-software, educational, toy, and spam repositories. The top five primary programming languages are TypeScript (366 repositories), Python (118 repositories), JavaScript (60 repositories), Go (36 repositories), and Rust (24 repositories). Data were collected monthly from January 2024 to August 2025 from GHArchive for all repositories in the population.",
+  "arms": [
+    {
+      "arm_name": "cursor_adopters",
+      "description": "Repositories adopting Cursor, identified by scanning Cursor configuration files across GitHub with adoption dates between January 2024 and March 2025.",
+      "n": 806
+    },
+    {
+      "arm_name": "control",
+      "description": "Matched \"never-treated\" repositories not using Cursor during the observation period, selected via 1:3 nearest-neighbor propensity score matching (three controls per treated unit) to ensure similar propensity score distributions and pre-adoption characteristics.",
+      "n": 2340
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "commits",
+      "outcome_description": "Number of commits in repository at month",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "lines_added",
+      "outcome_description": "Total lines added, summed over all commits in repository at month",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "static_analysis_warnings",
+      "outcome_description": "Total number of reliability, maintainability, and security issues for repository at month, as detected by SonarQube's static analysis. Referred to as warnings, since static analysis can generate false positives; this metric should be viewed as an estimate of the effort required to review potential issues in a project.",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "duplicated_lines_density",
+      "outcome_description": "Percentage of duplicated lines in codebase for repository at month. SonarQube's definition varies across programming languages, but usually requires at least 10 consecutive duplicate statements or 100 duplicate tokens to mark a block as duplicate.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_complexity",
+      "outcome_description": "Overall cognitive complexity of code base for repository at month. Per SonarQube, this metric quantifies code understandability and aligns better with modern coding practices than classic cyclomatic complexity.",
+      "measurement_unit": "count",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "cursor_adopters vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+2.63%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.0260 (SE 0.0429)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b14.40%",
+      "verbatim_quote": "Table 2: The Borusyak et al. [29] estimated average treatment effects on treated (ATT in Equation 2) post Cursor adoption. Commits 0.0260 *** (0.0429) +2.63% (\u00b14.40%)"
+    },
+    {
+      "outcome_name": "lines_added",
+      "arm_comparison": "cursor_adopters vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+28.58%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.2514 (SE 0.1063)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b113.7%",
+      "verbatim_quote": "Table 2: The Borusyak et al. [29] estimated average treatment effects on treated (ATT in Equation 2) post Cursor adoption. Lines Added 0.2514 *** (0.1063) +28.58% (\u00b113.7%)"
+    },
+    {
+      "outcome_name": "static_analysis_warnings",
+      "arm_comparison": "cursor_adopters vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+30.26%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.2644 (SE 0.0511)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b16.66%",
+      "verbatim_quote": "Table 2: The Borusyak et al. [29] estimated average treatment effects on treated (ATT in Equation 2) post Cursor adoption. Static Analysis Warnings 0.2644 *** (0.0511) +30.26% (\u00b16.66%)"
+    },
+    {
+      "outcome_name": "duplicated_lines_density",
+      "arm_comparison": "cursor_adopters vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+7.03%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.0679 (SE 0.0448)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b14.79%",
+      "verbatim_quote": "Table 2: The Borusyak et al. [29] estimated average treatment effects on treated (ATT in Equation 2) post Cursor adoption. Duplicated Lines Density 0.0679 *** (0.0448) +7.03% (\u00b14.79%)"
+    },
+    {
+      "outcome_name": "code_complexity",
+      "arm_comparison": "cursor_adopters vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+41.64%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.3481 (SE 0.0538)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b17.62%",
+      "verbatim_quote": "Table 2: The Borusyak et al. [29] estimated average treatment effects on treated (ATT in Equation 2) post Cursor adoption. Code Complexity 0.3481 *** (0.0538) +41.64% (\u00b17.62%)"
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "cursor_adopters vs control (first month post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+55.4%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The models estimate a 55.4% increase in commits in the first month, a 14.5% increase in commits in the second month, a 281.3% increase in lines added in the first month, and a 48.4% increase in lines added in the second month, respectively."
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "cursor_adopters vs control (second month post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+14.5%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The models estimate a 55.4% increase in commits in the first month, a 14.5% increase in commits in the second month, a 281.3% increase in lines added in the first month, and a 48.4% increase in lines added in the second month, respectively."
+    },
+    {
+      "outcome_name": "lines_added",
+      "arm_comparison": "cursor_adopters vs control (first month post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+281.3%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The models estimate a 55.4% increase in commits in the first month, a 14.5% increase in commits in the second month, a 281.3% increase in lines added in the first month, and a 48.4% increase in lines added in the second month, respectively."
+    },
+    {
+      "outcome_name": "lines_added",
+      "arm_comparison": "cursor_adopters vs control (second month post-adoption)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+48.4%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The models estimate a 55.4% increase in commits in the first month, a 14.5% increase in commits in the second month, a 281.3% increase in lines added in the first month, and a 48.4% increase in lines added in the second month, respectively."
+    },
+    {
+      "outcome_name": "lines_added",
+      "arm_comparison": "lines_added \u2192 static_analysis_warnings (panel GMM)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Main Effect = -0.000 (SE 0.015), Cursor = -0.011 (SE 0.033), Lines of Code = 0.845 (SE 0.073)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Table 3: The dynamic panel GMM estimates testing temporal interactions between velocity and quality attributes. L_{i,t} \u2192 W_{i,t} Main Effect \u22120.000 *** (0.015)***, Cursor \u22120.011 *** (0.033)***, Lines of Code 0.845 *** (0.073)***"
+    },
+    {
+      "outcome_name": "lines_added",
+      "arm_comparison": "lines_added \u2192 code_complexity (panel GMM)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Main Effect = -0.006 (SE 0.016), Cursor = 0.086 (SE 0.030), Lines of Code = 0.852 (SE 0.059)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Table 3: The dynamic panel GMM estimates testing temporal interactions between velocity and quality attributes. L_{i,t} \u2192 C_{i,t} Main Effect \u22120.006*** (0.016)***, Cursor 0.086*** (0.030)***, Lines of Code 0.852*** (0.059)***"
+    },
+    {
+      "outcome_name": "code_complexity",
+      "arm_comparison": "code_complexity \u2192 lines_added (panel GMM, next month)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Main Effect = -0.718 (SE 0.098), Cursor = 1.044 (SE 0.124), Lines of Code = 0.869 (SE 0.153)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Table 3: The dynamic panel GMM estimates testing temporal interactions between velocity and quality attributes. C_{i,t} \u2192 L_{i,t+1} Main Effect \u22120.718*** (0.098)***, Cursor 1.044*** (0.124)***, Lines of Code 0.869*** (0.153)***"
+    },
+    {
+      "outcome_name": "static_analysis_warnings",
+      "arm_comparison": "static_analysis_warnings \u2192 lines_added (panel GMM, next month)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Main Effect = -0.588 (SE 0.092), Cursor = 1.048 (SE 0.124), Lines of Code = 0.851 (SE 0.155)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Table 3: The dynamic panel GMM estimates testing temporal interactions between velocity and quality attributes. W_{i,t} \u2192 L_{i,t+1} Main Effect \u22120.588*** (0.092)***, Cursor 1.048*** (0.124)***, Lines of Code 0.851*** (0.155)***"
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "cursor_adopters vs control (Two-Way Fixed Effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+17.83%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.1641 (SE 0.0386)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b14.55%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Two-Way Fixed Effects Commits 0.1641 *** (0.0386) +17.83% (\u00b14.55%)"
+    },
+    {
+      "outcome_name": "lines_added",
+      "arm_comparison": "cursor_adopters vs control (Two-Way Fixed Effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+82.74%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.6029 (SE 0.0876)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b116.0%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Two-Way Fixed Effects Lines Added 0.6029 *** (0.0876) +82.74% (\u00b116.0%)"
+    },
+    {
+      "outcome_name": "static_analysis_warnings",
+      "arm_comparison": "cursor_adopters vs control (Two-Way Fixed Effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+18.48%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.1696 (SE 0.0415)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b14.92%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Two-Way Fixed Effects Static Analysis Warnings 0.1696 *** (0.0415) +18.48% (\u00b14.92%)"
+    },
+    {
+      "outcome_name": "duplicated_lines_density",
+      "arm_comparison": "cursor_adopters vs control (Two-Way Fixed Effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+1.61%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.0160 (SE 0.0390)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b13.96%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Two-Way Fixed Effects Duplicated Lines Density 0.0160 *** (0.0390) +1.61% (\u00b13.96%)"
+    },
+    {
+      "outcome_name": "code_complexity",
+      "arm_comparison": "cursor_adopters vs control (Two-Way Fixed Effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+26.04%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.2314 (SE 0.0446)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": "\u00b15.62%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Two-Way Fixed Effects Code Complexity 0.2314 *** (0.0446) +26.04% (\u00b15.62%)"
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "cursor_adopters vs control (Callaway and Sant'Anna)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "-0.73%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "-0.0073 (SE 0.0695)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": "\u00b16.90%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Callaway and Sant'Anna [31] Commits \u22120.0073 ** (0.0695) \u22120.73% (\u00b16.90%)"
+    },
+    {
+      "outcome_name": "lines_added",
+      "arm_comparison": "cursor_adopters vs control (Callaway and Sant'Anna)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "+53.60%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.4292 (SE 0.1536)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": "\u00b123.6%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Callaway and Sant'Anna [31] Lines Added 0.4292 ** (0.1536) +53.60% (\u00b123.6%)"
+    },
+    {
+      "outcome_name": "static_analysis_warnings",
+      "arm_comparison": "cursor_adopters vs control (Callaway and Sant'Anna)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "-10.49%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "-0.1108 (SE 0.1254)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": "\u00b111.2%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Callaway and Sant'Anna [31] Static Analysis Warnings \u22120.1108 ** (0.1254) \u221210.49% (\u00b111.2%)"
+    },
+    {
+      "outcome_name": "duplicated_lines_density",
+      "arm_comparison": "cursor_adopters vs control (Callaway and Sant'Anna)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "-0.34%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "-0.0034 (SE 0.0785)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": "\u00b17.82%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Callaway and Sant'Anna [31] Duplicated Lines Density \u22120.0034 ** (0.0785) \u22120.34% (\u00b17.82%)"
+    },
+    {
+      "outcome_name": "code_complexity",
+      "arm_comparison": "cursor_adopters vs control (Callaway and Sant'Anna)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "-3.80%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "-0.0387 (SE 0.1136)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": "\u00b110.9%",
+      "verbatim_quote": "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Callaway and Sant'Anna [31] Code Complexity \u22120.0387 ** (0.1136) \u22123.80% (\u00b110.9%)"
+    }
+  ],
+  "notes": "Study uses observational data from GitHub repositories with visible Cursor adoption (committed configuration files), which may represent an upper bound on average effects if committed adopters use Cursor more systematically. Intent-to-treat (ITT) effects reported, averaging over heterogeneous usage patterns. Propensity score matching achieved AUC values ranging from 0.83 to 0.91, indicating high discriminative power but subject to untestable unobserved confounders. Divergence between Callaway and Sant'Anna estimator and other estimators for code quality outcomes attributed to small cohort sizes (many <100 repositories) and inherent noisiness of code quality metrics; code quality findings should be interpreted with caution. Study period (August 2024\u2013March 2025) coincides with rapid LLM evolution; results may not persist as tools mature. Findings may not generalize beyond open-source projects or the three dominant programming languages (JavaScript, TypeScript, Python). Control group may include developers using alternative AI tools (GitHub Copilot, ChatGPT) without visible traces, so estimates represent impact of systematic Cursor adoption compared to current state-of-practice, not impact versus no AI usage. Matching is imperfect with observable mean differences between treatment and control groups despite acceptable normalized differences (<0.25). Dynamic panel GMM models (Table 3) test temporal interactions: 100% increase in code complexity causes 64.5% decrease in lines added; 100% increase in static analysis warnings causes 50.3% decrease in lines added. Velocity gains from Cursor would be fully cancelled by ~5x increase in static analysis warnings or ~3x increase in code complexity.",
+  "_paper_id": "He et al. 2025"
+}

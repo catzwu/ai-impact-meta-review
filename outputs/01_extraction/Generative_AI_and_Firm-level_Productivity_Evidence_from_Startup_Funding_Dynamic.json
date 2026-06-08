@@ -1,0 +1,333 @@
+{
+  "citation_key": "asam_2025_generative_startup",
+  "authors": [
+    "Dominik Asam",
+    "David Heller"
+  ],
+  "title": "Generative AI and Firm-level Productivity: Evidence from Startup Funding and Employment Dynamics",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "The study exploits the release of GitHub Copilot in 2021 as a positive shock to software development efficiency, deploying a differences-in-differences (DID) empirical strategy. Software-developing startups serve as the treatment group and other startups as the control group. The analysis uses a fixed effects specification with OLS estimation, including time fixed effects to control for business cycle trends, and country and industry fixed effects to control for time-invariant factors. Standard errors are clustered at the startup level.",
+  "primary_task_description": "The study analyzes the impact of GitHub Copilot on startups' funding and employment dynamics as early quantifiable indicators of operational efficiency. Outcomes include time-to-funding for initial, second, and third funding rounds; deal size and syndication patterns; and the number of software developers employed at the time of funding.",
+  "population_description": "The sample comprises 21,834 startups that secured their first funding round between Q1 2020 and Q3 2023, including 225,508 startup employees and founders. Startups are headquartered in the US, Canada, and Europe. The median startup has two founders and eight employees, with one software developer. About 22% of startups have at least one founder with a computer science degree. In the sample, 16.5% are software-developing startups, 71.1% are other software startups, and 12.4% are non-software startups.",
+  "arms": [
+    {
+      "arm_name": "software_developing_startups",
+      "description": "Startups that operate in sectors in which the main product or service primarily requires them to generate new software solutions. Defined as Developer = 1 in the DID specification.",
+      "n": null
+    },
+    {
+      "arm_name": "other_software_startups",
+      "description": "Startups that incorporate existing software solutions in their business model, such as apps or online platforms, without explicitly focusing on commercializing self-programmed software.",
+      "n": null
+    },
+    {
+      "arm_name": "non_software_startups",
+      "description": "Startups that do not operate in software-related business fields.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "time_to_initial_funding",
+      "outcome_description": "The duration in continuous months between the incorporation date and the initial deal date.",
+      "measurement_unit": "months",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "time_to_second_funding",
+      "outcome_description": "The time-to-funding for a startup's second funding round.",
+      "measurement_unit": "months",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_to_third_funding",
+      "outcome_description": "The time-to-funding for a startup's third funding round.",
+      "measurement_unit": "months",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "deal_size",
+      "outcome_description": "The size of funding deals in initial or subsequent investment rounds.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "syndication",
+      "outcome_description": "Syndication patterns of initial or subsequent investment rounds, measured as an indicator of investor risk-taking.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "outcome_description": "The number of software developers employed at the time of initial funding.",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "time_to_funding_per_employee",
+      "outcome_description": "Funding outcomes scaled by the total number of employees, measuring productivity gains in terms of months to initial funding per employee.",
+      "measurement_unit": "months per employee",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "deal_size_per_employee",
+      "outcome_description": "Deal size scaled by the total number of employees, measuring productivity gains in terms of deal size per employee.",
+      "measurement_unit": "currency per employee",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "time_to_initial_funding",
+      "arm_comparison": "software_developing_startups vs other_startups (post-release vs pre-release)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19% faster; four-month decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -4.793 (SE not reported), significant at one percent level",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that software-developing startups raise their initial funding 19% faster and with 20% fewer employed software developers relative to comparable startups after the release of Copilot. After the release of GitHub Copilot, software-developing startups experience a four-month decrease in the time-to-funding relative to the control group, implying an economically significant reduction of 19%. In Column I, the coefficient of the interaction term Developer \u00d7 Post is large, negative, and significant at the one percent level. Its size (-4.793) suggests that software-developing startups experience an average reduction of about five months to initial funding relative to other startups."
+    },
+    {
+      "outcome_name": "time_to_initial_funding",
+      "arm_comparison": "software_developing_startups vs other_startups (technical release as treatment event)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -3.815 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column II shows that this effect is similar but slightly smaller (-3.815) when considering the technical release as treatment event, likely reflecting that the efficiency effects from Copilot require time to unfold."
+    },
+    {
+      "outcome_name": "time_to_initial_funding",
+      "arm_comparison": "software_developing_startups vs other_software_startups (post-release vs pre-release)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18.5% decrease; about four months",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 3.843 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient in Column III (3.843) suggests a relative decline of about four months in the time-to-funding for software-developing startups relative to other software startups, equivalent to an 18.5% decrease relative to the mean of 20.768 months."
+    },
+    {
+      "outcome_name": "time_to_initial_funding",
+      "arm_comparison": "software_developing_startups vs other_startups (hazard model)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "34% increase in hazard of obtaining initial funding within first eight quarters",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.294 (SE not reported), hazard ratio = 1.341",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient of the interaction term in Column VI (0.294) corresponds to a hazard ratio of 1.341, suggesting that the hazard of obtaining initial funding within the first eight quarters after incorporation increases by 34% for software developing startups relative to other startups after the release of GitHub Copilot."
+    },
+    {
+      "outcome_name": "time_to_second_funding",
+      "arm_comparison": "software_developing_startups vs other_startups (public release)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "For the second funding round, the estimates in Table 3 on the DID coefficients are negative, but only significant when considering the public release of GitHub Copilot (Columns I and III)."
+    },
+    {
+      "outcome_name": "time_to_second_funding",
+      "arm_comparison": "software_developing_startups vs other_software_startups (public release)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "7.6% relative acceleration; about two months",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -2.312 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Comparing software-developing and other software startups, the coefficient size in Column III (-2.312) implies a reduction in the time-to-funding of about two months, equivalent to a relative acceleration by 7.6% compared with the mean of 30.303 months."
+    },
+    {
+      "outcome_name": "time_to_second_funding",
+      "arm_comparison": "software_developing_startups vs other_startups (technical release)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This effect is notably smaller than the reduction in the time to the first funding round (18.5%) and does not apply for the technical release of GitHub Copilot (Columns II and IV)."
+    },
+    {
+      "outcome_name": "time_to_third_funding",
+      "arm_comparison": "software_developing_startups vs other_startups",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Moreover, the coefficients of the DID estimators are insignificant for all estimates on the third funding round (Columns V-VIII)."
+    },
+    {
+      "outcome_name": "deal_size",
+      "arm_comparison": "software_developing_startups vs other_startups",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The estimates indicate no differential effect on the deal size and syndication of the initial or subsequent investment rounds obtained by software-developing startups after the release of GitHub Copilot relative to other startups (Table A10, Appendix)."
+    },
+    {
+      "outcome_name": "syndication",
+      "arm_comparison": "software_developing_startups vs other_startups",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The estimates indicate no differential effect on the deal size and syndication of the initial or subsequent investment rounds obtained by software-developing startups after the release of GitHub Copilot relative to other startups (Table A10, Appendix)."
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "arm_comparison": "software_developing_startups: post-release vs pre-release",
+      "means_and_sds": {
+        "software_developing_startups_post": {
+          "mean": 2.3,
+          "sd": null,
+          "se": null
+        },
+        "software_developing_startups_pre": {
+          "mean": 3.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "20% fewer employed software developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 6.624",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Software-developing startups employ a significantly lower average number of programmers at the time of initial funding after the release (2.3) than before (3.1; t-value 6.624)."
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "arm_comparison": "other_software_startups: post-release vs pre-release",
+      "means_and_sds": {
+        "other_software_startups_post": {
+          "mean": 2.0,
+          "sd": null,
+          "se": null
+        },
+        "other_software_startups_pre": {
+          "mean": 1.9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This pattern does not apply to other software startups (1.9 versus 2.0) or non-software startups (0.9 versus 0.9), for which the number of software developers is not statistically different after the release than before."
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "arm_comparison": "non_software_startups: post-release vs pre-release",
+      "means_and_sds": {
+        "non_software_startups_post": {
+          "mean": 0.9,
+          "sd": null,
+          "se": null
+        },
+        "non_software_startups_pre": {
+          "mean": 0.9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This pattern does not apply to other software startups (1.9 versus 2.0) or non-software startups (0.9 versus 0.9), for which the number of software developers is not statistically different after the release than before."
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "arm_comparison": "software_developing_startups vs other_software_startups (post-release vs pre-release)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19.9% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.568 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "For example, the DID estimator in Column III (-0.568) translates to a decrease in the number of software developers by 19.9% of software-developing startups relative to other software startups compared with the mean of 2.856. Across specifications, the coefficients on the interaction term Developer \u00d7 Post are negative and statistically significant at the one percent level."
+    },
+    {
+      "outcome_name": "time_to_initial_funding",
+      "arm_comparison": "software_developing_startups with CS-degree founders vs other startups",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "34.9% reduction vs 8.9% for other startups",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Regarding the funding dynamics, the coefficient size implies a four times larger effect for startups led by founders with a computer science degree (34.9%) than for other startups (8.9%), comparing the coefficients in Columns I and II."
+    },
+    {
+      "outcome_name": "time_to_initial_funding",
+      "arm_comparison": "software_developing_startups with experienced founders vs less experienced founders",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Likewise, startups with more experienced founders in terms of previous founding activities exhibit a much larger reduction in the time-to-funding after the release of GitHub Copilot compared to relatively less experienced ones (Columns III and IV). Here, the coefficient of the DID estimator is about twice as large for startups with experienced founders."
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "arm_comparison": "software_developing_startups with technical co-founders vs without",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "44.5% reduction vs 9.1% without technical co-founders",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Columns V and VI show that startups with technically experienced founders employ notably fewer software developers after the release of GitHub Copilot relative to other startups. The coefficient size suggests a five times larger effect for startups with technical co-founders (44.5%) compared to those without (9.1%)."
+    },
+    {
+      "outcome_name": "number_of_software_developers",
+      "arm_comparison": "software_developing_startups with serial founders vs first-time founders",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Similarly, startups with serial founders reduce their number of software developers substantially more than those led by first-time founders (Columns VII and VIII)."
+    }
+  ],
+  "notes": "This is a difference-in-differences study exploiting GitHub Copilot's release as a natural experiment. The paper uses two treatment dates: technical release in October 2021 and public release in June 2022. Main findings show software-developing startups (treatment) experienced 19% faster initial funding and 20% fewer software developers compared to other startups (control) after Copilot release. Effects are substantially larger for startups with experienced founders (CS degree, serial founders, technical co-founders). Effects on second funding round are smaller and insignificant for third round. No differential effects on deal size or syndication. The study notes limitations: cannot directly track individual developers' Copilot usage; results may not generalize to large incumbent firms or regulated industries (healthcare, biotech); future research should use lab and natural experiments like RCTs; long-term outcomes (firm survival, exits, inventive outputs) not yet measurable.",
+  "_paper_id": "Generative_AI_and_Firm-level_Productivity_Evidence_from_Startup_Funding_Dynamic"
+}

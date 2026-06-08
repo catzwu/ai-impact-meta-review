@@ -1,0 +1,98 @@
+{
+  "citation_key": "kikuchi_2026_innovation_tax",
+  "authors": [
+    "Tatsuru Kikuchi"
+  ],
+  "title": "The Innovation Tax: Generative AI Adoption, Productivity Paradox, and Systemic Risk in the U.S. Banking Sector",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "Using a novel dataset linking SEC 10-Q filings to Federal Reserve regulatory data for 809 financial institutions over 2018\u20132025, we employ two complementary identification strategies: Dynamic Spatial Durbin Models (DSDM) to capture network spillovers and Synthetic Difference-in-Differences (SDID) for causal inference using the November 2022 ChatGPT release as an exogenous shock.",
+      "To quantify network spillovers and test Hypotheses 1 and 4, we estimate a Dynamic Spatial Durbin Model following Elhorst (2014) and LeSage & Pace (2009).",
+      "To identify the causal effect of AI adoption and test Hypotheses 2 and 3, we employ the Synthetic Difference-in-Differences framework developed by Arkhangelsky et al. (2021).",
+      "Our identification strategy exploits the November 2022 public release of ChatGPT as a plausibly exogenous shock to the banking industry's AI production function.",
+      "We define the treatment period as 2023Q1, when the \"Generative AI\" revolution became salient to financial institutions.",
+      "We estimate standard errors using the placebo-based bootstrap procedure recommended by Arkhangelsky et al. (2021).",
+      "We report results based on B= 200 bootstrap replications."
+    ],
+    "task": [
+      "We identify GenAI adoption through systematic text analysis of SEC filings.",
+      "For each filing, we count keyword occurrences and construct two measures: GenAI Mentions and a binary treatment indicator."
+    ],
+    "population": [
+      "Our initial sample comprises 809 unique bank holding companies.",
+      "After requiring non-missing values for key variables and a minimum of four quarterly observations, our estimation sample includes 126 banks with complete data, of which 41 are classified as AI adopters (having at least one quarter with positive GenAI mentions) and 85 serve as control banks (zero GenAI mentions throughout the sample period).",
+      "The sample covers 809 unique bank holding companies observed quarterly from 2018Q1 to 2025Q4."
+    ],
+    "arms": [
+      "Banks that mention GenAI in their SEC filings after 2023Q1 are \"treated,\" while banks that never mention GenAI serve as controls.",
+      "41 are classified as AI adopters (having at least one quarter with positive GenAI mentions) and 85 serve as control banks (zero GenAI mentions throughout the sample period).",
+      "Large banks are defined as those in the top quartile of average total assets; small banks are in the bottom three quartiles.",
+      "Treated Banks 10, Control Banks 36 in the full sample; Treated Banks 4, Control Banks 8 for large banks; Treated Banks 6, Control Banks 28 for small banks."
+    ],
+    "outcome_definitions": [
+      "ROA (Return on Assets): Net income divided by total assets for bank i in quarter t, expressed in percentage points. Winsorized at the 1st and 99th percentiles to mitigate outlier influence.",
+      "ROE (Return on Equity): Net income divided by total equity for bank i in quarter t, expressed in percentage points. Winsorized at the 1st and 99th percentiles.",
+      "Our primary productivity measures are ROA and ROE.",
+      "Both measures are winsorized at the 1st and 99th percentiles to mitigate the influence of outliers."
+    ],
+    "statistical_results": [
+      "DSDM estimates show that AI-adopting banks are high performers (\u03b2 >0)",
+      "The causal SDID analysis documents a significant \"Implementation Tax\"\u2014adopting banks experience a 428-basis-point decline in ROE as they absorb GenAI integration costs.",
+      "Bottom-quartile banks suffering a 517-basis-point ROE decline compared to 129 basis points for larger banks",
+      "Our DSDM analysis reveals significant positive spillovers (\u03b8= 0.161 for ROA, p <0.01; \u03b8= 0.679 for ROE, p <0.05)",
+      "Spillovers among large banks reaching \u03b8= 3.13 for ROE",
+      "The direct effect of AI adoption (\u03b2) is positive and statistically significant across specifications: 3.7 basis points for ROA and 42 basis points for ROE using the network weight matrix.",
+      "Using the network weight matrix, \u03b8= 0.161 (p <0.01) for ROA and \u03b8= 0.679 (p <0.05) for ROE.",
+      "Tier 1 capital ratios are positively associated with ROA (0.087, p <0.01)",
+      "The digitalization index shows divergent effects: positive for ROA (0.099, p <0.01) but negative for ROE (\u22121.71, p <0.01)",
+      "CEO age exhibits a marginally negative effect on ROE (\u22120.48, p <0.10)",
+      "AI adoption (\u03b2) 0.0373** for ROA and 0.4199*** for ROE using Wnetwork",
+      "W\u00d7AI Adoption (\u03b8) 0.1606*** for ROA and 0.6787** for ROE using Wnetwork",
+      "Temporal Lag (\u03c4) 0.6363*** for ROA and 0.6967*** for ROE using Wnetwork",
+      "Spatial Lag (\u03c1) 0.6166*** for ROA and 0.7453*** for ROE using Wnetwork",
+      "Spatial-Temporal Lag (\u03b7) \u22120.2898*** for ROA and \u22120.4653*** for ROE using Wnetwork",
+      "Direct Effect 0.0923** for ROA and 0.7634*** for ROE",
+      "Indirect Effect (Spillovers) 0.4289*** for ROA and 3.8941*** for ROE",
+      "Total Effect 0.5212*** for ROA and 4.6575*** for ROE",
+      "Indirect/Total Ratio 82.3% for ROA and 83.6% for ROE",
+      "AI adoption causes ROA to decline by 46 basis points and ROE to decline by 428 basis points.",
+      "ATT \u22120.456** for ROA in full sample",
+      "ATT \u22124.282*** for ROE in full sample",
+      "Large Banks: ATT \u22120.159*** for ROA and \u22121.286*** for ROE",
+      "Small Banks: ATT \u22120.594** for ROA and \u22125.167*** for ROE",
+      "Smaller banks (bottom 75% by assets) experience a substantially larger Implementation Tax: an ROE decline of 517 basis points compared to only 129 basis points for larger banks.",
+      "Smaller banks suffer a 59-basis-point ROA decline versus 16 basis points for larger institutions.",
+      "In Panel (a), the ATT on ROA improves from approximately \u22120.10% in the quarter immediately preceding adoption to +0.30% in the adoption quarter.",
+      "This 40-basis-point improvement is economically substantial and statistically significant.",
+      "Panel (b) reveals a more complex pattern for ROE. The pre-treatment decline is more pronounced (reaching \u22123.1% at t=\u22121), reflecting the leverage-amplified impact of transition costs on equity returns.",
+      "Following adoption, ROE improves substantially, representing a 190-basis-point improvement relative to the pre-treatment trend.",
+      "For large banks, the spillover coefficient \u03b8 is massive: 0.35 for ROA and an extraordinary 3.13 for ROE.",
+      "For small banks, spillovers are modest (0.11 for ROA) or statistically insignificant (0.15 for ROE).",
+      "AI Adoption (\u03b2) 0.0441*** for ROA and 0.3622*** for ROE for large banks",
+      "AI Adoption (\u03b2) 0.0381** for ROA and 0.4730*** for ROE for small banks",
+      "W\u00d7AI Adoption (\u03b8) 0.3466*** for ROA and 3.1272*** for ROE for large banks",
+      "W\u00d7AI Adoption (\u03b8) 0.1055** for ROA and 0.1502 for ROE for small banks",
+      "Spatial Lag (\u03c1) 0.6787*** for ROA and 0.7039*** for ROE for large banks",
+      "Spatial Lag (\u03c1) 0.5999*** for ROA and 0.7522*** for ROE for small banks",
+      "Temporal Lag (\u03c4) 0.7313*** for ROA and 0.7150*** for ROE for large banks",
+      "Temporal Lag (\u03c4) 0.6178*** for ROA and 0.6918*** for ROE for small banks"
+    ],
+    "ambiguity_or_caveats": [
+      "While the DSDM effectively captures network spillovers and cross-sectional associations, it faces a fundamental endogeneity concern: banks may adopt AI because they are already becoming more productive, rather than AI causing productivity improvements.",
+      "The positive \u03b2 coefficient may reflect a causal effect of AI on productivity, positive selection whereby high-productivity \"frontier\" banks are more likely to adopt AI, or reverse causality in which improving productivity frees resources for AI investment.",
+      "The DSDM cannot distinguish between these interpretations.",
+      "Our treatment measure relies on disclosed AI adoption in SEC filings, which may understate actual implementation.",
+      "Our sample period captures only the initial phase of GenAI diffusion; longer-term effects as the J-Curve completes may differ substantially.",
+      "Our network analysis is based on asset similarity rather than actual AI vendor relationships; richer data on technology infrastructure would enable more precise spillover estimation.",
+      "The key identifying assumption is that, absent the ChatGPT shock, treated and control banks would have followed similar productivity trajectories.",
+      "SDID does not require parallel trends. Instead, it re-weights the control group to match the treated group's pre-treatment trajectory perfectly.",
+      "SDID is consistent if either the parallel trends assumption holds (making standard DiD valid) or the synthetic control weights perfectly match pre-treatment outcomes (making synthetic control valid).",
+      "While not directly observable in our data, industry reports suggest that AI-adopting banks rely heavily on similar LLM architectures (GPT-4, Claude, Gemini) and vendor solutions, creating shared technical failure modes."
+    ]
+  },
+  "notes": "This is an empirical research paper with original experiments. The paper combines two complementary econometric approaches (DSDM and SDID) to study the causal impact of generative AI adoption on bank productivity and systemic risk. The main findings include: (1) a productivity paradox where AI-adopting banks show positive cross-sectional associations (DSDM) but negative causal effects (SDID); (2) heterogeneous implementation costs by bank size, with smaller banks experiencing larger ROE declines; (3) significant positive network spillovers, particularly among large banks (\u03b8=3.13 for ROE), indicating algorithmic coupling and systemic synchronization risk. The paper uses the November 2022 ChatGPT release as an exogenous shock to identify causal effects. Results are presented across multiple specifications and robustness checks.",
+  "_paper_id": "2602.02607v1",
+  "_source_pdf": "papers/2602.02607v1.pdf"
+}

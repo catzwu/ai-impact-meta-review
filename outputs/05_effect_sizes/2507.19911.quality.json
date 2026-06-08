@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2507.19911",
+  "citation_key": "kikuchi_2025_ai_spatial",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper is a theoretical and empirical framework study analyzing AI-driven spatial distribution dynamics in Tokyo's aging society. It does not contain a controlled experiment comparing human-only vs. human+AI task performance. The study examines causal effects of AI implementation on agglomeration concentration at the ward/industry level using econometric methods (DiD, event studies, synthetic control, IV, PSM). The reported treatment effects (e.g., 0.045 percentage point increase in concentration, Table 2) measure spatial economic outcomes, not individual human task quality or speed. There is no human-only baseline arm performing tasks that can be compared to a human+AI arm on a quality outcome. The 'treatment' is AI adoption by geographic/industry units, not AI assistance to individual workers on a measurable task.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After thorough re-read, this is a spatial economics paper studying AI adoption effects on metropolitan agglomeration patterns, not a human-vs-AI task performance study. The 'treatment' is AI implementation at the ward-industry level (e.g., Difference-in-Differences estimate of 0.045 in Table 2 represents percentage point change in spatial concentration index). The paper analyzes demographic transition, productivity, and spatial distribution using panel data from Tokyo's 23 wards across 2000-2023. There are no individual human workers performing tasks with/without AI assistance, and no quality outcome (accuracy, error rate, rubric score) measured at the task level. The heterogeneous treatment effects by industry (Table 3: high AI-readiness industries +8.4pp, low +1.2pp) are still spatial concentration measures, not task quality. This study is outside the scope of human-AI collaboration performance experiments.",
+    "source_quotes": [
+      "This paper develops the first comprehensive theoretical and empirical framework for analyzing AI-driven spatial distribution dynamics in metropolitan areas undergoing demographic transition.",
+      "The causal analysis reveals that AI implementation increases agglomeration concentration by 4.2-5.2 percentage points, with heterogeneous effects across industries",
+      "Table 2: Causal Effects of AI Implementation on Spatial Agglomeration - Difference-in-Differences: Treatment Effect 0.045**",
+      "Table 3: Heterogeneous Treatment Effects by Industry AI Readiness - High AI Readiness (IT, Finance, Professional) 0.084**, Low AI Readiness (Retail, Hospitality, Transport) 0.012",
+      "Using Tokyo as our empirical laboratory, we implement rigorous causal identification through five complementary econometric strategies"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After thorough re-read, this is a spatial economics paper studying AI adoption effects on metropolitan agglomeration patterns, not a human-vs-AI task performance study. The 'treatment' is AI implementation at the ward-industry level (e.g., Difference-in-Differences estimate of 0.045 in Table 2 represents percentage point change in spatial concentration index). The paper analyzes demographic transition, productivity, and spatial distribution using panel data from Tokyo's 23 wards across 2000-2023. There are no individual human workers performing tasks with/without AI assistance, and no quality outcome (accuracy, error rate, rubric score) measured at the task level. The heterogeneous treatment effects by industry (Table 3: high AI-readiness industries +8.4pp, low +1.2pp) are still spatial concentration measures, not task quality. This study is outside the scope of human-AI collaboration performance experiments. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

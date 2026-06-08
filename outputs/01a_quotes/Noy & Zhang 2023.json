@@ -1,0 +1,81 @@
+{
+  "citation_key": "noy_2023_chatgpt_productivity",
+  "authors": [
+    "Shakked Noy",
+    "Whitney Zhang"
+  ],
+  "title": "Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence",
+  "year": 2023,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "In a preregistered online experiment, we assign occupation-specific, incentivized writing tasks to 444 college-educated professionals, and randomly expose half of them to ChatGPT.",
+      "A randomly-selected 50% of our participants\u2014the treatment group\u2014are instructed to sign up for ChatGPT between the first and second task, are walked through how to use it, and are told they are permitted to use it on the second task if they find it useful. The control group is instead instructed to sign up for the LaTeX editor Overleaf.",
+      "This design allows us to estimate the causal effects of ChatGPT using a combination of within-person and between-person variation, and performance on the first task serves as a measure of baseline ability that enables our inequality analyses.",
+      "The research described in this article was approved by the MIT Committee on the Use of Humans as Experimental Subjects, and was preregistered at the AEA RCT Registry (AEARCTR-0010882).",
+      "Our partly within-person design, which controls for performance on the pre-treatment task, should eliminate any influence of selective attrition on our results; in the Online Appendix, we also report Lee (2009) bounds on our main results and versions of our results controlling for employment status and occupation, which confirm that our results are highly robust to selective attrition."
+    ],
+    "task": [
+      "we recruit 444 experienced, college-educated professionals and assign each to complete two occupation-specific, incentivized writing tasks. The occupations we draw on are marketers, grant writers, consultants, data analysts, human resource professionals, and managers. The tasks, which include writing press releases, short reports, analysis plans, and delicate emails, comprise 20-to 30-minute assignments designed to resemble real tasks performed in these occupations; indeed, most of our participants report completing similar tasks before and rate the assigned tasks as realistic representations of their everyday work.",
+      "Participants face high-powered incentives, in the form of large bonus payments, to produce high-quality work.",
+      "Quality is assessed by (blinded) experienced professionals working in the same occupations. Evaluators are asked to treat the output as if encountered in a work setting and are incentivized to grade outputs carefully. Evaluators assign an overall grade as well as separate grades for writing quality, content quality, and originality. Each piece of output is seen by three evaluators, with an average within-essay cross-evaluator correlation of 0.44."
+    ],
+    "population": [
+      "we recruit 444 experienced, college-educated professionals",
+      "The occupations we draw on are marketers, grant writers, consultants, data analysts, human resource professionals, and managers.",
+      "Descriptive statistics about the sample, as well as balance and selective attrition tests, are available in Table 1. The attrition rate is 5% in the control group and 10% in the treatment group.",
+      "Balance tests indicate that across 13 pre-treatment characteristics, the treatment and control group exhibit a small significant difference only for only two characteristic (employment status and being an HR professional).",
+      "Prior to treatment, about 70% of our participants had heard of ChatGPT and 30% had used it before."
+    ],
+    "arms": [
+      "A randomly-selected 50% of our participants\u2014the treatment group\u2014are instructed to sign up for ChatGPT between the first and second task, are walked through how to use it, and are told they are permitted to use it on the second task if they find it useful. The control group is instead instructed to sign up for the LaTeX editor Overleaf.",
+      "In the treatment group, 92% of treated participants successfully sign up for ChatGPT, and 81% choose to use it on the second task, giving it an average self-assessed usefulness score of 4.4 out of 5.",
+      "These results are virtually identical across our two main incentive schemes, covering 80% of respondents: a \"linear\" scheme in which respondents are paid $1 for each point they receive on each submission (each of which is graded on a 1-7 point scale), and a \"convex\" scheme in which respondents are additionally paid $3 for earning a grade of 6 or 7, giving them an extra incentive to produce high-quality output.",
+      "In one arm involving 20% of participants, we require participants in both the treatment and control group to spend exactly 15 minutes on each task.",
+      "In another arm involving 30% of the treatment group, after completing the second task, respondents are shown their first-task output and given the opportunity to edit or replace it using ChatGPT if they wish."
+    ],
+    "outcome_definitions": [
+      "We measure productivity as earnings per minute.",
+      "We collect participants' output and elicit total time taken, time taken on various subcomponents of the task, job satisfaction, self-efficacy, and beliefs about automation.",
+      "We also take a snapshot of each participant's output each minute while they perform the task, to construct an objective measure of time active on the task and to detect ChatGPT usage in the control group and on the pre-treatment task.",
+      "We measure job satisfaction with a question, after each task, about how much participants enjoyed the task, and self-efficacy with a question about how skilled/effective they felt while completing the task, both on 1-10 Likert scales.",
+      "After respondents complete their second task, we elicit three beliefs, each on a 1-10 scale: how worried they are about workers in their occupation being replaced by AI; how optimistic they are that AI will make workers in their occupation more productive; and, overall, how optimistic or pessimistic they feel about future advances in AI."
+    ],
+    "statistical_results": [
+      "Our results show that ChatGPT substantially raises average productivity: time taken decreases by 0.8 SDs and output quality rises by 0.4 SDs.",
+      "In the treatment group, time taken on the post-treatment task drops by 10 minutes (37%) relative to the control group, who take an average of 27 minutes (p = 0.000).",
+      "Average evaluator grades in the treatment group increase by 0.45 standard deviations (p = 0.000), with roughly similar increases for overall grades and specific grades for writing quality, content quality, and originality.",
+      "Figure 1 Panels (c) and (d) show that these effects are not limited to specific pockets of the time or grade distributions: the entire time distribution shifts to the left (faster work) and the entire grade distribution shifts to the right (higher quality).",
+      "In this arm, the treatment increases grades by a similar 0.39 standard deviations (p = 0.13), albeit imprecisely estimated and with a slight imbalance in pre-treatment outcomes (see Online Appendix Figure A.7).",
+      "23% choose to replace their response with ChatGPT's output and 25% use ChatGPT to edit their original response, suggesting that participants view ChatGPT as a way to improve output quality in addition to a convenient way to save time.",
+      "The control group exhibits persistent productivity inequality: participants who score well on the first task also tend to score well on the second task. As Figure 2 Panel (a) shows, there is a correlation of 0.49 between a control participant's average grade on the first task and their average grade on the second task.",
+      "In the treatment group, initial inequalities are half-erased by the treatment: the correlation between first-task and second-task grades is only 0.25 (p-value on difference in slopes = 0.004).",
+      "68% of treated participants report submitting ChatGPT's initial output without editing it, and on average treated participants are active on the task for only 3 minutes after we first observe them pasting in a large quantity of text (presumably from ChatGPT).",
+      "There is also no correlation between how long a participant is active after pasting in the ChatGPT text and the grade they ultimately receive, and treated respondents do not receive higher average grades than raw ChatGPT output that we give to evaluators to grade, meaning we find no evidence that human editing is improving the ChatGPT output.",
+      "Figure 3 Panel B show that average willingness to pay for ChatGPT is flat across the terciles of both our measures of writing skill: respondents, regardless of their writing skills, are willing to pay about 0.5% of their monthly salary for a monthly subscription to ChatGPT.",
+      "Grade gains from ChatGPT are also roughly flat across both measures of relative writing skills: people with comparatively poor writing skills do not experience unusually large grade gains.",
+      "Figure 4 Panel (a) shows that ChatGPT substantially increases job satisfaction, by about 0.40 standard deviations (p = 0.000).",
+      "Panel B shows that it mildly and imprecisely increases self-efficacy, by 0.20 standard deviations (p = 0.060), despite the fact that participants are mostly using it to substitute for their own effort.",
+      "worry about automation increases by 0.26 standard deviations (p = 0.006), excitement by 0.39 (p = 0.000), and net optimism increases by about 0.20 (p = 0.037).",
+      "33% of former treatment group participants have used ChatGPT in their job in the past week, relative to 18% of control group participants.",
+      "Restricting to workers who had not previously used ChatGPT when they participated in our main experiment, 26% of treated and 9% of control workers are now using ChatGPT in their jobs (p-value on difference 0.048).",
+      "Users give it an average usefulness score of 3.65/5.00, somewhat lower than in our main experiment, likely owing to the greater length and complexity of real-world tasks.",
+      "There is no difference between the former treatment and control in their overall satisfaction with their job in the followup survey."
+    ],
+    "ambiguity_or_caveats": [
+      "Self-reported and objective measures indicate only 10-20% of the control group use ChatGPT on the tasks, meaning there is at least a 60 percentage point experimentally-induced gap in usage between our treatment and control groups on the second task. The fact that some control participants are using the tool means our estimates provide lower bounds on the effects of ChatGPT usage on productivity.",
+      "These results are virtually identical across our two main incentive schemes, covering 80% of respondents",
+      "We observe neither of these pieces of evidence, suggesting that ChatGPT is increasing productivity primarily by substituting for worker effort.",
+      "This is true even when participants are given strong pecuniary incentives to do so, in the convex incentives group.",
+      "One indication of the value of ChatGPT to participants is whether they continue to use it after the experiment. To track whether participants are subsequently using ChatGPT in their real jobs, we resurvey them two weeks after their completion of the initial survey. This followup is still in progress, with an 82% response rate among the 423 respondents who have been invited so far, and no evidence of differential response rates by treatment status.",
+      "Respondents who are not using ChatGPT in their jobs mostly report that this is because the chatbot lacks context-specific knowledge that forms an important part of their writing. For example, they report that their writing is \"very specifically tailored to [their] customers and involves real time information\" or \"unique [and] specific to [their] company products.\"",
+      "These comments point to an important (and inherent) limitation of our experiment: it involves relatively small, self-contained tasks that lack much context-specific knowledge beyond what we stipulate in the task prompts.",
+      "First, the tasks are relatively short, self-contained, and lack a dimension of context-specific knowledge, which may inflate our estimates of ChatGPT's usefulness.",
+      "The results on job satisfaction and self-efficacy are similarly limited, reflecting enjoyment of a small task rather than feelings about a worker's whole job, as evidenced by the fact that there is no difference between the treatment and control groups in real job satisfaction after two weeks.",
+      "Second, an experiment, by its nature, captures only direct, immediate effects of ChatGPT on the selected occupations. There will be many indirect, reinforcing, or counteracting \"general-equilibrium\" effects as labor markets and production systems adapt to the advent of technologies like ChatGPT. The effects of ChatGPT will also likely vary by occupation, task, and skill level."
+    ]
+  },
+  "notes": "This is a preregistered randomized controlled trial (RCT) with 444 college-educated professionals assigned to either ChatGPT access (treatment) or Overleaf access (control). The study measures productivity effects on writing tasks through both within-person (pre/post) and between-person comparisons. The paper includes supplementary arms with fixed time and editing opportunities. A two-week follow-up survey is ongoing at the time of writing. The main results show substantial productivity gains (0.8 SD reduction in time, 0.4 SD increase in quality), reduced inequality, and evidence of substitution rather than complementarity.",
+  "_paper_id": "Noy & Zhang 2023",
+  "_source_pdf": "papers/Noy & Zhang 2023.pdf"
+}

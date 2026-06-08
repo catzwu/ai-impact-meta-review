@@ -1,0 +1,77 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "productivity",
+      "category": "speed",
+      "operationalization": "count of ad submissions produced by participants within the 40-minute session"
+    },
+    {
+      "outcome_name": "text_quality",
+      "category": "quality",
+      "operationalization": "human ratings on 7-point Likert scale evaluating whether text is present, clear, relevant, and engaging"
+    },
+    {
+      "outcome_name": "image_quality",
+      "category": "quality",
+      "operationalization": "human ratings on 7-point Likert scale evaluating visual appeal of ad images"
+    },
+    {
+      "outcome_name": "click_rating",
+      "category": "quality",
+      "operationalization": "human ratings on 7-point Likert scale estimating likelihood of clicking on the ad"
+    },
+    {
+      "outcome_name": "output_diversity",
+      "category": "other",
+      "operationalization": "cosine distance from each ad's text embedding to the treatment group centroid using OpenAI text-embedding-3-small model; measures diversity/atypicality of content, not speed or quality"
+    },
+    {
+      "outcome_name": "delegation",
+      "category": "other",
+      "operationalization": "fraction of text editing work performed by partner rather than focal participant, calculated as one minus participant's character contribution divided by total; measures work distribution, not output speed or quality"
+    },
+    {
+      "outcome_name": "message_count",
+      "category": "other",
+      "operationalization": "count of messages sent by participant during the session; measures communication activity, not output speed or quality"
+    },
+    {
+      "outcome_name": "task_oriented_messages",
+      "category": "other",
+      "operationalization": "fraction of messages labeled as content or process; measures communication style, not output speed or quality"
+    },
+    {
+      "outcome_name": "interpersonal_messages",
+      "category": "other",
+      "operationalization": "fraction of messages labeled as emotional or social; measures communication style, not output speed or quality"
+    },
+    {
+      "outcome_name": "copy_edits",
+      "category": "other",
+      "operationalization": "count of text input events during ad copy creation; measures editing activity, not final output speed or quality"
+    },
+    {
+      "outcome_name": "click_through_rate",
+      "category": "quality",
+      "operationalization": "percentage of ad views that resulted in clicks, measured from actual ad deployment"
+    },
+    {
+      "outcome_name": "cost_per_click",
+      "category": "other",
+      "operationalization": "cost in dollars per click from actual ad deployment; measures economic efficiency, not output speed or quality"
+    },
+    {
+      "outcome_name": "view_through_rate",
+      "category": "quality",
+      "operationalization": "fraction of document viewed by users exposed to the ad"
+    },
+    {
+      "outcome_name": "view_through_duration",
+      "category": "quality",
+      "operationalization": "duration in seconds that users viewed content after ad exposure"
+    }
+  ],
+  "primary_speed_outcome": "productivity",
+  "primary_quality_outcome": "text_quality",
+  "citation_key": "ju_2026_collaborating_ai"
+}

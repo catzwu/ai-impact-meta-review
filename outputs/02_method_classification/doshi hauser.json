@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study involved random assignment of participants to three conditions (Human-only, Human with one GenAI idea, Human with five GenAI ideas) in an online setting. This is a randomized controlled trial conducted online via Prolific, not in a controlled lab environment or real workplace setting.",
+  "citation_key": "doshi_2024_generative_creativity"
+}

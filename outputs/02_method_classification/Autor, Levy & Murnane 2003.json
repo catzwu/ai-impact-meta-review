@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study analyzes changes over time in occupational employment distribution and skill content using Census data from 1960-1998 and Dictionary of Occupational Titles data from 1977-1991. There is no randomization or quasi-experimental identification strategy; it is a descriptive analysis of how computerization correlates with changes in job content and skill demands over time.",
+  "citation_key": "autor_2003_computerization_skills"
+}

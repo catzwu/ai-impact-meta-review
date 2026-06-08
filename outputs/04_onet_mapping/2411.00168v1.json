@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants were 'tasked with creating a 1080 \u00d7 1080 pixel advertisement for a social media advertising campaign' \u2014 this is fundamentally a creative design task requiring original visual composition and conceptual development. While the output is digital and involves design tools, the core work activity being measured is creative ideation and execution, not technical software operation or graphic design as an occupation. The 25-minute timeframe and requirement to produce 'one to two designs' emphasizes the creative generation aspect rather than the full scope of a professional graphic designer's role.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-04",
+      "onet_label": "Drafting, Laying Out, and Specifying Technical Devices, Parts, and Equipment"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "27-1024.00",
+      "onet_label": "Graphic Designers"
+    }
+  ],
+  "citation_key": "fu_2024_creativity_ai"
+}

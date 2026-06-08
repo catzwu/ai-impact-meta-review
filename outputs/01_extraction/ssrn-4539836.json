@@ -1,0 +1,562 @@
+{
+  "citation_key": "choi_2024_ai_legal_analysis",
+  "authors": [
+    "Jonathan H. Choi",
+    "Daniel Schwarcz"
+  ],
+  "title": "AI Assistance in Legal Analysis: An Empirical Study",
+  "year": 2024,
+  "venue": "Journal of Legal Education, Volume 73, Number 2",
+  "study_design_description": "The study recruited law students from two classes at the University of Minnesota Law School in spring 2023. After completing a one-hour training course on using GPT-4 effectively in legal analysis, participants used GPT-4 to help them take portions of real exams administered in the same classes in spring 2022. Exams produced by AI-assisted humans and by AI alone were mixed with exams written by real students in 2022 without AI assistance and blindly graded. The study also evaluated GPT-4's performance alone using four distinct prompting methods: basic prompting, chain-of-thought prompting, few-shot prompting, and grounded prompting.",
+  "primary_task_description": "Students completed exam questions from two law school courses: Introduction to American Law and Legal Reasoning (an introductory class covering contract law, tort law, criminal law, civil procedure, property law, and constitutional law) and Insurance Law (an upper-level course). For Introduction to American Law, participants answered fifteen multiple-choice questions and one essay question from the 2022 final exam. For Insurance Law, participants answered two of three essay questions from the 2022 final exam. Exams typically include both multiple-choice questions and essay questions requiring students to analyze novel fact patterns by stating relevant legal issues, specifying applicable legal rules, applying rules to facts, analogizing and distinguishing to relevant case law, and considering counterarguments.",
+  "population_description": "Sixteen out of fifty-two students taking Insurance Law (roughly 31%) completed the study, while thirty-two out of 128 students taking Introduction to American Law (roughly 23%) completed the study. The University of Minnesota Law School is one of the nation's highly regarded public law schools. Most study participants were upper-level law students (2L and 3L), though one undergraduate participated in Insurance Law. Participants agreed to take part in the study before receiving their final grades for the relevant courses and were paid a flat fee for participation unrelated to exam performance.",
+  "arms": [
+    {
+      "arm_name": "human_only",
+      "description": "Students took real exams without access to GPT-4 in spring 2022",
+      "n": null
+    },
+    {
+      "arm_name": "ai_assisted",
+      "description": "Study participants in spring 2023 used GPT-4 to help them take portions of the real exams from spring 2022 after completing training on how to use GPT-4 effectively in legal analysis",
+      "n": 48
+    },
+    {
+      "arm_name": "gpt4_basic_prompting",
+      "description": "Exams produced by GPT-4 alone using basic prompting",
+      "n": null
+    },
+    {
+      "arm_name": "gpt4_chain_of_thought",
+      "description": "Exams produced by GPT-4 alone using chain-of-thought prompting",
+      "n": null
+    },
+    {
+      "arm_name": "gpt4_few_shot",
+      "description": "Exams produced by GPT-4 alone using few-shot prompting",
+      "n": null
+    },
+    {
+      "arm_name": "gpt4_grounded",
+      "description": "Exams produced by GPT-4 alone using grounded prompting (grounded in relevant instructor lecture notes)",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "introduction_to_american_law_multiple_choice_percentile",
+      "outcome_description": "Performance on fifteen multiple-choice questions from the 2022 Introduction to American Law final exam, expressed as percentile points relative to all students enrolled in the class",
+      "measurement_unit": "percentile points",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "introduction_to_american_law_essay_percentile",
+      "outcome_description": "Performance on one essay question from the 2022 Introduction to American Law final exam, expressed as percentile points relative to all students enrolled in the class",
+      "measurement_unit": "percentile points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "insurance_law_essay_percentile",
+      "outcome_description": "Performance on two essay questions from the 2022 Insurance Law final exam, expressed as percentile points relative to all students enrolled in the class",
+      "measurement_unit": "percentile points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "introduction_to_american_law_overall_grade",
+      "outcome_description": "Letter grade assigned to overall exam performance in Introduction to American Law",
+      "measurement_unit": "letter grade",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "insurance_law_overall_grade",
+      "outcome_description": "Letter grade assigned to overall exam performance in Insurance Law",
+      "measurement_unit": "letter grade",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "exam_completion_time_introduction_to_american_law",
+      "outcome_description": "Time taken to complete the Introduction to American Law exam",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "exam_completion_time_insurance_law",
+      "outcome_description": "Time taken to complete the Insurance Law exam",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "introduction_to_american_law_multiple_choice_percentile",
+      "arm_comparison": "ai_assisted vs human_only",
+      "means_and_sds": {
+        "human_only": {
+          "mean": 59.1,
+          "sd": 25.8,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 88.0,
+          "sd": 16.9,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "+28.9 percentile points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "95% CI [+20.3, +38.4]",
+      "verbatim_quote": "For the Introduction to American Law multiple-choice questions, the Human-Only Mean was 59.1 (49.9, 67.3), the AI-Assisted Mean was 88.0 (81.0, 92.8), and the Mean Change was +28.9 (+20.3, +38.4)."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_essay_percentile",
+      "arm_comparison": "ai_assisted vs human_only",
+      "means_and_sds": {
+        "human_only": {
+          "mean": 49.5,
+          "sd": 29.4,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 53.0,
+          "sd": 28.0,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "+3.5 percentile points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "95% CI [-6.7, +15.3]",
+      "verbatim_quote": "For the Introduction to American Law essay question, the Human-Only Mean was 49.5 (39.1, 59.2), the AI-Assisted Mean was 53.0 (43.3, 62.1), and the Mean Change was +3.5 (-6.7, +15.3)."
+    },
+    {
+      "outcome_name": "insurance_law_essay_percentile",
+      "arm_comparison": "ai_assisted vs human_only",
+      "means_and_sds": {
+        "human_only": {
+          "mean": 47.5,
+          "sd": 31.6,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 46.3,
+          "sd": 27.2,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-1.3 percentile points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "95% CI [-9.7, +7.7]",
+      "verbatim_quote": "For Insurance Law, the Human-Only Mean was 47.5 (33.4, 63.3), the AI-Assisted Mean was 46.3 (32.2, 58.1), and the Mean Change was -1.3 (-9.7, +7.7)."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_multiple_choice_percentile",
+      "arm_comparison": "gpt4_basic_prompting vs human_only",
+      "means_and_sds": {
+        "gpt4_basic_prompting": {
+          "mean": 79,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the multiple-choice questions in the Introduction to American Law exam, GPT-4 achieved 79 with basic prompting, 79 with chain of thought, 100 with few shot, and 100 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_multiple_choice_percentile",
+      "arm_comparison": "gpt4_chain_of_thought vs human_only",
+      "means_and_sds": {
+        "gpt4_chain_of_thought": {
+          "mean": 79,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the multiple-choice questions in the Introduction to American Law exam, GPT-4 achieved 79 with basic prompting, 79 with chain of thought, 100 with few shot, and 100 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_multiple_choice_percentile",
+      "arm_comparison": "gpt4_few_shot vs human_only",
+      "means_and_sds": {
+        "gpt4_few_shot": {
+          "mean": 100,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the multiple-choice questions in the Introduction to American Law exam, GPT-4 achieved 79 with basic prompting, 79 with chain of thought, 100 with few shot, and 100 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_multiple_choice_percentile",
+      "arm_comparison": "gpt4_grounded vs human_only",
+      "means_and_sds": {
+        "gpt4_grounded": {
+          "mean": 100,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the multiple-choice questions in the Introduction to American Law exam, GPT-4 achieved 79 with basic prompting, 79 with chain of thought, 100 with few shot, and 100 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_essay_percentile",
+      "arm_comparison": "gpt4_basic_prompting vs human_only",
+      "means_and_sds": {
+        "gpt4_basic_prompting": {
+          "mean": 60,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the Introduction to American Law essay, GPT-4 achieved 60 with basic prompting, 56 with chain of thought, 56 with few shot, and 93 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_essay_percentile",
+      "arm_comparison": "gpt4_chain_of_thought vs human_only",
+      "means_and_sds": {
+        "gpt4_chain_of_thought": {
+          "mean": 56,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the Introduction to American Law essay, GPT-4 achieved 60 with basic prompting, 56 with chain of thought, 56 with few shot, and 93 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_essay_percentile",
+      "arm_comparison": "gpt4_few_shot vs human_only",
+      "means_and_sds": {
+        "gpt4_few_shot": {
+          "mean": 56,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the Introduction to American Law essay, GPT-4 achieved 60 with basic prompting, 56 with chain of thought, 56 with few shot, and 93 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_essay_percentile",
+      "arm_comparison": "gpt4_grounded vs human_only",
+      "means_and_sds": {
+        "gpt4_grounded": {
+          "mean": 93,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the Introduction to American Law essay, GPT-4 achieved 60 with basic prompting, 56 with chain of thought, 56 with few shot, and 93 with grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_essay_percentile",
+      "arm_comparison": "gpt4_basic_prompting vs human_only",
+      "means_and_sds": {
+        "gpt4_basic_prompting": {
+          "mean": 5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For Insurance Law, GPT-4 achieved 5 with basic prompting, 15 with chain of thought, 30 with few shot, and 65 with grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_essay_percentile",
+      "arm_comparison": "gpt4_chain_of_thought vs human_only",
+      "means_and_sds": {
+        "gpt4_chain_of_thought": {
+          "mean": 15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For Insurance Law, GPT-4 achieved 5 with basic prompting, 15 with chain of thought, 30 with few shot, and 65 with grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_essay_percentile",
+      "arm_comparison": "gpt4_few_shot vs human_only",
+      "means_and_sds": {
+        "gpt4_few_shot": {
+          "mean": 30,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For Insurance Law, GPT-4 achieved 5 with basic prompting, 15 with chain of thought, 30 with few shot, and 65 with grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_essay_percentile",
+      "arm_comparison": "gpt4_grounded vs human_only",
+      "means_and_sds": {
+        "gpt4_grounded": {
+          "mean": 65,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For Insurance Law, GPT-4 achieved 5 with basic prompting, 15 with chain of thought, 30 with few shot, and 65 with grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_overall_grade",
+      "arm_comparison": "ai_assisted vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "median improved from B to A-",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Introduction to American Law, the median grade received by students in our study without AI assistance was a B. With AI assistance, the median grade improved to an A\u2013, a result that was driven by the improvement in students' multiple-choice answers, which counted for 50% of the overall exam score."
+    },
+    {
+      "outcome_name": "insurance_law_overall_grade",
+      "arm_comparison": "ai_assisted vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "median grade unchanged at B/B+",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Insurance Law, the median grade received by students in our study without AI assistance was a B/B+. Applying this grading curve to the exam taken with AI assistance, that median grade was unchanged."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_overall_grade",
+      "arm_comparison": "gpt4_basic_prompting vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "A\u2013 grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On its own in Introduction to American Law, GPT-4 attained an A\u2013 grade with basic prompting, a B+ grade with chain-of-thought prompting, and an A grade with both few-shot and grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_overall_grade",
+      "arm_comparison": "gpt4_chain_of_thought vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "B+ grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On its own in Introduction to American Law, GPT-4 attained an A\u2013 grade with basic prompting, a B+ grade with chain-of-thought prompting, and an A grade with both few-shot and grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_overall_grade",
+      "arm_comparison": "gpt4_few_shot vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "A grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On its own in Introduction to American Law, GPT-4 attained an A\u2013 grade with basic prompting, a B+ grade with chain-of-thought prompting, and an A grade with both few-shot and grounded prompting."
+    },
+    {
+      "outcome_name": "introduction_to_american_law_overall_grade",
+      "arm_comparison": "gpt4_grounded vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "A grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On its own in Introduction to American Law, GPT-4 attained an A\u2013 grade with basic prompting, a B+ grade with chain-of-thought prompting, and an A grade with both few-shot and grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_overall_grade",
+      "arm_comparison": "gpt4_basic_prompting vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "B grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Insurance Law, GPT-4 achieved a B grade with basic prompting, a B/B+ grade with chain-of-thought prompting, a B+ grade with few-shot prompting, and an A\u2013 grade with grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_overall_grade",
+      "arm_comparison": "gpt4_chain_of_thought vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "B/B+ grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Insurance Law, GPT-4 achieved a B grade with basic prompting, a B/B+ grade with chain-of-thought prompting, a B+ grade with few-shot prompting, and an A\u2013 grade with grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_overall_grade",
+      "arm_comparison": "gpt4_few_shot vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "B+ grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Insurance Law, GPT-4 achieved a B grade with basic prompting, a B/B+ grade with chain-of-thought prompting, a B+ grade with few-shot prompting, and an A\u2013 grade with grounded prompting."
+    },
+    {
+      "outcome_name": "insurance_law_overall_grade",
+      "arm_comparison": "gpt4_grounded vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "A\u2013 grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Insurance Law, GPT-4 achieved a B grade with basic prompting, a B/B+ grade with chain-of-thought prompting, a B+ grade with few-shot prompting, and an A\u2013 grade with grounded prompting."
+    },
+    {
+      "outcome_name": "exam_completion_time_introduction_to_american_law",
+      "arm_comparison": "ai_assisted vs human_only",
+      "means_and_sds": {
+        "human_only": {
+          "mean": 74.5,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 62.9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "11.6 minutes faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On the real exam without AI assistance, our participants took an average of 74.5 minutes out of 75 allotted minutes to finish the final exam for Introduction to American Law. With access to GPT-4, our participants took an average of 62.9 minutes to finish the exam."
+    },
+    {
+      "outcome_name": "exam_completion_time_introduction_to_american_law",
+      "arm_comparison": "ai_assisted vs human_only (excluding three fast completers)",
+      "means_and_sds": {
+        "human_only": {
+          "mean": 73.1,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 66.9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "6.2 minutes faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When we exclude these three participants, the average time taken on the AI-assisted exam increases to 66.9 minutes, and the average time taken on the real human-only exam decreases to 73.1 minutes, still a statistically significant difference."
+    },
+    {
+      "outcome_name": "exam_completion_time_insurance_law",
+      "arm_comparison": "ai_assisted vs human_only",
+      "means_and_sds": {
+        "ai_assisted": {
+          "mean": 115.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We were not able to track how long study participants took to complete their actual final exam in Insurance Law, but with access to GPT-4, they took an average of 115.4 minutes out of the time limit of 120 minutes."
+    }
+  ],
+  "notes": "The study involved 48 total participants (16 Insurance Law students and 32 Introduction to American Law students). The paper reports results separately for multiple-choice and essay components of exams. The study notes several caveats regarding external validity: (1) the training provided may have been inadequate; (2) students may have been less motivated in the study than in real graded exams, or conversely, better prepared and more at ease; (3) results may not generalize to other settings, particularly nonlegal settings; (4) the \"AI-only\" methodologies vary in the extent to which they require human input, and the performance reported may represent a ceiling on what is possible with current technology. The paper also notes that results in Figure 4 may be largely driven by mean reversion, and interpretation crucially assumes perfect parallel forms reliability of law school exams. The study found that AI assistance dramatically improved student results on multiple-choice questions (+29 percentile points for Introduction to American Law) but had no effect on essay components. The worst-performing students benefited most from AI (approximately +45 percentile points), while the best-performing students received worse grades with AI access (approximately -20 percentile points). A correlation analysis showed that grades assigned in 2022 and 2023 were moderately correlated for Introduction to American Law (r = 0.77) and highly correlated for Insurance Law (r = 0.94).",
+  "_paper_id": "ssrn-4539836"
+}

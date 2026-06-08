@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Assessing_Open_Source_Software_Developers_Opportunity_Costs_in_a_Time_of_Genera",
+  "citation_key": "li_2026_copilot_oss",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "non_pro_users",
+    "ai_arm_name": "pro_users",
+    "ai_arm_selection_rationale": "Pro users are treated as having access to GitHub Copilot X (CX) following the announcement and public release, while non-pro users serve as the control group without AI assistance. This is a natural experiment using subscription status as a proxy for AI tool access.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 806,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 567,
+    "reported_percent_change": 0.12,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.12,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 0.5,
+    "extraction_confidence": "medium",
+    "notes": "This is a difference-in-differences natural experiment. The paper reports multiple regression coefficients for different phases (announcement: \u03b4\u2081=0.1, post-launch: \u03b4\u2082=0.21) and with/without controls (announcement with controls: \u03b4\u2081=0.09, post-launch with controls: \u03b4\u2082=0.12). The overall summary states '12% increase' in commit frequency. I selected the post-launch phase with controls (\u03b4\u2082=0.12) as the primary effect because: (1) it represents the full treatment effect after actual product release, (2) it includes controls for confounders, and (3) it aligns with the overall 12% summary. The baseline mean of 0.5 weekly commits is explicitly stated for computing proportional effects. Standard errors are not reported for the regression coefficients. The outcome is in levels (commits per week), not log-transformed, so regression_outcome_is_log=false. Python can compute log ratio as log(1 + 0.12/0.5) = log(1.24).",
+    "source_quotes": [
+      "We find that treated developers increase commit frequency by approximately 12% and active repositories by 6%.",
+      "Upon incorporating controls for average project lifecycle stage and cumulative developer experience in column 2, the estimated treatment effects weaken modestly yet retain statistical significance (\u03b4\u2081 =0.09, p-value<0.05; \u03b4\u2082 =0.12, p-value<0.01).",
+      "When compared against the sample mean baseline of 0.5 weekly commits, the coefficients in column 2 corresponds to a proportional increase of approximately 28% and 34% during the announcement and post-release phase, respectively.",
+      "Pro users are treated as having access to CX following the announcement and public release.",
+      "Users without GitHub Pro subscription status, serving as the control group."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.11332868530700327,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.1200000000000001,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment. The paper reports multiple regression coefficients for different phases (announcement: \u03b4\u2081=0.1, post-launch: \u03b4\u2082=0.21) and with/without controls (announcement with controls: \u03b4\u2081=0.09, post-launch with controls: \u03b4\u2082=0.12). The overall summary states '12% increase' in commit frequency. I selected the post-launch phase with controls (\u03b4\u2082=0.12) as the primary effect because: (1) it represents the full treatment effect after actual product release, (2) it includes controls for confounders, and (3) it aligns with the overall 12% summary. The baseline mean of 0.5 weekly commits is explicitly stated for computing proportional effects. Standard errors are not reported for the regression coefficients. The outcome is in levels (commits per week), not log-transformed, so regression_outcome_is_log=false. Python can compute log ratio as log(1 + 0.12/0.5) = log(1.24). | CI missing; variance not computable",
+    "n_human": 806,
+    "n_ai": 567
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-22",
+  "onet_label": "Getting Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task across both experiments is retrieving and locating information from various sources (SharePoint documents, Outlook emails/calendars, meeting transcripts, email threads) to answer questions. The verbatim description emphasizes 'information retrieval task' and questions 'requiring information retrieval.' While the experiments include one writing component (blog post), the dominant activity pattern is systematically gathering information from documents and communications systems. This maps precisely to O*NET's 'Getting Information' work activity, defined as observing, receiving, and obtaining information from relevant sources.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    }
+  ],
+  "citation_key": "edelman_2023_copilot_productivity"
+}

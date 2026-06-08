@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly states it uses \"a natural experiment framework with founding year as an exogenous treatment proxy\" and \"leveraged the exogenous shock of AI proliferation as a quasi-experimental breakpoint.\" This is a clear quasi-experimental design comparing pre-AI and AI-era cohorts without random assignment.",
+  "citation_key": "ganuthula_2025_ai_structural"
+}

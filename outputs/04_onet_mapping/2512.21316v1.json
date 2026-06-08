@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "medium",
+  "rationale": "The participants were experienced professionals performing 'strategic report writing and statistical hypothesis testing' along with 'multi-step reasoning' tasks that required 'analysis and writing.' These activities align most closely with analyzing data or information as a generalized work activity. While the study involved diverse professional tasks, the core work being measured centers on analytical and information-processing activities rather than a specific occupation. The medium confidence reflects that participants came from multiple professions performing varied tasks, though all involved substantial analytical components.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-10",
+      "onet_label": "Making Decisions and Solving Problems"
+    }
+  ],
+  "citation_key": "merali_2025_scaling_laws"
+}

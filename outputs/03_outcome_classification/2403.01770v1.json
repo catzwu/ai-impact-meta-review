@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "score_with_vs_without_chatgpt",
+      "category": "quality",
+      "operationalization": "Score out of 10 averaged across three expert assessments of task performance"
+    },
+    {
+      "outcome_name": "time_with_vs_without_chatgpt",
+      "category": "speed",
+      "operationalization": "Time in minutes required to complete tasks, measured from start to completion"
+    },
+    {
+      "outcome_name": "score_improvement_writing_analysis",
+      "category": "quality",
+      "operationalization": "Difference in expert-assessed scores (out of 10) for writing analysis tasks between conditions"
+    },
+    {
+      "outcome_name": "time_improvement_writing_analysis",
+      "category": "speed",
+      "operationalization": "Difference in minutes to complete writing analysis tasks between conditions"
+    },
+    {
+      "outcome_name": "score_improvement_math_data_analysis",
+      "category": "quality",
+      "operationalization": "Difference in expert-assessed scores (out of 10) for math and data analysis tasks between conditions"
+    },
+    {
+      "outcome_name": "time_improvement_math_data_analysis",
+      "category": "speed",
+      "operationalization": "Difference in minutes to complete math and data analysis tasks between conditions"
+    }
+  ],
+  "primary_speed_outcome": "time_with_vs_without_chatgpt",
+  "primary_quality_outcome": "score_with_vs_without_chatgpt",
+  "citation_key": "nakavachara_2024_chatgpt_productivity"
+}

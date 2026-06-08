@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Peng et al. 2023",
+  "citation_key": "peng_2023_copilot_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treated (GitHub Copilot)",
+    "ai_arm_selection_rationale": "Single AI intervention arm (GitHub Copilot) compared to control group without AI access.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 50,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 45,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "After thorough re-read of the full paper, the task success outcome remains insufficiently reported for Hedges' g calculation. The paper states: 'We also find that the treated group's success rate is 7 percentage points higher than the control group, but the estimate is not statistically significant, with a 95% confidence interval of [-0.11, 0.25].' Only the raw difference (7 percentage points) and CI are provided. No means, SDs, SEs, test statistics (t, F), or standardized effect sizes are reported for this outcome. The p-value is described only as 'not statistically significant' with no exact value. The CI bounds [-0.11, 0.25] appear to be for the proportion difference itself, not a standardized effect. Without at least one of: (a) means+SDs, (b) means+SEs, (c) t-statistic+df, (d) F-statistic, (e) reported d/g, or (f) exact p-value with sufficient detail, Hedges' g cannot be computed. The primary outcome in this study is task completion time (55.8% reduction, p=0.0017), not task success rate, which is reported as a secondary finding with minimal statistical detail.",
+    "source_quotes": [
+      "We also find that the treated group's success rate is 7 percentage points higher than the control group, but the estimate is not statistically significant, with a 95% confidence interval of [-0.11, 0.25].",
+      "Task success was measured as the percentage of participants in a group that adequately completed the task.",
+      "Thirty-five developers from both the treated and control groups completed the task and survey."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After thorough re-read of the full paper, the task success outcome remains insufficiently reported for Hedges' g calculation. The paper states: 'We also find that the treated group's success rate is 7 percentage points higher than the control group, but the estimate is not statistically significant, with a 95% confidence interval of [-0.11, 0.25].' Only the raw difference (7 percentage points) and CI are provided. No means, SDs, SEs, test statistics (t, F), or standardized effect sizes are reported for this outcome. The p-value is described only as 'not statistically significant' with no exact value. The CI bounds [-0.11, 0.25] appear to be for the proportion difference itself, not a standardized effect. Without at least one of: (a) means+SDs, (b) means+SEs, (c) t-statistic+df, (d) F-statistic, (e) reported d/g, or (f) exact p-value with sufficient detail, Hedges' g cannot be computed. The primary outcome in this study is task completion time (55.8% reduction, p=0.0017), not task success rate, which is reported as a secondary finding with minimal statistical detail. | arm pair unresolvable",
+    "n_human": 50,
+    "n_ai": 45,
+    "direction_convention": "larger_is_better"
+  }
+}

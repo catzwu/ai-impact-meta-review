@@ -1,0 +1,72 @@
+{
+  "citation_key": "jia_2024_ai_augments_creativity",
+  "authors": [
+    "Nan Jia",
+    "Xueming Luo",
+    "Zheng Fang",
+    "Chengcheng Liao"
+  ],
+  "title": "When and How Artificial Intelligence Augments Employee Creativity",
+  "year": 2024,
+  "venue": "Academy of Management Journal",
+  "quotes": {
+    "study_design": [
+      "We employed a mixed-methods empirical approach. First, we provided causal evidence from a field experiment conducted by a major telemarketing company.",
+      "We conducted a randomized field experiment in a large telemarketing company in Asia, the name of which will remain confidential owing to company preferences.",
+      "The field experiment followed a two (with AI assistance versus no AI assistance) by two (top versus bottom employees) full-factorial design, resulting in four experimental groups.",
+      "We used double randomization: 3,144 customers were randomly assigned to be served by AI human teams or human agents alone, and 40 human agents were randomly assigned to work in AI human teams or independently.",
+      "Subsequently, we conducted semi-structured interviews with the 28 sales agents involved in the field experiment.",
+      "We conducted 28 semi-structured interviews with a random sample of sales agents who participated in the experiment, stratified between agents who received AI assistance and those who did not, and between the top and bottom agents (i.e., we had the same number of interviewees from each of the four treatment groups).",
+      "All interviews were conducted in person and lasted between 50 and 90 minutes."
+    ],
+    "task": [
+      "The task involved making outbound calls to sell credit cards to customers, which comprised generating sales leads, a well-codified activity that an established AI conversational bot technology could perform, and subsequently persuading these sales leads to make purchases, which human sales agents performed.",
+      "The task is to sell credit cards to customers through outbound sales calls.",
+      "In the first stage, employees call customers to introduce general information about the product and probe the initial interest of customers to generate \"sales leads,\" described as customers who are interested in learning more about the product (without yet committing to make a purchase).",
+      "The second stage pertained to sales persuasion, wherein employees continued serving the leads by finding out more about their needs, trying to match their needs with the product, and convincing the lead to make a purchase (i.e., to apply for a credit card in our setting).",
+      "The sales lead generation was a well-codified activity for which the company provided numerous protocols and scripts.",
+      "Sales persuasion was considered a much less structured activity than sales lead generation. While the company provided training to employees with a knowledge bank, unexpected questions commonly occurred, and the knowledge bank needed to be updated."
+    ],
+    "population": [
+      "We conducted a randomized field experiment in a large telemarketing company in Asia, the name of which will remain confidential owing to company preferences. This company specializes in selling a wide variety of products and services to more than 30 million customers across multiple industries, including telecom, retail, fintech, and real estate.",
+      "We randomly assigned 40 top and bottom employees to be assisted by AI or work independently and randomly assigned 3,144 customers to each of the four experimental groups.",
+      "We identified employees whose performance was in the lowest and highest terciles (i.e., the bottom 33% and top 33%, respectively) and then selected 20 employees from each tercile whose performance was closest to one another.",
+      "On average, customers receiving outbound calls in the experiment were 31 years old, and approximately half were men. They were relatively well educated, approximately 70% holding undergraduate or postgraduate degrees. Approximately 25% of customers owned at least one credit card before the call.",
+      "We conducted 28 semi-structured interviews with a random sample of sales agents who participated in the experiment, stratified between agents who received AI assistance and those who did not, and between the top and bottom agents (i.e., we had the same number of interviewees from each of the four treatment groups)."
+    ],
+    "arms": [
+      "The first pertains to the presence of AI assistance. In the groups with AI assistance, the AI conversational bot made outbound calls (the identification of AI was not revealed to customers). If the customer indicated an interest in learning more about the credit cards (i.e., the customer was confirmed as a lead), the conversational bot would thank the customer and hand over the call to a human employee, who was referred to as \"an exclusive VIP client manager,\" to serve as the lead in the sales presentation.",
+      "An employee makes outbound calls in groups without AI assistance to generate sales leads. If the customer indicated an interest, the same employee would thank the customer and say they would become the \"exclusive VIP client manager\" to continue the call and engage in a sales presentation.",
+      "The second factor of the experimental design pertained to employees' expertise. We distinguish top employees from bottom employees based on their prior performance. Specifically, we ranked employees based on their sales volumes of other products for the previous months. We identified employees whose performance was in the lowest and highest terciles (i.e., the bottom 33% and top 33%, respectively) and then selected 20 employees from each tercile whose performance was closest to one another.",
+      "We also have one experimental group in which the AI conversational bot engaged in both lead generation and sales persuasion, without any human agents involved."
+    ],
+    "outcome_definitions": [
+      "To measure an employee's creativity during sales persuasion (i.e., sales presentation to confirmed leads), we analyzed the audio data of all calls in our experiment. A dedicated AI algorithm first identified whether each question asked by customers during sales persuasion was within the scope of the knowledge bank that was used to train employees before the experiment. For questions that fell outside the scope of the knowledge bank (i.e., \"untrained\" questions\"), an experienced manager determined whether employees successfully answered them.",
+      "Employee creativity is measured by solving outside-knowledge-bank questions, which is the ratio of untrained questions successfully resolved by the employee to all questions asked by the focal customer.",
+      "Employee performance is captured by customer purchase, a binary variable indicating whether customers used the link sent to them to open a credit card within 24 hours after the sales call.",
+      "Approximately 4% of all customers who received outbound calls ended up applying for credit cards; among the customers confirmed as sales leads, the purchase rate was 8%."
+    ],
+    "statistical_results": [
+      "With AI assistance, an average agent was 2.33 times as successful in answering questions they were not previously trained for and thus had to generate answers as their counterparts that did not have AI assistance. This difference was statistically significant (p < 0.05).",
+      "Although AI assistance helps both agents at the top and bottom to demonstrate greater creativity than without AI, the magnitude of this increase is much more pronounced among top agents than among bottom agents (p < 0.01).",
+      "Specifically, for top agents, the magnitude of the increased success in answering untrained questions due to receiving AI assistance, compared with no AI assistance, was 2.81 times that of bottom agents.",
+      "Model 2 in Table 2 adds AI-Human Hybrids as a covariate. This shows that all else being equal, an average agent with AI assistance demonstrates greater creativity in solving outside-knowledge-bank questions than the average agent without AI assistance by a degree that amounts to 10% of the mean value of solving outside-knowledge-bank questions.",
+      "Model 4 in Table 3 shows a positive interaction effect produced by AI-Human hybrids and top agents.",
+      "Models 6 and 7 in Table 3 examine the main effect of AI-Human Hybrids on employee creativity in the subsamples of top and bottom agents, respectively. While agents with AI assistance demonstrate greater creativity than those without such assistance in both subsamples, the magnitude of the estimated effect of AI assistance among top agents is six times that of the bottom agents, further substantiating H1.",
+      "Across all covariates, F- and chi-square tests indicated that the differences in the mean values across the experimental groups were jointly insignificant; thus, our data passed the randomization checks.",
+      "We find that customers served by an AI-assisted sales agent are almost twice as likely to make a purchase than those served by sales agents alone, and this difference is statistically significantly different from 0 (p < 0.05).",
+      "The results show that agents with AI assistance, compared to those without, are more successful in solving outside-knowledge-bank questions (which confirms the results mentioned above). In turn, this enhanced success further increases customer purchases.",
+      "The AI-alone group achieved a purchase rate of 0.021, which was similar to that achieved by bottom agents on their own (0.020) but half in magnitude as the purchase rate achieved by top agents on their own (0.037)."
+    ],
+    "ambiguity_or_caveats": [
+      "We restricted the AI conversational bot to following common protocols rather than allowing it to dynamically learn customer preferences and personalize the conversation with each customer (which is more difficult for human agents). This restriction likely makes our results more conservative.",
+      "We note that customers asked substantially fewer questions outside the scope of the knowledge bank than those within the scope.",
+      "Because of the absence of human involvement, insights developed from this treatment group do not directly help us address the research question of this paper which hinges on human agent's creativity demonstrated during sales persuasion.",
+      "More sophisticated forms of AI-human collaboration may involve allowing humans and AI to use or modify the content of others' work (e.g., Choudhury et al. 2020, Jussupow et al. 2021; Kesavan and Kushwaha 2020). Research on such direct interactions between human workers and AI in organizations focuses on what human workers do with AI-generated information (Lebovitz, Lifshitz-Assaf, and Levina 2021; Waardenburg, Huysman, and Sergeeva 2022) and how developers and users of AI co-create technology (van den Broek, Segeeva, and Huysman 2021; Singer, Kellogg, Galper, and Viola 2022). Can direct interaction between AI and human workers enhance employees' creative or innovative outcomes? On the one hand, human workers can \"stand on the shoulders\" of AI-generated predictions about the structured components of their tasks, which could enable them to explore new ideas. On the other hand, human workers have limitations in fully understanding AI's work (Waardenburg, et al 2022) and may stay unengaged with it (Lebovitz et al. 2021), thus hindering their exploration. However, this tension warrants further investigation.",
+      "Although both the domain knowledge and psychology of human workers are important to how they understand, use, and interact with AI (Singer et al 2022; van den Broek et al. 2021, Lebovitz et al 2021), we show that human workers' domain knowledge or job skills critically condition AI's effect on their psychological outcomes. Which is more critical to the productive adoption of AI in organizations\u2014 training human workers with proper domain knowledge or helping them tackle psychological obstacles? Furthermore, does the preparation of necessary domain knowledge need to be coordinated with the right mentality for human workers in AI adoption? These questions deserve further attention."
+    ]
+  },
+  "notes": "This is a mixed-methods empirical study combining a randomized field experiment with semi-structured interviews. The field experiment was conducted at a telemarketing company in Asia selling credit cards. The study examines how AI assistance with lead generation (the initial, well-codified portion of a sales task) affects employee creativity during sales persuasion (the subsequent, higher-level problem-solving portion). The key finding is that AI-augmented employee creativity is skill-biased: higher-skilled employees benefit significantly more from AI assistance than lower-skilled employees. The paper includes both quantitative results from the field experiment (measuring creativity via solving untrained customer questions and performance via customer purchase rates) and qualitative findings from interviews revealing the mechanisms through which AI assistance affects employee cognition and psychology differently for high- vs. low-skilled workers.",
+  "_paper_id": "jiaetal",
+  "_source_pdf": "papers/jiaetal.pdf"
+}

@@ -1,0 +1,52 @@
+{
+  "_paper_id": "Dell'Acqua et al. 2023",
+  "citation_key": "dellacqua_2026_jagged_frontier",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "gpt_plus_overview",
+    "ai_arm_selection_rationale": "Selected gpt_plus_overview over gpt_only because it represents the most capable intervention (GPT-4 plus prompt engineering training) and shows larger effect (1.482 vs 1.307 point increase). This is a between-subjects randomized design with three independent arms.",
+    "direction_convention": "larger_is_better",
+    "m_human": 4.375,
+    "sd_human": null,
+    "se_human": 0.061,
+    "n_human": 130,
+    "m_ai": 5.857,
+    "sd_ai": null,
+    "se_ai": 0.061,
+    "n_ai": 126,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "Sample sizes extracted from Table 2 (Panel A: Inside the frontier) showing N=130 for Control, N=126 for GPT+overview. Standard errors extracted from Table 4 column (1) regression output showing robust standard errors of 0.061 for both GPT+overview and control coefficients. Mean for AI arm calculated as control mean (4.375) + treatment effect (1.482) = 5.857. The control mean of 4.375 is explicitly stated at bottom of Table 4. Treatment effects are highly significant (p<0.001) per asterisks in Table 4.",
+    "source_quotes": [
+      "In column (1) in Table 4, GPT + overview leads to a 1.48 increase in scores over the control mean of 4.37, representing a 33.9% increase",
+      "GPT + overview 1.482*** (0.061)",
+      "Control mean 4.375",
+      "Table 2 Panel A: Inside the frontier - Control N=130, GPT + overview N=126",
+      "All regressions include robust standard errors. *p < 0:10; **p < 0:05; ***p < 0:01."
+    ]
+  },
+  "computed": {
+    "cohens_d": 2.1471380017101667,
+    "hedges_g": 2.140791781015457,
+    "variance": 0.024487716342869913,
+    "computation_method": "means_and_ses",
+    "confidence": "high",
+    "notes": "Sample sizes extracted from Table 2 (Panel A: Inside the frontier) showing N=130 for Control, N=126 for GPT+overview. Standard errors extracted from Table 4 column (1) regression output showing robust standard errors of 0.061 for both GPT+overview and control coefficients. Mean for AI arm calculated as control mean (4.375) + treatment effect (1.482) = 5.857. The control mean of 4.375 is explicitly stated at bottom of Table 4. Treatment effects are highly significant (p<0.001) per asterisks in Table 4.",
+    "n_human": 130,
+    "n_ai": 126,
+    "direction_convention": "larger_is_better"
+  }
+}

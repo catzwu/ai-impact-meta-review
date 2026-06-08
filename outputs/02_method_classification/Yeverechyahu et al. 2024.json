@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly states it 'exploits a natural experiment around GitHub Copilot's launch' where Copilot's differential support for programming languages created an 'exogenous partition.' The identification strategy uses 'a Two-Way Fixed Effects (TWFE) model within a Difference-in-Differences framework' and 'Synthetic Difference-in-Differences,' which are canonical quasi-experimental methods for causal inference without randomization.",
+  "citation_key": "yeverechyahu_2026_llm_opensource"
+}

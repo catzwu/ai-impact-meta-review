@@ -1,0 +1,264 @@
+{
+  "citation_key": "choi_2023_lawyering_ai",
+  "authors": [
+    "Jonathan H. Choi",
+    "Amy B. Monahan",
+    "Daniel Schwarcz"
+  ],
+  "title": "Lawyering in the Age of Artificial Intelligence",
+  "year": 2023,
+  "venue": "working paper",
+  "study_design_description": "A randomized controlled trial in which law school students completed four realistic legal tasks either with or without GPT-4 assistance. Sixty students at the University of Minnesota Law School were randomly assigned to two groups of thirty each. Group A used GPT-4 for contract drafting and complaint drafting tasks, while Group B used GPT-4 for employee handbook and client memo tasks. All work was blind-graded anonymously with no knowledge of participant identity, GPA, GPT use, or time spent on task. Methods and hypotheses were pre-registered with the Open Science Foundation.",
+  "primary_task_description": "Four legal tasks typifying work performed by young attorneys: (1) drafting a complaint for federal court (Section 1983, intentional interference with business relationship, malicious prosecution); (2) drafting a simple contract between homeowner and housepainter; (3) drafting a section of an employee handbook explaining employees' rights to take breaks to pump breastmilk; and (4) drafting a legal memorandum advising a fictional client on a product liability issue regarding warning labels for allergens.",
+  "population_description": "Sixty law school students from the University of Minnesota Law School (ranked 16th in U.S. News) recruited in April 2023 to participate over Summer 2023. Well over 100 students expressed interest; the first sixty volunteers were enrolled, with remaining volunteers placed on a waitlist. Over the duration of the study, 22 participants dropped out and were replaced with new participants from the waitlist. Ultimately 59 students completed the experiment. Participants completed the experiment remotely on their own schedule from June to early August 2023. Study participants likely reflect a higher skill level than average law students or recent graduates and may possess greater technological proficiency and comfort than the average lawyer or law student.",
+  "arms": [
+    {
+      "arm_name": "gpt4_assisted",
+      "description": "Participants assigned to use GPT-4 assistance on two of four tasks (either contract drafting and complaint drafting, or employee handbook and client memo tasks).",
+      "n": 30
+    },
+    {
+      "arm_name": "no_gpt4",
+      "description": "Participants assigned to complete two of four tasks without GPT-4 or any other type of AI assistance (either employee handbook and client memo tasks, or contract drafting and complaint drafting).",
+      "n": 30
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "grade_complaint_drafting",
+      "outcome_description": "Grade assigned for complaint drafting task based on grading standards and norms at the University of Minnesota Law School, graded in entirety by a single investigator using a pre-determined grading rubric.",
+      "measurement_unit": "4.0 grading scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "grade_contract_drafting",
+      "outcome_description": "Grade assigned for contract drafting task based on grading standards and norms at the University of Minnesota Law School, graded in entirety by a single investigator using a pre-determined grading rubric.",
+      "measurement_unit": "4.0 grading scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "grade_employee_handbook",
+      "outcome_description": "Grade assigned for employee handbook drafting task based on grading standards and norms at the University of Minnesota Law School, graded in entirety by a single investigator using a pre-determined grading rubric.",
+      "measurement_unit": "4.0 grading scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "grade_client_memo",
+      "outcome_description": "Grade assigned for client memo task based on grading standards and norms at the University of Minnesota Law School, graded in entirety by a single investigator using a pre-determined grading rubric.",
+      "measurement_unit": "4.0 grading scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_complaint_drafting",
+      "outcome_description": "Time spent by participants completing complaint drafting task, tracked and recorded separately from work product so it would not influence grading.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_contract_drafting",
+      "outcome_description": "Time spent by participants completing contract drafting task, tracked and recorded separately from work product so it would not influence grading.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_employee_handbook",
+      "outcome_description": "Time spent by participants completing employee handbook task, tracked and recorded separately from work product so it would not influence grading.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_client_memo",
+      "outcome_description": "Time spent by participants completing client memo task, tracked and recorded separately from work product so it would not influence grading.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "grade_complaint_drafting",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 3.14,
+          "sd": 0.59,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 3.31,
+          "sd": 0.5,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "+0.17 on 4.0 grading scale",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0862",
+      "confidence_interval": "95% CI [-0.03, 0.37]",
+      "verbatim_quote": "Complaint Drafting: No GPT-4 (Std. Dev.) 3.14 (0.59), With GPT-4 (Std. Dev.) 3.31 (0.50), Difference (95% CI) 0.17 (-0.03, 0.37), p-value 0.0862"
+    },
+    {
+      "outcome_name": "grade_contract_drafting",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 3.0,
+          "sd": 0.56,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 3.24,
+          "sd": 0.4,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "+0.24 on 4.0 grading scale",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0060",
+      "confidence_interval": "95% CI [0.07, 0.41]",
+      "verbatim_quote": "Contract Drafting: No GPT-4 (Std. Dev.) 3.00 (0.56), With GPT-4 (Std. Dev.) 3.24 (0.40), Difference (95% CI) 0.24 (0.07, 0.41), p-value 0.0060"
+    },
+    {
+      "outcome_name": "grade_employee_handbook",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 3.2,
+          "sd": 0.41,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 3.26,
+          "sd": 0.39,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "+0.07 on 4.0 grading scale",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.3532",
+      "confidence_interval": "95% CI [-0.07, 0.21]",
+      "verbatim_quote": "EE Handbook: No GPT-4 (Std. Dev.) 3.20 (0.41), With GPT-4 (Std. Dev.) 3.26 (0.39), Difference (95% CI) 0.07 (-0.07, 0.21), p-value 0.3532"
+    },
+    {
+      "outcome_name": "grade_client_memo",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 2.92,
+          "sd": 0.69,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 2.85,
+          "sd": 0.76,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-0.07 on 4.0 grading scale",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.5980",
+      "confidence_interval": "95% CI [-0.34, 0.18]",
+      "verbatim_quote": "Client Memo: No GPT-4 (Std. Dev.) 2.92 (0.69), With GPT-4 (Std. Dev.) 2.85 (0.76), Difference (95% CI) -0.07 (-0.34, 0.18), p-value 0.5980"
+    },
+    {
+      "outcome_name": "time_complaint_drafting",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 160.69,
+          "sd": 72.38,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 122.0,
+          "sd": 66.8,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-38.77 minutes, -24.1%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0018",
+      "confidence_interval": "95% CI [-64.00, -13.36]",
+      "verbatim_quote": "Complaint Drafting: No GPT-4 (Std. Dev.) 160.69 (72.38), With GPT-4 (Std. Dev.) 122.00 (66.80), Difference (95% CI) -38.77 (-64.00, -13.36), % Difference 24.1%, p-value 0.0018"
+    },
+    {
+      "outcome_name": "time_contract_drafting",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 69.72,
+          "sd": 32.0,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 47.59,
+          "sd": 31.09,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-22.40 minutes, -32.1%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0000",
+      "confidence_interval": "95% CI [-33.71, -10.91]",
+      "verbatim_quote": "Contract Drafting: No GPT-4 (Std. Dev.) 69.72 (32.00), With GPT-4 (Std. Dev.) 47.59 (31.09), Difference (95% CI) -22.40 (-33.71, -10.91), % Difference 32.1%, p-value 0.0000"
+    },
+    {
+      "outcome_name": "time_employee_handbook",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 37.24,
+          "sd": 9.55,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 29.41,
+          "sd": 13.42,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-7.84 minutes, -21.1%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0000",
+      "confidence_interval": "95% CI [-12.03, -3.74]",
+      "verbatim_quote": "EE Handbook: No GPT-4 (Std. Dev.) 37.24 (9.55), With GPT-4 (Std. Dev.) 29.41 (13.42), Difference (95% CI) -7.84 (-12.03, -3.74), % Difference 21.1%, p-value 0.0000"
+    },
+    {
+      "outcome_name": "time_client_memo",
+      "arm_comparison": "gpt4_assisted vs no_gpt4",
+      "means_and_sds": {
+        "no_gpt4": {
+          "mean": 244.41,
+          "sd": 58.03,
+          "se": null
+        },
+        "gpt4_assisted": {
+          "mean": 215.69,
+          "sd": 72.96,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-28.75 minutes, -11.8%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0152",
+      "confidence_interval": "95% CI [-52.59, -5.05]",
+      "verbatim_quote": "Client Memo: No GPT-4 (Std. Dev.) 244.41 (58.03), With GPT-4 (Std. Dev.) 215.69 (72.96), Difference (95% CI) -28.75 (-52.59, -5.05), % Difference 11.8%, p-value 0.0152"
+    }
+  ],
+  "notes": "Study had 59 completers (60 enrolled, 22 dropped out and were replaced). The study employed a within-subjects design where each participant completed all four tasks, with two tasks using GPT-4 and two without, assigned by group. Group A (n=30) used GPT-4 for complaint and contract drafting; Group B (n=30) used GPT-4 for employee handbook and client memo. Results show small and inconsistent quality improvements across tasks (+0.17, +0.24, +0.07, -0.07 on 4.0 scale) but large and consistent time savings (-24.1%, -32.1%, -21.1%, -11.8%). Only contract drafting showed statistically significant quality improvement at 95% level. All time reductions were statistically significant at 95% level. Authors note limitations including small sample size (60 participants \u00d7 4 tasks), use of general-purpose GPT-4 rather than specialized legal tools, limited training provided to participants, simplified tasks not fully representative of junior lawyer work, and homogeneous participant population (high-skill law students from selective school). The paper also reports slope differences for learning effects across tasks but these are presented as confidence intervals rather than p-values. Randomization checks showed no significant differences between groups on class year (p = 0.44) or 1L Fall GPA (p = 0.92).",
+  "_paper_id": "choi monahan schwarcz"
+}

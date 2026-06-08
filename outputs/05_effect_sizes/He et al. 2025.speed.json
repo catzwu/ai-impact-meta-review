@@ -1,0 +1,49 @@
+{
+  "_paper_id": "He et al. 2025",
+  "citation_key": "he_2026_cursor_velocity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "cursor_adopters",
+    "ai_arm_selection_rationale": "Only one AI-assisted arm (Cursor adopters) compared to matched control repositories without Cursor. This is a difference-in-differences natural experiment design.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 2340,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 806,
+    "reported_percent_change": 0.0263,
+    "reported_percent_change_ci_low": -0.0177,
+    "reported_percent_change_ci_high": 0.0703,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.026,
+    "regression_coefficient_se": 0.0429,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a DiD natural experiment using the Borusyak et al. estimator as the primary specification. The outcome (commits) is count data, and larger values indicate higher productivity (more commits = better). The regression coefficient is reported with SE in parentheses. The paper does not explicitly state log transformation, but the coefficient (0.0260) matches the percent change (+2.63%), which is standard for log-transformed outcomes in DiD models where exp(coef)-1 \u2248 coef for small values. The \u00b14.40% confidence interval translates to approximately [-0.0177, +0.0703] around the 2.63% point estimate. Multiple robustness checks are reported (TWFE, Callaway-Sant'Anna, month-specific effects) but the Borusyak et al. estimate is presented as the primary result in Table 2.",
+    "source_quotes": [
+      "Table 2: The Borusyak et al. [29] estimated average treatment effects on treated (ATT in Equation 2) post Cursor adoption. Commits 0.0260 *** (0.0429) +2.63% (\u00b14.40%)",
+      "Repositories adopting Cursor, identified by scanning Cursor configuration files across GitHub with adoption dates between January 2024 and March 2025.",
+      "Matched \"never-treated\" repositories not using Cursor during the observation period, selected via 1:3 nearest-neighbor propensity score matching"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.025960101669531624,
+    "log_ratio_variance": 0.0004790459203817875,
+    "percent_change_equivalent": 0.02629999999999999,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_with_ci",
+    "confidence": "high",
+    "notes": "This is a DiD natural experiment using the Borusyak et al. estimator as the primary specification. The outcome (commits) is count data, and larger values indicate higher productivity (more commits = better). The regression coefficient is reported with SE in parentheses. The paper does not explicitly state log transformation, but the coefficient (0.0260) matches the percent change (+2.63%), which is standard for log-transformed outcomes in DiD models where exp(coef)-1 \u2248 coef for small values. The \u00b14.40% confidence interval translates to approximately [-0.0177, +0.0703] around the 2.63% point estimate. Multiple robustness checks are reported (TWFE, Callaway-Sant'Anna, month-specific effects) but the Borusyak et al. estimate is presented as the primary result in Table 2.",
+    "n_human": 2340,
+    "n_ai": 806
+  }
+}

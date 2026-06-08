@@ -1,0 +1,17 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "waitlist_indicator",
+      "category": "other",
+      "operationalization": "Binary indicator (0/1) displayed on platform showing whether a therapy practice has a waitlist, extracted from practice profiles and search results"
+    },
+    {
+      "outcome_name": "hourly_price",
+      "category": "other",
+      "operationalization": "Hourly rate in USD charged by the therapy practice, as listed on the platform"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "goetz_2025_ai_marketing"
+}

@@ -1,0 +1,67 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "output_quantity_shen",
+      "category": "speed",
+      "operationalization": "Binary indicator of whether any output-related activity (commits, PRs, etc.) was recorded on a given day, following Shen (2023) definition"
+    },
+    {
+      "outcome_name": "output_quantity_holub_thies",
+      "category": "speed",
+      "operationalization": "Binary indicator of whether any output-related activity was recorded on a given day, following Holub and Thies (2023) definition"
+    },
+    {
+      "outcome_name": "pr_merge_ratio",
+      "category": "quality",
+      "operationalization": "Binary indicator of PR merge activity on a given day; ratio calculated as closed PRs that were merged divided by total PRs closed"
+    },
+    {
+      "outcome_name": "pr_opened",
+      "category": "speed",
+      "operationalization": "Binary indicator of whether any pull request was opened on a given day"
+    },
+    {
+      "outcome_name": "avg_lines_added_per_opened_pr",
+      "category": "other",
+      "operationalization": "Binary indicator of activity; measures task complexity/scope via average lines of code added per opened pull request"
+    },
+    {
+      "outcome_name": "avg_lines_added_per_merged_pr",
+      "category": "other",
+      "operationalization": "Binary indicator of activity; measures task complexity/scope via average lines of code added per merged pull request"
+    },
+    {
+      "outcome_name": "easy_issue_closed",
+      "category": "other",
+      "operationalization": "Binary indicator of whether any easy-labeled issue was closed on a given day; measures task selection/complexity choice"
+    },
+    {
+      "outcome_name": "interactive_activity",
+      "category": "other",
+      "operationalization": "Binary indicator of whether any interactive activity (comments, reviews, discussions) was recorded on a given day; measures collaboration/communication"
+    },
+    {
+      "outcome_name": "any_event",
+      "category": "speed",
+      "operationalization": "Binary indicator of whether any output-related GitHub activity occurred on a given day"
+    },
+    {
+      "outcome_name": "commit",
+      "category": "speed",
+      "operationalization": "Binary indicator of whether any code commit was recorded on a given day"
+    },
+    {
+      "outcome_name": "pr_merged",
+      "category": "quality",
+      "operationalization": "Binary indicator of whether any pull request was merged (accepted by repository owners) on a given day"
+    },
+    {
+      "outcome_name": "avg_files_edited_per_merged_pr",
+      "category": "other",
+      "operationalization": "Binary indicator of activity; measures task complexity/scope via average number of files edited per merged pull request"
+    }
+  ],
+  "primary_speed_outcome": "output_quantity_shen",
+  "primary_quality_outcome": "pr_merge_ratio",
+  "citation_key": "kreitmeir_2024_chatgpt_productivity"
+}

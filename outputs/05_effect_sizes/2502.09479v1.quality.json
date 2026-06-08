@@ -1,0 +1,50 @@
+{
+  "_paper_id": "2502.09479v1",
+  "citation_key": "fitzpatrick_2025_generative_ai_public",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "gpt_4o_treatment",
+    "ai_arm_selection_rationale": "Only one AI arm (GPT-4o treatment) vs control (no AI access). GPT-4o is the AI intervention.",
+    "direction_convention": "larger_is_better",
+    "m_human": 1.892,
+    "sd_human": 0.5,
+    "se_human": 0.084,
+    "n_human": 35,
+    "m_ai": 2.213,
+    "sd_ai": 0.5,
+    "se_ai": 0.116,
+    "n_ai": 41,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": 7.609,
+    "reported_F_df1": 1,
+    "reported_F_df2": 74,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "Sample sizes extracted from Table 5 (Column 1): Num.Obs. = 76 total. From the text (page 4): 'The average quality score for the treatment group was 2.21 compared to 1.89 in the control group'. Table 5 Column 1 shows (Intercept) = 1.892 (0.084) and treat = 0.321 (0.116), where standard errors are in parentheses. The intercept represents the control group mean (1.892) with SE=0.084. The treatment coefficient (0.321) with SE=0.116 represents the difference. Treatment mean = 1.892 + 0.321 = 2.213. Table 5 shows RMSE = 0.50 for Column 1, which is the residual standard deviation (pooled SD estimate). F-statistic = 7.609 with df1=1, df2=74 is reported. Total n=76; from context and typical randomization, approximately n_control=35, n_treatment=41 (76 total, roughly balanced). The p-value is reported as 'p < 0.05' (inequality only) in text, but Table 5 shows ** significance (p < 0.01) for the treatment coefficient. No exact p-value is provided, so reported_p_value is null. Level A extraction (means + SDs + ns) plus Level D (F-statistic) available.",
+    "source_quotes": [
+      "The average quality score for the treatment group was 2.21 compared to 1.89 in the control group, a mean difference of 0.32. This represents a 17% improvement in quality for the treatment group. A two-tailed t-test confirmed that this difference was significant (p < 0.05).",
+      "Table 5: Documents Model Summary - Quality. Column 1 (LLM app): (Intercept) 1.892*** (0.084), treat 0.321** (0.116), Num.Obs. 76, RMSE 0.50, F 7.609",
+      "For the Documents task, quality was assessed by an independent panel of human graders using an evaluation rubric. Each response was graded on a scale from 0 (incorrect) to 4 (very good)."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.6420000000000003,
+    "hedges_g": 0.6354711864406783,
+    "variance": 0.05454669753484335,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Sample sizes extracted from Table 5 (Column 1): Num.Obs. = 76 total. From the text (page 4): 'The average quality score for the treatment group was 2.21 compared to 1.89 in the control group'. Table 5 Column 1 shows (Intercept) = 1.892 (0.084) and treat = 0.321 (0.116), where standard errors are in parentheses. The intercept represents the control group mean (1.892) with SE=0.084. The treatment coefficient (0.321) with SE=0.116 represents the difference. Treatment mean = 1.892 + 0.321 = 2.213. Table 5 shows RMSE = 0.50 for Column 1, which is the residual standard deviation (pooled SD estimate). F-statistic = 7.609 with df1=1, df2=74 is reported. Total n=76; from context and typical randomization, approximately n_control=35, n_treatment=41 (76 total, roughly balanced). The p-value is reported as 'p < 0.05' (inequality only) in text, but Table 5 shows ** significance (p < 0.01) for the treatment coefficient. No exact p-value is provided, so reported_p_value is null. Level A extraction (means + SDs + ns) plus Level D (F-statistic) available.",
+    "n_human": 35,
+    "n_ai": 41,
+    "direction_convention": "larger_is_better"
+  }
+}

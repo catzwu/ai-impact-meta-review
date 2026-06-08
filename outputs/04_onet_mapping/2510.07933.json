@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-22",
+  "onet_label": "Getting Information",
+  "mapping_confidence": "medium",
+  "rationale": "The participants in this study were Polish consumers completing a survey about their insurance purchasing behaviors and preferences. Their task was to provide information about 'demographics, purchasing habits, channel preferences, and decision-making factors such as price, trust, and convenience.' This is fundamentally an information-gathering activity where respondents share their experiences and opinions. While the researchers analyzed this data, we map the participants' actual work\u2014responding to survey questions\u2014which aligns with 'Getting Information.' The confidence is medium rather than high because survey response is a somewhat passive task that may not fully represent typical workplace activities in O*NET's framework.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "41-3021.00",
+      "onet_label": "Insurance Sales Agents"
+    }
+  ],
+  "citation_key": "wojak_2025_insurance_purchasing"
+}

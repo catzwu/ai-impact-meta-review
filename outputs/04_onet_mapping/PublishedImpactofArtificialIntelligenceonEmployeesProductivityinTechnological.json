@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-14",
+  "onet_label": "Processing Information",
+  "mapping_confidence": "low",
+  "rationale": "This is a survey study measuring employee perceptions about AI's impact on productivity, not a study of actual work performance. The participants are 'employees of technological firms' completing questionnaires about their opinions, not performing their substantive job duties. Since no specific work activity is being measured or performed, this paper appears to be a poor fit for a productivity meta-analysis focused on task performance. The mapping to 'Processing Information' reflects that technology firm employees likely engage in information processing, but this is speculative rather than based on observed task performance in the study.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1299.00",
+      "onet_label": "Computer Occupations, All Other"
+    }
+  ],
+  "citation_key": "chukwuka_2025_ai_productivity"
+}

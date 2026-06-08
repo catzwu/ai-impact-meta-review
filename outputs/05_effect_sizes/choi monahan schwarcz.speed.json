@@ -1,0 +1,49 @@
+{
+  "_paper_id": "choi monahan schwarcz",
+  "citation_key": "choi_2023_lawyering_ai",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "human_arm_name": "no_gpt4",
+    "ai_arm_name": "gpt4_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm available (GPT-4 assisted). This is a within-subject crossover design where all 30 participants completed tasks both with and without GPT-4 assistance.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": -38.77,
+    "m_human": 160.69,
+    "sd_human": 72.38,
+    "se_human": null,
+    "n_human": 30,
+    "m_ai": 122.0,
+    "sd_ai": 66.8,
+    "se_ai": null,
+    "n_ai": 30,
+    "reported_percent_change": -0.241,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Within-subject crossover design with 30 participants completing tasks both with and without GPT-4. The same participants are measured in both conditions. Time is the outcome (minutes), so smaller is better. The reported percent change of -24.1% indicates GPT-4 reduced time by 24.1%. The 95% CI [-64.00, -13.36] appears to be for the raw difference in minutes, not the percent change.",
+    "source_quotes": [
+      "Complaint Drafting: No GPT-4 (Std. Dev.) 160.69 (72.38), With GPT-4 (Std. Dev.) 122.00 (66.80), Difference (95% CI) -38.77 (-64.00, -13.36), % Difference 24.1%, p-value 0.0018",
+      "Participants assigned to use GPT-4 assistance on two of four tasks",
+      "Participants assigned to complete two of four tasks without GPT-4 or any other type of AI assistance"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.2754559983204052,
+    "log_ratio_variance": 0.016756352487163256,
+    "percent_change_equivalent": 0.3171311475409835,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Within-subject crossover design with 30 participants completing tasks both with and without GPT-4. The same participants are measured in both conditions. Time is the outcome (minutes), so smaller is better. The reported percent change of -24.1% indicates GPT-4 reduced time by 24.1%. The 95% CI [-64.00, -13.36] appears to be for the raw difference in minutes, not the percent change.",
+    "n_human": 30,
+    "n_ai": 30
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a classification/annotation study of occupational data, not an empirical study of AI impact on workers. The study involves 'human annotators and GPT-4 itself were employed as classifiers to apply this rubric to occupational data' from O*NET, with no experimental manipulation or comparison of outcomes between AI users and non-users.",
+  "citation_key": "eloundou_2023_gpts_labor"
+}

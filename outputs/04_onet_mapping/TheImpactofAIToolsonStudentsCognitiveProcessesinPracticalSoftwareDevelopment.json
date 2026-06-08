@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "medium",
+  "rationale": "The participants are high school students learning programming in classes, not professional software developers doing real development work. The primary task is educational programming with AI assistance. While 'Software Developers' (15-1252.00) might seem relevant, the students are not performing the full scope of professional software development work\u2014they are learning to program in an educational context. 'Working with Computers' (WA-25) is the most appropriate generalized work activity that captures computer-based programming tasks without overstating the professional nature of the work. The confidence is medium because this is fundamentally an educational setting rather than a workplace productivity study.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "liveric_2025_ai_cognitive"
+}

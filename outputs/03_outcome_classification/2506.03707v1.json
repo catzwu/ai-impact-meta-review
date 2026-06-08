@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "final_investment_alignment",
+      "category": "other",
+      "operationalization": "binary indicator of whether customer's final investment decision matches the advisor's recommendation (invest vs. not invest)"
+    },
+    {
+      "outcome_name": "final_risk_assessment_gap",
+      "category": "other",
+      "operationalization": "absolute difference between customer's final risk assessment and observed assessment on a seven-point risk scale"
+    },
+    {
+      "outcome_name": "final_payoff",
+      "category": "other",
+      "operationalization": "realized monetary payoff in Euros based on final investment decision, calculated using loan default status, APR, and term"
+    },
+    {
+      "outcome_name": "recommendation_accuracy",
+      "category": "quality",
+      "operationalization": "proportion of recommendations that correctly advise investing for non-defaulting loans and not investing for defaulting loans"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "recommendation_accuracy",
+  "citation_key": "yang_2025_human_ai_collaboration"
+}

@@ -1,0 +1,52 @@
+{
+  "_paper_id": "He et al. 2025",
+  "citation_key": "he_2026_cursor_velocity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "matched_control",
+    "ai_arm_name": "cursor_adopters",
+    "ai_arm_selection_rationale": "This is a difference-in-differences observational study comparing 806 Cursor-adopting repositories to 1,380 matched control repositories. The study reports only regression-based treatment effects (ATT) from DiD models, not raw means or standard deviations. The reported statistics are: (1) Borusyak et al. estimator: coefficient 0.2644 (SE 0.0511), +30.26% change; (2) TWFE: coefficient 0.1696 (SE 0.0415), +18.48% change; (3) Callaway-Sant'Anna: coefficient -0.1108 (SE 0.1254), -10.49% change. These are log-transformed outcome regression coefficients, not standardized effect sizes. No t-statistics, F-statistics, Cohen's d, or Hedges' g are reported. P-values are given only as inequalities (p<0.001, p<0.01). The total sample includes 21,699 repository-month observations with 4,481 post-treatment observations (Table 7), but these are panel observations, not independent samples suitable for computing between-group effect sizes. Without raw means, SDs, or convertible test statistics, Hedges' g cannot be computed from the available data.",
+    "direction_convention": "smaller_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 1380,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 806,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "After re-reading the full paper, I confirm the prior extraction was correct: this is a difference-in-differences observational study with panel data (repository-months). The reported statistics are regression coefficients from DiD models on log-transformed outcomes, not standardized effect sizes. Table 2 reports ATT = 0.2644 (SE 0.0511) for static analysis warnings, interpreted as +30.26% increase. Table 6 shows alternative estimators: TWFE gives 0.1696 (SE 0.0415), +18.48%; Callaway-Sant'Anna gives -0.1108 (SE 0.1254), -10.49%. All p-values are reported only as inequalities (p<0.001, p<0.01, p<0.05), never exact values. The paper explicitly states all outcomes are log-transformed (Table 2 note, page 7). No raw means, standard deviations, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) are provided anywhere in the paper. Table 1 shows descriptive statistics for the 806 treatment repositories at data collection time, but not at baseline or for the control group. Table 5 shows pre-adoption balance statistics (treatment mean vs control mean for covariates like age, stars, forks), but not for the outcome variable. The sample sizes are: 806 treatment repositories, 1,172 control repositories initially, 1,380 after matching (Table 7), with 21,699 total repository-month observations. These are panel observations, not independent samples. Without means and SDs or convertible test statistics, Hedges' g cannot be computed.",
+    "source_quotes": [
+      "Table 2: The Borusyak et al. [29] estimated average treatment effects on treated (ATT in Equation 2) post Cursor adoption. We log-transform all outcome variables to address skewness and facilitate comparison of treatment effects across outcome variables; after log-transformation, all estimated ATTs can be interpreted as a percentage change of 100(e^ATT \u2212 1)%. Static Analysis Warnings 0.2644*** (0.0511) +30.26% (\u00b16.66%)",
+      "Table 6: The estimated average treatment effects on treated (i.e., ATT) post Cursor adoption from different DiD estimators. Similar to Table 2, all outcome variables are log-transformed, and percentage changes are provided for reference. Two-Way Fixed Effects Static Analysis Warnings 0.1696*** (0.0415) +18.48% (\u00b14.92%). Callaway and Sant'Anna [31] Static Analysis Warnings \u22120.1108** (0.1254) \u221210.49% (\u00b111.2%)",
+      "Table 1: Descriptive statistics of the 806 repositories using Cursor, collected at the time of data collection (April 2025). [Shows only treatment group statistics at collection time, not baseline or control]",
+      "Table 5: Balance statistics: treatment versus matched control pre-adoption. [Shows covariates like Age, Stars, Forks, but not the outcome variable Static Analysis Warnings]",
+      "Table 7: Summary statistics for all alternative dataset settings explored in this study. Main Settings Original # Treatment Repos 801 # Control Repos 1,172 # Total Observations 21,699 # Post-Treatment Observations 4,481"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After re-reading the full paper, I confirm the prior extraction was correct: this is a difference-in-differences observational study with panel data (repository-months). The reported statistics are regression coefficients from DiD models on log-transformed outcomes, not standardized effect sizes. Table 2 reports ATT = 0.2644 (SE 0.0511) for static analysis warnings, interpreted as +30.26% increase. Table 6 shows alternative estimators: TWFE gives 0.1696 (SE 0.0415), +18.48%; Callaway-Sant'Anna gives -0.1108 (SE 0.1254), -10.49%. All p-values are reported only as inequalities (p<0.001, p<0.01, p<0.05), never exact values. The paper explicitly states all outcomes are log-transformed (Table 2 note, page 7). No raw means, standard deviations, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) are provided anywhere in the paper. Table 1 shows descriptive statistics for the 806 treatment repositories at data collection time, but not at baseline or for the control group. Table 5 shows pre-adoption balance statistics (treatment mean vs control mean for covariates like age, stars, forks), but not for the outcome variable. The sample sizes are: 806 treatment repositories, 1,172 control repositories initially, 1,380 after matching (Table 7), with 21,699 total repository-month observations. These are panel observations, not independent samples. Without means and SDs or convertible test statistics, Hedges' g cannot be computed. | arm pair unresolvable",
+    "n_human": 1380,
+    "n_ai": 806,
+    "direction_convention": "smaller_is_better"
+  }
+}

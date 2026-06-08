@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The participants are performing computer-based writing tasks that span multiple white-collar occupations (marketers, grant writers, consultants, data analysts, HR professionals, managers). The core activity being measured is using computers to produce written work products\u2014press releases, reports, analysis plans, and emails. While these professionals have diverse job titles, the experimental task isolates the common work activity of computer-based document creation and writing, which is precisely what 'Working with Computers' captures in O*NET's taxonomy. This is a better fit than any single occupation because the study deliberately samples across six different occupations to measure a generalizable productivity effect.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-30",
+      "onet_label": "Documenting/Recording Information"
+    }
+  ],
+  "citation_key": "noy_2023_chatgpt_productivity"
+}

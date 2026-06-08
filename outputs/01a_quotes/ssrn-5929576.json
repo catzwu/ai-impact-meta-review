@@ -1,0 +1,107 @@
+{
+  "citation_key": "kim_2024_generative_ai_tutoring",
+  "authors": [
+    "Donggwan Kim",
+    "Dmitry Mitrofanov",
+    "Qingsong Wen",
+    "Tianlong Xu"
+  ],
+  "title": "Generative AI Can Improve Performance and Engagement without Harming Learning",
+  "year": 2024,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "Leveraging the partial rollout of an AI tutor across thousands of learning centers, we analyze a random panel of 19,709 students (over 2.2 million student\u2013day observations) before and after the introduction of generative AI.",
+      "A difference-in-differences design reveals that access to the AI tutor substantially increases student engagement",
+      "A key feature of our setting is that AI-enabled devices were rolled out unevenly across students due to capacity constraints.",
+      "Because all students paid the same fee for access to the learning center, centers with more students than AI-tutor tablets were instructed to allocate the AI-enabled devices randomly across students.",
+      "Consistent with this guidance, our pre-treatment descriptive statistics show that students who ever used the AI-tutor mode and those who never used it are very similar in terms of the number of problems solved, average correctness rate, and average problem difficulty, although we do observe a statistically significant but economically modest difference in the average time spent per problem.",
+      "That said, the platform could not micromanage or verify how each center implemented this allocation in practice, and logistical constraints may have prevented perfectly random assignment.",
+      "We therefore treat the setting as quasi-random rather than a fully controlled field experiment, and we complement our difference-in-differences analysis with robustness checks, including IV regressions, to assess the sensitivity of our findings to departures from strict randomization."
+    ],
+    "task": [
+      "Students work on curriculum-aligned math problems delivered through the tablet interface.",
+      "A typical example, shown in Figure 2(a), is: \"One type of wire costs 12.5 yuan per meter. Uncle Li bought 2.7 meters. How much does it cost in total? (Retain one decimal place.)\"",
+      "students see a numerical fill-in-the-blank question, enter an answer, and submit it.",
+      "The system immediately reports whether the answer is correct or incorrect and then displays a complete, step-by-step solution.",
+      "Students can review this solution and then proceed to the next question.",
+      "Once an answer is submitted, the AI opens a debrief panel that (i) reports correctness, (ii) highlights which steps or concepts appear to be problematic (if any), and (iii) engages the student in an interactive dialogue.",
+      "The AI tutor leverages the student's historical performance and current attempts\u2014including digital \"scratches\" or drafts\u2014to infer the likely sources of error and tailor explanations accordingly.",
+      "Rather than simply displaying a fixed solution, the AI tutor offers targeted hints, step-by-step explanations, and real-time responses to follow-up questions, providing a more personalized and adaptive learning experience."
+    ],
+    "population": [
+      "Our dataset is drawn as a random panel from the platform and covers detailed daily interaction logs from 18,904 students (who were active at the introduction of the AI tutor) across multiple centers in 2024, yielding 2,114,829 student-day observations.",
+      "Of the 18,904 students, 12,435 used AI-tutor mode at least once during the sample period; we refer to these students as the treated group, and to students who never used AI-tutor mode as the control group.",
+      "The average student is in grade 6.7 (median 7).",
+      "Conditional on being treated, AI-enabled devices were used for, on average, 18% of a student's visits after the AI-tutor rollout, with substantial cross-student variation.",
+      "Our empirical analysis is based on a collaboration with Squirrel AI, a leading Chinese education technology firm that provides digitized learning experiences to strengthen K\u201312 students' mastery of the school curriculum.",
+      "As of 2024, Squirrel AI reports approximately 112,000 active paying users."
+    ],
+    "arms": [
+      "Some students never had access to AI-enabled devices during our sample period, while others intermittently used devices with the AI tutor activated.",
+      "Of the 18,904 students, 12,435 used AI-tutor mode at least once during the sample period; we refer to these students as the treated group, and to students who never used AI-tutor mode as the control group."
+    ],
+    "outcome_definitions": [
+      "For each student-day, we observe (i) how many learning sessions and problems the student completed, (ii) the difficulty and correctness of each problem, (iii) time spent on problems, and (iv) whether the post-solution AI tutor mode was available and used.",
+      "On a typical active day, students solve about 115 problems, corresponding to 1.3 hours of work.",
+      "The median student\u2013day involves 57 problems and roughly 0.7 hours of engagement.",
+      "The average correctness rate is 0.74, with substantial dispersion: the inter-quartile range runs from 0.66 to 0.84.",
+      "Average problem difficulty (measured as incorrectness ratio across students in the initial submissions before AI feedback) is around 61.5 on a 0\u2013100 scale",
+      "Average time per problem is about 53 seconds.",
+      "Y i,t denotes the outcome variables of interest, such as the number of problems solved, average duration, and average correctness ratio, for individual i on date t.",
+      "the outcome variable, Y i,t, is (a) an indicator for whether student i attended at least once in week t, or (b) the number of attendances in week t",
+      "Y i,t denotes daily outcomes (e.g., number of problems solved, correctness ratio)",
+      "correctness it is the student's daily correctness rate (multiplied by 100)."
+    ],
+    "statistical_results": [
+      "treated students complete 36% more math problems",
+      "students spend 3.9% less time per problem while their correctness ratio increases by 3.6%",
+      "The coefficient 0.3057 on Treat\u00b7Post implies that treated students increase the number of problems solved per day by approximately 35.8% relative to similar control students (exp(0.3057)\u22121\u22480.358).",
+      "the coefficient \u22122.1779 implies a reduction of about 2.18 seconds per problem.",
+      "Given that the average post-period time per problem for controls is about 55 seconds, this corresponds to roughly a 3.9% decline",
+      "The coefficient 0.0264 indicates that the average daily correctness rate increases by 2.64 percentage points for treated students relative to controls.",
+      "Given that baseline post-treatment correctness is around 74%, this represents about a 3.6% improvement.",
+      "At their peak, treated students spend roughly 10 seconds less per problem and achieve correctness rates about 5\u20136 percentage points higher than controls.",
+      "Column (1) in Table 3 shows that even high performers increase their problem volume by about 28.6% (in log terms) after gaining access to the AI tutor.",
+      "The interaction term for low performers is positive and statistically significant: low-performing students experience an additional 0.0739 log-point increase relative to high performers.",
+      "Combining the baseline and interaction, the total effect for low performers is roughly 0.2864 + 0.0739\u22480.360, or about a 43% increase in practice volume.",
+      "High performers increase their correctness by about 2.4 percentage points, while low performers gain an additional 1.65 percentage points, for a total of roughly 4.0 percentage points.",
+      "The low- and middle-income interactions are close to zero and statistically insignificant, implying that students from these areas increase their problem-solving activity by roughly the same proportion as those from high-income areas.",
+      "For correctness, presented in column (2), the middle-income interaction is positive and small (0.006), while the low-income interaction is essentially zero.",
+      "The probability of attending at least once in a week increases by 0.0403 for treated students in the post period.",
+      "Relative to the baseline weekly attendance rate of approximately 0.76, this corresponds to a 5.3% increase.",
+      "The number of attendance days per week rises by 0.1424 days, which is about a 5.1% increase relative to the mean of 2.77 days.",
+      "on days when students use the AI tutor, they solve exp(1.903)\u22121\u22485.71 times more problems (about a 570% increase) and have correctness about 6.1 percentage points higher than on non-AI days.",
+      "In column (3), the coefficient 1.394 implies that using the AI tutor on a given day increases the number of problems solved by about 303% (exp(1.394)\u22121\u2248 3.03), meaning it roughly quadruples daily problem-solving.",
+      "In column (4), correctness increases by about 1.5 percentage points.",
+      "Columns (5)\u2013(6), which use the ratio instrument, yield similar qualitative conclusions.",
+      "the coefficient\u22120.283 in column (3) implies that the log effect of using AI on a given day declines with recent AI use.",
+      "For example, if a student has used AI on 10 of the prior 14 days, the incremental log increase in problems solved from using AI today is reduced by about 0.283\u00d710 = 2.83 relative to a student with no recent AI use.",
+      "the coefficient\u22120.056 in column (4) indicates that the accuracy gain from AI use shrinks as cumulative recent usage rises and can become negligible or even slightly negative at very high levels of past use.",
+      "In the full sample (column (1)), the triple interaction is positive and highly significant (0.027).",
+      "Since the outcome is correctness rate\u00d7100, this indicates that, after the AI rollout, each additional hour of study yields an extra 0.027 percentage point improvement in correctness for treated students relative to controls.",
+      "Over 50 hours of post-treatment study, treated students' correctness would improve by roughly 1.35 percentage points more than that of comparable control students.",
+      "The triple interaction is positive and statistically significant for low-, mid-, and high-hour groups, with magnitudes in a fairly similar range (0.017\u20130.029)."
+    ],
+    "ambiguity_or_caveats": [
+      "although we do observe a statistically significant but economically modest difference in the average time spent per problem.",
+      "the platform could not micromanage or verify how each center implemented this allocation in practice, and logistical constraints may have prevented perfectly random assignment.",
+      "For any g\u0338=g 0,\u03b2 g is a triple-difference term that measures how the treatment effect for group g differs from the effect for g 0.",
+      "Because students may strategically choose to learn with AI on some days when they feel unusually productive or motivated (e.g., before an upcoming exam), the naive OLS estimate \u02c6\u03b2 in (5) may be biased.",
+      "We note that the sample size changes in this analysis, as for some students we are unable to obtain county-level income data from the local statistics bureau.",
+      "For the validity of the proposed instruments, it is high plausible that greater AI capacity at a center increases take-up (relevance), while, conditional on fixed effects (\u03b1 i and \u03b4 t), lagged center-level capacity affects Y i,t only through AI use, AI i,t (exclusion).",
+      "While our findings are promising, several limitations should be acknowledged when interpreting their generalizability.",
+      "First, our empirical setting is specific: private after-school learning centers in China focused on mathematics.",
+      "Students and families who enroll in such centers may be more motivated or have different expectations than those in typical public-school classrooms.",
+      "Classroom management, curricular constraints, and heterogeneity in baseline motivation could all affect the impact of AI tutors in other environments.",
+      "Second, our empirical design relies on a quasi-experimental rollout across centers, along with the parallel trends assumption.",
+      "Nonetheless, the design is not a pure randomized controlled trial, and residual unobserved differences across centers or cohorts could remain.",
+      "Finally, the AI tutor we study embodies a particular design: post-solution, LLM-based debriefing within a structured practice environment.",
+      "Other AI tutors may differ in their interaction patterns, content, and safeguards.",
+      "Our findings therefore speak most directly to a regime of post-solution AI feedback rather than to all possible AI configurations."
+    ]
+  },
+  "notes": "This is a large-scale field experiment (quasi-experimental difference-in-differences design) conducted at Squirrel AI, a Chinese EdTech platform. The study analyzes 18,904 students with 2.1+ million student-day observations. The key innovation is examining a post-solution AI tutor design (activated only after students submit answers) rather than AI available during problem-solving. Main findings show 36% increase in problems solved, 3.9% reduction in time per problem, 3.6% improvement in correctness, with larger benefits for lower-performing students and no income-based disparities. The paper also reports diminishing returns to very frequent AI use and evidence of steeper learning curves (skill development) for treated students.",
+  "_paper_id": "ssrn-5929576",
+  "_source_pdf": "papers/ssrn-5929576.pdf"
+}

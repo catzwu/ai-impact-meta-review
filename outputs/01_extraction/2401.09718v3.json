@@ -1,0 +1,372 @@
+{
+  "citation_key": "benishai_2024_ai_prosperity",
+  "authors": [
+    "Guy Ben-Ishai",
+    "Jeff Dean",
+    "James Manyika",
+    "Ruth Porat",
+    "Hal Varian",
+    "Kent Walker"
+  ],
+  "title": "AI and the Opportunity for Shared Prosperity: Lessons From the History of Technology and the Economy",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": null,
+  "primary_task_description": null,
+  "population_description": null,
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "business_use_case_value_creation",
+      "outcome_description": "AI creating significant value over existing analytical tools in business use-cases",
+      "measurement_unit": "percentage of use-cases",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_automation_potential",
+      "outcome_description": "Work tasks that could be automated by AI",
+      "measurement_unit": "percentage of tasks",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "hours_automation_potential",
+      "outcome_description": "Hours worked across the U.S. economy that can be automated by AI",
+      "measurement_unit": "percentage of hours",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "global_economic_value",
+      "outcome_description": "Annual economic value AI could deliver to the global economy",
+      "measurement_unit": "trillion USD",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "global_gdp_increase",
+      "outcome_description": "Increase in global GDP from AI",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "call_center_issues_resolved",
+      "outcome_description": "Improvement in issues resolved per hour in call centers",
+      "measurement_unit": "percentage improvement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "developer_task_completion_speed",
+      "outcome_description": "Speed at which developers completed assigned tasks",
+      "measurement_unit": "percentage faster",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "financial_analyst_forecast_performance",
+      "outcome_description": "AI-assisted financial analysts outperforming other human analysts in forecasts",
+      "measurement_unit": "percentage of forecasts",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "business_revenue_growth",
+      "outcome_description": "Revenue growth for businesses using basic AI versions",
+      "measurement_unit": "percentage faster",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "business_employment_growth",
+      "outcome_description": "Employment growth for businesses using basic AI versions",
+      "measurement_unit": "percentage faster",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "labor_productivity_increase_generative_ai",
+      "outcome_description": "Increase in U.S. labor productivity from generative AI",
+      "measurement_unit": "percentage points per year",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "labor_productivity_increase_mgi",
+      "outcome_description": "Increase in U.S. labor productivity from AI (McKinsey Global Institute estimate)",
+      "measurement_unit": "percentage points per year",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "employee_work_enjoyment",
+      "outcome_description": "Employees using AI at work reporting improved enjoyment of work",
+      "measurement_unit": "percentage of employees",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "employee_mental_health",
+      "outcome_description": "Employees using AI at work reporting improved overall mental health",
+      "measurement_unit": "percentage of employees",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "contrail_reduction",
+      "outcome_description": "Reduction in contrails from AI-based predictions",
+      "measurement_unit": "percentage reduction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "graduation_rate_increase",
+      "outcome_description": "Increase in graduation rates at a liberal arts college through AI tracking",
+      "measurement_unit": "percentage increase",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "alphafold_researcher_access",
+      "outcome_description": "Number of researchers accessing AlphaFold protein predictions",
+      "measurement_unit": "number of researchers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "gnome_crystal_discovery",
+      "outcome_description": "Number of new crystals discovered by GNoME",
+      "measurement_unit": "number of crystals",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "business_use_case_value_creation",
+      "arm_comparison": "AI vs existing analytical tools",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "69% of business use-cases",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AI in one study creating significant value over existing analytical tools in 69% of business use-cases and emerging as the sole analytical solution in an additional 15%"
+    },
+    {
+      "outcome_name": "task_automation_potential",
+      "arm_comparison": "administrative professions",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "46% of work tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "a recent study that aggregated survey data across all U.S. occupations found that one-fourth of work tasks could be automated by AI, with particularly significant opportunities in administrative (46%) and legal (44%) professions"
+    },
+    {
+      "outcome_name": "task_automation_potential",
+      "arm_comparison": "legal professions",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "44% of work tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "a recent study that aggregated survey data across all U.S. occupations found that one-fourth of work tasks could be automated by AI, with particularly significant opportunities in administrative (46%) and legal (44%) professions"
+    },
+    {
+      "outcome_name": "task_automation_potential",
+      "arm_comparison": "all occupations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "one-fourth of work tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "a recent study that aggregated survey data across all U.S. occupations found that one-fourth of work tasks could be automated by AI, with particularly significant opportunities in administrative (46%) and legal (44%) professions"
+    },
+    {
+      "outcome_name": "hours_automation_potential",
+      "arm_comparison": "U.S. economy",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "30% of hours worked",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "a similar study concluded that AI can automate tasks associated with 30% of hours worked across the U.S. economy"
+    },
+    {
+      "outcome_name": "global_economic_value",
+      "arm_comparison": "global economy",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "$17 to $25 trillion annually",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "McKinsey Global Institute estimates that AI (including generative AI) could deliver $17 to $25 trillion annually to the global economy"
+    },
+    {
+      "outcome_name": "global_gdp_increase",
+      "arm_comparison": "global economy",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "7% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Goldman Sachs projects that AI could increase global GDP by 7%"
+    },
+    {
+      "outcome_name": "call_center_issues_resolved",
+      "arm_comparison": "call centers with AI",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "14% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "call centers reported an improvement of 14% in issues resolved per hour"
+    },
+    {
+      "outcome_name": "developer_task_completion_speed",
+      "arm_comparison": "developers with AI",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "55% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "developers completed assigned tasks 55% faster"
+    },
+    {
+      "outcome_name": "financial_analyst_forecast_performance",
+      "arm_comparison": "AI-assisted analysts vs other human analysts",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "57% of forecasts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AI-assisted financial analysts outperformed other human analysts in 57% of the forecasts"
+    },
+    {
+      "outcome_name": "business_revenue_growth",
+      "arm_comparison": "businesses using basic AI vs those that did not",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "40% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "businesses that used relatively basic versions of AI grew revenues 40% faster and employment 25% faster than those that did not"
+    },
+    {
+      "outcome_name": "business_employment_growth",
+      "arm_comparison": "businesses using basic AI vs those that did not",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "25% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "businesses that used relatively basic versions of AI grew revenues 40% faster and employment 25% faster than those that did not"
+    },
+    {
+      "outcome_name": "labor_productivity_increase_mgi",
+      "arm_comparison": "U.S. economy with AI",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.5% to 0.9% per year",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "McKinsey Global Institute estimated that generative AI could increase U.S. labor productivity by 0.5% to 0.9% a year (relative to an average annual growth of 1.4%)"
+    },
+    {
+      "outcome_name": "labor_productivity_increase_generative_ai",
+      "arm_comparison": "U.S. economy with generative AI",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.5 percentage points per year",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Goldman Sachs estimates that generative AI alone could boost U.S. labor productivity by 1.5 percentage points a year"
+    },
+    {
+      "outcome_name": "employee_work_enjoyment",
+      "arm_comparison": "employees using AI at work",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "63% reported improved enjoyment",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "the majority of employees using AI at work reported that in addition to being more productive, AI had also improved their enjoyment of work (63%) and overall mental health (54%)"
+    },
+    {
+      "outcome_name": "employee_mental_health",
+      "arm_comparison": "employees using AI at work",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "54% reported improved mental health",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "the majority of employees using AI at work reported that in addition to being more productive, AI had also improved their enjoyment of work (63%) and overall mental health (54%)"
+    },
+    {
+      "outcome_name": "contrail_reduction",
+      "arm_comparison": "AI-based predictions",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "as much as 54% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AI-based predictions to reduce contrails by as much as 54%"
+    },
+    {
+      "outcome_name": "graduation_rate_increase",
+      "arm_comparison": "liberal arts college with AI tracking",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "32% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AI has shown the ability to increase graduation rates at a liberal arts college by 32% through tracking students' grades and course selection"
+    },
+    {
+      "outcome_name": "alphafold_researcher_access",
+      "arm_comparison": "AlphaFold protein predictions",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "more than 1.6 million researchers in more than 190 countries",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AlphaFold's protein predictions have been accessed by more than 1.6 million researchers in more than 190 countries"
+    },
+    {
+      "outcome_name": "gnome_crystal_discovery",
+      "arm_comparison": "GNoME discovery",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.2 million new crystals, equivalent to nearly 800 years' worth of knowledge",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "GNoME enabled the discovery of 2.2 million new crystals, equivalent to nearly 800 years' worth of knowledge"
+    }
+  ],
+  "notes": "This is a position/policy paper by Google executives and affiliated economists, not an original empirical research study. The paper synthesizes historical evidence about technology adoption and cites numerous case studies and research findings from other sources (McKinsey, Goldman Sachs, OECD, etc.) to argue that AI presents economic opportunity but requires deliberate policy action. The statistical results quoted are drawn from cited studies rather than original analysis by the authors. The paper focuses on economic opportunity and does not address safety, fairness, or other non-economic dimensions of AI in depth. No original experimental design, population, or arms are present. The paper includes numerous caveats that gains are not automatic, that benefits may not be evenly distributed, and that more research is needed as AI continues to develop.",
+  "_paper_id": "2401.09718v3"
+}

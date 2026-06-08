@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-14",
+  "onet_label": "Processing Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants performed diverse analytical tasks including 'reading and providing feedback on texts,' 'conducting regression analyses, hypothesis testing,' 'coding for data visualization,' and 'summarizing documents.' These activities collectively represent information processing work\u2014gathering, organizing, analyzing, and interpreting data and text. While the students are economics majors, the study measures their performance on generalized analytical work activities rather than occupation-specific consulting or research roles. Processing Information best captures this breadth of analytical tasks.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    }
+  ],
+  "citation_key": "nakavachara_2024_chatgpt_productivity"
+}

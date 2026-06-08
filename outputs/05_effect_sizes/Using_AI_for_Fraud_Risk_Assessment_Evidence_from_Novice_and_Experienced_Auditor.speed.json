@@ -1,0 +1,49 @@
+{
+  "_paper_id": "Using_AI_for_Fraud_Risk_Assessment_Evidence_from_Novice_and_Experienced_Auditor",
+  "citation_key": "christensen_2025_fraud_risk",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control_condition",
+    "ai_arm_name": "genai_condition",
+    "ai_arm_selection_rationale": "Only one AI arm available: genai_condition with GPT-4o-powered chatbot. This is compared against control_condition with no technological assistance.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 769.46,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 595.15,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.23,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": 2.51,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Primary outcome is task efficiency measured in seconds (time to complete fraud risk assessment). Two subgroups reported: novice and experienced auditors. Using novice auditor data as primary comparison since it shows statistically significant effect (p=0.01) and is reported first. The paper states novices were '23 percent faster' with GenAI. Sample sizes (n) are not provided in the arms array. Standard deviations/standard errors are not reported, only means and t-statistics. The experienced auditor comparison shows similar pattern but non-significant at conventional alpha (p=0.09 one-tailed).",
+    "source_quotes": [
+      "Novice auditors with GenAI completed the task in 595.15 seconds, on average, versus 769.46 seconds without GenAI (t = 2.51, p = 0.01), indicating a significant efficiency improvement for novices.",
+      "23 percent faster",
+      "Task Efficiency, equal to the amount of time in seconds participants spent completing the fraud risk assessment task."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.2568754955075765,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.29288414685373443,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Primary outcome is task efficiency measured in seconds (time to complete fraud risk assessment). Two subgroups reported: novice and experienced auditors. Using novice auditor data as primary comparison since it shows statistically significant effect (p=0.01) and is reported first. The paper states novices were '23 percent faster' with GenAI. Sample sizes (n) are not provided in the arms array. Standard deviations/standard errors are not reported, only means and t-statistics. The experienced auditor comparison shows similar pattern but non-significant at conventional alpha (p=0.09 one-tailed). | SDs/SEs missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

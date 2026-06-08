@@ -1,0 +1,53 @@
+{
+  "_paper_id": "Agarwal et al. 2023",
+  "citation_key": "agarwal_2023_radiology_ai",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "XO (X-ray only)",
+    "ai_arm_name": "AI (X-ray + AI assistance)",
+    "ai_arm_selection_rationale": "This is a within-subject design where 227 radiologists diagnosed cases under four conditions: XO (X-ray only), CH (clinical history), AI (AI assistance), and AI+CH (both). The primary comparison is XO vs AI. Table C.6 reports treatment effects using equation (6) with pathology fixed effects. For deviation from diagnostic standard (primary outcome), the AI treatment effect is \u03b3_AI = 0.003 (SE=0.004), p>0.05. The control mean (XO baseline) is 0.226 (SE=0.010). Total observations = 41,920 across 227 radiologists. This is a within-subject design with n=227 radiologists each diagnosing multiple cases. The paper reports treatment effects from a regression model rather than raw means/SDs, but provides sufficient information to extract effect sizes.",
+    "direction_convention": "smaller_is_better",
+    "m_human": 0.226,
+    "sd_human": null,
+    "se_human": 0.01,
+    "n_human": 227,
+    "m_ai": 0.229,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 227,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Within-subject design with 227 radiologists. Primary outcome is 'Deviation from Diagnostic Standard' (smaller is better). Table C.6 column (4) reports: Control Mean = 0.226 (SE=0.010), AI treatment effect = 0.003 (SE=0.004), total N=41,920 observations. The AI effect is not statistically significant. M_ai is computed as 0.226 + 0.003 = 0.229. The paper uses two-way clustered standard errors at radiologist and patient level. Sample size n=227 is the number of radiologists (from Table 1 and text). The design involves each radiologist diagnosing multiple cases (92 reads per radiologist on average from Table 1), but the unit of analysis for effect size should be radiologists. The paper does not report SD of differences or paired t-statistics directly, only regression coefficients with clustered SEs. P-value is reported as not significant but exact value not given in table.",
+    "source_quotes": [
+      "Table C.6: Average treatment effects... Deviation from Diagnostic Standard... AI: 0.003 (0.004)... Control Mean: 0.226 (0.010)... Observations: 41920",
+      "The experiment includes 227 professional radiologists recruited through teleradiology companies",
+      "Table 1: Summary statistics... Observations: 41,920... Radiologists: 227... Reads per Radiologist: 92",
+      "In contrast, AI assistance does not significantly improve average performance.",
+      "Our experimental design compares human and AI performance, quantifies the predictive value of the information that humans hold but AI tools do not\u2014henceforth termed contextual information\u2014and tests whether AI assistance improves human performance.",
+      "We report two-way clustered standard errors at the radiologist and patient level"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Within-subject design with 227 radiologists. Primary outcome is 'Deviation from Diagnostic Standard' (smaller is better). Table C.6 column (4) reports: Control Mean = 0.226 (SE=0.010), AI treatment effect = 0.003 (SE=0.004), total N=41,920 observations. The AI effect is not statistically significant. M_ai is computed as 0.226 + 0.003 = 0.229. The paper uses two-way clustered standard errors at radiologist and patient level. Sample size n=227 is the number of radiologists (from Table 1 and text). The design involves each radiologist diagnosing multiple cases (92 reads per radiologist on average from Table 1), but the unit of analysis for effect size should be radiologists. The paper does not report SD of differences or paired t-statistics directly, only regression coefficients with clustered SEs. P-value is reported as not significant but exact value not given in table. | insufficient numbers for d",
+    "n_human": 227,
+    "n_ai": 227,
+    "direction_convention": "smaller_is_better"
+  }
+}

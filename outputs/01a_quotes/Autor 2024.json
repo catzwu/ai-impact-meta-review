@@ -1,0 +1,41 @@
+{
+  "citation_key": "autor_2024_ai_middle_class",
+  "authors": [
+    "David Autor"
+  ],
+  "title": "Applying AI to Rebuild Middle Class Jobs",
+  "year": 2024,
+  "venue": "NBER Working Paper",
+  "quotes": {
+    "study_design": [],
+    "task": [],
+    "population": [],
+    "arms": [],
+    "outcome_definitions": [],
+    "statistical_results": [
+      "In a controlled experiment, the treatment group that was given access to this tool completed the required programming task about 56% faster than the control group without access to Copilot.",
+      "Time spent on the task fell across the board by 40%.",
+      "They also estimated a significant, roughly 14% improvement in productivity, and akin to Noy and Zhang's study, these gains were most pronounced among novice workers.",
+      "AI tools helped novice workers attain the capabilities of experienced agents in three months rather than 10.",
+      "Between 2011 and 2022, NP employment nearly tripled to approximately 224,000, with employment projected to grow by around 40% over the next decade, well above the national average.",
+      "In 2022, the median Nurse Practitioner earned an annual salary of $125,900.",
+      "air traffic controllers were paid a median annual salary of $132,250 in 2022, or nearly four times the $33,380 median annual pay of crossing guards.",
+      "In 1900, about 35% of U.S. employment was in agriculture (Katz and Margo, 2014). After a century of sustained productivity growth, that share in 2022 was around 1%",
+      "Fifty-one percent of adult YouTube users report that the site is \"very important\" for \"figuring out how to do things they haven't done before,\" according to a 2018 Pew Research study",
+      "A recent Gallup poll found that 75% of U.S. adults believe AI will lead to fewer jobs",
+      "Federal Reserve Bank economists Emily Dohrman and Bruce Fallick estimate that over the last four decades, the prices of healthcare and education rose by around 200 and 600%, respectively, relative to U.S. household incomes"
+    ],
+    "ambiguity_or_caveats": [
+      "A fourth recent paper offers an exception that arguably proves the rule. In an experiment that randomly allocated the availability of AI assistance to professional radiologists, Nikhil Agarwal of MIT and his coauthors have found that AI did not improve the quality of radiologists' diagnoses \u2014 even though AI's predictions were at least as accurate as nearly two-thirds of the doctors studied (Agarwal et al., 2023). That's because doctors did not understand how to use the AI tool effectively; when AI offered confident predictions, doctors frequently overrode those predictions with their own. When AI offered uncertain predictions, doctors frequently overrode their own better predictions with those supplied by the machine.",
+      "The lesson is not that AI is contraindicated for doctors but rather that its broad, complementary use will require training and the acquisition of additional expertise.",
+      "There is no economic law that says that the forces of automation and new work creation are equal and offsetting; in fact, recent evidence indicates that the former is outpacing the latter (Acemoglu and Restrepo, 2022; Autor et al., forthcoming).",
+      "Even if these opposing forces were to arm-wrestle one another to a draw, however, it is unlikely that workers whose expertise will be displaced by AI will be the same ones whose expertise is made newly valuable.",
+      "My thesis is not a forecast but a claim about what is attainable. AI will not decide how AI is used, and its constructive and destructive applications are boundless.",
+      "The most charitable thing I can say about these ominous statements is that they are likely wrong \u2014 a flattening of the complexity of innovation into a single dimension of automation.",
+      "This alternative path is not an inevitable or intrinsic consequence of AI development. It is, however, technologically plausible, economically coherent and morally compelling."
+    ]
+  },
+  "notes": "This is a position/opinion paper by David Autor, not a report of original empirical research. The paper discusses three recent empirical studies (Peng et al. 2023 on GitHub Copilot; Noy and Zhang 2023 on ChatGPT for writing; Brynjolfsson et al. 2023 on AI for customer service; and Agarwal et al. 2023 on AI for radiology) but does not conduct its own experiment. The paper makes a theoretical argument about how AI could be used to augment worker expertise and restore middle-class jobs, drawing on historical parallels and economic reasoning. The statistical results quoted are from the cited studies, not from original work by Autor.",
+  "_paper_id": "Autor 2024",
+  "_source_pdf": "papers/Autor 2024.pdf"
+}

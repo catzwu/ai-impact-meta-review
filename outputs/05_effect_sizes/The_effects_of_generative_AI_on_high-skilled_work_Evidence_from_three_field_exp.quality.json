@@ -1,0 +1,49 @@
+{
+  "_paper_id": "The_effects_of_generative_AI_on_high-skilled_work_Evidence_from_three_field_exp",
+  "citation_key": "cui_2025_generative_ai_developers",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "copilot_access",
+    "ai_arm_selection_rationale": "Only one AI arm (copilot_access) vs control. However, insufficient statistics are provided to compute Hedges' g.",
+    "direction_convention": "larger_is_better",
+    "m_human": 0.6,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 2414,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 2453,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "The paper reports only the control group mean (0.6) and a 10% increase effect, along with regression coefficients (ITT, IV, Weighted IV) with standard errors. The AI arm mean is not directly reported, and no SDs, SEs for means, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) are provided. The p-value is reported as inequalities (p < 0.01, p < 0.05) rather than exact values. Regression coefficients cannot be directly converted to Hedges' g without additional information about the outcome scale and variance. This is marked as unresolvable because we lack the necessary statistics (means + SDs, or t/F statistics, or standardized effects) to compute Hedges' g.",
+    "source_quotes": [
+      "At Microsoft, Approval Rate: Mean 0.60, ITT 3.78*** (1.16), IV 24.02** (11.54), Weighted IV 9.88*** (3.28)",
+      "10% increase",
+      "p < 0.01 (ITT), p < 0.05 (Weighted IV)"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "The paper reports only the control group mean (0.6) and a 10% increase effect, along with regression coefficients (ITT, IV, Weighted IV) with standard errors. The AI arm mean is not directly reported, and no SDs, SEs for means, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) are provided. The p-value is reported as inequalities (p < 0.01, p < 0.05) rather than exact values. Regression coefficients cannot be directly converted to Hedges' g without additional information about the outcome scale and variance. This is marked as unresolvable because we lack the necessary statistics (means + SDs, or t/F statistics, or standardized effects) to compute Hedges' g. | arm pair unresolvable",
+    "n_human": 2414,
+    "n_ai": 2453,
+    "direction_convention": "larger_is_better"
+  }
+}

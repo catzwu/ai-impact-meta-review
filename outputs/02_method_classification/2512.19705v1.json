@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly 'employs a difference-in-differences framework' using 'the December 2023 launch of FactSet's AI-powered platform (Mercury) as a natural experiment,' comparing analysts using FactSet versus alternative platforms before and after AI introduction. This is a clear quasi-experimental identification strategy with DiD methodology.",
+  "citation_key": "xue_2025_generative_analysts"
+}

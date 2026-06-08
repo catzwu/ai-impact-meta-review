@@ -1,0 +1,320 @@
+{
+  "citation_key": "liu_2024_coquest",
+  "authors": [
+    "Yiren Liu",
+    "Si Chen",
+    "Haocong Cheng",
+    "Mengxia Yu",
+    "Xiao Ran",
+    "Andrew Mo",
+    "Yiliu Tang",
+    "Yun Huang"
+  ],
+  "title": "CoQuest: Exploring Research Question Co-Creation with an LLM-based Agent",
+  "year": 2024,
+  "venue": "CHI '24, May 11\u201316, 2024, Honolulu, HI, USA",
+  "study_design_description": "A within-subjects user study was conducted with 20 HCI researchers to examine the impact of two interaction designs: breadth-first and depth-first RQ generation. Each participant completed two tasks designed to simulate real-life scenarios of research idea formulation, using both designs in counterbalanced order. Studies lasted 1\u20132 hours and included two tasks using two designs, a survey after each task, and an exit interview. A formative study with four doctoral researchers was also conducted via semi-structured interviews to understand the cognitive process of researchers creating research questions.",
+  "primary_task_description": "Participants were asked to complete tasks designed to simulate real-life scenarios of research idea formulation. The two task topics used in this study are: \"AR/VR for education and learning\" and \"AI and crowdsourcing\". Participants were encouraged to think aloud during the tasks.",
+  "population_description": "The main study involved 20 HCI researchers who were graduate students currently enrolled or just graduated with prior experience with research. All participants were evaluated in their early stages of research careers as doctoral students. The formative study included four doctoral researchers. All studies were completed remotely online over video calls, where participants shared their screens. Participants were compensated $20 per hour for the user study.",
+  "arms": [
+    {
+      "arm_name": "breadth_first",
+      "description": "Breadth-first generation: When a user initiates the generation of follow-up RQs, several RQs are produced simultaneously in parallel. These new questions are all at the same hierarchical level following the original question. Three RQs were generated per turn.",
+      "n": null
+    },
+    {
+      "arm_name": "depth_first",
+      "description": "Depth-first generation: When a user initiates the generation, follow-up RQs are created one after the other, with each new question building upon the previous one in a sequential manner. Three RQs were generated per turn.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "perceived_creativity",
+      "outcome_description": "User-perceived creativity measured through survey at the end of each task using a 5-point Likert scale.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "perceived_trust",
+      "outcome_description": "User-perceived trust measured through survey at the end of each task using a 5-point Likert scale.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "rq_novelty",
+      "outcome_description": "Novelty of generated research questions rated by participants on a 5-point Likert scale, measured using Boden's criteria.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "rq_surprise",
+      "outcome_description": "Surprise aspect of generated research questions rated by participants on a 5-point Likert scale, measured using Boden's criteria.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "rq_value",
+      "outcome_description": "Value aspect of generated research questions measured using Boden's criteria.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "rq_ratings_overall",
+      "outcome_description": "Overall ratings of research questions collected on the fly during each task, where participants rated at least six RQs of their choice using a 5-point Likert scale slider.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_control",
+      "outcome_description": "User-perceived control measured through survey at the end of each task using 5-point Likert scale questions.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_meta_creativity",
+      "outcome_description": "User-perceived meta-creativity measured through survey at the end of each task using 5-point Likert scale questions.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_cognitive_load",
+      "outcome_description": "User-perceived cognitive load measured through survey at the end of each task using 5-point Likert scale questions.",
+      "measurement_unit": "5-point Likert scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "rq_depth_correlation",
+      "outcome_description": "Correlation between the depth of research questions and their ratings.",
+      "measurement_unit": "Spearman's correlation coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "wait_time_exploration",
+      "outcome_description": "Whether participants explored other RQs during wait time for RQ generation.",
+      "measurement_unit": "count/proportion",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_feedback_length",
+      "outcome_description": "Length of user feedback provided to the AI system.",
+      "measurement_unit": "character/word count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "check_paper_graph_action",
+      "outcome_description": "Frequency of 'Check paper graph' actions performed by users.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "generate_new_rqs_action",
+      "outcome_description": "Frequency of 'Generate new RQs' actions performed by users.",
+      "measurement_unit": "count",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "rq_count",
+      "arm_comparison": "breadth_first vs depth_first",
+      "means_and_sds": {
+        "breadth_first": {
+          "mean": 14.53,
+          "sd": 6.19,
+          "se": null
+        },
+        "depth_first": {
+          "mean": 12,
+          "sd": 5.31,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In total, 20 participants created 504 RQs throughout the study, with 276 RQs (M=14.53, SD=6.19) co-created with CoQuest system under the breadth-first condition and 228 RQs (M=12, SD=5.31) under the depth-first condition."
+    },
+    {
+      "outcome_name": "perceived_creativity",
+      "arm_comparison": "breadth_first vs depth_first",
+      "means_and_sds": {
+        "breadth_first": {
+          "mean": 3.78,
+          "sd": 0.82,
+          "se": null
+        },
+        "depth_first": {
+          "mean": 3.18,
+          "sd": 0.69,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = .68",
+      "regression_coefficient": null,
+      "test_statistic": "U = 288.0",
+      "p_value": "p = .015*",
+      "confidence_interval": null,
+      "verbatim_quote": "A Mann-Whitney U test of the survey results suggested that users perceived significantly stronger creativity (U = 288.0, p = .015*, d = .68, Power = .83) using the system under the breadth-first condition (M=3.78, SD=0.82) than the depth-first condition (M=3.18, SD=0.69)."
+    },
+    {
+      "outcome_name": "perceived_trust",
+      "arm_comparison": "breadth_first vs depth_first",
+      "means_and_sds": {
+        "breadth_first": {
+          "mean": 4.15,
+          "sd": 0.76,
+          "se": null
+        },
+        "depth_first": {
+          "mean": 3.5,
+          "sd": 0.86,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = .67",
+      "regression_coefficient": null,
+      "test_statistic": "U = 292.0",
+      "p_value": "p = .011*",
+      "confidence_interval": null,
+      "verbatim_quote": "Similarly, the user-perceived trust under the breadth-first condition (M=4.15, SD=0.76) was found significantly higher (U = 292.0, p = .011*, d = .67, Power = .81) than the depth-first condition (M=3.5, SD=0.86)."
+    },
+    {
+      "outcome_name": "rq_ratings_overall",
+      "arm_comparison": "breadth_first vs depth_first",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F (4, 209) = 3.79",
+      "p_value": "p = .0057**",
+      "confidence_interval": null,
+      "verbatim_quote": "To account for the problem of multiple comparisons, we conducted a MANOVA and found a significant difference (F (4, 209) = 3.79, p = .0057**;Wilk's \u039b = 0.909) in the user-provided ratings for RQs between the two conditions (i.e., breadth-first and depth-first)."
+    },
+    {
+      "outcome_name": "rq_novelty",
+      "arm_comparison": "depth_first vs breadth_first",
+      "means_and_sds": {
+        "depth_first": {
+          "mean": 3.78,
+          "sd": 1.29,
+          "se": null
+        },
+        "breadth_first": {
+          "mean": 3.28,
+          "sd": 1.22,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = .40",
+      "regression_coefficient": null,
+      "test_statistic": "U = 2199.5",
+      "p_value": "p = .002**",
+      "confidence_interval": null,
+      "verbatim_quote": "We conducted Mann-Whitney U tests with these ratings toward generated RQs and found that both the novelty (U = 2199.5, p = .002**, d = .40, Power = .89) and surprise (U = 2387.5, p = 0.017*, d = .32, Power = .75) of the RQs were rated higher when using the depth-first condition (M=3.78, SD=1.29) compared to the breadth-first condition (M=3.28, SD=1.22)."
+    },
+    {
+      "outcome_name": "rq_surprise",
+      "arm_comparison": "depth_first vs breadth_first",
+      "means_and_sds": {
+        "depth_first": {
+          "mean": 3.78,
+          "sd": 1.29,
+          "se": null
+        },
+        "breadth_first": {
+          "mean": 3.28,
+          "sd": 1.22,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = .32",
+      "regression_coefficient": null,
+      "test_statistic": "U = 2387.5",
+      "p_value": "p = 0.017*",
+      "confidence_interval": null,
+      "verbatim_quote": "We conducted Mann-Whitney U tests with these ratings toward generated RQs and found that both the novelty (U = 2199.5, p = .002**, d = .40, Power = .89) and surprise (U = 2387.5, p = 0.017*, d = .32, Power = .75) of the RQs were rated higher when using the depth-first condition (M=3.78, SD=1.29) compared to the breadth-first condition (M=3.28, SD=1.22)."
+    },
+    {
+      "outcome_name": "rq_depth_correlation",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001***",
+      "confidence_interval": null,
+      "verbatim_quote": "By computing Spearman's correlation coefficient, we found significant positive correlations between the depth of RQs and their corresponding ratings of novelty (r (514) = .41, p < .001***)."
+    },
+    {
+      "outcome_name": "rq_value",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = .011*",
+      "confidence_interval": null,
+      "verbatim_quote": "By computing Spearman's correlation coefficient, we found significant positive correlations between the depth of RQs and their corresponding ratings of novelty (r (514) = .41, p < .001***), value (r (514) = .22, p = .011*) and surprise (r (514) = .24, p = .006**)."
+    },
+    {
+      "outcome_name": "wait_time_exploration",
+      "arm_comparison": "depth_first vs breadth_first",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "z = \u22122.01",
+      "p_value": "p = 0.045*",
+      "confidence_interval": null,
+      "verbatim_quote": "We also found that more participants explored other RQs during wait time under the depth-first condition (N=12) than the breadth-first condition (N=6), with a two-proportion z-test indicating significance (z = \u22122.01, p = 0.045*)."
+    },
+    {
+      "outcome_name": "user_feedback_length",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001***",
+      "confidence_interval": null,
+      "verbatim_quote": "We also found a positive correlation, shown by Pearson's correlation test (r (392) = 0.18, p < 0.001***), between whether a user made use of the RQ generation wait time and the length of the user's feedback to AI."
+    },
+    {
+      "outcome_name": "check_paper_graph_action",
+      "arm_comparison": "breadth_first vs depth_first",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "U = 4414",
+      "p_value": "P = 0.009**",
+      "confidence_interval": null,
+      "verbatim_quote": "The earlier stage of interaction revealed notable distinctions: users in the breadth-first condition engaged more frequently in 'Check paper graph' (U = 4414, P = 0.009**) and 'Generate new RQs' (U = 4483, P = 0.011*) actions compared to those in the depth-first condition."
+    },
+    {
+      "outcome_name": "generate_new_rqs_action",
+      "arm_comparison": "breadth_first vs depth_first",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "U = 4483",
+      "p_value": "P = 0.011*",
+      "confidence_interval": null,
+      "verbatim_quote": "The earlier stage of interaction revealed notable distinctions: users in the breadth-first condition engaged more frequently in 'Check paper graph' (U = 4414, P = 0.009**) and 'Generate new RQs' (U = 4483, P = 0.011*) actions compared to those in the depth-first condition."
+    }
+  ],
+  "notes": "This is a within-subjects user study with 20 HCI researchers comparing two interaction designs (breadth-first vs. depth-first) for LLM-based research question co-creation. The study also included a formative phase with 4 doctoral researchers. Participants completed two tasks in counterbalanced order. Key findings: breadth-first design led to significantly higher perceived creativity (d = .68, p = .015) and trust (d = .67, p = .011), while depth-first design led to higher-rated RQ novelty (d = .40, p = .002) and surprise (d = .32, p = .017). The paper reports survey ratings (5-point Likert), behavioral metrics from system logs, and qualitative interview data. Limitations noted include: limited publication source pool, time constraints on tasks, lack of precise completion time recording, focus on early-stage doctoral researchers only, and lack of longer-term impact assessment. Cronbach's Alpha for survey ratings was \u03b1 = .85, indicating good reliability.",
+  "_paper_id": "liu2024b"
+}

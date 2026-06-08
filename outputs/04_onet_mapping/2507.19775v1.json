@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "medium",
+  "rationale": "This study examines organizational-level outcomes (structure, performance) of AI adoption across startups, not the work activities of individual employees. The participants are entire firms/organizations, not workers performing specific tasks. While the startups operate in 'knowledge-intensive' domains (IT, fintech, healthtech, edtech), the study measures firm-level metrics (revenue, funding, valuation, employee count) rather than observing workers doing actual work. This is a poor fit for O*NET mapping, which is designed for human work activities and occupations. Mapping to 'Analyzing Data or Information' reflects that knowledge work likely dominates these technology firms, but confidence is low-to-medium because we're inferring typical activities rather than measuring actual worker productivity.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    }
+  ],
+  "citation_key": "ganuthula_2025_ai_structural"
+}

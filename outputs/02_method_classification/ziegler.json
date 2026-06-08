@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study is explicitly described as 'An observational study analyzing 2,631 survey responses from developers using GitHub Copilot.' There is no randomization; all participants were users of GitHub Copilot in an unpaid technical preview, and the study examines correlations between usage telemetry and self-reported productivity without any experimental manipulation or quasi-experimental identification strategy.",
+  "citation_key": "ziegler_2024_copilot_productivity"
+}

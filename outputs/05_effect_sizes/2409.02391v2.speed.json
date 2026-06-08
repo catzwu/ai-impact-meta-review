@@ -1,0 +1,49 @@
+{
+  "_paper_id": "2409.02391v2",
+  "citation_key": "merali_2024_scaling_productivity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_assisted",
+    "ai_arm_selection_rationale": "Single AI treatment arm pooling all thirteen AI models of varying compute sizes; this is the only AI-assisted condition available and represents the overall effect of AI assistance versus no AI.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 600.7,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 413.8,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.311,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Sample sizes (n_human, n_ai) are not provided in the arms array. The primary comparison shows control mean of 600.7 seconds vs AI-assisted mean of 413.8 seconds, representing a 31.1% reduction in completion time (p=0.000). Additional statistics report scaling effects (12.3% reduction per 10x compute increase, 22.7% per GPT-jump) and skill-level heterogeneity, but these are secondary analyses. The reported_percent_change is negative (-0.311) because time decreased with AI assistance.",
+    "source_quotes": [
+      "With access to any AI model this was reduced to 413.8 seconds (p=0.000), a statistically significant reduction in time of 31.1%.",
+      "Completed tasks without any AI assistance",
+      "Assigned one of thirteen AI models of differing compute sizes to aid them; all thirteen AI models are pooled into a single treatment group"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.3727128765446731,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.45166747220879655,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Sample sizes (n_human, n_ai) are not provided in the arms array. The primary comparison shows control mean of 600.7 seconds vs AI-assisted mean of 413.8 seconds, representing a 31.1% reduction in completion time (p=0.000). Additional statistics report scaling effects (12.3% reduction per 10x compute increase, 22.7% per GPT-jump) and skill-level heterogeneity, but these are secondary analyses. The reported_percent_change is negative (-0.311) because time decreased with AI assistance. | SDs/SEs missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

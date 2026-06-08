@@ -1,0 +1,53 @@
+{
+  "_paper_id": "Doyle",
+  "citation_key": "kotsiovos_2024_generative_ai",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is a single-arm survey study with no experimental comparison. The study surveyed 21 higher education faculty who already use AI tools about their perceptions and experiences. There is no human-only baseline condition and no experimental manipulation. The reported statistics are Likert-scale agreement percentages (e.g., 80.95% strongly agree that AI streamlines curriculum development), not quantitative performance metrics comparing human-only vs. human+AI conditions. The study design is purely descriptive/observational of faculty perceptions, not a controlled experiment or natural experiment with treatment and control arms.",
+    "direction_convention": null,
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "After careful re-reading of the full paper, this is definitively a single-arm survey study with no comparison group. The research question asks 'What are the perceptions and experiences of higher education faculty using generative AI tools?' Twenty-one faculty who already use AI were surveyed about their perceptions. The outcomes are Likert-scale agreement percentages (strongly agree, agree, neutral, disagree, strongly disagree) about statements like 'AI streamlines curriculum development' and 'AI creates effective teaching materials.' No experimental manipulation was performed, no human-only baseline exists, and no quantitative performance metrics (time, throughput, quality scores) were measured. The paper does cite other studies (Dell'Acqua et al. 2023, Sowa et al. 2021) that report productivity improvements (12.2% boost in task execution, 25.1% reduction in completion time, 40% quality improvement), but these are literature review citations, not results from this study. This study's own empirical contribution is purely descriptive survey data about faculty perceptions, which cannot be converted to a log ratio of means for a SPEED effect size.",
+    "source_quotes": [
+      "This study investigates the transformative potential of generative artificial intelligence (AI) in reshaping educational methodologies in higher education course design to enhance student success.",
+      "Twenty-one higher education faculty who utilize AI participated in this survey.",
+      "The survey asked participants to rate the effectiveness of AI tools in higher education for seven categories",
+      "The survey results reveal that 80.95% of respondents strongly agree that AI streamlines curriculum development for quicker content production.",
+      "This study aims to answer the following research question: What are the perceptions and experiences of higher education faculty using generative AI tools to influence the development of online courses?",
+      "Through a review of existing literature and an analysis of survey results, the research highlights synergies between AI tools and educational best practices"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After careful re-reading of the full paper, this is definitively a single-arm survey study with no comparison group. The research question asks 'What are the perceptions and experiences of higher education faculty using generative AI tools?' Twenty-one faculty who already use AI were surveyed about their perceptions. The outcomes are Likert-scale agreement percentages (strongly agree, agree, neutral, disagree, strongly disagree) about statements like 'AI streamlines curriculum development' and 'AI creates effective teaching materials.' No experimental manipulation was performed, no human-only baseline exists, and no quantitative performance metrics (time, throughput, quality scores) were measured. The paper does cite other studies (Dell'Acqua et al. 2023, Sowa et al. 2021) that report productivity improvements (12.2% boost in task execution, 25.1% reduction in completion time, 40% quality improvement), but these are literature review citations, not results from this study. This study's own empirical contribution is purely descriptive survey data about faculty perceptions, which cannot be converted to a log ratio of means for a SPEED effect size. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

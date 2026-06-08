@@ -1,0 +1,85 @@
+{
+  "citation_key": "merali_2024_scaling_productivity",
+  "authors": [
+    "Ali Merali"
+  ],
+  "title": "Scaling Laws for Economic Productivity: Experimental Evidence in LLM-Assisted Translation",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "In a preregistered online experiment, 300 professional translators completed 1,800 tasks using one of 13 LLMs (or a control).",
+      "It conducts a randomized controlled trial (RCT) involving 300 professional translators conducting 1800 tasks of varying complexities.",
+      "The participants were randomly assigned to either treatment groups where they could utilize one of thirteen LLMs of differing model training compute to help them complete their task or to a control group where they completed tasks without any AI assistance.",
+      "Participants faced high-powered incentives with significant bonus payments for high-quality tasks as evaluated by three experienced professionals in the field.",
+      "The research described in this article was approved by the Yale Human Research Protection Program and was preregistered at the AEA RCT Registry (AEARCTR-0013743)."
+    ],
+    "task": [
+      "The participants then completed five more tasks during the experiment.",
+      "The tasks were all short, taking almost exactly ten minutes to complete each on average.",
+      "The texts to be translated covered a range of materials including business, academic, and literary texts to simulate a wide variety of potential professional use cases.",
+      "Participants overall reported that the tasks had an overall similarity score with those they completed professionally of 3.53 out of 5.",
+      "Participants who met all eligibility criteria then completed a baseline task where they translated a text from English without any AI or software assistance.",
+      "Before each genuine task they were given a practice task to use the model in so that they were able to understand the performance of the AI model they had been assigned and so that compliance with the experiment could be monitored."
+    ],
+    "population": [
+      "For this experiment, three hundred participants were recruited through online recruiting platforms Freelancer and Fiverr.",
+      "These participants were split evenly based on their proficiency on the three languages of interest for this study Spanish, Hindi, and Arabic (all translations were made from English into the target language).",
+      "All the participants completed a pre-screening survey in order to be eligible to take part in the full survey; requirements included that they had at least one year of experience as a professional translator, that they completed paid translation tasks in the past year, that they met certain standards of language ability, and that they were comfortable having their AI model usage monitored throughout the experiment.",
+      "Over 70% of eligible participants had at least three years of professional experience as a translator and just over a third had at least five years of experience as a professional.",
+      "In self-reported analysis, translators judged their translation abilities between English and the target language at 4.52/5 and their professional fluency in the desired language at 4.85/5.",
+      "Further, they reported a familiarity of AI tools for translation of 4.15/5 and self-evaluated their abilities in using AI tools for translation at 4.18/5."
+    ],
+    "arms": [
+      "To help the participants with their tasks, they were assigned either one of thirteen AI models to aid them (treatment) or were told to complete the tasks by themselves (control).",
+      "All thirteen AI models of differing compute sizes are therefore pooled into a single treatment group."
+    ],
+    "outcome_definitions": [
+      "The key outcome variables, therefore, were how translator's time taken, quality of tasks completed, and earnings per minute (inclusive of bonuses) varied by model training compute.",
+      "Participants were offered a flat rate of $10 for completing all six tasks to a satisfactory standard and were offered a $2 bonus per task for a high-quality completion.",
+      "A task was deemed of high-quality if it received an average grade (from the three human expert graders) of 6 or higher whilst a task was considered satisfactory if it received an average grade of 2 or higher.",
+      "These grades consisted of the average of three professional translators who went through more stringent vetting (they had an average of 5+ years of experience each, and were monitored in their grading of sample tasks)."
+    ],
+    "statistical_results": [
+      "A tenfold increase in model compute improved task completion speed by 12.3%, grades by 0.18 standard deviations, and earnings per minute by 16.1%.",
+      "Gains were four times larger for lower-skilled workers.",
+      "These findings suggest continued model scaling could boost U.S. productivity by at least 6.9% over the next decade.",
+      "For every 10x increase in model training compute, translator's managed to complete a task 12.3% quicker (p=0.001).",
+      "Converted into 'GPT-jumps', denoting the 70x difference in model training compute between successively numbered GPT models, this equates to a 22.7% decrease in time per model jump.",
+      "For every 10x increase in model compute grades improved by 0.25 points on a 7-point scale or by 0.18 standard deviations (p=0.000).",
+      "A 'GPT-jump' of a 70x increase in model compute is therefore associated with a 0.33 standard deviation increase in grades.",
+      "The translator's overall productivity improvements (measured in earnings per minute, inclusive of bonuses) was even greater than the reduction in time taken alone with a 16.1% increase in earnings per 10x increase in model compute or a 29.7% increase per 'GPT-jump' (p=0.001).",
+      "Those with 'high-skill' reduced their time taken per task by 4.9% whilst those with 'low-skill' saw a more than 4x larger reduction of 21.1% (p=0.017).",
+      "The average time taken by participants to conduct a task without access to any AI model was almost exactly ten minutes (600.7 seconds).",
+      "With access to any AI model this was reduced to 413.8 seconds (p=0.000), a statistically significant reduction in time of 31.1%.",
+      "The average grade without access to an AI model was 4.51.",
+      "When participants were able to use an AI model this increased to 4.71, an increase of 0.2 points on a seven-point scale.",
+      "This equates to an increase of 0.14 standard deviations in the average grade.",
+      "Not only were participants much quicker in completing tasks with access to AI models, however, but their tasks were also associated with higher quality scores although this result was not statistically significant (p=0.148).",
+      "When participants were given access to a model with an increase in the amount of training compute of 10x this was associated with a 12.3% reduction in time in completing tasks (p=0.001).",
+      "This implies that a 'GPT-jump' in models, denoting the roughly 70x increase in training compute between successively numbered GPT model versions, is associated with a 22.7% decrease in the amount of time spent by participants.",
+      "The average participant earned $1.18 per minute of completing tasks.",
+      "This increased by $0.19 a minute for every 10x increase in compute the model they received was given in training (p=0.001).",
+      "As such, the average participant gained an 16.1% increase in earnings for every 10x increase in model training compute or a 29.7% increase for every 'GPT-jump'.",
+      "Whilst high-skilled participants reduce their time taken by 4.9% for every 10x increase in compute those with low-skill have a 21.1% reduction (p=0.017).",
+      "These translate into 9% and 39.0% reductions in time taken per 'GPT-Jump'."
+    ],
+    "ambiguity_or_caveats": [
+      "There are many limitations to this study.",
+      "This paper focused on a single professional skill (translation) and only tested participants on short tasks.",
+      "Further, the results were only derived on a range of just over two orders of magnitude of compute.",
+      "Whether these economic scaling laws generalize to other domains and for greater model training compute sizes is a question for further research.",
+      "It should be noted that this calculation makes several restrictions.",
+      "For instance, it is assumed that the task structure of the economy doesn't change at all despite significant technological changes.",
+      "Further, and of particular significance, it also assumes no change to the rate of technological progress itself.",
+      "Note that Eloundou et al (2023) estimate translators to be the occupation with either the highest or close to the highest (depending on the model they use) AI-exposed occupation.",
+      "As such, we would expect the ratio of gains from AI-assistance to be disproportionately larger from smaller models to larger models for translators than for other tasks.",
+      "This assumption, therefore, likely yields an underestimate for the scaling effects of all other tasks.",
+      "Note we do not assume that the scaling laws for different tasks all follow those of the scaling laws for translation- other tasks may see differential productivity gains.",
+      "The weaker assumption that is made here, however, is that the ratio of the productivity gains made from going from no AI assistance to assistance from an LLM with training compute x to the productivity gains from going from assistance with an LLM with training compute x to an LLM with a larger training compute y for any given task is the same as it is for translation."
+    ]
+  },
+  "notes": "This is a preregistered RCT with 300 professional translators assigned to 13 different LLM treatment conditions or a control condition. The paper derives scaling laws relating model training compute to economic outcomes (time, quality, earnings). Results are reported for the overall AI vs. no-AI comparison, and separately for scaling relationships across the 13 models. The paper also includes an aggregate productivity calculation for the U.S. economy over the next decade based on the experimental scaling laws.",
+  "_paper_id": "Merali 2024",
+  "_source_pdf": "papers/Merali 2024.pdf"
+}

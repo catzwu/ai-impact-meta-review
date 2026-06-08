@@ -1,0 +1,10 @@
+code,label,n_studies_speed,speed_log_ratio_mean,speed_log_ratio_se,speed_pct_change_equiv,speed_aggregation_method,n_studies_quality,quality_hedges_g_mean,quality_hedges_g_se,quality_aggregation_method,contributing_studies
+43-4051.00,Customer Service Representatives,2,0.23724684725930023,,0.2677540207595641,simple_mean,1,0.033835583753123226,0.022956142207888216,iv_weighted,brynjolfsson_2023_generative_ai; brynjolfsson_2024_generative_ai
+13-2051.00,Financial and Investment Analysts,2,0.15545145258449572,,0.16818522231723643,simple_mean,2,0.0011783133481217194,0.004718512012075096,iv_weighted,shanthikumar_2024_ai_analyst; xue_2025_generative_analysts
+11-1021.00,General and Operations Managers,0,,,,n/a,1,0.03995295962367699,0.07897186579942622,iv_weighted,otis_2024_ai_entrepreneurship
+27-3091.00,Interpreters and Translators,1,0.3727128765446731,,0.45166747220879655,simple_mean,1,0.14282137790441232,0.0365644194077769,iv_weighted,merali_2024_scaling_productivity
+23-1011.00,Lawyers,2,0.2754559983204051,0.07515456542045983,0.3171311475409835,iv_weighted,2,0.30701549803641615,0.18204180229683573,iv_weighted,choi_2023_lawyering_ai
+13-1111.00,Management Analysts,1,0.12588024588900293,,0.13414634146341475,simple_mean,1,2.140791781015457,0.15648551480207332,iv_weighted,dellacqua_2026_jagged_frontier
+29-1224.00,Radiologists,1,-0.037751128203603754,,-0.03704743719345549,simple_mean,0,,,n/a,agarwal_2023_radiology_ai
+41-9022.00,Real Estate Sales Agents,1,0.05413944610064823,,0.055631795629684344,simple_mean,1,0.5802411227104969,0.24487708776878772,iv_weighted,ai_copilots_real_estate_2025
+15-1252.00,Software Developers,4,0.14996782506703368,,0.16179686139077964,simple_mean,1,0.10165040528573137,0.047875741536171745,iv_weighted,becker_2025_ai_developer_productivity; cui_2025_generative_ai_developers; song_2024_copilot_oss; stray_2026_copilot_productivity

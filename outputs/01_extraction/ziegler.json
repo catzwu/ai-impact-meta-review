@@ -1,0 +1,440 @@
+{
+  "citation_key": "ziegler_2024_copilot_productivity",
+  "authors": [
+    "Albert Ziegler",
+    "Eirini Kalliamvakou",
+    "X. Alice Li",
+    "Andrew Rice",
+    "Devon Rifkin",
+    "Shawn Simister",
+    "Ganesh Sittampalam",
+    "Edward Aftandilian"
+  ],
+  "title": "Measuring GitHub Copilot's Impact on Productivity",
+  "year": 2024,
+  "venue": "Communications of the ACM",
+  "study_design_description": "An observational study analyzing 2,631 survey responses from developers using GitHub Copilot, matched to usage telemetry collected from the IDE. Developers were participants in an unpaid technical preview using GitHub Copilot with their everyday programming tasks. Survey responses were collected via email to 17,420 users, with 2,047 responses successfully matched to usage data from a four-week study period (February 10 \u2013 March 6, 2022). The study investigates whether usage measurements of developer interactions with GitHub Copilot can predict perceived productivity as reported by developers.",
+  "primary_task_description": "Developers used GitHub Copilot with their everyday programming tasks. When generating whole snippets of code, the system uses a large language model (LLM) to predict what the user might type next (the completion) from the context of what they are working on at the moment (the prompt).",
+  "population_description": "2,631 survey responses from developers using GitHub Copilot, matched to usage data. A total of 2,047 responses were successfully matched to usage data from the study period. The respondents included a significant proportion of professional programmers.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "aggregate_productivity_score",
+      "outcome_description": "An aggregate productivity score calculated as the mean of 12 individual measures covering four dimensions of the SPACE framework (Satisfaction and well being, Performance, Communication and collaboration, and Efficiency and flow), plus a single statement \"I am more productive when using GitHub Copilot.\" Each measure was encoded on a five-point ordinal scale (1 = Strongly Disagree, ... , 5 = Strongly Agree).",
+      "measurement_unit": "mean of 12 measures on 1-5 scale",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "outcome_description": "Ratio of shown completions accepted by the user.",
+      "measurement_unit": "fraction",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "shown_rate",
+      "outcome_description": "Ratio of completion opportunities that resulted in a completion being shown to the user.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "persistence_rate",
+      "outcome_description": "Ratio of accepted completions unchanged after 30, 120, 300, and 600 seconds.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "fuzzy_persistence_rate",
+      "outcome_description": "Ratio of accepted completions mostly unchanged after 30, 120, 300, and 600 seconds.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "efficiency",
+      "outcome_description": "Ratio of completion opportunities that resulted in a completion accepted and unchanged after 30, 120, 300, and 600 seconds.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "contribution_speed",
+      "outcome_description": "Number of characters in accepted completions per distinct, active hour.",
+      "measurement_unit": "characters per hour",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "acceptance_frequency",
+      "outcome_description": "Number of accepted completions per distinct, active hour.",
+      "measurement_unit": "completions per hour",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "persistence_frequency",
+      "outcome_description": "Number of unchanged completions per distinct, active hour.",
+      "measurement_unit": "completions per hour",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "total_volume",
+      "outcome_description": "Total number of completions shown to the user.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "loquaciousness",
+      "outcome_description": "Number of shown completions per distinct, active hour.",
+      "measurement_unit": "completions per hour",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "eagerness",
+      "outcome_description": "Number of shown completions per opportunity.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "better_code",
+      "outcome_description": "Self-reported measure from SPACE framework.",
+      "measurement_unit": "1-5 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "stay_in_flow",
+      "outcome_description": "Self-reported measure from SPACE framework.",
+      "measurement_unit": "1-5 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "focus_satisfying",
+      "outcome_description": "Self-reported measure from SPACE framework.",
+      "measurement_unit": "1-5 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "less_effort_repetitive",
+      "outcome_description": "Self-reported measure from SPACE framework.",
+      "measurement_unit": "1-5 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "repetitive_faster",
+      "outcome_description": "Self-reported measure from SPACE framework.",
+      "measurement_unit": "1-5 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "less_frustrated",
+      "outcome_description": "Self-reported measure from SPACE framework.",
+      "measurement_unit": "1-5 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unfamiliar_progress",
+      "outcome_description": "Self-reported measure from SPACE framework.",
+      "measurement_unit": "1-5 scale",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.0001",
+      "confidence_interval": null,
+      "verbatim_quote": "Of all usage measurements, acceptance rate correlates best with aggregate productivity (\u03c1 = 0.24, P < 0.0001)."
+    },
+    {
+      "outcome_name": "aggregate_productivity_score",
+      "arm_comparison": "proficiency (bivariate)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0001",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that both are negatively correlated with our aggregate productivity measure (proficiency: \u03c1 = \u22120.095, P = 0.0001; years of experience: \u03c1 = \u22120.161, P < 0.0001)."
+    },
+    {
+      "outcome_name": "aggregate_productivity_score",
+      "arm_comparison": "years_of_experience (bivariate)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.0001",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that both are negatively correlated with our aggregate productivity measure (proficiency: \u03c1 = \u22120.095, P = 0.0001; years of experience: \u03c1 = \u22120.161, P < 0.0001)."
+    },
+    {
+      "outcome_name": "aggregate_productivity_score",
+      "arm_comparison": "proficiency (multivariate regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coeff = 0.021 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p = 0.213",
+      "confidence_interval": null,
+      "verbatim_quote": "However, in multivariate regressions predicting productivity from usage metrics while controlling for demographics, proficiency had a non-significant positive effect (coeff = 0.021, P = 0.213), while years of experience had a non-significant negative effect (coeff = \u22120.032, P = 0.122)."
+    },
+    {
+      "outcome_name": "aggregate_productivity_score",
+      "arm_comparison": "years_of_experience (multivariate regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coeff = \u22120.032 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p = 0.122",
+      "confidence_interval": null,
+      "verbatim_quote": "However, in multivariate regressions predicting productivity from usage metrics while controlling for demographics, proficiency had a non-significant positive effect (coeff = 0.021, P = 0.213), while years of experience had a non-significant negative effect (coeff = \u22120.032, P = 0.122)."
+    },
+    {
+      "outcome_name": "better_code",
+      "arm_comparison": "proficiency",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Proficiency Better code \u22120.061*\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "stay_in_flow",
+      "arm_comparison": "proficiency",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Proficiency Stay in flow 0.069*\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "focus_satisfying",
+      "arm_comparison": "proficiency",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Proficiency Focus satisfying 0.067*\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "less_effort_repetitive",
+      "arm_comparison": "proficiency",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Proficiency Less effort repetitive 0.072**\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "repetitive_faster",
+      "arm_comparison": "proficiency",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Proficiency Repetitive faster 0.055***\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "better_code",
+      "arm_comparison": "years_of_experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Years Better code \u22120.087*\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "less_frustrated",
+      "arm_comparison": "years_of_experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Years Less frustrated \u22120.103**\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "repetitive_faster",
+      "arm_comparison": "years_of_experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Years Repetitive faster \u22120.054*\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "unfamiliar_progress",
+      "arm_comparison": "years_of_experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Years Unfamiliar progress 0.081*\n(*: p < 0.05, **: p < 0.01, ***: p < 0.001.)"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (no experience)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "none 0.135* 344"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (\u22642 years experience)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "\u2264 2y 0.178** 451"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (3-5 years experience)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "3 \u2013 5 y 0.255*** 358"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (6-10 years experience)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "6 \u2013 10 y 0.265*** 251"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (11-15 years experience)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "11 \u2013 15 y 0.171* 162"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (\u226516 years experience)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "\u2265 16 y 0.153* 214"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (JavaScript)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "JavaScript 0.227*** 1184"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (TypeScript)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "TypeScript 0.165*** 654"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (Python)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Python 0.172*** 716"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "overall (other languages)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "other 0.178*** 1829"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "arm_comparison": "weekend vs weekday",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "weekend 23.5%, typical non-working hours 23%, typical working hours 21.2%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "These lead us to distinguish three different time regimes, all of which are statistically significantly distinct at p < 0.001% (using bootstrap resampling): The weekend: Saturdays and Sundays, where the average acceptance rate is comparatively high at 23.5%. Typical non-working hours during the week: evenings after 4:00 pm PST until mornings 7:00 am PST, where the average acceptance rate is also rather high at 23%. Typical working hours during the week from 7:00 am PST to 4:00 pm PST, where the average acceptance rate is much lower at 21.2%."
+    }
+  ],
+  "notes": "This is an observational study with no experimental arms or randomized conditions. The study correlates survey responses about perceived productivity with objective usage telemetry from GitHub Copilot. Sample size: 2,631 survey responses analyzed; 2,047 successfully matched to usage data. The paper includes subgroup analyses by experience level and programming language, and temporal analyses of acceptance rate patterns. The correlation between acceptance rate and aggregate productivity (\u03c1 = 0.24) is described as \"high confidence but leaves considerable unexplained variance.\" The study notes several caveats: the validity of acceptance rate as a measure of value is unclear; it is uncertain how long after acceptance one should confirm persistence; and a previous study found no significant correlation between task completion times and survey responses when comparing GitHub Copilot against IntelliCode with 25 participants. All data for time-of-day and weekday analyses were restricted to U.S. users only.",
+  "_paper_id": "ziegler"
+}

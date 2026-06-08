@@ -1,0 +1,6 @@
+{
+  "classification": "field_experiment",
+  "confidence": "high",
+  "rationale": "The study is explicitly described as \"A large-scale randomized field experiment conducted on a leading short-video platform\" where \"Content producers were randomly assigned to either treatment or control conditions\" in a real-world work setting with over 2 million producers posting videos on an active platform, not in a laboratory environment.",
+  "citation_key": "zhang_2024_ai_metadata"
+}

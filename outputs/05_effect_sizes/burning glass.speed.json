@@ -1,0 +1,51 @@
+{
+  "_paper_id": "burning glass",
+  "citation_key": "levanon_2025_entry_level",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper is a conceptual/theoretical report about structural forces affecting entry-level employment. It does not describe an empirical study comparing human-only vs. human+AI task performance.",
+    "direction_convention": null,
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This document ('No Country for Young Grads') is a policy/analysis report examining structural labor market trends affecting college graduates. It discusses unemployment rates, underemployment, and the impact of AI on entry-level jobs at a macro level using BLS data and job posting analytics. It does NOT report an experimental or observational study with human-only vs. human+AI arms performing tasks. The paper analyzes aggregate employment statistics (e.g., unemployment rates by education level, job posting trends by AI exposure) but contains no individual-level productivity measurements, no controlled comparisons of worker performance with/without AI assistance, and no means/SDs/effect sizes for task completion. The 'Expertise Upheaval' framework discussed is theoretical. Charts show trends in job postings and unemployment rates across demographic groups, not experimental outcomes. There are no arms, no participants completing tasks, and no speed or quality measurements suitable for meta-analysis of AI assistance effects on individual productivity.",
+    "source_quotes": [
+      "This report documents how these forces are coming to shape a new reality in which traditional assumptions about education and employment may no longer hold.",
+      "Our analysis reveals four interlocking factors that appear to be rewriting the rules of professional employment",
+      "Analysis of job postings in an array of Growth Roles shows a sharp and sustained decline in demand for workers with three years of experience or fewer",
+      "Looking at 20-24 year olds, the unemployment rate for those with at least a bachelor's degree increased from 5.2% in 2018-19 to 6.2% in the two years through June 2025"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This document ('No Country for Young Grads') is a policy/analysis report examining structural labor market trends affecting college graduates. It discusses unemployment rates, underemployment, and the impact of AI on entry-level jobs at a macro level using BLS data and job posting analytics. It does NOT report an experimental or observational study with human-only vs. human+AI arms performing tasks. The paper analyzes aggregate employment statistics (e.g., unemployment rates by education level, job posting trends by AI exposure) but contains no individual-level productivity measurements, no controlled comparisons of worker performance with/without AI assistance, and no means/SDs/effect sizes for task completion. The 'Expertise Upheaval' framework discussed is theoretical. Charts show trends in job postings and unemployment rates across demographic groups, not experimental outcomes. There are no arms, no participants completing tasks, and no speed or quality measurements suitable for meta-analysis of AI assistance effects on individual productivity. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

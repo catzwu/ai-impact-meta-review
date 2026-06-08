@@ -1,0 +1,47 @@
+{
+  "_paper_id": "2304.11771v2",
+  "citation_key": "brynjolfsson_2024_generative_ai",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control (pre-AI / never-treated)",
+    "ai_arm_name": "ai_assisted (post-AI deployment)",
+    "ai_arm_selection_rationale": "Manually injected from Table 3, p.56: DiD regression coefficient on resolution_rate for treated agents post-AI",
+    "direction_convention": "larger_is_better",
+    "m_human": 0.82,
+    "sd_human": 0.38418745424597095,
+    "se_human": null,
+    "n_human": 6147,
+    "m_ai": 0.833,
+    "sd_ai": 0.38418745424597095,
+    "se_ai": null,
+    "n_ai": 6147,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "Manual injection: regression coef 0.013 (SE 0.00882) on resolution_rate from Brynjolfsson Li Raymond 2024 Table 3 Col 3 (p.56). N=12,295 agent-month observations split evenly across arms. Pooled SD computed as Bernoulli sqrt(p(1-p)) at baseline p=0.82. Effect is described in paper as 'economically modest and insignificant'.",
+    "source_quotes": [
+      "Column 3 of Table 3 indicates a small 1.3 percentage point increase in chat resolution rates.",
+      "Observations 21,839 21,839 12,295 12,541 (Table 3, p.56)"
+    ],
+    "_manual_injection": true
+  },
+  "computed": {
+    "cohens_d": 0.03383764840919798,
+    "hedges_g": 0.033835583753123226,
+    "variance": 0.0005269844650687868,
+    "computation_method": "manual_regression_coef_with_bernoulli_sd",
+    "confidence": "low",
+    "notes": "Manual injection from Table 3 regression. Hedges' g treats binary resolution outcome with Bernoulli SD at baseline p=0.82. Sample sizes are agent-month obs split evenly. Effect is small and reported as insignificant in source paper.",
+    "n_human": 6147,
+    "n_ai": 6147,
+    "direction_convention": "larger_is_better"
+  }
+}

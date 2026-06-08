@@ -1,0 +1,42 @@
+activity,observed,n_studies,estimate,posterior_std
+Analyzing Data or Information,0.09248515523550739,5.0,0.1,0.0438
+Assisting and Caring for Others,,,0.2083,0.291
+Coaching and Developing Others,,,0.2572,0.6584
+Communicating with People Outside the Organization,,,0.2448,0.3628
+Communicating with Supervisors; Peers; or Subordinates,0.23136364186155733,1.0,0.233,0.0881
+Controlling Machines and Processes,,,0.1927,0.6623
+Coordinating the Work and Activities of Others,,,0.2399,0.6793
+Developing Objectives and Strategies,,,0.2447,0.8782
+Developing and Building Teams,,,0.2351,1.1802
+Documenting/Recording Information,0.13626513371558935,2.0,0.1405,0.069
+Drafting; Laying Out; and Specifying Technical Devices; Parts; and Equipment,,,0.258,0.7199
+Establishing and Maintaining Interpersonal Relationships,,,0.2481,0.204
+Estimating the Quantifiable Characteristics of Products; Events; or Information,,,0.2183,1.1879
+Evaluating Information to Determine Compliance with Standards,,,0.2313,0.3254
+Getting Information,0.3056756374997935,1.0,0.2881,0.086
+Guiding; Directing; and Motivating Subordinates,,,0.2407,0.683
+Handling and Moving Objects,,,0.1878,0.5602
+Identifying Objects; Actions; and Events,,,0.2239,0.2818
+Inspecting Equipment; Structures; or Materials,,,0.1834,0.6076
+Interpreting the Meaning of Information for Others,,,0.28,0.4435
+Judging the Qualities of Objects; Services; or People,,,0.2282,0.7516
+Making Decisions and Solving Problems,0.19525776740136555,1.0,0.2048,0.0875
+Monitoring Processes; Materials; or Surroundings,0.09447675960815247,1.0,0.0949,0.0178
+Monitoring and Controlling Resources,,,0.2285,1.3039
+Operating Vehicles; Mechanized Devices; or Equipment,,,0.1599,1.3833
+Organizing; Planning; and Prioritizing Work,,,0.2476,0.2278
+Performing Administrative Activities,,,0.2526,0.9009
+Performing General Physical Activities,,,0.1846,0.7647
+Performing for or Working Directly with the Public,,,0.2366,0.4111
+Processing Information,0.25482893654638455,4.0,0.2535,0.0485
+Providing Consultation and Advice to Others,,,0.2399,0.6172
+Repairing and Maintaining Electronic Equipment,,,0.1949,1.4412
+Repairing and Maintaining Mechanical Equipment,,,0.1907,1.8665
+Resolving Conflicts and Negotiating with Others,,,0.2272,0.4037
+Scheduling Work and Activities,,,0.2401,0.7098
+Selling or Influencing Others,,,0.2304,1.3688
+Staffing Organizational Units,,,0.2408,2.0455
+Thinking Creatively,0.549291539758391,3.0,0.531,0.0561
+Training and Teaching Others,,,0.2804,0.3992
+Updating and Using Relevant Knowledge,,,0.2388,0.1766
+Working with Computers,0.2611534351592363,11.0,0.2609,0.03

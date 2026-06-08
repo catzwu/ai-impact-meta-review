@@ -1,0 +1,52 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "ai_streamlines_curriculum_development",
+      "category": "speed",
+      "operationalization": "Percentage of survey respondents who strongly agree that AI streamlines curriculum development for quicker content production"
+    },
+    {
+      "outcome_name": "ai_creates_effective_teaching_materials",
+      "category": "quality",
+      "operationalization": "Percentage of survey respondents who strongly agree that AI creates effective teaching materials and enhances student success"
+    },
+    {
+      "outcome_name": "ai_accommodates_diverse_learning_styles",
+      "category": "quality",
+      "operationalization": "Percentage of survey respondents who strongly agree that AI accommodates diverse learning styles"
+    },
+    {
+      "outcome_name": "ai_effectiveness_combined_responses",
+      "category": "other",
+      "operationalization": "Combined percentage of agree and strongly agree responses across all seven effectiveness categories; composite measure of general AI effectiveness perceptions"
+    },
+    {
+      "outcome_name": "ai_creating_teaching_materials_combined",
+      "category": "both",
+      "operationalization": "Combined agree/strongly agree percentage for AI effectiveness in creating materials, expediting curriculum, and integrating learning theories; mixes speed and quality"
+    },
+    {
+      "outcome_name": "chatbots_ai_tutors_student_interaction",
+      "category": "other",
+      "operationalization": "Percentage agreeing or strongly agreeing that chatbots and AI tutors enhance student interaction and support; measures engagement/support rather than output quality"
+    },
+    {
+      "outcome_name": "tool_preference_chatgpt",
+      "category": "other",
+      "operationalization": "Percentage of respondents citing ChatGPT as a valuable tool; measures tool preference/adoption rather than task performance"
+    },
+    {
+      "outcome_name": "tool_preference_claude",
+      "category": "other",
+      "operationalization": "Percentage of respondents citing Anthropic Claude as a valuable tool; measures tool preference/adoption"
+    },
+    {
+      "outcome_name": "tool_preference_google_bard",
+      "category": "other",
+      "operationalization": "Percentage of respondents citing Google Bard as a valuable tool; measures tool preference/adoption"
+    }
+  ],
+  "primary_speed_outcome": "ai_streamlines_curriculum_development",
+  "primary_quality_outcome": "ai_creates_effective_teaching_materials",
+  "citation_key": "kotsiovos_2024_generative_ai"
+}

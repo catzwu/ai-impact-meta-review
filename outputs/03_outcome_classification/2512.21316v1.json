@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "task_completion_time",
+      "category": "speed",
+      "operationalization": "Time in minutes from task start to submission, measured by the experimental platform"
+    },
+    {
+      "outcome_name": "earnings_per_minute_epm",
+      "category": "both",
+      "operationalization": "Base payment of $15 divided by task completion time in minutes"
+    },
+    {
+      "outcome_name": "total_earnings_per_minute_tepm",
+      "category": "both",
+      "operationalization": "Total payment (base $15 plus potential $15 bonus for grades 5-7) divided by task completion time"
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "category": "quality",
+      "operationalization": "Rubric score 0-7 assigned by expert peer graders with over five years of professional experience in the relevant field"
+    },
+    {
+      "outcome_name": "model_engagement_rating",
+      "category": "other",
+      "operationalization": "Self-reported rating on 1-5 scale of participants' usage of the AI bot"
+    },
+    {
+      "outcome_name": "model_helpfulness_rating",
+      "category": "other",
+      "operationalization": "Self-reported rating on 1-5 scale of the helpfulness of the AI bot"
+    }
+  ],
+  "primary_speed_outcome": "task_completion_time",
+  "primary_quality_outcome": "output_quality_grade",
+  "citation_key": "merali_2025_scaling_laws"
+}

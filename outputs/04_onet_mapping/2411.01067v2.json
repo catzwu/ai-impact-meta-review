@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-10",
+  "onet_label": "Making Decisions and Solving Problems",
+  "mapping_confidence": "high",
+  "rationale": "The participants performed IT troubleshooting tasks involving 'diagnosing sign-in issues,' 'investigating access anomalies,' 'diagnosing device non-compliance,' and 'identifying responsible policies.' These are quintessential problem-solving and diagnostic activities. While IT administration is certainly involved, the study measures performance on discrete troubleshooting and diagnostic tasks rather than the full scope of an IT administrator role. The core work activity being measured is problem diagnosis and decision-making in technical contexts.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1244.00",
+      "onet_label": "Network and Computer Systems Administrators"
+    }
+  ],
+  "citation_key": "bono_2024_security_copilot"
+}

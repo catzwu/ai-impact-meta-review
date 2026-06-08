@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly employs a differences-in-differences approach comparing 2023 (after Yelp's AI writing guidance inception) with 2022 (before), using a panel difference estimator. This is a classic quasi-experimental identification strategy exploiting the temporal rollout of the AI feature.",
+  "citation_key": "wang_2025_ai_writing_guidance"
+}

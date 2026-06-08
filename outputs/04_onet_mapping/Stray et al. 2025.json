@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "15-1252.00",
+  "onet_label": "Software Developers",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are explicitly identified as 'software developers' working at NAV IT, a technology division. They are performing their actual occupational work: writing code, making commits to GitHub repositories, and using development tools like GitHub Copilot in their day-to-day software development activities. The study measures their real productivity through commit-based metrics over a two-year period, not a narrow experimental task. This is a clear case of mapping to the full occupation rather than a specific work activity.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "stray_2026_copilot_productivity"
+}

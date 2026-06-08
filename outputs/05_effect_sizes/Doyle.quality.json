@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Doyle",
+  "citation_key": "kotsiovos_2024_generative_ai",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "After re-reading the full paper, this is a single-group descriptive survey study of 21 higher education faculty who already use AI tools. There is no experimental manipulation, no human-only baseline condition, and no comparison between a human-only arm and a human+AI arm. The study reports only descriptive statistics (percentages of agreement on Likert-scale items) about faculty perceptions of AI effectiveness. The paper states: 'Twenty-one higher education faculty who utilize AI participated in this survey.' All participants were AI users; there was no control group of non-AI users. The reported statistics are purely descriptive (e.g., '80.95% of respondents strongly agree that AI streamlines curriculum development', '71.43% strongly agree on AI's efficacy in creating effective teaching materials'). No comparative statistics (t-tests, F-tests, effect sizes, regression coefficients) are reported. The qualitative section lists benefits and challenges but provides no quantitative comparison. This is a perception/experience survey, not a comparative trial or quasi-experiment with measurable quality outcomes comparing human-only vs. human+AI conditions.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "This is a single-group descriptive survey study with no experimental comparison. The study design is explicitly stated as 'a mixed methods approach, merging a structured survey with quantitative and qualitative data to evaluate AI tools' effectiveness' focusing on 'faculty perceptions, experiences, and the challenges and benefits'. All 21 participants were faculty who already use AI. The quantitative results report only percentages of agreement on Likert-scale items (e.g., 80.95% strongly agree, 71.43% strongly agree). No means, standard deviations, test statistics, or effect sizes comparing conditions are reported. The research question asks 'What are the perceptions and experiences of higher education faculty using generative AI tools' - this is a descriptive question, not a comparative one. No human-only baseline exists.",
+    "source_quotes": [
+      "Twenty-one higher education faculty who utilize AI participated in this survey.",
+      "This research adopts a mixed methods approach, merging a structured survey with quantitative and qualitative data to evaluate AI tools' effectiveness in higher education course development and instruction. It focuses on faculty perceptions, experiences, and the challenges and benefits associated with AI integration.",
+      "The survey results reveal that 80.95% of respondents strongly agree that AI streamlines curriculum development for quicker content production. Additionally, 71.43% strongly agree on AI's efficacy in creating effective teaching materials and enhancing student success through adult learning theories",
+      "This study aims to answer the following research question: What are the perceptions and experiences of higher education faculty using generative AI tools to influence the development of online courses?"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This is a single-group descriptive survey study with no experimental comparison. The study design is explicitly stated as 'a mixed methods approach, merging a structured survey with quantitative and qualitative data to evaluate AI tools' effectiveness' focusing on 'faculty perceptions, experiences, and the challenges and benefits'. All 21 participants were faculty who already use AI. The quantitative results report only percentages of agreement on Likert-scale items (e.g., 80.95% strongly agree, 71.43% strongly agree). No means, standard deviations, test statistics, or effect sizes comparing conditions are reported. The research question asks 'What are the perceptions and experiences of higher education faculty using generative AI tools' - this is a descriptive question, not a comparative one. No human-only baseline exists. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

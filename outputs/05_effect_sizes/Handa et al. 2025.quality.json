@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Handa et al. 2025",
+  "citation_key": "handa_2025_economic_tasks",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "After re-reading the full paper, this is a methodological study that analyzes AI usage patterns across the economy by mapping Claude.ai conversations to O*NET occupational tasks. The paper does NOT contain any human vs. human+AI comparison. The validation study (Appendix C) reports accuracy of AI-based task classifications (95.3%, 91.3%, 86% at different hierarchy levels) compared to human raters' judgments, but this is a validation of the classification method itself, not a comparison of human task performance with and without AI assistance. Section 3.4 analyzes automation vs. augmentation patterns (57% augmentative, 43% automative) but does not compare human-only baseline performance to human+AI performance. Section 3.5 compares two AI models (Claude 3 Opus vs Claude 3.5 Sonnet) but contains no human-only arm. The entire paper is an observational analysis of existing AI usage patterns, not an experimental or quasi-experimental study with a human baseline. No sample sizes, means, SDs, or test statistics are reported for any human vs. human+AI comparison because no such comparison exists in the paper.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "This paper is a large-scale observational study analyzing patterns of AI usage across economic tasks by mapping millions of Claude.ai conversations to O*NET occupational categories. It does not contain any experimental or quasi-experimental comparison of human performance with and without AI assistance. The validation study in Appendix C compares AI classification accuracy to human raters' judgments (95.3%, 91.3%, 86% agreement at different levels), but this validates the methodology rather than comparing task performance. Section 3.4 categorizes usage patterns as automative (43%) vs. augmentative (57%), but does not measure performance differences. Section 3.5 compares two AI models (Opus vs. Sonnet 3.5) but has no human-only condition. The paper's contributions are descriptive statistics about which occupations and tasks see AI usage, not causal estimates of AI's effect on human performance. No human-only baseline arm exists, and no statistics comparing human vs. human+AI performance are reported.",
+    "source_quotes": [
+      "Here, we present a novel framework for measuring AI usage patterns across the economy. We leverage a recent privacy-preserving system [Tamkin et al., 2024] to analyze over four million Claude.ai conversations through the lens of tasks and occupations in the U.S. Department of Labor's O*NET Database.",
+      "We find that 57% of interactions show augmentative patterns (e.g., back-and-forth iteration on a task) while 43% demonstrate automation-focused usage (e.g., performing the task directly).",
+      "Task hierarchy We hand-validate 150 examples for our task hierarchy classifications (Section 3.1 and Appendix B.1). We examine the classification path traversed by each conversation through our hierarchical framework. We assess the accuracy of labels assigned at each level of the hierarchy: At the top level, 95.3% of conversations are judged as assigned to an acceptable task. At the middle level, 91.3% of conversations are judged as assigned to an acceptable task. At the base (O*NET) level, 86% of conversations are judged as assigned to an acceptable task.",
+      "Our analysis reveals that AI usage primarily concentrates in software development and writing tasks, which together account for nearly half of all total usage."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This paper is a large-scale observational study analyzing patterns of AI usage across economic tasks by mapping millions of Claude.ai conversations to O*NET occupational categories. It does not contain any experimental or quasi-experimental comparison of human performance with and without AI assistance. The validation study in Appendix C compares AI classification accuracy to human raters' judgments (95.3%, 91.3%, 86% agreement at different levels), but this validates the methodology rather than comparing task performance. Section 3.4 categorizes usage patterns as automative (43%) vs. augmentative (57%), but does not measure performance differences. Section 3.5 compares two AI models (Opus vs. Sonnet 3.5) but has no human-only condition. The paper's contributions are descriptive statistics about which occupations and tasks see AI usage, not causal estimates of AI's effect on human performance. No human-only baseline arm exists, and no statistics comparing human vs. human+AI performance are reported. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

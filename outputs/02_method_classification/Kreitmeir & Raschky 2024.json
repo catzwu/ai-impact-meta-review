@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly 'exploits Italy's sudden announcement of a ChatGPT ban as a natural experiment' and uses 'difference-in-differences (DID) specification and an event-study specification' to compare Italian GitHub users (treatment) to users in Austria, France, and Spain (control). This is a clear quasi-experimental identification strategy leveraging an exogenous policy shock.",
+  "citation_key": "kreitmeir_2024_chatgpt_productivity"
+}

@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2506.03707v1",
+  "citation_key": "yang_2025_human_ai_collaboration",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "AI-only",
+    "ai_arm_name": "Human-AI",
+    "ai_arm_selection_rationale": "Re-reading the paper reveals that the primary research question (RQ1) is whether human involvement in AI-based service provision influences downstream consumers' response. The comparison of interest is Human-AI collaborative advice vs. AI-only advice (Table 1, Column 2). While there is a 'Human-only' condition, it is an additional control where human-AI collaborative advice is provided without revealing AI involvement. The main treatment effect is Human-AI vs. AI-only. For the production-side quality outcome (investment recommendation accuracy), the paper compares the accuracy of human-AI collaborative advice (produced by 27 banker-AI pairs) against AI-only advice. This is a comparison of advice quality, not consumer response. The relevant statistic is reported on page 16: 'The difference in the investment recommendation accuracy between the 27 sets of human-AI collaborative advice generated from each banker-AI pair and the AI-only advice is not statistically significant (M = \u22120.03, p = 0.23, one-sample Student's t-test).' This is a one-sample t-test on the difference scores (n=27 bankers), where each banker's human-AI advice accuracy is compared to the AI-only advice accuracy. The mean difference is -0.03 (human-AI minus AI-only). However, the SD of this difference is not reported. Searching further: Table A1 shows bankers' alignment with AI increased after receiving AI advice, but does not report accuracy. The paper states the AI achieved 0.73 accuracy on test data (page 12-13). For the 10 loans used in Stage 2, Table A2 shows 7 out of 10 AI recommendations were accurate, and 7 out of 10 Human-AI recommendations were accurate. This suggests similar accuracy, consistent with M=-0.03. However, without the SD of the 27 difference scores, we cannot compute Hedges' g from the one-sample t-test. BUT: re-examining the design, this is actually a paired comparison where each of 27 bankers produced advice both before and after seeing AI (Table A1), or more precisely, the AI produced advice for all 24 loans, then each banker produced advice for 10 randomly selected loans after seeing AI input. Wait, re-reading Section 4.2.1: each banker saw AI risk assessment and produced final advice. So human-AI advice is the banker's final advice after seeing AI. The comparison is between AI-only advice (pure AI output) and Human-AI advice (banker's final output after seeing AI). These are two different sets of advice for the same loans. For the 10 loans in Stage 2, we have AI advice and Human-AI advice. The accuracy comparison is: for each loan, did AI advice match the outcome, and did Human-AI advice match the outcome? But the statistic reported (M=-0.03, n=27) suggests each banker's accuracy across their 10 loans was compared to AI accuracy. This is confusing. Let me re-read page 15-16 carefully. 'Notably, although it is not our primary variable of interest due to its endogenous dependence on the AI's prediction performance and the specific set of 24 loans selected, we observed that the involvement of bankers in the advice production process does not compromise the accuracy of the investment recommendations in our specific setting. We define a recommendation as accurate if it advises investing when the loan does not default and not investing when it does default. The difference in the investment recommendation accuracy between the 27 sets of human-AI collaborative advice generated from each banker-AI pair and the AI-only advice is not statistically significant (M = \u22120.03, p = 0.23, one-sample Student's t-test).' So each of 27 bankers produced advice for 10 loans (randomly selected from 24). The AI also produced advice for all 24 loans. For each banker, we can compute their accuracy on their 10 loans, and the AI's accuracy on those same 10 loans. The difference (banker accuracy - AI accuracy) has mean -0.03 across 27 bankers. This is a paired design (each banker is paired with AI on the same loans), so n=27 is the number of pairs. The one-sample t-test on the difference scores gives t-statistic implicitly, but only p=0.23 is reported. To compute Hedges' g for paired design, we need either: (a) SD of the 27 difference scores, (b) the t-statistic and df=26, or (c) the correlation between conditions. None are reported. However, I can extract: mean_difference_within_subject = -0.03 (human-AI minus AI-only accuracy), n=27, p=0.23. The design is within-subject in the sense that each banker's accuracy is compared to AI accuracy on the same loans. But we lack SD of differences or t-statistic. WAIT: the paper says 'one-sample Student's t-test' with p=0.23. For a one-sample t-test, t = (M - 0) / (SD / sqrt(n)). We have M=-0.03, n=27, p=0.23 (two-tailed). We can back-calculate t from p and df=26. For p=0.23 two-tailed, t \u2248 \u00b11.21 (from t-distribution table). Since M is negative, t \u2248 -1.21. Then SD = M * sqrt(n) / t = -0.03 * sqrt(27) / -1.21 \u2248 0.129. But this is an inference, not extraction. Let me check if t is reported elsewhere. Searching the paper for 't =' or 't(' in the context of accuracy: not found. So we have: design_is_within_subject=true (paired comparison of accuracy on same loans), mean_difference_within_subject=-0.03, n_human=n_ai=27 (number of banker-AI pairs), reported_p_value=0.23. We do NOT have sd_difference_within_subject or reported_t. Python can attempt to back-calculate t from p and df, then derive SD, but this is uncertain. I will flag medium confidence and note the limitation.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 27,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 27,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.23,
+    "extraction_confidence": "medium",
+    "notes": "This is a paired-design comparison where each of 27 bankers produced human-AI collaborative advice for 10 loans (randomly selected from 24), and the AI produced advice for all 24 loans. For each banker, accuracy on their 10 loans was compared to AI accuracy on the same 10 loans. The mean difference in accuracy (human-AI minus AI-only) is -0.03 across 27 bankers, tested with a one-sample t-test (p=0.23). The design is within-subject (paired) because each banker's accuracy is compared to AI accuracy on the same set of loans. However, the SD of the 27 difference scores is not reported, nor is the t-statistic. Only the mean difference (-0.03), sample size (27), and p-value (0.23) are provided. Python may attempt to back-calculate the t-statistic from p and df=26, then derive the SD, but this introduces uncertainty. The outcome is investment recommendation accuracy (proportion of correct recommendations), where larger is better. The comparison is AI-only (baseline) vs. Human-AI (treatment). Note: the paper's primary focus is on consumer response (Stage 2), but this production-side accuracy comparison (Stage 1) is the only quality outcome with reported statistics comparing human-AI to AI-only advice.",
+    "source_quotes": [
+      "Notably, although it is not our primary variable of interest due to its endogenous dependence on the AI's prediction performance and the specific set of 24 loans selected, we observed that the involvement of bankers in the advice production process does not compromise the accuracy of the investment recommendations in our specific setting.",
+      "We define a recommendation as accurate if it advises investing when the loan does not default and not investing when it does default.",
+      "The difference in the investment recommendation accuracy between the 27 sets of human-AI collaborative advice generated from each banker-AI pair and the AI-only advice is not statistically significant (M = \u22120.03, p = 0.23, one-sample Student's t-test).",
+      "Twenty-seven experienced bankers from the two bank branches participated in generating human-AI collaborative advice over a two-week period in September 2021.",
+      "Considering bankers' time constraints, we developed an online interface and presented each banker with ten randomly selected personal loans from the 24 candidate investment opportunities."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This is a paired-design comparison where each of 27 bankers produced human-AI collaborative advice for 10 loans (randomly selected from 24), and the AI produced advice for all 24 loans. For each banker, accuracy on their 10 loans was compared to AI accuracy on the same 10 loans. The mean difference in accuracy (human-AI minus AI-only) is -0.03 across 27 bankers, tested with a one-sample t-test (p=0.23). The design is within-subject (paired) because each banker's accuracy is compared to AI accuracy on the same set of loans. However, the SD of the 27 difference scores is not reported, nor is the t-statistic. Only the mean difference (-0.03), sample size (27), and p-value (0.23) are provided. Python may attempt to back-calculate the t-statistic from p and df=26, then derive the SD, but this introduces uncertainty. The outcome is investment recommendation accuracy (proportion of correct recommendations), where larger is better. The comparison is AI-only (baseline) vs. Human-AI (treatment). Note: the paper's primary focus is on consumer response (Stage 2), but this production-side accuracy comparison (Stage 1) is the only quality outcome with reported statistics comparing human-AI to AI-only advice. | insufficient numbers for d",
+    "n_human": 27,
+    "n_ai": 27,
+    "direction_convention": "larger_is_better"
+  }
+}

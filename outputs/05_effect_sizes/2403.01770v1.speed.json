@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2403.01770v1",
+  "citation_key": "nakavachara_2024_chatgpt_productivity",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "human_arm_name": "Writing Analysis - No ChatGPT",
+    "ai_arm_name": "Writing Analysis - With ChatGPT",
+    "ai_arm_selection_rationale": "Within-subject crossover design where all 121 participants completed writing analysis tasks both with and without ChatGPT. This is the only AI-assisted condition available for the writing analysis tasks, which the paper emphasizes as a primary productivity measure.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": -1.73,
+    "m_human": 19.19,
+    "sd_human": 1.62,
+    "se_human": null,
+    "n_human": 121,
+    "m_ai": 17.46,
+    "sd_ai": 3.09,
+    "se_ai": null,
+    "n_ai": 121,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Table 3 Panel B provides the complete statistics for time spent on writing analysis tasks. Without ChatGPT: Mean=19.19 minutes, SD=1.62, Min=9.00, Max=20.00. With ChatGPT: Mean=17.46 minutes, SD=3.09, Min=7.00, Max=20.00. N=121 for both conditions (within-subject design). Table 4 Panel A confirms the time difference: 'Time Diff = No ChatGPT - With ChatGPT' has Mean=1.73, SD=3.43. The mean difference of -1.73 minutes (M_ai - M_human = 17.46 - 19.19) indicates participants completed tasks faster with ChatGPT. Time is the outcome, so smaller is better.",
+    "source_quotes": [
+      "Table 3 Panel B: Time Spent (Maximum is 20 Minutes) - Writing Analysis - No ChatGPT: Obs=121, Mean=19.19, Std. Dev.=1.62, Min=9.00, Max=20.00",
+      "Table 3 Panel B: Writing Analysis - With ChatGPT: Obs=121, Mean=17.46, Std. Dev.=3.09, Min=7.00, Max=20.00",
+      "Table 4 Panel A: Time Diff = No ChatGPT - With ChatGPT: Obs=121, Mean=1.73, Std. Dev.=3.43, Min=-9.00, Max=13.00",
+      "Panel B illustrated that, on average, participants completed tasks, both writing analysis and math & data analysis, more quickly when using ChatGPT."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.09447675960815248,
+    "log_ratio_variance": 0.00031774419263476406,
+    "percent_change_equivalent": 0.0990836197021765,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Table 3 Panel B provides the complete statistics for time spent on writing analysis tasks. Without ChatGPT: Mean=19.19 minutes, SD=1.62, Min=9.00, Max=20.00. With ChatGPT: Mean=17.46 minutes, SD=3.09, Min=7.00, Max=20.00. N=121 for both conditions (within-subject design). Table 4 Panel A confirms the time difference: 'Time Diff = No ChatGPT - With ChatGPT' has Mean=1.73, SD=3.43. The mean difference of -1.73 minutes (M_ai - M_human = 17.46 - 19.19) indicates participants completed tasks faster with ChatGPT. Time is the outcome, so smaller is better.",
+    "n_human": 121,
+    "n_ai": 121
+  }
+}

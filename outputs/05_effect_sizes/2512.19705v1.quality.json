@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2512.19705v1",
+  "citation_key": "xue_2025_generative_analysts",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "factset_ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm available: factset_ai_assisted, which represents reports using the AI-powered FactSet Mercury platform",
+    "direction_convention": "larger_is_better",
+    "m_human": -0.742,
+    "sd_human": 1.363,
+    "se_human": null,
+    "n_human": 28364,
+    "m_ai": -1.182,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 14182,
+    "reported_t": -3.62,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Re-read identified key statistics missed in prior pass. Table 1 Panel A reports the sample mean of Accuracy as -0.742 with SD 1.363 (N=50742 total sample). Table 7 Panel C reports the DiD regression result for Accuracy: FactSet\u00d7Post coefficient = -0.438 (t = -3.62, p < 0.01). The matched sample after PSM and entropy balancing has N_treated=14182 and N_control=28364 (Table 6). The control mean is -0.742 (from Table 1). The AI effect is a decrease of 0.438 (making forecast errors larger, i.e., accuracy worse), so m_ai = -0.742 - 0.438 = -1.180. The abstract states 'forecast errors rise by 59%' which equals 0.438/0.742. The outcome is defined as negative of absolute forecast error, so larger (less negative) values are better accuracy. The t-statistic -3.62 is reported but df is not explicitly stated. The p-value is reported as inequality p < 0.01, not exact value. SD for the AI arm is not separately reported. Using Level A (means + SD for control + n for both arms) and Level C (t-statistic without df).",
+    "source_quotes": [
+      "Accuracy: Forecast accuracy, measured as the negative of the absolute difference between the analyst's earnings per share (EPS) forecast and the EPS realized subsequently (Clement, 1999). [...] Panel A of Table 1 shows summary statistics on these variables. The average forecast error is $0.74. (Table 1, page 17)",
+      "Variable N Mean SD Min p25 p50 p75 Max [...] Accuracy 50742 -0.742 1.363 -12.660 -0.750 -0.260 -0.090 0.000 (Table 1 Panel A, page 49)",
+      "Table 6 reports the covariate moments\u2014mean, standard deviation, and skewness\u2014for the treated group (N = 14,182) and the matched control group (N = 28,364). (page 27)",
+      "Panel C shifts the focus from report richness to report quality, proxied by forecast timeliness and accuracy as defined in Section 3.2. [...] In contrast, the second column shows that the coefficient on FactSet \u00d7 Post is negative and significant at the 1% level for forecast accuracy. In economic terms, forecast errors increase by roughly $0.44, or 59% (= 0.438/0.742) of the sample average. (page 29)",
+      "Table 7 Panel C: Report quality, main results [...] Accuracy: FactSet\u00d7Post -0.438*** (-3.62) (Table 7, page 57)"
+    ]
+  },
+  "computed": {
+    "cohens_d": -0.037229350493219016,
+    "hedges_g": -0.03722869418029714,
+    "variance": 0.00010578043362551017,
+    "computation_method": "t_statistic",
+    "confidence": "medium",
+    "notes": "Re-read identified key statistics missed in prior pass. Table 1 Panel A reports the sample mean of Accuracy as -0.742 with SD 1.363 (N=50742 total sample). Table 7 Panel C reports the DiD regression result for Accuracy: FactSet\u00d7Post coefficient = -0.438 (t = -3.62, p < 0.01). The matched sample after PSM and entropy balancing has N_treated=14182 and N_control=28364 (Table 6). The control mean is -0.742 (from Table 1). The AI effect is a decrease of 0.438 (making forecast errors larger, i.e., accuracy worse), so m_ai = -0.742 - 0.438 = -1.180. The abstract states 'forecast errors rise by 59%' which equals 0.438/0.742. The outcome is defined as negative of absolute forecast error, so larger (less negative) values are better accuracy. The t-statistic -3.62 is reported but df is not explicitly stated. The p-value is reported as inequality p < 0.01, not exact value. SD for the AI arm is not separately reported. Using Level A (means + SD for control + n for both arms) and Level C (t-statistic without df).",
+    "n_human": 28364,
+    "n_ai": 14182,
+    "direction_convention": "larger_is_better"
+  }
+}

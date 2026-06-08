@@ -1,0 +1,50 @@
+{
+  "_paper_id": "2512.21316v1",
+  "citation_key": "merali_2025_scaling_laws",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm (ai_assisted) vs. control. The ai_assisted arm provided access to one of thirteen different LLMs.",
+    "direction_convention": "larger_is_better",
+    "m_human": 3.32,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 42,
+    "m_ai": 3.91,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 437,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.34,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Sample sizes extracted from Table 2 (page 30): control group n=42 (from constant row showing 479 total observations minus 437 in treatment), AI-assisted group n=437. The paper reports '0.34 standard deviations' which is treated as Cohen's d. P-value reported as inequality 'p < 0.001' rather than exact value. Means are regression-adjusted controlling for profession and task (3.32 control, 3.91 AI-assisted from Table 2). SDs are not provided in the regression output tables.",
+    "source_quotes": [
+      "Simultaneously, AI assistance raised output quality by 0.6 points (p < 0.001), an increase of 18% or 0.34 standard deviations.",
+      "Table 2: Impact of AI Assistance on Output Quality (Grade \u2260 0) ... Observations 479 479",
+      "Bot Dummy 0.561*** 0.595*** (0.169) (0.170) Constant 3.609*** 3.319*** (0.138) (0.281)"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.34,
+    "hedges_g": 0.33946512847404303,
+    "variance": 0.02613609485822042,
+    "computation_method": "reported_d",
+    "confidence": "medium",
+    "notes": "Sample sizes extracted from Table 2 (page 30): control group n=42 (from constant row showing 479 total observations minus 437 in treatment), AI-assisted group n=437. The paper reports '0.34 standard deviations' which is treated as Cohen's d. P-value reported as inequality 'p < 0.001' rather than exact value. Means are regression-adjusted controlling for profession and task (3.32 control, 3.91 AI-assisted from Table 2). SDs are not provided in the regression output tables.",
+    "n_human": 42,
+    "n_ai": 437,
+    "direction_convention": "larger_is_better"
+  }
+}

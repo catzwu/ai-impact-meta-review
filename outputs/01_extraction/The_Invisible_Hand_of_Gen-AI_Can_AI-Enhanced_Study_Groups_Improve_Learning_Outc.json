@@ -1,0 +1,342 @@
+{
+  "citation_key": "babaei_balderlou_2025_ai_study_groups",
+  "authors": [
+    "Saharnaz Babaei-Balderlou",
+    "Shishir Shakya"
+  ],
+  "title": "The Invisible Hand of Gen-AI: Can AI-Enhanced Study Groups Improve Learning Outcomes?",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "A randomized controlled trial was conducted with 130 students (of 140 enrolled) across four sections of an introductory macroeconomics course, all taught by the same instructor with a common syllabus, materials, and assessments. One section was randomly assigned as the control group; the remaining three sections were randomly assigned to treatment conditions: group work without AI, individual work with Gen-AI assistance, and group work with Gen-AI assistance. All sections began under identical conditions for the first three homework sets and baseline exam; following the first exam, sections transitioned into their assigned conditions. Students completed three exams and ten homework sets over the semester, with a repeated-measures difference-in-differences design to estimate causal effects.",
+  "primary_task_description": "Students worked individually or in groups, with or without AI support, on homework assignments and exam preparation in an introductory macroeconomics course. The AI tool, Macro Buddy, was a custom GPT-based chatbot trained on the instructor's lecture transcripts, slides, and homework questions, instructed to act as a Socratic tutor by asking probing questions and encouraging critical thinking rather than providing direct answers. All three exams were administered in person during class with no access to the internet or AI tools; exams were paper-based, proctored by the instructor, and assessed each student's individual understanding of the material.",
+  "population_description": "130 undergraduate students (of 140 enrolled) across four sections of an introductory macroeconomics course at a large public university. Baseline characteristics included math comfort, prior economics coursework, Gen-AI experience, major, class standing, and residency. Baseline characteristics were generally balanced, although the group discussion with Gen-AI section reported slightly higher non-freshman status (37% freshmen and 54% sophomores) and lower attendance.",
+  "arms": [
+    {
+      "arm_name": "control",
+      "description": "Individual work, no AI. Students worked individually without access to Gen-AI.",
+      "n": 32
+    },
+    {
+      "arm_name": "group_discussion",
+      "description": "Collaborative group work without AI. Students worked in groups without Gen-AI assistance.",
+      "n": 33
+    },
+    {
+      "arm_name": "individual_ai",
+      "description": "Individual work with Gen-AI assistance. Students worked individually with access to Macro Buddy, a custom GPT-based Socratic tutor.",
+      "n": 32
+    },
+    {
+      "arm_name": "group_discussion_ai",
+      "description": "Group work with Gen-AI assistance. Students worked in groups with access to Macro Buddy, a custom GPT-based Socratic tutor.",
+      "n": 33
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "exam_score",
+      "outcome_description": "Student performance assessed across three exams administered in person during class. The exam score is out of 20, though some students could earn extra credit, leading to scores above 20.",
+      "measurement_unit": "points (out of 20, with possible extra credit)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "understanding_self_report",
+      "outcome_description": "Student perceptions of understanding measured after the second and third exams.",
+      "measurement_unit": "scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "critical_thinking_self_report",
+      "outcome_description": "Student perceptions of critical thinking measured after the second and third exams.",
+      "measurement_unit": "scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "attendance",
+      "outcome_description": "Attendance measured as the percentage of classes attended.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion vs control (second exam)",
+      "means_and_sds": {
+        "control": {
+          "mean": 11.484,
+          "sd": null,
+          "se": null
+        },
+        "group_discussion": {
+          "mean": 13.297,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.984 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 0.984 (SE 0.929)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient of T reatment\u00d7 P ostis \u02c6\u03b4 = 0.984 represents the difference-in-differences estimate: while group discussion students drop by 5.336 points 13 .297\u2212 18.633 \u2248\u22125.336, the control group drops by 6.320 as given by \u02c6 \u03b3, yielding a treatment effect as \u22125.336\u2212(\u22126.320) =\u22125.336+ 6.320 \u2248 0.984."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion vs control (third exam)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.275 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 1.275 (SE 1.098)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column (2), comparing the third exam to the baseline, students in the group discussion section score 1.275 points higher on average than the control group."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "individual_ai vs control (second exam)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.237 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 2.237 (SE 1.063)",
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "In columns (3) and (4), students in the Gen-AI section outperform the control group by 2.237 and 2.385 points on the second and third exams, respectively."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "individual_ai vs control (third exam)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.385 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 2.385 (SE 1.200)",
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "In columns (3) and (4), students in the Gen-AI section outperform the control group by 2.237 and 2.385 points on the second and third exams, respectively."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion_ai vs control (second exam)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.676 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 1.676 (SE 0.983)",
+      "test_statistic": null,
+      "p_value": "p < .05",
+      "confidence_interval": null,
+      "verbatim_quote": "In columns (5) and (6), students in the combined group discussion and Gen-AI section outperform the control group by 1.676 points on the second exam and 2.751 points on the third exam."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion_ai vs control (third exam)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.751 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 2.751 (SE 1.162)",
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "In columns (5) and (6), students in the combined group discussion and Gen-AI section outperform the control group by 1.676 points on the second exam and 2.751 points on the third exam."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion vs control (second exam, with covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.984 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 0.984 (SE 0.872)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Across all six columns, the interaction term T reatment\u00d7 P ostcaptures the causal effect of each treatment relative to the control group over time, remains positive and slightly higher than the respective estimates presented in Table 1, confirming that all three instructional strategies continue to improve student performance over time, even after adjusting for covariates."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion vs control (third exam, with covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.275 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 1.275 (SE 1.025)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Across all six columns, the interaction term T reatment\u00d7 P ostcaptures the causal effect of each treatment relative to the control group over time, remains positive and slightly higher than the respective estimates presented in Table 1, confirming that all three instructional strategies continue to improve student performance over time, even after adjusting for covariates."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "individual_ai vs control (second exam, with covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.237 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 2.237 (SE 1.057)",
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all six columns, the interaction term T reatment\u00d7 P ostcaptures the causal effect of each treatment relative to the control group over time, remains positive and slightly higher than the respective estimates presented in Table 1, confirming that all three instructional strategies continue to improve student performance over time, even after adjusting for covariates."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "individual_ai vs control (third exam, with covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.385 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 2.385 (SE 1.099)",
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all six columns, the interaction term T reatment\u00d7 P ostcaptures the causal effect of each treatment relative to the control group over time, remains positive and slightly higher than the respective estimates presented in Table 1, confirming that all three instructional strategies continue to improve student performance over time, even after adjusting for covariates."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion_ai vs control (second exam, with covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.676 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 1.676 (SE 0.949)",
+      "test_statistic": null,
+      "p_value": "p < .05",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all six columns, the interaction term T reatment\u00d7 P ostcaptures the causal effect of each treatment relative to the control group over time, remains positive and slightly higher than the respective estimates presented in Table 1, confirming that all three instructional strategies continue to improve student performance over time, even after adjusting for covariates."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "group_discussion_ai vs control (third exam, with covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.751 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treatment\u00d7Post = 2.751 (SE 1.097)",
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all six columns, the interaction term T reatment\u00d7 P ostcaptures the causal effect of each treatment relative to the control group over time, remains positive and slightly higher than the respective estimates presented in Table 1, confirming that all three instructional strategies continue to improve student performance over time, even after adjusting for covariates."
+    },
+    {
+      "outcome_name": "exam_score",
+      "arm_comparison": "all arms (baseline means)",
+      "means_and_sds": {
+        "control": {
+          "mean": 14.36,
+          "sd": 4.13,
+          "se": null
+        },
+        "group_discussion": {
+          "mean": 15.94,
+          "sd": 3.69,
+          "se": null
+        },
+        "individual_ai": {
+          "mean": 15.82,
+          "sd": 4.21,
+          "se": null
+        },
+        "group_discussion_ai": {
+          "mean": 16.04,
+          "sd": 3.93,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Students in all three treatment groups outperform the control group on exam scores, with the group discussion with the Gen-AI section showing the highest mean (16.04 vs. 14.36 in the control)."
+    },
+    {
+      "outcome_name": "understanding_self_report",
+      "arm_comparison": "all arms",
+      "means_and_sds": {
+        "group_discussion": {
+          "mean": 4.23,
+          "sd": 0.75,
+          "se": null
+        },
+        "individual_ai": {
+          "mean": 3.94,
+          "sd": 0.72,
+          "se": null
+        },
+        "group_discussion_ai": {
+          "mean": 4.09,
+          "sd": 0.75,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Understanding (self-report) \u2013 \u2013 4.23 3.94 4.09 \u2013 \u2013 (0.75) (0.72) (0.75)"
+    },
+    {
+      "outcome_name": "critical_thinking_self_report",
+      "arm_comparison": "all arms",
+      "means_and_sds": {
+        "group_discussion": {
+          "mean": 3.94,
+          "sd": 0.92,
+          "se": null
+        },
+        "individual_ai": {
+          "mean": 3.76,
+          "sd": 0.76,
+          "se": null
+        },
+        "group_discussion_ai": {
+          "mean": 3.85,
+          "sd": 0.85,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Critical Thinking (self-report) \u2013 \u2013 3.94 3.76 3.85 \u2013 (0.92) (0.76) (0.85)"
+    },
+    {
+      "outcome_name": "attendance",
+      "arm_comparison": "all arms",
+      "means_and_sds": {
+        "control": {
+          "mean": 64.32,
+          "sd": 23.43,
+          "se": null
+        },
+        "group_discussion": {
+          "mean": 65.16,
+          "sd": 25.62,
+          "se": null
+        },
+        "individual_ai": {
+          "mean": 68.73,
+          "sd": 25.6,
+          "se": null
+        },
+        "group_discussion_ai": {
+          "mean": 55.24,
+          "sd": 27.15,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Attendance (%) 64.32 65.16 68.73 55.24 63.35 (23.43) (25.62) (25.60) (27.15) (25.88)"
+    }
+  ],
+  "notes": "This is a single-course experiment conducted in an introductory macroeconomics course at a large public university, which constrains external validity. Of 140 enrolled students, 130 consented to participate (final group sizes ranged from 32 to 33 with minimal attrition). The study employed a difference-in-differences design comparing changes in exam scores over three time points (baseline exam before treatment assignment, second exam, and third exam). All exams were proctored and administered in person with no AI access; treatment effects are attributed to structured use of Macro Buddy during homework assignments. The paper notes that some observed benefits may reflect a novelty effect, and long-term retention was not tracked. Control students were instructed not to use AI, but incidental use outside structured sessions could not be fully ruled out; if contamination occurred, results represent a conservative lower bound on true effects. Standard errors are robust to heteroskedasticity but not clustered at the section level (clustering would result in standard errors close to zero). The group discussion with Gen-AI section showed slightly higher non-freshman status and lower attendance at baseline. Significance stars in the tables indicate: * p < .05, ** p < .01, *** p < .001.",
+  "_paper_id": "The_Invisible_Hand_of_Gen-AI_Can_AI-Enhanced_Study_Groups_Improve_Learning_Outc"
+}

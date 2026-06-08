@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study used a structured survey disseminated via social media to collect data from participants in the researchers' personal network, with no mention of random assignment to conditions or experimental manipulation. The analysis used PLS methodology to examine relationships in the collected data, indicating an observational cross-sectional design rather than an experimental one.",
+  "citation_key": "nain_2024_ai_recruitment"
+}

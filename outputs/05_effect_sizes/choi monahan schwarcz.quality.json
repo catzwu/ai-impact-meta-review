@@ -1,0 +1,49 @@
+{
+  "_paper_id": "choi monahan schwarcz",
+  "citation_key": "choi_2023_lawyering_ai",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": 0.17,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "no_gpt4",
+    "ai_arm_name": "gpt4_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm available (gpt4_assisted) vs. the no-AI baseline (no_gpt4). This is a within-subjects crossover design where the same 30 participants completed tasks both with and without GPT-4 assistance.",
+    "direction_convention": "larger_is_better",
+    "m_human": 3.14,
+    "sd_human": 0.59,
+    "se_human": null,
+    "n_human": 30,
+    "m_ai": 3.31,
+    "sd_ai": 0.5,
+    "se_ai": null,
+    "n_ai": 30,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.0862,
+    "extraction_confidence": "medium",
+    "notes": "Within-subjects crossover design with n=30 participants completing tasks both with and without GPT-4. Means and SDs are provided for each condition, along with the mean difference (0.17) and its 95% CI. The SD of the paired difference scores is not explicitly reported, so Python will need to use the correlation-based approach or approximate from the CI width. The reported SDs (0.59 and 0.50) are the marginal SDs for each condition, not the SD of differences.",
+    "source_quotes": [
+      "Complaint Drafting: No GPT-4 (Std. Dev.) 3.14 (0.59), With GPT-4 (Std. Dev.) 3.31 (0.50), Difference (95% CI) 0.17 (-0.03, 0.37), p-value 0.0862",
+      "Participants assigned to use GPT-4 assistance on two of four tasks",
+      "Participants assigned to complete two of four tasks without GPT-4 or any other type of AI assistance"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.3108687150018398,
+    "hedges_g": 0.3068314589628549,
+    "variance": 0.06573085530389722,
+    "computation_method": "means_and_sds",
+    "confidence": "medium",
+    "notes": "Within-subjects crossover design with n=30 participants completing tasks both with and without GPT-4. Means and SDs are provided for each condition, along with the mean difference (0.17) and its 95% CI. The SD of the paired difference scores is not explicitly reported, so Python will need to use the correlation-based approach or approximate from the CI width. The reported SDs (0.59 and 0.50) are the marginal SDs for each condition, not the SD of differences.",
+    "n_human": 30,
+    "n_ai": 30,
+    "direction_convention": "larger_is_better"
+  }
+}

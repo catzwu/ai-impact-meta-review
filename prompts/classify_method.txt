@@ -1,0 +1,27 @@
+You classify the study design of a research paper into a fixed taxonomy.
+
+INPUT: a JSON object with two fields:
+- `study_design_description`: 2-4 sentences from the paper.
+- `population_description`: who the participants were.
+
+TAXONOMY (choose exactly one)
+- "rct": random assignment of participants to AI vs. no-AI conditions.
+- "field_experiment": randomized but conducted in a real work setting (not a lab).
+- "natural_experiment": quasi-experimental identification (DiD, RD, IV, staggered rollout, etc.).
+- "observational": comparing users vs. non-users without a clear identification strategy.
+- "lab_task": controlled lab study (specify in `rationale` whether also randomized).
+- "within_subject": same participants complete both arms (with or without counterbalancing).
+- "other": anything that does not fit (explain in `rationale`).
+
+Note: a study can be both "rct" and "lab_task". Prefer the more informative label for downstream analysis:
+- If randomized in a lab → "lab_task" (note randomization in rationale).
+- If randomized in real work setting → "field_experiment".
+- If randomized but neither lab nor field (e.g. online task) → "rct".
+- If same subjects do both arms → "within_subject" (regardless of setting).
+
+OUTPUT (single JSON object, no prose, no fences):
+{
+  "classification": "rct" | "field_experiment" | "natural_experiment" | "observational" | "lab_task" | "within_subject" | "other",
+  "confidence": "high" | "medium" | "low",
+  "rationale": string   // 1-2 sentences citing the verbatim text that drove the call
+}

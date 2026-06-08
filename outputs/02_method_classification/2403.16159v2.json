@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a mixed-method qualitative study with no comparison between AI vs. no-AI conditions. While students were \"randomly recruited\" and \"divided into groups ensuring a balanced representation,\" there is no indication of random assignment to treatment/control conditions or any experimental manipulation of AI access. The study appears to be a descriptive observational study of students using AI during a PBL program.",
+  "citation_key": "zha_2024_llm_pbl"
+}

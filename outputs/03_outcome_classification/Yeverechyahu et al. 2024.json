@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "total_commits",
+      "category": "speed",
+      "operationalization": "count of new commits to the package repository during the quarter, measured from GitHub commit logs"
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "category": "speed",
+      "operationalization": "count of commits with net positive function additions across all files, classified programmatically from commit diffs"
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "category": "speed",
+      "operationalization": "count of commits without new function additions, classified programmatically from commit diffs"
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "category": "speed",
+      "operationalization": "count of commits classified as feature addition or code optimization, classification method not specified"
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "category": "speed",
+      "operationalization": "count of commits classified as bug fixes, cleanup, dependency updates, deprecation, or refactoring"
+    },
+    {
+      "outcome_name": "version_releases",
+      "category": "speed",
+      "operationalization": "count of version releases published to the package repository during the quarter"
+    }
+  ],
+  "primary_speed_outcome": "total_commits",
+  "primary_quality_outcome": null,
+  "citation_key": "yeverechyahu_2026_llm_opensource"
+}

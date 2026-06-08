@@ -1,0 +1,51 @@
+{
+  "_paper_id": "TheImpactofAIToolsonStudentsCognitiveProcessesinPracticalSoftwareDevelopment",
+  "citation_key": "liveric_2025_ai_cognitive",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "Students not using AI tools",
+    "ai_arm_name": "Students using AI tools (primarily ChatGPT)",
+    "ai_arm_selection_rationale": "The study focuses on students who use AI tools (77.5% use ChatGPT) versus those who do not use AI tools at all (20%). This is the primary comparison in the study examining cognitive engagement and motivation.",
+    "direction_convention": null,
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 26,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 105,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "low",
+    "notes": "This paper is primarily a survey-based study examining cognitive processes, motivation, and perceptions rather than measuring objective speed or quality outcomes. The study reports percentages of students who exhibit certain behaviors or hold certain beliefs (e.g., 38% try independently first, 70% feel motivated by AI solutions, 68% believe AI helps them progress faster). However, these are self-reported perceptions, not measured productivity or speed outcomes. The sample sizes are derived from the total N=131 respondents, with 20% (approximately 26) not using AI tools and the remainder (approximately 105) using AI tools. The paper does not report means, standard deviations, or effect sizes for any objective speed or quality measure. The '68% believe AI helps them progress faster' is a perception, not a measured speed outcome. Without actual performance data (time to complete tasks, number of tasks completed, etc.), a speed effect size cannot be computed from this paper.",
+    "source_quotes": [
+      "The survey results (N=131) show that the vast majority of students use ChatGPT as their primary AI tool for programming (77.5%), while GitHub Copilot is used by only 12.5%, and CodeWhisperer by 3.3% of respondents. Interestingly, one fifth of students (20%) reported that they do not use AI tools at all.",
+      "more than 70% of students stated that obtaining a correct solution through AI motivates them to continue working, and 68% believe that AI helps them progress faster",
+      "about 41% of students feel that using AI bypasses their own reasoning",
+      "a considerable share of students (38%) reported that they first attempt to solve the problem independently before asking AI for help, while 31% stated that they at least try to understand the generated code before applying it"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This paper is primarily a survey-based study examining cognitive processes, motivation, and perceptions rather than measuring objective speed or quality outcomes. The study reports percentages of students who exhibit certain behaviors or hold certain beliefs (e.g., 38% try independently first, 70% feel motivated by AI solutions, 68% believe AI helps them progress faster). However, these are self-reported perceptions, not measured productivity or speed outcomes. The sample sizes are derived from the total N=131 respondents, with 20% (approximately 26) not using AI tools and the remainder (approximately 105) using AI tools. The paper does not report means, standard deviations, or effect sizes for any objective speed or quality measure. The '68% believe AI helps them progress faster' is a perception, not a measured speed outcome. Without actual performance data (time to complete tasks, number of tasks completed, etc.), a speed effect size cannot be computed from this paper. | no usable numbers",
+    "n_human": 26,
+    "n_ai": 105
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "non_routine_cognitive_interactive_tasks",
+      "category": "other",
+      "operationalization": "DOT scale 0-10 measuring Direction, Control, and Planning (DCP) requirements of occupations"
+    },
+    {
+      "outcome_name": "non_routine_cognitive_analytic_tasks",
+      "category": "other",
+      "operationalization": "DOT GED-MATH scale 0-10 measuring quantitative skill requirements from arithmetic to advanced mathematics"
+    },
+    {
+      "outcome_name": "routine_cognitive_tasks",
+      "category": "other",
+      "operationalization": "DOT STS scale 0-10 measuring adaptability to work requiring set limits, tolerances, or standards"
+    },
+    {
+      "outcome_name": "routine_manual_tasks",
+      "category": "other",
+      "operationalization": "DOT FINGDEX scale 0-10 measuring finger dexterity requirements"
+    },
+    {
+      "outcome_name": "non_routine_manual_tasks",
+      "category": "other",
+      "operationalization": "DOT EYEHAND scale 0-10 measuring eye-hand-foot coordination requirements"
+    },
+    {
+      "outcome_name": "college_graduate_employment_share",
+      "category": "other",
+      "operationalization": "Percentage points of employment accounted for by college graduates in occupations"
+    },
+    {
+      "outcome_name": "log_relative_college_demand",
+      "category": "other",
+      "operationalization": "Log points of relative demand for college-educated labor"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "autor_2003_computerization_skills"
+}

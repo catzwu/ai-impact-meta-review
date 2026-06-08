@@ -1,0 +1,49 @@
+{
+  "_paper_id": "Hoffmann et al. 2025",
+  "citation_key": "hoffmann_2025_generative_ai_work",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "copilot_ineligible",
+    "ai_arm_name": "copilot_eligible",
+    "ai_arm_selection_rationale": "The paper compares repositories whose maintainers were eligible for free GitHub Copilot access (copilot_eligible) versus those who were not (copilot_ineligible). This is the only AI vs. control comparison for the critical vulnerabilities outcome.",
+    "direction_convention": "smaller_is_better",
+    "m_human": 7.801,
+    "sd_human": 0.248,
+    "se_human": null,
+    "n_human": 76662,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.001,
+    "extraction_confidence": "medium",
+    "notes": "Table A7 Panel B reports intent-to-treat effects on Critical CVEs. For the copilot_ineligible arm (baseline), mean = 7.801 (SE = 0.248), n = 76,662. The treatment coefficient is -1.060*** (SE = 0.305), p < 0.001. The AI arm mean can be inferred as 7.801 - 1.060 = 6.741. However, the table does not report the SD for the AI arm directly; only the baseline SD is available. The paper states '33.9% lower' in the text, which is consistent with the coefficient. Without the AI arm SD or a test statistic that allows direct computation, we can only provide the baseline mean, baseline SD (converted from SE using n), the treatment effect, and the p-value. The baseline SD = SE * sqrt(n) = 0.248 * sqrt(76662) \u2248 68.6. This is implausibly large for a count outcome, suggesting the SE may be robust/clustered. Given the large sample size and the reported coefficient with SE, Python may be able to approximate the effect size using the regression coefficient and baseline SD, though this is not ideal. Marking confidence as medium because we have baseline statistics and a clear treatment effect, but lack the AI arm SD.",
+    "source_quotes": [
+      "Table A7 Panel B: Critical CVEs. 1(Eligible): -1.060*** (0.305). Baseline: 7.801*** (0.248). Rel. TE (%): -13.6. N: 76,662.",
+      "We find that the frequency of critical vulnerabilities is 33.9% lower for Copilot-eligible repositories, mitigating concern that AI-generated code weakens project-level cybersecurity."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Table A7 Panel B reports intent-to-treat effects on Critical CVEs. For the copilot_ineligible arm (baseline), mean = 7.801 (SE = 0.248), n = 76,662. The treatment coefficient is -1.060*** (SE = 0.305), p < 0.001. The AI arm mean can be inferred as 7.801 - 1.060 = 6.741. However, the table does not report the SD for the AI arm directly; only the baseline SD is available. The paper states '33.9% lower' in the text, which is consistent with the coefficient. Without the AI arm SD or a test statistic that allows direct computation, we can only provide the baseline mean, baseline SD (converted from SE using n), the treatment effect, and the p-value. The baseline SD = SE * sqrt(n) = 0.248 * sqrt(76662) \u2248 68.6. This is implausibly large for a count outcome, suggesting the SE may be robust/clustered. Given the large sample size and the reported coefficient with SE, Python may be able to approximate the effect size using the regression coefficient and baseline SD, though this is not ideal. Marking confidence as medium because we have baseline statistics and a clear treatment effect, but lack the AI arm SD. | insufficient numbers for d",
+    "n_human": 76662,
+    "n_ai": null,
+    "direction_convention": "smaller_is_better"
+  }
+}

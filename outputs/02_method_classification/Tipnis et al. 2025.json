@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly describes a 'quasi-natural experiment using a difference-in-differences (DID) design and a changes-in-changes (CIC) estimation approach' that emerged when 'HOTTM set Rapid (an AI tool) as the default editor for volunteers, creating an exogenous introduction of AI.' This is a clear quasi-experimental identification strategy comparing treated volunteers who adopted the AI tool to control volunteers who did not, using DID and CIC methods.",
+  "citation_key": "tipnis_2025_ai_philanthropy"
+}

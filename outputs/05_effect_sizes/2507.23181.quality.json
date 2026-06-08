@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2507.23181",
+  "citation_key": "whitfill_2025_compute_bottlenecks",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper is a theoretical and empirical economics study estimating the elasticity of substitution (\u03c3) between research compute and cognitive labor at AI firms. It does not report a controlled experiment comparing human-only vs. human+AI performance on any task. The paper analyzes firm-level panel data (OpenAI, DeepMind, Anthropic, DeepSeek) from 2014\u20132024 to estimate production function parameters using regression analysis. The 'outcomes' are econometric estimates (\u03c3 = 2.583 in baseline model, \u03c3 = -0.103 in frontier experiments model) with standard errors, not quality metrics from a human vs. AI comparison. There are no experimental arms, no participants performing tasks with/without AI assistance, and no quality outcome measured at the individual or group level. The paper discusses implications for AI recursive self-improvement and intelligence explosion scenarios, but does not empirically test human vs. AI performance. Therefore, no arm pair is resolvable for computing Hedges' g.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After thorough re-read, this paper is definitively not an experimental study comparing human vs. human+AI performance. It is an econometric analysis of AI firm production functions. The main results (Table 1) report elasticity of substitution estimates: \u03c3 = 2.583 (SE 0.341) for CES in Compute model and \u03c3 = -0.103 (SE 0.176) for CES in Frontier Experiments model, with 27 firm-year observations and firm fixed effects. These are regression coefficients from cost-minimization first-order conditions, not treatment effects. The paper contains no experimental manipulation, no human subjects performing tasks, and no quality outcome in the sense required for effect size calculation. The 'quality' discussed is algorithmic quality (A_it) in a theoretical model, not measured empirically. All tables (A2\u2013A6) report robustness checks of the same econometric estimates under different specifications. No human vs. AI comparison exists in this paper.",
+    "source_quotes": [
+      "This paper investigates the conditions under which Recursive Self-Improvement in AI will trigger an intelligence explosion. We show the extent to which 'research compute' can substitute for the cognitive labor inherent in AI research.",
+      "We construct a novel panel dataset for four leading AI labs (OpenAI, DeepMind, Anthropic, and DeepSeek) from 2014 to 2024 and fit the data to two alternative Constant Elasticity of Substitution (CES) production function models.",
+      "Table 1 shows that the choice of model specification significantly affects the results. In the CES in compute specification, we estimate \u03c3 = 2.58, which implies research compute and cognitive labor are highly substitutable. However, in the frontier experiments case, we estimate \u03c3 = \u2212.10.",
+      "Our data covers OpenAI from 2016\u20132024, Anthropic from 2022\u20132024, DeepMind from 2014\u20132024 and DeepSeek from 2023\u20132024. All prices are inflation-adjusted to 2023 USD.",
+      "We will estimate \u03c3 by looking at how AI firms allocate research compute and human labor from 2014 to 2024."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After thorough re-read, this paper is definitively not an experimental study comparing human vs. human+AI performance. It is an econometric analysis of AI firm production functions. The main results (Table 1) report elasticity of substitution estimates: \u03c3 = 2.583 (SE 0.341) for CES in Compute model and \u03c3 = -0.103 (SE 0.176) for CES in Frontier Experiments model, with 27 firm-year observations and firm fixed effects. These are regression coefficients from cost-minimization first-order conditions, not treatment effects. The paper contains no experimental manipulation, no human subjects performing tasks, and no quality outcome in the sense required for effect size calculation. The 'quality' discussed is algorithmic quality (A_it) in a theoretical model, not measured empirically. All tables (A2\u2013A6) report robustness checks of the same econometric estimates under different specifications. No human vs. AI comparison exists in this paper. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

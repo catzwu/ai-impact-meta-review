@@ -1,0 +1,48 @@
+{
+  "_paper_id": "SpeedAtTheCostofQuality_TheImpactofLLMAgentAssistantonSoftwareDevelopment",
+  "citation_key": "he_2026_cursor_velocity",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "cursor_adoption",
+    "ai_arm_selection_rationale": "Only one AI arm (Cursor adoption) vs. control (no AI). However, the study reports only regression coefficients and percentage changes without means, SDs, or test statistics needed to compute Hedges' g.",
+    "direction_convention": "smaller_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 1380,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 806,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "This is an observational difference-in-differences study with regression analysis. The paper reports only a regression coefficient (0.2644, SE 0.0511) and percentage change (+30.26%) for static analysis warnings, but does not provide raw means, SDs, t-statistics, F-statistics, or standardized effect sizes needed to compute Hedges' g. The p-value is reported as an inequality (p < 0.001) rather than an exact value. The outcome is warnings/issues, so smaller is better (direction_convention set accordingly). Without sufficient statistics, Hedges' g cannot be computed.",
+    "source_quotes": [
+      "Static Analysis Warnings 0.2644 *** (0.0511) +30.26% (\u00b16.66%)",
+      "On average (Table 2), static analysis warnings increase significantly by 30.3%, and code complexity increases by 41.6%."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This is an observational difference-in-differences study with regression analysis. The paper reports only a regression coefficient (0.2644, SE 0.0511) and percentage change (+30.26%) for static analysis warnings, but does not provide raw means, SDs, t-statistics, F-statistics, or standardized effect sizes needed to compute Hedges' g. The p-value is reported as an inequality (p < 0.001) rather than an exact value. The outcome is warnings/issues, so smaller is better (direction_convention set accordingly). Without sufficient statistics, Hedges' g cannot be computed. | arm pair unresolvable",
+    "n_human": 1380,
+    "n_ai": 806,
+    "direction_convention": "smaller_is_better"
+  }
+}

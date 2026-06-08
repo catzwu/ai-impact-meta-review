@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly 'leverages the March 2023 announcement and April 2023 public release of GitHub Copilot X (CX) as a natural experiment, analyzing a 27-week user-week panel of 1,350 GitHub developers using difference-in-differences with coarsened exact matching.' This is a clear quasi-experimental design using DiD methodology around an exogenous product release event.",
+  "citation_key": "li_2026_copilot_oss"
+}

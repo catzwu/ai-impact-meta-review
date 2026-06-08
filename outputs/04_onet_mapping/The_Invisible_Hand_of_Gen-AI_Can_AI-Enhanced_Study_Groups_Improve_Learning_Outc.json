@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-15",
+  "onet_label": "Updating and Using Relevant Knowledge",
+  "mapping_confidence": "high",
+  "rationale": "The participants are undergraduate students engaged in learning activities: completing homework assignments and preparing for exams in an introductory macroeconomics course. The substantive task is acquiring, integrating, and applying economic knowledge through study and practice. This maps most directly to 'Updating and Using Relevant Knowledge' (WA-15), which encompasses keeping up-to-date technically and applying new knowledge to one's work. While students are not yet in professional roles, their core activity\u2014learning course material and demonstrating understanding through assessments\u2014is fundamentally about knowledge acquisition and application, which is the essence of WA-15.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    }
+  ],
+  "citation_key": "babaei_balderlou_2025_ai_study_groups"
+}

@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study is described as 'A pre-registered randomized experiment' where 'Groups were randomly assigned to one of four facilitation conditions: no facilitation, a one-time message prompting information sharing, a human facilitator, or an LLM (GPT-4o) facilitator.' This is random assignment to AI vs. no-AI conditions conducted online via Prolific, not in a controlled lab or real work setting.",
+  "citation_key": "alsobay_2025_llm_facilitated"
+}

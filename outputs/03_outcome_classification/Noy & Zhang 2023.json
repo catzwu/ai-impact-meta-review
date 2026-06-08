@@ -1,0 +1,57 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "time_taken",
+      "category": "speed",
+      "operationalization": "Time in minutes from task start to completion, measured by the experimental platform."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "category": "quality",
+      "operationalization": "Average of evaluator grades (1-7 scale) on overall quality, writing quality, content quality, and originality; three blinded evaluators per output."
+    },
+    {
+      "outcome_name": "productivity_earnings_per_minute",
+      "category": "both",
+      "operationalization": "Earnings per minute, combining quality-based bonus payments with time taken into a single composite metric."
+    },
+    {
+      "outcome_name": "job_satisfaction",
+      "category": "other",
+      "operationalization": "Self-reported enjoyment of the task on a 1-10 Likert scale; measures affective response, not output speed or quality."
+    },
+    {
+      "outcome_name": "self_efficacy",
+      "category": "other",
+      "operationalization": "Self-reported feeling of skill/effectiveness on a 1-10 Likert scale; measures subjective competence perception, not output characteristics."
+    },
+    {
+      "outcome_name": "worry_about_automation",
+      "category": "other",
+      "operationalization": "Self-reported worry about AI replacing workers in their occupation, 1-10 scale; measures attitudes toward technology, not task performance."
+    },
+    {
+      "outcome_name": "optimism_about_ai_productivity",
+      "category": "other",
+      "operationalization": "Self-reported optimism that AI will increase productivity in their occupation, 1-10 scale; measures beliefs about AI impact, not actual output."
+    },
+    {
+      "outcome_name": "net_optimism_about_ai",
+      "category": "other",
+      "operationalization": "Self-reported overall optimism/pessimism about AI advances, 1-10 scale; measures general AI attitudes, not task output."
+    },
+    {
+      "outcome_name": "correlation_first_second_task_grades",
+      "category": "other",
+      "operationalization": "Correlation coefficient between participant's average grades on first and second tasks; measures inequality persistence, not a single task outcome."
+    },
+    {
+      "outcome_name": "chatgpt_usage_in_real_job",
+      "category": "other",
+      "operationalization": "Percentage using ChatGPT at work in past week, from two-week follow-up survey; measures adoption behavior, not experimental task output."
+    }
+  ],
+  "primary_speed_outcome": "time_taken",
+  "primary_quality_outcome": "output_quality_grade",
+  "citation_key": "noy_2023_chatgpt_productivity"
+}

@@ -1,0 +1,362 @@
+{
+  "citation_key": "merali_2025_scaling_laws",
+  "authors": [
+    "Ali Merali"
+  ],
+  "title": "Scaling Laws for Economic Productivity: Experimental Evidence in LLM-Assisted Consulting, Data Analyst, and Management Tasks",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "A preregistered randomized controlled trial (RCT) involving over 500 professionals across three high-skill domains: management, data analysis, and consulting. Participants were randomly assigned to a control group or to a treatment group equipped with one of thirteen different LLMs, spanning various compute scales and release dates. The research was approved by the Yale Human Research Protection Program and preregistered at the AEA RCT Registry (AEARCTR-0013743).",
+  "primary_task_description": "Participants completed one of three tasks specific to their profession, designed to simulate real-world workflows. Tasks ranged from strategic report writing and statistical hypothesis testing to multi-step tool use such as creating presentation slides or Gantt charts. Tasks were categorized into \"Agentic\" tasks (requiring multi-step reasoning and tool use) and \"Non-Agentic\" tasks (focused on analysis and writing). On average, participants took approximately 26 minutes to complete each task and rated the difficulty at 3.18 out of 5.",
+  "population_description": "Over 500 participants were recruited primarily through the online research platform Prolific, with a smaller subset of experienced professionals recruited directly. All participants underwent rigorous multi-stage screening requiring self-reported annual salary exceeding $40,000, at least one year of professional experience in their field, and high self-rated proficiency in key professional skills. The screening process resulted in approximately 90% screen-out rate. The final pool was highly experienced: over 79% had at least three years of professional experience, with nearly 47% possessing five or more years. Participants rated their overall professional abilities at an average of 4.13 out of 5, with moderate familiarity with AI tools at 3.62 out of 5.",
+  "arms": [
+    {
+      "arm_name": "control",
+      "description": "Control group with no AI assistance",
+      "n": null
+    },
+    {
+      "arm_name": "ai_assisted",
+      "description": "Treatment group equipped with one of thirteen different LLMs, spanning various compute scales and release dates. Access was provided through a custom-built website that allowed for the monitoring of model usage.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "task_completion_time",
+      "outcome_description": "Time taken to complete a professional task",
+      "measurement_unit": "minutes",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "earnings_per_minute_epm",
+      "outcome_description": "Base earnings divided by time taken to complete a task. Base payment was $15 for task completion.",
+      "measurement_unit": "dollars per minute",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "total_earnings_per_minute_tepm",
+      "outcome_description": "Incorporates both base pay and performance bonuses. Participants could earn an additional $15 bonus (doubling total pay to $30) if their submission received a grade of 5, 6, or 7 out of 7.",
+      "measurement_unit": "dollars per minute",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "outcome_description": "Grade assigned by expert peer graders with over five years of professional experience in the relevant field, on a scale of 0-7. Submissions receiving a score of 0 or 1 out of 7 were not compensated.",
+      "measurement_unit": "rubric 0-7",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "model_engagement_rating",
+      "outcome_description": "Participants' self-reported rating of their usage of the AI bot",
+      "measurement_unit": "scale 1-5",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "model_helpfulness_rating",
+      "outcome_description": "Participants' self-reported rating of the helpfulness of the AI bot",
+      "measurement_unit": "scale 1-5",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "earnings_per_minute_epm",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "$0.56 per minute increase, 81.3% increase relative to control baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that AI usage drives a statistically significant increase in base Earnings Per Minute (EPM) of $0.56 (p= 0.001), representing a 81.3% increase relative to the control group baseline."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 3.32,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 3.91,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.6 points increase on 7-point scale, 18% increase",
+      "standardized_effect_reported": "0.34 standard deviations",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Simultaneously, AI assistance raised output quality by 0.6 points (p <0.001), an increase of 18% or 0.34 standard deviations."
+    },
+    {
+      "outcome_name": "total_earnings_per_minute_tepm",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.73,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 1.79,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "$1.06 per minute increase, 146% increase in overall economic value",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "When accounting for the performance bonuses awarded for high-scoring tasks (bonus payments doubled earnings and were awarded for grades of 5 or higher out of seven), this dual improvement in speed and quality compounded to raise Total Earnings Per Minute (TEPM) by $1.06 (p <0.001) - a 146% increase in overall economic value."
+    },
+    {
+      "outcome_name": "earnings_per_minute_epm",
+      "arm_comparison": "ai_assisted vs control, non-agentic tasks only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "$0.83 per minute",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For Earnings Per Minute, the effect of any AI usage is $0.83 per minute on non-agentic tasks (p <0.001) but only $0.18 per minute on agentic tasks (p= 0.48), with the difference between the two significant at the 5% level (p= 0.050)."
+    },
+    {
+      "outcome_name": "earnings_per_minute_epm",
+      "arm_comparison": "ai_assisted vs control, agentic tasks only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "$0.18 per minute",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.48",
+      "confidence_interval": null,
+      "verbatim_quote": "For Earnings Per Minute, the effect of any AI usage is $0.83 per minute on non-agentic tasks (p <0.001) but only $0.18 per minute on agentic tasks (p= 0.48), with the difference between the two significant at the 5% level (p= 0.050)."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "ai_assisted vs control, non-agentic tasks only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.82 points on 7-point scale",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For grades, AI raises quality by 0.82 points on a seven-point scale on non-agentic tasks (p <0.001), compared to 0.27 points on agentic tasks (p= 0.31); the difference is not statistically significant (p= 0.11)."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "ai_assisted vs control, agentic tasks only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.27 points on 7-point scale",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.31",
+      "confidence_interval": null,
+      "verbatim_quote": "For grades, AI raises quality by 0.82 points on a seven-point scale on non-agentic tasks (p <0.001), compared to 0.27 points on agentic tasks (p= 0.31); the difference is not statistically significant (p= 0.11)."
+    },
+    {
+      "outcome_name": "total_earnings_per_minute_tepm",
+      "arm_comparison": "ai_assisted vs control, non-agentic tasks only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "$1.58 per minute",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "AI increases total earnings by $1.58 per minute on non-agentic tasks (p <0.001), but only $0.34 per minute on agentic tasks (p= 0.46), with the difference between these effects significant at the 5% level (p= 0.043)."
+    },
+    {
+      "outcome_name": "total_earnings_per_minute_tepm",
+      "arm_comparison": "ai_assisted vs control, agentic tasks only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "$0.34 per minute",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.46",
+      "confidence_interval": null,
+      "verbatim_quote": "AI increases total earnings by $1.58 per minute on non-agentic tasks (p <0.001), but only $0.34 per minute on agentic tasks (p= 0.46), with the difference between these effects significant at the 5% level (p= 0.043)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "ai_assisted vs control, per year of model progress",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "8% reduction in time per year of model progress",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p \u2248 0.04",
+      "confidence_interval": null,
+      "verbatim_quote": "Moving one year forward in model release date is associated with roughly an 8% reduction in time taken to complete a task as shown in Figure 5 below (p\u22480.04, full regression results and a breakdown of the scaling law by profession can be found in Table 9 and Figure A2 of Appendix A respectively)."
+    },
+    {
+      "outcome_name": "earnings_per_minute_epm",
+      "arm_comparison": "ai_assisted vs control, per month of frontier model progress",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "$0.019 per minute increase per month",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Our regression estimates indicate that each month of frontier model progress is associated with an increase in base earnings of $0.019 per minute (p <0.01)."
+    },
+    {
+      "outcome_name": "total_earnings_per_minute_tepm",
+      "arm_comparison": "ai_assisted vs control, per month of frontier model progress",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "$0.037 per minute increase per month",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Our estimates indicate that for every month of frontier model progress, a worker's total earnings capacity increases by $0.037 per minute (p <0.001), or an effective hourly wage increase of approximately $26.30 per year."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "ai_assisted vs control, non-agentic tasks, per year of model progress",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10.7% reduction per year",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "For non-agentic tasks, the scaling curve is steep: the estimated coefficient implies that task completion time falls by approximately 10.7% per year of frontier model progress (p <0.05)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "ai_assisted vs control, agentic tasks, per year of model progress",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.8% reduction per year",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For agentic tasks, while the sign remains positive, the slope is considerably flatter (approximately 4.8% reduction per year) and statistically indistinguishable from zero in this sample."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "ai_assisted vs control, per tenfold increase in training compute",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6% reduction in task completion time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coefficient of -0.0608",
+      "test_statistic": null,
+      "p_value": "p < 0.31",
+      "confidence_interval": null,
+      "verbatim_quote": "The regression analysis reveals a log-linear relationship where a ten-fold increase in training compute corresponds to approximately a 6% reduction in task completion time (p <0.31)."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "ai_assisted vs control, non-agentic tasks",
+      "means_and_sds": {
+        "control": {
+          "mean": 3.52,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 4.34,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.82 points increase from 3.52 to 4.34",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Comparing the average grade (on a 0\u20137 scale) for non-agentic tasks performed by participants in the control group against those with access to any AI model reveals a clear improvement: access to AI raises the average grade from 3.52 to 4.34 (p <0.01)."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "ai_assisted vs control, per tenfold increase in training compute",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.51-point increase in average grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The estimated slope suggests that a tenfold increase in compute corresponds to a 0.51-point increase in the average grade."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "ai_assisted vs control, agentic tasks, per year of model progress",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no change, stagnant at approximately 4.35 points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p \u2248 0.85",
+      "confidence_interval": null,
+      "verbatim_quote": "Unlike the clear upward trend seen in the AI-only data (Figure 12) or the time-savings data discussed in Section 4.2, the scaling law for quality completely disappears (p\u22480.85). Whether a participant uses a small, early-generation model or a frontier giant, the final output quality remains stagnant at approximately 4.35 points."
+    },
+    {
+      "outcome_name": "model_engagement_rating",
+      "arm_comparison": "ai_assisted",
+      "means_and_sds": {
+        "ai_assisted": {
+          "mean": 3.59,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Participants in the treatment group reported high engagement with the tools, rating their usage of the bot at an average of 3.59 out of 5 and its helpfulness at 3.58 out of 5."
+    },
+    {
+      "outcome_name": "model_helpfulness_rating",
+      "arm_comparison": "ai_assisted",
+      "means_and_sds": {
+        "ai_assisted": {
+          "mean": 3.58,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Participants in the treatment group reported high engagement with the tools, rating their usage of the bot at an average of 3.59 out of 5 and its helpfulness at 3.58 out of 5."
+    }
+  ],
+  "notes": "This is a preregistered RCT (AEARCTR-0013743) with 500+ professionals across three domains (management, consulting, data analysis) randomly assigned to control or one of 13 different LLMs. Key findings: (1) 81.3% increase in base EPM from any AI access (p=0.001); (2) 0.6-point quality improvement on 7-point scale (p<0.001); (3) 146% increase in TEPM when accounting for bonuses (p<0.001); (4) significant heterogeneity by task type\u2014non-agentic tasks show $0.83/min EPM gain (p<0.001) vs $0.18/min for agentic tasks (p=0.48); (5) 8% annual reduction in task time from frontier model progress (p\u22480.04); (6) decomposition shows 56% of gains from compute scaling and 44% from algorithmic progress; (7) striking finding that human-assisted output quality plateaus across model generations at ~4.35 points despite raw model quality scaling linearly with compute (p\u22480.85 for agentic tasks). Caveats: participants restricted to text-based chatbot interfaces with limited tool access; tasks are short-horizon (20-60 min) vs multi-day corporate projects; no general equilibrium effects modeled; scaling laws derived from transformer-based LLMs only. Arm-level sample sizes not explicitly stated in quotes; total n > 500 stratified roughly evenly across three domains.",
+  "_paper_id": "2512.21316v1"
+}

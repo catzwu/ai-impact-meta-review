@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study is described as \"A preregistered randomized controlled trial (RCT)\" where \"Participants were randomly assigned to either treatment groups where they could utilize one of thirteen LLMs...or to a control group where they completed tasks without any AI assistance.\" This is a randomized online task study with professional translators recruited through freelancing platforms, not conducted in a lab or their actual workplace setting.",
+  "citation_key": "merali_2024_scaling_productivity"
+}

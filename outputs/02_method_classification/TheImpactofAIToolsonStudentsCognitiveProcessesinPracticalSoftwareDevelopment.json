@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study used a voluntary online questionnaire to collect data about students' use of AI tools without any randomization or experimental manipulation. The design compares naturally occurring variation in AI tool usage ('use of AI tools, behavior during implementation') without a clear identification strategy, making it an observational study.",
+  "citation_key": "liveric_2025_ai_cognitive"
+}

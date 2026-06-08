@@ -1,0 +1,1535 @@
+{
+  "citation_key": "perkowski_2024_generative_ai_central",
+  "authors": [
+    "Patryk Perkowski",
+    "Ale\u0161 Mar\u0161\u00e1l"
+  ],
+  "title": "Generative AI at work: Survey evidence from three Central Banks",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": "In spring 2024, surveys on generative AI in the workplace were conducted in partnership with three central banks: the National Bank of Slovakia, the Czech National Bank, and the European Central Bank. The survey was designed to understand key questions regarding generative AI use within these samples, focusing on large language models as the most applicable generative AI tool for central banking work. The sample from the National Bank of Slovakia covers employees throughout the entire organizational hierarchy, while the samples from the Czech National Bank and the European Central Bank focus on a specific subgroup: PhD economists in central banks, surveyed as part of a seminar on how economists can use generative AI.",
+  "primary_task_description": "Participants were asked about their use of generative AI across various workplace tasks. Both samples were asked about 10 general tasks where generative AI can be helpful: (i) writing emails or reports, (ii) generating code or debugging, (iii) creating content (articles, blogs, etc), (iv) data analysis and visualization, (v) educational purposes or learning new skills, (vi) customer service, (vii) research and information gathering, (viii) design and creative work, and (x) other. The ECB sample additionally included workplace tasks specifically related to the work done by PhD economists, including conducting literature reviews, cleaning data and preprocessing, exploratory data analysis, statistical modeling and econometric analysis, generating economic models/simulations/forecasts, writing research papers or reports, drafting policy recommendations, explaining economic concepts or theories, answering research questions, peer review or providing feedback, research ideation and brainstorming, coding or programming tasks, creating presentations or teaching materials, and project or task management. For each task, participants reported whether they have used generative AI for the task, which generative AI tool(s) they have used, and how many hours in an average week they used generative AI tools for the task.",
+  "population_description": "The sample was drawn from three central banks: the European Central Bank (ECB), the National Bank of Slovakia (NBS), and the Czech National Bank (CNB). The sample is highly well-educated, with over 90 percent of participants having a master's degree or higher. 37 percent of the sample is female, and 15 percent are managers. The average respondent is 41 years old and has spent 9 years at their organization. On average participants work for 45 hours a week. Almost a third of their work time is spent on analytical tasks, a quarter on non-routine cognitive tasks, and just under 20 percent on routine cognitive tasks. The remaining quarter of their time is spent primarily on leadership and management tasks, and interpersonal and communication tasks.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "awareness_of_large_language_models",
+      "outcome_description": "Participants reported whether they had heard of generative AI tools before and which tools they have heard of.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "prior_use_of_large_language_models",
+      "outcome_description": "Participants reported whether they have used generative AI before.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "workplace_use_of_large_language_models",
+      "outcome_description": "Participants reported whether they have used a large language model in the workplace.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "personal_use_of_large_language_models",
+      "outcome_description": "Participants reported whether they have used a large language model for personal use.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "age_of_workplace_users",
+      "outcome_description": "Age of those who use generative AI at work versus non-users.",
+      "measurement_unit": "years",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "gender_distribution_workplace_users",
+      "outcome_description": "Percentage female among generative AI workplace users versus non-users.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "english_language_use_at_work",
+      "outcome_description": "Percentage of time at work using the English language among generative AI workplace users versus non-users.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coding_or_debugging_usage",
+      "outcome_description": "Percentage of workplace users who reported using generative AI for coding or debugging.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "email_and_reports_usage",
+      "outcome_description": "Percentage of workplace users who reported using generative AI for writing email and reports.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "educational_purposes_usage",
+      "outcome_description": "Percentage of workplace users who reported using generative AI for educational purposes or learning new skills.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "translation_usage",
+      "outcome_description": "Percentage of workplace users who reported using generative AI for translation.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "research_and_information_gathering_usage",
+      "outcome_description": "Percentage of workplace users who reported using generative AI for research and information gathering.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "content_creation_usage",
+      "outcome_description": "Percentage of workplace users who reported using generative AI for creating content.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "data_analysis_usage",
+      "outcome_description": "Percentage of workplace users who reported using generative AI for data analysis.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "number_of_workplace_tasks",
+      "outcome_description": "Number of workplace tasks for which generative AI is used.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "single_task_usage",
+      "outcome_description": "Percentage of workplace users who only use generative AI for one task.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "multiple_task_usage",
+      "outcome_description": "Percentage of workplace users who use generative AI for four or more job tasks.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "economics_task_usage",
+      "outcome_description": "Number of economics tasks for which generative AI is used.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "no_economics_task_usage",
+      "outcome_description": "Percentage of respondents who reported using generative AI for no economics tasks.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_emails",
+      "outcome_description": "Percentage of those who use generative AI for emails who report using ChatGPT.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_coding",
+      "outcome_description": "Percentage of those who use generative AI for coding who report using ChatGPT.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_learning",
+      "outcome_description": "Percentage of those who use generative AI for learning new skills who report using ChatGPT.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_research",
+      "outcome_description": "Percentage of those who use generative AI for research and information gathering who report using ChatGPT.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "multiple_tools_usage",
+      "outcome_description": "Average number of tools used simultaneously by generative AI users.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "weekly_time_spent_on_generative_ai",
+      "outcome_description": "Median percentage of work week spent interacting with generative AI at work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "weekly_hours_spent_on_generative_ai",
+      "outcome_description": "Median hours per week spent interacting with generative AI at work.",
+      "measurement_unit": "hours",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "super_users_percentage",
+      "outcome_description": "Percentage of users who report spending more than 20 percent of their work week with generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "low_usage_percentage",
+      "outcome_description": "Percentage of users who report less than 5 percent of their work week interacting with generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "massive_unemployment_fear",
+      "outcome_description": "Percentage of respondents who believe that advances in generative AI will lead to massive unemployment.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "massive_unemployment_disagreement",
+      "outcome_description": "Percentage of respondents who disagree that advances in generative AI will lead to massive unemployment.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "job_automation_risk",
+      "outcome_description": "Percentage of respondents who worried their job is at risk of automation.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "job_automation_risk_disagreement",
+      "outcome_description": "Percentage of respondents who disagree that their job is at risk of automation.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "labor_complementarity_belief",
+      "outcome_description": "Percentage of respondents who believe generative AI will complement labor.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "labor_complementarity_disagreement",
+      "outcome_description": "Percentage of respondents who disagree that generative AI will complement labor.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "autonomy_reduction_concern",
+      "outcome_description": "Percentage of respondents who are skeptical that generative AI will reduce their autonomy at work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "autonomy_reduction_disagreement",
+      "outcome_description": "Percentage of respondents who disagree that generative AI will reduce their autonomy at work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "workplace_monitoring_concern",
+      "outcome_description": "Percentage of respondents who believe that generative AI will increase workplace monitoring.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "non_phd_unemployment_fear",
+      "outcome_description": "Percentage of non-PhD economists who believe that advances in generative AI will lead to massive unemployment.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "phd_unemployment_fear",
+      "outcome_description": "Percentage of PhD economists who believe that advances in generative AI will lead to massive unemployment.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "non_phd_monitoring_concern",
+      "outcome_description": "Percentage of non-PhD economists who believe that generative AI will increase workplace monitoring.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "phd_monitoring_concern",
+      "outcome_description": "Percentage of PhD economists who believe that generative AI will increase workplace monitoring.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "phd_skill_devaluation_concern",
+      "outcome_description": "Percentage of PhD economists who believe their skills will be less valuable with generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "non_phd_skill_devaluation_concern",
+      "outcome_description": "Percentage of non-PhD economists who believe their skills will be less valuable with generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "phd_job_automation_risk",
+      "outcome_description": "Percentage of PhD economists who worry their job is at risk of automation.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "non_phd_job_automation_risk",
+      "outcome_description": "Percentage of non-PhD economists who worry their job is at risk of automation.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coworker_judgment_favorable",
+      "outcome_description": "Percentage of respondents who do not judge their coworkers less favorably if their coworker used a large language model for their work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coworker_judgment_unfavorable",
+      "outcome_description": "Percentage of respondents who judge their coworkers less favorably if their coworker used a large language model for their work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coworker_negative_evaluation_fear",
+      "outcome_description": "Percentage of respondents who believe their co-workers would negatively judge their work if they used generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "manager_negative_evaluation_fear",
+      "outcome_description": "Percentage of respondents who would be uncomfortable with their manager knowing they used generative AI for their work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "shy_question_usage",
+      "outcome_description": "Percentage of generative AI workplace users who use the technology to ask questions they are shy to ask about.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "phd_manager_comfort",
+      "outcome_description": "Percentage of PhD economists who are comfortable with their manager knowing they used a large language model for their work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "non_phd_manager_comfort",
+      "outcome_description": "Percentage of non-PhD economists who are comfortable with their manager knowing they used a large language model for their work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "phd_coworker_secrecy",
+      "outcome_description": "Percentage of PhD economists who do not want their coworker to know about their generative AI usage at work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "non_phd_coworker_secrecy",
+      "outcome_description": "Percentage of non-PhD economists who do not want their coworker to know about their generative AI usage at work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "llm_understanding_disagreement",
+      "outcome_description": "Percentage of respondents who disagree that they have no idea how large language models work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "llm_understanding_agreement",
+      "outcome_description": "Percentage of respondents who agree that they have no idea how large language models work.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "statistical_model_understanding",
+      "outcome_description": "Percentage of respondents who understand that large language models are statistical models of prediction.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "meaning_understanding",
+      "outcome_description": "Percentage of respondents who understand that large language models do not understand the meaning or context behind their output.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "knowledge_base_misconception",
+      "outcome_description": "Percentage of participants who wrongly believe that current large language models dynamically update their knowledge bases.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "productivity_impact_belief",
+      "outcome_description": "Average belief about the percentage increase in productivity if they used a large language model at work.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "male_productivity_belief",
+      "outcome_description": "Average belief about productivity benefits of generative AI among men.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "female_productivity_belief",
+      "outcome_description": "Average belief about productivity benefits of generative AI among women.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "workplace_user_productivity_belief",
+      "outcome_description": "Average belief about productivity benefits of generative AI among workplace users.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "non_workplace_user_productivity_belief",
+      "outcome_description": "Average belief about productivity benefits of generative AI among non-workplace users.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "structural_changes_agreement",
+      "outcome_description": "Percentage of respondents who agree that effectively using generative AI would require structural changes at the bank.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "structural_changes_disagreement",
+      "outcome_description": "Percentage of respondents who disagree that effectively using generative AI would require structural changes at the bank.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "executive_support_agreement",
+      "outcome_description": "Percentage of respondents who agree that there is executive and managerial support for generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "executive_support_disagreement",
+      "outcome_description": "Percentage of respondents who disagree that there is executive and managerial support for generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "manager_support_vs_executive_support",
+      "outcome_description": "Difference in percentage points between those who agree team managers support generative AI usage versus bank executives.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "organizational_rules_awareness",
+      "outcome_description": "Average score on knowledge and awareness of the organization's rules regarding generative AI at work.",
+      "measurement_unit": "scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "rule_simplicity_uncertainty",
+      "outcome_description": "Percentage of respondents who were uncertain about the simplicity and ease of following the bank's rules on generative AI.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "use_case_support",
+      "outcome_description": "Level of support for successful use cases in increasing generative AI use at work.",
+      "measurement_unit": "ordinal",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_composition_variance_explained",
+      "outcome_description": "Percentage of variation in generative AI usage at work accounted for by workplace task composition.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "workplace_user_productivity_impact",
+      "outcome_description": "Average productivity impact reported by generative AI workplace users.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "non_workplace_user_productivity_impact",
+      "outcome_description": "Average productivity impact reported by non-workplace users.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "awareness_of_large_language_models",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "90 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Almost 90 percent of the sample has heard of large language models before"
+    },
+    {
+      "outcome_name": "prior_use_of_large_language_models",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "76 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "76 percent of participants have used a large language model before"
+    },
+    {
+      "outcome_name": "workplace_use_of_large_language_models",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "45 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "only 45 percent of the sample has used a large language model in the workplace"
+    },
+    {
+      "outcome_name": "personal_use_of_large_language_models",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 60 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "over 60 percent for personal use"
+    },
+    {
+      "outcome_name": "age_of_workplace_users",
+      "arm_comparison": "workplace_users vs non_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 37.8,
+          "sd": null,
+          "se": null
+        },
+        "non_users": {
+          "mean": 43,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "5.2 years younger",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Those who use generative AI at work are on average younger (37.8 years old vs 43 years old)"
+    },
+    {
+      "outcome_name": "gender_distribution_workplace_users",
+      "arm_comparison": "workplace_users vs non_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 30,
+          "sd": null,
+          "se": null
+        },
+        "non_users": {
+          "mean": 42.5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "30 percent female among users vs 40-45 percent among non-users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "are more likely to be male (30 percent of generative AI users are female, while between 40 and 45 percent of non-users are female)"
+    },
+    {
+      "outcome_name": "english_language_use_at_work",
+      "arm_comparison": "workplace_users vs non_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 36,
+          "sd": null,
+          "se": null
+        },
+        "non_users": {
+          "mean": 26,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "36 percent vs 20-32 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "spend more of their time at work using the English language (36 percent vs between 20 and 32 percent for non-work users)"
+    },
+    {
+      "outcome_name": "coding_or_debugging_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 50 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Over half of workplace users reported using generative AI for coding or debugging"
+    },
+    {
+      "outcome_name": "email_and_reports_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 50 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Over half of workplace users reported using generative AI for writing email and reports"
+    },
+    {
+      "outcome_name": "educational_purposes_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 50 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Over half of workplace users reported using generative AI for educational purposes or learning new skills"
+    },
+    {
+      "outcome_name": "translation_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around 44 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Around 44 percent used it for translation"
+    },
+    {
+      "outcome_name": "research_and_information_gathering_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around one third",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Another third reported using generative AI for research and information gathering"
+    },
+    {
+      "outcome_name": "content_creation_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around one third",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Another third reported using generative AI for creating content"
+    },
+    {
+      "outcome_name": "data_analysis_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around one third",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Another third reported using generative AI for data analysis"
+    },
+    {
+      "outcome_name": "number_of_workplace_tasks",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "median of 3 tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The median respondent reported using generative AI for three workplace tasks"
+    },
+    {
+      "outcome_name": "single_task_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "13 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Only 13 percent of those who use generative AI in the workplace only use it for one task"
+    },
+    {
+      "outcome_name": "multiple_task_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around 40 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "around 40 percent use generative AI for four or more job tasks"
+    },
+    {
+      "outcome_name": "economics_task_usage",
+      "arm_comparison": "economist_sample",
+      "means_and_sds": {
+        "economist_sample": {
+          "mean": 1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "median of 1 task",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The median respondent reported using generative AI for only one economics task"
+    },
+    {
+      "outcome_name": "no_economics_task_usage",
+      "arm_comparison": "economist_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 40 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "over 40 percent of respondents reported using it for no economics tasks"
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_emails",
+      "arm_comparison": "email_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "87 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "87 percent of users who use generative AI tools for emails report using ChatGPT"
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_coding",
+      "arm_comparison": "coding_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "91 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "91 percent of those who use generative AI for coding"
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_learning",
+      "arm_comparison": "learning_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "92 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "92 percent for those who use generative AI for learning new skills"
+    },
+    {
+      "outcome_name": "chatgpt_usage_for_research",
+      "arm_comparison": "research_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "91 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "91 percent for those who use generative AI for research and information gathering"
+    },
+    {
+      "outcome_name": "multiple_tools_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "close to one",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Participants are unlikely to use multiple tools at once: the averages in column 1 are all close to one"
+    },
+    {
+      "outcome_name": "weekly_time_spent_on_generative_ai",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "median of 9 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The median user reports spending 9 percent of their work week interacting with generative AI at work"
+    },
+    {
+      "outcome_name": "weekly_hours_spent_on_generative_ai",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "between 3 and 4 hours a week",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Assuming a 40 hour work week, this is between 3 and 4 hours a week"
+    },
+    {
+      "outcome_name": "super_users_percentage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "rare, more than 20 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "there are some \"super-generative AI\" users, who report spending more than 20 percent of their work week alongside this technology. These individuals are rare, though"
+    },
+    {
+      "outcome_name": "low_usage_percentage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "most users report less than 5 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "most users report less than 5 percent of their work week interacting with generative AI"
+    },
+    {
+      "outcome_name": "massive_unemployment_fear",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "11 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Only 11 percent of respondents believe that advances in generative AI will lead to massive unemployment"
+    },
+    {
+      "outcome_name": "massive_unemployment_disagreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "80 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "versus 80 percent who disagree"
+    },
+    {
+      "outcome_name": "job_automation_risk",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "just 12 percent worried their job is at risk of automation"
+    },
+    {
+      "outcome_name": "job_automation_risk_disagreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "79 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "versus 79 percent who disagree"
+    },
+    {
+      "outcome_name": "labor_complementarity_belief",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "77 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "respondents believe generative AI will complement labor (77 percent agree versus 14 percent disagree)"
+    },
+    {
+      "outcome_name": "labor_complementarity_disagreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "14 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "77 percent agree versus 14 percent disagree"
+    },
+    {
+      "outcome_name": "autonomy_reduction_concern",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "9 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "respondents are skeptical that generative AI will reduce their autonomy at work (9 percent agree versus 80 percent disagree)"
+    },
+    {
+      "outcome_name": "autonomy_reduction_disagreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "80 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "9 percent agree versus 80 percent disagree"
+    },
+    {
+      "outcome_name": "workplace_monitoring_concern",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "almost a quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "there are some concerns regarding workplace monitoring: almost a quarter of responses believe that generative AI will increase workplace monitoring"
+    },
+    {
+      "outcome_name": "non_phd_unemployment_fear",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "non_phd": {
+          "mean": 15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "15 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Non-PhD economists are twice as likely than PhD economists to believe that advances in generative AI will lead to massive unemployment (15 percent versus 7 percent)"
+    },
+    {
+      "outcome_name": "phd_unemployment_fear",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "phd": {
+          "mean": 7,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "7 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Non-PhD economists are twice as likely than PhD economists to believe that advances in generative AI will lead to massive unemployment (15 percent versus 7 percent)"
+    },
+    {
+      "outcome_name": "non_phd_monitoring_concern",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "non_phd": {
+          "mean": 28,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "28 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "almost twice as likely to believe that generative AI will increase workplace monitoring (28 percent versus 15 percent)"
+    },
+    {
+      "outcome_name": "phd_monitoring_concern",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "phd": {
+          "mean": 15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "15 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "almost twice as likely to believe that generative AI will increase workplace monitoring (28 percent versus 15 percent)"
+    },
+    {
+      "outcome_name": "phd_skill_devaluation_concern",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "phd": {
+          "mean": 20,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "20 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "PhD economists are more likely to believe their skills will be less valuable with generative AI (20 percent versus 14 percent)"
+    },
+    {
+      "outcome_name": "non_phd_skill_devaluation_concern",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "non_phd": {
+          "mean": 14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "14 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "PhD economists are more likely to believe their skills will be less valuable with generative AI (20 percent versus 14 percent)"
+    },
+    {
+      "outcome_name": "phd_job_automation_risk",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "phd": {
+          "mean": 12,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "12 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "worry their job is at risk of automation (12 percent versus 9 percent)"
+    },
+    {
+      "outcome_name": "non_phd_job_automation_risk",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "non_phd": {
+          "mean": 9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "9 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "worry their job is at risk of automation (12 percent versus 9 percent)"
+    },
+    {
+      "outcome_name": "coworker_judgment_favorable",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "84 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "respondents themselves do not judge their coworkers less favorably if their coworker used a large language model for their work (84 percent versus 5 percent)"
+    },
+    {
+      "outcome_name": "coworker_judgment_unfavorable",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "respondents themselves do not judge their coworkers less favorably if their coworker used a large language model for their work (84 percent versus 5 percent)"
+    },
+    {
+      "outcome_name": "coworker_negative_evaluation_fear",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "20 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "20 percent of respondents believe their co-workers would negatively judge their work if they used generative AI"
+    },
+    {
+      "outcome_name": "manager_negative_evaluation_fear",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "8 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "only 8 percent would be uncomfortable with their manager knowing they used generative AI for their work"
+    },
+    {
+      "outcome_name": "shy_question_usage",
+      "arm_comparison": "workplace_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "almost 30 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "almost 30 percent of generative AI workplace users use the technology to ask questions they are shy to ask about"
+    },
+    {
+      "outcome_name": "phd_manager_comfort",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "phd": {
+          "mean": 61,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "61 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "PhD economists are 25 percentage points less likely to be comfortable with their manager knowing they used a large language model for their work (61 percent versus 86 percent)"
+    },
+    {
+      "outcome_name": "non_phd_manager_comfort",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "non_phd": {
+          "mean": 86,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "86 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "PhD economists are 25 percentage points less likely to be comfortable with their manager knowing they used a large language model for their work (61 percent versus 86 percent)"
+    },
+    {
+      "outcome_name": "phd_coworker_secrecy",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "phd": {
+          "mean": 15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "15 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "more than twice as likely to not want their coworker to know about their generative AI usage at work (15 versus 7 percent)"
+    },
+    {
+      "outcome_name": "non_phd_coworker_secrecy",
+      "arm_comparison": "non_phd_vs_phd",
+      "means_and_sds": {
+        "non_phd": {
+          "mean": 7,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "7 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "more than twice as likely to not want their coworker to know about their generative AI usage at work (15 versus 7 percent)"
+    },
+    {
+      "outcome_name": "llm_understanding_disagreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "59 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "59 percent disagree that they have no idea how large language models work"
+    },
+    {
+      "outcome_name": "llm_understanding_agreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "22 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "versus 22 percent who agree"
+    },
+    {
+      "outcome_name": "statistical_model_understanding",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "80 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "80 percent understand that large language models are statistical models of prediction"
+    },
+    {
+      "outcome_name": "meaning_understanding",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 50 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "over half understand that these models do not understand the meaning or context behind their output"
+    },
+    {
+      "outcome_name": "knowledge_base_misconception",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 80 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "over 80 percent of participants wrongly believe that current large language models dynamically update their knowledge bases"
+    },
+    {
+      "outcome_name": "productivity_impact_belief",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {
+        "full_sample": {
+          "mean": 14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "almost 14 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On average, employees believe that they would be almost 14 percent more productive if they used a large language model at work"
+    },
+    {
+      "outcome_name": "male_productivity_belief",
+      "arm_comparison": "male_vs_female",
+      "means_and_sds": {
+        "male": {
+          "mean": 14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "26 percent higher than women",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Men believed that the productivity benefits of generative AI were 26 percent (= (14.0 \u2212 11.1)/11.1) higher than woman"
+    },
+    {
+      "outcome_name": "female_productivity_belief",
+      "arm_comparison": "male_vs_female",
+      "means_and_sds": {
+        "female": {
+          "mean": 11.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "11.1 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Men believed that the productivity benefits of generative AI were 26 percent (= (14.0 \u2212 11.1)/11.1) higher than woman"
+    },
+    {
+      "outcome_name": "workplace_user_productivity_belief",
+      "arm_comparison": "workplace_users_vs_non_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 16.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "60 percent higher than non-workplace users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "generative AI workplace users believed the productivity benefits were around 60 (= (16.6 \u2212 10.3)/10.3) percent higher than non-workplace users"
+    },
+    {
+      "outcome_name": "non_workplace_user_productivity_belief",
+      "arm_comparison": "workplace_users_vs_non_users",
+      "means_and_sds": {
+        "non_workplace_users": {
+          "mean": 10.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "10.3 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "generative AI workplace users believed the productivity benefits were around 60 (= (16.6 \u2212 10.3)/10.3) percent higher than non-workplace users"
+    },
+    {
+      "outcome_name": "structural_changes_agreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "43 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Overall, the sample was split on whether effectively using generative AI would require structural changes at the bank (43 percent agree versus 34 percent disagree)"
+    },
+    {
+      "outcome_name": "structural_changes_disagreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "34 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Overall, the sample was split on whether effectively using generative AI would require structural changes at the bank (43 percent agree versus 34 percent disagree)"
+    },
+    {
+      "outcome_name": "executive_support_agreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 50 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "There was more agreement on executive and managerial support for generative AI, with over 50 percent agreeing versus less than 10 percent disagreeing"
+    },
+    {
+      "outcome_name": "executive_support_disagreement",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "less than 10 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "There was more agreement on executive and managerial support for generative AI, with over 50 percent agreeing versus less than 10 percent disagreeing"
+    },
+    {
+      "outcome_name": "manager_support_vs_executive_support",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "9 percentage points more likely to agree team managers support generative AI",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "employees are 9 percentage points more likely to agree that team managers support generative AI usage versus bank executives"
+    },
+    {
+      "outcome_name": "organizational_rules_awareness",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {
+        "full_sample": {
+          "mean": 0.15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "average score of 0.1 and 0.2",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Participants were split on their knowledge and awareness of the organization's rules regarding generative AI at work, with an average score of 0.1 and 0.2"
+    },
+    {
+      "outcome_name": "rule_simplicity_uncertainty",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "37 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "37 percent were uncertain about the simplicity and ease of following the bank's rules on generative AI"
+    },
+    {
+      "outcome_name": "task_composition_variance_explained",
+      "arm_comparison": "full_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that workplace task composition accounts for just 12 percent of the variation in generative AI usage at work"
+    },
+    {
+      "outcome_name": "workplace_user_productivity_impact",
+      "arm_comparison": "workplace_users_vs_non_users",
+      "means_and_sds": {
+        "workplace_users": {
+          "mean": 16.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "16.6 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Generative AI users report an average productivity impact of 16.6 percent versus 10.3 percent for non-workplace users"
+    },
+    {
+      "outcome_name": "non_workplace_user_productivity_impact",
+      "arm_comparison": "workplace_users_vs_non_users",
+      "means_and_sds": {
+        "non_workplace_users": {
+          "mean": 10.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "10.3 percent",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Generative AI users report an average productivity impact of 16.6 percent versus 10.3 percent for non-workplace users"
+    }
+  ],
+  "notes": "This is a survey-based observational study with no experimental manipulation or control group. The paper examines generative AI adoption and usage patterns across three central banks (National Bank of Slovakia, Czech National Bank, and European Central Bank) through employee surveys conducted in spring 2024. The study includes both a broad organizational sample (NBS, N=162) and a specialized sample of PhD economists (ECB and CNB combined, N=183), with a total sample of N=345. The paper does not compare AI vs. no-AI conditions but rather examines correlates and predictors of voluntary adoption among workers. For the ECB sample, some survey questions were dropped to prevent participant fatigue, so data on which tools were used for economics tasks is not available for that subsample. The paper notes that privacy concerns are not the primary obstacles preventing widespread adoption; instead, almost 95% of central bankers identify the lack of clear use cases as the main cause. Productivity impact figures are self-reported beliefs rather than measured outcomes.",
+  "_paper_id": "Generative_AI_at_work_Survey_evidence_from_three_Central_Banks"
+}

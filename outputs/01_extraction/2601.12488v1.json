@@ -1,0 +1,397 @@
+{
+  "citation_key": "zhang_2026_generative_bifurcation",
+  "authors": [
+    "Yukun Zhang",
+    "Tianyang Zhang"
+  ],
+  "title": "Generative AI as a Non-Convex Supply Shock: Market Bifurcation and Welfare Analysis",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "study_design_description": "The paper employs a three-step methodological approach. First, a static model of vertical differentiation characterizes the asymptotic equilibrium. Second, skill evolution of creators is modeled as a Mean Field Game governed by a Fokker-Planck equation to understand path dependence. Third, a large-scale Agent-Based Model (ABM) termed \"Goldilocks V4.0\" instantiates these dynamics with bounded rationality, heterogeneity, and path dependence, calibrated to the late 2025 regime.",
+  "primary_task_description": "The simulation environment consists of a population of 50 human creators, 3 foundational AI models, and 1,000 consumers, interacting over 200 periods. Creators choose between two technologies: Human Technology with convex costs and quality strictly increasing in skill, or AI Technology with linear costs that separate marginal cost from skill but impose a quality ceiling.",
+  "population_description": "The simulation environment consists of a population of 50 human creators, 3 foundational AI models, and 1,000 consumers, interacting over 200 periods. A continuum of consumers with measure normalized to 1 is indexed by their taste for quality. Creators differ in their initial skill endowment distributed with density.",
+  "arms": [
+    {
+      "arm_name": "human_technology",
+      "description": "Convex costs C_H(e) = 1/2 \u03bae^2, representing cognitive fatigue. Quality is strictly increasing in skill, e_H(s) = \u03bas.",
+      "n": null
+    },
+    {
+      "arm_name": "ai_technology",
+      "description": "Linear costs C_A(e) = c_A e + \u03c6 for e \u2264 \u0113_A, and infinite otherwise. AI separates marginal cost from skill, but imposes a quality ceiling \u0113_A.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "weighted_average_transaction_price",
+      "outcome_description": "The weighted average transaction price in the market equilibrium.",
+      "measurement_unit": "price units",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "human_creator_price",
+      "outcome_description": "Price set by human creators in the market equilibrium.",
+      "measurement_unit": "price units",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_content_price",
+      "outcome_description": "Price of AI-generated content in the market equilibrium.",
+      "measurement_unit": "price units",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "spearman_rank_correlation",
+      "outcome_description": "Spearman rank correlation between consumer taste parameter \u03b8 and human preference.",
+      "measurement_unit": "correlation coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "creator_exit_rate",
+      "outcome_description": "The proportion of creators exiting the market during the transition period.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "human_survivor_proportion",
+      "outcome_description": "The proportion of human creators who successfully survive and pivot to high-creativity niches.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "human_market_share",
+      "outcome_description": "The market share of human-generated content.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "average_technical_skill_change",
+      "outcome_description": "The change in average technical skill of the human creator pool.",
+      "measurement_unit": "skill units",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "average_creative_skill_change",
+      "outcome_description": "The change in average creative skill of the human creator pool.",
+      "measurement_unit": "skill units",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "creative_to_technical_skill_ratio",
+      "outcome_description": "The ratio of creative-to-technical skill for survivors compared to those who exited.",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "herfindahl_hirschman_index",
+      "outcome_description": "The Herfindahl-Hirschman Index (HHI) measuring market concentration.",
+      "measurement_unit": "index",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_generated_content_volume",
+      "outcome_description": "The aggregate volume of AI-generated content in the market equilibrium.",
+      "measurement_unit": "volume units",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "consumer_surplus",
+      "outcome_description": "Consumer Surplus (CS) in the market equilibrium.",
+      "measurement_unit": "utility units",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "total_welfare",
+      "outcome_description": "Total Welfare (W), the sum of Consumer Surplus (CS) and Producer Surplus (PS).",
+      "measurement_unit": "utility units",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "market_coverage",
+      "outcome_description": "The proportion of the consumer market covered by available products.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_market_share",
+      "outcome_description": "The market share of AI-generated content.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "weighted_average_transaction_price",
+      "arm_comparison": "baseline to post-shock",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "fell by 72.3%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The GenAI supply shock precipitates a profound price compression, with the weighted average transaction price falling by 72.3%."
+    },
+    {
+      "outcome_name": "human_creator_price",
+      "arm_comparison": "baseline to post-shock",
+      "means_and_sds": {
+        "baseline": {
+          "mean": 2.32,
+          "sd": null,
+          "se": null
+        },
+        "post_shock": {
+          "mean": 2.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "reduced from 2.32 to 2.00",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The market bifurcates into two distinct pricing regimes: human creators are compelled to reduce prices (p_H: 2.32\u21922.00) to defend the premium segment, while AI content anchors the low-end market at near-marginal cost (p_A=1.10)."
+    },
+    {
+      "outcome_name": "ai_content_price",
+      "arm_comparison": "post-shock equilibrium",
+      "means_and_sds": {
+        "ai_technology": {
+          "mean": 1.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.10",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The market bifurcates into two distinct pricing regimes: human creators are compelled to reduce prices (p_H: 2.32\u21922.00) to defend the premium segment, while AI content anchors the low-end market at near-marginal cost (p_A=1.10)."
+    },
+    {
+      "outcome_name": "spearman_rank_correlation",
+      "arm_comparison": "consumer taste and human preference",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c1 = 0.937",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.0001",
+      "confidence_interval": null,
+      "verbatim_quote": "The Spearman rank correlation between \u03b8 and human preference is \u03c1=0.937 (p <0.0001), confirming that the market achieves perfect sorting despite the presence of information pollution."
+    },
+    {
+      "outcome_name": "creator_exit_rate",
+      "arm_comparison": "transition period peak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "60%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The exit rate peaks at 60% during this interval, validating the presence of severe transitional coordination failures."
+    },
+    {
+      "outcome_name": "human_survivor_proportion",
+      "arm_comparison": "post-transition equilibrium",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approx. 18.0% of the initial stock",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "A residual cohort of survivors (approx. 18.0% of the initial stock) successfully pivots to high-creativity niches, stabilizing the human market share at 16.4%."
+    },
+    {
+      "outcome_name": "human_market_share",
+      "arm_comparison": "post-transition equilibrium",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "16.4%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "A residual cohort of survivors (approx. 18.0% of the initial stock) successfully pivots to high-creativity niches, stabilizing the human market share at 16.4%."
+    },
+    {
+      "outcome_name": "average_technical_skill_change",
+      "arm_comparison": "baseline to post-shock",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "decreased by 0.120",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The average technical skill of the human pool decreased by 0.120."
+    },
+    {
+      "outcome_name": "average_creative_skill_change",
+      "arm_comparison": "baseline to post-shock",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "increased by 0.148",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The average creative skill increased by 0.148."
+    },
+    {
+      "outcome_name": "creative_to_technical_skill_ratio",
+      "arm_comparison": "survivors vs exiters",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.71 times higher for survivors",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The ratio of creative-to-technical skill for survivors was 2.71 times higher than for those who exited (confirming Hypothesis H2)."
+    },
+    {
+      "outcome_name": "herfindahl_hirschman_index",
+      "arm_comparison": "baseline to post-shock",
+      "means_and_sds": {
+        "baseline": {
+          "mean": 0.0174,
+          "sd": null,
+          "se": null
+        },
+        "post_shock": {
+          "mean": 0.1462,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "rose from 0.0174 to 0.1462",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The Herfindahl-Hirschman Index (HHI) rose monotonically from 0.0174 to 0.1462, indicating a structural shift from atomistic competition to an oligopoly dominated by foundation models."
+    },
+    {
+      "outcome_name": "human_market_share",
+      "arm_comparison": "baseline to post-shock (Table 2)",
+      "means_and_sds": {
+        "baseline": {
+          "mean": 0.144,
+          "sd": null,
+          "se": null
+        },
+        "post_shock": {
+          "mean": 0.128,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "Z_H: 14.4% to 12.8%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Market Share (Z) Z_H = 14.4% Z_H = 12.8%, Z_A = 35.4% Coverage \u00d7 2.35"
+    },
+    {
+      "outcome_name": "ai_market_share",
+      "arm_comparison": "post-shock (Table 2)",
+      "means_and_sds": {
+        "post_shock": {
+          "mean": 0.354,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "Z_A = 35.4%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Market Share (Z) Z_H = 14.4% Z_H = 12.8%, Z_A = 35.4% Coverage \u00d7 2.35"
+    },
+    {
+      "outcome_name": "consumer_surplus",
+      "arm_comparison": "baseline to post-shock (Table 2)",
+      "means_and_sds": {
+        "baseline": {
+          "mean": 0.132,
+          "sd": null,
+          "se": null
+        },
+        "post_shock": {
+          "mean": 0.558,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "+321.2%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Consumer Surplus (CS) 0.132 0.558 +321.2%"
+    },
+    {
+      "outcome_name": "total_welfare",
+      "arm_comparison": "baseline to post-shock (Table 2)",
+      "means_and_sds": {
+        "baseline": {
+          "mean": 0.264,
+          "sd": null,
+          "se": null
+        },
+        "post_shock": {
+          "mean": 0.952,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "+261.1%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Total Welfare (W) 0.264 0.952 +261.1%"
+    },
+    {
+      "outcome_name": "market_coverage",
+      "arm_comparison": "baseline to post-shock",
+      "means_and_sds": {
+        "baseline": {
+          "mean": 0.144,
+          "sd": null,
+          "se": null
+        },
+        "post_shock": {
+          "mean": 0.482,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "expanded from 14.4% to 48.2%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The significant expansion of total market coverage (from 14.4% to 48.2%) indicates that GenAI activates latent demand among low-\u03b8 consumers who were previously priced out."
+    }
+  ],
+  "notes": "This is a theoretical and computational paper with no original empirical experiments on human subjects. It develops a three-layer framework combining static vertical differentiation models, mean-field game dynamics (Fokker-Planck equations), and agent-based simulations. The paper analyzes how generative AI as a non-convex supply shock reshapes market structure, creates information pollution externalities, and affects welfare. The ABM is calibrated to late 2025 stylized facts with 50 human creators, 3 AI models, and 1,000 consumers over 200 periods. Key findings include market bifurcation, non-monotonic \"shock therapy\" transition with temporary ecological collapse, asymmetric skill reconfiguration where humans survive by shifting from technical to creative tasks, and an inverted-U welfare relationship under high pollution sensitivity. The theoretical framework relies on assumptions of perfect rationality and continuous adjustment, which are relaxed in the ABM to allow for bounded rationality, heterogeneity, and path dependence. Sensitivity analysis reveals latent costs of information pollution, and the paper notes that while the V4.0 equilibrium achieves Pareto efficiency, it sits on a precarious edge where governance failures could precipitate a return to the \"Ecological Collapse\" regime.",
+  "_paper_id": "2601.12488v1"
+}

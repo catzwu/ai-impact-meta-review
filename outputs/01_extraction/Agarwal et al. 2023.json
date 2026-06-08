@@ -1,0 +1,235 @@
+{
+  "citation_key": "agarwal_2023_radiology_ai",
+  "authors": [
+    "Nikhil Agarwal",
+    "Alex Moehring",
+    "Pranav Rajpurkar",
+    "Tobias Salz"
+  ],
+  "title": "Combining Human Expertise with Artificial Intelligence: Experimental Evidence from Radiology",
+  "year": 2023,
+  "venue": "NBER Working Paper",
+  "study_design_description": "An experiment with 227 professional radiologists using a two-by-two factorial design that varies the information set available when making diagnostic decisions. The experiment compares human and AI performance, quantifies the predictive value of contextual information, and tests whether AI assistance improves human performance. Three different experimental designs were employed: the first assigns participants to a random sequence of four information treatments with fifteen patients each; the second has radiologists diagnose patients in each of four information environments; the third addresses concerns about memory effects by having participants diagnose fifty patients first without and then with AI assistance.",
+  "primary_task_description": "Professional radiologists diagnose the presence of a given pathology in retrospective patient cases by relying on diagnostic images (e.g., chest X-rays), relevant clinical history (e.g., laboratory results), and clinical indication notes. Participants elicit their beliefs regarding the probability of the presence of a pathology using a continuous slider and provide a binary treatment/follow-up recommendation for each pathology not definitively ruled out. Active time and clickstream data are also recorded.",
+  "population_description": "227 professional radiologists recruited through teleradiology companies to diagnose retrospective patient cases. Approximately 14% are US-based, 15% have a degree from a US institution, 44% are affiliated with a large clinic, and 63% with an academic institution. Approximately 60% had previous experience working with AI tools for radiology, and all participants routinely diagnose US patients. The majority were recruited through teleradiology companies serving US healthcare providers; a subset was recruited from VinMec healthcare system in Vietnam.",
+  "arms": [
+    {
+      "arm_name": "xray_only",
+      "description": "X-ray only (XO): minimal information environment providing only the chest X-ray image",
+      "n": null
+    },
+    {
+      "arm_name": "clinical_history",
+      "description": "Clinical history without AI (CH): provides clinical history information including treating doctors' indications, patient's vitals, and patient's labs",
+      "n": null
+    },
+    {
+      "arm_name": "ai_only",
+      "description": "AI without clinical history (AI): provides probabilities that a patient is positive for potential chest pathologies, trained on approximately 250,000 X-rays",
+      "n": null
+    },
+    {
+      "arm_name": "ai_plus_clinical_history",
+      "description": "Both clinical history and AI (AI+CH): provides both AI predictions and contextual information",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "correct_decision",
+      "outcome_description": "An indicator for whether the decision matches the diagnostic standard, which is constructed by aggregating assessments of five board-certified radiologists with at least ten years of experience",
+      "measurement_unit": "binary (0/1) or percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "deviation_from_diagnostic_standard",
+      "outcome_description": "The absolute difference between the reported probability and the diagnostic standard, defined as |ph(\u03c9i = 1|siht) \u2212 \u03c9i|",
+      "measurement_unit": "absolute difference",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "active_time",
+      "outcome_description": "Time spent by radiologist on diagnosis task",
+      "measurement_unit": "seconds",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "deviation_from_ai",
+      "outcome_description": "The absolute difference between the human's reported probability and the AI's reported probability",
+      "measurement_unit": "absolute difference",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "correct_decision",
+      "arm_comparison": "overall baseline",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Radiologists correctly recommend treatment in 70.4% of patient-pathology pairs."
+    },
+    {
+      "outcome_name": "active_time",
+      "arm_comparison": "overall baseline",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On average, they spend 2.79 minutes per patient with large variability."
+    },
+    {
+      "outcome_name": "deviation_from_diagnostic_standard",
+      "arm_comparison": "across three designs",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The average deviation from the diagnostic standard, which is defined as |ph(\u03c9i = 1|siht) \u2212 \u03c9i|, for the three designs ranges from 0.21 to 0.23"
+    },
+    {
+      "outcome_name": "active_time",
+      "arm_comparison": "across three designs",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Average active time ranges from 155 to 173 seconds."
+    },
+    {
+      "outcome_name": "correct_decision",
+      "arm_comparison": "ai_only vs radiologists",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "AI more accurate than 78% of humans",
+      "standardized_effect_reported": "AUC of 0.85",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AI with an AUC of 0.85 is more accurate than 78% of humans."
+    },
+    {
+      "outcome_name": "correct_decision",
+      "arm_comparison": "optimal combination vs radiologists",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "optimal combination more accurate than 86% of humans",
+      "standardized_effect_reported": "AUC of 0.88",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "A hypothetical decision maker that optimally combines both signals has an AUC of 0.88 and would be more accurate than 86% of all humans in the sample."
+    },
+    {
+      "outcome_name": "deviation_from_diagnostic_standard",
+      "arm_comparison": "clinical_history vs xray_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.0% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Access to contextual information improves performance on average. We find that access to clinical history reduces the deviation from the diagnostic standard by 4.0% (p < 0.05) of the control mean."
+    },
+    {
+      "outcome_name": "deviation_from_diagnostic_standard",
+      "arm_comparison": "ai_only vs xray_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18.3% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Treatments where AI is provided reduce this baseline average deviation by 18.3%."
+    },
+    {
+      "outcome_name": "correct_decision",
+      "arm_comparison": "ai_only vs xray_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, AI assistance does not significantly improve average performance."
+    },
+    {
+      "outcome_name": "correct_decision",
+      "arm_comparison": "structural model - automation bias parameter",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Automation bias (b) 0.26 (0.02)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Automation bias (b) 0.26 (0.02), Own information bias (d) 0.87 (0.01)"
+    },
+    {
+      "outcome_name": "correct_decision",
+      "arm_comparison": "structural model - own information bias parameter",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Own information bias (d) 0.87 (0.01)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Automation bias (b) 0.26 (0.02), Own information bias (d) 0.87 (0.01)"
+    },
+    {
+      "outcome_name": "deviation_from_diagnostic_standard",
+      "arm_comparison": "ai_only vs xray_only - low AI confidence range",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "performance improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When the AI provides a confident prediction that a pathology is absent (i.e. close to zero), performance improves significantly. In the lowest bin of AI predictions, deviation from the diagnostic standard markedly decreases."
+    },
+    {
+      "outcome_name": "correct_decision",
+      "arm_comparison": "ai_only vs xray_only - high radiologist confidence",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "performance harm",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results reveal that AI assistance improves performance on both metrics when radiologists express uncertainty, but harms performance when radiologists are highly confident that a pathology is absent."
+    },
+    {
+      "outcome_name": "active_time",
+      "arm_comparison": "unassisted radiologist baseline",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.8 minutes per patient",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "An unassisted radiologist (H) takes 2.8 minutes per patient, and incurs a relative decision loss of approximately 12.4."
+    }
+  ],
+  "notes": "Study pre-registered on AEA registry (AEARCTR-0009620). Total sample size is 227 radiologists; arm-level sample sizes not explicitly stated in quotes. The paper uses a 2\u00d72 factorial design with four information conditions (XO, CH, AI, AI+CH) and three different experimental designs to address methodological challenges including potential memory effects and order effects. Key finding: despite AI being more accurate than 78% of radiologists (AUC 0.85), AI assistance does not significantly improve average radiologist performance due to systematic biases in information incorporation\u2014specifically automation neglect (under-weighting AI) and signal dependence neglect. The paper reports structural parameter estimates from a belief-updating model (Grether framework) showing automation bias coefficient of 0.26 (SE 0.02) and own information bias of 0.87 (SE 0.01). Diagnostic standard constructed from five board-certified radiologists with \u226510 years experience. No perfect ground truth available for most thoracic pathologies. Order effects tested and found no evidence of impact on diagnostic quality, though familiarity with interface increased speed.",
+  "_paper_id": "Agarwal et al. 2023"
+}

@@ -1,0 +1,52 @@
+{
+  "_paper_id": "PublishedImpactofArtificialIntelligenceonEmployeesProductivityinTechnological",
+  "citation_key": "chukwuka_2025_ai_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Without AI",
+    "ai_arm_name": "With AI (ChatGPT)",
+    "ai_arm_selection_rationale": "The study compares employee productivity with and without AI assistance. The 'With AI' condition used ChatGPT, which is the AI intervention being tested. This is a between-subjects randomized experiment where half the participants were randomly assigned to use ChatGPT.",
+    "direction_convention": "larger_is_better",
+    "m_human": 21.6,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 54,
+    "m_ai": 22.0,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 54,
+    "reported_t": 2.097,
+    "reported_t_df": 4,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "The study distributed 156 questionnaires and received 108 responses (69% response rate). The hypothesis testing tables show t-tests for questions 1-4 related to AI's effect on employee productivity. Question 1 directly tests 'Artificial Intelligence (AI) has a significant effect on employee productivity' with mean difference = 21.60000, t = 2.097, df = 4, p = .104 (two-tailed). The summary table shows 48 SA + 45 A = 93 positive responses vs 10 D + 0 SD = 10 negative for question 1. The paper states 'out of 156 copies of questionnaires that were distributed, 108 were returned' and the hypothesis test uses these data. The t-test appears to be conducted on aggregated Likert-scale responses. The df=4 is unusually low given n=108 respondents, suggesting the analysis may have been conducted on grouped/summarized data rather than individual responses. The means (21.6 vs 22.0) are extracted from the one-sample t-test tables comparing questions about AI presence. The p-value is reported as .104, which is not statistically significant at conventional levels. Sample sizes are inferred from the total N=108 split between conditions, though the exact allocation is not explicitly stated; assuming equal randomization gives n=54 per arm.",
+    "source_quotes": [
+      "From table I above, out of 156 copies of questionnaires that were distributed, 108 were returned, this represent 69%.",
+      "Artificial Intelligence (AI) has a significant effect on employee productivity: Mean Difference 21.60000, t = 2.097, df = 4, Sig (Two tailed) = .104",
+      "AI has been adopted in your organization's operations: Mean Difference 22.00000, t = 2.182, df = 4, Sig = .095",
+      "The calculated t-value is 9.110 while the table t-value is 1.812. This means that calculated t-value if greater than the Table t-value (9.110>1.812). We therefore reject null hypothesis and uphold alternative hypothesis which states that Artificial Intelligence (AI) has a positive and significant effect on employee's productivity.",
+      "we provide 444 college-educated professionals writing assignments that are unique to their vocations and offer Chat GPT to half of them at random"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.4035678381635484,
+    "hedges_g": 0.40070565491416155,
+    "variance": 0.037256908513060114,
+    "computation_method": "t_statistic",
+    "confidence": "medium",
+    "notes": "The study distributed 156 questionnaires and received 108 responses (69% response rate). The hypothesis testing tables show t-tests for questions 1-4 related to AI's effect on employee productivity. Question 1 directly tests 'Artificial Intelligence (AI) has a significant effect on employee productivity' with mean difference = 21.60000, t = 2.097, df = 4, p = .104 (two-tailed). The summary table shows 48 SA + 45 A = 93 positive responses vs 10 D + 0 SD = 10 negative for question 1. The paper states 'out of 156 copies of questionnaires that were distributed, 108 were returned' and the hypothesis test uses these data. The t-test appears to be conducted on aggregated Likert-scale responses. The df=4 is unusually low given n=108 respondents, suggesting the analysis may have been conducted on grouped/summarized data rather than individual responses. The means (21.6 vs 22.0) are extracted from the one-sample t-test tables comparing questions about AI presence. The p-value is reported as .104, which is not statistically significant at conventional levels. Sample sizes are inferred from the total N=108 split between conditions, though the exact allocation is not explicitly stated; assuming equal randomization gives n=54 per arm.",
+    "n_human": 54,
+    "n_ai": 54,
+    "direction_convention": "larger_is_better"
+  }
+}

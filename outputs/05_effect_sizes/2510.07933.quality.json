@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2510.07933",
+  "citation_key": "wojak_2025_insurance_purchasing",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is a survey-based observational study examining consumer preferences and behaviors regarding insurance distribution channels (online vs. traditional). There is no experimental manipulation, no human-only vs. human+AI comparison, and no quality outcome measured as a performance metric. The study reports descriptive statistics (percentages, frequencies) about consumer preferences, purchasing behavior, and factors influencing channel selection. The 'quality' references in the paper relate to service quality perceptions, not a measured outcome that could be compared between experimental conditions. The six pie charts (Figures 1-6) show distributions of survey responses across categories (e.g., frequency of online purchases, preferred channels, importance of price, attractiveness ratings, influencing factors, and discouraging factors). No means, standard deviations, t-statistics, F-statistics, or effect sizes are reported. This is fundamentally a descriptive market research study, not an intervention study comparing human performance with and without AI assistance.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After thorough re-reading, this paper is definitively not an AI intervention study. It is a consumer behavior survey about insurance purchasing channels (online platforms vs. traditional agents). The study examines Polish consumers' preferences, motivations, and concerns when choosing between digital and traditional insurance distribution methods. The 100 respondents answered questions about their experiences and preferences, with results presented as percentages in pie charts. There are no experimental arms, no AI tool being tested, no baseline vs. intervention comparison, and no quantitative performance metrics (accuracy, quality scores, etc.) that could yield an effect size. The paper belongs to the marketing/consumer behavior literature, not the human-AI collaboration literature.",
+    "source_quotes": [
+      "The research uses a quantitative approach based on a structured online survey of 100 respondents. It explores demographics, purchasing habits, channel preferences, and decision-making factors such as price, trust, and convenience.",
+      "The survey covered the following key areas: Demographic profile of respondents (e.g., gender, age, education, place of residence). Insurance purchasing behavior, including frequency and method of purchasing policies. Channel preferences, with respondents evaluating different distribution methods (e.g., agent-based, online direct, brokers). Perceptions of key decision-making factors, such as price sensitivity, convenience, and trust.",
+      "A summary of the survey results concerning insurance distribution channel preferences is presented in pie charts numbered 1 through 6. Each chart corresponds to one of the six key survey questions posed to respondents.",
+      "The results show a clear increase in the use and acceptance of online channels, especially for simple insurance products. Consumers appreciate the speed, availability, and price comparison offered by digital tools."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After thorough re-reading, this paper is definitively not an AI intervention study. It is a consumer behavior survey about insurance purchasing channels (online platforms vs. traditional agents). The study examines Polish consumers' preferences, motivations, and concerns when choosing between digital and traditional insurance distribution methods. The 100 respondents answered questions about their experiences and preferences, with results presented as percentages in pie charts. There are no experimental arms, no AI tool being tested, no baseline vs. intervention comparison, and no quantitative performance metrics (accuracy, quality scores, etc.) that could yield an effect size. The paper belongs to the marketing/consumer behavior literature, not the human-AI collaboration literature. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

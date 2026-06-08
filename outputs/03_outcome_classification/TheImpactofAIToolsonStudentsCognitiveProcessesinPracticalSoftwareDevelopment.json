@@ -1,0 +1,97 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "critical_thinking",
+      "category": "other",
+      "operationalization": "not specified"
+    },
+    {
+      "outcome_name": "cognitive_load",
+      "category": "other",
+      "operationalization": "not specified"
+    },
+    {
+      "outcome_name": "offloading",
+      "category": "other",
+      "operationalization": "not specified"
+    },
+    {
+      "outcome_name": "motivation",
+      "category": "other",
+      "operationalization": "not specified"
+    },
+    {
+      "outcome_name": "ai_tool_usage_chatgpt",
+      "category": "other",
+      "operationalization": "percentage of students reporting ChatGPT as primary AI tool for programming"
+    },
+    {
+      "outcome_name": "ai_tool_usage_github_copilot",
+      "category": "other",
+      "operationalization": "percentage of students reporting use of GitHub Copilot"
+    },
+    {
+      "outcome_name": "ai_tool_usage_codewhisperer",
+      "category": "other",
+      "operationalization": "percentage of students reporting use of CodeWhisperer"
+    },
+    {
+      "outcome_name": "no_ai_tool_usage",
+      "category": "other",
+      "operationalization": "percentage of students reporting no AI tool usage at all"
+    },
+    {
+      "outcome_name": "independent_problem_solving_first",
+      "category": "other",
+      "operationalization": "percentage of students reporting they attempt independent problem solving before requesting AI help"
+    },
+    {
+      "outcome_name": "code_understanding_attempt",
+      "category": "other",
+      "operationalization": "percentage of students reporting they try to understand AI-generated code before applying it"
+    },
+    {
+      "outcome_name": "code_copying_without_understanding",
+      "category": "other",
+      "operationalization": "percentage of students reporting they copy and run AI code without understanding"
+    },
+    {
+      "outcome_name": "ai_bypasses_reasoning_perception",
+      "category": "other",
+      "operationalization": "percentage of students agreeing that AI use bypasses their own reasoning"
+    },
+    {
+      "outcome_name": "ai_bypasses_reasoning_disagreement",
+      "category": "other",
+      "operationalization": "percentage of students disagreeing that AI use bypasses their own reasoning"
+    },
+    {
+      "outcome_name": "motivation_from_correct_solution",
+      "category": "other",
+      "operationalization": "percentage of students reporting that obtaining correct AI solutions motivates continued work"
+    },
+    {
+      "outcome_name": "ai_helps_progress_faster",
+      "category": "other",
+      "operationalization": "percentage of students believing AI helps them progress faster"
+    },
+    {
+      "outcome_name": "motivation_decrease_without_correct_solution",
+      "category": "other",
+      "operationalization": "percentage of students whose motivation decreases without immediate correct AI solution"
+    },
+    {
+      "outcome_name": "teacher_role_necessary",
+      "category": "other",
+      "operationalization": "percentage of students agreeing that teacher oversight is necessary for AI to contribute to learning"
+    },
+    {
+      "outcome_name": "ai_bypasses_thought_process_ambivalent",
+      "category": "other",
+      "operationalization": "percentage of students not rejecting the statement that AI might bypass their thought process"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "liveric_2025_ai_cognitive"
+}

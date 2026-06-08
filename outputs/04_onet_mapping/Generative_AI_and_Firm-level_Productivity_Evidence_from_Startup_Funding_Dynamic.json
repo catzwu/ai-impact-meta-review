@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants in this study are researchers analyzing 'the impact of GitHub Copilot on startups' funding and employment dynamics' using quantifiable indicators like time-to-funding, deal size, and employment numbers. The core task is analyzing large-scale data (21,834 startups, 225,508 individuals) to identify patterns and relationships. This is fundamentally a data analysis activity, not the work of the startup founders/employees being studied. The researchers are examining secondary data about organizational outcomes, which maps directly to 'Analyzing Data or Information.'",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-2051.00",
+      "onet_label": "Data Scientists"
+    }
+  ],
+  "citation_key": "asam_2025_generative_startup"
+}

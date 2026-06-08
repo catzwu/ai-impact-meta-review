@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "attitude_towards_usage_hrrs",
+      "category": "other",
+      "operationalization": "Five-point Likert scale assessing attitude towards using AI-driven HR recruitment and selection technologies"
+    },
+    {
+      "outcome_name": "perceived_usefulness",
+      "category": "other",
+      "operationalization": "Five-point Likert scale measuring perceived usefulness of AI in HR recruitment and selection"
+    },
+    {
+      "outcome_name": "perceived_ease_of_use",
+      "category": "other",
+      "operationalization": "Five-point Likert scale measuring perceived ease of use of AI in HR recruitment and selection"
+    },
+    {
+      "outcome_name": "trustworthiness_of_ai",
+      "category": "other",
+      "operationalization": "Five-point Likert scale assessing trustworthiness perceptions of AI in HR recruitment and selection"
+    },
+    {
+      "outcome_name": "behavioral_intention_hrrs",
+      "category": "other",
+      "operationalization": "Five-point Likert scale measuring behavioral intention to use AI-driven HR recruitment and selection"
+    },
+    {
+      "outcome_name": "actual_usage_hrrs",
+      "category": "other",
+      "operationalization": "Self-reported actual usage of AI-driven HR recruitment and selection systems"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "nain_2024_ai_recruitment"
+}

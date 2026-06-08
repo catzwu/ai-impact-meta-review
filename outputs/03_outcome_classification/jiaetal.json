@@ -1,0 +1,17 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "employee_creativity",
+      "category": "other",
+      "operationalization": "Ratio of untrained questions (outside knowledge-bank scope, identified by AI algorithm) successfully resolved by employee, as judged by an experienced manager"
+    },
+    {
+      "outcome_name": "customer_purchase",
+      "category": "quality",
+      "operationalization": "Binary indicator of whether customer opened a credit card within 24 hours after the sales call using the sent link"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "customer_purchase",
+  "citation_key": "jia_2024_ai_augments_creativity"
+}

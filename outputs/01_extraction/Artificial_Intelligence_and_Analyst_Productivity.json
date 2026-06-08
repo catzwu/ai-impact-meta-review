@@ -1,0 +1,365 @@
+{
+  "citation_key": "shanthikumar_2024_ai_analyst",
+  "authors": [
+    "Devin Shanthikumar",
+    "Il Sun Yoo"
+  ],
+  "title": "Artificial Intelligence and Analyst Productivity",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": "The study examines the relationship between AI investments and analyst productivity using two identification strategies. First, the authors estimate Poisson and OLS models using variation in AI job postings across 15 investment banks from 2013-2020, with the independent variable % AI Hiring t-3~t-1 representing the percentage of AI-related job postings over a three-year cumulative period. Second, they exploit the introduction of ChatGPT in November 2022 as an exogenous shock to AI use, comparing outcomes before and after this event. The analyses include fully interacted models with task-complexity proxies and fixed effects, and examine effects both with and without controls for prior analyst performance.",
+  "primary_task_description": "Analysts produce earnings forecasts, which are one of the most frequent and consistent forms of research that analysts generate. Analysts typically update one-year-ahead annual earnings forecasts at least four times per year. To generate earnings forecasts, analysts utilize both public and private information, including annual and quarterly reports, management earnings forecasts, firm announcements, macroeconomic and industry data, and information gained through conference calls, private conversations with management, and investor conferences.",
+  "population_description": "The sample consists of 15 large and mid-size investment banks that provide analyst research and are included in I/B/E/S: AllianceBernstein, Bank of America Merrill Lynch, Credit Suisse, Deutsche Bank, Goldman Sachs, HSBC, JPMorgan Chase, Macquarie, Morgan Stanley, Nomura, Oppenheimer, Piper Jaffray, Raymond James, Stifel, and William Blair. These banks issue 35% of the earnings forecasts in I/B/E/S for the sample firms and account for 35% of all I/B/E/S brokers with at least 30 analysts. The main sample includes 120 investment bank-years with job posting data (15 investment banks for 8 years), resulting in 70,923 analyst-firm-year observations. On average, the percentage of AI job postings is approximately 1.1%, with about 570 three-year cumulative AI-related postings.",
+  "arms": [
+    {
+      "arm_name": "high_ai_investment",
+      "description": "Investment banks with higher percentage of AI-related job postings (% AI Hiring t-3~t-1), measured as the percentage of AI-related job postings out of all job postings from year t-3 through year t-1.",
+      "n": null
+    },
+    {
+      "arm_name": "low_ai_investment",
+      "description": "Investment banks with lower percentage of AI-related job postings, serving as the comparison group.",
+      "n": null
+    },
+    {
+      "arm_name": "post_chatgpt",
+      "description": "Period after ChatGPT introduction (2023), defined as an indicator variable that equals one for 2023 and zero otherwise.",
+      "n": null
+    },
+    {
+      "arm_name": "pre_chatgpt",
+      "description": "Period before ChatGPT introduction (2022 and earlier).",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "forecast_frequency",
+      "outcome_description": "The number of annual earnings forecasts issued by the analyst for the firm in the year.",
+      "measurement_unit": "count of forecasts",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "outcome_description": "Negative one times the average forecast error for forecasts issued by the analyst for the firm in the year, where forecast error is the absolute value of the difference between the forecasted EPS and actual EPS, scaled by the stock price at the beginning of the fiscal year.",
+      "measurement_unit": "scaled forecast error",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "forecast_optimism",
+      "outcome_description": "The average forecast optimism for forecasts issued by the analyst for the firm in the year, where forecast optimism is the difference between the forecasted EPS and actual EPS scaled by the absolute value of actual EPS.",
+      "measurement_unit": "scaled difference",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "walkdown",
+      "outcome_description": "An indicator variable that equals one if the first forecast is greater than the actual EPS and the last forecast is less than or equal to the actual EPS for the year, and zero otherwise.",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "firms_covered",
+      "outcome_description": "The number of all firms covered by analysts in the investment bank in the year.",
+      "measurement_unit": "count of firms",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "forecast_dispersion",
+      "outcome_description": "Higher Dispersion, defined as an indicator variable that equals one if the firm's forecast dispersion (the standard deviation of all forecasts, scaled by the absolute value of the median forecast) for the year is above the median.",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "return_volatility",
+      "outcome_description": "Higher Ret Vol, defined as an indicator variable that equals one if the firm's return volatility for the year is above the median.",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "bid_ask_spread",
+      "outcome_description": "High Bid Ask Spread, defined as an indicator variable that equals one if the firm's average daily value of bid ask spread (the difference between the quoted closing bid and ask, scaled by the closing price on the day) for the year is above the median.",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "voluntary_disclosure",
+      "outcome_description": "Low Voluntary Disclosure, defined as an indicator variable that equals one if the firm does not issue management earnings guidance in the year.",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "analyst_ability",
+      "outcome_description": "Inferior Analysts, defined as an indicator variable that equals one if the analyst's forecast accuracy in the past three years is below the median, and zero otherwise.",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "high_ai_investment vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.4% increase per one standard deviation increase in AI investment",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Consistent with AI enabling analysts to increase production, we find that the coefficients on % AI Hiring t-3~t-1 are positive and significant at the 1% level in both models. In terms of economic significance, a one standard deviation increase in AI investment is associated with a 1.4% increase in the number of annual earnings forecasts."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "high_ai_investment vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.3% increase in forecast accuracy per one standard deviation increase in AI investment; earnings forecasts become more accurate by 5.5 cents per share",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Consistent with AI facilitating higher quality analyst work, we find that the coefficients on % AI Hiring t-3~t-1 are negative and significant at the 5% levels. In terms of economic magnitude, a one standard deviation increase in % AI Hiring t-3~t-1 is associated with a 2.3% increase in forecast accuracy. For a stock with a price of $50 and average forecast accuracy of -0.048, this implies that the earnings forecasts become more accurate by 5.5 cents per share."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "high_ai_investment with high_dispersion vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 High Dispersion for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "high_ai_investment with high_dispersion vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 High Dispersion for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "high_ai_investment with high_return_volatility vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We also find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 High Ret Vol for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "high_ai_investment with high_return_volatility vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We also find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 High Ret Vol for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "high_ai_investment with high_bid_ask_spread vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the coefficients on % AI Hiring t-3~t-1 \u00d7 High Bid Ask Spread are significantly positive for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "high_ai_investment with high_bid_ask_spread vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the coefficients on % AI Hiring t-3~t-1 \u00d7 High Bid Ask Spread are significantly positive for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "high_ai_investment with low_voluntary_disclosure vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find a significantly positive coefficient on % AI Hiring t-3~t-1 \u00d7 Low Voluntary Disclosure for forecast frequency in Column (3), but do not find a significant result for forecast accuracy in Column (4)."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "high_ai_investment with low_voluntary_disclosure vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find a significantly positive coefficient on % AI Hiring t-3~t-1 \u00d7 Low Voluntary Disclosure for forecast frequency in Column (3), but do not find a significant result for forecast accuracy in Column (4)."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "high_ai_investment with inferior_analysts vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 Inferior Analysts for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "high_ai_investment with inferior_analysts vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 Inferior Analysts for both forecast frequency and forecast accuracy."
+    },
+    {
+      "outcome_name": "firms_covered",
+      "arm_comparison": "high_ai_investment vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Consistent with our expectation, we find that the coefficient on % AI Hiring t-3~t-1 is positive and significant at the 5% level, suggesting that AI investments increase analysts' firm coverage."
+    },
+    {
+      "outcome_name": "forecast_optimism",
+      "arm_comparison": "high_ai_investment vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the coefficients on % AI Hiring t-3~t-1 are positive and significant at the 10% level in both columns, suggesting that analysts in investment banks with higher AI investments tend to provide more optimistically biased forecasts in general."
+    },
+    {
+      "outcome_name": "walkdown",
+      "arm_comparison": "high_ai_investment vs low_ai_investment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the coefficients on % AI Hiring t-3~t-1 are positive and significant at the 1% levels in both columns, suggesting that analysts in investment banks with higher AI investments tend to exhibit the walkdown behavior to allow firms to more easily beat or meet analyst earnings forecasts."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "post_chatgpt vs pre_chatgpt",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "In both columns, we find significantly positive coefficients on Post ChatGPT. These findings suggest that the introduction of ChatGPT improves analyst production quantity and quality, consistent with our main findings in Tables 3 and 4, and support a causal relation between AI use and analyst productivity."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "post_chatgpt vs pre_chatgpt",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "In both columns, we find significantly positive coefficients on Post ChatGPT. These findings suggest that the introduction of ChatGPT improves analyst production quantity and quality, consistent with our main findings in Tables 3 and 4, and support a causal relation between AI use and analyst productivity."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "post_chatgpt with high_complexity vs pre_chatgpt",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all panels and columns, we find that our coefficients of interest are significantly positive, suggesting that the positive effects of ChatGPT on analyst production quantity and quality are stronger for firms that are more complex to forecast."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "post_chatgpt with high_complexity vs pre_chatgpt",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all panels and columns, we find that our coefficients of interest are significantly positive, suggesting that the positive effects of ChatGPT on analyst production quantity and quality are stronger for firms that are more complex to forecast."
+    },
+    {
+      "outcome_name": "forecast_frequency",
+      "arm_comparison": "post_chatgpt with inferior_analysts vs pre_chatgpt",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the coefficients on Post ChatGPT \u00d7 Inferior Analysts are significantly positive in both columns. These results suggest that the introduction of ChatGPT has a stronger effect on the productivity of analysts with previously poorer performance, consistent with our results in Table 6, which examines investment banks' AI investments, and with the idea that AI can help level the playing field."
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "post_chatgpt with inferior_analysts vs pre_chatgpt",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the coefficients on Post ChatGPT \u00d7 Inferior Analysts are significantly positive in both columns. These results suggest that the introduction of ChatGPT has a stronger effect on the productivity of analysts with previously poorer performance, consistent with our results in Table 6, which examines investment banks' AI investments, and with the idea that AI can help level the playing field."
+    },
+    {
+      "outcome_name": "forecast_optimism",
+      "arm_comparison": "post_chatgpt vs pre_chatgpt",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "While we do not find a significant coefficient on Post ChatGPT in Column (1), we find a significantly positive coefficient on Post ChatGPT in Column (2). This finding suggests that the introduction of ChatGPT increases analysts' strategic forecasting behavior, consistent with our results in Table 8, which examines investment banks' AI investments, and with the idea that AI increases strategic analyst forecast behavior."
+    }
+  ],
+  "notes": "This is an observational study using variation in AI job postings across 15 investment banks and the exogenous shock of ChatGPT's introduction in November 2022. The paper lacks visibility into specific AI implementations at each bank. The authors note that ChatGPT use was restricted at many investment banks due to data security concerns, though its introduction likely spurred increased use of available AI resources. For the ChatGPT analysis, the authors had insufficient power to replicate the firm coverage test due to having only one year of post-ChatGPT data and the coverage test being at the investment bank-year level. The study examines multiple task-complexity dimensions (forecast dispersion, return volatility, bid-ask spread, voluntary disclosure, analyst ability) through interaction terms, finding stronger AI effects for more complex forecasting tasks. Sample sizes are at the analyst-firm-year level (70,923 observations) rather than individual analyst or bank level.",
+  "_paper_id": "Artificial_Intelligence_and_Analyst_Productivity"
+}

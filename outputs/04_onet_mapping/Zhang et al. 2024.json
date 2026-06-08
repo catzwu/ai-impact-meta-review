@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants are content producers whose primary task is creating short videos with titles/hashtags to enhance engagement and attract followers. The core work activity being measured is the creative process of generating compelling video titles and descriptions\u2014a fundamentally creative task aimed at capturing audience attention. While the AI tool assists with title generation, the study measures the producers' creative output (title quality, engagement outcomes) when augmented by AI versus without it. This maps most precisely to 'Thinking Creatively' rather than to a specific occupation, as the task is narrowly focused on the creative ideation component of content production.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "27-3043.00",
+      "onet_label": "Writers and Authors"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-30",
+      "onet_label": "Documenting/Recording Information"
+    }
+  ],
+  "citation_key": "zhang_2024_ai_metadata"
+}

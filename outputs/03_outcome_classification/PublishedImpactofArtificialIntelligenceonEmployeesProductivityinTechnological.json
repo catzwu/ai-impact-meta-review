@@ -1,0 +1,12 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "employee_productivity",
+      "category": "other",
+      "operationalization": "Self-reported perceptions of productivity impact via questionnaire responses from employees; specific measurement scale not specified"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "chukwuka_2025_ai_productivity"
+}

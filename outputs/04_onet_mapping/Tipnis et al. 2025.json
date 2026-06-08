@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The participants' primary task is 'to trace infrastructure (e.g., buildings, roads, waterways) on satellite imagery of areas of interest using a mapping editor' \u2014 they log onto HOTTM, select projects, and use digital tools to trace features on satellite imagery. This is fundamentally computer-based work involving digital mapping software and online platforms. While the task involves some visual analysis and decision-making about what to trace, the core activity is operating computer-based mapping tools to digitize geographic features. This maps most directly to 'Working with Computers' rather than more specialized activities like 'Analyzing Data' (which would emphasize interpretation over data entry) or 'Drafting' (which is specific to technical device design, not geographic feature tracing).",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-32",
+      "onet_label": "Identifying Objects, Actions, and Events"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-22",
+      "onet_label": "Getting Information"
+    }
+  ],
+  "citation_key": "tipnis_2025_ai_philanthropy"
+}

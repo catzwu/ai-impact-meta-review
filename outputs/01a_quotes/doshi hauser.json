@@ -1,0 +1,89 @@
+{
+  "citation_key": "doshi_2024_generative_creativity",
+  "authors": [
+    "Anil R. Doshi",
+    "Oliver P. Hauser"
+  ],
+  "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+  "year": 2024,
+  "venue": "Science Advances",
+  "quotes": {
+    "study_design": [
+      "This paper aims to provide an initial answer to these questions through a preregistered, two-phase experimental online study on written creative output",
+      "In the first phase of our study, we recruited a group of N = 293 participants (\"writers\") who are asked to write a short, eight-sentence story that is \"appropriate for a teenage and young adult audience,\"",
+      "Participants were randomly assigned to one of three conditions: Human-only, Human with one GenAI idea condition, and Human with five GenAI ideas",
+      "In the second phase, the stories composed by the writers were evaluated by a separate group of N = 600 participants (\"evaluators\")",
+      "Evaluators read six randomly selected stories without being informed about writers being randomly assigned to access generative AI in some conditions (or not).",
+      "The study was preregistered at AsPredicted.org (ID 136723)"
+    ],
+    "task": [
+      "we recruited a group of N = 293 participants (\"writers\") who are asked to write a short, eight-sentence story that is \"appropriate for a teenage and young adult audience,\" and we indicate to writers, \"You can write about anything you like.\"",
+      "Participants were randomized into writing about one of the following three topics: an adventure on the open seas, an adventure in the jungle, and an adventure on a different planet.",
+      "Participants received the following instructions: \"We would like you to write a story about an adventure on the open seas. You can write about anything you like. The story must be exactly eight sentences long and it needs to be written in English and appropriate for a teenage and young adult audience (approximately 15 to 24 years of age).\"",
+      "In the Human with one GenAI idea condition and the Human with five GenAI ideas conditions, the participant had the option to receive a three-sentence idea for a story from an LLM.",
+      "Evaluators read six randomly selected stories without being informed about writers being randomly assigned to access generative AI in some conditions (or not). All stories were evaluated by multiple evaluators on novelty, usefulness, and several emotional characteristics"
+    ],
+    "population": [
+      "For the writer study, we recruited 500 participants to participate in the experiment from the Prolific platform. Using the platform's filtering options, we included participants who were Prolific participants who indicated that they are based in the United Kingdom with an approval rating of at least 95% from between 100 and 1,000,000 prior submissions.",
+      "Writers were not selected based on prior writing skills or their creativity.",
+      "Of the 500 participants who began the study, 169 exited the study before giving consent, 22 were dropped for not giving consent, and 13 dropped out before completing the study. Three participants in the Human-only condition admitted to using generative AI during their story writing exercise and\u2014as per our preregistration\u2014were therefore dropped from the analysis, resulting in a total number of writers and stories of 293.",
+      "For the evaluator study, the 293 total stories were then evaluated by a separate set of evaluators on Prolific. Using the platform's filtering options, we included participants who were Prolific participants who indicated that they are based in the United Kingdom with an approval rating of at least 95% from between 100 and 1,000,000 prior submissions and had not previously participated in the writer study. Participants were not selected on the basis of prior experience in the publishing industry, but represent \"regular\" readers.",
+      "There were a total of 3519 evaluations of 293 stories made by 600 evaluators.",
+      "In our sample, the DAT score had a mean of 77.24 and an SD of 6.48."
+    ],
+    "arms": [
+      "Participants were randomly assigned to one of three conditions: Human-only, Human with one GenAI idea condition, and Human with five GenAI ideas",
+      "In the Human-only condition, the participant was provided with a text box in which she could provide her response.",
+      "In the Human with one GenAI idea condition and the Human with five GenAI ideas conditions, the participant had the option to receive a three-sentence idea for a story from an LLM.",
+      "Those in the Human with one GenAI idea condition could only receive one story idea, while those in the Human with five GenAI ideas condition could receive up to five story ideas, each of which was visible to the participant.",
+      "Of the 100 writers in the Human with one GenAI idea condition, 82 opted to generate one, while 93 of 98 writers in the Human with five GenAI ideas condition did so.",
+      "When given the option to call upon generative AI more than once in the Human with five GenAI ideas condition, participants did so on average 2.55 times, with 24.5% requesting the maximum of five generative AI ideas."
+    ],
+    "outcome_definitions": [
+      "Creativity is typically assessed across two dimensions: novelty and usefulness",
+      "Novelty assesses the extent to which an idea departs from the status quo or expectations. In our study, following the previous literature, the novelty index captured the story's novelty, originality, and rarity.",
+      "Usefulness reflects the practicality and relevance of an idea, which we interpret as the possibility that this short story could become a publishable product, such as a book, if developed further: Therefore, our usefulness index was adjusted to capture the story's appropriateness for the targeted audience, feasibility of being developed into a complete book, and likelihood of a publisher developing the book.",
+      "Our novelty index had three components (novel, original, and rare), with which we created an average value. The usefulness index also had three components (appropriate, feasible, and publishable), with which we also created an average value. Cronbach's \u03b1 for the novelty and usefulness indices was 0.92 and 0.89, respectively.",
+      "we explored six additional outcome variables focused on how enjoyable, how well written, how boring, and how funny the story was, as well as whether the story had a surprising twist and whether it had changed what the reader expects of future stories.",
+      "We computed measures of the writer's story to all other stories from writers in the same condition as well as to a generative AI idea. We did so by computing the cosine similarity of the embeddings and multiplying the value by 100 to arrive at a measure that ranges from 0 to 100."
+    ],
+    "statistical_results": [
+      "Across the two generative AI conditions, 88.4% of participants chose to call upon generative AI at least once to provide an initial story idea.",
+      "With respect to novelty, writers in the Human with one GenAI idea condition experience an increase of 5.4% (b = 0.207, P = 0.021, see table S3) over writers without generative AI access, whereas writers in the Human with five GenAI ideas condition show an increase in novelty of 8.1% (b = 0.311, P < 0.001) over writers without generative AI access.",
+      "The usefulness of stories from writers with access to one generative AI idea is 3.7% (b = 0.185, P = 0.039) higher than that of writers with no generative AI access.",
+      "Having access to up to five AI ideas increases usefulness by 9.0% (b = 0.453, P < 0.001) over those with no generative AI access and 5.1% (P = 0.0012, compared to the Human with one GenAI idea condition mean of 5.21) over those with access to one generative AI idea.",
+      "In contrast, writers self-assessing their own stories show no statistically significant differences in the novelty and usefulness between authors who were offered generative AI ideas and those who were not",
+      "stories written by writers with access to generative AI ideas are more enjoyable (Human with one GenAI idea condition: b = 0.216, P = 0.028; Human with five GenAI ideas condition: b = 0.375, P < 0.001, see table S6) and are more likely to have plot twists (Human with one GenAI idea condition: b = 0.384, P < 0.001; Human with five GenAI ideas condition: b = 0.468, P < 0.001).",
+      "Relative to Human-only stories, when the writer had access to up to five generative AI ideas, the stories are considered to be better written (b = 0.372, P < 0.001), have more of an effect on the evaluator's expectations of future stories (b = 0.251, P = 0.005), and be less boring (b = \u22120.200, P = 0.049).",
+      "Stories in the Human with five GenAI ideas condition are, however, not evaluated as more funny than those in the Human-only condition; if anything, the coefficient is negative but not statistically significant (b = \u22120.106, P = 0.115).",
+      "Again, writers' self-assessments of their own stories show no statistically significant differences in the story characteristics across conditions",
+      "We do not find differences between more creative writers and less creative writers in how frequently they accessed generative AI ideas in the two generative AI conditions",
+      "Among both more and less creative writers in the Human with five GenAI ideas condition, all five ideas were requested 24.5% of the time.",
+      "Among the most inherently creative writers (i.e., high-DAT writers), there is little effect of having access to generative AI ideas on the creativity of their stories.",
+      "Among low-DAT writers, having access to one generative AI idea improves a story's novelty by 6.3% and having access to five generative AI ideas yields improvements of 10.7%.",
+      "Similarly, writers with access to one and five generative AI ideas produce stories that are evaluated more highly on usefulness by 5.5 and 11.5%, respectively.",
+      "For low-DAT writers in the Human with five GenAI ideas condition, assessments of how well the story was written increase by up to 26.6%, enjoyment of the story increases by up to 22.6%, and how boring the story is decreases by up to 15.2%.",
+      "having access to generative AI ideas makes a story more similar to the average of other stories within the same condition (Human with one GenAI idea condition: b = 0.871, P < 0.001; Human with five GenAI ideas condition: b = 0.718, P = 0.003, see table S11).",
+      "in the Human-only condition, the similarity scores span a range of 8.10 points; therefore, the increase in similarity from having access to one or five generative AI ideas represents 10.7% and 8.9% of the total range, respectively.",
+      "Relative to Human-only, writers in the Human with one GenAI idea condition and Human with five GenAI ideas conditions wrote stories that were 5.2% (b = 4.29, P < 0.001; compared to a Human-only mean of 82.85) and 5.0% (b = 4.11, P < 0.001) more similar to the generative AI ideas, respectively.",
+      "we find that evaluators imposed an ownership penalty of at least 25% on writers who received generative AI ideas, relative stories written only by humans"
+    ],
+    "ambiguity_or_caveats": [
+      "Regardless, our study has limitations in that the creative task is constrained in its length (i.e., eight sentences), medium (i.e., writing), and type of output (i.e., short story), and there is no interactiveness with the LLM or variation in prompts. These constraints limit the generalizability and conclusions we can draw from this study.",
+      "Constraining the task in such a way may constrain the extent to which participants are able to express their creativity and may not generalize to other less-constrained creativity tasks.",
+      "It is possible that the effect of generative AI ideas would be attenuated for longer stories if the content of generative AI ideas does not sufficiently guide writers.",
+      "Furthermore, generative AI ideas in different media, such as images or music, may be incorporated in different ways resulting in a different effect.",
+      "For example, if the exercise related to drawing a picture, perhaps generative AI ideas would not be as effective for individuals with little experience with drawing (as opposed to writing where most people have experience with the task).",
+      "To this end, we note that the \"usefulness\" construct in our creativity measure was adapted to fit our context, but future work should revisit both our own definition of usefulness and ensure that it can be adopted across different domains of creativity to best capture this aspect of creativity.",
+      "At the same time, we did not study or vary the myriad of motivating factors that encourage creativity in the real world. Introducing financial incentives, encouraging creative problem solutions, or simply encouraging creativity for one's own pleasure may affect the use and integration of generative AI ideas differently.",
+      "We do, however, allow writers to opt into receiving generative AI ideas, rather than assign generative AI ideas to everyone in the generative AI conditions. We do this to ensure that writers are invested in, and receptive to, what generative AI produces.",
+      "We do not allow writers to customize the call to the generative AI engine, nor do we allow for repeated interactions between writers and generative AI, both of which may increase the effectiveness and magnitude of the impact of generative AI on creativity. If that is the case, our estimates are likely a lower bound of the potential that generative AI could offer to writers when they are given full control over the AI engine, or when real-time interactions are enabled that help writers with ideation and enhancement further.",
+      "Furthermore, we caution that self-selection may not be individually optimal or efficient: We asked participants in our study to self-assess the creativity of their stories, but find that they generally do not self-assess accurately.",
+      "We do not find any correlation between participants who self-assess their stories to be less creative and their use of generative AI, suggesting that participants who would benefit from the technology the most are not more likely to use it.",
+      "We do so among a sample of relatively \"typical\" study participants often used in academic studies (which comes with limitations on population representativeness)\u2014that is, we do not study professional writers or unusually creative individuals."
+    ]
+  },
+  "notes": "This is a preregistered randomized controlled experiment with two phases: writers (N=293) produced stories under three conditions (Human-only, Human with one GenAI idea, Human with five GenAI ideas), and evaluators (N=600) rated the stories. The paper reports both subjective evaluations (novelty, usefulness, emotional characteristics) and objective similarity measures (cosine similarity of embeddings). Key finding: generative AI increases individual creativity (especially for less creative writers) but increases similarity among stories, reducing collective diversity. Exploratory analyses on ownership and ethics are included but not preregistered.",
+  "_paper_id": "doshi hauser",
+  "_source_pdf": "papers/doshi hauser.pdf"
+}

@@ -1,0 +1,435 @@
+{
+  "citation_key": "cui_2025_generative_ai_developers",
+  "authors": [
+    "Kevin Zheyuan Cui",
+    "Mert Demirer",
+    "Sonia Jaffe",
+    "Leon Musolff",
+    "Sida Peng",
+    "Tobias Salz"
+  ],
+  "title": "The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "Three randomized controlled trials conducted at Microsoft, Accenture, and an anonymous Fortune 100 company, where developers were randomly assigned to receive access to GitHub Copilot (treatment) or not (control). At Microsoft and Accenture, treatment and control groups had differential access for 8 and 5 months respectively. At Anonymous Company, all developers eventually gained access but invitation dates were randomized with a 6-week stagger. The paper uses instrumental variables estimation to address imperfect compliance, estimating local average treatment effects (LATE) for those who adopted the tool.",
+  "primary_task_description": "Software developers working on building a wide range of software products and services, including engineering, designing, and testing. The primary unit of work tracked is the pull request (PR), which represents a unit of code submitted for review and potential integration into the codebase. Secondary measures include commits (smaller code changes tracked before PR submission) and builds (compilation checks of code).",
+  "population_description": "Microsoft experiment (n=1,521): 1,746 developers initially, primarily located in the United States, ranging from entry-level to managers, working on diverse software projects. Accenture experiment (n=316): 320 developers from offices in Southeast Asia, with 61.3% assigned to treatment. Anonymous Company experiment (n=3,030): 3,054 developers initially, all eventually invited to use Copilot. Combined analysis: 4,867 developers across three experiments.",
+  "arms": [
+    {
+      "arm_name": "copilot_access",
+      "description": "Developers randomly assigned to receive access to GitHub Copilot. At Microsoft, treated developers received an email introducing Copilot as a productivity-enhancing tool with no specific instructions on usage. At Accenture, treated developers received email notification, participated in a training session explaining how to use Copilot and its benefits, and managers were asked to encourage adoption. At Anonymous Company, developers received randomized invitation dates to access Copilot.",
+      "n": null
+    },
+    {
+      "arm_name": "control",
+      "description": "Developers randomly assigned to not receive access to GitHub Copilot during the initial experimental period. At Microsoft and Accenture, control group received no communication about the study. At Anonymous Company, control group received access after a 6-week delay.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "pull_requests_completed",
+      "outcome_description": "The number of pull requests (PRs) completed by a developer. A pull request represents a unit of work for software developers and can involve adding features, fixing bugs, or other code modifications. PRs are submitted for code review and, if approved, merged into the codebase.",
+      "measurement_unit": "number of weekly pull requests",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "commits",
+      "outcome_description": "The number of commits (smaller code changes) made by a developer before submitting a pull request. Commits track incremental changes to code.",
+      "measurement_unit": "number of weekly commits",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "builds",
+      "outcome_description": "The number of times a developer builds (compiles) their code to check for compilation errors.",
+      "measurement_unit": "number of weekly builds",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "build_success_rate",
+      "outcome_description": "The fraction of builds that compile successfully without errors.",
+      "measurement_unit": "success rate (proportion)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "pr_approval_rate",
+      "outcome_description": "The fraction of reviewers who approved a given pull request.",
+      "measurement_unit": "approval rate (proportion)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "pr_at_least_one_approval",
+      "outcome_description": "Binary indicator of whether a pull request received at least one approval from reviewers.",
+      "measurement_unit": "binary (yes/no)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "pr_comments",
+      "outcome_description": "The total number of comments a pull request receives, which may reflect the level of controversy or the extent of revisions needed before merging.",
+      "measurement_unit": "number of comments",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "merge_conflicts",
+      "outcome_description": "The number of merge conflicts per pull request or per file, as a proxy for code modularity. Tightly coupled code requiring simultaneous changes across multiple modules is more likely to generate merge conflicts.",
+      "measurement_unit": "number of merge conflicts",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "pr_time_to_merge",
+      "outcome_description": "The time elapsed between a pull request's initial submission and its eventual incorporation into the codebase.",
+      "measurement_unit": "time (unspecified units)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "copilot_adoption_rate",
+      "outcome_description": "The fraction of developers who adopted and used GitHub Copilot during the experimental period.",
+      "measurement_unit": "adoption rate (proportion or percentage)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "copilot_suggestions_accepted",
+      "outcome_description": "The number of Copilot code suggestions that a developer accepted.",
+      "measurement_unit": "number of accepted suggestions",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "pull_requests_completed",
+      "arm_comparison": "copilot_access vs control (combined across three experiments)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "26.08% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "when data is combined across three experiments and 4,867 developers, our analysis reveals a 26.08% increase (SE: 10.3%) in completed tasks among developers using the AI tool."
+    },
+    {
+      "outcome_name": "pull_requests_completed",
+      "arm_comparison": "copilot_access vs control (combined across three experiments, IV estimate)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "26.08% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our preferred estimates from an instrumental variable regression suggest that usage of the coding assistant causes a 26.08% (SE: 10.3%) increase in the weekly number of completed tasks for those using the tool."
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "copilot_access vs control (combined across three experiments)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "13.55% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When we look at outcomes of secondary interest, our results support this interpretation, with a 13.55% (SE: 10.0%) increase in the number of code updates (commits) and a 38.38% (SE: 12.55%) increase in the number of times code was compiled."
+    },
+    {
+      "outcome_name": "builds",
+      "arm_comparison": "copilot_access vs control (combined across three experiments)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "38.38% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When we look at outcomes of secondary interest, our results support this interpretation, with a 13.55% (SE: 10.0%) increase in the number of code updates (commits) and a 38.38% (SE: 12.55%) increase in the number of times code was compiled."
+    },
+    {
+      "outcome_name": "pull_requests_completed",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .05",
+      "confidence_interval": null,
+      "verbatim_quote": "At Microsoft, Copilot has a positive effect on the number of completed pull requests, commits, and code builds. Focusing on the more credible experimental estimates, however, only the effect on the number of pull requests is statistically significant at conventional significance levels."
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At Microsoft, Copilot has a positive effect on the number of completed pull requests, commits, and code builds. Focusing on the more credible experimental estimates, however, only the effect on the number of pull requests is statistically significant at conventional significance levels."
+    },
+    {
+      "outcome_name": "builds",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At Microsoft, Copilot has a positive effect on the number of completed pull requests, commits, and code builds. Focusing on the more credible experimental estimates, however, only the effect on the number of pull requests is statistically significant at conventional significance levels."
+    },
+    {
+      "outcome_name": "build_success_rate",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find no negative effect on the build success rate, which would decline if Copilot produced uncompilable code and developers failed to catch these errors."
+    },
+    {
+      "outcome_name": "pr_approval_rate",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 10% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the approval rate of pull requests goes up by about 10%, suggesting that the code produced after adoption of Copilot is more likely to be merged into the main codebase, a positive signal of quality."
+    },
+    {
+      "outcome_name": "pr_at_least_one_approval",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "All other effects are not statistically significant, but they are mostly directionally consistent: code is more likely to be approved by at least one person and creates fewer merge conflicts."
+    },
+    {
+      "outcome_name": "merge_conflicts",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "All other effects are not statistically significant, but they are mostly directionally consistent: code is more likely to be approved by at least one person and creates fewer merge conflicts."
+    },
+    {
+      "outcome_name": "pr_comments",
+      "arm_comparison": "copilot_access vs control (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, the effect on the number of comments is positive, indicating further necessary changes to such code."
+    },
+    {
+      "outcome_name": "copilot_adoption_rate",
+      "arm_comparison": "short-tenure developers vs long-tenure developers (Microsoft experiment)",
+      "means_and_sds": {
+        "short_tenure": {
+          "mean": 81.6,
+          "sd": null,
+          "se": null
+        },
+        "long_tenure": {
+          "mean": 72.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "9.4 percentage points higher adoption for short-tenure developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We see that short-tenure developers are 9.4 percentage points (pp) (SE: 2.2pp) more likely to adopt Copilot by the end of our sample period (81.6% vs 72.1%), consistent with prior research suggesting that younger workers (who naturally have lower tenure on average) are more likely to adopt new technologies (Meyer 2011)."
+    },
+    {
+      "outcome_name": "copilot_adoption_rate",
+      "arm_comparison": "junior developers vs senior developers (Microsoft experiment)",
+      "means_and_sds": {
+        "junior": {
+          "mean": 79.2,
+          "sd": null,
+          "se": null
+        },
+        "senior": {
+          "mean": 74.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "4.7 percentage points higher adoption for junior developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The same effect is at play for junior developers, who are 4.7pp (SE: 2.2pp) more likely to adopt (79.2% vs. 74.4%), though the adoption difference is slightly smaller in this dimension."
+    },
+    {
+      "outcome_name": "copilot_suggestions_accepted",
+      "arm_comparison": "higher-tenure developers vs lower-tenure developers (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 4.3% (or 1.0 percentage point) lower acceptance rate for higher-tenure developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Finally, Figure 5 reveals that higher-tenure developers are approximately 4.3% (or 1.0pp) less likely to accept Copilot's code suggestions."
+    },
+    {
+      "outcome_name": "copilot_suggestions_accepted",
+      "arm_comparison": "junior developers vs senior developers (Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.8% (or 0.5 percentage point) lower acceptance rate for senior developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When comparing junior to senior developers, this difference in acceptance rates is much smaller at 1.8% (or 0.5pp), though it goes in the same direction as senior developers being less likely to accept AI suggestions."
+    },
+    {
+      "outcome_name": "pull_requests_completed",
+      "arm_comparison": "short-tenure developers vs long-tenure developers (heterogeneous effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "short-tenure: 27% to 39% increase; long-tenure: 8% to 13% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "While our estimates are noisy and not statistically significant at conventional levels, the pattern persists across all three main outcome measures: short-tenure developers increase their output by 27% to 39% while long-tenure developers experience smaller gains of 8% to 13%."
+    },
+    {
+      "outcome_name": "pull_requests_completed",
+      "arm_comparison": "junior developers vs senior developers (heterogeneous effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "junior: 21% to 40% increase; senior: 7% to 16% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Still, there is no difference in usage conditional on adoption between junior and senior developers in Figure 4(b), and we see in Figure 6(b) that junior developers increase their output by 21% to 40% while senior developers have more marginal gains of 7% to 16%."
+    },
+    {
+      "outcome_name": "copilot_adoption_rate",
+      "arm_comparison": "low-productivity developers vs high-productivity developers (Microsoft experiment, continuation after control access)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Intriguingly, low pre-productivity developers are initially more likely to adopt, but this changes soon after the Control group is allowed to adopt, and by the end of our sample, high pre-productivity developers are slightly more likely to adopt."
+    },
+    {
+      "outcome_name": "copilot_adoption_rate",
+      "arm_comparison": "low-productivity developers vs high-productivity developers (continuation after initial adoption, Microsoft experiment)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = .085",
+      "confidence_interval": null,
+      "verbatim_quote": "Figure 4(c) shows that low-productivity developers are, if anything, less likely to continue using Copilot, though the difference is (just) not statistically significant (p=.085)."
+    },
+    {
+      "outcome_name": "pull_requests_completed",
+      "arm_comparison": "copilot_access vs control (combined across three experiments, alternative specification with imputation)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21.34% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The preferred combined estimate does not change much when we include this second Accenture experiment: the number of pull requests made by developers increases by 21.34% (SE: 9.92%), the number of commits increases by 15.39% (SE: 9.69%), and the number of builds increases by 37.03% (SE: 12.22%)."
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "copilot_access vs control (combined across three experiments, alternative specification with imputation)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "15.39% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The preferred combined estimate does not change much when we include this second Accenture experiment: the number of pull requests made by developers increases by 21.34% (SE: 9.92%), the number of commits increases by 15.39% (SE: 9.69%), and the number of builds increases by 37.03% (SE: 12.22%)."
+    },
+    {
+      "outcome_name": "builds",
+      "arm_comparison": "copilot_access vs control (combined across three experiments, alternative specification with imputation)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "37.03% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The preferred combined estimate does not change much when we include this second Accenture experiment: the number of pull requests made by developers increases by 21.34% (SE: 9.92%), the number of commits increases by 15.39% (SE: 9.69%), and the number of builds increases by 37.03% (SE: 12.22%)."
+    },
+    {
+      "outcome_name": "pull_requests_completed",
+      "arm_comparison": "copilot_access vs control (Accenture experiment, abandoned, with conservative imputation)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "-39.18% (negative effect)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "If we conservatively impute Copilot adoption status, we find a negative and statistically insignificant point estimate of -39.18% (SE: 36.78%) on the number of completed pull requests."
+    },
+    {
+      "outcome_name": "commits",
+      "arm_comparison": "copilot_access vs control (Accenture experiment, abandoned, with conservative imputation)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "43.04% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The estimates on the number of commits 43.04% (SE: 38.80%) and builds 12.33% (SE: 53.60%) are both positive, though also not statistically significant."
+    },
+    {
+      "outcome_name": "builds",
+      "arm_comparison": "copilot_access vs control (Accenture experiment, abandoned, with conservative imputation)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12.33% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The estimates on the number of commits 43.04% (SE: 38.80%) and builds 12.33% (SE: 53.60%) are both positive, though also not statistically significant."
+    }
+  ],
+  "notes": "This paper reports results from three field experiments with imperfect compliance. The primary estimates use instrumental variables (IV) estimation to identify local average treatment effects (LATE) for developers who adopted Copilot when encouraged. The paper also reports intent-to-treat (ITT) effects and difference-in-differences (DiD) estimates, which are lower than LATE estimates. Sample sizes: Microsoft n=1,521 (50.4% treated), Accenture n=316 (61.3% treated), Anonymous Company n=3,030 (treatment via staggered rollout). Combined analysis includes 4,867 developers. Adoption rates varied: Microsoft 75.6% (treated) vs 64.0% (control) by January 2024; Accenture 69.4% (treated) vs 24.4% (control) by April 2024. The paper notes large heterogeneity in effects across companies and by developer characteristics (tenure, seniority, pre-experiment productivity). One additional Accenture experiment was abandoned due to a 42% layoff of participants and is reported in Appendix E with data quality caveats. The paper emphasizes that LATE estimates may be more relevant for managers than ITT estimates if pricing is usage-based. Standard errors are consistently large, limiting power to detect heterogeneous effects within experiments.",
+  "_paper_id": "cuietal"
+}

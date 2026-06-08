@@ -1,0 +1,122 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "commit_frequency",
+      "category": "speed",
+      "operationalization": "count of commits pushed to remote repositories per week, measured from GitHub API"
+    },
+    {
+      "outcome_name": "active_repositories",
+      "category": "other",
+      "operationalization": "count of distinct repositories receiving commits in a given week"
+    },
+    {
+      "outcome_name": "line_changes",
+      "category": "speed",
+      "operationalization": "lines added, modified, or deleted per commit, excluding non-programming files and auto-generated code"
+    },
+    {
+      "outcome_name": "diff_delta",
+      "category": "speed",
+      "operationalization": "weighted sum of edit operations (additions, deletions, modifications, relocations) applied to meaningful line changes"
+    },
+    {
+      "outcome_name": "working_hours",
+      "category": "speed",
+      "operationalization": "total hours per week spent in commit-activity sessions, with sessions separated by \u22654 hours of inactivity"
+    },
+    {
+      "outcome_name": "session_frequency",
+      "category": "speed",
+      "operationalization": "count of commit-activity sessions per week, where sessions are separated by \u22654 hours of inactivity"
+    },
+    {
+      "outcome_name": "session_duration",
+      "category": "speed",
+      "operationalization": "mean duration in minutes of commit-activity sessions within the week"
+    },
+    {
+      "outcome_name": "session_intermission",
+      "category": "other",
+      "operationalization": "mean time gap in hours between consecutive commit-activity sessions"
+    },
+    {
+      "outcome_name": "work_day_distribution_std",
+      "category": "other",
+      "operationalization": "standard deviation of work session distribution across days of the week"
+    },
+    {
+      "outcome_name": "weekend_commit_percentage",
+      "category": "other",
+      "operationalization": "percentage of commits occurring on Saturday or Sunday"
+    },
+    {
+      "outcome_name": "code_churn_percentage",
+      "category": "quality",
+      "operationalization": "percentage of code added in a week that is modified or removed within the subsequent 2 weeks"
+    },
+    {
+      "outcome_name": "copy_pasted_percentage",
+      "category": "quality",
+      "operationalization": "percentage of code identified as duplicated blocks, low edit distance with external sources, or repeated snippets"
+    },
+    {
+      "outcome_name": "project_novelty",
+      "category": "other",
+      "operationalization": "mean cosine distance between embeddings of new repository descriptions and developer's existing repository descriptions"
+    },
+    {
+      "outcome_name": "languages_added",
+      "category": "other",
+      "operationalization": "count of programming languages first appearing in developer's commits in a given week"
+    },
+    {
+      "outcome_name": "internal_job_transitions",
+      "category": "other",
+      "operationalization": "binary indicator of lateral transfer or hierarchical promotion within the organization"
+    },
+    {
+      "outcome_name": "internal_promotions",
+      "category": "other",
+      "operationalization": "binary indicator of hierarchical promotion within the organization"
+    },
+    {
+      "outcome_name": "external_job_hopping",
+      "category": "other",
+      "operationalization": "binary indicator of employer change"
+    },
+    {
+      "outcome_name": "ai_generated_code_propensity",
+      "category": "other",
+      "operationalization": "probability score from a Deep Learning model predicting whether new code is AI-generated"
+    },
+    {
+      "outcome_name": "personal_project_push_frequency",
+      "category": "speed",
+      "operationalization": "count of pushes to personal repositories per week"
+    },
+    {
+      "outcome_name": "personal_project_push_size",
+      "category": "speed",
+      "operationalization": "lines changed per push to personal repositories"
+    },
+    {
+      "outcome_name": "collaborative_project_push_frequency",
+      "category": "speed",
+      "operationalization": "count of pushes to collaborative repositories per week"
+    },
+    {
+      "outcome_name": "collaborative_project_push_size",
+      "category": "speed",
+      "operationalization": "lines changed per push to collaborative repositories"
+    },
+    {
+      "outcome_name": "new_project_creation",
+      "category": "other",
+      "operationalization": "count of new repositories created per month"
+    }
+  ],
+  "primary_speed_outcome": "commit_frequency",
+  "primary_quality_outcome": "code_churn_percentage",
+  "citation_key": "li_2026_copilot_oss"
+}

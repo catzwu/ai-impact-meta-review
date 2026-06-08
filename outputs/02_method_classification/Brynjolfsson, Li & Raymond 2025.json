@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study uses a 'staggered introduction' or 'staggered rollout' of the AI assistant and employs 'difference-in-differences regression' and 'interaction weighted (IW) estimator' to isolate causal effects. This is a quasi-experimental identification strategy analyzing the gradual deployment across 5,179 agents, distinct from the small initial 50-agent randomized pilot.",
+  "citation_key": "brynjolfsson_2023_generative_ai"
+}

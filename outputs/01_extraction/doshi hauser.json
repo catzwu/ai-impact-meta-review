@@ -1,0 +1,396 @@
+{
+  "citation_key": "doshi_2024_generative_creativity",
+  "authors": [
+    "Anil R. Doshi",
+    "Oliver P. Hauser"
+  ],
+  "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+  "year": 2024,
+  "venue": "Science Advances",
+  "study_design_description": "This is a preregistered, two-phase experimental online study on written creative output. In the first phase, N = 293 writers were randomly assigned to one of three conditions: Human-only, Human with one GenAI idea condition, and Human with five GenAI ideas. Writers were asked to write a short, eight-sentence story appropriate for a teenage and young adult audience. In the second phase, the 293 stories were evaluated by a separate group of N = 600 evaluators who read six randomly selected stories without being informed about the writers' condition assignments.",
+  "primary_task_description": "Writers were asked to write a short, eight-sentence story that is \"appropriate for a teenage and young adult audience.\" Participants were randomized into writing about one of three topics: an adventure on the open seas, an adventure in the jungle, or an adventure on a different planet. In the Human with one GenAI idea and Human with five GenAI ideas conditions, participants had the option to receive a three-sentence idea for a story from an LLM. Evaluators read six randomly selected stories and evaluated them on novelty, usefulness, and several emotional characteristics.",
+  "population_description": "Writers were recruited from the Prolific platform (N = 500 initially), filtered to include participants based in the United Kingdom with an approval rating of at least 95% from between 100 and 1,000,000 prior submissions. Writers were not selected based on prior writing skills or creativity. After exclusions (169 exited before consent, 22 did not give consent, 13 dropped out before completing, and 3 admitted to using generative AI), 293 writers remained. Evaluators were a separate set of 600 Prolific participants from the United Kingdom with at least 95% approval rating who had not previously participated in the writer study. Participants were not selected on the basis of prior experience in the publishing industry but represent \"regular\" readers. There were a total of 3519 evaluations of 293 stories made by 600 evaluators.",
+  "arms": [
+    {
+      "arm_name": "human_only",
+      "description": "In the Human-only condition, the participant was provided with a text box in which she could provide her response.",
+      "n": null
+    },
+    {
+      "arm_name": "human_with_one_genai_idea",
+      "description": "In the Human with one GenAI idea condition, the participant had the option to receive a three-sentence idea for a story from an LLM. Those in this condition could only receive one story idea. Of the 100 writers in this condition, 82 opted to generate one.",
+      "n": 100
+    },
+    {
+      "arm_name": "human_with_five_genai_ideas",
+      "description": "In the Human with five GenAI ideas condition, the participant had the option to receive a three-sentence idea for a story from an LLM. Those in this condition could receive up to five story ideas, each of which was visible to the participant. Of 98 writers in this condition, 93 opted to generate ideas. When given the option to call upon generative AI more than once, participants did so on average 2.55 times, with 24.5% requesting the maximum of five generative AI ideas.",
+      "n": 98
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "novelty",
+      "outcome_description": "Novelty assesses the extent to which an idea departs from the status quo or expectations. The novelty index captured the story's novelty, originality, and rarity. The novelty index had three components (novel, original, and rare), with which an average value was created. Cronbach's \u03b1 for the novelty index was 0.92.",
+      "measurement_unit": null,
+      "is_primary": true
+    },
+    {
+      "outcome_name": "usefulness",
+      "outcome_description": "Usefulness reflects the practicality and relevance of an idea, interpreted as the possibility that this short story could become a publishable product, such as a book, if developed further. The usefulness index captured the story's appropriateness for the targeted audience, feasibility of being developed into a complete book, and likelihood of a publisher developing the book. The usefulness index had three components (appropriate, feasible, and publishable), with which an average value was created. Cronbach's \u03b1 for the usefulness index was 0.89.",
+      "measurement_unit": null,
+      "is_primary": true
+    },
+    {
+      "outcome_name": "enjoyability",
+      "outcome_description": "How enjoyable the story was, as evaluated by readers.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "well_written",
+      "outcome_description": "How well written the story was, as evaluated by readers.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "boring",
+      "outcome_description": "How boring the story was, as evaluated by readers.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "funny",
+      "outcome_description": "How funny the story was, as evaluated by readers.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "surprising_twist",
+      "outcome_description": "Whether the story had a surprising twist, as evaluated by readers.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "changed_expectations",
+      "outcome_description": "Whether the story had changed what the reader expects of future stories, as evaluated by readers.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "similarity_to_condition_average",
+      "outcome_description": "Cosine similarity of the story's embeddings to the average of other stories from writers in the same condition, multiplied by 100 to arrive at a measure that ranges from 0 to 100.",
+      "measurement_unit": "0-100 scale",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "similarity_to_genai_ideas",
+      "outcome_description": "Cosine similarity of the story's embeddings to the generative AI ideas, multiplied by 100 to arrive at a measure that ranges from 0 to 100.",
+      "measurement_unit": "0-100 scale",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "novelty",
+      "arm_comparison": "human_with_one_genai_idea vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.4% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.207",
+      "test_statistic": null,
+      "p_value": "p = 0.021",
+      "confidence_interval": null,
+      "verbatim_quote": "With respect to novelty, writers in the Human with one GenAI idea condition experience an increase of 5.4% (b = 0.207, P = 0.021, see table S3) over writers without generative AI access"
+    },
+    {
+      "outcome_name": "novelty",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "8.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.311",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "writers in the Human with five GenAI ideas condition show an increase in novelty of 8.1% (b = 0.311, P < 0.001) over writers without generative AI access"
+    },
+    {
+      "outcome_name": "usefulness",
+      "arm_comparison": "human_with_one_genai_idea vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.7% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.185",
+      "test_statistic": null,
+      "p_value": "p = 0.039",
+      "confidence_interval": null,
+      "verbatim_quote": "The usefulness of stories from writers with access to one generative AI idea is 3.7% (b = 0.185, P = 0.039) higher than that of writers with no generative AI access."
+    },
+    {
+      "outcome_name": "usefulness",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "9.0% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.453",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Having access to up to five AI ideas increases usefulness by 9.0% (b = 0.453, P < 0.001) over those with no generative AI access"
+    },
+    {
+      "outcome_name": "usefulness",
+      "arm_comparison": "human_with_five_genai_ideas vs human_with_one_genai_idea",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.0012",
+      "confidence_interval": null,
+      "verbatim_quote": "5.1% (P = 0.0012, compared to the Human with one GenAI idea condition mean of 5.21) over those with access to one generative AI idea"
+    },
+    {
+      "outcome_name": "enjoyability",
+      "arm_comparison": "human_with_one_genai_idea vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.216",
+      "test_statistic": null,
+      "p_value": "p = 0.028",
+      "confidence_interval": null,
+      "verbatim_quote": "stories written by writers with access to generative AI ideas are more enjoyable (Human with one GenAI idea condition: b = 0.216, P = 0.028; Human with five GenAI ideas condition: b = 0.375, P < 0.001, see table S6)"
+    },
+    {
+      "outcome_name": "enjoyability",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.375",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "stories written by writers with access to generative AI ideas are more enjoyable (Human with one GenAI idea condition: b = 0.216, P = 0.028; Human with five GenAI ideas condition: b = 0.375, P < 0.001, see table S6)"
+    },
+    {
+      "outcome_name": "surprising_twist",
+      "arm_comparison": "human_with_one_genai_idea vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.384",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "are more likely to have plot twists (Human with one GenAI idea condition: b = 0.384, P < 0.001; Human with five GenAI ideas condition: b = 0.468, P < 0.001)"
+    },
+    {
+      "outcome_name": "surprising_twist",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.468",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "are more likely to have plot twists (Human with one GenAI idea condition: b = 0.384, P < 0.001; Human with five GenAI ideas condition: b = 0.468, P < 0.001)"
+    },
+    {
+      "outcome_name": "well_written",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.372",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Relative to Human-only stories, when the writer had access to up to five generative AI ideas, the stories are considered to be better written (b = 0.372, P < 0.001)"
+    },
+    {
+      "outcome_name": "changed_expectations",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.251",
+      "test_statistic": null,
+      "p_value": "p = 0.005",
+      "confidence_interval": null,
+      "verbatim_quote": "have more of an effect on the evaluator's expectations of future stories (b = 0.251, P = 0.005)"
+    },
+    {
+      "outcome_name": "boring",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = -0.200",
+      "test_statistic": null,
+      "p_value": "p = 0.049",
+      "confidence_interval": null,
+      "verbatim_quote": "and be less boring (b = \u22120.200, P = 0.049)"
+    },
+    {
+      "outcome_name": "funny",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = -0.106",
+      "test_statistic": null,
+      "p_value": "p = 0.115",
+      "confidence_interval": null,
+      "verbatim_quote": "Stories in the Human with five GenAI ideas condition are, however, not evaluated as more funny than those in the Human-only condition; if anything, the coefficient is negative but not statistically significant (b = \u22120.106, P = 0.115)"
+    },
+    {
+      "outcome_name": "novelty",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only (low-DAT writers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10.7% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Among low-DAT writers, having access to one generative AI idea improves a story's novelty by 6.3% and having access to five generative AI ideas yields improvements of 10.7%."
+    },
+    {
+      "outcome_name": "novelty",
+      "arm_comparison": "human_with_one_genai_idea vs human_only (low-DAT writers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.3% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Among low-DAT writers, having access to one generative AI idea improves a story's novelty by 6.3% and having access to five generative AI ideas yields improvements of 10.7%."
+    },
+    {
+      "outcome_name": "usefulness",
+      "arm_comparison": "human_with_one_genai_idea vs human_only (low-DAT writers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.5% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Similarly, writers with access to one and five generative AI ideas produce stories that are evaluated more highly on usefulness by 5.5 and 11.5%, respectively."
+    },
+    {
+      "outcome_name": "usefulness",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only (low-DAT writers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "11.5% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Similarly, writers with access to one and five generative AI ideas produce stories that are evaluated more highly on usefulness by 5.5 and 11.5%, respectively."
+    },
+    {
+      "outcome_name": "well_written",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only (low-DAT writers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "up to 26.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For low-DAT writers in the Human with five GenAI ideas condition, assessments of how well the story was written increase by up to 26.6%, enjoyment of the story increases by up to 22.6%, and how boring the story is decreases by up to 15.2%."
+    },
+    {
+      "outcome_name": "enjoyability",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only (low-DAT writers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "up to 22.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For low-DAT writers in the Human with five GenAI ideas condition, assessments of how well the story was written increase by up to 26.6%, enjoyment of the story increases by up to 22.6%, and how boring the story is decreases by up to 15.2%."
+    },
+    {
+      "outcome_name": "boring",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only (low-DAT writers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "up to 15.2% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For low-DAT writers in the Human with five GenAI ideas condition, assessments of how well the story was written increase by up to 26.6%, enjoyment of the story increases by up to 22.6%, and how boring the story is decreases by up to 15.2%."
+    },
+    {
+      "outcome_name": "similarity_to_condition_average",
+      "arm_comparison": "human_with_one_genai_idea vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10.7% of total range",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.871",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "having access to generative AI ideas makes a story more similar to the average of other stories within the same condition (Human with one GenAI idea condition: b = 0.871, P < 0.001; Human with five GenAI ideas condition: b = 0.718, P = 0.003, see table S11). in the Human-only condition, the similarity scores span a range of 8.10 points; therefore, the increase in similarity from having access to one or five generative AI ideas represents 10.7% and 8.9% of the total range, respectively."
+    },
+    {
+      "outcome_name": "similarity_to_condition_average",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "8.9% of total range",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 0.718",
+      "test_statistic": null,
+      "p_value": "p = 0.003",
+      "confidence_interval": null,
+      "verbatim_quote": "having access to generative AI ideas makes a story more similar to the average of other stories within the same condition (Human with one GenAI idea condition: b = 0.871, P < 0.001; Human with five GenAI ideas condition: b = 0.718, P = 0.003, see table S11). in the Human-only condition, the similarity scores span a range of 8.10 points; therefore, the increase in similarity from having access to one or five generative AI ideas represents 10.7% and 8.9% of the total range, respectively."
+    },
+    {
+      "outcome_name": "similarity_to_genai_ideas",
+      "arm_comparison": "human_with_one_genai_idea vs human_only",
+      "means_and_sds": {
+        "human_only": {
+          "mean": 82.85,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "5.2% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 4.29",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Relative to Human-only, writers in the Human with one GenAI idea condition and Human with five GenAI ideas conditions wrote stories that were 5.2% (b = 4.29, P < 0.001; compared to a Human-only mean of 82.85) and 5.0% (b = 4.11, P < 0.001) more similar to the generative AI ideas, respectively."
+    },
+    {
+      "outcome_name": "similarity_to_genai_ideas",
+      "arm_comparison": "human_with_five_genai_ideas vs human_only",
+      "means_and_sds": {
+        "human_only": {
+          "mean": 82.85,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "5.0% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "b = 4.11",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Relative to Human-only, writers in the Human with one GenAI idea condition and Human with five GenAI ideas conditions wrote stories that were 5.2% (b = 4.29, P < 0.001; compared to a Human-only mean of 82.85) and 5.0% (b = 4.11, P < 0.001) more similar to the generative AI ideas, respectively."
+    }
+  ],
+  "notes": "This is a preregistered randomized controlled experiment (AsPredicted.org ID 136723) with two phases: writers (N=293) produced stories under three conditions, and evaluators (N=600) rated the stories. The paper reports both subjective evaluations (novelty, usefulness, emotional characteristics) and objective similarity measures (cosine similarity of embeddings). Key finding: generative AI increases individual creativity (especially for less creative writers, measured by DAT score) but increases similarity among stories, reducing collective diversity. The study notes that writers' self-assessments of their own stories showed no statistically significant differences across conditions. An ownership penalty of at least 25% was imposed by evaluators on writers who received generative AI ideas. The study has limitations: the creative task is constrained in length (eight sentences), medium (writing), and type (short story), with no interactiveness with the LLM or variation in prompts. The sample consisted of relatively typical study participants from Prolific, not professional writers or unusually creative individuals. Arm-level sample sizes for human_only condition were not explicitly stated in the quotes; the n values for the two GenAI conditions (100 and 98) are derived from the statement \"Of the 100 writers in the Human with one GenAI idea condition...\" and \"93 of 98 writers in the Human with five GenAI ideas condition.\"",
+  "_paper_id": "doshi hauser"
+}

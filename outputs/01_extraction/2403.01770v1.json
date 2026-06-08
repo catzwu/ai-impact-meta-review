@@ -1,0 +1,234 @@
+{
+  "citation_key": "nakavachara_2024_chatgpt_productivity",
+  "authors": [
+    "Voraprapa Nakavachara",
+    "Tanapong Potipiti",
+    "Thanee Chaiwat"
+  ],
+  "title": "Experimenting with Generative AI: Does ChatGPT Really Increase Everyone's Productivity?",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": "An experiment with 121 college economics students from Chulalongkorn University and Thammasat University in Thailand. Participants completed two sessions of writing analysis tasks (in Thai) and two sessions of math & data analysis tasks (in Stata), each comparing performance with and without ChatGPT access. To eliminate bias from problem sets and task order, participants were randomly divided into four groups. Performance was assessed using expert-scored ratings (out of 10) and time to completion, with each task session limited to 20 minutes.",
+  "primary_task_description": "Writing analysis tasks encompassing brainstorming, reading and providing feedback on texts, composing tweets, and summarizing documents; and math & data analysis tasks including coding for data visualization, variable generation, conducting regression analyses, hypothesis testing, and equation derivation.",
+  "population_description": "121 college economics students from Chulalongkorn University and Thammasat University in Thailand, mostly in their 3rd and 4th years. Average GPAX of 3.32 and average econometrics grade of 3.00. Approximately 36% male. Self-assessed reading, writing, math, and digital skills averaged 3.46, 3.07, 3.26, and 3.20 respectively on a 1-5 scale. Approximately 6.6% had never used ChatGPT.",
+  "arms": [
+    {
+      "arm_name": "group_1",
+      "description": "Started with Set A of writing analysis without ChatGPT, followed by Set B with ChatGPT, then proceeded to Set A of math & data analysis without ChatGPT, and finished with Set B with ChatGPT.",
+      "n": 21
+    },
+    {
+      "arm_name": "group_2",
+      "description": null,
+      "n": 34
+    },
+    {
+      "arm_name": "group_3",
+      "description": null,
+      "n": 44
+    },
+    {
+      "arm_name": "group_4",
+      "description": null,
+      "n": 22
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "score_with_vs_without_chatgpt",
+      "outcome_description": "Score out of 10, averaged from assessments of three experts, comparing performance when using ChatGPT versus not using ChatGPT.",
+      "measurement_unit": "points out of 10",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "time_with_vs_without_chatgpt",
+      "outcome_description": "Time required to complete tasks, comparing time taken when using ChatGPT versus not using ChatGPT.",
+      "measurement_unit": "minutes",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "score_improvement_writing_analysis",
+      "outcome_description": "Score difference in writing analysis tasks when using ChatGPT versus not using ChatGPT.",
+      "measurement_unit": "points out of 10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_improvement_writing_analysis",
+      "outcome_description": "Time difference in writing analysis tasks when not using ChatGPT minus time when using ChatGPT.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "score_improvement_math_data_analysis",
+      "outcome_description": "Score difference in math & data analysis tasks when using ChatGPT versus not using ChatGPT.",
+      "measurement_unit": "points out of 10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_improvement_math_data_analysis",
+      "outcome_description": "Time difference in math & data analysis tasks when not using ChatGPT minus time when using ChatGPT.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "score_with_vs_without_chatgpt",
+      "arm_comparison": "chatgpt vs no_chatgpt (overall)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.43 points higher with ChatGPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On average, the score with ChatGPT is higher than the score without ChatGPT by 0.43 (out of a total possible score of 10)"
+    },
+    {
+      "outcome_name": "time_with_vs_without_chatgpt",
+      "arm_comparison": "chatgpt vs no_chatgpt (overall)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.73 minutes shorter with ChatGPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "the time to complete tasks with ChatGPT is shorter than without by 1.73 minutes"
+    },
+    {
+      "outcome_name": "score_improvement_writing_analysis",
+      "arm_comparison": "chatgpt vs no_chatgpt (writing analysis)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.65 points higher with ChatGPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On average, scores with ChatGPT are higher than those without ChatGPT by 1.65 (out of a total score of 10)"
+    },
+    {
+      "outcome_name": "time_improvement_writing_analysis",
+      "arm_comparison": "chatgpt vs no_chatgpt (writing analysis)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.99 minutes shorter with ChatGPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "the time taken with ChatGPT is shorter than without by 0.99 minutes"
+    },
+    {
+      "outcome_name": "score_improvement_writing_analysis",
+      "arm_comparison": "econometrics_grade_effect",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.54 to 0.57 points lower per unit increase in econometrics grade",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "The Econo variable is consistently negative and significant across all specifications at the 10% level, suggesting that students with higher econometrics grades performed worse when using ChatGPT, with scores approximately 0.54 to 0.57 points lower."
+    },
+    {
+      "outcome_name": "score_improvement_writing_analysis",
+      "arm_comparison": "digital_skills_effect",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.70 to 0.73 points higher per unit increase in digital skills",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "The Digital skills variable is positive and significant at the 10% level in all models, except for Column 6, implying that students with higher digital skills scores performed better when using ChatGPT, with an approximate increase of 0.70 to 0.73 points in their scores."
+    },
+    {
+      "outcome_name": "score_improvement_math_data_analysis",
+      "arm_comparison": "econometrics_grade_effect",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The Econo variable is negative and significant at the 5% level across all specifications, indicating that students with higher econometrics grades performed worse when using ChatGPT."
+    },
+    {
+      "outcome_name": "score_improvement_math_data_analysis",
+      "arm_comparison": "digital_skills_effect",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The Digital Skills variable is positive and significant at the 5% level in all specifications, demonstrating that students with superior digital skills achieved better results with the use of ChatGPT."
+    },
+    {
+      "outcome_name": "score_improvement_writing_analysis",
+      "arm_comparison": "econometrics_grade_effect (writing tasks)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "In the analysis of writing tasks, presented in Columns 1-4, the Econo variable consistently appears negative and significant at the 5% level across all specifications."
+    },
+    {
+      "outcome_name": "score_improvement_writing_analysis",
+      "arm_comparison": "digital_skills_effect (writing tasks)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "Additionally, the Digital Skills variable is positive and significant at the 10% level in all specifications, indicating that students with superior digital skills achieve better results with ChatGPT."
+    },
+    {
+      "outcome_name": "score_improvement_math_data_analysis",
+      "arm_comparison": "digital_skills_effect (math & data analysis tasks)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05 to p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "For the math & data analysis tasks, detailed in Columns 5-8, the Digital Skills variable again shows a positive and significant relationship, at levels ranging from 5% to 10%, across all specifications."
+    },
+    {
+      "outcome_name": "score_with_vs_without_chatgpt",
+      "arm_comparison": "chatgpt vs no_chatgpt (both task types)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "higher with ChatGPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Panel A, it can be observed that, on average, participants achieved higher scores when permitted to use ChatGPT for both writing analysis and math & data analysis tasks."
+    },
+    {
+      "outcome_name": "time_with_vs_without_chatgpt",
+      "arm_comparison": "chatgpt vs no_chatgpt (both task types)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "shorter with ChatGPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Panel B illustrated that, on average, participants completed tasks, both writing analysis and math & data analysis, more quickly when using ChatGPT."
+    }
+  ],
+  "notes": "This is a within-subjects experimental design where all 121 participants completed both ChatGPT and no-ChatGPT conditions across writing analysis and math & data analysis tasks. The four groups (n=21, 34, 44, 22) represent different task orderings to control for order effects. The paper reports that 34% of participants (41/121) did not improve in writing analysis tasks and 42% (51/121) did not improve in math & data analysis tasks when using ChatGPT. Regression results show that econometrics grade (a proxy for ability) is negatively associated with ChatGPT benefit, while digital skills are positively associated. The paper notes that ChatGPT experience (frequency of use per week) was never significant in models. Statistical significance testing for differences in means showed only econometrics grade reached significance at the 10% level; however, the quote states \"none of the t-tests reached statistical significance,\" which appears to refer to a specific set of comparisons (possibly baseline characteristics). Detailed regression coefficients and standard errors are referenced as being in Tables 6-8 but are not provided in the quotes.",
+  "_paper_id": "2403.01770v1"
+}

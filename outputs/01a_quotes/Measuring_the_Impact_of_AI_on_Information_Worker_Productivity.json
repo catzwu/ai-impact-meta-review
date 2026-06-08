@@ -1,0 +1,97 @@
+{
+  "citation_key": "edelman_2023_copilot_productivity",
+  "authors": [
+    "Ben Edelman",
+    "Donald Ngwe",
+    "Sida Peng"
+  ],
+  "title": "Measuring the Impact of AI on Information Worker Productivity",
+  "year": 2023,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "We conducted two randomized controlled trials with a total of 310 subjects recruited from the Upwork platform.",
+      "We randomly granted some subjects access to M365's \"Copilot\" AI tools including M365 Chat and a Copilot that can answer questions about a recorded meeting.",
+      "We paid subjects a base rate for participation, and we added bonuses for both speed and accuracy.",
+      "We join a literature in which a randomized controlled trial measures the causal impact of AI tools."
+    ],
+    "task": [
+      "In Experiment 1, we assigned 167 subjects an information retrieval task consisting of ten multiple-choice questions.",
+      "The questions were divided into two categories: 1. Procurement Policy Questions (SharePoint): Six questions focused on the fictional company's procurement policy, which was stored in a SharePoint repository. This policy consisted of ten separate documents, totaling 76 pages (approximately 26,000 words) based on an actual (and public-domain) procurement policy. To add complexity and to more closely simulate an actual work environment, we included a similarly large number of irrelevant files in the SharePoint repository. 2. Outlook Questions: Four questions required participants to retrieve information from their Outlook email and calendar entries, assessing the product's ability to integrate with personal data.",
+      "In Experiment 2, we assigned 143 subjects a four-part task: 1. Meeting recap: Subjects had to find information about a meeting they had missed. In principle, subjects could listen to the entire meeting recording. Alternatively, subjects could read or search an auto-generated transcript. Subjects with Copilot could ask an AI chatbot to answer questions about the meeting. The meeting was 24 minutes long, including both substantive discussion (planning for a major conference) as well as irrelevant personal discussion. Subjects had to answer ten multiple-choice questions about meeting topics and decisions. 2. New product (SharePoint): Next, subjects had to answer five multiple-choice questions about a new product, based on files in a SharePoint repository. Subjects could use SharePoint search to find answers, or could use an AI chatbot to explore. 3. Creation: We asked subjects to write a 400-500 word blog post announcing a new product, based on the facts mentioned in the SharePoint repository. Subjects could simply draft in their web browser's submission form. Subjects with Copilot could copy/paste a draft post prepared by the AI chatbot. 4. Press release (email): Finally, we asked subjects to read a complicated email thread between three individuals to figure out which discussant was doing what, and answer eight multiple-choice questions. Subjects could use standard Outlook search. Subjects with Copilot could also ask an AI chatbot."
+    ],
+    "population": [
+      "We conducted two randomized controlled trials with a total of 310 subjects recruited from the Upwork platform.",
+      "These subjects represented a diverse pool of individuals with varying backgrounds and skills.",
+      "Our only fundamental requirements were that each computer have Internet access, and that the subjects have built a positive reputation through prior work on Upwork.",
+      "In Experiment 1, we convenience sampled participants to have work hours that roughly aligned with the US time zone. However, the majority of participants resided outside the US and may not have been native English speakers.",
+      "In Experiment 2, we included users from around the world, though we took special steps to make sure we obtained substantial users from the US (23%)."
+    ],
+    "arms": [
+      "We compared the performance of two groups: the Copilot group and the Control group.",
+      "We randomly granted some subjects access to M365's \"Copilot\" AI tools including M365 Chat and a Copilot that can answer questions about a recorded meeting.",
+      "In Experiment 1, we assigned 167 subjects an information retrieval task consisting of ten multiple-choice questions.",
+      "In Experiment 2, we assigned 143 subjects a four-part task."
+    ],
+    "outcome_definitions": [
+      "We examined the impact of M365 Copilot on task completion time, accuracy, and user satisfaction, shedding light on its potential advantages and limitations.",
+      "Does M365 Copilot offer an improvement over traditional methods of information retrieval, as measured in task completion time and accuracy?",
+      "Are users satisfied with M365 Copilot's capabilities and user experience?",
+      "Does M365 Copilot meet user expectations?"
+    ],
+    "statistical_results": [
+      "The Copilot-enabled group completed the task in approximately 17.9 minutes, while the Control group required an average of 24.3 minutes.",
+      "This represents a notable difference, with the Copilot-enabled group completing the task in approximately 26.6% less time compared to the Control group.",
+      "This difference is statistically significant at P<0.001.",
+      "There was no statistically significant difference in accuracy between the groups, but the Copilot users were significantly faster in completing the assigned task.",
+      "Accuracy (%) 8.5 8.7 2.0% 0.612",
+      "Task completion time (minutes) 17.9 24.3 26.6% <0.001",
+      "This approach indicates that the Copilot users were 28.2% more accurate than control users, holding accuracy constant.",
+      "This finding is statistically significant at P<0.001.",
+      "Almost all respondents said Copilot saved them time on the task.",
+      "The median respondent said Copilot saved them more than 10 minutes.",
+      "When asked how much time Copilot would save an office worker every day, the median respondent said it would save more than 1 hour per day.",
+      "The respondents who tried M365 Copilot were 40% more likely to say they were willing to pay > USD 20 monthly, compared with respondents who didn't try it.",
+      "Accuracy Overall accuracy (out of 23) 21.1 21.3 (1.59%) 0.503",
+      "Meeting recap accuracy (out of 10) 9.4 9.1 2.60% 0.347",
+      "Info retrieval from SharePoint (out of 5) 4.9 4.8 2.64% 0.165",
+      "Info retrieval from email (out of 8) 7.1 7.2 (0.84%) 0.794",
+      "Creation accuracy (LLM graders) (out of 20) 19.2 19.3 (0.36%) 0.882",
+      "Creation quality (LLM graders) (out of 10) 6.3 6.6 (3.6%) 0.107",
+      "Total task duration (minutes) 29.7 42.1 29.4% <0.001",
+      "Meeting recap duration (minutes) 10.2 12.6 19.3% 0.003",
+      "Creation (minutes) 6.9 18.4 62.6% <0.001",
+      "Overall 27.7% 0.026",
+      "Meeting recap 16.4% 0.100",
+      "Creation 57.9% <0.001",
+      "Subjects who tried Copilot said it saved them 36 minutes.",
+      "In contrast, the experiment says their actual time savings was approximately 12 minutes.",
+      "Having tried the AI tools, Copilot users reported WTP 35% greater than those who received a description of it.",
+      "That difference is statistically significant at p=0.02.",
+      "M365 Copilot helped me jump-start the creative process on the blog-writing task 88.4 93.1%",
+      "M365 Copilot reduced my effort on this task 84.5 84.3%",
+      "M365 Copilot made me more productive 88.9 93.1%",
+      "M365 Copilot helped me improve the quality of my work 91.8 95.9%",
+      "I would want to have M365 Copilot the next time I do this task 88.8 97.3%"
+    ],
+    "ambiguity_or_caveats": [
+      "We needed to provide participants with a stable version of M365 Copilot, and that was necessarily not the very latest version still under development by Microsoft engineers.",
+      "Later versions appear to be more reliable and better able to answer many questions.",
+      "This gap highlights the evolving nature of AI products when interpreting findings.",
+      "With products developing rapidly, any finding fundamentally captures a moment in time, and future results are likely to differ.",
+      "Assuming that M365 Copilot will improve in performance over time due to continuous development, our results may be interpreted as conservative estimates of potential productivity gains.",
+      "We selected questions for the information retrieval task using our judgement as to the types of questions most relevant to a typical information worker and most suited to Copilot's functionality.",
+      "Further research should attempt a principled means of identifying the most representative questions and tasks, as well as the most important tasks for delivering productivity improvements.",
+      "In Experiment 1, we convenience sampled participants to have work hours that roughly aligned with the US time zone. However, the majority of participants resided outside the US and may not have been native English speakers.",
+      "This introduces potential language and cultural variations that could influence user interactions and expectations.",
+      "The bias could go in either direction: Non-native speakers might benefit more from AI that helps them find and understand key documents. Or non-native speakers could struggle to use tools and content outside their primary language.",
+      "We did not find statistically significant differences between the impact of AI tools on US versus non-US users.",
+      "These factors should be considered when evaluating the external validity of our findings.",
+      "We do not present time changes for the information retrieval tasks because the prerelease information retrieval Copilot tool was malfunctioning for a portion of participants, making time to completion for these tasks unrepresentative of typical performance.",
+      "We could not model the time savings for control users, conditional on accuracy, at the information retrieval tasks because Copilot did not overall save time for Copilot users on these tasks."
+    ]
+  },
+  "notes": "This paper reports two randomized controlled trials (Experiment 1 with 167 subjects, Experiment 2 with 143 subjects) evaluating Microsoft's M365 Copilot on information worker tasks. The primary outcomes are task completion time, accuracy, and user satisfaction. Results show statistically significant time savings with Copilot (26.6% in Exp 1, 29.4% overall in Exp 2) with no significant accuracy loss. The paper includes caveats about product version stability, question selection bias, and sampling from non-US workers.",
+  "_paper_id": "Measuring_the_Impact_of_AI_on_Information_Worker_Productivity",
+  "_source_pdf": "papers/Measuring_the_Impact_of_AI_on_Information_Worker_Productivity.pdf"
+}

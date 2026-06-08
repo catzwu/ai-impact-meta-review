@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants are undergraduate students engaged in structured policy debates requiring them to develop original arguments, construct opening statements, and formulate refutations within time constraints. The task description emphasizes 'short one-on-one debates on public policy topics' with preparation and performance components that fundamentally require creative thinking, argumentation, and persuasive communication. This maps most directly to 'Thinking Creatively' as the core cognitive work activity being measured, rather than a specific occupation like lawyers or policy analysts, since the students are performing a bounded academic exercise focused on creative argumentation rather than the full scope of professional work.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-18",
+      "onet_label": "Selling or Influencing Others"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-03",
+      "onet_label": "Communicating with Supervisors, Peers, or Subordinates"
+    }
+  ],
+  "citation_key": "roldan_2024_genai_inequality"
+}

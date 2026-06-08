@@ -1,0 +1,137 @@
+{
+  "citation_key": "wojak_2025_insurance_purchasing",
+  "authors": [
+    "Gabriela Wojak",
+    "Ernest G\u00f3rka",
+    "Micha\u0142 \u0106wi\u0105ka\u0142a",
+    "Dariusz Baran",
+    "Rafa\u0142 \u015awiniarski",
+    "Katarzyna Olsza\u0144ska",
+    "Piotr Mrzyg\u0142\u00f3d",
+    "Maciej Frasunkiewicz",
+    "Piotr R\u0119czajski",
+    "Daniel Zawadzki",
+    "Jan Piwnik"
+  ],
+  "title": "The Evolution of Insurance Purchasing Behavior: An Empirical Study on the Adoption of Online Channels in Poland",
+  "year": 2025,
+  "venue": "Scientific Papers of Silesian University of Technology, Organization and Management Series",
+  "study_design_description": "The research uses a quantitative approach based on a structured online survey of 100 respondents. The research adopted a quantitative diagnostic approach, which allowed the author to reach a broad spectrum of respondents and enabled the statistical generalization of the findings. To verify the primary research hypothesis that online insurance distribution channels are gaining increasing market share in comparison to traditional distribution models, a structured online survey questionnaire was employed, consisting of both closed-ended and semi-open questions. The research technique used was the anonymous online questionnaire, allowing for efficient data collection while ensuring respondent comfort and privacy.",
+  "primary_task_description": "The survey explored demographics, purchasing habits, channel preferences, and decision-making factors such as price, trust, and convenience. The survey covered the following key areas: Demographic profile of respondents (e.g., gender, age, education, place of residence); Insurance purchasing behavior, including frequency and method of purchasing policies; Channel preferences, with respondents evaluating different distribution methods (e.g., agent-based, online direct, brokers); Perceptions of key decision-making factors, such as price sensitivity, convenience, and trust. The central aim of the research was to identify the key benefits and limitations of both traditional (e.g., face-to-face with agents) and digital (e.g., insurer websites, comparison platforms) methods of purchasing insurance products.",
+  "population_description": "The research sample included 100 respondents, offering a diverse cross-section of Polish consumers. Respondents in the study represented a diverse demographic profile. The majority were women (67%), while men accounted for 33% of the sample. In terms of age, most participants (55%) were between 26 and 45 years old, with 10% aged 18-25 and 14% over 55. Educationally, the largest group held a bachelor's degree (45%), followed by those with secondary education (30%) and a master's degree or higher (20%), while only 5% had primary education. As for place of residence, the sample included both urban and rural populations: 15% lived in rural areas, 30% in towns up to 100,000 inhabitants, 20% in medium-sized cities (100,000-500,000), and 25% in large cities with over 500,000 residents.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "frequency_of_purchasing_insurance_online",
+      "outcome_description": "Frequency of purchasing insurance online",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "preferred_insurance_distribution_channel",
+      "outcome_description": "Preferred insurance distribution channel",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "importance_of_price_in_channel_selection",
+      "outcome_description": "Importance of price in channel selection",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "attractiveness_of_online_versus_traditional",
+      "outcome_description": "Attractiveness of online versus traditional insurance purchasing",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "factors_influencing_distribution_channel_selection",
+      "outcome_description": "Factors influencing distribution channel selection",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "factors_discouraging_online_insurance_purchases",
+      "outcome_description": "Factors discouraging online insurance purchases",
+      "measurement_unit": null,
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "frequency_of_purchasing_insurance_online",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Figure 1 respondents were asked whether they had had experience of purchasing insurance via the internet. The largest number of respondents ticked the answer \"more than once\", confirming the growing popularity and acceptance of digital channels in the purchase of insurance products. A smaller but still significant group answered \"once\", indicating their first attempts to use the internet for this purpose. The smallest percentage of respondents indicated \"no\", indicating no experience with buying insurance online."
+    },
+    {
+      "outcome_name": "preferred_insurance_distribution_channel",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The most popular was the website and in second place the insurance agent and which shows that despite the development of technology, the traditional form of human contact still inspires trust. However, insurance comparison sites also ranked highly, demonstrating that customers value independence, speed and the ability to compare quotes."
+    },
+    {
+      "outcome_name": "importance_of_price_in_channel_selection",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "70% consider price important or very important",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As many as 70% of respondents consider price to be an important or very important element when choosing a policy purchase channel. 22% of those surveyed are not primarily driven by price, showing that there is a group of customers willing to pay more for quality, recommendations or availability of advice."
+    },
+    {
+      "outcome_name": "attractiveness_of_online_versus_traditional",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "60% find online more attractive",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As many as 60 per cent of respondents find online insurance purchases more attractive than traditional methods. However, it is worth noting that 20% of the respondents do not have a clear opinion and 10% make their decision dependent on the situation. Only 10% found online channels unattractive."
+    },
+    {
+      "outcome_name": "factors_influencing_distribution_channel_selection",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For those choosing a policy, the most important criterion was price, which still dominates the purchase decision process. In the area of digital channel advantages, consumers particularly valued convenience, the availability of services at any time and the possibility of a quick transaction without having to leave home. The ease of comparing offers was also key, showing that users value transparency and control over the purchasing process."
+    },
+    {
+      "outcome_name": "factors_discouraging_online_insurance_purchases",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Concerns about the security of personal data were the most frequently cited barrier, demonstrating that the issue of privacy and information protection remains central to consumer decisions. Respondents also expressed a lack of confidence in online transactions themselves, which may be a result of general uncertainty towards digital services in the financial sector. The vagueness of policy terms and conditions was also a concern, suggesting that it is important for many people to be able to receive detailed explanations, which are often lacking in automated sales systems. The preference for face-to-face contact with an adviser, which provides a sense of security and the opportunity to ask questions, was also a significant reason for reluctance to buy online. Some respondents also indicated difficulties in understanding the online purchasing process itself, which may be due to the platforms' lack of intuitiveness or users' low digital proficiency."
+    }
+  ],
+  "notes": "This is a descriptive survey study with no experimental arms, treatment conditions, or AI intervention. The paper examines consumer preferences between online and traditional insurance distribution channels through a 100-respondent online survey in Poland. Results are presented primarily as percentages of respondent preferences and concerns. The study does not involve any statistical hypothesis testing or inferential statistics (no p-values, confidence intervals, or effect sizes reported). The paper mentions AI as a future research direction but does not test AI tools in the current study. Study limitations include relatively small sample size (n=100), non-probabilistic sampling, and focus on the Polish market only.",
+  "_paper_id": "2510.07933"
+}

@@ -1,0 +1,57 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "forecast_frequency",
+      "category": "speed",
+      "operationalization": "count of annual earnings forecasts issued by the analyst for the firm in the year"
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "category": "quality",
+      "operationalization": "negative average absolute forecast error (|forecasted EPS - actual EPS|) scaled by stock price at fiscal year start"
+    },
+    {
+      "outcome_name": "forecast_optimism",
+      "category": "quality",
+      "operationalization": "average difference between forecasted EPS and actual EPS, scaled by absolute value of actual EPS"
+    },
+    {
+      "outcome_name": "walkdown",
+      "category": "quality",
+      "operationalization": "binary indicator: first forecast exceeds actual EPS and last forecast is at or below actual EPS"
+    },
+    {
+      "outcome_name": "firms_covered",
+      "category": "speed",
+      "operationalization": "count of all firms covered by analysts in the investment bank in the year"
+    },
+    {
+      "outcome_name": "forecast_dispersion",
+      "category": "other",
+      "operationalization": "binary indicator for above-median forecast dispersion across all analysts; measures information environment uncertainty, not output quality or speed"
+    },
+    {
+      "outcome_name": "return_volatility",
+      "category": "other",
+      "operationalization": "binary indicator for above-median firm return volatility; measures market conditions, not analyst output quality or speed"
+    },
+    {
+      "outcome_name": "bid_ask_spread",
+      "category": "other",
+      "operationalization": "binary indicator for above-median average daily bid-ask spread; measures market liquidity, not analyst output quality or speed"
+    },
+    {
+      "outcome_name": "voluntary_disclosure",
+      "category": "other",
+      "operationalization": "binary indicator for absence of management earnings guidance; measures firm disclosure policy, not analyst output quality or speed"
+    },
+    {
+      "outcome_name": "analyst_ability",
+      "category": "other",
+      "operationalization": "binary indicator for below-median forecast accuracy over past three years; measures analyst characteristics, not current task output"
+    }
+  ],
+  "primary_speed_outcome": "forecast_frequency",
+  "primary_quality_outcome": "forecast_accuracy",
+  "citation_key": "shanthikumar_2024_ai_analyst"
+}

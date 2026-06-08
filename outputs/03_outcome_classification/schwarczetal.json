@@ -1,0 +1,52 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "overall_quality",
+      "category": "quality",
+      "operationalization": "Average of five quality attributes (Accuracy, Analysis, Organization, Clarity, Professionalism) each rated 1-7 by evaluators"
+    },
+    {
+      "outcome_name": "accuracy",
+      "category": "quality",
+      "operationalization": "Precision and usefulness of research rated on 1-7 scale by evaluators"
+    },
+    {
+      "outcome_name": "analysis",
+      "category": "quality",
+      "operationalization": "Depth and insightfulness of reasoning rated on 1-7 scale by evaluators"
+    },
+    {
+      "outcome_name": "organization",
+      "category": "quality",
+      "operationalization": "Structure of work product rated on 1-7 scale by evaluators"
+    },
+    {
+      "outcome_name": "clarity",
+      "category": "quality",
+      "operationalization": "Quality and persuasiveness of writing rated on 1-7 scale by evaluators"
+    },
+    {
+      "outcome_name": "professionalism",
+      "category": "quality",
+      "operationalization": "Extent to which directions were followed, rated on 1-7 scale by evaluators"
+    },
+    {
+      "outcome_name": "hallucinations",
+      "category": "quality",
+      "operationalization": "Binary count of whether any cited sources or assertions are fabricated or inaccurately described"
+    },
+    {
+      "outcome_name": "efficiency",
+      "category": "speed",
+      "operationalization": "Fraction of task's allotted time spent completing the task, self-reported by participants"
+    },
+    {
+      "outcome_name": "productivity",
+      "category": "both",
+      "operationalization": "Sum of five quality attribute scores divided by fraction of allotted time spent"
+    }
+  ],
+  "primary_speed_outcome": "efficiency",
+  "primary_quality_outcome": "overall_quality",
+  "citation_key": "schwarcz_2026_ai_lawyering"
+}

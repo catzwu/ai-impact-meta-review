@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Designing_human_and_generative_AI_collaboration",
+  "citation_key": "hosanagar_2024_human_ai_collaboration",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "human_arm_name": "no_ai",
+    "ai_arm_name": "human_creativity",
+    "ai_arm_selection_rationale": "Selected Human Creativity arm because it achieved the most equitable productivity outcome (eliminated productivity gap, b=0, p=0.956) while still providing AI assistance. Among the three AI-assisted conditions, Human Creativity represents a balanced collaboration model where humans retain creative control (ideation/outlining) while leveraging AI for execution. The regression coefficient of b=0 indicates this model eliminated the baseline productivity gap, suggesting it may be the most effective intervention for the outcome of interest.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.362,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "Within-subject design: all participants completed Day 1 without AI (no_ai arm) and Day 2 with one of three AI-assisted conditions. Sample sizes (n) are not reported in the arms array. The 36.2% reduction is reported for 'all AI-assisted vs no_ai' pooled comparison, not specific to Human Creativity arm. The regression coefficients (b=0.70 for Copilot, b=0 for Human Creativity, b=0.32 for Human Confirmation) appear to measure the relationship between Day 1 completion time and Day 2 completion time within each condition, not the direct treatment effect. Standard errors for regression coefficients are not provided. Selected Human Creativity as best AI arm based on its elimination of productivity gap, though Copilot (full collaboration) could also be considered 'most capable'. No raw means, SDs, or sample sizes available. The percent change is for the pooled AI comparison, not the specific arm selected.",
+    "source_quotes": [
+      "participants experienced an average 36.2% reduction in total completion time, with the most significant gains during the drafting stage (68.6% reduction).",
+      "The Human Creativity model eliminated this productivity gap ( b = 0, P  = 0.956), with participants demonstrating similar completion times on Day 2 regardless of their Day 1 completion times.",
+      "In Copilot, while completion times reduced overall, a productivity gap remained across participants (b = 0.70, P < 0.001).",
+      "The Human Confirmation model showed a significant but smaller effect compared to Copilot ( b = 0.32, P  < 0.05), with participants who needed more time on Day 1 continuing to spend more time on the task."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.44941699563734716,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.567398119122257,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "Within-subject design: all participants completed Day 1 without AI (no_ai arm) and Day 2 with one of three AI-assisted conditions. Sample sizes (n) are not reported in the arms array. The 36.2% reduction is reported for 'all AI-assisted vs no_ai' pooled comparison, not specific to Human Creativity arm. The regression coefficients (b=0.70 for Copilot, b=0 for Human Creativity, b=0.32 for Human Confirmation) appear to measure the relationship between Day 1 completion time and Day 2 completion time within each condition, not the direct treatment effect. Standard errors for regression coefficients are not provided. Selected Human Creativity as best AI arm based on its elimination of productivity gap, though Copilot (full collaboration) could also be considered 'most capable'. No raw means, SDs, or sample sizes available. The percent change is for the pooled AI comparison, not the specific arm selected. | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

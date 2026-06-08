@@ -1,0 +1,62 @@
+{
+  "citation_key": "chukwuka_2025_ai_productivity",
+  "authors": [
+    "Chukwuka, Ernest Jebolise",
+    "Imide, Israel Onokero"
+  ],
+  "title": "Impact of Artificial Intelligence on Employee's Productivity in Technological Organizations in Delta State, Nigeria",
+  "year": 2025,
+  "venue": "Jalingo Journal of Social and Management Sciences",
+  "study_design_description": "This study adopted a descriptive survey research method using primary data collected through questionnaires distributed to over 150 employees of technological firms in Delta State, Nigeria. The sample procedure was based on assumptions of randomness, normality, and representativeness. Out of 156 questionnaires distributed, 108 were returned (69% response rate).",
+  "primary_task_description": "Questionnaires were shared to over 150 employees of technological firms in Delta State to assess their perceptions of AI's impact on productivity.",
+  "population_description": "The population consisted of 156 employees and technological firm owners in Asaba, Delta State, Nigeria. Of 156 questionnaires distributed, 108 were returned (69%). Respondents ranged in age from 18 to 28 years (35 respondents, 32.41%), 28 to 38 years (42 respondents, 38.9%), 38 to 48 years (23 respondents, 21.3%), and 49 years and older (8 respondents, 7.40%). Educational attainment included SSCE certificate holders (28 respondents, 25.93%), NCE/OND (30 respondents, 27.8%), HND/BSC (35 respondents, 32.41%), and MSc (15 respondents, 13.9%).",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "employee_productivity",
+      "outcome_description": "An evaluation of a worker's or group of workers' efficiency. An employee's production during a certain time period can be used to gauge productivity. A worker's productivity is usually evaluated in relation to the average for workers performing comparable tasks, or based on how many units of a good or service a worker completes in a given amount of time. Productivity may be measured by the amount of time a person actively performs the duties for which they were employed in order to achieve the intended results specified in their job description.",
+      "measurement_unit": null,
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "employee_productivity",
+      "arm_comparison": "single_sample_vs_threshold",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 9.110",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "From the above one sample t-test table, the five questions give a positive result. The calculated t-value is 9.110 while the table t-value is 1.812. This means that calculated t-value if greater than the Table t-value (9.110>1.812)."
+    },
+    {
+      "outcome_name": "employee_productivity",
+      "arm_comparison": "single_sample_vs_threshold",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 8.044",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "From the above one sample t-test table, the five questions give a positive result. The calculated t-value is 8.044 while the table t-value is 1.812. This means that calculated t-value if greater than the table t-value (8.044>1.812)."
+    },
+    {
+      "outcome_name": "employee_productivity",
+      "arm_comparison": "single_sample_vs_threshold",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 7.371",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "From the above one sample t-test table, the five questions give a positive result. The calculated t-value is 7.371 while the table t-value is 1.812. This means that calculated t-value if greater than the table t-value (7.371>1.812)."
+    }
+  ],
+  "notes": "This is a descriptive survey study with no control group or experimental comparison condition. The study measures respondents' perceptions of AI's impact on productivity through a five-point Likert scale questionnaire administered to 108 respondents from technological firms in Nigeria. Three one-sample t-tests are reported comparing calculated t-values to a table t-value of 1.812, but no exact p-values are provided in the quotes. The paper does not compare AI-assisted vs. non-AI conditions; rather, it assesses general perceptions of AI's impact. The study notes several caveats: there is no reliable and consistent method for evaluating productivity; AI implementation in the workplace faces challenges including data security and privacy concerns, employee resistance to change, and ethical considerations regarding employee welfare.",
+  "_paper_id": "PublishedImpactofArtificialIntelligenceonEmployeesProductivityinTechnological"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-30",
+  "onet_label": "Documenting/Recording Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants are law students performing realistic legal drafting tasks: drafting emails, memos, NDAs, motions, and persuasive letters. The core activity across all six tasks is creating written legal documents\u2014documenting and recording legal information, analysis, and arguments in formal written formats. While these students are training to become lawyers, the measured task is the specific work activity of legal writing and documentation, not the full breadth of legal practice. This maps most precisely to 'Documenting/Recording Information' rather than to the Lawyer occupation (23-1011.00), which encompasses a much wider range of activities including client counseling, courtroom advocacy, and legal research beyond document production.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "23-1011.00",
+      "onet_label": "Lawyers"
+    }
+  ],
+  "citation_key": "schwarcz_2026_ai_lawyering"
+}

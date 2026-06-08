@@ -1,0 +1,52 @@
+{
+  "_paper_id": "Assessing_Open_Source_Software_Developers_Opportunity_Costs_in_a_Time_of_Genera",
+  "citation_key": "li_2026_copilot_oss",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Non-Pro users (control)",
+    "ai_arm_name": "Pro users (treatment, CX access)",
+    "ai_arm_selection_rationale": "The study uses a difference-in-differences design comparing GitHub Pro users (who have access to Copilot X) to non-Pro users (control). Table 6, Column 2 reports Code Churn % as a dependent variable with Pro \u00d7 PostAnnouncement and Pro \u00d7 PostLaunch interaction terms. The coefficients represent the treatment effect on code churn percentage. While the paper states 'no statistically significant change in the post-announcement period' and 'modestly positive after launch,' Table 6 Column 2 provides the actual regression coefficients: Pro \u00d7 PostAnnouncement = -0.00 (SE 0.02, p>0.05) and Pro \u00d7 PostLaunch = 0.01 (SE 0.01, p>0.05). These are regression coefficients from a panel regression with user and week fixed effects. The sample includes N=2476 user-week observations from 229 users (per Table 6 footer). This is an observational quasi-experimental design, not a randomized trial, but it does compare a human-only baseline (non-Pro users without CX) to a human+AI condition (Pro users with CX access).",
+    "direction_convention": "smaller_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 229,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 229,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "Table 6 Column 2 reports regression coefficients for Code Churn % outcome. Pro \u00d7 PostAnnouncement coefficient = -0.00 (SE 0.02), Pro \u00d7 PostLaunch coefficient = 0.01 (SE 0.01). Standard errors are clustered at user level. The paper states these effects are not statistically significant (p>0.05 implied but exact p-values not reported). N=2476 observations from 229 users. This is a panel regression with user and week fixed effects, not a simple two-group comparison, so means and SDs are not reported. The regression coefficients represent percentage-point changes in code churn. Without means, SDs, or a t-statistic, we cannot compute Hedges' g. The study design is observational (Pro vs non-Pro users) rather than a controlled experiment. Code churn is a 'smaller is better' metric (lower churn = better code stability), so direction_convention is set accordingly. The sample size of 229 users is taken from the '# Users' row in Table 6.",
+    "source_quotes": [
+      "Table 6, Column 2: Pro \u00d7 PostAnnouncement = -0.00 (0.02), Pro \u00d7 PostLaunch = 0.01 (0.01)",
+      "Code Churn % shows no statistically significant change in the post-announcement period, and the estimated effect becomes modestly positive after launch.",
+      "Table 6 footer: N = 2476, # Users = 229",
+      "Code Churn % [is the] Percentage of code added in the week that is modified or removed within the subsequent 2 weeks",
+      "Standard errors are clustered at the user level. * p < 0.1, ** p < 0.05, *** p < 0.01"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Table 6 Column 2 reports regression coefficients for Code Churn % outcome. Pro \u00d7 PostAnnouncement coefficient = -0.00 (SE 0.02), Pro \u00d7 PostLaunch coefficient = 0.01 (SE 0.01). Standard errors are clustered at user level. The paper states these effects are not statistically significant (p>0.05 implied but exact p-values not reported). N=2476 observations from 229 users. This is a panel regression with user and week fixed effects, not a simple two-group comparison, so means and SDs are not reported. The regression coefficients represent percentage-point changes in code churn. Without means, SDs, or a t-statistic, we cannot compute Hedges' g. The study design is observational (Pro vs non-Pro users) rather than a controlled experiment. Code churn is a 'smaller is better' metric (lower churn = better code stability), so direction_convention is set accordingly. The sample size of 229 users is taken from the '# Users' row in Table 6. | insufficient numbers for d",
+    "n_human": 229,
+    "n_ai": 229,
+    "direction_convention": "smaller_is_better"
+  }
+}

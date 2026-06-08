@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly uses \"difference-in-differences analysis leveraging ChatGPT's introduction as a quasi-natural experiment\" with propensity score matching to balance treatment and control groups. This is a clear quasi-experimental identification strategy comparing practices that adopted LLM assistance versus those that did not, without random assignment.",
+  "citation_key": "goetz_2025_ai_marketing"
+}

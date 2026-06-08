@@ -1,0 +1,62 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "reflective_questions",
+      "category": "quality",
+      "operationalization": "Count or score of question-type feedback comments using adapted Prins et al. (2006) feedback quality index criteria"
+    },
+    {
+      "outcome_name": "criteria_based_feedback",
+      "category": "quality",
+      "operationalization": "Score of content/criteria-focused feedback comments using adapted Prins et al. (2006) feedback quality index"
+    },
+    {
+      "outcome_name": "sentiment_score",
+      "category": "other",
+      "operationalization": "VADER sentiment analysis score computed from feedback comment text using Python TextDescriptives package"
+    },
+    {
+      "outcome_name": "sentence_length",
+      "category": "other",
+      "operationalization": "Average number of words per sentence in feedback comments, computed via text analysis"
+    },
+    {
+      "outcome_name": "tokens_per_comment",
+      "category": "other",
+      "operationalization": "Average number of tokens per feedback comment, computed via text analysis"
+    },
+    {
+      "outcome_name": "syllables_per_token",
+      "category": "other",
+      "operationalization": "Average number of syllables per token in feedback comments, computed via text analysis"
+    },
+    {
+      "outcome_name": "flesch_reading_ease",
+      "category": "other",
+      "operationalization": "Flesch Reading Ease readability score computed from feedback comment text complexity"
+    },
+    {
+      "outcome_name": "smog",
+      "category": "other",
+      "operationalization": "SMOG readability index computed from feedback comment text complexity"
+    },
+    {
+      "outcome_name": "coleman_liau",
+      "category": "other",
+      "operationalization": "Coleman-Liau readability index computed from feedback comment text complexity"
+    },
+    {
+      "outcome_name": "lix",
+      "category": "other",
+      "operationalization": "Lix readability index computed from feedback comment text complexity"
+    },
+    {
+      "outcome_name": "survey_sentiment",
+      "category": "other",
+      "operationalization": "Coded sentiment from open-ended survey responses about the feedback experience"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "criteria_based_feedback",
+  "citation_key": "hansen_2024_ai_peer_feedback"
+}

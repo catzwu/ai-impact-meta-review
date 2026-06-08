@@ -1,0 +1,48 @@
+{
+  "_paper_id": "Noy & Zhang 2023",
+  "citation_key": "noy_2023_chatgpt_productivity",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "chatgpt_treatment",
+    "ai_arm_selection_rationale": "Only one AI arm (chatgpt_treatment) vs control. The main comparison (not the fixed-time arm) is used as it has the primary result with p=0.000.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 222,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 222,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.45,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.0,
+    "extraction_confidence": "high",
+    "notes": "Level E extraction: standardized_effect_reported explicitly states '0.45 SD increase', which is treated as Cohen's d. This is a between-subjects randomized trial with n=222 per arm. The paper reports p=0.000 exactly.",
+    "source_quotes": [
+      "Average evaluator grades in the treatment group increase by 0.45 standard deviations (p = 0.000), with roughly similar increases for overall grades and specific grades for writing quality, content quality, and originality.",
+      "A randomly-selected 50% of participants were instructed to sign up for ChatGPT between the first and second task, were walked through how to use it, and were told they were permitted to use it on the second task if they found it useful."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.45,
+    "hedges_g": 0.4492359932088285,
+    "variance": 0.00920571098163403,
+    "computation_method": "reported_d",
+    "confidence": "high",
+    "notes": "Level E extraction: standardized_effect_reported explicitly states '0.45 SD increase', which is treated as Cohen's d. This is a between-subjects randomized trial with n=222 per arm. The paper reports p=0.000 exactly.",
+    "n_human": 222,
+    "n_ai": 222,
+    "direction_convention": "larger_is_better"
+  }
+}

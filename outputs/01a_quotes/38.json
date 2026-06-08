@@ -1,0 +1,89 @@
+{
+  "citation_key": "nain_2024_artificial_intelligence",
+  "authors": [
+    "Vidushi Nain",
+    "Hari Shankar Shyam"
+  ],
+  "title": "Empirical Analysis of the Role of Artificial Intelligence in Human Resources Recruitment and Selection",
+  "year": 2024,
+  "venue": "Proceedings on Engineering Sciences",
+  "quotes": {
+    "study_design": [
+      "The research results of this study are based on a combination of primary and secondary sources.",
+      "The majority of the study's material was derived from original data collected using a structured survey.",
+      "The survey was divided into four discrete portions.",
+      "The evaluation of the suggested model was conducted using the partial least squares analysis (PLS) methodology.",
+      "The analytical evaluations were performed using Partial Least Squares (PLS) methodology, with the selected software for this specific task being Smart PLS 4.0."
+    ],
+    "task": [
+      "The researchers used a five-point Likert scale in order to assess the participants' degree of understanding and receptiveness towards AI-driven HR technologies.",
+      "The primary objective of this study was to gain insight into the propensity of human resource professionals to use artificial intelligence in the context of recruiting and selection procedures."
+    ],
+    "population": [
+      "The primary phase of the study was the collection of demographic data from the participants, including variables such as age, gender, and yearly income.",
+      "The survey was originally disseminated via the use of Google Forms, with a primary focus on reaching out to individuals within the researchers' personal network on social media platforms such as Facebook and WhatsApp.",
+      "The objective was to collect replies from a randomly selected sample size ranging between 420 and 450 participants.",
+      "However, a total of 50 replies were eliminated from the analysis owing to either missing data or the presence of overt bias."
+    ],
+    "arms": [],
+    "outcome_definitions": [
+      "Attitude towards usage human resources recruitment and selection has a significant impact on behavioral intention to use human resources recruitment and selection.",
+      "Perceived Usefulness has a significant impact on behavioral intention to use human resources recruitment and selection.",
+      "Perceived Ease of Use has a significant impact on behavioral intention to use human resources recruitment and selection.",
+      "Trustworthiness of artificial intelligence has a significant impact on behavioral intention to use human resources recruitment and selection.",
+      "Behavioral intention to use human resources recruitment and selection has a significant impact on actual usage of human resources recruitment and selection."
+    ],
+    "statistical_results": [
+      "The findings of the study revealed that all items under examination had factor loadings more than 0.70, which suggests strong convergent validity in accordance with the criteria set by Hair et al. (2011).",
+      "It is worth mentioning that all the constructs exhibited Cronbach's alpha values over 0.70, indicating a high level of internal consistency.",
+      "It was found that all of the constructs above the criterion of 0.70, as established by Carmines and Zeller (1979), indicating a high level of reliability.",
+      "The research demonstrated great convergent validity and reliability of scales, as shown by the AVE values ranging from 0.86 to 0.94, as shown in Table 1.",
+      "The Cronbach's alpha coefficient of 0.841 for the construct ATUHRRS suggests a significant degree of internal consistency across the items comprising this category.",
+      "The composite reliability ratings, namely rho_a at 0.852 and rho_c at 0.893, indicate that the elements inside this construct have robust collective dependability.",
+      "The AVE score of 0.675 indicates that about 67.5% of the volatility in the observed data can be attributed to this particular construct.",
+      "The AUHRRS has a Cronbach's alpha coefficient of 0.838, indicating a satisfactory level of internal consistency.",
+      "The construct demonstrates accurate measurement, as shown by composite reliabilities of 0.842 (rho_a) and 0.925 (rho_c).",
+      "The AVE value of 0.861 demonstrates a high level of robustness, indicating that 86.1% of the observed variation is well accounted for by this construct.",
+      "The construct BIUHRRS has a Cronbach's alpha coefficient of 0.889, indicating a high level of internal consistency.",
+      "The composite reliability metrics, namely rho_a at 0.890 and rho_c at 0.919, provide strong evidence for the durability and stability of this construct.",
+      "The average explained variance (AVE) of 0.694 indicates that the construct under consideration explains about 69.4% of the variability seen in the data.",
+      "The PEU has a Cronbach's alpha coefficient of 0.887, indicating a robust level of internal consistency.",
+      "The construct's dependability is confirmed, as shown by the rho_a value of 0.894 and the rho_c value of 0.922.",
+      "A coefficient of determination (AVE) of 0.747 indicates that this particular concept accounts for 74.7% of the variation observed.",
+      "The Cronbach's alpha coefficient for the construct of PU is determined to be 0.875, hence suggesting a commendable level of internal consistency.",
+      "The dependability of the measure is underscored by composite reliability scores of 0.898 (rho_a) and 0.913 (rho_c).",
+      "The AVE value of 0.723 indicates that it explains about 72.3% of the total observed variation.",
+      "The TAI has a noteworthy Cronbach's alpha coefficient of 0.908, indicating a substantial degree of internal consistency.",
+      "The construct's robustness is clear, as shown by the composite reliability values of 0.918 (rho_a) and 0.942 (rho_c).",
+      "The calculated average of 0.845 exhibits statistical significance, indicating that it has the ability to account for 84.5% of the variability found in the data.",
+      "The square root of the Average Variance Extracted (AVE) for each construct within the domain of Artificial Intelligence in Human Resources Recruitment and Selection was determined to be higher than the maximum correlation observed between any two constructs.",
+      "The major component was responsible for a mere 27.46% of the overall variation.",
+      "The correlation between Attitude towards Using HR Recruitment and Selection (ATUHRRS) and Actual Use of HR Recruitment and Selection (AUHRRS) is 0.867.",
+      "The study findings indicate that the Behavioral Intention to Use HR Recruitment and Selection (BIUHRRS) exhibits a positive correlation of 0.508 with the Attitude Towards Using HR Recruitment and Selection (ATUHRRS) and a positive correlation of 0.523 with the Actual Usage of HR Recruitment and Selection (AUHRRS).",
+      "The concept of Perceived Ease of Use (PEU) has significant relationships of 0.799, 0.780, and 0.323 with ATUHRRS, AUHRRS, and BIUHRRS, respectively.",
+      "PU has a correlation coefficient of 0.801 with ATUHRRS, 0.873 with AUHRRS, 0.420 with BIUHRRS, and 0.859 with PEU.",
+      "The construct of TAI has varying degrees of association with other constructs, specifically: a correlation coefficient of 0.662 with ATUHRRS, 0.623 with AUHRRS, 0.507 with BIUHRRS, 0.683 with PEU, and 0.630 with PU.",
+      "The R-square value for the construct AUHRRS is 0.707, indicating that about 70.7% of the variability in the actual use of AI tools in HR recruitment and selection can be accounted for by the independent variables or predictors being examined.",
+      "The corrected R-square value, which incorporates the number of predictors included in the model, is somewhat lower at 0.701 or 70.1%.",
+      "The R-square value exhibits a significant magnitude of 0.892, signifying that approximately 89.2% of the variability in behavioral intention to employ AI in HR recruitment and selection can be ascribed to the factors that exert influence as examined in the study.",
+      "The adjusted R-square value of 0.871, equivalent to 87.1%, indicates that a substantial percentage of the variability in behavioral intention is accounted for by the model, even after considering the influence of the predictors.",
+      "There's a coefficient of 0.922 between BIHURR5 and AUHRRS, indicating a strong positive relationship between these two constructs.",
+      "PU1 has a loading of 0.811 on PU, suggesting a strong relationship."
+    ],
+    "ambiguity_or_caveats": [
+      "Nevertheless, the incorporation of artificial intelligence (AI) into the field of human resources (HR) gives rise to significant inquiries about ethical considerations, the need for transparency, and the possibility of biases inherent in the algorithms used.",
+      "The use of AI technology has the potential for impartiality; yet, there is a growing apprehension over the presence of biases ingrained into AI algorithms, which often mirror prejudices present in the data used for training.",
+      "If left unattended, this issue has the potential to sustain systematic prejudice in the process of making recruiting choices.",
+      "Nevertheless, the process of establishing trustworthiness is not devoid of difficulties.",
+      "As emphasized by Buolamwini and Gebru (2018), the use of biased training data might result in biased outputs, hence engendering a lack of confidence in the systems.",
+      "Despite its benefits, integrating AI into HR is not without its share of difficulties, most notably protecting employee data and avoiding becoming too dependent on digital tools.",
+      "Nevertheless, it is essential to acknowledge that artificial intelligence (AI) models have the potential to reinforce biases if their training is not conducted properly.",
+      "Despite the many advantages offered by AI, it is not devoid of obstacles.",
+      "There have been expressed concerns over privacy, data security, and the excessive dependence on technology at the expense of human judgment.",
+      "In addition, the use and comprehension of AI technologies include a learning curve, hence requiring HR personnel to undergo training and orientation."
+    ]
+  },
+  "notes": "This is an empirical study using survey methodology with PLS-SEM analysis. The paper tests a theoretical model based on the Technology Acceptance Model (TAM) with five hypotheses relating to attitudes, perceived usefulness, perceived ease of use, trustworthiness of AI, behavioral intention, and actual usage of AI in HR recruitment and selection. The study does not compare AI vs. no-AI conditions but rather examines factors predicting adoption and use of AI tools among HR professionals. Sample size was approximately 370-400 after data cleaning (420-450 targeted, 50 eliminated). The paper is primarily a literature review with an empirical survey component testing a conceptual model.",
+  "_paper_id": "38",
+  "_source_pdf": "papers/38.pdf"
+}

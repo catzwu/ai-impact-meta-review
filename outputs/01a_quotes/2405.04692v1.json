@@ -1,0 +1,55 @@
+{
+  "citation_key": "tian_2024_ai_feedback",
+  "authors": [
+    "Tian Tian",
+    "Liu Zehui",
+    "Zichen Huang",
+    "Yubing Tang"
+  ],
+  "title": "Enhancing Organizational Performance: Harnessing AI and NLP for User Feedback Analysis in Product Development",
+  "year": null,
+  "venue": null,
+  "quotes": {
+    "study_design": [],
+    "task": [
+      "Text analysis involves the use of NLP techniques to process and analyze written customer feedback, such as reviews, support tickets, and surveys (Ravi & Ravi, 2015).",
+      "Rating analysis, on the other hand, involves analyzing numerical ratings that customers provide, such as star ratings or numerical scores (Lak & Turetken, 2014).",
+      "Both text analysis and rating analysis can be used together to provide a more comprehensive understanding of customer feedback.",
+      "Data Collection: This involves gathering user feedback from questionnaire and direct comments from users.",
+      "Data Cleaning: This involves removing any irrelevant or duplicate data and ensuring that the data is in a consistent format for analysis.",
+      "Data Analysis: This involves using various techniques to analyze the data, such as sentiment analysis, text classification, topic modeling, clustering, or regression analysis.",
+      "Results Interpretation: This involves interpreting the results of the data analysis to understand the key findings and insights and generate recommendations for action.",
+      "Feedback Implementation: This involves using the insights from the data analysis to make improvements to the product or service, enhance the customer experience, and drive business success."
+    ],
+    "population": [
+      "The research used three crane products, respectively, XCMG XCR100U, Tadano GR1000XL and Grove GRT8100.",
+      "Number of valid comments for each product are XCMG: 76 Tadano: 49 Grove: 43"
+    ],
+    "arms": [],
+    "outcome_definitions": [
+      "Sentiment Analysis: This is a method that uses natural language processing (NLP) and machine learning algorithms to classify user feedback.",
+      "Table 1 used mean and standard deviation to give the result of each product, and Figure. 1 listed positive (0.05+), negative (below -0.05), and neutral (-0.05-0.05) in sentiment.",
+      "A word cloud is a visual representation of the most frequently occurring words in a given text.",
+      "Topic Modeling: This is a method that uses NLP techniques to identify the underlying topics or themes present in a large corpus of user feedback."
+    ],
+    "statistical_results": [
+      "Table. 1 Results of sentiment analysis of each product Brand Mean Std XCMG XCR100U -0.017 0.331 Tadano GR1000XL 0.050 0.234 Grove GRT8100 0.101 0.303",
+      "The attitude towards XCMG XCR100U is neural.",
+      "The attitude towards Tadano GR1000XL is between neural and positive.",
+      "The attitude towards Grove GRT8100 is positive.",
+      "Overall, Grove GRT8100 has the best reviews."
+    ],
+    "ambiguity_or_caveats": [
+      "This type of study presents several limitations that should be acknowledged.",
+      "Firstly, the AI and NLP techniques applied are dependent on the quality and extent of the data available, which may affect the comprehensiveness of the user feedback analysis.",
+      "Limitations in the algorithms' ability to understand context and sarcasm could also lead to potential inaccuracies in sentiment analysis.",
+      "Additionally, the study focuses on a specific product type within a particular industry, which may limit the generalizability of the findings to other sectors or product categories.",
+      "There may also be inherent biases in the user feedback collected, as it may not represent the views of the entire customer base.",
+      "Future research could address these limitations by incorporating a broader data set, utilizing more advanced AI models capable of context recognition, and extending the analysis to multiple product types across various industries.",
+      "However, it's important to note that AI should be used as a tool to augment human analysis and decision-making, not replace it entirely."
+    ]
+  },
+  "notes": "This is a case study / application paper demonstrating the use of AI and NLP techniques for analyzing user feedback on heavy machine crane products. It is not an experimental study comparing AI-assisted vs. non-AI-assisted conditions. The paper presents sentiment analysis results (means and standard deviations) for three products and qualitative findings from topic modeling and radar chart comparisons. No statistical tests or p-values are reported. The study has no control group or experimental manipulation.",
+  "_paper_id": "2405.04692v1",
+  "_source_pdf": "papers/2405.04692v1.pdf"
+}

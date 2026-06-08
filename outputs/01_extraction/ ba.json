@@ -1,0 +1,433 @@
+{
+  "citation_key": "cambon_2023_copilot_productivity",
+  "authors": [
+    "Alexia Cambon",
+    "Brent Hecht",
+    "Ben Edelman",
+    "Donald Ngwe",
+    "Sonia Jaffe",
+    "Amy Heger",
+    "Mihaela Vorvoreanu",
+    "Sida Peng",
+    "Jake Hofman",
+    "Alex Farach",
+    "Margarita Bermejo-Cano",
+    "Eric Knudsen",
+    "James Bono",
+    "Hardik Sanghavi",
+    "Sofia Spatharioti",
+    "David Rothschild",
+    "Daniel G. Goldstein",
+    "Eirini Kalliamvakou",
+    "Peter Cihon",
+    "Mert Demirer",
+    "Michael Schwarz",
+    "Jaime Teevan"
+  ],
+  "title": "Early LLM-based Tools for Enterprise Information Workers Likely Provide Meaningful Boosts to Productivity",
+  "year": 2023,
+  "venue": "Microsoft Technical Report",
+  "study_design_description": "This technical report synthesizes findings from eight studies examining productivity impacts of LLM-based tools (primarily Microsoft Copilot) on enterprise information workers. Studies employed randomized controlled trials, surveys of early adopters, and lab experiments across multiple tasks including email retrieval, intranet search, content creation, meeting summarization, and security operations. Participants were recruited via Upwork, Amazon Mechanical Turk, and Microsoft employees, with random assignment to treatment (Copilot access) and control (no Copilot) groups where applicable.",
+  "primary_task_description": "Tasks assessed included email information retrieval, intranet (SharePoint) information retrieval, content creation, meeting summarization, complex information retrieval, email quality evaluation, security incident analysis, and HTTP server implementation in JavaScript. Participants completed these tasks with or without access to Copilot tools.",
+  "population_description": "Participants included 147 office workers via Upwork (Common Tasks Study), 297 early adopters surveyed globally (Early Access Program), 57 Microsoft employees (Teams Meeting Study), 163 Upwork participants in simulated enterprise environment (Information Retrieval Study), participants via Amazon Mechanical Turk (LLM search study), 62 native English speakers from Upwork (email quality study), 149 security novices from Upwork (Security Copilot study), and 95 developers from Upwork (GitHub Copilot study).",
+  "arms": [
+    {
+      "arm_name": "copilot",
+      "description": "Participants with access to Copilot or related LLM-based tools (GitHub Copilot, Security Copilot, or Copilot in Outlook/Teams)",
+      "n": null
+    },
+    {
+      "arm_name": "control",
+      "description": "Participants without access to Copilot or LLM-based tools",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "task_completion_speed",
+      "outcome_description": "Time taken to complete tasks or subtasks, measured in minutes or as a percentage of control group time",
+      "measurement_unit": "time (minutes or percentage)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "task_accuracy",
+      "outcome_description": "Accuracy of answers or work quality, measured through scoring of responses against rubrics or expert assessment",
+      "measurement_unit": "percentage or points on rubric",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "email_clarity",
+      "outcome_description": "Clarity of emails written with or without Copilot, rated by human evaluators",
+      "measurement_unit": "percentage improvement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "email_conciseness",
+      "outcome_description": "Conciseness of emails written with or without Copilot, rated by human evaluators",
+      "measurement_unit": "percentage improvement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "email_authenticity",
+      "outcome_description": "Degree to which email \"sounded like\" the original author, rated on \"Couldn't have said it better myself\" scale",
+      "measurement_unit": "percentage improvement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "summarization_comprehensiveness",
+      "outcome_description": "Number of specific pieces of information included in meeting summaries, measured against assessment rubric",
+      "measurement_unit": "points out of 15",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_effort",
+      "outcome_description": "Subjective perception of task effort and mental exhaustion, measured through survey questions and Likert-scale agreement",
+      "measurement_unit": "percentage or agreement scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_time_savings",
+      "outcome_description": "Participant estimates of time saved by Copilot, measured in minutes per task or per day",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "perceived_productivity",
+      "outcome_description": "Participant perception that Copilot helped them complete tasks faster or improved work quality",
+      "measurement_unit": "percentage agreement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "willingness_to_pay",
+      "outcome_description": "Participant willingness to pay for Copilot or likelihood of paying above a threshold",
+      "measurement_unit": "percentage or relative increase",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "security_incident_accuracy",
+      "outcome_description": "Accuracy in answering questions about security incidents examined",
+      "measurement_unit": "percentage improvement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "security_essay_key_facts",
+      "outcome_description": "Number of key facts included in essays about security incidents, based on expert assessment rubric",
+      "measurement_unit": "percentage increase",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "security_essay_quality",
+      "outcome_description": "Quality of essays about security incidents, graded by LLM",
+      "measurement_unit": "percentage improvement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_completion_rate",
+      "outcome_description": "Percentage of participants who successfully completed the HTTP server implementation task",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_completion_time",
+      "outcome_description": "Average time to complete HTTP server implementation",
+      "measurement_unit": "time",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "task_completion_speed",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "26% to 73% of control group time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot users completed the task in 26% to 73% of the time, on average, when compared with people not using Copilot, with the largest difference being in the Copilot in Teams Meeting Study."
+    },
+    {
+      "outcome_name": "perceived_time_savings",
+      "arm_comparison": "copilot users estimate vs actual",
+      "means_and_sds": {
+        "copilot_estimated": {
+          "mean": 36,
+          "sd": null,
+          "se": null
+        },
+        "copilot_actual": {
+          "mean": 12,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "Estimated 36 minutes vs actual 12 minutes",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the Copilot Common Tasks Study, we asked participants with Copilot to estimate how much time that tool saved them. They guessed 36 minutes on average, when actual time savings were 12 minutes on average, indicating their perception of significant time reduction on the tasks."
+    },
+    {
+      "outcome_name": "perceived_productivity",
+      "arm_comparison": "early access program survey",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "73% agreed Copilot helped complete tasks faster; 85% said it would help get to good first draft faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "73% of employees surveyed in the Early Access Program research agreed that Copilot helped them complete tasks faster, and 85% said it would help them get to a good first draft faster."
+    },
+    {
+      "outcome_name": "perceived_time_savings",
+      "arm_comparison": "early access program daily estimate",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "Average daily time saved was 14 minutes a day, or 1.2 hours a week",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When asked to estimate how much time Copilot saved them on a daily basis, respondents most often reported 11-30 minutes (35%) and another 22% reported greater than that. Average daily time saved was 14 minutes a day, or 1.2 hours a week when calculated using the lower end of the time range bins (\"0 minutes\", \"<5 minutes\", \"5-10 minutes\", \"11-30 minutes\", \"31-60 minutes\", and \">1 hour\")."
+    },
+    {
+      "outcome_name": "task_accuracy",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "No statistically significant effect on task accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "in both the Copilot Common Task Study and the Copilot Information Retrieval Study, we did not see a statistically significant effect on task accuracy, despite the substantial increases in speed discussed above."
+    },
+    {
+      "outcome_name": "perceived_productivity",
+      "arm_comparison": "early access program quality perception",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "68% agreed that Copilot improved quality of their work",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "68% agreed that Copilot actually improved quality of their work."
+    },
+    {
+      "outcome_name": "summarization_comprehensiveness",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 11.06,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 12.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "Copilot users included 11.06 out of 15 pieces of information vs 12.40 for control",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the Copilot in Teams Meetings Study, there was a slight decrease in summarization comprehensiveness relative to the comparison group. While Copilot users took much less time, their summaries on average included 11.06 out of 15 specific pieces of information in the assessment rubric versus the 12.40 of 15 for users who did not have access to Copilot."
+    },
+    {
+      "outcome_name": "email_clarity",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18% clearer",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Emails written with Copilot were rated 18% clearer and 19% more concise."
+    },
+    {
+      "outcome_name": "email_conciseness",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19% more concise",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Emails written with Copilot were rated 18% clearer and 19% more concise."
+    },
+    {
+      "outcome_name": "email_authenticity",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "25% higher on \"Couldn't have said it better myself\"",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Participants also scored emails written with Copilot 25% higher on, \"Couldn't have said it better myself.\""
+    },
+    {
+      "outcome_name": "task_accuracy",
+      "arm_comparison": "LLM-based search vs traditional search (when LLM correct)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "No significant difference when LLM got the answer right",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "when the LLM got the answer right, there was no significant difference between the treatment (LLM-based search) and the control group (LLM-based search), but when the LLM got the answer wrong accuracy dropped to under 50% in the treatment group."
+    },
+    {
+      "outcome_name": "security_incident_accuracy",
+      "arm_comparison": "security copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "44% more accurate",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Security novices with Copilot were 44% more accurate in answering questions about the security incidents they examined."
+    },
+    {
+      "outcome_name": "security_essay_key_facts",
+      "arm_comparison": "security copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "151% more key facts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We also asked subjects to write an essay about a security incident, and those with Copilot included 151% more key facts (based on the experts' assessment rubric) and scored 32% higher on summary quality, both as graded by LLM."
+    },
+    {
+      "outcome_name": "security_essay_quality",
+      "arm_comparison": "security copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "32% higher on summary quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We also asked subjects to write an essay about a security incident, and those with Copilot included 151% more key facts (based on the experts' assessment rubric) and scored 32% higher on summary quality, both as graded by LLM."
+    },
+    {
+      "outcome_name": "perceived_effort",
+      "arm_comparison": "copilot vs control (teams meeting study)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "58% less draining",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "in the Copilot in Teams Meeting Study, participants with access to Copilot found the task to be 58% less draining than participants without access."
+    },
+    {
+      "outcome_name": "perceived_effort",
+      "arm_comparison": "security copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "16% lower agreement with \"This task was a lot of effort\"",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the M365 Defender Security Copilot Study, subjects with Copilot reported 16% lower agreement with the statement \"This task was a lot of effort\" (compared to control users doing the same task without Copilot), and Copilot users reported 83% agreement with the statement \"Copilot reduced my effort on this task.\""
+    },
+    {
+      "outcome_name": "perceived_productivity",
+      "arm_comparison": "security copilot users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "83% agreement that \"Copilot reduced my effort on this task\"",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the M365 Defender Security Copilot Study, subjects with Copilot reported 16% lower agreement with the statement \"This task was a lot of effort\" (compared to control users doing the same task without Copilot), and Copilot users reported 83% agreement with the statement \"Copilot reduced my effort on this task.\""
+    },
+    {
+      "outcome_name": "perceived_effort",
+      "arm_comparison": "copilot users overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "72% agreed Copilot helped spend less mental effort on mundane or repetitive tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot users overall agreed that Copilot helped them spend less mental effort on mundane or repetitive tasks (72%)."
+    },
+    {
+      "outcome_name": "perceived_productivity",
+      "arm_comparison": "early access program overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "70% believed Copilot increased their productivity",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "the majority (70%) of respondents believed that Copilot increased their productivity."
+    },
+    {
+      "outcome_name": "willingness_to_pay",
+      "arm_comparison": "copilot users vs $40/month lunch",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "77% would choose Copilot over weekly free lunch worth $40/month",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "77% of respondents said they would choose Copilot over a weekly free lunch worth $40 / month."
+    },
+    {
+      "outcome_name": "willingness_to_pay",
+      "arm_comparison": "copilot users vs description only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "35% greater willingness-to-pay for those who used Copilot vs those who received only description",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the Copilot Common Task Study, the reported willingness-to-pay for Copilot was 35% greater than for those who had used Copilot in the study versus those who received only a description of the tool."
+    },
+    {
+      "outcome_name": "willingness_to_pay",
+      "arm_comparison": "copilot vs control (information retrieval study)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "40% more likely to say they would pay >$20 USD",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "those in the treatment group of the Copilot Information Retrieval Study were 40% more likely to say they would pay >$20 USD for the tool relative to those in the control group."
+    }
+  ],
+  "notes": "This is a technical report synthesizing findings from 8 studies examining productivity impacts of LLM-based tools (primarily Microsoft Copilot) on enterprise information workers. The report explicitly acknowledges conflicts of interest as the authors are Microsoft researchers studying Microsoft products. Most studies have not yet undergone peer review, though several are under review. The authors note that the studies focused on tasks believed to be particularly amenable to AI assistance and were not designed to assess overall productivity gains on a representative set of tasks in ecologically valid work environments. The tools studied were in pre-release form at the time of research. The report notes that results capture a moment in time and may differ as tools and user expectations evolve. All studies were conducted with English speakers performing tasks in English. One study (Copilot Common Task Study) experienced technical disruptions that hindered some AI functions. Arm-level sample sizes are not explicitly stated for all studies in the quotes provided; the quotes indicate total sample sizes and allocation ratios (e.g., \"randomly divided\", \"half of them\") but do not always specify exact n per arm.",
+  "_paper_id": " ba"
+}

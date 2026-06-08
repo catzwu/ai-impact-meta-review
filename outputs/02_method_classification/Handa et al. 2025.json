@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study is explicitly described as 'an observational study analyzing privacy-preserving data from millions of real-world Claude.ai conversations' with no mention of randomization or experimental manipulation. The analysis examines naturally occurring usage patterns across occupational categories without any intervention or comparison groups.",
+  "citation_key": "handa_2025_economic_tasks"
+}

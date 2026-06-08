@@ -1,0 +1,91 @@
+{
+  "citation_key": "liu_2024_coquest",
+  "authors": [
+    "Yiren Liu",
+    "Si Chen",
+    "Haocong Cheng",
+    "Mengxia Yu",
+    "Xiao Ran",
+    "Andrew Mo",
+    "Yiliu Tang",
+    "Yun Huang"
+  ],
+  "title": "CoQuest: Exploring Research Question Co-Creation with an LLM-based Agent",
+  "year": 2024,
+  "venue": "CHI '24, May 11\u201316, 2024, Honolulu, HI, USA",
+  "quotes": {
+    "study_design": [
+      "We conducted an experiment with 20 HCI researchers to examine the impact of two interaction designs: breadth-first and depth-first RQ generation.",
+      "A within-subjects user study was conducted to understand the difference in users' behavior and perception of the system potentially brought by the two different conditions using the two designs, referred to as breadth-first condition and depth-first condition.",
+      "Each participant was asked to complete two tasks: During each task, we asked each participant to complete a task designed by researchers to simulate real-life scenarios of research idea formulation.",
+      "To account for the effect of the chronological order of both the task topics and conditions on the results, we followed a counterbalanced design by randomizing the experiment conditions so that all possible orders and combinations were randomly assigned to an equal number of participants.",
+      "Studies lasted 1-2 hours, including two tasks using two designs (breadth-first and depth-first generations), a survey after each task, and an exit interview.",
+      "We conducted a formative study in order to understand the cognitive process of researchers creating research questions.",
+      "We invited four researchers to participate in our semi-structured interviews to understand their process of conducting research.",
+      "All four participants were doctoral researchers."
+    ],
+    "task": [
+      "During each task, we asked each participant to complete a task designed by researchers to simulate real-life scenarios of research idea formulation.",
+      "The two task topics used in this study are: \"AR/VR for education and learning\" and \"AI and crowdsourcing\".",
+      "Participants were encouraged to think aloud during the tasks.",
+      "We asked the interviewees to describe their most recent experience starting a research project from scratch."
+    ],
+    "population": [
+      "We conducted an experiment with 20 HCI researchers to examine the impact of two interaction designs: breadth-first and depth-first RQ generation.",
+      "A within-subjects user study was conducted to understand the difference in users' behavior and perception of the system potentially brought by the two different conditions using the two designs, referred to as breadth-first condition and depth-first condition. Each participant was asked to complete two tasks",
+      "All participants were graduate students currently enrolled or just graduated with prior experience with research.",
+      "All studies were completed remotely online over video calls, where participants were asked to share their screens.",
+      "We compensated participants $20 per hour for the user study.",
+      "We invited four researchers to participate in our semi-structured interviews to understand their process of conducting research. All four participants were doctoral researchers.",
+      "our evaluation focused solely on doctoral students who, while having some research background, are still in the early stages of their research careers."
+    ],
+    "arms": [
+      "Two design options with different levels of AI initiative: Breadth-first and Depth-first generation.",
+      "1) breadth-first generation: When a user initiates the generation of follow-up RQs, several RQs are produced simultaneously in parallel. These new questions are all at the same hierarchical level following the original question.",
+      "2) depth-first generation: In contrast, with this method, when a user initiates the generation, follow-up RQs are created one after the other, with each new question building upon the previous one in a sequential manner.",
+      "To simplify the study design, we ensured that three RQs were generated per turn in both designs."
+    ],
+    "outcome_definitions": [
+      "The RQ ratings are collected on the fly during each task of the study, where participants were asked to rate at least six RQs of their choice.",
+      "We adopt Boden's criteria to measure creativity from three different aspects- novelty, value, surprise, and relevance.",
+      "Participants can give ratings using a 5-point Likert scale slider positioned under each RQ node.",
+      "The co-creation experience scores, however, were given by participants at the end of each task through a survey.",
+      "The survey contains multiple 5-point Likert scale questions designed to measure their experience from the aspects of: control, creativity, meta-creativity, cognitive load, and trust.",
+      "We designed 2 Likert-scale questions for each of the 5 aspects to avoid potential bias and ensure a more comprehensive evaluation."
+    ],
+    "statistical_results": [
+      "In total, 20 participants created 504 RQs throughout the study, with 276 RQs (M=14.53, SD=6.19) co-created with CoQuest system under the breadth-first condition and 228 RQs (M=12, SD=5.31) under the depth-first condition.",
+      "A Mann-Whitney U test of the survey results suggested that users perceived significantly stronger creativity (U = 288.0, p = .015*, d = .68, Power = .83) using the system under the breadth-first condition (M=3.78, SD=0.82) than the depth-first condition (M=3.18, SD=0.69).",
+      "Similarly, the user-perceived trust under the breadth-first condition (M=4.15, SD=0.76) was found significantly higher (U = 292.0, p = .011*, d = .67, Power = .81) than the depth-first condition (M=3.5, SD=0.86).",
+      "During the interview, 12 out of 20 participants (60%) also mentioned that they preferred the breadth-first condition.",
+      "To account for the problem of multiple comparisons, we conducted a MANOVA and found a significant difference (F (4, 209) = 3.79, p = .0057**;Wilk's \u039b = 0.909) in the user-provided ratings for RQs between the two conditions (i.e., breadth-first and depth-first).",
+      "We conducted Mann-Whitney U tests with these ratings toward generated RQs and found that both the novelty (U = 2199.5, p = .002**, d = .40, Power = .89) and surprise (U = 2387.5, p = 0.017*, d = .32, Power = .75) of the RQs were rated higher when using the depth-first condition (M=3.78, SD=1.29) compared to the breadth-first condition (M=3.28, SD=1.22).",
+      "By computing Spearman's correlation coefficient, we found significant positive correlations between the depth of RQs and their corresponding ratings of novelty (r (514) = .41, p < .001***), value (r (514) = .22, p = .011*) and surprise (r (514) = .24, p = .006**).",
+      "In total, 12 out of 20 participants utilized the wait time to interpret and evaluate other existing RQs on the RQ flow editor.",
+      "Among them, 7 participants created new RQs while waiting for prior RQs generation to be finished.",
+      "We also found that more participants explored other RQs during wait time under the depth-first condition (N=12) than the breadth-first condition (N=6), with a two-proportion z-test indicating significance (z = \u22122.01, p = 0.045*).",
+      "We also found a positive correlation, shown by Pearson's correlation test (r (392) = 0.18, p < 0.001***), between whether a user made use of the RQ generation wait time and the length of the user's feedback to AI.",
+      "14 out of 20 users clicked and viewed the \"AI thoughts\" more than 10 times.",
+      "Overall, 20 participants wrote 119 pieces of feedback in total using both conditions (M=7.44, SD=5.25) during the co-creation process.",
+      "A likelihood ratio test was then conducted to validate the significance of the random effect brought by users (\u03c72 (1) = 9.189, p = 0.002**).",
+      "The collected survey ratings have an average Cronbach's Alpha value of \u03b1 = .85, suggesting good reliability.",
+      "The earlier stage of interaction revealed notable distinctions: users in the breadth-first condition engaged more frequently in 'Check paper graph' (U = 4414, P = 0.009**) and 'Generate new RQs' (U = 4483, P = 0.011*) actions compared to those in the depth-first condition."
+    ],
+    "ambiguity_or_caveats": [
+      "First, our system currently relies on a fixed and relatively limited set of publications as its source pool.",
+      "This design limitation often results in users finding themselves constrained to a narrow segment of literature after a few iterations of RQ generation.",
+      "Trust in the system also emerged as a concern. Some users hesitated to utilize the generated RQs directly with concern about their originality and fearing potential overlaps with pre-existing research.",
+      "Furthermore, the time constraints imposed on the tasks might not have been optimal for all participants.",
+      "Those less familiar with the task might require more time before they get acquainted with the research space and can effectively generate RQs.",
+      "Additionally, we acknowledge the limitation in our analysis related to user behavior beyond wait times. Our system did not precisely record the completion times for each RQ generated.",
+      "Due to the extensive duration and the complexity of behaviors in these periods, these activities were not systematically coded and analyzed, which may have omitted valuable insights into user interaction with the system.",
+      "Moreover, our evaluation focused solely on doctoral students who, while having some research background, are still in the early stages of their research careers. The results might differ when evaluating seasoned researchers or even undergraduates.",
+      "our study did not provide empirical understanding of the longer-term impact of using an LLM-based RQ co-creation system.",
+      "Prior research has pointed out that certain designs in current AI systems could hinder human creativity development in the long term.",
+      "We recognize that the impact of the AI thoughts panel on trust might have been diluted when combined with other actions in the aggregated data, thus statistically insignificant."
+    ]
+  },
+  "notes": "This is an empirical user study paper evaluating an LLM-based system (CoQuest) for human-AI co-creation of research questions. The study includes a formative phase (4 researchers in interviews and focus groups) and a main within-subjects experiment (20 HCI researchers comparing breadth-first vs. depth-first RQ generation). The paper reports both quantitative results (survey ratings, system logs, behavioral metrics) and qualitative findings (think-aloud transcripts, interviews). Key finding: breadth-first design led to better perceived experience (creativity, trust) while depth-first led to higher-rated RQ quality (novelty, surprise). The paper also discusses ethical concerns including plagiarism, hallucination, user biases, and over-reliance on AI.",
+  "_paper_id": "liu2024b",
+  "_source_pdf": "papers/liu2024b.pdf"
+}

@@ -1,0 +1,51 @@
+{
+  "_paper_id": "haslberger",
+  "citation_key": "haslberger_2025_ai_productivity",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "treatment",
+    "ai_arm_selection_rationale": "Single AI treatment arm where participants were encouraged to use ChatGPT. This is a between-subjects design with random assignment to treatment (encouraged AI use) vs control (discouraged AI use).",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 314.465,
+    "sd_human": null,
+    "se_human": 7.554,
+    "n_human": 537,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 504,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -134.01,
+    "regression_coefficient_se": 14.548,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 314.465,
+    "extraction_confidence": "high",
+    "notes": "Table S1 Panel A provides the baseline constant (314.465 seconds, SE=7.554) which represents the control group mean for email task completion time. The regression coefficient (-134.010, SE=14.548) represents the treatment effect. With both the baseline mean and the regression coefficient in levels, we can compute log(1 + coef/baseline) = log(1 + (-134.010/314.465)) = log(0.574). The outcome is time in seconds (top-coded at 900), so smaller is better. The paper reports this as a 2SLS/LATE estimate where treatment assignment instruments for actual AI use.",
+    "source_quotes": [
+      "Used AI \u2212134.010*** (14.548) Constant 314.465*** (7.554) for Email Time in Table S1 Panel A: Second stage",
+      "We estimated the local average treatment effect (LATE) of using generative AI with a two-stage least squares (2SLS) procedure",
+      "Time (in seconds) respondents spent on each of the tasks. Since some respondents spent a large amount of time on a single task, we top-coded the time measure for each task at 900 seconds",
+      "Predicted time savings range between 101 and 235 seconds (0.54 to 1.04 standard deviations (SD))"
+    ]
+  },
+  "computed": {
+    "log_ratio": -0.5553913429777713,
+    "log_ratio_variance": 0.006499332340688807,
+    "percent_change_equivalent": -0.42615235399806023,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "regression_coef_level_with_baseline",
+    "confidence": "medium",
+    "notes": "Table S1 Panel A provides the baseline constant (314.465 seconds, SE=7.554) which represents the control group mean for email task completion time. The regression coefficient (-134.010, SE=14.548) represents the treatment effect. With both the baseline mean and the regression coefficient in levels, we can compute log(1 + coef/baseline) = log(1 + (-134.010/314.465)) = log(0.574). The outcome is time in seconds (top-coded at 900), so smaller is better. The paper reports this as a 2SLS/LATE estimate where treatment assignment instruments for actual AI use.",
+    "n_human": 537,
+    "n_ai": 504
+  }
+}

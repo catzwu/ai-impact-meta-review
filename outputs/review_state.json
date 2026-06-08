@@ -1,0 +1,38 @@
+{
+  "edits": {
+    "2403.01770v1::speed::2": {
+      "onet_code": "WA-02",
+      "onet_label": "Monitoring Processes, Materials, or Surroundings"
+    },
+    "2311.07071v2::speed::1": {
+      "onet_code": "27-1013.00",
+      "onet_label": "Fine Artists, Including Painters, Sculptors, and Illustrators"
+    },
+    "2406.11046v1::speed::3": {
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    "2411.01067v2::speed::4": {
+      "onet_code": "15-1212.00",
+      "onet_label": "Information Security Analysts"
+    },
+    "2502.09479v1::speed::5": {
+      "onet_code": "11-3031.00",
+      "onet_label": "Financial Managers"
+    },
+    "Can_AI_Improve_Marketing_Communications_for_Small_Businesses_Field_Evidence_fro::speed::16": {
+      "onet_code": "WA-29",
+      "onet_label": "Communicating with People Outside the Organization"
+    },
+    "schwarczetal::speed::40": {
+      "onet_code": "23-1011.00",
+      "onet_label": "Lawyers"
+    }
+  },
+  "deleted": [
+    "Autor, Levy & Murnane 2003::speed::14",
+    "Daniotti et al. 2025::speed::17",
+    "choi monahan schwarcz::speed::36"
+  ],
+  "merges": []
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "41-9022.00",
+  "onet_label": "Real Estate Sales Agents",
+  "mapping_confidence": "high",
+  "rationale": "The participants are real estate agents working with both buyers and sellers in property transactions. The paper explicitly describes their work: communicating with clients via chat, recommending properties to buyers, negotiating prices for sellers, and managing listings. These are the core responsibilities of Real Estate Sales Agents (41-9022.00), whose work encompasses facilitating property transactions, advising clients, and managing property information. The AI copilot augments their entire workflow rather than a single narrow task, making the occupation-level mapping most appropriate.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-18",
+      "onet_label": "Selling or Influencing Others"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-08",
+      "onet_label": "Providing Consultation and Advice to Others"
+    }
+  ],
+  "citation_key": "ai_copilots_real_estate_2025"
+}

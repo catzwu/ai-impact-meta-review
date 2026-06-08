@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "13-1111.00",
+  "onet_label": "Management Analysts",
+  "mapping_confidence": "high",
+  "rationale": "The participants are BCG management consultants performing their actual job duties: analyzing business problems, developing strategic recommendations, conducting market analysis, and creating client deliverables. The task description explicitly states these are 'realistic management consulting tasks' including market segmentation, business case analysis, and strategic recommendations to CEOs. This maps directly to the Management Analysts occupation (commonly called management consultants), whose work encompasses business strategy, organizational analysis, and advisory services\u2014precisely what these BCG consultants do professionally.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-10",
+      "onet_label": "Making Decisions and Solving Problems"
+    }
+  ],
+  "citation_key": "dellacqua_2026_jagged_frontier"
+}

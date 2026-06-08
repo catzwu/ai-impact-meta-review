@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The study's participants are software developers performing 'git push' operations to GitHub repositories across different programming languages. The verbatim task description states they are examining 'the number of pushes per country' and 'unique developers...who made at least one git push to a repository with a given programming language.' This is core software development work\u2014writing code, version control, and repository management\u2014which is fundamentally computer-based work. While 'Software Developers' (15-1252.00) exists as an occupation, the task here is narrowly defined as the specific activity of pushing code to repositories, making the work activity mapping more appropriate and generalizable.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "quispe_2024_chatgpt_software"
+}

@@ -1,0 +1,48 @@
+{
+  "_paper_id": "2508.08242v1",
+  "citation_key": "alsobay_2025_llm_facilitated",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "no_facilitation",
+    "ai_arm_name": "llm_facilitator",
+    "ai_arm_selection_rationale": "llm_facilitator is the only AI arm (GPT-4o). no_facilitation is the human-only baseline with no facilitative support.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 70,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 70,
+    "reported_t": 3.58,
+    "reported_t_df": 138,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.61,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "p-value reported as 'p < 0.001' (inequality), so reported_p_value set to null per instructions. Effect size Cohen's d = 0.61 explicitly reported for this comparison. Mean difference \u0394 = 2.9 facts (AI higher). Both Level C (t-statistic) and Level E (Cohen's d) data available.",
+    "source_quotes": [
+      "However, we find that LLM facilitation increased information sharing relative to all other conditions: \u0394 = 2.9, t(138) = 3.58, p < 0.001 for \"None\"; \u0394 = 1.58, t(139) = 2.1, p = 0.02 for \"Message\"; and \u0394 = 2.47, t(138) = 3.37, p < 0.001 for \"Human\"; to contextualize the observed increase in information coverage with LLM facilitation relative to no facilitation (\"LLM\" vs. \"None\"), the effect size (Cohen's d) is 0.61, indicating a moderate-to-large practical effect of LLM facilitation on information coverage.",
+      "The number of distinct facts mentioned at least once throughout a group's discussion, ranging from 0 to 30."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.6051304463856179,
+    "hedges_g": 0.6018357252619212,
+    "variance": 0.029554746628580514,
+    "computation_method": "t_statistic",
+    "confidence": "high",
+    "notes": "p-value reported as 'p < 0.001' (inequality), so reported_p_value set to null per instructions. Effect size Cohen's d = 0.61 explicitly reported for this comparison. Mean difference \u0394 = 2.9 facts (AI higher). Both Level C (t-statistic) and Level E (Cohen's d) data available.",
+    "n_human": 70,
+    "n_ai": 70,
+    "direction_convention": "larger_is_better"
+  }
+}

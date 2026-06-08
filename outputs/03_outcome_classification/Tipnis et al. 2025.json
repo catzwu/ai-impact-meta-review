@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "monthly_task_contributions",
+      "category": "other",
+      "operationalization": "count of mapping tasks completed by a volunteer on HOTTM platform per month, extracted from platform logs"
+    },
+    {
+      "outcome_name": "perceived_impact_of_volunteering",
+      "category": "other",
+      "operationalization": "average of three 1-7 Likert scale items measuring perceived difference-making and benefit to the NPO"
+    },
+    {
+      "outcome_name": "perceived_effort",
+      "category": "other",
+      "operationalization": "average of two 1-7 Likert scale items measuring self-reported effort and thoroughness in helping the NPO"
+    },
+    {
+      "outcome_name": "weekly_task_contributions_by_percentile",
+      "category": "other",
+      "operationalization": "count of mapping tasks completed per week, stratified by volunteer experience percentile groups, from platform logs"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "tipnis_2025_ai_philanthropy"
+}

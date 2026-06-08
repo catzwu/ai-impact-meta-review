@@ -1,0 +1,49 @@
+{
+  "_paper_id": "Generative_AI_and_Firm-level_Productivity_Evidence_from_Startup_Funding_Dynamic",
+  "citation_key": "asam_2025_generative_startup",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "software_developing_startups",
+    "ai_arm_name": "software_developing_startups",
+    "ai_arm_selection_rationale": "This is a difference-in-differences natural experiment. The 'human-only' condition is software-developing startups in the pre-GitHub Copilot period, and the 'AI' condition is the same type of startups in the post-Copilot period. The treatment is the release of GitHub Copilot (AI coding assistant). The comparison arm is 'other startups' (control group that did not benefit from Copilot).",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.19,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -4.793,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "This is a difference-in-differences study examining the effect of GitHub Copilot's release on software-developing startups. The primary result shows a 19% reduction in time-to-funding (4-month decrease). The regression coefficient \u03b2 = -4.793 months is in levels (not log-transformed), representing the DiD estimate. Standard error is not reported in the extraction. The paper reports p < 0.01 significance. The 19% figure appears to be calculated as 4.793/baseline_mean, but the exact baseline mean for the treatment group pre-period is not explicitly provided in the extracted statistics (though Column III mentions a mean of 20.768 months for comparison). Without SE and baseline mean, Python will need to rely on the reported percent change of -19% (negative because time decreased, which is beneficial).",
+    "source_quotes": [
+      "We find that software-developing startups raise their initial funding 19% faster and with 20% fewer employed software developers relative to comparable startups after the release of Copilot.",
+      "After the release of GitHub Copilot, software-developing startups experience a four-month decrease in the time-to-funding relative to the control group, implying an economically significant reduction of 19%.",
+      "In Column I, the coefficient of the interaction term Developer \u00d7 Post is large, negative, and significant at the one percent level. Its size (-4.793) suggests that software-developing startups experience an average reduction of about five months to initial funding relative to other startups."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.21072103131565253,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.23456790123456783,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences study examining the effect of GitHub Copilot's release on software-developing startups. The primary result shows a 19% reduction in time-to-funding (4-month decrease). The regression coefficient \u03b2 = -4.793 months is in levels (not log-transformed), representing the DiD estimate. Standard error is not reported in the extraction. The paper reports p < 0.01 significance. The 19% figure appears to be calculated as 4.793/baseline_mean, but the exact baseline mean for the treatment group pre-period is not explicitly provided in the extracted statistics (though Column III mentions a mean of 20.768 months for comparison). Without SE and baseline mean, Python will need to rely on the reported percent change of -19% (negative because time decreased, which is beneficial). | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly states it \"leverages a natural experiment around the selective rollout of GitHub Copilot\" and employs quasi-experimental identification strategies including \"a Two-Way Fixed Effect (TWFE) model within a differences-in-differences framework using Propensity Score Matching\" and \"Synthetic Difference in Differences\" as an alternative specification.",
+  "citation_key": "yeverechyahu_2025_github_copilot"
+}

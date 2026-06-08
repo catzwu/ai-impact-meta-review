@@ -1,0 +1,568 @@
+{
+  "citation_key": "edelman_2023_copilot_productivity",
+  "authors": [
+    "Ben Edelman",
+    "Donald Ngwe",
+    "Sida Peng"
+  ],
+  "title": "Measuring the Impact of AI on Information Worker Productivity",
+  "year": 2023,
+  "venue": "working paper",
+  "study_design_description": "Two randomized controlled trials with a total of 310 subjects recruited from the Upwork platform. Subjects were randomly granted access to M365's \"Copilot\" AI tools (including M365 Chat and a Copilot that can answer questions about recorded meetings) or assigned to a control group. Subjects were paid a base rate for participation with bonuses for both speed and accuracy.",
+  "primary_task_description": "Experiment 1 (167 subjects): an information retrieval task consisting of ten multiple-choice questions divided into two categories\u2014Procurement Policy Questions (six questions about a fictional company's procurement policy stored in SharePoint, 76 pages, approximately 26,000 words) and Outlook Questions (four questions requiring information retrieval from Outlook email and calendar entries). Experiment 2 (143 subjects): a four-part task including (1) Meeting recap: answering ten multiple-choice questions about a 24-minute meeting using a transcript or AI chatbot; (2) New product (SharePoint): answering five multiple-choice questions based on SharePoint files; (3) Creation: writing a 400-500 word blog post announcing a new product; (4) Press release (email): answering eight multiple-choice questions from a complicated email thread.",
+  "population_description": "310 subjects recruited from the Upwork platform representing a diverse pool of individuals with varying backgrounds and skills. Requirements: each computer have Internet access and subjects have built a positive reputation through prior work on Upwork. In Experiment 1, participants were convenience sampled to have work hours roughly aligned with the US time zone, but the majority resided outside the US and may not have been native English speakers. In Experiment 2, users were included from around the world with special steps to obtain substantial users from the US (23%).",
+  "arms": [
+    {
+      "arm_name": "copilot",
+      "description": "Subjects randomly granted access to M365's \"Copilot\" AI tools including M365 Chat and a Copilot that can answer questions about a recorded meeting.",
+      "n": null
+    },
+    {
+      "arm_name": "control",
+      "description": "Control group without access to Copilot AI tools.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "task_completion_time",
+      "outcome_description": "Time required to complete the assigned task.",
+      "measurement_unit": "minutes",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "accuracy_overall",
+      "outcome_description": "Overall accuracy across all questions in the task.",
+      "measurement_unit": "percentage or raw score",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "accuracy_meeting_recap",
+      "outcome_description": "Accuracy on meeting recap questions (out of 10).",
+      "measurement_unit": "score out of 10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "accuracy_sharepoint_retrieval",
+      "outcome_description": "Accuracy on information retrieval from SharePoint (out of 5).",
+      "measurement_unit": "score out of 5",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "accuracy_email_retrieval",
+      "outcome_description": "Accuracy on information retrieval from email (out of 8).",
+      "measurement_unit": "score out of 8",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "creation_accuracy",
+      "outcome_description": "Creation accuracy as graded by LLM graders (out of 20).",
+      "measurement_unit": "score out of 20",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "creation_quality",
+      "outcome_description": "Creation quality as graded by LLM graders (out of 10).",
+      "measurement_unit": "score out of 10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "meeting_recap_duration",
+      "outcome_description": "Time required to complete the meeting recap subtask.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "creation_duration",
+      "outcome_description": "Time required to complete the creation subtask.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction_time_saved",
+      "outcome_description": "User perception of time saved by Copilot.",
+      "measurement_unit": "subjective report",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction_willingness_to_pay",
+      "outcome_description": "Willingness to pay for Copilot monthly subscription.",
+      "measurement_unit": "percentage willing to pay > USD 20 monthly",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction_creative_process",
+      "outcome_description": "User agreement that Copilot helped jump-start the creative process on blog-writing task.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction_effort_reduction",
+      "outcome_description": "User agreement that Copilot reduced effort on the task.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction_productivity",
+      "outcome_description": "User agreement that Copilot made them more productive.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction_quality_improvement",
+      "outcome_description": "User agreement that Copilot helped improve the quality of their work.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction_future_use",
+      "outcome_description": "User agreement that they would want to have Copilot the next time they do this task.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 17.9,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 24.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "26.6% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "The Copilot-enabled group completed the task in approximately 17.9 minutes, while the Control group required an average of 24.3 minutes. This represents a notable difference, with the Copilot-enabled group completing the task in approximately 26.6% less time compared to the Control group. This difference is statistically significant at P<0.001."
+    },
+    {
+      "outcome_name": "accuracy_overall",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 8.5,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 8.7,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.612",
+      "confidence_interval": null,
+      "verbatim_quote": "There was no statistically significant difference in accuracy between the groups, but the Copilot users were significantly faster in completing the assigned task. Accuracy (%) 8.5 8.7 2.0% 0.612"
+    },
+    {
+      "outcome_name": "accuracy_overall",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 21.1,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 21.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.503",
+      "confidence_interval": null,
+      "verbatim_quote": "Accuracy Overall accuracy (out of 23) 21.1 21.3 (1.59%) 0.503"
+    },
+    {
+      "outcome_name": "accuracy_meeting_recap",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 9.4,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 9.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.347",
+      "confidence_interval": null,
+      "verbatim_quote": "Meeting recap accuracy (out of 10) 9.4 9.1 2.60% 0.347"
+    },
+    {
+      "outcome_name": "accuracy_sharepoint_retrieval",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 4.9,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 4.8,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.165",
+      "confidence_interval": null,
+      "verbatim_quote": "Info retrieval from SharePoint (out of 5) 4.9 4.8 2.64% 0.165"
+    },
+    {
+      "outcome_name": "accuracy_email_retrieval",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 7.1,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 7.2,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.794",
+      "confidence_interval": null,
+      "verbatim_quote": "Info retrieval from email (out of 8) 7.1 7.2 (0.84%) 0.794"
+    },
+    {
+      "outcome_name": "creation_accuracy",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 19.2,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 19.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.882",
+      "confidence_interval": null,
+      "verbatim_quote": "Creation accuracy (LLM graders) (out of 20) 19.2 19.3 (0.36%) 0.882"
+    },
+    {
+      "outcome_name": "creation_quality",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 6.3,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 6.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.107",
+      "confidence_interval": null,
+      "verbatim_quote": "Creation quality (LLM graders) (out of 10) 6.3 6.6 (3.6%) 0.107"
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control (Experiment 2, total duration)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 29.7,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 42.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "29.4% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Total task duration (minutes) 29.7 42.1 29.4% <0.001"
+    },
+    {
+      "outcome_name": "meeting_recap_duration",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 10.2,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 12.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "19.3% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.003",
+      "confidence_interval": null,
+      "verbatim_quote": "Meeting recap duration (minutes) 10.2 12.6 19.3% 0.003"
+    },
+    {
+      "outcome_name": "creation_duration",
+      "arm_comparison": "copilot vs control (Experiment 2)",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 6.9,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 18.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "62.6% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Creation (minutes) 6.9 18.4 62.6% <0.001"
+    },
+    {
+      "outcome_name": "accuracy_overall",
+      "arm_comparison": "copilot vs control (conditional on accuracy, Experiment 2)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "28.2% more accurate",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "This approach indicates that the Copilot users were 28.2% more accurate than control users, holding accuracy constant. This finding is statistically significant at P<0.001."
+    },
+    {
+      "outcome_name": "user_satisfaction_time_saved",
+      "arm_comparison": "copilot users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "saved more than 10 minutes (median)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Almost all respondents said Copilot saved them time on the task. The median respondent said Copilot saved them more than 10 minutes."
+    },
+    {
+      "outcome_name": "user_satisfaction_time_saved",
+      "arm_comparison": "copilot users (daily estimate)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "would save more than 1 hour per day (median)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When asked how much time Copilot would save an office worker every day, the median respondent said it would save more than 1 hour per day."
+    },
+    {
+      "outcome_name": "user_satisfaction_willingness_to_pay",
+      "arm_comparison": "copilot users vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "40% more likely to say willing to pay > USD 20 monthly",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The respondents who tried M365 Copilot were 40% more likely to say they were willing to pay > USD 20 monthly, compared with respondents who didn't try it."
+    },
+    {
+      "outcome_name": "user_satisfaction_willingness_to_pay",
+      "arm_comparison": "copilot users (tried vs description only)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "35% greater WTP",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.02",
+      "confidence_interval": null,
+      "verbatim_quote": "Having tried the AI tools, Copilot users reported WTP 35% greater than those who received a description of it. That difference is statistically significant at p=0.02."
+    },
+    {
+      "outcome_name": "user_satisfaction_creative_process",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 88.4,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 93.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "M365 Copilot helped me jump-start the creative process on the blog-writing task 88.4 93.1%"
+    },
+    {
+      "outcome_name": "user_satisfaction_effort_reduction",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 84.5,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 84.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "M365 Copilot reduced my effort on this task 84.5 84.3%"
+    },
+    {
+      "outcome_name": "user_satisfaction_productivity",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 88.9,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 93.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "M365 Copilot made me more productive 88.9 93.1%"
+    },
+    {
+      "outcome_name": "user_satisfaction_quality_improvement",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 91.8,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 95.9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "M365 Copilot helped me improve the quality of my work 91.8 95.9%"
+    },
+    {
+      "outcome_name": "user_satisfaction_future_use",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 88.8,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 97.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I would want to have M365 Copilot the next time I do this task 88.8 97.3%"
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot users (subjective vs actual)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "subjective: 36 minutes saved; actual: approximately 12 minutes saved",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Subjects who tried Copilot said it saved them 36 minutes. In contrast, the experiment says their actual time savings was approximately 12 minutes."
+    }
+  ],
+  "notes": "Two randomized controlled trials: Experiment 1 (n=167) on information retrieval tasks; Experiment 2 (n=143) on a four-part task including meeting recap, SharePoint retrieval, creation, and email analysis. Total N=310 from Upwork platform. Primary findings: Copilot users completed tasks 26.6% faster in Exp 1 (p<0.001) and 29.4% faster in Exp 2 (p<0.001) with no significant accuracy loss. User satisfaction metrics show high agreement that Copilot saved time and improved productivity. Caveats: (1) Prerelease version of Copilot used; later versions likely more reliable. (2) Question selection based on authors' judgment; principled selection recommended. (3) Majority of Exp 1 participants were non-US, non-native English speakers; no significant differences found between US and non-US users. (4) Time data for information retrieval tasks in Exp 1 not reported due to Copilot tool malfunction for some participants. (5) Subjective time savings (36 minutes) substantially exceeded actual measured savings (12 minutes). (6) Arm-level sample sizes (copilot vs control split) not explicitly stated in quotes; total N per experiment provided.",
+  "_paper_id": "Measuring_the_Impact_of_AI_on_Information_Worker_Productivity"
+}

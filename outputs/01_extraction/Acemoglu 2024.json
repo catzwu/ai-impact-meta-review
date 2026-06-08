@@ -1,0 +1,360 @@
+{
+  "citation_key": "acemoglu_2024_macroeconomics_ai",
+  "authors": [
+    "Daron Acemoglu"
+  ],
+  "title": "The Simple Macroeconomics of AI",
+  "year": 2024,
+  "venue": "NBER working paper",
+  "study_design_description": "This paper uses a task-based model framework from Acemoglu and Restrepo (2018, 2019b, 2022) to estimate medium-term (approximately 10-year) macroeconomic effects of AI. The model involves production of a unique final good requiring a series of tasks that can be allocated to either capital or labor with different comparative advantages. The economy is static with competitive markets. The paper synthesizes estimates from three experimental studies (Peng et al. 2023, Noy and Zhang 2023, Brynjolfsson et al. 2023) and data from Eloundou et al. (2023) and Svanberg et al. (2024) to estimate aggregate productivity and GDP effects.",
+  "primary_task_description": "The production of a unique final good takes place by combining a set of tasks using a CES production function. Tasks can be produced using capital or labor according to the production function y(z) = AL \u03b3L(z) l(z) + AK \u03b3K(z) k(z), where AL and AK are labor-augmenting and capital-augmenting productivity terms, \u03b3L(z) and \u03b3K(z) are labor's and capital's task-specific productivity schedules, and l(z) and k(z) denote labor and capital allocated to performing task z.",
+  "population_description": null,
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "total_factor_productivity_tfp_10_year",
+      "outcome_description": "Total factor productivity gains estimated as d ln TFP = d ln Y |K = \u222b[0 to N] \u03c7(z) \u03c0L(z) dz, where \u03c0L(z) = d ln y(z) is the productivity improvement or cost savings in task z driven by AI.",
+      "measurement_unit": "percentage points over 10 years",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "outcome_description": "Total effect on GDP given by d ln Y = d ln TFP + sK d ln K, where sK is the capital share of GDP.",
+      "measurement_unit": "percentage points over 10 years",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "task_completion_speed_peng",
+      "outcome_description": "Speed of task completion in the Peng et al. (2023) experiment where freelance computer programmers were given access to GitHub Copilot (powered by OpenAI Codex/GPT-3) to implement an HTTP server in JavaScript, compared to control group without access.",
+      "measurement_unit": "percent faster",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_completion_speed_noy_zhang",
+      "outcome_description": "Speed of task completion in the Noy and Zhang (2023) experiment where individuals in white-collar occupations were given access to ChatGPT-3.5 for writing tasks (press releases, short reports, analyses designed to take 20-30 minutes), compared to control group without access.",
+      "measurement_unit": "percent faster",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "writing_quality_noy_zhang",
+      "outcome_description": "Quality improvement in writing tasks in the Noy and Zhang (2023) experiment, as judged by peers and ChatGPT-based scoring.",
+      "measurement_unit": "percent improvement",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_completion_speed_brynjolfsson",
+      "outcome_description": "Speed of task completion (resolution of customer service tickets) in the Brynjolfsson et al. (2023) study of a customer service provider using a custom generative AI tool, compared to control group without access.",
+      "measurement_unit": "percent faster",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "customer_satisfaction_brynjolfsson",
+      "outcome_description": "Self-reported customer satisfaction in the Brynjolfsson et al. (2023) study of customer service associates using a custom generative AI tool.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "quality_brynjolfsson",
+      "outcome_description": "Quality of customer service work as judged by users themselves in the Brynjolfsson et al. (2023) study.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "wage_growth_less_than_high_school",
+      "outcome_description": "Wage growth for workers with less than a high school degree over 10 years, incorporating easy and hard task distinctions.",
+      "measurement_unit": "percent over 10 years",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "between_group_wage_inequality",
+      "outcome_description": "Between-group standard deviation of log wages (weighted by employment) comparing postgraduate versus high school and college graduate workers.",
+      "measurement_unit": "standard deviation",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "capital_share_of_national_income",
+      "outcome_description": "Capital share of national income, reflecting the increase due to AI-driven productivity gains and capital stock adjustment.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "total_factor_productivity_tfp_10_year",
+      "arm_comparison": "baseline_estimate",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.66 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This calculation implies that total factor productivity (TFP) effects within the next 10 years should be no more than 0.66% in total\u2014or approximately a 0.064% increase in TFP growth annually."
+    },
+    {
+      "outcome_name": "total_factor_productivity_tfp_10_year",
+      "arm_comparison": "with_peng_estimates_and_gpu_costs",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around 0.9 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "If we add bigger productivity gains from Peng et al. (2023), which are less likely to be broadly applicable, or incorporate further declines in GPU costs, this number still remains around 0.9%."
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "arm_comparison": "baseline_estimate",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.93% to 1.16% over 10 years",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "With these investment effects incorporated, GDP is also estimated to grow by 0.93% \u2212 1.16% over the next 10 years."
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "arm_comparison": "with_capital_stock_adjustment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.4% to 1.56% over 10 years",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When I assume that the investment response will be similar to those for earlier automation technologies and use the full framework from Acemoglu and Restrepo (2022) to estimate the increase in the capital stock, the upper bound on GDP effects rises to around 1.4% \u2212 1.56%."
+    },
+    {
+      "outcome_name": "total_factor_productivity_tfp_10_year",
+      "arm_comparison": "easy_hard_task_distinction",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "upper bounded by 0.53 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Using a range of (speculative) assumptions, I estimate an upper bound of 73% easy tasks among Eloundou et al.'s exposed tasks. I suppose that productivity gains in hard tasks will be approximately one quarter of the easy ones. This leads to an updated, more modest increase in TFP and GDP in the next 10 years that can be upper bounded by 0.53% and 0.90%, respectively."
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "arm_comparison": "easy_hard_task_distinction",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "upper bounded by 0.90 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Using a range of (speculative) assumptions, I estimate an upper bound of 73% easy tasks among Eloundou et al.'s exposed tasks. I suppose that productivity gains in hard tasks will be approximately one quarter of the easy ones. This leads to an updated, more modest increase in TFP and GDP in the next 10 years that can be upper bounded by 0.53% and 0.90%, respectively."
+    },
+    {
+      "outcome_name": "task_completion_speed_peng",
+      "arm_comparison": "github_copilot_vs_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "55.8% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peng et al. (2023) design an experiment where freelance computer programmers are given access to and encouraged to use GitHub Copilot, which (at the time of the experiment) was powered by OpenAI Codex (GPT-3). Participants were given the task of implementing a HTTP server on JavaScript, a popular language for which resources and subroutines are readily available, and GPT-3 was already trained on these resources. They compare the experimental treatment group to a control group that is not given access to GitHub Copilot. They find that the treatment group performed the assigned tasks on average 55.8% faster than the control group."
+    },
+    {
+      "outcome_name": "task_completion_speed_noy_zhang",
+      "arm_comparison": "chatgpt_vs_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "40% faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Noy and Zhang (2023) design an online experiment where individuals in a range of white-collar occupations are recruited and presented with simple writing tasks (in particular, tasks like writing press releases, short reports and analyses that are designed to take 20 to 30 minutes and resemble real life tasks in the participants' occupations). The treatment group is given access to and encouraged to use ChatGPT-3.5, while the control group is not. They verify that there is very low usage of ChatGPT in the control group. They estimate that ChatGPT enables, on average, 40% faster completion of the task at hand."
+    },
+    {
+      "outcome_name": "writing_quality_noy_zhang",
+      "arm_comparison": "chatgpt_vs_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "They also estimate an 18% improvement in quality scores, as judged by peers and ChatGPT-based scoring of the output."
+    },
+    {
+      "outcome_name": "task_completion_speed_brynjolfsson",
+      "arm_comparison": "custom_ai_tool_vs_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "about 14% on average",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Brynjolfsson et al. (2023) is the only study that I am aware of that looks at the use of generative AI tools in a real business setting with a careful experimental design. The business they focus on is a customer service provider, which uses a custom generative AI tool to help customer service associates. The rollout took the form of a treatment group getting access to this tool, while the control group did not. Brynjolfsson, Li and Raymond evaluate the impact of the rollout on cost savings, by focusing on how quickly tasks (open customer tickets) are resolved. They also look at self-reported customer satisfaction. They find a significant improvement in the speed with which tasks are completed by customer service associates\u2014an effect of about 14% on average."
+    },
+    {
+      "outcome_name": "quality_brynjolfsson",
+      "arm_comparison": "custom_ai_tool_vs_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "slight and statistically insignificant decline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, they additionally estimate a slight and statistically insignificant decline in quality, as judged by the users themselves."
+    },
+    {
+      "outcome_name": "task_completion_speed_brynjolfsson",
+      "arm_comparison": "top_quintile_associates",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no improvement at all",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Like the other studies, Brynjolfsson, Li and Raymond find that the results are predominantly among the lower-performing, less expert employees. In fact, they estimate that the top quintile of associates experience no improvement at all."
+    },
+    {
+      "outcome_name": "total_factor_productivity_tfp_10_year",
+      "arm_comparison": "calculation_from_peng_estimates",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.89 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "If we were to consider the higher productivity numbers from Peng et al., 0.144 would be replaced by 0.193, and the 10-year TFP gains would be 0.89%, instead of 0.66%."
+    },
+    {
+      "outcome_name": "total_factor_productivity_tfp_10_year",
+      "arm_comparison": "rapid_computer_vision_cost_decline",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "about 0.9 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For example, in Svanberg et al.'s scenarios where costs for computer vision decline very rapidly, such as 10% a year, the fraction of tasks that are feasibly automated may be as high as 30%. This would raise the GDP share impacted by AI to approximately 6%, and correspondingly increase the TFP gains over the next 10 years to about 0.9%."
+    },
+    {
+      "outcome_name": "total_factor_productivity_tfp_10_year",
+      "arm_comparison": "easy_hard_task_calculation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.53 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The end result is that 72.6% of wage bill-weighted exposed tasks in Eloundou et al. are easy. This means that easy exposed tasks comprise 3.3% of GDP, while the remaining exposed tasks (making up 1.3% of GDP) are hard. Incorporating this information together with the assumptions on cost savings yields the following tighter upper bound on TFP gains in the next 10 years: TFP gains over the next 10 years = 0.033 \u00d7 0.144 + (0.046 \u2212 0.033) \u00d7 0.037 \u2248 0.0053."
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "arm_comparison": "baseline_with_capital_share",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.16% over 10 years",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Using the capital share for the entire private business sector, 0.43, this implies that GDP gains will be equal to the TFP gains multiplied by 1.75 (\u2248 1/(1 \u2212 0.43)). Hence taking the baseline estimate of an increase in TFP of 0.66%, I obtain a first estimate for GDP growth due to AI of 1.16% over 10 years, or taking the presence of hard tasks into account, a lower estimate of 0.93%."
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "arm_comparison": "with_hard_tasks",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.93% over 10 years",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Using the capital share for the entire private business sector, 0.43, this implies that GDP gains will be equal to the TFP gains multiplied by 1.75 (\u2248 1/(1 \u2212 0.43)). Hence taking the baseline estimate of an increase in TFP of 0.66%, I obtain a first estimate for GDP growth due to AI of 1.16% over 10 years, or taking the presence of hard tasks into account, a lower estimate of 0.93%."
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "arm_comparison": "with_capital_stock_adjustment_easy_hard",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.4 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Row 7 presents the estimate of the impact on GDP, taking into account the equilibrium increase in the capital stock implied by the model. This is under the assumption that all of the capital stock adjustment will take place within 10 years (while in practice it may take longer) and that the required rate of return on capital investments does not change (whereas with a sizable investment, we may expect an increase). This leads to an upper bound GDP impact of 1.4% in column 7, when I distinguish between easy and hard tasks (or 1.56% in column 3 when this distinction is not drawn)."
+    },
+    {
+      "outcome_name": "gdp_growth_10_year",
+      "arm_comparison": "with_capital_stock_adjustment_no_distinction",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.56 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Row 7 presents the estimate of the impact on GDP, taking into account the equilibrium increase in the capital stock implied by the model. This is under the assumption that all of the capital stock adjustment will take place within 10 years (while in practice it may take longer) and that the required rate of return on capital investments does not change (whereas with a sizable investment, we may expect an increase). This leads to an upper bound GDP impact of 1.4% in column 7, when I distinguish between easy and hard tasks (or 1.56% in column 3 when this distinction is not drawn)."
+    },
+    {
+      "outcome_name": "wage_growth_less_than_high_school",
+      "arm_comparison": "baseline_estimate",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "about 1.3% within 10 years",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Focusing on the estimates in column 7, which incorporate easy and hard tasks, there is a slightly higher wage growth for workers with less than a high school degree\u2014about 1.3% within 10 years\u2014but the gap between postgraduate versus high school and college graduate workers also widens somewhat."
+    },
+    {
+      "outcome_name": "between_group_wage_inequality",
+      "arm_comparison": "baseline_to_10_year",
+      "means_and_sds": {
+        "baseline": {
+          "mean": 0.35,
+          "sd": null,
+          "se": null
+        },
+        "10_year": {
+          "mean": 0.36,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "increase from 0.35 to 0.36",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In fact, the between-group standard deviation of log wages (weighted by employment) increases slightly, from 0.35 to 0.36."
+    },
+    {
+      "outcome_name": "capital_share_of_national_income",
+      "arm_comparison": "baseline_estimate",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "increases by about 0.31 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "GDP therefore increases substantially more than average wages, and as a result, the capital share of national income increases by about 0.31 percentage points."
+    }
+  ],
+  "notes": "This is a theoretical and quantitative macroeconomic analysis paper, not an empirical experiment. The paper builds a task-based model and synthesizes estimates from three experimental studies (Peng et al. 2023, Noy and Zhang 2023, Brynjolfsson et al. 2023) along with data from Eloundou et al. (2023) and Svanberg et al. (2024) to estimate macroeconomic effects of AI. The paper does not conduct its own original experiments but rather applies existing evidence within a theoretical framework. Key caveats noted by the author: (1) estimates should be interpreted with great caution as suggestive numbers; (2) Eloundou et al.'s automation index includes elements of \"augmentation\" or task complementarity; (3) it is impossible to know what fraction of task impact will be realized within 10 years or whether all cases are profitable; (4) adoption numbers ignore the fact that less than 1.5% of US businesses had any investment in AI in 2019; (5) adjustment costs and organizational changes may slow productivity gains (J-shaped pattern predicted to last at least 20 years); (6) hard-to-learn tasks may have significantly lower productivity gains than easy-to-learn tasks studied in experiments; (7) the paper ignores task complementarities and presumes all AI exposure takes the form of automation; (8) negative welfare effects from manipulative AI activities may be nontrivial but are difficult to quantify. The paper distinguishes between easy-to-learn tasks (72.6% of exposed tasks, with 27% cost savings) and hard-to-learn tasks (27.4% of exposed tasks, with estimated 7% cost savings, approximately one quarter of easy task savings). The author estimates that 20% of US labor tasks are exposed to AI, with 23% of those profitably performable by AI, yielding 4.6% of GDP impacted by AI.",
+  "_paper_id": "Acemoglu 2024"
+}

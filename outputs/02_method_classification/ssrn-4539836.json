@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This study compares three conditions (AI-assisted humans, AI alone with different prompting methods, and historical controls from 2022 without AI) but there is no indication of random assignment. The 2022 students are a historical comparison group who took exams before the AI intervention existed, and the 2023 students who volunteered for the study all received AI assistance. This is neither randomized nor a clear quasi-experimental design.",
+  "citation_key": "choi_2024_ai_legal_analysis"
+}

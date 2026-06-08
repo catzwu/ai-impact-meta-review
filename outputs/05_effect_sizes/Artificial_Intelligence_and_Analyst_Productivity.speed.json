@@ -1,0 +1,52 @@
+{
+  "_paper_id": "Artificial_Intelligence_and_Analyst_Productivity",
+  "citation_key": "shanthikumar_2024_ai_analyst",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "low_ai_investment",
+    "ai_arm_name": "high_ai_investment",
+    "ai_arm_selection_rationale": "This is an observational study using continuous AI investment (% AI-related job postings) as treatment. The paper reports effects per one standard deviation increase in AI investment. While not a clean binary comparison, the regression framework allows us to extract a coefficient-based effect. The 'high AI investment' arm represents banks with higher AI adoption (one SD above mean), compared to 'low AI investment' baseline. The ChatGPT natural experiment provides an alternative identification strategy with pre/post comparison.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 5.296,
+    "sd_human": 2.78,
+    "se_human": null,
+    "n_human": 70923,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 70923,
+    "reported_percent_change": 0.014,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": 4.89,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.332,
+    "regression_coefficient_se": 0.0679,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 5.296,
+    "extraction_confidence": "medium",
+    "notes": "This is an observational study, not a randomized experiment. The treatment is continuous (% AI hiring) rather than binary. From Table 3 Column 2 (Poisson regression with lagged controls), the coefficient on % AI Hiring t-3~t-1 is 0.332 with t-stat 4.89, implying SE \u2248 0.332/4.89 \u2248 0.0679. The outcome (Forecast Frequency) is NOT log-transformed - it's a count modeled with Poisson, but the reported coefficient is in the original scale. The baseline mean is 5.296 forecasts (from Table 1). The paper states 'a one standard deviation increase in AI investment is associated with a 1.4% increase' - this 1.4% = 0.014 is the reported percent change. The sample size n=70,923 is analyst-firm-year observations (same for both 'arms' since this is a continuous treatment regression). For the ChatGPT analysis (Table 9 Panel A), Post ChatGPT coefficient is 0.014 (t=2.33, SE\u22480.006) for forecast frequency, but this is a different identification strategy. The primary analysis uses the continuous AI investment measure. The regression is NOT on log outcome, so we need baseline mean to compute log ratio: log(1 + 0.332*0.035/5.296) where 0.035 is one SD of % AI Hiring from Table 1.",
+    "source_quotes": [
+      "a one standard deviation increase in AI investment is associated with a 1.4% increase in the number of annual earnings forecasts",
+      "% AI Hiring t-3~t-1: 0.332*** (4.89)",
+      "Forecast Frequency t: Mean 5.296, SD 2.780",
+      "% AI Hiring t-3~t-1: Mean 0.011, SD 0.035",
+      "Observations: 70,923"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.013902905168991434,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.014000000000000012,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is an observational study, not a randomized experiment. The treatment is continuous (% AI hiring) rather than binary. From Table 3 Column 2 (Poisson regression with lagged controls), the coefficient on % AI Hiring t-3~t-1 is 0.332 with t-stat 4.89, implying SE \u2248 0.332/4.89 \u2248 0.0679. The outcome (Forecast Frequency) is NOT log-transformed - it's a count modeled with Poisson, but the reported coefficient is in the original scale. The baseline mean is 5.296 forecasts (from Table 1). The paper states 'a one standard deviation increase in AI investment is associated with a 1.4% increase' - this 1.4% = 0.014 is the reported percent change. The sample size n=70,923 is analyst-firm-year observations (same for both 'arms' since this is a continuous treatment regression). For the ChatGPT analysis (Table 9 Panel A), Post ChatGPT coefficient is 0.014 (t=2.33, SE\u22480.006) for forecast frequency, but this is a different identification strategy. The primary analysis uses the continuous AI investment measure. The regression is NOT on log outcome, so we need baseline mean to compute log ratio: log(1 + 0.332*0.035/5.296) where 0.035 is one SD of % AI Hiring from Table 1. | CI missing; variance not computable",
+    "n_human": 70923,
+    "n_ai": 70923
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "_paper_id": "dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717",
+  "citation_key": "dellacqua_2026_jagged_frontier",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "gpt_plus_overview",
+    "ai_arm_selection_rationale": "Selected gpt_plus_overview over gpt_only because it represents the most capable condition (GPT-4 with additional prompt engineering training), and it shows a larger effect (1.48 vs 1.31 point increase).",
+    "direction_convention": "larger_is_better",
+    "m_human": 4.375,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 5.855,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "Sample sizes are not reported in the arms array (all n=null). Means are partially available: control mean is 4.375, and AI mean is inferred as 4.375 + 1.482 = 5.857 (rounded to 5.855 based on effect). Standard deviations are not reported. Only regression coefficients with standard errors are available. P-value reported as inequality 'p < 0.001' rather than exact value. This is a between-subjects design with three independent groups. Without SDs or sample sizes, effect size calculation will be severely limited.",
+    "source_quotes": [
+      "In column (1) in Table 4, GPT + overview leads to a 1.48 increase in scores over the control mean of 4.37, representing a 33.9% increase",
+      "with GPT only producing a 1.31 (or 29.9%) increase",
+      "1.482 (SE 0.061)",
+      "p < 0.001"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Sample sizes are not reported in the arms array (all n=null). Means are partially available: control mean is 4.375, and AI mean is inferred as 4.375 + 1.482 = 5.857 (rounded to 5.855 based on effect). Standard deviations are not reported. Only regression coefficients with standard errors are available. P-value reported as inequality 'p < 0.001' rather than exact value. This is a between-subjects design with three independent groups. Without SDs or sample sizes, effect size calculation will be severely limited. | insufficient numbers for d",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": "larger_is_better"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2512.19705v1",
+  "citation_key": "xue_2025_generative_analysts",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "factset_ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm present: FactSet Mercury AI-powered platform adoption",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": 1.38,
+    "se_human": null,
+    "n_human": 41991,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 41991,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": 2.11,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.297,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "The paper reports timeliness as log of leader ratio. Table 7 Panel C shows FactSet\u00d7Post coefficient of 0.297** (t=2.11) for Timeliness. The outcome is already log-transformed, so this coefficient represents the log ratio effect directly. The control SD is 1.38 (from Table 1). Sample size n=41991 is from Table 7 Panel C observations row. The paper states this represents '0.22 standard deviations (= 0.297/1.380)' improvement. Since the outcome is a log ratio, the regression coefficient IS the log effect. No SE is explicitly reported in parentheses for this coefficient, but the t-statistic is 2.11, which allows variance calculation if needed downstream.",
+    "source_quotes": [
+      "Timeliness: Forecast timeliness, measured as the log ratio between the cumulative number of days between the analyst's revision and the previous two revisions made by other analysts for the same firm and the cumulative number of days between the analyst's revision and the following two revisions made by other analysts.",
+      "Panel C: Report quality, main results. Timeliness: FactSet\u00d7Post 0.297** (2.11)",
+      "The first column shows a positive and statistically significant effect on timeliness: adoption of the AI platform accelerates forecast issuance by 0.22 standard deviations (= 0.297/1.380)",
+      "Observations 41991"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.297,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.34581529944809763,
+    "direction_convention": "larger_is_better",
+    "computation_method": "regression_coef_log_outcome_no_se",
+    "confidence": "low",
+    "notes": "The paper reports timeliness as log of leader ratio. Table 7 Panel C shows FactSet\u00d7Post coefficient of 0.297** (t=2.11) for Timeliness. The outcome is already log-transformed, so this coefficient represents the log ratio effect directly. The control SD is 1.38 (from Table 1). Sample size n=41991 is from Table 7 Panel C observations row. The paper states this represents '0.22 standard deviations (= 0.297/1.380)' improvement. Since the outcome is a log ratio, the regression coefficient IS the log effect. No SE is explicitly reported in parentheses for this coefficient, but the t-statistic is 2.11, which allows variance calculation if needed downstream.",
+    "n_human": 41991,
+    "n_ai": 41991
+  }
+}

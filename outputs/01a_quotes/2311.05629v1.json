@@ -1,0 +1,112 @@
+{
+  "citation_key": "ju_2023_generative_ai_learning",
+  "authors": [
+    "QiRui Ju"
+  ],
+  "title": "Experimental Evidence on Negative Impact of Generative AI on Scientific Learning Outcomes (A Pilot Research)",
+  "year": 2023,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "This pilot paper serves as a pioneer study aimed at analyzing the impact of AI on learning effectiveness.",
+      "The research took place from August 20th to 29th, 2023, incorporating widely recognized Generative AI tools such as GPT-3.5 and GPT-4.0, contingent upon the subscription tier.",
+      "Each participant underwent three rounds of tasks which entailed reading a paper, crafting a summary based on a given prompt, and answering five questions pertinent to the paper.",
+      "To ensure close attention and motivation in this experiment, participants were incentivized with a 30% bonus of payment if they answered 80% of the questions accurately.",
+      "For each segment of the experiment, participants were given a maximum of 10 minutes to read the article and complete the writing task.",
+      "The writing tasks fell into three categories: 1) Manual writing of summary reports without AI support (Manual), 2) Using AI for assistance in writing the summary report (AI), and 3) Individualized guided active reading through chat (Active).",
+      "In the third category, participants weren't mandated to write a summary but could opt to use AI to enhance their comprehension by asking questions.",
+      "For the manual writing task, participants were prohibited from copying and pasting from the reading material and writing boxes, ensuring they didn't utilize AI.",
+      "After reading each paper, participants had five minutes to answer five multiple-choice questions about the content.",
+      "The order of paper within each group is randomized, ensuring the effect of tiredness does not impact final outcomes.",
+      "This pre-registered experiment follows the protocol at Duke Institutional Review Board."
+    ],
+    "task": [
+      "Each participant underwent three rounds of tasks which entailed reading a paper, crafting a summary based on a given prompt, and answering five questions pertinent to the paper.",
+      "The writing tasks fell into three categories: 1) Manual writing of summary reports without AI support (Manual), 2) Using AI for assistance in writing the summary report (AI), and 3) Individualized guided active reading through chat (Active).",
+      "In the third category, participants weren't mandated to write a summary but could opt to use AI to enhance their comprehension by asking questions.",
+      "For each segment of the experiment, participants were given a maximum of 10 minutes to read the article and complete the writing task.",
+      "After reading each paper, participants had five minutes to answer five multiple-choice questions about the content.",
+      "I selected and adapted three passages from journal articles and the Graduate Record Examinations (GRE) for this experiment.",
+      "The subjects spanned humanities, medicine, and engineering.",
+      "The Flesch Reading Ease Score, which measures the complexity of papers, ranged between 25.5 to 34.4, indicating college and postgraduate-level complexity.",
+      "The lengths of the papers are 631, 1347, and 1043 words respectively."
+    ],
+    "population": [
+      "A total of 32 college-educated individuals were recruited from the online platform Prolific, evenly split with 16 males and 16 females.",
+      "The participant demographics are detailed in Table 1.",
+      "These participants represented a wide spectrum of academic backgrounds, ranging from humanities and social sciences to natural sciences, medicine, and engineering.",
+      "Prior to the study, participants were screened to verify their access to and understanding of Generative AI tools.",
+      "They were presented with a question concerning their familiarity with AI tools, accompanied by a ChatGPT hyperlink as a reference.",
+      "Only those who responded affirmatively proceeded further.",
+      "Additionally, I evaluated their computer literacy, mathematical proficiency, highest educational attainment, and primary language to identify potential variables affecting their learning results.",
+      "Age Average: 32.41",
+      "Sex Female: 50.00% Male: 50.00%",
+      "Race White: 44.44% Black: 37.78% American Native: 13.33% Asian: 4.44%",
+      "Highest Degree Bachelor: 66.67% Master: 22.22% Doctoral (Including JD or MD): 8.89% Associate: 2.22%",
+      "English Native No: 53.33% Yes: 46.67%",
+      "Student status No: 52.94% Yes: 47.06%",
+      "Employment status Full-Time: 55.88% Unemployed (and job seeking): 20.59% Part-Time: 14.71% Due to start a new job within the next month: 5.88% Other: 2.94%"
+    ],
+    "arms": [
+      "The writing tasks fell into three categories: 1) Manual writing of summary reports without AI support (Manual), 2) Using AI for assistance in writing the summary report (AI), and 3) Individualized guided active reading through chat (Active).",
+      "In the third category, participants weren't mandated to write a summary but could opt to use AI to enhance their comprehension by asking questions.",
+      "For the manual writing task, participants were prohibited from copying and pasting from the reading material and writing boxes, ensuring they didn't utilize AI.",
+      "To determine treatment and control groups, the three prompts were paired with the three passages, creating three distinct groups of three.",
+      "Participants were then assigned to one of these groups."
+    ],
+    "outcome_definitions": [
+      "After each cycle, they responded to comprehension questions related to the material.",
+      "After reading each paper, participants had five minutes to answer five multiple-choice questions about the content.",
+      "While the quality of the summary output didn't impact the payment, the writing was evaluated on three criteria: comprehensiveness, grammar, and flow, each scored from 1 to 5.",
+      "The overall grade was determined by averaging scores across these dimensions.",
+      "Correctness (%)",
+      "Content Grade",
+      "Flow Grade",
+      "Grammar Grade",
+      "Overall Grade"
+    ],
+    "statistical_results": [
+      "After adjusting for background knowledge and demographic factors, complete reliance on AI for writing tasks led to a 25.1% reduction in accuracy.",
+      "In contrast, AI-assisted reading resulted in a 12% decline.",
+      "In the study, participants who tackled writing assignments without any external assistance achieved an average grade of 66.7%.",
+      "Conversely, those fully reliant on AI for crafting their assignments scored an average of 48.4%.",
+      "The \"Active\" group, which utilized AI to aid their comprehension of the paper, secured an average of 48.9% and exhibited the most diverse grade distribution, as showcased in Figure 1.",
+      "The observed differences are statistically significant at the 5% level, with p-values of 0.002459 between the AI and Manual groups, and 0.005081 between the Active and Manual groups.",
+      "The standard deviations for the Active, AI, and Manual groups are 0.3178209, 0.287588, and 0.266287, respectively.",
+      "According to the result in Table 3, when controlling the background knowledge, difficulty of reading materials, and other demographic information, when entirely relying on AI, the accuracy of learning outcomes dropped by 25.1% and when partly relying on AI, the accuracy dropped by 12%.",
+      "Both drops are statistically significant.",
+      "Nearly all participants in the manual section spent all their time on writing, while a significant number of participants in the Active and AI groups submitted their works in advance, lowering the average completion rate to 9 minutes for Active and 8.7 minutes for AI.",
+      "Compared to the manual group, the AI group generally produces higher-quality writing in the given time.",
+      "Writings by AI often have fewer spelling errors, better flow, and coverage compared to human writings.",
+      "When participants were trying to learn a topic that was not their best field, their accuracy lowered by 0.109, which is significant at 0.05 level.",
+      "Both age and the writing score in the manual section have a positive significant impact on the difference of correctness at 0.008 and 0.154.",
+      "Speaking English as a native language has a positive significant impact on the correctness level.",
+      "Metric Count Mean Std Deviation Min 25th Percentile Median 75th Percentile Max Flesch_Reading_Ease Score 135 30.67 3.79 25.5 25.5 32.1 34.4 34.4 Multiple Choice Time 54 175.72 81.86 21 100 178.5 253 302 Summary Report Time 54 554.06 108.52 181 594 601 601 603 Correctness (%) 135 0.547 0.301 0 0.4 0.6 0.8 1 Length of Summary Report 135 963.19 1393.89 3 146 378 1171.5 10525 Content Grade 135 3.27 1.6 1 1 4 5 5 Flow Grade 135 3.73 1.6 1 3 5 5 5 Grammar Grade 135 3.19 1.42 1 2.5 3 4.5 5 Overall Grade 135 3.39 1.41 1 3 4 4 5"
+    ],
+    "ambiguity_or_caveats": [
+      "There are several limitations in this paper.",
+      "First and foremost, the scope of this paper is predominantly centered on the higher education system.",
+      "While the analysis and results offer valuable insights into this particular sector, they might not be directly applicable or reflective of the broader education spectrum.",
+      "Elementary and secondary education systems have distinct characteristics, teaching methodologies, and challenges.",
+      "The dynamics of young learners differ from those in tertiary education, and the integration of AI at these levels might have different implications.",
+      "Thus, the results presented here may not be generalized to these other educational systems without further research.",
+      "Secondly, the time frame of my experiment might not provide a comprehensive view of the AI's efficiency and effectiveness in the educational process.",
+      "Participants were allocated a maximum of 39 minutes to complete all tasks, a relatively short duration.",
+      "It's plausible that the benefits or drawbacks of AI assistance might manifest differently over longer periods.",
+      "For instance, while AI might prove beneficial for quick tasks, its impact on long-term retention and understanding remains unknown based on this study.",
+      "Moreover, learners might experience cognitive fatigue or increased reliance on AI over extended periods, factors not accounted for in this short duration.",
+      "Lastly, the versatility and potential applications of AI in education are vast.",
+      "This paper narrowly focuses on its role in assisting with writing tasks.",
+      "While this provides a detailed insight into this specific area, it doesn't account for the myriad of other ways AI could revolutionize education.",
+      "From coding assistance to design guidance, and from picture editing to complex problem-solving, AI has the potential to reshape various facets of educational instruction and practice.",
+      "Also, because of different AI chatbots, other types of chatbots could provide different services, leading the final learning outcomes to become divergent.",
+      "Each of these applications could have unique benefits, challenges, and implications for learners.",
+      "By concentrating solely on writing assistance, this paper might not capture the full breadth of AI's impact on the educational domain.",
+      "The distribution pattern for the AI-assisted results aligns closely with a normal distribution.",
+      "However, the Active group's distribution is bimodal, indicating that the benefits of using AI to enhance paper comprehension vary among participants."
+    ]
+  },
+  "notes": "This is a pilot experimental study with 32 college-educated participants comparing three conditions: manual writing (control), AI-assisted writing, and active reading with AI. The study measures learning outcomes via comprehension questions and writing quality. Key finding: complete reliance on AI reduced accuracy by 25.1%, while partial reliance (active reading) reduced accuracy by 12%. The paper also reports that AI improved writing quality and productivity. Results are presented with regression analysis controlling for background knowledge and demographics.",
+  "_paper_id": "2311.05629v1",
+  "_source_pdf": "papers/2311.05629v1.pdf"
+}

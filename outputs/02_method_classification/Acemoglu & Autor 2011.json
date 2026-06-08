@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "Both study_design_description and population_description are null, providing no information about the research design or participants. Classification cannot be determined without any descriptive content.",
+  "citation_key": "acemoglu_2010_skills_tasks"
+}

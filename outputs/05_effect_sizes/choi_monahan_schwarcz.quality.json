@@ -1,0 +1,49 @@
+{
+  "_paper_id": "choi_monahan_schwarcz",
+  "citation_key": "choi_2023_lawyering_ai",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "no_gpt4",
+    "ai_arm_name": "with_gpt4",
+    "ai_arm_selection_rationale": "This is a between-subjects design where Group A used GPT-4 for complaint drafting (n=30) and Group B did not use AI for complaint drafting (n=29). The comparison is with_gpt4 vs no_gpt4 for the complaint drafting task.",
+    "direction_convention": "larger_is_better",
+    "m_human": 3.14,
+    "sd_human": 0.59,
+    "se_human": null,
+    "n_human": 29,
+    "m_ai": 3.31,
+    "sd_ai": 0.5,
+    "se_ai": null,
+    "n_ai": 30,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.0862,
+    "extraction_confidence": "high",
+    "notes": "Level A extraction: means and SDs directly reported. Group A (n=30) used GPT-4 for complaint drafting; Group B (n=29) did not use AI for complaint drafting. The reported difference is 0.17 grade points with 95% CI (-0.03, 0.37).",
+    "source_quotes": [
+      "Complaint Drafting: No GPT-4 (Std. Dev.) 3.14 (0.59), With GPT-4 (Std. Dev.) 3.31 (0.50), Difference (95% CI) 0.17 (-0.03, 0.37), p-value 0.0862",
+      "Group A used GPT-4 for the contract drafting and complaint drafting tasks",
+      "Group B used GPT-4 for the employee handbook and client memo tasks, and refrained from using GPT-4 or any other type of AI for the contract drafting and complaint drafting tasks"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.31131695012327565,
+    "hedges_g": 0.30720262919653635,
+    "variance": 0.06683521586313979,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Level A extraction: means and SDs directly reported. Group A (n=30) used GPT-4 for complaint drafting; Group B (n=29) did not use AI for complaint drafting. The reported difference is 0.17 grade points with 95% CI (-0.03, 0.37).",
+    "n_human": 29,
+    "n_ai": 30,
+    "direction_convention": "larger_is_better"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-14",
+  "onet_label": "Processing Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants performed three distinct information-processing tasks: composing written responses to workplace scenarios, evaluating and comparing persuasive texts, and comprehending/answering questions about complex written material. These activities\u2014writing emails, assessing arguments, and extracting information from texts\u2014are all core examples of 'Processing Information,' which O*NET defines as compiling, coding, categorizing, calculating, tabulating, auditing, or verifying information or data. While the tasks involve some communication elements, the substantive work being measured is the cognitive processing of information across multiple formats and complexity levels, not the performance of a complete occupational role.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-03",
+      "onet_label": "Communicating with Supervisors, Peers, or Subordinates"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-30",
+      "onet_label": "Documenting/Recording Information"
+    }
+  ],
+  "citation_key": "haslberger_2025_ai_productivity"
+}

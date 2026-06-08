@@ -1,0 +1,92 @@
+{
+  "citation_key": "peng_2023_copilot_productivity",
+  "authors": [
+    "Sida Peng",
+    "Eirini Kalliamvakou",
+    "Peter Cihon",
+    "Mert Demirer"
+  ],
+  "title": "The Impact of AI on Developer Productivity: Evidence from GitHub Copilot",
+  "year": 2023,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "We conducted a controlled experiment to measure the productivity impact of using GitHub Copilot in programming tasks.",
+      "The experiment began on May 15, 2022 and ended on June 20, 2022, right before GitHub Copilot became generally available.",
+      "We recruited 95 professional programmers through Upwork, a freelancing platform.",
+      "Once participants signed the contract, they were randomly split into control and treatment groups.",
+      "Before we began recruitment, we received approval for the study from the Microsoft Research Ethics Review Board.",
+      "Using a standardized task provides us with precise measures of performance as it is difficult to measure productivity of software developers.",
+      "To administer the task, we used GitHub Classroom, a platform for teachers to issue and grade coding assignments.",
+      "In this way, we accurately measured the timing and completion for each participant."
+    ],
+    "task": [
+      "Recruited software developers were asked to implement an HTTP server in JavaScript as quickly as possible.",
+      "Participants were instructed to write an HTTP server in JavaScript\u2014the treatment group would use GitHub Copilot to complete the task, while the control group would not.",
+      "Besides the use of GitHub Copilot in the treated group, participants were unconstrained in their software development \u2014they could use any sources of information as they normally do, such as internet search and Stack Overflow.",
+      "The instructions gave participants a link to a particular GitHub Classroom instance with a single assignment referencing a template repository.",
+      "When joining the assignment, participants received a personal copy of the template repository, with the task description (shown in Figure 4) and a skeleton codebase for participants to build upon.",
+      "We included a test suite in the repository, comprising twelve checks for submission correctness.",
+      "If a submission passes, all twelve tests we counted are successfully completed.",
+      "Participants could see the tests but were unable to alter them.",
+      "When participants committed and pushed their changes to GitHub, GitHub Classroom ran the test suite on their submission and reported the number of passing tests.",
+      "Participants could push as often as they pleased, automatically logging a timestamp each time.",
+      "The time elapsed between the timestamp of repository creation and the timestamp of the first commit to successfully pass all 12 tests was counted as the participant's task completion time."
+    ],
+    "population": [
+      "A total of 166 offers were sent during the experiment, and 95 were accepted.",
+      "The 95 developers were randomly assigned into control and treated groups, with 45 in the treated group and 50 in control.",
+      "Thirty-five developers from both the treated and control groups completed the task and survey.",
+      "Most of the participants are in the age group of 25-34 and come from India and Pakistan.",
+      "This group of participants is also characterized by relatively lower income (median yearly income between $10,000-$19,000) compared to US standards but high education level (the majority have a 4-year degree and above).",
+      "The group has an average coding experience of 6 years and, on average, reported spending 9 hours on coding in a working day."
+    ],
+    "arms": [
+      "The treated group was instructed to watch a 1-minute video introducing them to GitHub Copilot.",
+      "In addition to the instructions, they also received an automated email with installation instructions for GitHub Copilot once granted access to the tool.",
+      "We verify from telemetry after the experiment that all participants from the treated group have configured GitHub Copilot and accepted recommendations other than five who did not finish the sign up and thus started the experiment without the GitHub Copilot.",
+      "Both treated and control groups were instructed to complete an entry survey to provide demographic information such as age, gender, location, and educational background.",
+      "The control group did not have access to GitHub Copilot but was otherwise unconstrained, i.e., they were free to use internet search and Stack Overflow to complete the task."
+    ],
+    "outcome_definitions": [
+      "We calculated two metrics as a measure of performance for each group: task success and task completion time.",
+      "Task success was measured as the percentage of participants in a group that adequately completed the task.",
+      "Task completion time was measured as the time from start to end of the task.",
+      "The creation date and time of that personal copy created a timestamp.",
+      "The full history of test suite runs is visible on each repository, enabling researchers to observe partial results for participants that did not fully complete the task."
+    ],
+    "statistical_results": [
+      "The treatment group, with access to the AI pair programmer, completed the task 55.8% faster than the control group.",
+      "the treated group completed the task 55.8% faster (95% confidence interval: 21-89%).",
+      "Conditioning on completing the task, the average completion time from the treated group is 71.17 minutes and 160.89 minutes for the control group.",
+      "This represents a 55.8% reduction in completion time.",
+      "The p-value for the t-test is 0.0017, and a 95% confidence interval for the improvement is between [21%, 89%].",
+      "There are four outliers with time to completion above 300 min.",
+      "All outliers are in the control group, however our results remain robust if these outliers are dropped.",
+      "We also find that the treated group's success rate is 7 percentage points higher than the control group, but the estimate is not statistically significant, with a 95% confidence interval of [-0.11, 0.25].",
+      "The results show that less experienced developers (years of professional coding), developers with heavy coding load (hours of coding per day), and older developers (developers aged between 25 and 44) benefit more from Copilot.",
+      "Programming experience (years): Estimate 8.23, SE 4.36, t-Stat 1.90, p-Value 0.0629",
+      "Hours of programming per day: Estimate -11.70, SE 4.74, t-Stat -2.47, p-Value 0.0168",
+      "Age: 25-44: Estimate -74.55, SE 33.52, t-Stat -2.22, p-Value 0.0303",
+      "Unemployed: Estimate -35.98, SE 36.33, t-Stat -0.99, p-Value 0.3263",
+      "Income less than $20,000: Estimate 0.64, SE 27.47, t-Stat 0.02, p-Value 0.9814",
+      "No college: Estimate -36.57, SE 32.89, t-Stat -1.11, p-Value 0.2711",
+      "Language Preference: Java: Estimate -11.77, SE 33.16, t-Stat -0.35, p-Value 0.7240",
+      "Language Preference: Python: Estimate 22.90, SE 42.19, t-Stat 0.54, p-Value 0.5895",
+      "On average, participants in both treated and control groups estimated a 35% increase in productivity, which is an underestimation compared with the 55.8% increase in their revealed productivity.",
+      "The average irrelevant price for the treated group is $27.25, and the average irrelevant price for the control group is $16.91, both per month.",
+      "The difference is statistically significant at the 95% level."
+    ],
+    "ambiguity_or_caveats": [
+      "This study examines a standardized programming task in an experiment to obtain a precise measure of productivity, instead of a task where developers collaborate on large projects in professional proprietary and/or open-source settings.",
+      "Productivity benefits may vary across specific tasks and programming languages, so more research is needed to understand how our results generalizes to other tasks.",
+      "Finally, this study does not examine the effects of AI on code quality.",
+      "AI assistance can increase code quality if it suggests code better than the programmer writes, or it can reduce quality if the programmer pays less attention to code.",
+      "The code quality can have performance and security considerations that can change the real-world impact of AI.",
+      "It is, as of yet, unclear how such gains would be distributed and how job tasks would change to incorporate AI-powered developer tools."
+    ]
+  },
+  "notes": "This is a controlled randomized experiment comparing GitHub Copilot (treatment) vs. no Copilot (control) on task completion time for an HTTP server implementation task. The study recruited 95 developers from Upwork, with 45 in treatment and 50 in control; 35 completed both task and survey. Primary outcome is task completion time. The paper reports heterogeneous treatment effects by developer experience, daily coding hours, age, employment status, income, education, and language preference. Exit survey data on self-reported productivity gains and willingness-to-pay are also reported.",
+  "_paper_id": "Peng et al. 2023",
+  "_source_pdf": "papers/Peng et al. 2023.pdf"
+}

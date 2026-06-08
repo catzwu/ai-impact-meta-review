@@ -1,0 +1,49 @@
+{
+  "_paper_id": "doron",
+  "citation_key": "yeverechyahu_2025_github_copilot",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "r",
+    "ai_arm_name": "python",
+    "ai_arm_selection_rationale": "This is a natural experiment using difference-in-differences. Python became supported by GitHub Copilot (AI assistance) in October 2021, while R remained unsupported. Python represents the treatment group (human+AI), R represents the control group (human-only baseline). Choosing the main specification (not balanced panel or SDiD) as it has the largest effect and is presented first.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 18.395,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 1187,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1187,
+    "reported_percent_change": 0.3705,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 6.816,
+    "regression_coefficient_se": 0.892,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 18.395,
+    "extraction_confidence": "high",
+    "notes": "This is a difference-in-differences natural experiment comparing Python (treated with Copilot support) vs R (control, no Copilot support). The outcome is in levels (raw commit counts), not log-transformed. The regression coefficient represents the DiD estimate (treatment \u00d7 post interaction). The baseline mean of 18.395 is explicitly stated as the pre-treatment mean for the control group (R). Multiple specifications are reported (main, balanced panel, SDiD); selected the main specification as primary. The Rust vs Haskell comparison provides a robustness check but Python vs R is the main analysis.",
+    "source_quotes": [
+      "For Python versus R (Columns 1-3), GitHub Copilot increases commits by 6.816 per quarter (column 1), which represents a 37.05% increase relative to the pre-treatment mean of 18.395 commits per quarter.",
+      "TreatmentLang \u00d7 afterCopilot = 6.816 (SE 0.892)",
+      "p < 0.001"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.3151756367607035,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.37050000000000005,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment comparing Python (treated with Copilot support) vs R (control, no Copilot support). The outcome is in levels (raw commit counts), not log-transformed. The regression coefficient represents the DiD estimate (treatment \u00d7 post interaction). The baseline mean of 18.395 is explicitly stated as the pre-treatment mean for the control group (R). Multiple specifications are reported (main, balanced panel, SDiD); selected the main specification as primary. The Rust vs Haskell comparison provides a robustness check but Python vs R is the main analysis. | CI missing; variance not computable",
+    "n_human": 1187,
+    "n_ai": 1187
+  }
+}

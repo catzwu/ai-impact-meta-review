@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a computational simulation study using agent-based modeling (ABM) and mean field game theory, not an empirical study with human participants. The 'population' consists of simulated agents ('50 human creators, 3 foundational AI models, and 1,000 consumers') in a theoretical model called 'Goldilocks V4.0', not actual research subjects.",
+  "citation_key": "zhang_2026_generative_bifurcation"
+}

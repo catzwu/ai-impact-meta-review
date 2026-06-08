@@ -1,0 +1,52 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "debating_points",
+      "category": "quality",
+      "operationalization": "Average score (0-50) from three independent judges using a rubric with five indicators: clarity, evidence credibility, rhetoric, refutation ability, and argument superiority"
+    },
+    {
+      "outcome_name": "winning_debate",
+      "category": "quality",
+      "operationalization": "Binary indicator of whether participant's average judge score exceeded their rival's average score in a debate round"
+    },
+    {
+      "outcome_name": "clarity_position",
+      "category": "quality",
+      "operationalization": "Judge-rated score (0-10) on clarity and validity of the defended position, one dimension of the debate rubric"
+    },
+    {
+      "outcome_name": "credibility_evidence",
+      "category": "quality",
+      "operationalization": "Judge-rated score (0-10) on credibility of evidence used, one dimension of the debate rubric"
+    },
+    {
+      "outcome_name": "rhetoric_quality",
+      "category": "quality",
+      "operationalization": "Judge-rated score (0-10) on formal quality and rhetoric, one dimension of the debate rubric"
+    },
+    {
+      "outcome_name": "refutation_ability",
+      "category": "quality",
+      "operationalization": "Judge-rated score (0-10) on ability to refute rival's arguments, one dimension of the debate rubric"
+    },
+    {
+      "outcome_name": "argument_superiority",
+      "category": "quality",
+      "operationalization": "Judge-rated score (0-10) on superiority of arguments used, one dimension of the debate rubric"
+    },
+    {
+      "outcome_name": "time_sufficiency_perception",
+      "category": "other",
+      "operationalization": "Self-reported perception of whether preparation time was sufficient, measured via post-experiment survey"
+    },
+    {
+      "outcome_name": "usefulness_materials",
+      "category": "other",
+      "operationalization": "Self-reported perception of tool usefulness for debate preparation, measured via post-experiment survey"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "debating_points",
+  "citation_key": "roldan_2024_genai_inequality"
+}

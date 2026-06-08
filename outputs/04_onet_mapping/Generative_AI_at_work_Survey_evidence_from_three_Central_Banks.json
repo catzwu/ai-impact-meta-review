@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "19-3011.00",
+  "onet_label": "Economists",
+  "mapping_confidence": "high",
+  "rationale": "The participants are PhD economists working at central banks (ECB, NBS, CNB) performing the full range of economist work activities: conducting literature reviews, econometric analysis, economic modeling, policy recommendations, and research papers. The task description explicitly states these are 'workplace tasks specifically related to the work done by PhD economists.' This is clearly mapping the occupation of economist doing their professional work, not a narrow activity.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "perkowski_2024_generative_ai_central"
+}

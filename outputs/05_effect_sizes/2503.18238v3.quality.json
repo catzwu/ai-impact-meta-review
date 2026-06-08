@@ -1,0 +1,48 @@
+{
+  "_paper_id": "2503.18238v3",
+  "citation_key": "ju_2026_collaborating_ai",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "human_human",
+    "ai_arm_name": "human_ai",
+    "ai_arm_selection_rationale": "Only one AI arm available (human_ai). Human-only baseline is human_human (participants paired with another human).",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 976,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1258,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "The paper reports only a regression coefficient (\u03b2 = 0.327, SE 0.024) for the human_ai vs human_human comparison on text quality. No means, SDs, t-statistics, F-statistics, or standardized effect sizes are provided for the direct arm comparison. The regression coefficient cannot be directly converted to Hedges' g without additional information about the outcome scale and variance. All other reported statistics are for moderator effects (task-oriented communication, interpersonal communication, delegation) rather than the main arm comparison.",
+    "source_quotes": [
+      "In human evaluations of the quality of the ads, we found that human-AI teams produced higher quality ad text but lower quality ad images compared to human-human teams (Table 2).",
+      "regression_coefficient: 0.327 (SE 0.024), ***"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "The paper reports only a regression coefficient (\u03b2 = 0.327, SE 0.024) for the human_ai vs human_human comparison on text quality. No means, SDs, t-statistics, F-statistics, or standardized effect sizes are provided for the direct arm comparison. The regression coefficient cannot be directly converted to Hedges' g without additional information about the outcome scale and variance. All other reported statistics are for moderator effects (task-oriented communication, interpersonal communication, delegation) rather than the main arm comparison. | arm pair unresolvable",
+    "n_human": 976,
+    "n_ai": 1258,
+    "direction_convention": "larger_is_better"
+  }
+}

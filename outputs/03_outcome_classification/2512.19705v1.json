@@ -1,0 +1,82 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "textual_sources",
+      "category": "other",
+      "operationalization": "Count of distinct textual information sources cited in analyst reports"
+    },
+    {
+      "outcome_name": "figure_sources",
+      "category": "other",
+      "operationalization": "Count of distinct figure sources cited in analyst reports"
+    },
+    {
+      "outcome_name": "table_sources",
+      "category": "other",
+      "operationalization": "Count of distinct table sources cited in analyst reports"
+    },
+    {
+      "outcome_name": "firm_specific_topics",
+      "category": "other",
+      "operationalization": "Count of firm-specific topics (e.g., earnings guidance, product launches) discussed in reports"
+    },
+    {
+      "outcome_name": "industry_level_topics",
+      "category": "other",
+      "operationalization": "Count of industry-level topics (e.g., supply chain, regulatory developments) discussed in reports"
+    },
+    {
+      "outcome_name": "macroeconomic_topics",
+      "category": "other",
+      "operationalization": "Count of macroeconomic topics (e.g., monetary policy, inflation) discussed in reports"
+    },
+    {
+      "outcome_name": "historical_trend_analysis",
+      "category": "other",
+      "operationalization": "Count of historical trend analyses evaluating firm's past performance and patterns"
+    },
+    {
+      "outcome_name": "valuation_methods",
+      "category": "other",
+      "operationalization": "Count of valuation models used (e.g., DCF, comparable company multiples)"
+    },
+    {
+      "outcome_name": "forecasting_methods",
+      "category": "other",
+      "operationalization": "Count of forecasting methods used (e.g., earnings projections, scenario analysis)"
+    },
+    {
+      "outcome_name": "timeliness",
+      "category": "speed",
+      "operationalization": "Log of leader ratio: cumulative days between focal forecast and two prior forecasts divided by days to two subsequent forecasts"
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "category": "quality",
+      "operationalization": "Negative absolute difference between analyst's EPS forecast and subsequently realized EPS"
+    },
+    {
+      "outcome_name": "signal_source",
+      "category": "other",
+      "operationalization": "Difference between sources predicting earnings increase vs. decrease, scaled by their sum"
+    },
+    {
+      "outcome_name": "signal_balance",
+      "category": "other",
+      "operationalization": "One minus absolute value of SignalSource; measures balanced presentation of firm fundamentals"
+    },
+    {
+      "outcome_name": "cumulative_abnormal_returns",
+      "category": "other",
+      "operationalization": "Market-adjusted return over [0,2] trading day window following analyst report release"
+    },
+    {
+      "outcome_name": "abnormal_trading_volume",
+      "category": "other",
+      "operationalization": "Market-adjusted shares traded [0,2] days post-release minus [-40,-11] baseline, scaled by shares outstanding"
+    }
+  ],
+  "primary_speed_outcome": "timeliness",
+  "primary_quality_outcome": "forecast_accuracy",
+  "citation_key": "xue_2025_generative_analysts"
+}

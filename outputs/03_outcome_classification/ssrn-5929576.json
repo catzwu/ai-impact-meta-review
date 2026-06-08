@@ -1,0 +1,32 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "problems_solved",
+      "category": "speed",
+      "operationalization": "count of learning problems completed by the student per day, recorded by the tablet platform"
+    },
+    {
+      "outcome_name": "time_per_problem",
+      "category": "speed",
+      "operationalization": "average time in seconds from problem presentation to answer submission, measured by the system"
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "category": "quality",
+      "operationalization": "proportion of problems answered correctly per day, calculated from system-recorded correctness flags"
+    },
+    {
+      "outcome_name": "weekly_attendance",
+      "category": "other",
+      "operationalization": "binary indicator of whether student logged in at least once during the week"
+    },
+    {
+      "outcome_name": "attendance_days_per_week",
+      "category": "other",
+      "operationalization": "count of distinct days per week on which the student accessed the platform"
+    }
+  ],
+  "primary_speed_outcome": "problems_solved",
+  "primary_quality_outcome": "correctness_rate",
+  "citation_key": "kim_2024_generative_ai_tutoring"
+}

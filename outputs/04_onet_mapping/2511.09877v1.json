@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-30",
+  "onet_label": "Documenting/Recording Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants are Yelp users writing restaurant reviews. The primary task is 'drafting a review' where users document their dining experiences by recording information about food, service, and ambiance. This is a clear case of documenting/recording information\u2014users are entering, transcribing, recording, storing, or maintaining information in written form. While the AI provides writing prompts to reduce writer's block, the core work activity being performed by the 1.5+ million reviewers is the act of documenting their experiences, not a broader occupation like 'writer' or 'content creator.'",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-13",
+      "onet_label": "Thinking Creatively"
+    }
+  ],
+  "citation_key": "wang_2025_ai_writing_guidance"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "15-1252.00",
+  "onet_label": "Software Developers",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are explicitly described as 'developers' and 'engineers' who are 'producing and deploying production software' at Zoominfo. The primary task involves evaluating GitHub Copilot's impact on their core work: writing code across different programming languages. This is the quintessential work of Software Developers (15-1252.00), who design, develop, and modify software applications. The study examines their acceptance of AI-generated code suggestions and productivity improvements in their day-to-day software development work, not a narrow coding task but their full occupational role.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1299.09",
+      "onet_label": "Information Technology Project Managers"
+    }
+  ],
+  "citation_key": "bakal_2025_copilot_productivity"
+}

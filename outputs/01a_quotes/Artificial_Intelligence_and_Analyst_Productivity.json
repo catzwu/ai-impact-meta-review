@@ -1,0 +1,97 @@
+{
+  "citation_key": "shanthikumar_2024_ai_analyst",
+  "authors": [
+    "Devin Shanthikumar",
+    "Il Sun Yoo"
+  ],
+  "title": "Artificial Intelligence and Analyst Productivity",
+  "year": 2024,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "To examine the relationship between AI investments and analyst production quantity, we estimate the following Poisson model",
+      "We use a similar model to examine the relationship between AI investments and analyst production quality.",
+      "We interact these task-complexity proxies with % AI Hiring t-3~t-1, control variables, and fixed effects in Equations (1) and (2) (i.e., we utilize fully interacted models).",
+      "To examine the relationship between AI investments and analyst firm coverage, we estimate the following Poisson model",
+      "To examine the relationship between AI investments and analyst forecast biases, we estimate the following ordinary least squares model",
+      "To examine changes in analyst productivity after the introduction of ChatGPT, we estimate the following model",
+      "We identify the effects of AI investment on analyst forecast frequency and accuracy using variation within the same investment bank-firm pair over time.",
+      "Furthermore, we conduct analyses both without and with controls for prior analyst forecast frequency and accuracy for the same analyst-firm pair."
+    ],
+    "task": [
+      "Earnings forecasts are one of the most frequent and consistent forms of research that analysts produce.",
+      "For example, analysts typically update one-year-ahead annual earnings forecasts at least four times per year.",
+      "In order to generate earnings forecasts, analysts utilize both public and private information, and both hard and soft information.",
+      "Public hard information, such as annual and quarterly reports, management earnings forecasts, other firm announcements, and macroeconomic and industry data, is all relevant to forming and updating earnings forecasts",
+      "Analysts also conduct additional information acquisition to both gain and complement their private information.",
+      "Analysts often participate in conference calls and speak privately with management, for example, through phone calls and in-person meetings, gaining valuable information by doing so.",
+      "Analysts host investor conferences, directly connecting their clients with firms, but also gaining information that improves their research"
+    ],
+    "population": [
+      "We match the data from Bloom et al. (2024) with I/B/E/S using investment bank names, resulting in a sample of fifteen large and mid-size investment banks that provide analyst research and are included in I/B/E/S.",
+      "These fifteen banks issue 35% of the earnings forecasts in I/B/E/S for our sample firms during our sample period.",
+      "These investment banks also account for 35% of all I/B/E/S brokers with at least 30 analysts.",
+      "The fifteen banks are AllianceBernstein, Bank of America Merrill Lynch, Credit Suisse, Deutsche Bank, Goldman Sachs, HSBC, JPMorgan Chase, Macquarie, Morgan Stanley, Nomura, Oppenheimer, Piper Jaffray, Raymond James, Stifel, and William Blair.",
+      "Our main sample, which is used to examine investment banks' AI investments, includes 120 investment bank-years with job posting data (fifteen investment banks for eight years), leading to a final sample of 70,923 analyst-firm-year observations.",
+      "On average, the percentage of AI job postings from year t-3 through year t-1, % AI Hiring t-3~t-1, is approximately 1.1%, and the raw number of such three-year cumulative postings is about 570."
+    ],
+    "arms": [
+      "We calculate the percentage of job postings from a given investment bank that include these AI-related bigrams.",
+      "The independent variable used in our tests, % AI Hiring t-3~t-1, is defined as the percentage of AI-related job postings out of all of the investment bank's job postings from year t-3 through year t-1.",
+      "We use this cumulative measure over the past three years, as we expect it to take time for AI job postings to result in hiring and an increased availability and utilization of AI resources.",
+      "Post ChatGPT is defined as an indicator variable that equals one for 2023 (after ChatGPT was introduced), and zero otherwise."
+    ],
+    "outcome_definitions": [
+      "The dependent variable, Forecast Frequency, is defined as the number of annual earnings forecasts issued by the analyst for the firm in the year.",
+      "The dependent variable, Forecast Accuracy, is defined as -1 times the average forecast error for forecasts issued by the analyst for the firm in the year, where forecast error is the absolute value of the difference between the forecasted EPS and actual EPS, scaled by the stock price at the beginning of the fiscal year.",
+      "Forecast Optimism, defined as the average forecast optimism for forecasts issued by the analyst for the firm in the year, where forecast optimism is the difference between the forecasted EPS and actual EPS scaled by the absolute value of actual EPS",
+      "Walkdown, defined as an indicator variable that equals one if the first forecast is greater than the actual EPS and the last forecast is less than or equal to the actual EPS for the year, and zero otherwise.",
+      "The dependent variable, # Firms Covered, is defined as the number of all firms covered by analysts in the investment bank in the year.",
+      "Higher Dispersion, defined as an indicator variable that equals one if the firm's forecast dispersion (the standard deviation of all forecasts, scaled by the absolute value of the median forecast) for the year is above the median",
+      "Higher Ret Vol, defined as an indicator variable that equals one if the firm's return volatility for the year is above the median.",
+      "High Bid Ask Spread, defined as an indicator variable that equals one if the firm's average daily value of bid ask spread (the difference between the quoted closing bid and ask, scaled by the closing price on the day) for the year is above the median",
+      "Low Voluntary Disclosure, defined as an indicator variable that equals one if the firm does not issue management earnings guidance in the year.",
+      "Inferior Analysts, defined as an indicator variable that equals one if the analyst's forecast accuracy in the past three years is below the median, and zero otherwise."
+    ],
+    "statistical_results": [
+      "Consistent with AI enabling analysts to increase production, we find that the coefficients on % AI Hiring t-3~t-1 are positive and significant at the 1% level in both models.",
+      "In terms of economic significance, a one standard deviation increase in AI investment is associated with a 1.4% increase in the number of annual earnings forecasts.",
+      "Furthermore, we find that AI investment also leads to a higher frequency of other types of forecasts (e.g., sales, cash flows, etc.).",
+      "Consistent with AI facilitating higher quality analyst work, we find that the coefficients on % AI Hiring t-3~t-1 are negative and significant at the 5% levels.",
+      "In terms of economic magnitude, a one standard deviation increase in % AI Hiring t-3~t-1 is associated with a 2.3% increase in forecast accuracy.",
+      "For a stock with a price of $50 and average forecast accuracy of -0.048, this implies that the earnings forecasts become more accurate by 5.5 cents per share.",
+      "We find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 High Dispersion for both forecast frequency and forecast accuracy.",
+      "We also find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 High Ret Vol for both forecast frequency and forecast accuracy.",
+      "We find that the coefficients on % AI Hiring t-3~t-1 \u00d7 High Bid Ask Spread are significantly positive for both forecast frequency and forecast accuracy.",
+      "We find a significantly positive coefficient on % AI Hiring t-3~t-1 \u00d7 Low Voluntary Disclosure for forecast frequency in Column (3), but do not find a significant result for forecast accuracy in Column (4).",
+      "We find significantly positive coefficients on % AI Hiring t-3~t-1 \u00d7 Inferior Analysts for both forecast frequency and forecast accuracy.",
+      "Consistent with our expectation, we find that the coefficient on % AI Hiring t-3~t-1 is positive and significant at the 5% level, suggesting that AI investments increase analysts' firm coverage.",
+      "While we do not find a significant coefficient in Column (2), we observe a significantly positive coefficient in Column (3), suggesting that the association between AI investments and firm coverage reported in Column (1) is explained by the initiation of new coverage.",
+      "We also find significantly positive coefficients in Columns (4) and (5).",
+      "Notably, the result in Column (5) indicates that AI investments enable analysts to expand their coverage to firms without analyst coverage, which may be more difficult to forecast due to insufficient information.",
+      "We find that the coefficients on % AI Hiring t-3~t-1 are positive and significant at the 10% level in both columns, suggesting that analysts in investment banks with higher AI investments tend to provide more optimistically biased forecasts in general.",
+      "We find that the coefficients on % AI Hiring t-3~t-1 are positive and significant at the 1% levels in both columns, suggesting that analysts in investment banks with higher AI investments tend to exhibit the walkdown behavior to allow firms to more easily beat or meet analyst earnings forecasts.",
+      "In both columns, we find significantly positive coefficients on Post ChatGPT.",
+      "These findings suggest that the introduction of ChatGPT improves analyst production quantity and quality, consistent with our main findings in Tables 3 and 4, and support a causal relation between AI use and analyst productivity.",
+      "Across all panels and columns, we find that our coefficients of interest are significantly positive, suggesting that the positive effects of ChatGPT on analyst production quantity and quality are stronger for firms that are more complex to forecast.",
+      "We find that the coefficients on Post ChatGPT \u00d7 Inferior Analysts are significantly positive in both columns.",
+      "These results suggest that the introduction of ChatGPT has a stronger effect on the productivity of analysts with previously poorer performance, consistent with our results in Table 6, which examines investment banks' AI investments, and with the idea that AI can help level the playing field.",
+      "While we do not find a significant coefficient on Post ChatGPT in Column (1), we find a significantly positive coefficient on Post ChatGPT in Column (2).",
+      "This finding suggests that the introduction of ChatGPT increases analysts' strategic forecasting behavior, consistent with our results in Table 8, which examines investment banks' AI investments, and with the idea that AI increases strategic analyst forecast behavior."
+    ],
+    "ambiguity_or_caveats": [
+      "The primary caveat to our study is that we focus on realized effects for a large cross-section of analysts and banks.",
+      "We lack visibility into the specific implementations at each bank.",
+      "Future research that takes a more focused behind-the-scenes approach, such as Groysberg, Healy and Maber (2011) or Soltes (2014), can complement our work.",
+      "As AI systems continue to evolve and become increasingly complex and capable, it will also be important to examine if and how the use of AI in financial analysis, and the role of human analysts, changes.",
+      "Uses of AI will vary significantly across industries, over time, and even across companies within an industry.",
+      "Much of the details of investment banks' in-house AI implementations are proprietary, and there is likely to be a large amount of variation across banks and over time.",
+      "Although ChatGPT use was restricted at many investment banks due to data security concerns, the rapid shift in AI acceptance and popularity following its introduction likely spurred increased use of available AI resources.",
+      "We replicate all analyses except for new analyst coverage analyses.",
+      "Because we have only one year of post-ChatGPT data, and the level of observations for the coverage test is at the investment bank-year-level, we have insufficient power to replicate the coverage test using the introduction of ChatGPT."
+    ]
+  },
+  "notes": "This is an empirical study examining the effects of AI investments by investment banks on sell-side analyst productivity, measured through earnings forecast frequency and accuracy. The paper uses two main identification strategies: (1) variation in AI job postings across 15 investment banks from 2013-2020, and (2) the introduction of ChatGPT in November 2022 as an exogenous shock to AI use. The study includes multiple outcome measures (forecast frequency, accuracy, optimism, walkdown behavior, and firm coverage) and cross-sectional analyses examining task complexity, analyst ability, and information environment effects. Results consistently show that AI improves both quantity and quality of analyst output, with stronger effects for more complex forecasting tasks, suggesting task complementarity rather than pure automation.",
+  "_paper_id": "Artificial_Intelligence_and_Analyst_Productivity",
+  "_source_pdf": "papers/Artificial_Intelligence_and_Analyst_Productivity.pdf"
+}

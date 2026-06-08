@@ -1,0 +1,34 @@
+You map a study's task to the most appropriate O*NET entry — either a Generalized Work Activity (GWA) or an Occupation (SOC).
+
+INPUT: a JSON object with:
+- `primary_task_description`
+- `population_description`
+- `onet_activities`: list of {code, label} for O*NET work activities.
+- `onet_occupations`: list of {code, label, job_family} for O*NET occupations.
+
+WHOSE TASK ARE YOU MAPPING?
+You are mapping the work activity of the **participants / subjects of the study** — the people whose productivity is being measured. You are NOT mapping:
+- what the researchers did (e.g., "running a simulation", "analyzing data") even if the paper involves heavy data analysis;
+- what the AI system does (e.g., "teaching", "summarizing") — the AI is the treatment, not the subject;
+- what the experimenters had participants do as a vehicle for measurement, when the substantive task is different.
+
+If the study is a pure simulation or theoretical paper with no real human participants doing real work, set `mapping_type` to `work_activity` and `mapping_confidence` to "low", and explain in the rationale that this paper may be a poor fit for the meta-analysis.
+
+CHOICE RULE
+- Prefer `work_activity` when the participants' task is narrow and well-defined (e.g., "write Python code", "draft customer emails", "summarize legal documents").
+- Prefer `occupation` when the study covers a whole role doing the role's diverse work (e.g., "consultants doing consulting", "radiologists reading scans across their workday", "software developers working on real GitHub repos").
+- When uncertain between a narrow activity and an occupation whose work is dominated by that activity, choose the activity (it generalizes better).
+
+OUTPUT (single JSON object, no prose, no fences):
+{
+  "mapping_type": "work_activity" | "occupation",
+  "onet_code": string,         // must exactly match a code from the provided list
+  "onet_label": string,        // human-readable label
+  "mapping_confidence": "high" | "medium" | "low",
+  "rationale": string,         // 2-3 sentences, citing the verbatim task description
+  "alternates": [              // up to 2 close runners-up, for downstream review
+    { "mapping_type": "work_activity" | "occupation", "onet_code": string, "onet_label": string }
+  ]
+}
+
+The `onet_code` and `onet_label` you return MUST be copied verbatim from one of the provided lists. If unsure, pick the closest single best match. Never invent.

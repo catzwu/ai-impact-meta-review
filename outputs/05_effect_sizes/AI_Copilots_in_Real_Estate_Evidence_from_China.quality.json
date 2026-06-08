@@ -1,0 +1,52 @@
+{
+  "_paper_id": "AI_Copilots_in_Real_Estate_Evidence_from_China",
+  "citation_key": "ai_copilots_real_estate_2025",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treatment",
+    "ai_arm_selection_rationale": "Field experiment in Jinan randomized AI copilot access at the neighborhood level. Treatment group (n=34 neighborhoods) had AI copilot enabled; control group (n=34 neighborhoods) had it disabled. This is the cleanest experimental comparison in the paper.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 34,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 34,
+    "reported_t": 2.42,
+    "reported_t_df": 66,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "The field experiment (Table 6, column 6) reports Post\u00d7Treat coefficient = 0.2323 with SE = 0.096 for Rating (seller). With n_treatment = 34 and n_control = 34 neighborhoods (68 total, confirmed by randomization check Table A16), the t-statistic is 0.2323/0.096 = 2.42 with df = 68-2 = 66. The paper reports p < 0.01 (inequality only, not exact p-value). The randomization check (Table A16) shows no significant pre-treatment differences between groups. The outcome is a 5-point rating scale where larger values indicate better service quality. Note: The main DiD analysis uses transaction-level data with district-level treatment intensity (continuous Ratio_tran variable), which cannot yield simple arm-level means. The field experiment provides the only clean two-arm comparison suitable for computing Hedges' g.",
+    "source_quotes": [
+      "Table 6: Field Experiment: Intent-to-Treat Effects of Copilot Access ... Post\u00d7Treat 0.2323** (0.096) ... Rating (seller)",
+      "The experiment ran for roughly eleven months through the end of 2019. Randomization checks show no meaningful pre-treatment differences across conditions (Appendix Table A16).",
+      "Half (34) of the 68 neighborhoods in Jinan were randomized to the control group.",
+      "Table A16: Randomization Check ... Rating (seller) Treatment Group 4.7232 Control Group 4.7431 p-Value of T-Test 0.78",
+      "Standard errors clustered at the neighborhood level are reported in parentheses. *** p<0.01, ** p<0.05, * p<0.1"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.5869362125879257,
+    "hedges_g": 0.5802411227104969,
+    "variance": 0.05996478811412257,
+    "computation_method": "t_statistic",
+    "confidence": "medium",
+    "notes": "The field experiment (Table 6, column 6) reports Post\u00d7Treat coefficient = 0.2323 with SE = 0.096 for Rating (seller). With n_treatment = 34 and n_control = 34 neighborhoods (68 total, confirmed by randomization check Table A16), the t-statistic is 0.2323/0.096 = 2.42 with df = 68-2 = 66. The paper reports p < 0.01 (inequality only, not exact p-value). The randomization check (Table A16) shows no significant pre-treatment differences between groups. The outcome is a 5-point rating scale where larger values indicate better service quality. Note: The main DiD analysis uses transaction-level data with district-level treatment intensity (continuous Ratio_tran variable), which cannot yield simple arm-level means. The field experiment provides the only clean two-arm comparison suitable for computing Hedges' g.",
+    "n_human": 34,
+    "n_ai": 34,
+    "direction_convention": "larger_is_better"
+  }
+}

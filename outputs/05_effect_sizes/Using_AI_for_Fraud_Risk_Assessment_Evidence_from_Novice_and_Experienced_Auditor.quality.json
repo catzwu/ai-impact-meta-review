@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Using_AI_for_Fraud_Risk_Assessment_Evidence_from_Novice_and_Experienced_Auditor",
+  "citation_key": "christensen_2025_fraud_risk",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Experienced, No AI Assistance",
+    "ai_arm_name": "Experienced, Access to AI Assistance",
+    "ai_arm_selection_rationale": "Selected Experiment 1 (experienced auditors) as the primary comparison. The AI arm uses GPT-4o-powered chatbot. Experienced auditors represent the stronger baseline for evaluating AI assistance on professional fraud risk assessment tasks. Table 4 Panel A provides complete statistics including sample sizes and standard deviations.",
+    "direction_convention": "larger_is_better",
+    "m_human": 3.0,
+    "sd_human": 2.58,
+    "se_human": null,
+    "n_human": 38,
+    "m_ai": 6.39,
+    "sd_ai": 2.84,
+    "se_ai": null,
+    "n_ai": 41,
+    "reported_t": 5.54,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "Complete Level A data extracted from Table 4 Panel A (page 47). Sample sizes were found in the table cells: n=38 for No AI Assistance and n=41 for Has Access to AI Assistance. Standard deviations were also provided in the table: sd=2.58 for control and sd=2.84 for AI condition. The p-value is reported as an inequality (p-value= <0.01) rather than an exact value, so reported_p_value is set to null. The outcome is Number of Highly Relevant Risks, where higher values indicate better fraud risk identification performance.",
+    "source_quotes": [
+      "Table 4 Panel A: Experienced - No AI Assistance: mean=3.00, std. dev= 2.58, n= 38",
+      "Table 4 Panel A: Experienced - Has Access to AI Assistance: mean=6.39, std. dev= 2.84, n= 41",
+      "Table 4 Panel A: t-stat= 5.54, p-value= <0.01",
+      "Number of Highly Relevant Risks is the number of risks identified by each participant that was within a category rated as highly relevant."
+    ]
+  },
+  "computed": {
+    "cohens_d": 1.2471622924352057,
+    "hedges_g": 1.2349750387632004,
+    "variance": 0.0593728105599164,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Complete Level A data extracted from Table 4 Panel A (page 47). Sample sizes were found in the table cells: n=38 for No AI Assistance and n=41 for Has Access to AI Assistance. Standard deviations were also provided in the table: sd=2.58 for control and sd=2.84 for AI condition. The p-value is reported as an inequality (p-value= <0.01) rather than an exact value, so reported_p_value is set to null. The outcome is Number of Highly Relevant Risks, where higher values indicate better fraud risk identification performance.",
+    "n_human": 38,
+    "n_ai": 41,
+    "direction_convention": "larger_is_better"
+  }
+}

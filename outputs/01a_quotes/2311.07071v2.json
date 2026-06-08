@@ -1,0 +1,84 @@
+{
+  "citation_key": "zhang_2024_generative_equilibrium",
+  "authors": [
+    "Kaichen Zhang",
+    "Zixuan Yuan",
+    "Hui Xiong"
+  ],
+  "title": "The Impact of Generative Artificial Intelligence on Market Equilibrium: Evidence from a Natural Experiment",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "To overcome the challenge of causal inference, we identify an unanticipated and sudden leak of a highly proficient image-generative AI as a natural experiment, where markets inadvertently encounter experimental and control conditions, resembling a scenario wherein nature orchestrates an experiment.",
+      "Using a difference-in-differences research design, we compare the anime market to the wallpaper market, before and after the unintended leak of NovelAI's anime generative AI.",
+      "We employ the standard multi-periods model specification of difference-in-differences with two-way fixed effects",
+      "This leak served as an ideal natural experiment. First, China constitutes an environment where painting markets remained unaffected by generative AI prior to the leak due to policy restrictions, language restrictions, and payment restrictions. Second, the leaked AI specializes exclusively in generating anime-style images, thus affecting only the anime painting markets while leaving other painting styles unaffected, allowing for a comparison between treated and control units. Third, the unanticipated and sudden nature of the leak is exogenous."
+    ],
+    "task": [
+      "Consumers, as demanders, can post an order on the focal platform, and artists, as producers, can express their interest in accepting the order. The consumer can then select one of the interested artists and enter into a contract with the selected artist. Once the artist has completed the task, the consumer makes the payment.",
+      "An order on the focal platform is comprised of an art category, a price range, and a description. The art category includes \"original character\", \"artwork\", \"avatar\", \"Q style\", \"tachie\", \"wallpaper\", \"live2d\", \"scenario\", \"cover\", \"poster\", \"UI\", \"character design\", and \"CG\"."
+    ],
+    "population": [
+      "We collected 197,068 records from a leading art outsourcing platform in China from January 2022 to February 2023.",
+      "We removed 408 outlier orders whose price is more than 70,000 yuan (about $10,000) because they are too expensive to become real orders.",
+      "We then aggregate the data to the category-week level."
+    ],
+    "arms": [
+      "We select the category \"tachie\" as the treated market. The \"tachie\" is a Japanese term in the context of anime, manga, and video games that refers to the full-body standing drawing of a character. The \"tachie\" is precisely the style that NovelAI's AI produces.",
+      "In contrast, we select the \"wallpaper\" as the control market.",
+      "The orders on the focal platform are classified into two categories based on licenses: personal orders and commercial orders. The artwork of personal orders is for personal use only, whereas the artwork of commercial orders is permitted for commercial purposes."
+    ],
+    "outcome_definitions": [
+      "For each category and each week, we calculate the average price (price), order volume (volume), and overall revenue (revenue).",
+      "We calculate the average price and overall revenue based on the lower bound because the lower bound may better reflect the true willingness of consumers to accept their orders than the upper bound.",
+      "Price refers to the average price. Volume refers to order volume. Revenue refers to the overall revenue. The currency of Price and Revenue is Chinese yuan (7 yuan = $1).",
+      "We define incumbents as the group of artists who registered prior to the leak, i.e., before October 2022."
+    ],
+    "statistical_results": [
+      "Our analysis reveals a promising effect on market equilibrium following the emergence of generative AI. Specifically, although this emergence leads to a 64% reduction in the average price, the generative AI also leads to a remarkable 121% increase in order volume and a consequent 56% increase in overall revenue. All effects are statistically significant at the 1% level.",
+      "The coefficient estimate of price is -646, indicating generative AI lowered the average price by 646 yuan.",
+      "The coefficient estimates of volume and revenue are 140 and 56,674, showing that generative AI increased the number of orders by 140 per week and increased the total revenue by 56,674 yuan per week.",
+      "The results show that price decreased by 64%, volume increased by 121%, and revenue increased by 56%. All effects are statistically significant at the 1% level.",
+      "treated\u00d7after -646.5 \u2217\u2217\u2217 (2.0\u00d710\u221212)",
+      "treated\u00d7after 140.3\u2217\u2217\u2217 (4.9\u00d710\u221213)",
+      "treated\u00d7after 56,674.4\u2217\u2217\u2217 (1.7\u00d710\u221210)",
+      "treated\u00d7after -0.643\u2217\u2217\u2217 (1.8\u00d710\u221215)",
+      "treated\u00d7after 1.21\u2217\u2217\u2217 (3.8\u00d710\u221215)",
+      "treated\u00d7after 0.567\u2217\u2217\u2217 (1.5\u00d710\u221215)",
+      "personal_treated\u00d7after -746.0 \u2217\u2217 (17.61)",
+      "personal_treated\u00d7after 129.5\u2217\u2217\u2217 (1.520)",
+      "personal_treated\u00d7after 41,244.4\u2217\u2217\u2217 (195.6)",
+      "personal_treated\u00d7after -0.9892\u2217\u2217\u2217 (0.0101)",
+      "personal_treated\u00d7after 2.953\u2217\u2217\u2217 (0.0162)",
+      "personal_treated\u00d7after 1.964\u2217\u2217\u2217 (0.0061)",
+      "commercial_treated\u00d7after -50.57\u2217\u2217\u2217 (1.36\u00d710\u221212)",
+      "commercial_treated\u00d7after 37.25\u2217\u2217\u2217 (2.62\u00d710\u221213)",
+      "commercial_treated\u00d7after 21,115.6\u2217\u2217\u2217 (1.03\u00d710\u221210)",
+      "commercial_treated\u00d7after -0.0967\u2217\u2217\u2217 (2.27\u00d710\u221215)",
+      "commercial_treated\u00d7after 0.3903\u2217\u2217\u2217 (6.77\u00d710\u221215)",
+      "commercial_treated\u00d7after 0.2936\u2217\u2217\u2217 (4.43\u00d710\u221215)",
+      "treated\u00d7after -0.4915\u2217\u2217\u2217 (1.33\u00d710\u221215)",
+      "treated\u00d7after 1.171\u2217\u2217\u2217 (3.51\u00d710\u221215)",
+      "treated\u00d7after 0.6790\u2217\u2217\u2217 (2.02\u00d710\u221215)",
+      "treated\u00d7after -0.5127\u2217\u2217\u2217 (1.5\u00d710\u221215)",
+      "treated\u00d7after 1.168\u2217\u2217\u2217 (3.1\u00d710\u221215)",
+      "treated\u00d7after 0.6556\u2217\u2217\u2217 (1.92\u00d710\u221215)",
+      "According to our data, the incumbents won 97.41% of the orders and 97.96% of the revenue after the leak.",
+      "Consumers can fulfill their orders 64% cheaper than before, indicating an improvement in consumer welfare. Furthermore, artists receive 56% more revenue, as each monetary transaction completed by consumers is considered revenue for the artist. They receive 121% more orders, which underscores the increased opportunities that accelerate the evolution of their artistic endeavors by providing an invaluable platform for rapid prototyping and iterative refinement.",
+      "The results in Panel B are consistent with our main effects, indicating that incumbents benefit from generative AI by gaining more orders (116%) and more revenue (65%)."
+    ],
+    "ambiguity_or_caveats": [
+      "However, the equation does not hold in the context of this study. A plausible explanation for this discrepancy could be the influence of seasonal effects. For example, the demand for anime images could naturally fluctuate after October 2022 due to the start of a new academic semester for students. This intrinsic variability could potentially skew our estimates of the impact of generative AI, leading to underestimates, overestimates, or even fundamentally incorrect estimates.",
+      "However, randomized experiments are not feasible in this study. While the individual level of analysis allows for the division of subjects into treatment and control groups, the challenge arises at the market level of analysis. Unlike individuals, markets cannot be randomly assigned to different groups, which limits the ability to implement generative AI effects only on the treated group while leaving the control group unaffected.",
+      "With regard to the remaining categories, they are likely to be partially affected by NovelAI's generative AI, because the generative AI may only be useful with careful prompt engineering and post-processing, which could result in an underestimation of the effects.",
+      "The \"wallpaper\" may be the best control unit because it is unlikely that NovelAI's generative AI will generate elaborate wallpapers.",
+      "Stable diffusion may struggle with maintaining fidelity to specific details in the text prompts, especially for complex or highly detailed descriptions, resulting in images that are somewhat generic or miss nuanced aspects of the desired output. This limitation can qualitatively explain why generative AI mainly affects low-end orders and cannot replace incumbent artists.",
+      "One potential explanation for this result is that the current generative AI is unable to fulfill orders without human artists. This is because the generation of content is an iterative process between consumers and artists, with artists required to make ongoing modifications in response to consumer feedback. The current generative AI, which outputs images, audio, and videos, lacks the capacity to make slight modifications independently due to the limitations of its underlying algorithms.",
+      "Furthermore, generative AI may present potential copyright issues that limit its commercial applications. This is because the training of generative AI often involves the use of a substantial number of images collected from the Internet without copyright permission."
+    ]
+  },
+  "notes": "This is an empirical study using a natural experiment (the NovelAI model leak in October 2022) to estimate causal effects of generative AI on market equilibrium. The paper uses difference-in-differences methodology comparing the anime art market (treated) to the wallpaper market (control) before and after the leak. Data comes from a Chinese art outsourcing platform (Mihuashi) covering January 2022 to February 2023. The study includes heterogeneous analyses by order type (personal vs. commercial) and supplier type (incumbents vs. entrants).",
+  "_paper_id": "2311.07071v2",
+  "_source_pdf": "papers/2311.07071v2.pdf"
+}

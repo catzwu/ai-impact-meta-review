@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-14",
+  "onet_label": "Processing Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants' core task involves 'reading a paper, crafting a summary based on a given prompt, and answering five questions pertinent to the paper.' This is fundamentally about comprehending written information, synthesizing it into summaries, and demonstrating understanding through question responses. This aligns precisely with O*NET's 'Processing Information' work activity, which encompasses compiling, coding, categorizing, calculating, tabulating, auditing, or verifying information or data. The task is narrow and well-defined (reading comprehension and summarization), making a work activity more appropriate than an occupation.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-22",
+      "onet_label": "Getting Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    }
+  ],
+  "citation_key": "ju_2023_generative_ai_learning"
+}

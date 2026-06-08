@@ -1,0 +1,68 @@
+{
+  "citation_key": "whitfill_2025_compute_bottlenecks",
+  "authors": [
+    "Parker Whitfill",
+    "Cheryl Wu"
+  ],
+  "title": "Will Compute Bottlenecks Prevent an Intelligence Explosion?",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "We construct a novel panel dataset for four leading AI labs (OpenAI, DeepMind, Anthropic, and DeepSeek) from 2014 to 2024 and fit the data to two alternative Constant Elasticity of Substitution (CES) production function models.",
+      "We will estimate \u03c3 by looking at how AI firms allocate research compute and human labor from 2014 to 2024.",
+      "We estimate two sets of main results, one for the CES in compute specification and one for CES in frontier experiments specification. For both sets of results, we include firm fixed effects to correct for any time-invariant productivity differences between firms."
+    ],
+    "task": [
+      "We will estimate\u03c3 using the static optimization problem.",
+      "By taking the first-order conditions with respect to compute and cognitive labor, dividing them, taking the logarithm, and rearranging the terms, we arrive at the following equation: ln(Kit,res/Hit) = \u03c3 ln(wit/rit) + \u03c3 ln(\u03b3/(1 \u2212 \u03b3)).",
+      "Therefore, we can estimate \u03c3 by regressing ln(Kit,res/Hit) on a constant and ln(wit/rit) and looking at the coefficient on ln(wit/rit)."
+    ],
+    "population": [
+      "Our data covers OpenAI from 2016\u20132024, Anthropic from 2022\u20132024, DeepMind from 2014\u20132024 and DeepSeek from 2023\u20132024.",
+      "Hit: We use headcount estimates from PitchBook, which provides data at a high frequency (roughly once per year).",
+      "We specifically look for and impute the wage of level III employees (scientific researchers) at each firm."
+    ],
+    "arms": [],
+    "outcome_definitions": [
+      "\u03c3 is the elasticity of substitution between research compute and cognitive labor.",
+      "\u03c3 > 1 denotes the case where compute and cognitive labor are gross substitutes, \u03c3 < 1 where they are gross complements, and \u03c3 = 1 denotes the intermediate, Cobb-Douglas case.",
+      "We define an intelligence explosion as explosive growth in the quality of algorithms, Ait."
+    ],
+    "statistical_results": [
+      "In the CES in compute specification, we estimate \u03c3 = 2.58, which implies research compute and cognitive labor are highly substitutable.",
+      "However, in the frontier experiments case, we estimate \u03c3 = \u2212.10.",
+      "Table 1 shows that the choice of model specification significantly affects the results. In the CES in compute specification, we estimate \u03c3 = 2.583, which implies research compute and cognitive labor are highly substitutable. However, in the frontier experiments case, we estimate \u03c3 = \u22120.103.",
+      "Standard errors in the paratheses are clustered at the firm level.",
+      "Gamma estimates are constrained in closed form from first-order conditions. Monte Carlo standard errors are in the square brackets.",
+      "Observations are at the firm-year level. Column (1) uses a CES-in-compute specification. Column (2) includes ln(Ktrain) to account for frontier experiment scale. All regressions include firm fixed effects.",
+      "R2 0.857 for CES in Compute specification",
+      "R2 0.982 for CES in Frontier Experiments specification",
+      "We get qualitatively similar results in all cases that we tried (substitutes in the CES in compute specification, complements in the CES in frontier experiments specification).",
+      "Table A2: Sample Restricted to 2020 Onwards - Elasticity of Substitution (\u03c3) 1.486 (0.672) for CES in Compute and \u22120.769 (0.464) for CES in Frontier Experiments, Observations 16, R2 0.562 and 0.886",
+      "Table A3: Excluding Year 2024 - Elasticity of Substitution (\u03c3) 2.638 (0.449) for CES in Compute and \u22120.129 (0.128) for CES in Frontier Experiments, Observations 23, R2 0.835 and 0.992",
+      "Table A4: DeepMind Subsample Only - Elasticity of Substitution (\u03c3) 2.297 (0.556) for CES in Compute and \u22120.007 (0.281) for CES in Frontier Experiments, Observations 11, R2 0.820 and 0.995",
+      "Table A5: Adjusted Compute Cost Specification - Elasticity of Substitution (\u03c3) 0.893 (0.103) for CES in Compute and \u22120.127 (0.116) for CES in Frontier Experiments, Observations 27, R2 0.879 and 0.983",
+      "Table A6: Instrumental Variable Estimates - Elasticity of Substitution (\u03c3) 2.768 (0.309) for CES in Compute and 0.126 (0.384) for CES in Frontier Experiments, Observations 27, R2 0.853 and 0.981, First-Stage F-statistic 124.94 and 9.88"
+    ],
+    "ambiguity_or_caveats": [
+      "Unfortunately, the data does not make a distinction between research/engineering staff and operations/product staff. Assuming the ratio of research to operations staff remains constant over time, our results will be unbiased.",
+      "In cases where firms do not release (major) models in a given year, we assume training compute is the same as the prior year.",
+      "The Information reported that the ratio of OpenAI's research to training compute spend was 1 : 3 in 2024. Therefore, we multiply our estimate of Kit,tra by 1/3 to get our estimate of Kit,res. This is a significant limitation as we are assuming that the fraction of research to training compute is a constant 1/3 across firms and times.",
+      "If this ratio has changed a lot over time, both of our estimates could be wrong. But in particular, the frontier experiments estimate could be badly wrong because we are essentially assuming that one of the inputs, number of frontier experiments, has been constant over time.",
+      "While the data from financial statements is reliable, the imputed data involves a significant degree of estimation.",
+      "We use salary instead of total compensation and assume that salary constitutes 40% of total compensation.",
+      "In reality, AI firms buy many GPUs, although in a competitive market the depreciated, present-discounted price should match the hourly rental rate.",
+      "There is guesswork involved in the exact mix of GPUs that each firm is using in each year.",
+      "It is not obvious which specification is correct, the underlying data has reliability problems, and the data is from only four firms across a limited number of years.",
+      "On a more technical level, a large amount of variation is explained by firms scaling up training compute over time, there is endogeneity/simultaneity bias, and our analysis relies on simplifying assumptions such as the CES functional form and homogeneous, non-quality differentiated labor.",
+      "We have a version of this analysis where we use local wages as an instrument to address potential endogeneity. We omit them for brevity and because we are still thinking about better instruments.",
+      "We caution that our findings should be interpreted with care. The analysis is limited by data availability, particularly in the construction of research compute and wage measures. Moreover, the small sample size and modeling assumptions (e.g., CES functional form, constant factor shares) impose constraints on inference.",
+      "We think this assumption is very defensible for 2023 and prior. 2024 is borderline, so we try excluding it in our robustness test.",
+      "Note, however, the AI GPU market is not competitive, as Nvidia owns a huge fraction of the market. However, this Epoch paper finds that pricing calculation via ownership vs. rental rates are fairly similar."
+    ]
+  },
+  "notes": "This is an empirical economics paper that estimates the elasticity of substitution between research compute and cognitive labor in frontier AI firms using a panel dataset from 2014-2024. The paper presents two alternative CES production function specifications that yield divergent results: a baseline model estimating \u03c3 = 2.583 (substitutes) and a frontier experiments model estimating \u03c3 = \u22120.103 (complements). The paper is not an RCT or experimental study but rather an econometric analysis of observational data from four AI labs. The authors acknowledge significant data limitations and modeling assumptions.",
+  "_paper_id": "2507.23181",
+  "_source_pdf": "papers/2507.23181.pdf"
+}

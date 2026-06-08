@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study compares 'four tax models: free-market (no taxes), US federal single-filer 2018 tax schedule, Saez tax formula, and the AI Economist planner' with participants 'grouped into groups of four.' The design involves the same pool of qualified participants experiencing different tax conditions across episodes, constituting a within-subject comparison of AI-designed vs. baseline tax policies.",
+  "citation_key": "zheng_2020_ai_economist"
+}

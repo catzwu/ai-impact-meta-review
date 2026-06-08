@@ -1,0 +1,50 @@
+{
+  "citation_key": "kotsiovos_2024_generative_ai",
+  "authors": [
+    "Jean Kotsiovos",
+    "Rhonda Chicone",
+    "Sean Doyle"
+  ],
+  "title": "Optimizing Student Success: The Impact of Generative AI in Teaching and Learning",
+  "year": 2024,
+  "venue": "TCC 2024 Conference Papers",
+  "quotes": {
+    "study_design": [
+      "This research adopts a mixed methods approach, merging a structured survey with quantitative and qualitative data to evaluate AI tools' effectiveness in higher education course development and instruction.",
+      "The quantitative part involves Likert-scale questions assessing AI's efficacy, while the qualitative segment includes open-ended responses for in-depth analysis.",
+      "A thematic analysis of these responses uncovers key patterns and themes, offering a detailed perspective on AI's influence on course design and student success."
+    ],
+    "task": [
+      "The survey asked participants to rate the effectiveness of AI tools in higher education for seven categories depicted in Figure 2."
+    ],
+    "population": [
+      "Twenty-one higher education faculty who utilize AI participated in this survey."
+    ],
+    "arms": [],
+    "outcome_definitions": [],
+    "statistical_results": [
+      "The survey results reveal that 80.95% of respondents strongly agree that AI streamlines curriculum development for quicker content production.",
+      "Additionally, 71.43% strongly agree on AI's efficacy in creating effective teaching materials and enhancing student success through adult learning theories, as shown in Figure 4.",
+      "While only 52.38% strongly agree on AI's capability to accommodate diverse learning styles, combining 'strongly agree' and 'agree' responses presents a more favorable overall view, as detailed in the following section.",
+      "Combining 'strongly agree' and 'agree' responses in the survey yields overwhelmingly positive results, with all categories scoring 76.19% or higher, as depicted in Figure 5.",
+      "Notably, 90.47% of respondents recognize AI's effectiveness in creating teaching materials, expediting curriculum development, and integrating with adult learning theories for student success.",
+      "The least ranked category, still notably high at 76.19%, pertains to using chatbots and AI tutors to enhance student interaction and support.",
+      "ChatGPT emerged as the most cited valuable tool by 57% of the respondents, with Anthropic Claude and Google Bard in succession at 24%.",
+      "The study results reveal a generally positive stance on AI's role in education, with 80.95% strongly affirming its effectiveness in curriculum development and 71.43% in creating impactful teaching materials and promoting student success."
+    ],
+    "ambiguity_or_caveats": [
+      "While AI's transformative potential in education is evident, it is crucial to balance its use with traditional teaching methods and address challenges such as academic integrity and intellectual development (Gibson, 2023).",
+      "Qualitative feedback points to AI's benefits in course development, efficiency, and student support, but also flags concerns about accuracy, critical thinking, faculty training, and administrative guidance.",
+      "Accuracy and Verification: AI tool accuracy requires verification to avoid compromising information quality.",
+      "Impact on Critical Thinking: AI use raises concerns about diminishing critical thinking and student cheating.",
+      "Faculty Training: Faculty need training on AI tools and best practices for effective teaching integration.",
+      "Lack of Guidance/Direction: Proper guidance is essential to prevent misuse of AI tools. Concerns were raised about the lack of direction from universities and administrators. While discussions of AI are ongoing, more actions need to be taken to address how to incorporate AI into the teaching and learning process.",
+      "As this exploratory research progresses, ethical considerations, including data privacy, the autonomy of educators, and the preservation of critical pedagogical discourse, remain at the forefront of the study.",
+      "This ongoing research aims to broaden the understanding of AI's educational implications, focusing on ethical considerations such as data privacy, educator autonomy, and critical pedagogy.",
+      "The study is a precursor to more extensive research in the evolving tech landscape, emphasizing the need for ethical vigilance as AI becomes more entrenched in educational frameworks."
+    ]
+  },
+  "notes": "This is a survey-based exploratory study with no control group or comparison condition. The paper reports faculty perceptions of AI effectiveness through Likert-scale responses (n=21 faculty). No experimental manipulation or AI vs. no-AI comparison is present. The study cites external research (Dell'Acqua et al. 2023) reporting that generative AI in business boosts task execution by 12.2%, cuts completion time by 25.1%, and enhances output quality by over 40%, but this is not original data from the current study.",
+  "_paper_id": "Doyle",
+  "_source_pdf": "papers/Doyle.pdf"
+}

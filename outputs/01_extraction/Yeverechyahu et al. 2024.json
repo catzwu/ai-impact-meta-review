@@ -1,0 +1,593 @@
+{
+  "citation_key": "yeverechyahu_2026_llm_opensource",
+  "authors": [
+    "Doron Yeverechyahu",
+    "Raveesh Mayya",
+    "Gal Oestreicher-Singer"
+  ],
+  "title": "The Impact of Large Language Models on Open-Source Innovation: Evidence from GitHub Copilot",
+  "year": 2026,
+  "venue": "working paper",
+  "study_design_description": "The study exploits a natural experiment around GitHub Copilot's launch in October 2021, where Copilot supported Python and Rust but not R and Haskell, creating an exogenous partition between otherwise comparable ecosystems. The main identification employs a Two-Way Fixed Effects (TWFE) model within a Difference-in-Differences framework using propensity score matching, with 1,187 Python packages matched to an equal number of R packages. The authors also estimate Synthetic Difference-in-Differences as an alternative specification and employ a difference-in-differences approach with temporal controls where the same Python packages serve as their own controls using data from an earlier period. A lead-lag model is employed to ensure the parallel trends assumption is not violated.",
+  "primary_task_description": "Open-source software development where contributions are voluntary, modular, and digitally native, with coordination happening through commits, pull requests, and issue threads on shared platforms. Developers commit code changes accompanied by messages describing the changes. The open-source communities for these languages are hosted on GitHub, where contributors propose and implement code changes through commits.",
+  "population_description": "For the primary analysis, 1,187 matched Python/R package pairs, aggregated at a quarterly level. The Python sample focused on the 2,000 most popular packages as of 2021; R packages were obtained from the Comprehensive R Archive Network (CRAN). Packages that had not been updated in the two years preceding Copilot's release were excluded (348 Python and 7,965 R packages). For robustness analysis, 1,373 matched Rust/Haskell pairs were used, starting from the top 2,000 packages on Crates.io and Hackage respectively. Data covers all repository activity from October 2019 to December 2022, including over 1.1 million commits, with an additional 272 thousand Python commits between 2016-2018 for temporal control.",
+  "arms": [
+    {
+      "arm_name": "python_treated",
+      "description": "Python packages with access to GitHub Copilot from October 2021 onwards. GitHub Copilot, an LLM-powered coding assistance tool, initially supported Python from the start.",
+      "n": 1187
+    },
+    {
+      "arm_name": "r_control",
+      "description": "R packages without access to GitHub Copilot during the study period. R was not supported by Copilot; at least until the ChatGPT launch in late 2022, R packages did not have access to mainstream LLM coding assistance.",
+      "n": 1187
+    },
+    {
+      "arm_name": "rust_treated",
+      "description": "Rust packages with access to GitHub Copilot from October 2021 onwards. Rust is a performance-oriented language with a focus on type safety and systems programming.",
+      "n": 1373
+    },
+    {
+      "arm_name": "haskell_control",
+      "description": "Haskell packages without access to GitHub Copilot during the study period. Haskell is a performance-oriented language with a focus on type safety and systems programming.",
+      "n": 1373
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "total_commits",
+      "outcome_description": "The number of new commits of the package in the quarter",
+      "measurement_unit": "commits per package-quarter",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "outcome_description": "Commits classified as substantive contributions where there is a positive net addition of functions across all files in the commit",
+      "measurement_unit": "commits per package-quarter",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "outcome_description": "Commits classified as incremental contributions without new function additions",
+      "measurement_unit": "commits per package-quarter",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "outcome_description": "Commits classified as code development (feature addition, code optimization)",
+      "measurement_unit": "commits per package-quarter",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "outcome_description": "Commits classified as maintenance (bug fixes, code cleanup, library dependency updates, deprecation, refactoring)",
+      "measurement_unit": "commits per package-quarter",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "version_releases",
+      "outcome_description": "The number of version releases of the package in the quarter",
+      "measurement_unit": "releases per package-quarter",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "total_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {
+        "python_treated": {
+          "mean": 17.235,
+          "sd": null,
+          "se": null
+        },
+        "r_control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "6.816 commits per quarter (39.55% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "6.816 (TWFE specification)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "GitHub Copilot increases commits by 6.816 per quarter in the TWFE specification (p<0.001), a 39.55% increase relative to the pre-treatment mean of the treated group of 17.235 commits per quarter"
+    },
+    {
+      "outcome_name": "total_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.496 commits per quarter (31.89% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "5.496 (balanced panel)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The effect is consistent across specifications: 5.496 commits (31.89%) in the balanced panel and 4.894 commits (28.40%) in synthetic DiD."
+    },
+    {
+      "outcome_name": "total_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.894 commits per quarter (28.40% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "4.894 (synthetic DiD)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The effect is consistent across specifications: 5.496 commits (31.89%) in the balanced panel and 4.894 commits (28.40%) in synthetic DiD."
+    },
+    {
+      "outcome_name": "total_commits",
+      "arm_comparison": "python_treated vs python_control (temporal)",
+      "means_and_sds": {
+        "python_treated": {
+          "mean": 17.097,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "4.638 commits per quarter (27.13% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "4.638 (TWFE, temporal control)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "The temporal control design (Columns 4-6), which compares the same Python packages across a pre-Copilot era and a treatment era (Section 4.3), produces convergent evidence: 4.638 additional commits per quarter (p<0.01) in TWFE, a 27.13% increase relative to the treated group's pre-treatment mean of 17.097 commits."
+    },
+    {
+      "outcome_name": "total_commits",
+      "arm_comparison": "python_treated vs python_control (temporal)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.328 commits per quarter (25.31% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "4.328 (balanced panel, temporal control)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The balanced panel shows 4.328 commits (25.31%, p<0.05) and synthetic DiD shows 3.431 commits (20.07%, p<0.05)."
+    },
+    {
+      "outcome_name": "total_commits",
+      "arm_comparison": "python_treated vs python_control (temporal)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.431 commits per quarter (20.07% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "3.431 (synthetic DiD, temporal control)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The balanced panel shows 4.328 commits (25.31%, p<0.05) and synthetic DiD shows 3.431 commits (20.07%, p<0.05)."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.800 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.800 (TWFE)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For commits that add new functions (Columns 1-3), our TWFE estimation shows an increase of 0.800 commits per package-quarter, with consistent effects in the balanced panel (0.626) and synthetic DiD (0.600), all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.626 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.626 (balanced panel)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For commits that add new functions (Columns 1-3), our TWFE estimation shows an increase of 0.800 commits per package-quarter, with consistent effects in the balanced panel (0.626) and synthetic DiD (0.600), all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.600 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.600 (synthetic DiD)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For commits that add new functions (Columns 1-3), our TWFE estimation shows an increase of 0.800 commits per package-quarter, with consistent effects in the balanced panel (0.626) and synthetic DiD (0.600), all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.016 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "6.016 (TWFE)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For commits without new function additions (Columns 4-6), we observe larger effects: 6.016 additional commits per quarter in TWFE, 4.870 in the balanced panel, and 4.226 in synthetic DiD, again all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.870 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "4.870 (balanced panel)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For commits without new function additions (Columns 4-6), we observe larger effects: 6.016 additional commits per quarter in TWFE, 4.870 in the balanced panel, and 4.226 in synthetic DiD, again all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.226 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "4.226 (synthetic DiD)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For commits without new function additions (Columns 4-6), we observe larger effects: 6.016 additional commits per quarter in TWFE, 4.870 in the balanced panel, and 4.226 in synthetic DiD, again all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.472 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.472 (TWFE)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For code development commits (Columns 1-3), GitHub Copilot increases such commits by 1.472 per package-quarter, with the balanced panel at 1.270 and synthetic DiD at 1.105, all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.270 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.270 (balanced panel)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For code development commits (Columns 1-3), GitHub Copilot increases such commits by 1.472 per package-quarter, with the balanced panel at 1.270 and synthetic DiD at 1.105, all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.105 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.105 (synthetic DiD)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For code development commits (Columns 1-3), GitHub Copilot increases such commits by 1.472 per package-quarter, with the balanced panel at 1.270 and synthetic DiD at 1.105, all significant at p < 0.001."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.299 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "2.299 (TWFE)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For maintenance commits (Columns 4-6), the TWFE estimate is 2.299 additional commits per quarter, with the balanced panel at 2.023 and synthetic DiD at 1.873, again all at p < 0.001."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.023 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "2.023 (balanced panel)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For maintenance commits (Columns 4-6), the TWFE estimate is 2.299 additional commits per quarter, with the balanced panel at 2.023 and synthetic DiD at 1.873, again all at p < 0.001."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.873 commits per package-quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.873 (synthetic DiD)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For maintenance commits (Columns 4-6), the TWFE estimate is 2.299 additional commits per quarter, with the balanced panel at 2.023 and synthetic DiD at 1.873, again all at p < 0.001."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "low_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.276 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.276",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the function addition analysis, for low-activity projects, commits with new function definitions increase by 0.276 per quarter, while commits without new function definitions increase by 1.915 per quarter."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "low_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.915 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.915",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the function addition analysis, for low-activity projects, commits with new function definitions increase by 0.276 per quarter, while commits without new function definitions increase by 1.915 per quarter."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "high_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.178 commits per quarter (total effect)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.178 (total effect: 0.276 + 0.902)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For high-activity projects, the triple interaction terms reveal additional effects of 0.902 for function-adding commits and 7.942 for non-function-adding commits, yielding total effects in high-activity projects of 1.178 and 9.857, respectively."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "high_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "9.857 commits per quarter (total effect)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "9.857 (total effect: 1.915 + 7.942)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For high-activity projects, the triple interaction terms reveal additional effects of 0.902 for function-adding commits and 7.942 for non-function-adding commits, yielding total effects in high-activity projects of 1.178 and 9.857, respectively."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "low_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.254 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.254",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The LLM categorization analysis shows a consistent pattern. For low-activity projects, code development commits increase by 0.254 per quarter and maintenance commits increase by 0.676."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "low_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.676 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.676",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The LLM categorization analysis shows a consistent pattern. For low-activity projects, code development commits increase by 0.254 per quarter and maintenance commits increase by 0.676."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "high_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.596 commits per quarter (total effect)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "2.596 (total effect: 0.254 + 2.342)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For high-activity projects, the triple interaction terms indicate additional effects of 2.342 for code development and 3.092 for maintenance, yielding total effects of 2.596 and 3.768."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "high_activity_projects",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.768 commits per quarter (total effect)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "3.768 (total effect: 0.676 + 3.092)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For high-activity projects, the triple interaction terms indicate additional effects of 2.342 for code development and 3.092 for maintenance, yielding total effects of 2.596 and 3.768."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "initial_copilot_release",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.593 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.593",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the function analysis, the initial Copilot release increases commit count with new function definitions by 0.593 per quarter and commits without new function definitions by 4.959."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "initial_copilot_release",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.959 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "4.959",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the function analysis, the initial Copilot release increases commit count with new function definitions by 0.593 per quarter and commits without new function definitions by 4.959."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "model_upgrade_june_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.345 commits per quarter (additional)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.345",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following the model upgrade, we observe additional increases of 0.345 for function-adding commits and 1.762 for non-function-adding commits, indicating that the improvement benefits both contribution types while maintaining the gap between them."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "model_upgrade_june_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.762 commits per quarter (additional)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.762",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following the model upgrade, we observe additional increases of 0.345 for function-adding commits and 1.762 for non-function-adding commits, indicating that the improvement benefits both contribution types while maintaining the gap between them."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "initial_copilot_release",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.299 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.299",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the LLM categorization analysis, the initial release increases code development commits by 1.299 per quarter and maintenance commits by 1.730."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "initial_copilot_release",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.730 commits per quarter",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.730",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the LLM categorization analysis, the initial release increases code development commits by 1.299 per quarter and maintenance commits by 1.730."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "model_upgrade_june_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.288 commits per quarter (additional)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.288",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following the upgrade, the additional effect on code development is not statistically significant (0.288), while maintenance sees a statistically significant further increase (0.948)."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "model_upgrade_june_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.948 commits per quarter (additional)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.948",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following the upgrade, the additional effect on code development is not statistically significant (0.288), while maintenance sees a statistically significant further increase (0.948)."
+    },
+    {
+      "outcome_name": "version_releases",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {
+        "python_treated": {
+          "mean": 0.936,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "10.04% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.094 (log scale)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient of 0.094 in column (1) means that GitHub Copilot increases the number of new package releases by 10.04% at a mean value of 0.936 releases per quarter."
+    },
+    {
+      "outcome_name": "version_releases",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10.68% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results in columns (2) and (3) are consistent: the coefficients reflect a 10.68%, and 12.82% increase in the number of new Python package versions after the release of Copilot, compared to their matched counterparts."
+    },
+    {
+      "outcome_name": "version_releases",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12.82% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results in columns (2) and (3) are consistent: the coefficients reflect a 10.68%, and 12.82% increase in the number of new Python package versions after the release of Copilot, compared to their matched counterparts."
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "20.43% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.186 (log scale)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the function addition analysis (Appendix Table A5), commits with a new function definition increase by 0.186, which translates to 20.43% ((e0.186 -1) * 100 = 20.43%), whereas commits without a new function definition increase by 0.397, which translates to 48.73%."
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "48.73% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.397 (log scale)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the function addition analysis (Appendix Table A5), commits with a new function definition increase by 0.186, which translates to 20.43% ((e0.186 -1) * 100 = 20.43%), whereas commits without a new function definition increase by 0.397, which translates to 48.73%."
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21.05% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.191 (log scale)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the LLM categorization (Appendix Table A6), code development commits increase by 0.191 (21.05%) and maintenance commits by 0.259 (29.57%)."
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "arm_comparison": "python_treated vs r_control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "29.57% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.259 (log scale)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the LLM categorization (Appendix Table A6), code development commits increase by 0.191 (21.05%) and maintenance commits by 0.259 (29.57%)."
+    }
+  ],
+  "notes": "Study uses a natural experiment design exploiting GitHub Copilot's selective language support (Python/Rust supported; R/Haskell not supported) as of October 2021. Three complementary identification strategies employed: (1) cross-language DiD with propensity score matching (Python vs. R, 1,187 matched pairs), (2) temporal controls within Python packages comparing pre-Copilot era (2016-2018) to treatment era (2021-2022), and (3) replication with Rust vs. Haskell (1,373 matched pairs). Analysis period: October 2019 to December 2022 (ending before ChatGPT launch in late 2022). Two independent classification approaches for contribution types: (a) code-based function detection (commits with vs. without new function definitions), and (b) LLM-based commit message classification (maintenance, code development, documentation, testing, other). Main findings: Copilot increases total contributions by 28-40%, but incremental contributions (maintenance, non-function-adding) increase significantly more than substantive contributions (code development, function-adding). This differential is larger in high-activity projects and widens after the June 2022 model upgrade. Caveats: (1) Not all Python contributors necessarily used Copilot, so estimates likely represent lower bounds. (2) Findings bounded to October 2021-December 2022 period when Copilot was primary LLM code-completion tool. (3) Copilot offered code completion rather than interactive chat during study period. (4) Generalization beyond open-source requires caution due to self-selection and contributor autonomy. (5) Cannot directly observe cognitive processes of developers; mechanism (LLM reducing cognitive burden vs. self-selection into tasks where LLM is effective) remains open question. (6) Package-level data cannot capture heterogeneity across contributor types. Cohen's Kappa for LLM-based classification exceeded 0.6 for GPT-4o and DeepSeek, indicating substantial agreement.",
+  "_paper_id": "Yeverechyahu et al. 2024"
+}

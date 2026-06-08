@@ -1,0 +1,47 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "complaint_drafting_grade",
+      "category": "quality",
+      "operationalization": "grade on 4.0 scale using pre-determined rubric based on University of Minnesota Law School grading standards and norms"
+    },
+    {
+      "outcome_name": "contract_drafting_grade",
+      "category": "quality",
+      "operationalization": "grade on 4.0 scale using pre-determined rubric based on University of Minnesota Law School grading standards and norms"
+    },
+    {
+      "outcome_name": "employee_handbook_grade",
+      "category": "quality",
+      "operationalization": "grade on 4.0 scale using pre-determined rubric based on University of Minnesota Law School grading standards and norms"
+    },
+    {
+      "outcome_name": "client_memo_grade",
+      "category": "quality",
+      "operationalization": "grade on 4.0 scale using pre-determined rubric based on University of Minnesota Law School grading standards and norms"
+    },
+    {
+      "outcome_name": "complaint_drafting_time",
+      "category": "speed",
+      "operationalization": "time in minutes from task start to completion, self-tracked and reported by participants"
+    },
+    {
+      "outcome_name": "contract_drafting_time",
+      "category": "speed",
+      "operationalization": "time in minutes from task start to completion, self-tracked and reported by participants"
+    },
+    {
+      "outcome_name": "employee_handbook_time",
+      "category": "speed",
+      "operationalization": "time in minutes from task start to completion, self-tracked and reported by participants"
+    },
+    {
+      "outcome_name": "client_memo_time",
+      "category": "speed",
+      "operationalization": "time in minutes from task start to completion, self-tracked and reported by participants"
+    }
+  ],
+  "primary_speed_outcome": "complaint_drafting_time",
+  "primary_quality_outcome": "complaint_drafting_grade",
+  "citation_key": "choi_2023_lawyering_ai"
+}

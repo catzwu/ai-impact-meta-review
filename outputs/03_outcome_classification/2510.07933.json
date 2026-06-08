@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "frequency_of_purchasing_insurance_online",
+      "category": "other",
+      "operationalization": "Self-reported frequency of online insurance purchases by survey respondents"
+    },
+    {
+      "outcome_name": "preferred_insurance_distribution_channel",
+      "category": "other",
+      "operationalization": "Respondent-stated preference among distribution channels (agent-based, online direct, brokers, etc.)"
+    },
+    {
+      "outcome_name": "importance_of_price_in_channel_selection",
+      "category": "other",
+      "operationalization": "Respondent rating of price as a factor in choosing insurance distribution channel"
+    },
+    {
+      "outcome_name": "attractiveness_of_online_versus_traditional",
+      "category": "other",
+      "operationalization": "Respondent evaluation of the relative appeal of online versus traditional insurance purchasing methods"
+    },
+    {
+      "outcome_name": "factors_influencing_distribution_channel_selection",
+      "category": "other",
+      "operationalization": "Respondent-reported factors (e.g., price, trust, convenience) affecting channel choice"
+    },
+    {
+      "outcome_name": "factors_discouraging_online_insurance_purchases",
+      "category": "other",
+      "operationalization": "Respondent-identified barriers or concerns that discourage online insurance purchasing"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "wojak_2025_insurance_purchasing"
+}

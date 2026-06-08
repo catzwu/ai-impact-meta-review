@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "This is a secondary analysis of data from Lee & Chung (2024) where 'participants were randomized to complete various creative challenges either with or without the help of ChatGPT.' The original study used random assignment to AI vs. no-AI conditions, making it an RCT. The secondary analysis preserves this experimental design.",
+  "citation_key": "meincke_2025_chatgpt_diversity"
+}

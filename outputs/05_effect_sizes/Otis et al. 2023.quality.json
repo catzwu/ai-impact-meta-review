@@ -1,0 +1,52 @@
+{
+  "_paper_id": "Otis et al. 2023",
+  "citation_key": "otis_2024_ai_entrepreneurship",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Control (Business Training Guides)",
+    "ai_arm_name": "Treatment (GPT-4 AI Business Assistant)",
+    "ai_arm_selection_rationale": "The study has two arms: a control group receiving business training guides and a treatment group receiving access to a GPT-4-powered AI business assistant. The AI arm is the treatment condition.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 320,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 320,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.04,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "The primary outcome is a standardized business performance index aggregating weekly and monthly profits and revenues. Figure 3 and Table 1 report the average treatment effect as \u03b2 = 0.04 standard deviations (p = 0.34, 95% CI = [-0.05, 0.15]). The paper states 'we are unable to reject the null hypothesis of no average treatment effect on firm revenues and profits' (page 3). The study used stratified randomization by quartiles of pre-treatment business performance and by gender, with 640 total participants (320 per arm). The effect size of 0.04 s.d. is interpreted as a standardized effect (Cohen's d). The paper reports heterogeneous effects by baseline performance: low performers had \u03b2 = -0.08 s.d. (p = 0.01), high performers had \u03b2 = 0.16 s.d. (p = 0.07), with a heterogeneous treatment effect of \u03b2 = 0.23 s.d. (p = 0.01) between the two groups.",
+    "source_quotes": [
+      "We are unable to reject the null hypothesis that, on average, access to generative AI had no effect on business performance relative to the control, as shown in Estimate A in Figure 3 and Table 1 (\u03b2 = 0.04 standard deviations (sd), p = 0.34, 95% CI = [\u22120.05, 0.15]).",
+      "This recruitment and screening process produced a final sample of 640 Kenya SMB entrepreneurs.",
+      "Following the third pre-treatment survey, participants were randomly assigned to either the treatment group\u2014which received access to the generative AI-powered business assistant\u2014or the control group, which received access to a set of publicly available business training guides",
+      "Our primary outcome is a business performance index that aggregates weekly and monthly profits and revenues.",
+      "Comparing the average values of the performance index among treatment and control participants provides an aggregate measure of how the AI system impacts firm performance, measured in standard deviations."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.04,
+    "hedges_g": 0.03995295962367699,
+    "variance": 0.006236555587842587,
+    "computation_method": "reported_d",
+    "confidence": "high",
+    "notes": "The primary outcome is a standardized business performance index aggregating weekly and monthly profits and revenues. Figure 3 and Table 1 report the average treatment effect as \u03b2 = 0.04 standard deviations (p = 0.34, 95% CI = [-0.05, 0.15]). The paper states 'we are unable to reject the null hypothesis of no average treatment effect on firm revenues and profits' (page 3). The study used stratified randomization by quartiles of pre-treatment business performance and by gender, with 640 total participants (320 per arm). The effect size of 0.04 s.d. is interpreted as a standardized effect (Cohen's d). The paper reports heterogeneous effects by baseline performance: low performers had \u03b2 = -0.08 s.d. (p = 0.01), high performers had \u03b2 = 0.16 s.d. (p = 0.07), with a heterogeneous treatment effect of \u03b2 = 0.23 s.d. (p = 0.01) between the two groups.",
+    "n_human": 320,
+    "n_ai": 320,
+    "direction_convention": "larger_is_better"
+  }
+}

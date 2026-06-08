@@ -1,0 +1,291 @@
+{
+  "citation_key": "kim_2024_generative_ai_tutoring",
+  "authors": [
+    "Donggwan Kim",
+    "Dmitry Mitrofanov",
+    "Qingsong Wen",
+    "Tianlong Xu"
+  ],
+  "title": "Generative AI Can Improve Performance and Engagement without Harming Learning",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": "A difference-in-differences design leveraging the partial rollout of an AI tutor across thousands of learning centers. The study analyzes a random panel of 19,709 students (over 2.2 million student\u2013day observations) before and after the introduction of generative AI. AI-enabled devices were rolled out unevenly across students due to capacity constraints; centers with more students than AI-tutor tablets were instructed to allocate the AI-enabled devices randomly across students. The setting is treated as quasi-random rather than a fully controlled field experiment, complemented with robustness checks including IV regressions.",
+  "primary_task_description": "Students work on curriculum-aligned math problems delivered through the tablet interface. Students see a numerical fill-in-the-blank question, enter an answer, and submit it. The system immediately reports whether the answer is correct or incorrect and then displays a complete, step-by-step solution. Once an answer is submitted, the AI opens a debrief panel that (i) reports correctness, (ii) highlights which steps or concepts appear to be problematic (if any), and (iii) engages the student in an interactive dialogue. The AI tutor leverages the student's historical performance and current attempts\u2014including digital \"scratches\" or drafts\u2014to infer the likely sources of error and tailor explanations accordingly.",
+  "population_description": "The dataset is drawn as a random panel from the platform and covers detailed daily interaction logs from 18,904 students (who were active at the introduction of the AI tutor) across multiple centers in 2024, yielding 2,114,829 student-day observations. The average student is in grade 6.7 (median 7). The empirical analysis is based on a collaboration with Squirrel AI, a leading Chinese education technology firm that provides digitized learning experiences to strengthen K\u201312 students' mastery of the school curriculum.",
+  "arms": [
+    {
+      "arm_name": "treated",
+      "description": "Students who used AI-tutor mode at least once during the sample period.",
+      "n": 12435
+    },
+    {
+      "arm_name": "control",
+      "description": "Students who never used AI-tutor mode during the sample period.",
+      "n": 6469
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "problems_solved",
+      "outcome_description": "The number of learning problems the student completed on a given day or in a given period.",
+      "measurement_unit": "count per day",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "time_per_problem",
+      "outcome_description": "The average time spent on each problem.",
+      "measurement_unit": "seconds",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "outcome_description": "The student's daily correctness rate, measured as the proportion of problems answered correctly.",
+      "measurement_unit": "percentage points or ratio",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "weekly_attendance",
+      "outcome_description": "Whether the student attended at least once in a given week.",
+      "measurement_unit": "indicator (0/1)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "attendance_days_per_week",
+      "outcome_description": "The number of days in a week on which the student attended.",
+      "measurement_unit": "days per week",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "problems_solved",
+      "arm_comparison": "treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "36% more math problems",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.3057 on Treat\u00b7Post, implying approximately 35.8% increase (exp(0.3057)\u22121\u22480.358)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "treated students complete 36% more math problems"
+    },
+    {
+      "outcome_name": "time_per_problem",
+      "arm_comparison": "treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.9% less time per problem",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u22122.1779, implying a reduction of about 2.18 seconds per problem",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "students spend 3.9% less time per problem while their correctness ratio increases by 3.6%"
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.6% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.0264, indicating that the average daily correctness rate increases by 2.64 percentage points for treated students relative to controls",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "students spend 3.9% less time per problem while their correctness ratio increases by 3.6%"
+    },
+    {
+      "outcome_name": "problems_solved",
+      "arm_comparison": "high performers: treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "28.6% increase in log terms",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column (1) in Table 3 shows that even high performers increase their problem volume by about 28.6% (in log terms) after gaining access to the AI tutor."
+    },
+    {
+      "outcome_name": "problems_solved",
+      "arm_comparison": "low performers: treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "43% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.2864 baseline + 0.0739 interaction = 0.360 total log-point increase",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Combining the baseline and interaction, the total effect for low performers is roughly 0.2864 + 0.0739\u22480.360, or about a 43% increase in practice volume."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "high performers: treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.4 percentage points increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "High performers increase their correctness by about 2.4 percentage points, while low performers gain an additional 1.65 percentage points, for a total of roughly 4.0 percentage points."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "low performers: treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.0 percentage points increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "High performers increase their correctness by about 2.4 percentage points, while low performers gain an additional 1.65 percentage points, for a total of roughly 4.0 percentage points."
+    },
+    {
+      "outcome_name": "weekly_attendance",
+      "arm_comparison": "treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.3% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.0403 for treated students in the post period",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The probability of attending at least once in a week increases by 0.0403 for treated students in the post period. Relative to the baseline weekly attendance rate of approximately 0.76, this corresponds to a 5.3% increase."
+    },
+    {
+      "outcome_name": "attendance_days_per_week",
+      "arm_comparison": "treated vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.1424 days increase per week",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The number of attendance days per week rises by 0.1424 days, which is about a 5.1% increase relative to the mean of 2.77 days."
+    },
+    {
+      "outcome_name": "problems_solved",
+      "arm_comparison": "AI use days vs non-AI use days (within treated students)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "570% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "exp(1.903)\u22121\u22485.71 times more problems",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "on days when students use the AI tutor, they solve exp(1.903)\u22121\u22485.71 times more problems (about a 570% increase) and have correctness about 6.1 percentage points higher than on non-AI days."
+    },
+    {
+      "outcome_name": "problems_solved",
+      "arm_comparison": "AI use days vs non-AI use days (within treated students, alternative specification)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "303% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1.394 implies exp(1.394)\u22121\u22483.03",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column (3), the coefficient 1.394 implies that using the AI tutor on a given day increases the number of problems solved by about 303% (exp(1.394)\u22121\u22483.03), meaning it roughly quadruples daily problem-solving."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "AI use days vs non-AI use days (within treated students)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.1 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "on days when students use the AI tutor, they solve exp(1.903)\u22121\u22485.71 times more problems (about a 570% increase) and have correctness about 6.1 percentage points higher than on non-AI days."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "AI use days vs non-AI use days (within treated students, alternative specification)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.5 percentage points increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column (4), correctness increases by about 1.5 percentage points."
+    },
+    {
+      "outcome_name": "problems_solved",
+      "arm_comparison": "AI use with recent usage decay (treated vs control)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u22120.283 coefficient indicating log effect of using AI on a given day declines with recent AI use",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "the coefficient\u22120.283 in column (3) implies that the log effect of using AI on a given day declines with recent AI use. For example, if a student has used AI on 10 of the prior 14 days, the incremental log increase in problems solved from using AI today is reduced by about 0.283\u00d710 = 2.83 relative to a student with no recent AI use."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "AI use with recent usage decay (treated vs control)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u22120.056 coefficient indicating accuracy gain from AI use shrinks as cumulative recent usage rises",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "the coefficient\u22120.056 in column (4) indicates that the accuracy gain from AI use shrinks as cumulative recent usage rises and can become negligible or even slightly negative at very high levels of past use."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "treated vs control (triple interaction with study hours, full sample)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.027 percentage point improvement per additional hour of study",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.027 triple interaction coefficient",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the full sample (column (1)), the triple interaction is positive and highly significant (0.027). Since the outcome is correctness rate\u00d7100, this indicates that, after the AI rollout, each additional hour of study yields an extra 0.027 percentage point improvement in correctness for treated students relative to controls."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "treated vs control (triple interaction with study hours, cumulative effect over 50 hours)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.35 percentage points improvement over 50 hours",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Over 50 hours of post-treatment study, treated students' correctness would improve by roughly 1.35 percentage points more than that of comparable control students."
+    },
+    {
+      "outcome_name": "time_per_problem",
+      "arm_comparison": "treated vs control (peak effect)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10 seconds less per problem",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At their peak, treated students spend roughly 10 seconds less per problem and achieve correctness rates about 5\u20136 percentage points higher than controls."
+    },
+    {
+      "outcome_name": "correctness_rate",
+      "arm_comparison": "treated vs control (peak effect)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5\u20136 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At their peak, treated students spend roughly 10 seconds less per problem and achieve correctness rates about 5\u20136 percentage points higher than controls."
+    }
+  ],
+  "notes": "This is a large-scale quasi-experimental field study (difference-in-differences design) conducted at Squirrel AI, a Chinese EdTech platform, analyzing 18,904 students with 2.1+ million student-day observations. The treated group (n=12,435) used AI-tutor mode at least once; the control group (n=6,469) never used it. The AI tutor is a post-solution design, activated only after students submit answers. The paper reports diminishing returns to very frequent AI use (negative coefficients on recent usage) and evidence of steeper learning curves for treated students. The study acknowledges several limitations: the setting is specific to private after-school learning centers in China focused on mathematics; the design relies on quasi-experimental rollout and parallel trends assumption rather than pure RCT; and the findings speak most directly to post-solution AI feedback rather than all possible AI configurations. Pre-treatment balance was generally good, though a statistically significant but economically modest difference in average time per problem was observed. Sample size varies slightly across analyses due to missing county-level income data for some students.",
+  "_paper_id": "ssrn-5929576"
+}

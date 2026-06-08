@@ -1,0 +1,47 @@
+{
+  "_paper_id": "2311.07071v2",
+  "citation_key": "zhang_2024_generative_equilibrium",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "human_arm_name": "control_wallpaper",
+    "ai_arm_name": "treated_tachie",
+    "ai_arm_selection_rationale": "This is a natural experiment studying the impact of NovelAI's generative AI leak on the tachie (character drawing) market. The 'treated_tachie' arm represents the market exposed to AI competition (human artists competing with/against AI), while 'control_wallpaper' represents the unexposed market. The primary comparison is the difference-in-differences effect of the AI leak.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": 1.21,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 140.3,
+    "regression_coefficient_se": 4.9e-13,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "This is a difference-in-differences natural experiment studying the effect of NovelAI's generative AI leak on the tachie (character art) market vs. wallpaper market. The regression coefficient represents the DiD estimator (treated\u00d7after interaction) in levels (orders per week), not log-transformed. The paper reports both the absolute effect (140 orders/week increase) and relative effect (121% increase). Without a baseline mean for the pre-treatment tachie market, we cannot directly convert the level-regression coefficient to a log ratio. The extremely small SE (4.9\u00d710^-13) suggests possible numerical precision issues in the reported table. Sample sizes (n) are not provided for the category-week panel data structure.",
+    "source_quotes": [
+      "The coefficient estimates of volume and revenue are 140 and 56,674, showing that generative AI increased the number of orders by 140 per week and increased the total revenue by 56,674 yuan per week. the generative AI also leads to a remarkable 121% increase in order volume",
+      "treated\u00d7after = 140.3 (SE 4.9\u00d710^-13)",
+      "p < 0.01"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.7929925155296614,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 1.21,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment studying the effect of NovelAI's generative AI leak on the tachie (character art) market vs. wallpaper market. The regression coefficient represents the DiD estimator (treated\u00d7after interaction) in levels (orders per week), not log-transformed. The paper reports both the absolute effect (140 orders/week increase) and relative effect (121% increase). Without a baseline mean for the pre-treatment tachie market, we cannot directly convert the level-regression coefficient to a log ratio. The extremely small SE (4.9\u00d710^-13) suggests possible numerical precision issues in the reported table. Sample sizes (n) are not provided for the category-week panel data structure. | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

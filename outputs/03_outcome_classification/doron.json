@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "total_commits_per_quarter",
+      "category": "speed",
+      "operationalization": "count of all commits submitted per developer per quarter, extracted from repository logs"
+    },
+    {
+      "outcome_name": "commits_with_function_definition",
+      "category": "other",
+      "operationalization": "count of commits containing new function definitions per quarter, detected via code parsing; measures type of innovation rather than speed or quality of output"
+    },
+    {
+      "outcome_name": "commits_without_function_definition",
+      "category": "other",
+      "operationalization": "count of commits without new function definitions per quarter; measures type of work (refinement vs. new capability) rather than speed or quality"
+    },
+    {
+      "outcome_name": "code_development_commits",
+      "category": "other",
+      "operationalization": "count of commits classified as introducing new functionality per quarter via LLM classification; measures innovation type rather than speed or quality"
+    },
+    {
+      "outcome_name": "maintenance_commits",
+      "category": "other",
+      "operationalization": "count of commits classified as maintenance (bug fixes, refactoring, etc.) per quarter via LLM; measures work type rather than speed or quality"
+    },
+    {
+      "outcome_name": "package_releases_per_quarter",
+      "category": "speed",
+      "operationalization": "count of new package releases published per quarter, extracted from package registry data"
+    }
+  ],
+  "primary_speed_outcome": "total_commits_per_quarter",
+  "primary_quality_outcome": null,
+  "citation_key": "yeverechyahu_2025_github_copilot"
+}

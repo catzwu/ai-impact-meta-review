@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-14",
+  "onet_label": "Processing Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants are K-12 students working on curriculum-aligned math problems: they read numerical questions, compute answers, enter responses, and process feedback including step-by-step solutions and AI-generated explanations. This core activity\u2014receiving, evaluating, and integrating mathematical information to solve problems\u2014maps directly to 'Processing Information.' While students are learning, the substantive task being measured is their information-processing work on math problems, not a teaching occupation or a narrow technical skill.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-10",
+      "onet_label": "Making Decisions and Solving Problems"
+    }
+  ],
+  "citation_key": "kim_2024_generative_ai_tutoring"
+}

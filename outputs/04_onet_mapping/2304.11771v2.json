@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "43-4051.00",
+  "onet_label": "Customer Service Representatives",
+  "mapping_confidence": "high",
+  "rationale": "The participants are customer support agents providing technical assistance to small business owners via chat. While the task involves technical problem-solving and product knowledge, the core occupation is customer service rather than a narrow technical activity. The agents are performing the full scope of customer service work\u2014diagnosing problems, communicating with customers, accessing documentation, and resolving issues\u2014which aligns with the Customer Service Representatives occupation. The AI provides suggestions and documentation links but agents retain full discretion, so they are still performing the complete customer service role rather than a decomposed subtask.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-03",
+      "onet_label": "Communicating with Supervisors, Peers, or Subordinates"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-22",
+      "onet_label": "Getting Information"
+    }
+  ],
+  "citation_key": "brynjolfsson_2024_generative_ai"
+}

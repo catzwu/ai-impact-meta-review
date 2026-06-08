@@ -1,0 +1,473 @@
+{
+  "citation_key": "eloundou_2023_gpts_labor",
+  "authors": [
+    "Tyna Eloundou",
+    "Sam Manning",
+    "Pamela Mishkin",
+    "Daniel Rock"
+  ],
+  "title": "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models",
+  "year": 2023,
+  "venue": "arXiv preprint",
+  "study_design_description": "Using a new rubric, the authors assessed occupations based on their alignment with LLM capabilities, integrating both human expertise and GPT-4 classifications. Human annotators and GPT-4 itself were employed as classifiers to apply this rubric to occupational data in the U.S. economy, primarily sourced from the O*NET database. The authors obtained human annotations by applying the rubric to each O*NET Detailed Worker Activity (DWA) and a subset of all O*NET tasks, then aggregated those scores at the task and occupation levels. A similar rubric was administered to an early version of GPT-4 on all task/occupation pairs.",
+  "primary_task_description": "The study investigates the potential implications of large language models (LLMs), such as Generative Pre-trained Transformers (GPTs), on the U.S. labor market, focusing on the increased capabilities arising from LLM-powered software compared to LLMs on their own. The authors propose a new rubric for assessing LLM capabilities and their potential effects on jobs, measuring the overall exposure of tasks to LLMs.",
+  "population_description": "The study uses the O*NET 27.2 database, which contains information on 1,016 occupations, including their respective Detailed Work Activities (DWAs) and tasks. The two datasets consist of 19,265 tasks (each with a \"task description\" and corresponding occupation) and 2,087 DWAs. Employment and wage data were obtained from the 2020 and 2021 Occupational Employment series provided by the Bureau of Labor Statistics. The authors personally labeled a large sample of tasks and DWAs and enlisted experienced human annotators who have reviewed GPT-3, GPT-3.5 and GPT-4 outputs as part of OpenAI's alignment work. There are 3,504,000 workers for whom data on education and on-the-job training requirements were lacking and therefore excluded from the summary tables.",
+  "arms": [
+    {
+      "arm_name": "no_exposure_e0",
+      "description": "No exposure (E0) if: using the described LLM results in no or minimal reduction in the time required to complete the activity or task while maintaining equivalent quality or using the described LLM results in a decrease in the quality of the activity/task output.",
+      "n": null
+    },
+    {
+      "arm_name": "direct_exposure_e1",
+      "description": "Direct exposure (E1) if: using the described LLM via ChatGPT or the OpenAI playground can decrease the time required to complete the DWA or task by at least half (50%).",
+      "n": null
+    },
+    {
+      "arm_name": "llm_plus_exposed_e2",
+      "description": "LLM+ Exposed (E2) if: access to the described LLM alone would not reduce the time required to complete the activity/task by at least half, but additional software could be developed on top of the LLM that could reduce the time it takes to complete the specific activity/task with quality by at least half.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "alpha_exposure",
+      "outcome_description": "Corresponding to E1 in the exposure rubric, anticipated to represent the lower bound of the proportion of exposed tasks within an occupation.",
+      "measurement_unit": "proportion",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "outcome_description": "The sum of E1 and 0.5*E2, where the 0.5 weight on E2 is intended to account for exposure when deploying the technology via complementary tools and applications necessitates additional investment.",
+      "measurement_unit": "proportion",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "zeta_exposure",
+      "outcome_description": "The sum of E1 and E2, an upper bound of exposure that provides an assessment of maximal exposure to a LLM and LLM-powered software.",
+      "measurement_unit": "proportion",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "workers_with_10_percent_task_exposure",
+      "outcome_description": "Percentage of U.S. workforce that could have at least 10% of their work tasks affected by the introduction of LLMs.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "workers_with_50_percent_task_exposure",
+      "outcome_description": "Percentage of workers that may see at least 50% of their tasks impacted.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "tasks_completed_faster_with_llm",
+      "outcome_description": "Proportion of all worker tasks in the US that could be completed significantly faster at the same level of quality with access to an LLM.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "tasks_affected_with_llm_software",
+      "outcome_description": "Share of all tasks affected when incorporating software and tooling built on top of LLMs.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "workers_with_10_percent_task_exposure",
+      "arm_comparison": "overall_population",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "80% of the U.S. workforce",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our findings reveal that around 80% of the U.S. workforce could have at least 10% of their work tasks affected by the introduction of LLMs, while approximately 19% of workers may see at least 50% of their tasks impacted."
+    },
+    {
+      "outcome_name": "workers_with_50_percent_task_exposure",
+      "arm_comparison": "overall_population",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19% of workers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our findings reveal that around 80% of the U.S. workforce could have at least 10% of their work tasks affected by the introduction of LLMs, while approximately 19% of workers may see at least 50% of their tasks impacted."
+    },
+    {
+      "outcome_name": "tasks_completed_faster_with_llm",
+      "arm_comparison": "overall_population",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "about 15% of all worker tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our analysis suggests that, with access to an LLM, about 15% of all worker tasks in the US could be completed significantly faster at the same level of quality."
+    },
+    {
+      "outcome_name": "tasks_affected_with_llm_software",
+      "arm_comparison": "overall_population",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "between 47 and 56% of all tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When incorporating software and tooling built on top of LLMs, this share increases to between 47 and 56% of all tasks."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "human_vs_gpt4_annotations",
+      "means_and_sds": {
+        "human_annotations": {
+          "mean": 0.15,
+          "sd": null,
+          "se": null
+        },
+        "gpt4_annotations": {
+          "mean": 0.14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Both human and GPT-4 annotations indicate that average occupation-level \u03b1 values fall between 0.14 and 0.15, suggesting that, on average, approximately 15% of tasks within an occupation are directly exposed to LLMs."
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "arm_comparison": "human_vs_gpt4_annotations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 30%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This figure increases to over 30% for \u03b2 and surpasses 50% for \u03b6."
+    },
+    {
+      "outcome_name": "zeta_exposure",
+      "arm_comparison": "human_vs_gpt4_annotations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "surpasses 50%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This figure increases to over 30% for \u03b2 and surpasses 50% for \u03b6."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "task_level_human_vs_gpt4",
+      "means_and_sds": {
+        "human_annotations": {
+          "mean": 0.15,
+          "sd": null,
+          "se": null
+        },
+        "gpt4_annotations": {
+          "mean": 0.14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Human and GPT-4 annotations also tag between 15% and 14% of total tasks in the dataset as being exposed to LLMs."
+    },
+    {
+      "outcome_name": "workers_with_10_percent_task_exposure",
+      "arm_comparison": "beta_exposure_measure",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "80% of workers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Based on the \u03b2 values, we estimate that 80% of workers belong to an occupation with at least 10% of its tasks exposed to LLMs, while 19% of workers are in an occupation where over half of its tasks are labeled as exposed."
+    },
+    {
+      "outcome_name": "workers_with_50_percent_task_exposure",
+      "arm_comparison": "beta_exposure_measure",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19% of workers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Based on the \u03b2 values, we estimate that 80% of workers belong to an occupation with at least 10% of its tasks exposed to LLMs, while 19% of workers are in an occupation where over half of its tasks are labeled as exposed."
+    },
+    {
+      "outcome_name": "workers_with_50_percent_task_exposure",
+      "arm_comparison": "human_assessment_llm_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "only 3% of U.S. workers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Human assessments suggest that only 3% of U.S. workers have over half of their tasks exposed to LLMs when considering existing language and code capabilities without additional software or modalities."
+    },
+    {
+      "outcome_name": "workers_with_50_percent_task_exposure",
+      "arm_comparison": "human_assessment_with_generative_models",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "up to 49% of workers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Accounting for other generative models and complementary technologies, our human estimates indicate that up to 49% of workers could have half or more of their tasks exposed to LLMs."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "occupations_50_percent_threshold",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.3% of occupations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For example, human annotators determined that 2.3% of occupations are \u03b150-exposed, 21.6% are \u03b250-exposed, and 47.3% are \u03b650-exposed, where the threshold of 50% comes from the x-axis and the percentage of occupations comes from the y axis."
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "arm_comparison": "occupations_50_percent_threshold",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21.6% of occupations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For example, human annotators determined that 2.3% of occupations are \u03b150-exposed, 21.6% are \u03b250-exposed, and 47.3% are \u03b650-exposed, where the threshold of 50% comes from the x-axis and the percentage of occupations comes from the y axis."
+    },
+    {
+      "outcome_name": "zeta_exposure",
+      "arm_comparison": "occupations_50_percent_threshold",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "47.3% of occupations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For example, human annotators determined that 2.3% of occupations are \u03b150-exposed, 21.6% are \u03b250-exposed, and 47.3% are \u03b650-exposed, where the threshold of 50% comes from the x-axis and the percentage of occupations comes from the y axis."
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "arm_comparison": "job_zone_1",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.00%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that, on average, the percentage of workers in occupations with greater than 50% \u03b2 exposure in Job Zones 1 through 5 have \u03b2 at 0.00% (Job Zone 1), 6.11% (Job Zone 2), 10.57% (Job Zone 3), 34.5% (Job Zone 4), and 26.45% (Job Zone 5), respectively."
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "arm_comparison": "job_zone_2",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.11%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that, on average, the percentage of workers in occupations with greater than 50% \u03b2 exposure in Job Zones 1 through 5 have \u03b2 at 0.00% (Job Zone 1), 6.11% (Job Zone 2), 10.57% (Job Zone 3), 34.5% (Job Zone 4), and 26.45% (Job Zone 5), respectively."
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "arm_comparison": "job_zone_3",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10.57%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that, on average, the percentage of workers in occupations with greater than 50% \u03b2 exposure in Job Zones 1 through 5 have \u03b2 at 0.00% (Job Zone 1), 6.11% (Job Zone 2), 10.57% (Job Zone 3), 34.5% (Job Zone 4), and 26.45% (Job Zone 5), respectively."
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "arm_comparison": "job_zone_4",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "34.5%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that, on average, the percentage of workers in occupations with greater than 50% \u03b2 exposure in Job Zones 1 through 5 have \u03b2 at 0.00% (Job Zone 1), 6.11% (Job Zone 2), 10.57% (Job Zone 3), 34.5% (Job Zone 4), and 26.45% (Job Zone 5), respectively."
+    },
+    {
+      "outcome_name": "beta_exposure",
+      "arm_comparison": "job_zone_5",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "26.45%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that, on average, the percentage of workers in occupations with greater than 50% \u03b2 exposure in Job Zones 1 through 5 have \u03b2 at 0.00% (Job Zone 1), 6.11% (Job Zone 2), 10.57% (Job Zone 3), 34.5% (Job Zone 4), and 26.45% (Job Zone 5), respectively."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "gpt4_vs_human_difference",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "difference of 0.42 using GPT-4 annotations and 0.32 using human annotations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The difference in means across all tasks between \u03b1 and \u03b6 of 0.42 using the GPT-4 annotations and 0.32 using the human annotations (see Figure 3), suggests that the average impact of LLM-powered software on task-exposure may be more than twice as large as the mean exposure from LLMs on their own (mean \u03b6 of 0.14 based on both human annotations and GPT-4 annotations)."
+    },
+    {
+      "outcome_name": "zeta_exposure",
+      "arm_comparison": "mean_exposure_llm_only",
+      "means_and_sds": {
+        "human_annotations": {
+          "mean": 0.14,
+          "sd": null,
+          "se": null
+        },
+        "gpt4_annotations": {
+          "mean": 0.14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The difference in means across all tasks between \u03b1 and \u03b6 of 0.42 using the GPT-4 annotations and 0.32 using the human annotations (see Figure 3), suggests that the average impact of LLM-powered software on task-exposure may be more than twice as large as the mean exposure from LLMs on their own (mean \u03b6 of 0.14 based on both human annotations and GPT-4 annotations)."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "regression_model_variance_explained",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The variance explained by these earlier efforts (Acemoglu and Autor, 2011a; Frey and Osborne, 2017; Brynjolfsson et al., 2018; Felten et al., 2018; Webb, 2020; Brynjolfsson et al., 2023), along with wage controls, ranges from 60 to 72%, indicating that 28 to 40% of the variation in our AI exposure measure remains unaccounted for by previous technology exposure measurements."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "regression_r_squared_range",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In all regressions, the R\u00b2 ranges between 60.7% (column 3) and 72.8% (column 5)."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "software_skill_association",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Software, SML, and routine cognitive scores all show positive and statistically significant associations with LLM exposure scores at a 1% level."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "routine_cognitive_association",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Software, SML, and routine cognitive scores all show positive and statistically significant associations with LLM exposure scores at a 1% level."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "sml_association",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Software, SML, and routine cognitive scores all show positive and statistically significant associations with LLM exposure scores at a 1% level."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "ai_scores_webb_association",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Coefficients on AI scores from (Webb, 2020) are also positive and statistically significant at a 5% level, but our secondary prompt on overall exposure to LLMs in columns 3 and 4 does not exhibit a statistically significant relationship."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "science_critical_thinking_association",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our findings indicate that the importance of science and critical thinking skills are strongly negatively associated with exposure, suggesting that occupations requiring these skills are less likely to be impacted by current LLMs."
+    },
+    {
+      "outcome_name": "alpha_exposure",
+      "arm_comparison": "programming_writing_skills_association",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Conversely, programming and writing skills show a strong positive association with exposure, implying that occupations involving these skills are more susceptible to being influenced by LLMs (see Table 5 for detailed results)."
+    }
+  ],
+  "notes": "This is a working paper analyzing the potential labor market impact of large language models (LLMs) like GPT-4. The study uses a novel rubric to assess occupational exposure to LLM capabilities, combining human annotations and GPT-4 classifications applied to O*NET occupational data. The paper does not conduct a traditional experimental comparison but rather develops and applies a measurement framework. Results are presented across multiple exposure measures (\u03b1, \u03b2, \u03b6) representing different levels of LLM capability integration. The paper concludes that LLMs exhibit characteristics of general-purpose technologies with pervasive potential impacts across the U.S. labor market. Key limitations noted by the authors include: subjectivity of labeling, potential bias from annotators not occupationally diverse, sensitivity of GPT-4 classifications to rubric wording and prompt composition, unclear validity of task-based breakdown of occupations, and the forward-looking nature of predictions about future LLM capabilities. The study does not make predictions about development or adoption timelines, and notes that technical feasibility does not guarantee labor productivity or automation outcomes.",
+  "_paper_id": "Eloundou et al. 2024"
+}

@@ -1,0 +1,353 @@
+{
+  "citation_key": "hoffmann_2025_generative_ai_work",
+  "authors": [
+    "Manuel Hoffmann",
+    "Sam Boysel",
+    "Frank Nagle",
+    "Sida Peng",
+    "Kevin Xu"
+  ],
+  "title": "Generative AI and the Nature of Work",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "Using a natural experiment arising from GitHub Copilot's deployment, the authors exploit an eligibility threshold in the general access launch (June 2022) to investigate causal effects on task allocation. Developers below a certain internal ranking threshold received free access while others did not. The study employs a regression discontinuity design (RDD) interpreted as a localized randomized control trial, leveraging millions of panel observations on work activities over a two-year period (June 2022 to June 2023). The ranking is assigned at the project level; each developer receives a weekly rank based on the running best rank across all repositories for which they are designated as collaborators.",
+  "primary_task_description": "The primary workflow involves GitHub contributors creating repositories and writing code, forking existing repositories, pushing commits from local repositories to GitHub, and submitting pull requests. A critical component is engagement within the repository's issues board where developers assist with software issues, introduce ideas, and discuss project objectives. Other activities include creation of project boards for organization and road-mapping, and reviewing proposed contributions from pull requests.",
+  "population_description": "The study begins with a panel of 187,489 distinct developers observed weekly from June 2022 through June 2023. The analysis focuses on a sample of 50,032 unique \"top developers\"\u2014those who are maintainers of open source software projects among the most popular and widely used on GitHub. All individuals in the top developer dataset engaged in at least one coding or project management activity during the time window and are considered active users. The average developer uses Copilot for approximately 8 days, and 16% of top developers use Copilot at some point within the general access period.",
+  "arms": [
+    {
+      "arm_name": "copilot_eligible",
+      "description": "Developers who receive a ranking below the eligibility threshold are granted complimentary Copilot access for one year. After one year, GitHub verifies the user's current eligibility through the top developer program and complimentary access continues if the developer's repository remains below the threshold.",
+      "n": null
+    },
+    {
+      "arm_name": "copilot_ineligible",
+      "description": "Developers who receive a ranking above the eligibility threshold are not eligible for free access to Copilot. During the general access period, individuals could access Copilot by obtaining a free trial for 60 days and later for 30 days, after which they must pay $10 per month (or $100 per year) for continued access.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "copilot_adoption_days",
+      "outcome_description": "The number of days a developer uses Copilot, measured cumulatively over the observation period.",
+      "measurement_unit": "days",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "copilot_adoption_share",
+      "outcome_description": "The share of developers that ever adopted Copilot during the general access period.",
+      "measurement_unit": "percentage points",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "copilot_usage_per_week",
+      "outcome_description": "The number of days per week a developer uses Copilot.",
+      "measurement_unit": "days per week",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "copilot_exposure_per_week",
+      "outcome_description": "The cumulative exposure to Copilot measured as a percentage increase per week.",
+      "measurement_unit": "percentage points",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "coding_share",
+      "outcome_description": "Coding activities as a percentage of all activity, including pushing commits, forking projects, and submitting pull requests.",
+      "measurement_unit": "percentage points",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "project_management_share",
+      "outcome_description": "Project management activities as a percentage of all activity, including engagement on issues boards, creation of project boards, and reviewing pull requests.",
+      "measurement_unit": "percentage points",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "new_repositories_explored",
+      "outcome_description": "The cumulative number of new repositories a developer engages with, measuring exploration behavior.",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "programming_language_exposure",
+      "outcome_description": "Cumulative exposure to new programming languages relative to baseline.",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "language_salary_premium",
+      "outcome_description": "The salary premium of programming languages developers experiment with, relative to baseline salary.",
+      "measurement_unit": "dollars per year",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "collaborators_per_repository",
+      "outcome_description": "The number of distinct collaborators a developer interacts with across all public repositories.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "critical_vulnerabilities_frequency",
+      "outcome_description": "The frequency of critical vulnerabilities in repositories, measured as a percentage reduction.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "copilot_adoption_days",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": 0.896,
+          "sd": null,
+          "se": 1.574
+        },
+        "copilot_ineligible": {
+          "mean": 2.146,
+          "sd": null,
+          "se": 0.593
+        }
+      },
+      "effect_in_outcome_units": "6.90 days (321% relative to the baseline)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F = 18.0",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "For the cross-section, we observe an increase of 6.90 days (321% relative to the baseline) overall in AI adoption"
+    },
+    {
+      "outcome_name": "copilot_adoption_share",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": 0.061,
+          "sd": null,
+          "se": 0.023
+        },
+        "copilot_ineligible": {
+          "mean": 0.1,
+          "sd": null,
+          "se": 0.013
+        }
+      },
+      "effect_in_outcome_units": "6.14 percentage points (61.2% relative to the baseline)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F = 17.8",
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "an increase of 6.14 percentage points (61.2% relative to the baseline) of developers that ever adopted Copilot"
+    },
+    {
+      "outcome_name": "copilot_usage_per_week",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": 0.125,
+          "sd": null,
+          "se": 0.008
+        },
+        "copilot_ineligible": {
+          "mean": 0.056,
+          "sd": null,
+          "se": 0.003
+        }
+      },
+      "effect_in_outcome_units": "0.12 days per week (223% relative to the baseline)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F = 435.7",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "For the panel, we find an increase of 0.12 days per week (223% relative to the baseline)"
+    },
+    {
+      "outcome_name": "copilot_exposure_per_week",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": 0.018,
+          "sd": null,
+          "se": 0.001
+        },
+        "copilot_ineligible": {
+          "mean": 0.008,
+          "sd": null,
+          "se": 0.0
+        }
+      },
+      "effect_in_outcome_units": "1.8 percentage points (214% relative to the baseline)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F = 557.5",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "and an exposure increase of 1.8 percentage points (214% relative to the baseline)"
+    },
+    {
+      "outcome_name": "coding_share",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": 0.054,
+          "sd": null,
+          "se": 0.002
+        },
+        "copilot_ineligible": {
+          "mean": 0.434,
+          "sd": null,
+          "se": 0.001
+        }
+      },
+      "effect_in_outcome_units": "5.4 percentage points (12.4% relative to the baseline)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1 (Eligible) = 0.054*** (0.002)",
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that coding activities as a percentage of all activity increase by 5.4 percentage points (12.4% relative to the baseline)"
+    },
+    {
+      "outcome_name": "project_management_share",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": -0.1,
+          "sd": null,
+          "se": 0.002
+        },
+        "copilot_ineligible": {
+          "mean": 0.402,
+          "sd": null,
+          "se": 0.001
+        }
+      },
+      "effect_in_outcome_units": "10 percentage points (24.9% relative to the baseline)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1 (Eligible) = -0.100*** (0.002)",
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "while project management as a percentage of all activity drops by 10 percentage points (24.9% relative to the baseline)"
+    },
+    {
+      "outcome_name": "new_repositories_explored",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": 1.753,
+          "sd": null,
+          "se": 0.075
+        },
+        "copilot_ineligible": {
+          "mean": 9.245,
+          "sd": null,
+          "se": 0.047
+        }
+      },
+      "effect_in_outcome_units": "15 new repositories on average",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1 (Eligible) = 1.753*** (0.075)",
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot eligible developers engage with an additional 15 new repositories on average relative to ineligible peers"
+    },
+    {
+      "outcome_name": "programming_language_exposure",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": 0.014,
+          "sd": null,
+          "se": 0.0
+        },
+        "copilot_ineligible": {
+          "mean": 11.691,
+          "sd": null,
+          "se": 0.0
+        }
+      },
+      "effect_in_outcome_units": "21.8% relative to the baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1 (Eligible) = 0.014*** (0.000)",
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Eligible developers increase their cumulative exposure to new programming languages by 21.8% relative to the baseline"
+    },
+    {
+      "outcome_name": "language_salary_premium",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "copilot_ineligible": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "$1,683 per year (1.4% higher salary relative to a baseline of $119,371)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Access to Copilot induces developers to experiment with programming languages that command a 1.4% higher salary relative to a baseline of $119,371 (an increase of $1,683)"
+    },
+    {
+      "outcome_name": "collaborators_per_repository",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": -17.251,
+          "sd": null,
+          "se": 0.346
+        },
+        "copilot_ineligible": {
+          "mean": 21.759,
+          "sd": null,
+          "se": 0.279
+        }
+      },
+      "effect_in_outcome_units": "17 fewer peers relative to a baseline of 22 (79.3% lower)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "1 (Eligible) = -17.251*** (0.346)",
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Eligible developers work in repositories with 17 fewer peers relative to a baseline of 22 (79.3% lower)"
+    },
+    {
+      "outcome_name": "critical_vulnerabilities_frequency",
+      "arm_comparison": "copilot_eligible vs copilot_ineligible",
+      "means_and_sds": {
+        "copilot_eligible": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "copilot_ineligible": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "33.9% lower",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the frequency of critical vulnerabilities is 33.9% lower for Copilot-eligible repositories, mitigating concern that AI-generated code weakens project-level cybersecurity"
+    }
+  ],
+  "notes": "This is a natural experiment study using regression discontinuity design (RDD) based on GitHub's top developer program for free Copilot access. The study examines task allocation effects among open source software developers over June 2022 to June 2023. The paper includes extensive robustness checks using alternative identification strategies (matching, differences-in-differences), bandwidth selections, and kernel choices. Results are presented for the full sample and stratified by developer ability. The study also examines mechanisms (independent vs. collaborative work, exploration vs. exploitation) and quality outcomes (cybersecurity, pull request acceptance rates). Key limitations: (1) The study observes only public repository contributions; approximately 45.5% of Copilot usage occurs in weeks with no observed public activity, suggesting substantial private repository activity is unmeasured. (2) Developers must self-check eligibility, potentially reducing adoption sharpness. (3) The exact ranking system is largely unknown to developers, creating uncertainty about eligibility. (4) GitHub Copilot is a code completion tool, not a chat tool like ChatGPT, and does not suggest improvements to pre-existing code. (5) Other AI coding tools were not widely available during the study period. Sample sizes: The study uses 187,489 distinct developers in the full panel and 50,032 unique top developers in the main analysis. Arm-level sample sizes are not explicitly stated in the quotes provided. The paper extrapolates findings to approximately 300,000 eligible maintainers, suggesting potential aggregate labor market value of roughly $468 million per year, though this is a back-of-the-envelope estimate that does not account for general equilibrium effects.",
+  "_paper_id": "Hoffmann et al. 2025"
+}

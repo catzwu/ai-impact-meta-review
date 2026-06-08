@@ -1,0 +1,244 @@
+{
+  "citation_key": "caplin_2024_ability_beliefs_calibration",
+  "authors": [
+    "Andrew Caplin",
+    "David J. Deming",
+    "Shangwen Li",
+    "Daniel J. Martin",
+    "Philip Marx",
+    "Ben Weidmann",
+    "Kadachi Jiada Ye"
+  ],
+  "title": "The ABC's of Who Benefits from Working with AI: Ability, Beliefs, and Calibration",
+  "year": 2024,
+  "venue": "NBER Working Paper",
+  "study_design_description": "A controlled experiment with 732 participants recruited from Prolific (376 in session 1, 356 in session 2). Participants were randomly assigned to treatment (n=493, working with AI) or control (n=239, never working with AI). In the treatment group, AI predictions were provided in blocks 2, 3, 5, and 8 of the 160 incentivized rounds, while control blocks allowed baseline ability estimation. General cognitive ability was measured using a short form of the Ravens matrices test.",
+  "primary_task_description": "Participants were presented with images of human faces and asked to report the probability (0-100 slider) that the individual was over 21 years old at the time the image was taken. Images were taken between 2010 and 2014, with half depicting individuals under 21 and half over 21. Treatment group participants in treated blocks were also shown an \"AI Assistant guess\" (a percentage between 0 and 100), described as more accurate than the average human but worse than the most skilled human. Each round had a 60-second time limit. Participants completed 4 unincentivized practice rounds followed by 160 incentivized rounds divided into eight blocks of 20 rounds each.",
+  "population_description": "732 participants recruited from Prolific, an online experimental platform. Participants were required to be at least 18 years old and U.S. residents.",
+  "arms": [
+    {
+      "arm_name": "ai_assisted",
+      "description": "Participants randomly assigned to work with AI assistance. AI predictions were provided in blocks 2, 3, 5, and 8 (treated blocks), which correspond to 80 of the 160 incentivized rounds. Participants were not told in advance that they would receive AI predictions.",
+      "n": 493
+    },
+    {
+      "arm_name": "control",
+      "description": "Participants randomly assigned to never work with AI assistance. These participants completed all 160 incentivized rounds without any AI predictions.",
+      "n": 239
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "accuracy",
+      "outcome_description": "Ability to accurately identify whether an individual in a photograph was over 21 years old. Defined as a random variable Ri = 1 if |Bi \u2212 S| < 0.5, 0.5 if Bi = 0.5, 0 else, where Bi is the individual's belief and S is the true state. Individual ability is the expected accuracy of such choices: Ai = E[Ri].",
+      "measurement_unit": "percentage points",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "calibration",
+      "outcome_description": "Belief calibration, defined as the negative absolute value of net confidence: Ci = \u2212|E[Ri \u2212 Ki]|, where Ki = max{Bi, 1 \u2212 Bi} is the individual's confidence over each image and Ri is correctness. Net confidence Ni = E[Ki \u2212 Ri] is the expected difference between confidence and correctness.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "performance_inequality",
+      "outcome_description": "Interquartile range (IQR) of performance across participants, measuring dispersion in human performance.",
+      "measurement_unit": "IQR units",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_recommendation_adherence",
+      "outcome_description": "Proportion of times subjects repeat the AI recommendation exactly (within a percentage point).",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 65.5,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "6.9 percentage points increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AI improves participants' ability to accurately identify an image by 6.9 percentage points, an increase of more than 10 percent relative to the control mean of 65.5 percent."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "ability interaction with ai_assistance",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u22121.6 percentage points per standard deviation increase in accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "A one standard deviation increase in accuracy decreases the impact of AI assistance by 1.6 percentage points. Both interaction terms are statistically significant at the less than five percent level."
+    },
+    {
+      "outcome_name": "calibration",
+      "arm_comparison": "calibration interaction with ai_assistance",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.4 percentage points per standard deviation increase in calibration, or about 20 percent of the total treatment effect of 6.9 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "A one standard deviation increase in calibration increase the impact of AI assistance by 1.4 percentage points, or about 20 percent of the total treatment effect of 6.9 percentage points. Both interaction terms are statistically significant at the less than five percent level."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "low_iq vs high_iq with ai_assistance",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Similar to the accuracy measure, we find that low IQ participants benefit more from AI help."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "ai_assistant_alone vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The AI has ability in the top 6% of human performers working alone, and working with the AI significantly improves average human performance in our task."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "ai_assisted vs perfect_ai_adherence",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "68% of treated subjects still performing worse than if they had followed the AI recommendations wholesale",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, there remains dispersion in human performance when working with AI, with 68% of treated subjects still performing worse than if they had followed the AI recommendations wholesale."
+    },
+    {
+      "outcome_name": "calibration",
+      "arm_comparison": "control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "79.5% of humans over-confident, with individual confidence exceeding accuracy by 10.6 percentage points on average",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "There is sizeable dispersion in humans' net confidence when working alone, with 79.5% of humans over-confident in their own ability, and with individual confidence exceeding accuracy by 10.6 percentage points on average."
+    },
+    {
+      "outcome_name": "ai_recommendation_adherence",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "ai_assisted": {
+          "mean": 6,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 2,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Subjects repeat the AI recommendation exactly (i.e., within a percentage point) 6% of the time with AI and 2% of the time without AI."
+    },
+    {
+      "outcome_name": "performance_inequality",
+      "arm_comparison": "control",
+      "means_and_sds": {
+        "control": {
+          "mean": 5.84,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "IQR of 5.84",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We estimate an IQR of 5.84 when participants work without AI, compared to an IQR of 3.86 with AI, representing a 34% reduction in performance inequality from AI assistance."
+    },
+    {
+      "outcome_name": "performance_inequality",
+      "arm_comparison": "ai_assisted",
+      "means_and_sds": {
+        "ai_assisted": {
+          "mean": 3.86,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "IQR of 3.86, representing a 34% reduction in performance inequality from AI assistance",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We estimate an IQR of 5.84 when participants work without AI, compared to an IQR of 3.86 with AI, representing a 34% reduction in performance inequality from AI assistance."
+    },
+    {
+      "outcome_name": "performance_inequality",
+      "arm_comparison": "ai_assisted_with_perfect_calibration",
+      "means_and_sds": {
+        "ai_assisted_perfect_calibration": {
+          "mean": 2.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "IQR of 2.30, representing a 61% reduction in performance inequality relative to baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "With AI assistance, perfect calibration reduces the IQR to 2.30, which represents a 61% reduction in performance inequality relative to baseline (Scenario 1)."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "low_ability_accurate_beliefs vs high_ability_miscalibrated_beliefs with ai_assistance",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Participants with low ability but accurate beliefs benefit nearly 10 percentage points from AI assistance; participants with high accuracy but miscalibrated beliefs benefit the least",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Participants with low ability but accurate beliefs benefit the most \u2013 nearly 10 percentage points \u2013 from AI assistance. By contrast, participants with high accuracy but miscalibrated beliefs benefit the least."
+    }
+  ],
+  "notes": "Study is preregistered (https://aspredicted.org/pm63-gvdv.pdf). The experiment uses a within-subjects design where treatment group participants receive AI assistance in blocks 2, 3, 5, and 8 (treated blocks) while blocks 1, 4, 6, and 7 serve as control blocks, allowing baseline ability estimation. Time limit of 60 seconds per round was reached in only 0.23% of subject-round pairs (275 out of 117,120 rounds); these responses were excluded from analysis, leaving 116,845 responses. Authors address measurement error concerns using ORIV methodology and show results are robust to alternative specifications of ability and calibration measures (AUC and Grether functional form). The counterfactual analysis indicates that if everyone were perfectly calibrated, working with AI would reduce performance inequality by an additional 27 percentage points beyond the 34 percentage point reduction from AI assistance alone.",
+  "_paper_id": "Caplin et al. 2023"
+}

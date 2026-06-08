@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is 'creating advertisements for an iPhone protective case' \u2014 a creative content generation activity. While the study manipulates AI assistance (ghostwriter, feedback, or none), the core work being performed by participants is creative ad copywriting. This maps most directly to 'Thinking Creatively' (WA-13), which encompasses developing original ideas and creative content. The task is narrowly defined (writing ad copy) rather than representing the full scope of a marketing occupation, making a work activity mapping more appropriate than an occupational mapping.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-30",
+      "onet_label": "Documenting/Recording Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "27-3031.00",
+      "onet_label": "Public Relations Specialists"
+    }
+  ],
+  "citation_key": "chen_2024_llm_creative"
+}

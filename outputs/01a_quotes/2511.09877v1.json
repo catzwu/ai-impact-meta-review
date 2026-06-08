@@ -1,0 +1,110 @@
+{
+  "citation_key": "wang_2025_ai_writing_guidance",
+  "authors": [
+    "Fangyan Wang",
+    "Sai Liang",
+    "Zaiyan Wei"
+  ],
+  "title": "AI in the Pen: How Real-time AI Writing Guidance Shapes Online Reviews",
+  "year": 2025,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "To test our research hypotheses, we follow recent developments in the literature (Han et al., 2022; Burtch et al., 2024, Eichenbaum et al., 2024, Goldberg et al., 2024) and employ a differences-in-differences approach that compares observations from calendar year 2023 (the inception of Yelp's AI writing guidance) with the previous year 2022 in seven major cities in the United States: Atlanta, Chicago, Houston, Los Angeles, Minneapolis, New York, and San Francisco, representing a mix of geographic areas across the country.",
+      "To account for holiday surges in review activity, we focus on reviews generated from the second week of January to the third week of November in both years, excluding the holiday seasons.",
+      "We follow the prior literature on online reviews and conduct our analyses at the business (Deng et al., 2022; Jiang et al., 2023) and review levels (Khern-am-nuai et al., 2018; Deng et al., 2022), aiming to provide a holistic view of the impacts.",
+      "Yelp's introduction of AI writing guidance serves as a cross-sectional shock affecting all restaurant reviews on the platform; we, therefore, employ a panel difference estimator as outlined by Goldberg et al. (2024) to compare review outcomes from year 2023 to those from year 2022.",
+      "The panel difference estimator is similar to a differences-in-differences approach, relying on the assumption that review volumes and characteristics exhibit seasonal stability from one year to the next."
+    ],
+    "task": [
+      "We examine Yelp's AI writing guidance adopted in April 2023, a novel human-AI collaboration in content creation.",
+      "Yelp's AI writing guidance is designed to reduce reviewers' writer's block by providing interactive prompts\u2014specifically, \"Food,\" \"Service,\" and \"Ambiance.\"",
+      "When drafting a review, users can see these three topics displayed above their text box. Each topic helps users track what they have covered and reminds them of additional aspects they may wish to address.",
+      "Once a topic is included in the review, it turns green with a checkmark in real time.",
+      "However, users are not required to cover all three topics, thus highlighting all three keywords, so that they can post their reviews. In other words, the list of keywords serves primarily as a reminder rather than a mandatory requirement."
+    ],
+    "population": [
+      "Our study examines Yelp, one of the largest user-generated review platforms in the United States. As of 2023, Yelp had hosted almost 265.29 million reviews in the United States.",
+      "We cover reviews up to that date from seven major cities in the United States: Atlanta, Chicago, Houston, Los Angeles, Minneapolis, New York, and San Francisco.",
+      "To ensure our analysis captures meaningful review activity, we focus on restaurants that maintain an active presence on the platform. Many restaurants receive few or no reviews over extended periods of time, making it difficult to assess trends in customer engagement and review dynamics.",
+      "To mitigate this issue and ensure a consistent level of activity in our sample, we restrict our analysis to active restaurants with at least one review posted in 2022.",
+      "The final dataset includes 44,019 restaurants and 1,559,528 reviews."
+    ],
+    "arms": [
+      "We use observations from 2023 as the \"treatment\" group and observations from one year prior as the \"control\" group.",
+      "\ud835\udc47\ud835\udc5f\ud835\udc52\ud835\udc4e\ud835\udc61\ud835\udc61 is a dummy indicating year 2023, and \ud835\udc43\ud835\udc5c\ud835\udc60\ud835\udc61\ud835\udc64 is a dummy indicating weeks after April 25th (for both years)."
+    ],
+    "outcome_definitions": [
+      "Weekly Review Volume: the number of reviews posted per week at the restaurant level",
+      "Weekly Review Length: the average number of characters per review, based only on English-language reviews",
+      "Weekly Review Helpfulness Votes: the number of helpfulness votes received per week at the restaurant level",
+      "Length: the number of characters per review",
+      "\ud835\udc39\ud835\udc5c\ud835\udc5c\ud835\udc51\ud835\udc60\ud835\udc50\ud835\udc5c\ud835\udc5f\ud835\udc52: the proportion of review content attributed to the food topic",
+      "\ud835\udc46\ud835\udc52\ud835\udc5f\ud835\udc63\ud835\udc56\ud835\udc50\ud835\udc52\ud835\udc60\ud835\udc50\ud835\udc5c\ud835\udc5f\ud835\udc52: the proportion of review content attributed to the service topic",
+      "\ud835\udc34\ud835\udc5a\ud835\udc4f\ud835\udc56\ud835\udc4e\ud835\udc5b\ud835\udc50\ud835\udc52\ud835\udc60\ud835\udc50\ud835\udc5c\ud835\udc5f\ud835\udc52: the proportion of review content attributed to the ambiance topic",
+      "\ud835\udc39\ud835\udc5c\ud835\udc5c\ud835\udc51\ud835\udc59\ud835\udc52\ud835\udc5b\ud835\udc54\ud835\udc61\u210e: the amount of text devoted to food topics",
+      "\ud835\udc46\ud835\udc52\ud835\udc5f\ud835\udc63\ud835\udc56\ud835\udc50\ud835\udc52\ud835\udc59\ud835\udc52\ud835\udc5b\ud835\udc54\ud835\udc61\u210e: the amount of text devoted to service topics",
+      "\ud835\udc34\ud835\udc5a\ud835\udc4f\ud835\udc56\ud835\udc4e\ud835\udc5b\ud835\udc50\ud835\udc52\ud835\udc59\ud835\udc52\ud835\udc5b\ud835\udc54\ud835\udc61\u210e: the amount of text devoted to ambiance topics",
+      "\ud835\udc47\ud835\udc5c\ud835\udc5d\ud835\udc56\ud835\udc50\ud835\udc38\ud835\udc5b\ud835\udc61\ud835\udc5f\ud835\udc5c\ud835\udc5d\ud835\udc66: a measure of textual complexity using the Shannon index of the review's topic features",
+      "Gunning Fog Index: estimates the years of formal education needed to understand a text, based on sentence length and the proportion of complex words",
+      "SMOG Index: estimates the grade level of a text based on the frequency of polysyllabic words",
+      "Lexical Density: measures the proportion of content words (nouns, verbs, adjectives, adverbs) relative to total words"
+    ],
+    "statistical_results": [
+      "Numerically, we estimate that reviews written with the AI writing guidance were on average about 4.8% longer, while the number of reviews decreased by roughly 2.5%.",
+      "Quantitatively, reviews posted on Yelp received, on average, 3.7% fewer helpfulness votes under AI writing guidance.",
+      "Results are reported in Table 2. Results reported in columns (1) \u2013 (3) indicate that the introduction of AI writing guidance significantly increased the likelihood that users discussed service, while simultaneously reducing the relative emphasis on food.",
+      "Columns (4) \u2013 (6) further reveal that the amount of text devoted to all topics increased substantially.",
+      "Table 3 reports the regression results, which indicate that the AI writing guidance significantly increased review length while decreasing the volume of reviews.",
+      "Treat*Post 0.048*** (0.004) for log(Lengths) in Table 3, Column 1",
+      "Treat*Post -0.025*** (0.002) for log(Review Volume) in Table 3, Column 2",
+      "Treat*Post 0.006*** (0.001) for log(Service Score) in Table 2, Column 1",
+      "Treat*Post -0.005*** (0.001) for log(Food Score) in Table 2, Column 2",
+      "Treat*Post -0.001 (0.001) for log(Ambiance Score) in Table 2, Column 3",
+      "Treat*Post 0.055*** (0.008) for log(Service Lengths) in Table 2, Column 4",
+      "Treat*Post 0.020** (0.006) for log(Food Lengths) in Table 2, Column 5",
+      "Treat*Post 0.033*** (0.006) for log(Ambiance Lengths) in Table 2, Column 6",
+      "Treat*Post -0.037*** (0.004) for log(Helpfulness Votes) in Table 6, Column 1",
+      "Treat*Post 0.002** (0.0007) for log(Entropy) in Table 6, Column 2",
+      "For less experienced users (Panel A of Tables 4 and 5), Treat*Post 0.009*** (0.001) for log(Service Score)",
+      "For less experienced users, Treat*Post -0.008*** (0.001) for log(Food Score)",
+      "For less experienced users, Treat*Post -0.001 (0.001) for log(Ambiance Score)",
+      "For less experienced users, Treat*Post 0.074*** (0.009) for log(Service Lengths)",
+      "For less experienced users, Treat*Post 0.004 (0.007) for log(Food Lengths)",
+      "For less experienced users, Treat*Post 0.028*** (0.007) for log(Ambiance Lengths)",
+      "For experienced users (Panel B of Tables 4 and 5), Treat*Post -0.001 (0.001) for log(Service Score)",
+      "For experienced users, Treat*Post -0.003** (0.001) for log(Food Score)",
+      "For experienced users, Treat*Post 0.004*** (0.001) for log(Ambiance Score)",
+      "For experienced users, Treat*Post 0.018 (0.014) for log(Service Lengths)",
+      "For experienced users, Treat*Post 0.024** (0.009) for log(Food Lengths)",
+      "For experienced users, Treat*Post 0.062*** (0.011) for log(Ambiance Lengths)",
+      "For less experienced users, Treat*Post 0.046*** (0.004) for log(Lengths) in Table 5, Panel A, Column 1",
+      "For less experienced users, Treat*Post -0.022*** (0.002) for log(Review Volume) in Table 5, Panel A, Column 2",
+      "For experienced users, Treat*Post 0.028*** (0.005) for log(Lengths) in Table 5, Panel B, Column 1",
+      "For experienced users, Treat*Post -0.008*** (0.002) for log(Review Volume) in Table 5, Panel B, Column 2",
+      "For less experienced users (Panel A of Table 7), Treat*Post -0.023*** (0.003) for log(Helpfulness Votes)",
+      "For less experienced users, Treat*Post 0.001 (0.001) for log(Entropy)",
+      "For experienced users (Panel B of Table 7), Treat*Post -0.072*** (0.007) for log(Helpfulness Votes)",
+      "For experienced users, Treat*Post 0.003*** (0.001) for log(Entropy)",
+      "Treat*Post -0.008*** (0.001) for log(Gunning Fog Index) in Table 9, Column 1",
+      "Treat*Post 0.039* (0.003) for log(SMOG Index) in Table 9, Column 2",
+      "Treat*Post -0.004*** (0.000) for log(Lexical Density) in Table 9, Column 3",
+      "In Table C1, most coefficients are not statistically significant in pre-treatment periods. In particular, only six out of 70 coefficients (for the pretreatment dummies) are statistically sound at a significance level of 95% or higher.",
+      "The results in Appendix F remain consistent with our main analysis, confirming the robustness of our findings.",
+      "The estimation results, presented in Appendix G, are consistent with our main analysis.",
+      "The estimation results, presented in Appendix H, are consistent with our main analysis, confirming the robustness of our findings.",
+      "The estimation results, reported in Appendix I, align with our main analysis and support the robustness of our findings."
+    ],
+    "ambiguity_or_caveats": [
+      "Our sample period excludes the launch of ChatGPT in November 2022. The availability of ChatGPT applies to all restaurant reviews in 2023 (our \"treatment\" group), both before and after the introduction of the AI writing guidance. The DID approach employed in this research will minimize the impacts of ChatGPT.",
+      "To further alleviate the concern, we conduct two robustness checks, in which we use Google reviews of the same set of restaurants in 2023 as the \"control\" group or incorporate time trends. All results are consistent with the main findings.",
+      "Our analysis focuses on the immediate, post-adoption phase, capturing user behaviors and textual outcomes soon after the AI writing guidance was introduced on Yelp.",
+      "Helpfulness votes represent the cumulative number of votes a review has received, making them a non-decreasing measure over time. However, our dataset does not include historical vote trends. Consequently, older reviews are likely to have more helpfulness votes than more recent ones, as they have had more time to accumulate votes.",
+      "Unlike Yelp, Google allows users to submit ratings without accompanying text, potentially leading to differences in textual characteristics between the two platforms. Therefore, for the cross-platform analysis conducted as a robustness check, we focus solely on review volume and helpfulness votes, excluding textual characteristics.",
+      "Although our evidence comes from online reviews, the mechanisms can arguably generalize to other AI-augmented authoring contexts where humans remain primary writers."
+    ]
+  },
+  "notes": "This is an empirical study examining the effects of Yelp's AI writing guidance feature introduced in April 2023. The paper uses a differences-in-differences design comparing 2023 (treatment year) with 2022 (control year) across seven major U.S. cities. The analysis is conducted at multiple levels: restaurant level (main analysis), review level, and review writer level. The study employs topic modeling (LDA) to measure topic coverage and complexity, and uses readability indices (Gunning Fog, SMOG, Lexical Density) to assess review quality. Heterogeneous effects are examined by user experience level (experienced vs. less experienced users, classified by Yelp Elite badges). Multiple robustness checks are conducted including relative-time models, cross-platform analysis with Google reviews, and analyses with/without detrending and city-specific time trends.",
+  "_paper_id": "2511.09877v1",
+  "_source_pdf": "papers/2511.09877v1.pdf"
+}

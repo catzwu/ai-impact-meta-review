@@ -1,0 +1,97 @@
+{
+  "citation_key": "caplin_2024_ability_beliefs_calibration",
+  "authors": [
+    "Andrew Caplin",
+    "David J. Deming",
+    "Shangwen Li",
+    "Daniel J. Martin",
+    "Philip Marx",
+    "Ben Weidmann",
+    "Kadachi Jiada Ye"
+  ],
+  "title": "The ABC's of Who Benefits from Working with AI: Ability, Beliefs, and Calibration",
+  "year": 2024,
+  "venue": "NBER Working Paper",
+  "quotes": {
+    "study_design": [
+      "We use a controlled experiment to show that ability and belief calibration jointly determine the benefits of working with Artificial Intelligence (AI).",
+      "We ask 732 experimental participants to report the likelihood that 160 different people in photographs are over 21 years of age.",
+      "Some participants are randomly assigned an AI assistant that provides them with an algorithmic confidence score.",
+      "Treatment group participants receive AI assistance for only some images, which allows us to estimate baseline ability at the task.",
+      "We also measure general cognitive ability by administering a short form of the Ravens matrices test.",
+      "In a random subset of task instances we call the control block, all individuals work without AI assistance.",
+      "In the remaining subset of task instances we call the treated block, we randomly assign as treatment Ti \u2208 {0, 1} whether human i worked with or without AI assistance.",
+      "We recruited 732 participants over two sessions, with 376 participants in the first session and 356 in the second session.",
+      "Of those, 493 were assigned to the treatment of working with AI, and 239 were assigned to the control of never working with the AI."
+    ],
+    "task": [
+      "In each round of our experiment, participants were presented with an image of a human face and were asked to report the probability that the individual was over 21 years old at the time the image was taken.",
+      "Participants were informed that all images were taken between 2010 and 2014, with half of the images depicting individuals who were under 21 years old and the other half depicting individuals over 21 at the time the image was taken.",
+      "In half of the rounds, participants in the treatment group were also shown an \"AI Assistant guess,\" which was an AI prediction of whether the individual was over 21 (a percentage between 0 and 100).",
+      "Participants were told that the AI Assistant guesses were more accurate than the average human, but worse than the most skilled human.",
+      "After the experimental instructions, participants completed four unincentivized practice rounds.",
+      "Participants were not provided with any feedback about their choices or the true age of the individual during the practice rounds.",
+      "After the practice rounds, participants faced 160 incentivized rounds, divided into eight blocks of 20 rounds each.",
+      "In these rounds, participants were provided with a slider bar that ranged from 0 to 100 for reporting the probability that the person in the image was over 21 years old.",
+      "Participants could click anywhere on the bar to select a probability and adjust it before clicking the submit button to record their choice and proceed to the next round.",
+      "They could not go back to previous rounds once the submit button was pressed, and they were given a time limit of 60 seconds for each round.",
+      "For participants in the treatment group, AI predictions were provided in blocks 2, 3, 5, and 8, which correspond to the treated blocks.",
+      "Participants in the treatment group were not told in advance that they would be given AI predictions.",
+      "After completing the first block of rounds, participants in the treatment group were told that they would be shown an AI Assistant's guess for the upcoming block of 20 rounds (the first treated block).",
+      "Following the 160 rounds, participants completed two additional tasks.",
+      "The first task was to complete 14 questions from the Raven's Progressive Matrices test.",
+      "The second task was a brief survey in which participants were asked to describe their experience in the experiment, indicate the point at which they felt fatigue during the experiment, and provide any other feedback."
+    ],
+    "population": [
+      "We recruited participants from Prolific, a popular platform for conducting online experiments.",
+      "Prolific requires participants to be at least 18 years old, and we further restricted participants to be U.S. residents.",
+      "We recruited 732 participants over two sessions, with 376 participants in the first session and 356 in the second session.",
+      "Of those, 493 were assigned to the treatment of working with AI, and 239 were assigned to the control of never working with the AI."
+    ],
+    "arms": [
+      "Some participants are randomly assigned an AI assistant that provides them with an algorithmic confidence score.",
+      "Participants in the control group were not shown any AI Assistant predictions during the 160 incentivized rounds.",
+      "For participants in the treatment group, AI predictions were provided in blocks 2, 3, 5, and 8, which correspond to the treated blocks.",
+      "Of those, 493 were assigned to the treatment of working with AI, and 239 were assigned to the control of never working with the AI."
+    ],
+    "outcome_definitions": [
+      "For ability, define a random variable summarizing whether beliefs would have induced correct choices at a decision threshold of 50%: Ri = 1 if |Bi \u2212 S| < 0.5, 0.5 if Bi = 0.5, 0 else, and define the individual's ability as the expected accuracy of such choices: Ai = E[Ri]",
+      "For calibration, define a random variable summarizing the confidence of beliefs over each image: Ki = max{Bi, 1 \u2212 Bi}, and define the individual's net confidence as the expected difference between their confidence and correctness: Ni = E[Ki \u2212 Ri]",
+      "We capture this notion by defining the individual's calibration as the negative absolute value of their net confidence: Ci = \u2212|E[Ri \u2212 Ki]|",
+      "The treatment effect Yi(1) \u2212 Yi(0) is the change in performance for human i from working with AI.",
+      "We estimate individual performance Yi for each individual using a plug-in estimator of (1) in the treated block of tasks."
+    ],
+    "statistical_results": [
+      "AI improves participants' ability to accurately identify an image by 6.9 percentage points, an increase of more than 10 percent relative to the control mean of 65.5 percent.",
+      "A one standard deviation increase in accuracy decreases the impact of AI assistance by 1.6 percentage points.",
+      "A one standard deviation increase in calibration increase the impact of AI assistance by 1.4 percentage points, or about 20 percent of the total treatment effect of 6.9 percentage points.",
+      "Both interaction terms are statistically significant at the less than five percent level.",
+      "Similar to the accuracy measure, we find that low IQ participants benefit more from AI help.",
+      "The AI has ability in the top 6% of human performers working alone, and working with the AI significantly improves average human performance in our task.",
+      "However, there remains dispersion in human performance when working with AI, with 68% of treated subjects still performing worse than if they had followed the AI recommendations wholesale.",
+      "There is sizeable dispersion in humans' net confidence when working alone, with 79.5% of humans over-confident in their own ability, and with individual confidence exceeding accuracy by 10.6 percentage points on average.",
+      "Subjects repeat the AI recommendation exactly (i.e., within a percentage point) 6% of the time with AI and 2% of the time without AI.",
+      "We estimate an IQR of 5.84 when participants work without AI, compared to an IQR of 3.86 with AI, representing a 34% reduction in performance inequality from AI assistance.",
+      "We estimate an IQR of 5.80 without AI.",
+      "With AI assistance, perfect calibration reduces the IQR to 2.30, which represents a 61% reduction in performance inequality relative to baseline (Scenario 1).",
+      "Our counterfactual implies that if everyone were perfectly calibrated, working with AI would reduce performance inequality by an additional 27 percentage points beyond the 34 percentage point reduction from AI assistance alone.",
+      "Participants with low ability but accurate beliefs benefit the most \u2013 nearly 10 percentage points \u2013 from AI assistance.",
+      "By contrast, participants with high accuracy but miscalibrated beliefs benefit the least.",
+      "In line with our pilots, this time limit was only reached in 0.23% of subject-round pairs in our experiment (275 out of 117,120 rounds).",
+      "We exclude these responses from subsequent analyses, leaving 116,845 responses."
+    ],
+    "ambiguity_or_caveats": [
+      "A remaining potential concern with our results is the presence of measurement error in our skills estimates.",
+      "In a univariate setting, this would manifest as simple attenuation bias working against finding skill effects.",
+      "However, in our multivariate context, Gillen, Snowberg and Yariv (2019) show that the attenuation bias in one covariate (in our case, individual ability Ai) could lead to a spurious effect of another covariate (calibration Ci) when the latter is correlated and thus picks up on the remnants of the true former effect.",
+      "If our measure of calibration were picking up on the effects of imperfectly measured ability, we would also expect to observe this spurious effect among control participants who never worked with AI; however, the coefficient on standardized calibration alone is economically and statistically insignificant across specifications in Table 1.",
+      "A final possibility is that our results depend on our choice of performance measures.",
+      "To avoid confusion, we excluded images in which the individual could have been exactly 21 years old.",
+      "Participants were also not provided feedback during the incentivized rounds.",
+      "A natural set of questions that we leave to future work is if, how, and for whom individual calibration can be trained as a skill for the collaborative nature of work with AI."
+    ]
+  },
+  "notes": "This is an experimental study with a preregistered design (https://aspredicted.org/pm63-gvdv.pdf). The experiment involves a controlled comparison between participants working with and without AI assistance on an age classification task. The paper's main contribution is identifying belief calibration as a key moderator of AI assistance benefits. The authors conduct a counterfactual analysis showing that eliminating miscalibration would nearly double the inequality-reducing effects of AI. Results are robust to alternative specifications of ability and calibration measures (AUC and Grether functional form), and the authors address measurement error concerns using ORIV methodology.",
+  "_paper_id": "Caplin et al. 2023",
+  "_source_pdf": "papers/Caplin et al. 2023.pdf"
+}

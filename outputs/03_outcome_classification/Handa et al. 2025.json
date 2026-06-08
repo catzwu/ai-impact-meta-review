@@ -1,0 +1,42 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "occupational_task_coverage",
+      "category": "other",
+      "operationalization": "Fraction of each occupation's O*NET tasks that appeared in Claude.ai conversations, calculated from mapped conversation data"
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "category": "other",
+      "operationalization": "Percentage of occupations with tasks appearing in \u22655 unique user accounts and \u226515 conversations"
+    },
+    {
+      "outcome_name": "collaboration_pattern",
+      "category": "other",
+      "operationalization": "Classification of conversations into five patterns (automative vs. augmentative) based on workflow integration, expressed as percentage distribution"
+    },
+    {
+      "outcome_name": "occupational_skill_usage",
+      "category": "other",
+      "operationalization": "Frequency count of occupational skills from O*NET exhibited by Claude in each conversation"
+    },
+    {
+      "outcome_name": "task_classification_accuracy",
+      "category": "quality",
+      "operationalization": "Percentage of conversations judged by human raters as assigned to an acceptable O*NET task at top, middle, and base aggregation levels"
+    },
+    {
+      "outcome_name": "optimal_label_assignment",
+      "category": "quality",
+      "operationalization": "Percentage of conversations assigned to their optimal O*NET label as assessed by human raters"
+    },
+    {
+      "outcome_name": "correlation_direct_vs_cluster",
+      "category": "other",
+      "operationalization": "Pearson, Spearman, and Kendall's Tau-b correlations between occupational usage via direct assignment versus cluster-based assignment"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "task_classification_accuracy",
+  "citation_key": "handa_2025_economic_tasks"
+}

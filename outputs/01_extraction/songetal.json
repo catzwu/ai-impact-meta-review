@@ -1,0 +1,488 @@
+{
+  "citation_key": "song_2024_copilot_oss",
+  "authors": [
+    "Fangchen Song",
+    "Ashish Agarwal",
+    "Wen Wen"
+  ],
+  "title": "The Impact of Generative AI on Collaborative Open-Source Software Development: Evidence from GitHub Copilot",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": "Using GitHub's proprietary Copilot usage data combined with public OSS project data, the study analyzes project-month-level outcomes from January 2021 to December 2022. The treatment group consists of projects where Copilot was supported by local coding environments and used by developers, while the control group includes projects where Copilot was not used throughout the sample period. The analysis employs the Generalized Synthetic Control Method (GSCM) to estimate treatment effects, with validation through different samples, matching techniques, instrumental variable estimation, and additional robustness checks.",
+  "primary_task_description": "The study investigates how GitHub Copilot, an AI pair programmer, influences project-level code contributions and coordination time of open-source software projects on GitHub, as well as how its effect varies among core versus peripheral developers. In OSS settings, developers work asynchronously and coordinate without formal managerial structures. Core developers have write access and full control over projects, while peripheral developers' code must be reviewed by core developers for acceptance.",
+  "population_description": "The sample includes OSS projects with non-zero size, at least one specified programming language and license, a description, and no mirror or personal store designation. Projects must have at least one code submission every six months from 2021 to 2022 and at least one additional activity each year. The analysis focuses on projects with at least three developers contributing each month. The final sample includes 7,637 projects, with 4,491 in the treatment group and 3,146 in the control group.",
+  "arms": [
+    {
+      "arm_name": "copilot_treatment",
+      "description": "Projects with developers who used Copilot and one of the supported IDEs",
+      "n": 4491
+    },
+    {
+      "arm_name": "control",
+      "description": "Projects using unsupported IDEs and not using Copilot",
+      "n": 3146
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "project_level_code_contributions",
+      "outcome_description": "Total number of pull requests (PRs) submitted to each project that were eventually merged. Merged PRs reflect successful code changes eventually incorporated into the OSS projects.",
+      "measurement_unit": "number of merged PRs",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "coordination_time",
+      "outcome_description": "Average duration between the submission and acceptance of each PR, computed as the average time to merge a PR for a project in a month",
+      "measurement_unit": "days",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "developer_coding_participation",
+      "outcome_description": "Number of unique developers whose PRs have been merged into the primary codebase",
+      "measurement_unit": "count of developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "individual_productivity",
+      "outcome_description": "Average number of merged PRs per developer",
+      "measurement_unit": "merged PRs per developer",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_discussion_volume",
+      "outcome_description": "Average number of total comments per merged PR",
+      "measurement_unit": "comments per merged PR",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_discussion_participation",
+      "outcome_description": "Average number of unique developers who left comments per merged PR",
+      "measurement_unit": "developers per merged PR",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_discussion_intensity",
+      "outcome_description": "Average number of comments per developer per merged PR",
+      "measurement_unit": "comments per developer per merged PR",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "prs_merged_within_one_day",
+      "outcome_description": "Proportion of PRs merged within one day",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "prs_merged_within_three_days",
+      "outcome_description": "Proportion of PRs merged within three days",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "prs_merged_within_ten_days",
+      "outcome_description": "Proportion of PRs merged within ten days",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "core_developer_pr_share",
+      "outcome_description": "Proportion of merged PRs from core developers",
+      "measurement_unit": "proportion",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "peripheral_developer_merge_time",
+      "outcome_description": "Relative average merge time for peripheral developers",
+      "measurement_unit": "percent change",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "project_level_code_contributions",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.9% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot use increases project-level code contributions by 5.9%."
+    },
+    {
+      "outcome_name": "coordination_time",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "8% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot use also leads to an increase in coordination time by 8% due to more code discussions."
+    },
+    {
+      "outcome_name": "developer_coding_participation",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.4% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot increased the number of developers whose PRs have been merged by 3.4%."
+    },
+    {
+      "outcome_name": "individual_productivity",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot use is associated with a 2.1% increase in average number of merged PRs per developer in active projects."
+    },
+    {
+      "outcome_name": "code_discussion_volume",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.5% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot adoption is associated with a 6.5% increase in code discussion volume per merged PR."
+    },
+    {
+      "outcome_name": "code_discussion_participation",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.7% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot impacts code discussion participation, showing a significant 1.7% increase in code discussion participation."
+    },
+    {
+      "outcome_name": "code_discussion_intensity",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.9% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Projects using Copilot show a 5.9% increase in code discussion intensity per developer."
+    },
+    {
+      "outcome_name": "prs_merged_within_one_day",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.5% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot adoption is associated with a 3.5% increase in PRs merged within one day, a 4.1% increase in PRs merged within three days, and a 5.1% increase in PRs merged within ten days."
+    },
+    {
+      "outcome_name": "prs_merged_within_three_days",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot adoption is associated with a 3.5% increase in PRs merged within one day, a 4.1% increase in PRs merged within three days, and a 5.1% increase in PRs merged within ten days."
+    },
+    {
+      "outcome_name": "prs_merged_within_ten_days",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Copilot adoption is associated with a 3.5% increase in PRs merged within one day, a 4.1% increase in PRs merged within three days, and a 5.1% increase in PRs merged within ten days."
+    },
+    {
+      "outcome_name": "core_developer_pr_share",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.054 or 6.5% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The proportion of merged PRs from core developers significantly increased by 0.054 or 6.5%."
+    },
+    {
+      "outcome_name": "peripheral_developer_merge_time",
+      "arm_comparison": "copilot_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.085 or 5.4% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced an increase of 0.085 or 5.4% in their relative average merge time."
+    },
+    {
+      "outcome_name": "project_level_code_contributions",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following Copilot adoption, core developers experienced a 6.1% increase in project-level code contributions, a 6.7% increase in coordination time, and increases in timely integrated code contributions within one, three, and ten days by 4.4%, 4.8%, and 5.8%, respectively."
+    },
+    {
+      "outcome_name": "coordination_time",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.7% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following Copilot adoption, core developers experienced a 6.1% increase in project-level code contributions, a 6.7% increase in coordination time, and increases in timely integrated code contributions within one, three, and ten days by 4.4%, 4.8%, and 5.8%, respectively."
+    },
+    {
+      "outcome_name": "prs_merged_within_one_day",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.4% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following Copilot adoption, core developers experienced a 6.1% increase in project-level code contributions, a 6.7% increase in coordination time, and increases in timely integrated code contributions within one, three, and ten days by 4.4%, 4.8%, and 5.8%, respectively."
+    },
+    {
+      "outcome_name": "prs_merged_within_three_days",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.8% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following Copilot adoption, core developers experienced a 6.1% increase in project-level code contributions, a 6.7% increase in coordination time, and increases in timely integrated code contributions within one, three, and ten days by 4.4%, 4.8%, and 5.8%, respectively."
+    },
+    {
+      "outcome_name": "prs_merged_within_ten_days",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.8% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following Copilot adoption, core developers experienced a 6.1% increase in project-level code contributions, a 6.7% increase in coordination time, and increases in timely integrated code contributions within one, three, and ten days by 4.4%, 4.8%, and 5.8%, respectively."
+    },
+    {
+      "outcome_name": "project_level_code_contributions",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.4% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced a 5.4% increase in project-level code contributions and a 5.3% increase in coordination time."
+    },
+    {
+      "outcome_name": "coordination_time",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.3% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced a 5.4% increase in project-level code contributions and a 5.3% increase in coordination time."
+    },
+    {
+      "outcome_name": "prs_merged_within_one_day",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.3% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Their timely integrated code contributions increased by 2.3%, 2.4%, and 3.6% within one, three, and ten days, respectively."
+    },
+    {
+      "outcome_name": "prs_merged_within_three_days",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.4% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Their timely integrated code contributions increased by 2.3%, 2.4%, and 3.6% within one, three, and ten days, respectively."
+    },
+    {
+      "outcome_name": "prs_merged_within_ten_days",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Their timely integrated code contributions increased by 2.3%, 2.4%, and 3.6% within one, three, and ten days, respectively."
+    },
+    {
+      "outcome_name": "developer_coding_participation",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.5% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Core developers experienced a 5.5% increase in developer coding participation, a 5.6% increase in individual code contributions, and increases of 4.1%, 1.6%, and 3.6% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "individual_productivity",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Core developers experienced a 5.5% increase in developer coding participation, a 5.6% increase in individual code contributions, and increases of 4.1%, 1.6%, and 3.6% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "code_discussion_volume",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.1% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Core developers experienced a 5.5% increase in developer coding participation, a 5.6% increase in individual code contributions, and increases of 4.1%, 1.6%, and 3.6% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "code_discussion_participation",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Core developers experienced a 5.5% increase in developer coding participation, a 5.6% increase in individual code contributions, and increases of 4.1%, 1.6%, and 3.6% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "code_discussion_intensity",
+      "arm_comparison": "core_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Core developers experienced a 5.5% increase in developer coding participation, a 5.6% increase in individual code contributions, and increases of 4.1%, 1.6%, and 3.6% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "developer_coding_participation",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.8% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced a 2.8% increase in developer coding participation, a 2.2% increase in individual code contributions, and increases of 12.6%, 2.3%, and 11.4% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "individual_productivity",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.2% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced a 2.8% increase in developer coding participation, a 2.2% increase in individual code contributions, and increases of 12.6%, 2.3%, and 11.4% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "code_discussion_volume",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced a 2.8% increase in developer coding participation, a 2.2% increase in individual code contributions, and increases of 12.6%, 2.3%, and 11.4% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "code_discussion_participation",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.3% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced a 2.8% increase in developer coding participation, a 2.2% increase in individual code contributions, and increases of 12.6%, 2.3%, and 11.4% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    },
+    {
+      "outcome_name": "code_discussion_intensity",
+      "arm_comparison": "peripheral_developers vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "11.4% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Peripheral developers experienced a 2.8% increase in developer coding participation, a 2.2% increase in individual code contributions, and increases of 12.6%, 2.3%, and 11.4% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively."
+    }
+  ],
+  "notes": "This is an observational study using proprietary GitHub Copilot usage data combined with public GitHub project data. The primary estimation method is the Generalized Synthetic Control Method (GSCM), with extensive robustness checks including PSM+DID, instrumental variable analysis, and alternative specifications. The study finds heterogeneous effects between core and peripheral developers. Key limitations acknowledged by the authors include: (1) inability to observe individual-level Copilot usage due to privacy constraints, limiting measurement of heterogeneous adoption behaviors; (2) observational data cannot fully capture unobserved developer characteristics such as motivation, ability, or work preferences; (3) inability to identify intermediate mechanisms through which AI tools affect coordination; (4) short sample period (2021-2022) limits assessment of long-term effects; (5) potential spillover effects if developers use Copilot knowledge from other projects; (6) potential underestimation of effects if developers sign up gradually after initial availability; (7) the study does not examine broader social and governance implications. The paper reports percentage changes for all outcomes but does not provide exact p-values, confidence intervals, or standardized effect sizes in the quotes provided.",
+  "_paper_id": "songetal"
+}

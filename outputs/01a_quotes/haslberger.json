@@ -1,0 +1,81 @@
+{
+  "citation_key": "haslberger_2025_ai_productivity",
+  "authors": [
+    "Matthias Haslberger",
+    "Jane Gingrich",
+    "Jasmine Bhatia"
+  ],
+  "title": "No Great Equalizer: Experimental Evidence on Productivity Effects of Generative AI Use in the UK Labor Market",
+  "year": 2025,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "we conducted a large pre-registered online experiment with a sample of the UK working age population which randomly assigned participants to treatments that encouraged or discouraged the use of ChatGPT and then asked them to complete a set of realistic work tasks",
+      "For our pre-registered online experiment, we recruited 1,041 respondents who had ChatGPT accounts through the survey company YouGov.",
+      "The sample was split into a treatment group (N = 504) which was encouraged to use ChatGPT and a control group (N = 537) which was instructed to complete the survey without using ChatGPT.",
+      "Fieldwork for the survey took place from 19th \u2013 28th July 2023, following a pre-test in early July 2023.",
+      "We estimated the local average treatment effect (LATE) of using generative AI with a two-stage least squares(2SLS)procedure."
+    ],
+    "task": [
+      "Study participants performed three tasks of varying complexity (see Table 1) while being instructed to use ChatGPT (treatment group) or not use ChatGPT (control group).",
+      "In the first task, participants were presented with an email addressing a hypothetical workplace dispute and were asked to make any improvements they deemed appropriate.",
+      "In the second task, respondents evaluated the persuasiveness of two texts of about 500 words, each presenting opposing views on the merits of a universal basic income.",
+      "In the final task we asked participants to answer three short questions about a complex text on the economic history of Ireland.",
+      "We evaluated productivity based on two measures: time to complete the task and answer quality according to pre-specified grading criteria."
+    ],
+    "population": [
+      "we recruited 1,041 respondents who had ChatGPT accounts through the survey company YouGov",
+      "our sample is larger and approximates the demographic composition of the UK working-age population",
+      "YouGov provided demographic information, including age, sex, education, occupation, income, and other variables",
+      "Despite their best efforts, YouGov could not at the time provide a fully representative sample of ChatGPT users. For example, men are overrepresented in the sample (see Table S7).",
+      "The median time to complete the survey was approximately 28 minutes."
+    ],
+    "arms": [
+      "The sample was split into a treatment group (N = 504) which was encouraged to use ChatGPT and a control group (N = 537) which was instructed to complete the survey without using ChatGPT."
+    ],
+    "outcome_definitions": [
+      "We obtained two measures of respondents' performance on the tasks. First, we evaluated their answers on a five-point scale using GPT-4 and a detailed grading scheme",
+      "As a second measure of productivity, we recorded the time (in seconds) respondents spent on each of the tasks.",
+      "we top-coded the time measure for each task at 900 seconds to avoid obtaining results that are driven by a small number of respondents who likely became distracted"
+    ],
+    "statistical_results": [
+      "The difference in time spent and grade achieved between treatment and control group is highly statistically significant (p< 0.001) and sizeable for all three tasks.",
+      "Predicted time savings range between 101 and 235 seconds (0.54 to 1.04 standard deviations (SD)), while performance increases amount to between 0.65 to 2.14 points (0.61 to 1.45 SD).",
+      "respondents in the control group achieved the highest average scores in the email task (3.1), with successively lower grades in the assessment task (2.4) and the comprehension task (2.0)",
+      "AI use increased the average score in the \u2014 arguably least complicated \u2014 email task by 1.26 points (0.92 SD), but boosted scores in the assessment task by only 0.65 points (0.61 SD).",
+      "the return to AI use was greatest in the comprehension task with 2.14 points (1.45 SD)",
+      "Compared to the control group, within-task variation in grades in the treatment group is lower but only marginally statistically significantly different for the email task (p< 0.1), significantly higher for the assessment task (p< 0.001), and significantly lower for the comprehension task (p< 0.05).",
+      "Men, respondents under 40, degree holders, and managers and professionals are between 4 and 9 percentage points more likely to report using ChatGPT at least once per week.",
+      "Despite the greater initial familiarity of men with ChatGPT and the well-established \"gender digital divide\" in favor of men (OECD, 2018), we find remarkably similar treatment effects",
+      "Both younger and older workers become more productive with generative AI in equal measure.",
+      "we find no evidence to suggest that more educated workers or those working in professional or managerial occupations might monopolize the benefits of generative AI",
+      "in the assessment task, the LATE for frequent users is more than double that for infrequent users",
+      "In the comprehension task, the treatment effect is 30 percent larger for frequent users, erasing the performance differential observed in the control group.",
+      "Average inter-coder agreement between ChatGPT and human coders, as measured by intra-class correlations, was similar to human- human inter-coder agreement (see Table S9)",
+      "Used AI \u2212134.010\u2217\u2217\u2217 (14.548) for Email Time",
+      "Used AI \u2212234.902\u2217\u2217\u2217 (18.990) for Assessment Time",
+      "Used AI \u2212101.230\u2217\u2217\u2217 (17.993) for Comprehension Time",
+      "Used AI 1.262\u2217\u2217\u2217 (0.122) for Email Score",
+      "Used AI 0.645\u2217\u2217\u2217 (0.095) for Assessment Score",
+      "Used AI 2.137\u2217\u2217\u2217 (0.117) for Comprehension Score"
+    ],
+    "ambiguity_or_caveats": [
+      "It was necessary to sample from ChatGPT users since at the time it was not possible to embed ChatGPT directly in the survey for technical and privacy reasons.",
+      "This means that we can directly observe only treatment assignment, not compliance.",
+      "the focus on text-based tasks entails that we ignore other use cases where generative AI has proved useful, such as coding tasks or creative work",
+      "Due to sample size limitations, we could not investigate whether AI training affects people's competence in using AI",
+      "Furthermore, due to survey time constraints, we did not collect a baseline measure of task-specific skills which would have allowed for within-individual comparisons",
+      "The same reason also prevented us from including an even wider range of tasks which would have enhanced the generalizability of our findings.",
+      "Our use of monetary incentives to increase effort may have had a stronger effect on men",
+      "Most importantly, it was not possible at the time to administer the survey to a fully representative sample of the UK working-age population \u2014 instead, our sample was limited to individuals in YouGov's panel who already had a ChatGPT account.",
+      "Our participants are therefore likely to be more open to new technologies than the population at large.",
+      "our study illustrates the effects of generative AI capabilities at a particular moment in time; we acknowledge that future iterations may yield different effects",
+      "However, it is important to bear in mind that our sample likely includes comparatively tech-savvy older workers and our results therefore potentially understate the advantage to younger workers in a fully representative sample.",
+      "This expectation, however, was not confirmed.",
+      "we find no consistent pattern with regard to within-task variation inperformance"
+    ]
+  },
+  "notes": "This is a pre-registered randomized controlled trial (RCT) examining the productivity effects of ChatGPT use across three text-based tasks of varying complexity. The study challenges the emerging narrative that generative AI is an inherently equalizing force. Key finding: while ChatGPT improved productivity for all demographic groups similarly, the benefits were not uniformly distributed across task complexity as hypothesized. The paper emphasizes that task ambiguity (in addition to complexity) matters for AI usefulness, and that frequent AI users benefit more in ambiguous tasks. The study includes extensive supplementary materials with power analyses, Bayes factors, and robustness checks.",
+  "_paper_id": "haslberger",
+  "_source_pdf": "papers/haslberger.pdf"
+}

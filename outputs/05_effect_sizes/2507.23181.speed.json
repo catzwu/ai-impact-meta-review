@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2507.23181",
+  "citation_key": "whitfill_2025_compute_bottlenecks",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper does not report a speed or productivity outcome. It is a theoretical and empirical study estimating the elasticity of substitution (\u03c3) between research compute and cognitive labor in AI research production functions. The primary outcomes are econometric parameter estimates (\u03c3 = 2.583 in the baseline CES model, \u03c3 = -0.103 in the frontier experiments model) from regressions on firm-year panel data. There are no experimental arms comparing human-only vs. human+AI task completion, no time-to-complete measures, no throughput measures, and no productivity metrics of the type required for a speed effect size. The paper analyzes historical data on four AI labs (OpenAI, DeepMind, Anthropic, DeepSeek) from 2014-2024, examining how firms allocated compute vs. labor over time. The 'arms' in this context are different AI research firms and years, not experimental conditions with and without AI assistance for a task.",
+    "direction_convention": null,
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "After careful re-reading, this paper fundamentally does not fit the speed/productivity effect size framework. It is an econometric study of AI research production functions, not an experiment or observational study measuring task completion speed or productivity with vs. without AI assistance. The paper mentions one example of AI assisting research (Google DeepMind's AlphaEvolve reducing LLM training time by 1%), but this is cited as background motivation, not as a measured outcome in the study itself. The study's actual empirical work regresses log(research_compute/labor) on log(wage/compute_price) and other controls to estimate substitution elasticity. The dependent variable is a ratio of inputs (compute per employee), not an output measure like tasks completed or time taken. The 'arms' (firms and years) are observational units in a panel regression, not experimental conditions. No human-only baseline vs. AI-assisted condition exists in the data. The paper's Table 1 reports elasticity estimates (\u03c3) with standard errors, but these are structural parameters of a production function, not treatment effects on speed/productivity. Setting arm_pair_resolvable=false because the paper does not contain the type of outcome data (speed, throughput, productivity metrics comparing human vs. human+AI performance) required for this meta-analysis.",
+    "source_quotes": [
+      "This paper investigates the conditions under which Recursive Self-Improvement in AI will trigger an intelligence explosion. We show the extent to which 'research compute' can substitute for the cognitive labor inherent in AI research.",
+      "We estimate \u03c3 and find that the substitution between compute and labor in research is elastic in the baseline model but is inelastic in the frontier experiments model.",
+      "Table 1 shows that the choice of model specification significantly affects the results. In the CES in compute specification, we estimate \u03c3 = 2.58, which implies research compute and cognitive labor are highly substitutable. However, in the frontier experiments case, we estimate \u03c3 = \u2212.10.",
+      "For example, Google Deepmind's AlphaEvolve is an LLM-based AI agent that discovered algorithmic advances that reduced LLM training time by 1% (Google DeepMind, 2025)."
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After careful re-reading, this paper fundamentally does not fit the speed/productivity effect size framework. It is an econometric study of AI research production functions, not an experiment or observational study measuring task completion speed or productivity with vs. without AI assistance. The paper mentions one example of AI assisting research (Google DeepMind's AlphaEvolve reducing LLM training time by 1%), but this is cited as background motivation, not as a measured outcome in the study itself. The study's actual empirical work regresses log(research_compute/labor) on log(wage/compute_price) and other controls to estimate substitution elasticity. The dependent variable is a ratio of inputs (compute per employee), not an output measure like tasks completed or time taken. The 'arms' (firms and years) are observational units in a panel regression, not experimental conditions. No human-only baseline vs. AI-assisted condition exists in the data. The paper's Table 1 reports elasticity estimates (\u03c3) with standard errors, but these are structural parameters of a production function, not treatment effects on speed/productivity. Setting arm_pair_resolvable=false because the paper does not contain the type of outcome data (speed, throughput, productivity metrics comparing human vs. human+AI performance) required for this meta-analysis. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

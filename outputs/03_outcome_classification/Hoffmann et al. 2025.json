@@ -1,0 +1,62 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "copilot_adoption_days",
+      "category": "other",
+      "operationalization": "cumulative count of days on which a developer used Copilot during the observation period"
+    },
+    {
+      "outcome_name": "copilot_adoption_share",
+      "category": "other",
+      "operationalization": "percentage of developers who used Copilot at least once during the general access period"
+    },
+    {
+      "outcome_name": "copilot_usage_per_week",
+      "category": "other",
+      "operationalization": "average number of days per week on which a developer used Copilot"
+    },
+    {
+      "outcome_name": "copilot_exposure_per_week",
+      "category": "other",
+      "operationalization": "cumulative exposure to Copilot measured as percentage increase per week, method not specified"
+    },
+    {
+      "outcome_name": "coding_share",
+      "category": "other",
+      "operationalization": "percentage of all developer activity consisting of pushing commits, forking projects, and submitting pull requests"
+    },
+    {
+      "outcome_name": "project_management_share",
+      "category": "other",
+      "operationalization": "percentage of all activity consisting of issues board engagement, project board creation, and pull request reviews"
+    },
+    {
+      "outcome_name": "new_repositories_explored",
+      "category": "other",
+      "operationalization": "cumulative count of distinct new repositories a developer engaged with during the observation period"
+    },
+    {
+      "outcome_name": "programming_language_exposure",
+      "category": "other",
+      "operationalization": "cumulative exposure to new programming languages relative to baseline, measured as percentage"
+    },
+    {
+      "outcome_name": "language_salary_premium",
+      "category": "other",
+      "operationalization": "salary premium in dollars per year of programming languages developers experimented with, relative to baseline"
+    },
+    {
+      "outcome_name": "collaborators_per_repository",
+      "category": "other",
+      "operationalization": "count of distinct collaborators a developer interacted with across all public repositories"
+    },
+    {
+      "outcome_name": "critical_vulnerabilities_frequency",
+      "category": "quality",
+      "operationalization": "percentage reduction in frequency of critical vulnerabilities detected in repositories"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "critical_vulnerabilities_frequency",
+  "citation_key": "hoffmann_2025_generative_ai_work"
+}

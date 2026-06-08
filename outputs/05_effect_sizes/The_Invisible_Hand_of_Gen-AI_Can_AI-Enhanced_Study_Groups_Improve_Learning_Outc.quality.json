@@ -1,0 +1,49 @@
+{
+  "_paper_id": "The_Invisible_Hand_of_Gen-AI_Can_AI-Enhanced_Study_Groups_Improve_Learning_Outc",
+  "citation_key": "babaei_balderlou_2025_ai_study_groups",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "group_discussion_ai",
+    "ai_arm_selection_rationale": "Selected group_discussion_ai over individual_ai because it shows the largest treatment effect on the third exam (2.751 points vs 2.385 points for individual_ai). Both use the same GPT-based Socratic tutor (Macro Buddy), but the combined group discussion + AI arm represents the most capable intervention tested. Sample sizes are similar (n=33 vs n=32).",
+    "direction_convention": "larger_is_better",
+    "m_human": 14.36,
+    "sd_human": 4.13,
+    "se_human": null,
+    "n_human": 32,
+    "m_ai": 16.04,
+    "sd_ai": 3.93,
+    "se_ai": null,
+    "n_ai": 33,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "Baseline means and SDs are available for all arms from the first exam. The treatment effects are reported as difference-in-differences estimates comparing post-treatment exams to baseline. The p-value for group_discussion_ai vs control on the third exam is reported as 'p < .01' (inequality only, not exact value). Using baseline descriptive statistics provides the cleanest comparison of the two arms.",
+    "source_quotes": [
+      "Students in all three treatment groups outperform the control group on exam scores, with the group discussion with the Gen-AI section showing the highest mean (16.04 vs. 14.36 in the control).",
+      "In columns (5) and (6), students in the combined group discussion and Gen-AI section outperform the control group by 1.676 points on the second exam and 2.751 points on the third exam.",
+      "Students worked in groups with access to Macro Buddy, a custom GPT-based Socratic tutor."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.4169093076463873,
+    "hedges_g": 0.4119263278737213,
+    "variance": 0.061395692425676114,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Baseline means and SDs are available for all arms from the first exam. The treatment effects are reported as difference-in-differences estimates comparing post-treatment exams to baseline. The p-value for group_discussion_ai vs control on the third exam is reported as 'p < .01' (inequality only, not exact value). Using baseline descriptive statistics provides the cleanest comparison of the two arms.",
+    "n_human": 32,
+    "n_ai": 33,
+    "direction_convention": "larger_is_better"
+  }
+}

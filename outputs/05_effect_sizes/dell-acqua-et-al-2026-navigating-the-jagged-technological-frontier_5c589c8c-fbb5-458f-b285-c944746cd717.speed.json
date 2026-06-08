@@ -1,0 +1,51 @@
+{
+  "_paper_id": "dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717",
+  "citation_key": "dellacqua_2026_jagged_frontier",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "gpt_only",
+    "ai_arm_selection_rationale": "Selected gpt_only over gpt_plus_overview because it represents the pure AI assistance effect without the confound of additional training materials. The gpt_only arm shows the most capable AI (GPT-4) assistance and has a larger effect size (27.6% vs 22.5% reduction).",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 5023,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.276,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": -9.244,
+    "reported_t_df": null,
+    "regression_coefficient_value": -1388.415,
+    "regression_coefficient_se": 150.204,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 5023,
+    "extraction_confidence": "high",
+    "notes": "Between-subjects design with three arms. Selected gpt_only as the best AI arm because it isolates the pure GPT-4 effect without additional training confounds. The outcome is in level units (seconds), not log-transformed. Baseline mean for control is available (5023 seconds), allowing conversion of the regression coefficient to a log ratio. Sample sizes (n) are not provided in the arms data. The reported percent change of -27.6% (faster = reduction in time) is signed negative as expected for a time-based outcome where smaller is better.",
+    "source_quotes": [
+      "The GPT + overview treatment reduces time spent on the first 17 questions by 1,129 seconds (18.8 minutes or 22.5% faster than the control)",
+      "and the GPT-only treatment reduces time spent on the first 17 questions by 1,388 seconds (23.1 minutes or 27.6% faster than the control)",
+      "control: mean: 5023",
+      "regression_coefficient: -1,388.415 (SE 150.204)",
+      "test_statistic: t-test = -9.244"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.3229638865964207,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.3812154696132597,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "Between-subjects design with three arms. Selected gpt_only as the best AI arm because it isolates the pure GPT-4 effect without additional training confounds. The outcome is in level units (seconds), not log-transformed. Baseline mean for control is available (5023 seconds), allowing conversion of the regression coefficient to a log ratio. Sample sizes (n) are not provided in the arms data. The reported percent change of -27.6% (faster = reduction in time) is signed negative as expected for a time-based outcome where smaller is better. | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

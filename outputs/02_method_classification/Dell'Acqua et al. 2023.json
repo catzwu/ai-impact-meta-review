@@ -1,0 +1,6 @@
+{
+  "classification": "field_experiment",
+  "confidence": "high",
+  "rationale": "The study is explicitly described as a 'preregistered randomized controlled field experiment conducted with 758 BCG management consultants' in their actual work context. Participants were randomly assigned to control, GPT-only, or GPT + overview conditions while performing realistic consulting tasks with performance-based incentives aligned with BCG's evaluation system, making this a randomized experiment in a real work setting rather than a lab.",
+  "citation_key": "dellacqua_2026_jagged_frontier"
+}

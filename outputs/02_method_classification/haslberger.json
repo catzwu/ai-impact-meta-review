@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study describes random assignment: 'Participants were randomly assigned to a treatment group (N = 504) encouraged to use ChatGPT or a control group (N = 537) instructed to complete tasks without ChatGPT.' This is an online experiment conducted through YouGov, not in a lab or real work setting, making it a straightforward RCT.",
+  "citation_key": "haslberger_2025_ai_productivity"
+}

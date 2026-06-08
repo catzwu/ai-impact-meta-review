@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "27-3091.00",
+  "onet_label": "Interpreters and Translators",
+  "mapping_confidence": "high",
+  "rationale": "The participants are professional translators performing their actual occupational work: translating texts from English into Spanish, Hindi, or Arabic across business, academic, and literary domains. The study explicitly recruited '300 professional translators' with 'at least one year of experience as a professional translator' who 'completed paid translation tasks in the past year.' This is not a narrow task study but rather professionals doing the full scope of their translation work across diverse content types, making the occupation mapping most appropriate.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-19",
+      "onet_label": "Interpreting the Meaning of Information for Others"
+    }
+  ],
+  "citation_key": "merali_2024_scaling_productivity"
+}

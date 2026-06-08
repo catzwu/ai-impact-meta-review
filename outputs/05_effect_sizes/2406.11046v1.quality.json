@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2406.11046v1",
+  "citation_key": "quispe_2024_chatgpt_software",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Control (countries without ChatGPT access)",
+    "ai_arm_name": "Treatment (countries with ChatGPT access)",
+    "ai_arm_selection_rationale": "This is a natural experiment comparing countries where ChatGPT was available (120 treatment units) versus countries where it was banned/unavailable (27 control units). The treatment is ChatGPT availability starting Q4 2022.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 27,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 120,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "This is a country-level quasi-experimental study using DID, SC, and SDID methods. The paper reports treatment effects (ATEs) directly rather than raw means/SDs. For Panel A (Num Pushes per 100k), DID coefficient = 899.268*** (SE=147.395), SC = 595.059 (SE=437.061), SDID = 645.623*** (SE=146.445). Baseline mean = 741.5. The reported coefficients are regression-based treatment effects, not standardized effect sizes. Sample sizes are n_control=27 countries, n_treatment=120 countries, with 11 pre-treatment periods and 2 post-treatment periods (total observations=2352). Without raw means and SDs for the treatment and control groups in the post-treatment period, or a reported standardized effect size, we cannot compute Hedges' g. The paper uses panel data methods that account for time trends, making simple mean comparisons inappropriate. The study design is fundamentally different from a standard RCT - it's a difference-in-differences analysis at the country-quarter level.",
+    "source_quotes": [
+      "Panel A. Num Pushes per 100k: Chat GPT Available 899.268*** (147.395), Observations 2352, Baseline Mean Outcome 741.5",
+      "This design consists of 120 treatment units and 27 control units; 11 pre-treatment periods and 2 treatment periods.",
+      "The treated units are the countries that were originally announced to have access to the application",
+      "We consider the start of the treatment period to be the fourth quarter of 2022, as the initial launch of the app came out on November 30th of the same year."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This is a country-level quasi-experimental study using DID, SC, and SDID methods. The paper reports treatment effects (ATEs) directly rather than raw means/SDs. For Panel A (Num Pushes per 100k), DID coefficient = 899.268*** (SE=147.395), SC = 595.059 (SE=437.061), SDID = 645.623*** (SE=146.445). Baseline mean = 741.5. The reported coefficients are regression-based treatment effects, not standardized effect sizes. Sample sizes are n_control=27 countries, n_treatment=120 countries, with 11 pre-treatment periods and 2 post-treatment periods (total observations=2352). Without raw means and SDs for the treatment and control groups in the post-treatment period, or a reported standardized effect size, we cannot compute Hedges' g. The paper uses panel data methods that account for time trends, making simple mean comparisons inappropriate. The study design is fundamentally different from a standard RCT - it's a difference-in-differences analysis at the country-quarter level. | insufficient numbers for d",
+    "n_human": 27,
+    "n_ai": 120,
+    "direction_convention": "larger_is_better"
+  }
+}

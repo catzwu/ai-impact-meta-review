@@ -1,0 +1,77 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "perceived_creativity",
+      "category": "other",
+      "operationalization": "Self-reported creativity perception on 5-point Likert scale survey administered after each task"
+    },
+    {
+      "outcome_name": "perceived_trust",
+      "category": "other",
+      "operationalization": "Self-reported trust perception on 5-point Likert scale survey administered after each task"
+    },
+    {
+      "outcome_name": "rq_novelty",
+      "category": "quality",
+      "operationalization": "Participant ratings of research question novelty on 5-point Likert scale using Boden's creativity criteria"
+    },
+    {
+      "outcome_name": "rq_surprise",
+      "category": "quality",
+      "operationalization": "Participant ratings of research question surprise on 5-point Likert scale using Boden's creativity criteria"
+    },
+    {
+      "outcome_name": "rq_value",
+      "category": "quality",
+      "operationalization": "Participant ratings of research question value on 5-point Likert scale using Boden's creativity criteria"
+    },
+    {
+      "outcome_name": "rq_ratings_overall",
+      "category": "quality",
+      "operationalization": "Participant ratings of at least six self-selected research questions on 5-point Likert scale during task"
+    },
+    {
+      "outcome_name": "perceived_control",
+      "category": "other",
+      "operationalization": "Self-reported control perception on 5-point Likert scale survey administered after each task"
+    },
+    {
+      "outcome_name": "perceived_meta_creativity",
+      "category": "other",
+      "operationalization": "Self-reported meta-creativity perception on 5-point Likert scale survey administered after each task"
+    },
+    {
+      "outcome_name": "perceived_cognitive_load",
+      "category": "other",
+      "operationalization": "Self-reported cognitive load on 5-point Likert scale survey administered after each task"
+    },
+    {
+      "outcome_name": "rq_depth_correlation",
+      "category": "other",
+      "operationalization": "Spearman's correlation coefficient between research question depth and participant ratings"
+    },
+    {
+      "outcome_name": "wait_time_exploration",
+      "category": "other",
+      "operationalization": "Count or proportion of participants who explored other research questions during generation wait time"
+    },
+    {
+      "outcome_name": "user_feedback_length",
+      "category": "other",
+      "operationalization": "Character or word count of feedback text provided by users to the AI system"
+    },
+    {
+      "outcome_name": "check_paper_graph_action",
+      "category": "other",
+      "operationalization": "Count of times users performed 'Check paper graph' action during task"
+    },
+    {
+      "outcome_name": "generate_new_rqs_action",
+      "category": "other",
+      "operationalization": "Count of times users performed 'Generate new RQs' action during task"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "rq_ratings_overall",
+  "citation_key": "liu_2024_coquest"
+}

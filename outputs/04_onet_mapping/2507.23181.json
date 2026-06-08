@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants are researchers at AI labs (OpenAI, Anthropic, DeepMind, DeepSeek) performing economic analysis to estimate elasticity of substitution parameters. The verbatim task is 'estimate \u03c3 (elasticity of substitution between research compute and cognitive labor) using the static optimization problem' through regression analysis of first-order conditions. This is fundamentally data analysis work\u2014deriving equations, running regressions, and examining coefficients. While these are scientific researchers, the specific task measured is analytical rather than the full breadth of a research occupation.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-2041.00",
+      "onet_label": "Statisticians"
+    }
+  ],
+  "citation_key": "whitfill_2025_compute_bottlenecks"
+}

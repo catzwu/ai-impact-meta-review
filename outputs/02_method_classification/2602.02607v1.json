@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study uses the November 2022 ChatGPT release as an exogenous shock and employs Synthetic Difference-in-Differences (SDID) for causal inference, with treatment period defined as 2023Q1. This is a quasi-experimental design exploiting a natural event rather than random assignment, comparing AI adopters to non-adopters using advanced identification strategies.",
+  "citation_key": "kikuchi_2026_innovation_tax"
+}

@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study is described as \"A pre-registered randomized controlled trial\" where \"Participants completed an assessment task without AI to establish baseline competency, then were randomly assigned to either a treatment group receiving access to a Gen AI tool (GPT-4o web applications) or a control group without AI access.\" This is a randomized trial conducted with real organizational staff in what appears to be their work context, but the task-based nature and controlled experimental setup does not clearly indicate a field experiment in the sense of observing real work outcomes.",
+  "citation_key": "fitzpatrick_2025_generative_ai_public"
+}

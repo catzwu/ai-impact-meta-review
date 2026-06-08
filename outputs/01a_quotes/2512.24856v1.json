@@ -1,0 +1,32 @@
+{
+  "citation_key": "alvarez_telena_2025_agentic_ai",
+  "authors": [
+    "Sergio \u00c1lvarez-Tele\u00f1a",
+    "Marta D\u00edez-Fern\u00e1ndez"
+  ],
+  "title": "Advances in Agentic AI: Back to the Future",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [],
+    "task": [],
+    "population": [],
+    "arms": [],
+    "outcome_definitions": [],
+    "statistical_results": [],
+    "ambiguity_or_caveats": [
+      "The scope of this paper is intentionally centered on our past decade evolving Applied Science, a field that remains insufficiently defined precisely because it sits at the intersection of academic rigor and industrial execution.",
+      "For this reason, even its mode of communication - its vocabulary, structure, and conceptual framing - must diverge from established academic or corporate conventions.",
+      "This challenge is also compounded by the proprietary and highly customized nature of such systems, which precludes the possibility of standardized quantitative performance comparisons.",
+      "As we will explain, such comparisons cannot be meaningfully constructed nor responsibly disclosed - neither by us nor by other actors operating in this niche.",
+      "As a result, the paper occupies a space that is fundamentally atypical: it does not conform to the stylistic or methodological standards of academic research, nor does it follow the conventions of industry whitepapers.",
+      "The technology described in this work cannot be directly validated by the open-source community, as its development and evaluation require substantial financial, computational, and organizational investment and therefore remain proprietary.",
+      "The scalability of Algorithmization is intrinsically constrained by the extent and intensity of the professional services - namely strategic advisory and data science - delivered by consultants on top of the M2 platform described herein.",
+      "We understand that sustaining such an initiative over time will be challenging. Changes in personnel across the participating institutions - and even shifts in governing political parties - pose structural risks to continuity.",
+      "However, this does not imply that it constitutes the only viable path. The same objectives can, in principle, be achieved through architectures that are inefficient yet still effective."
+    ]
+  },
+  "notes": "This is a position/white paper with no original empirical experiments. It is a conceptual and theoretical framework paper that synthesizes the authors' decade of work in what they call 'Algorithmization' - a discipline at the intersection of Economics, Technology, and Machine Learning. The paper distinguishes between M1 (model calibration infrastructure) and M2 (enterprise-scale algorithmic orchestration), arguing that competitive advantage lies in M2 rather than in model development. The authors present this as a novel framework for understanding Agentic AI, contrasting their 'Strategies-based' approach with LLM-based approaches. The paper includes extensive discussion of their Centre of Excellence (SciTheWorld), their prior publications, and their vision for future work. An appendix includes a conversation with Claude.AI demonstrating how LLMs can be guided to understand outlier/novel concepts. The paper is published on SSRN rather than in traditional academic venues, which the authors justify based on the interdisciplinary and applied nature of their work.",
+  "_paper_id": "2512.24856v1",
+  "_source_pdf": "papers/2512.24856v1.pdf"
+}

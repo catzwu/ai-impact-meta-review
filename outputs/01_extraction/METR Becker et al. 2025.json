@@ -1,0 +1,543 @@
+{
+  "citation_key": "becker_2025_ai_developer_productivity",
+  "authors": [
+    "Joel Becker",
+    "Nate Rush",
+    "Beth Barnes",
+    "David Rein"
+  ],
+  "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "A randomized controlled trial (RCT) in which 16 experienced open-source developers complete 246 tasks on well-known repositories they regularly contribute to. Each task is randomly assigned to allow or disallow usage of early-2025 AI tools via a simulated fair coin flip. Tasks are defined before randomization to limit confounding effects. Developers record their screen as they work and take implementation notes post-completion, with work submitted through standard source-code management systems.",
+  "primary_task_description": "Developers complete 246 issues (averaging 2.0 hours each) in mature open-source projects (averaging 23,000 stars). Issues are typically bug reports, feature requests, or work items ranging from minutes to hours. Developers work on issues in their preferred order, submit pull requests, respond to reviewer feedback, and merge completed work. Issues are capped at a maximum of two hours or broken into multiple issues.",
+  "population_description": "16 developers with moderate AI experience, typically over a decade of software engineering experience, recruited from professional networks and active contributors to large GitHub repositories (>500 stars). Developers have an average of 5 years of prior experience on their assigned repository, representing 59% of that repository's lifetime, with an average of 1,500 commits. 93% have prior experience with LLMs like ChatGPT; 44% have prior experience with Cursor IDE. Developers were selected from 51 initial survey respondents filtered to approximately 20 with significant prior contribution experience.",
+  "arms": [
+    {
+      "arm_name": "ai_allowed",
+      "description": "Developers can use any AI tools or models they choose, including no AI tooling if they expect it to not be helpful. AI-based tab autocomplete using LLMs (e.g., GitHub Copilot) is disallowed, but other autocomplete is allowed. Search engines remain allowed.",
+      "n": 136
+    },
+    {
+      "arm_name": "ai_disallowed",
+      "description": "No generative AI tooling can be used. AI-based tab autocomplete using LLMs is disallowed. Search engines, which sometimes use AI under the hood, remain allowed.",
+      "n": 110
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "completion_time_percentage_change",
+      "outcome_description": "Percentage change in issue time to completion due to AI, defined as: S = E[completion time with AI allowed] / E[completion time with AI disallowed] \u2212 1. A value of -50% indicates AI-allowed issues take half the time; 0% indicates same time; 100% indicates AI-allowed issues take twice as long. Measured using total implementation time (including pre- and post-pull request review time) that developers self-report spending on each issue.",
+      "measurement_unit": "percentage change",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "developer_forecast_speedup",
+      "outcome_description": "Developers' forecast of how much allowing AI will reduce completion time, collected before tasks are randomized.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "post_study_developer_estimate",
+      "outcome_description": "Developers' estimate after study participation of how much allowing AI reduced completion time.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "expert_forecast_speedup_economics",
+      "outcome_description": "Speedup forecasts from 34 economics experts predicting AI will lead to decreases in implementation time.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "expert_forecast_speedup_ml",
+      "outcome_description": "Speedup forecasts from 54 machine learning experts predicting AI will lead to decreases in implementation time.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "forecast_accuracy_correlation_ai_allowed",
+      "outcome_description": "Pearson correlation between the time developers forecast AI-allowed issues taking and the actual time they take.",
+      "measurement_unit": "correlation coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "forecast_accuracy_correlation_ai_disallowed",
+      "outcome_description": "Pearson correlation between the time developers forecast AI-disallowed issues taking and the actual time they take.",
+      "measurement_unit": "correlation coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_reviewing_ai_outputs",
+      "outcome_description": "Proportion of time developers spend reviewing and cleaning AI generated outputs when AI is allowed, on subset of 44 issues with valid labeled screen recordings.",
+      "measurement_unit": "percentage of time",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_waiting_on_ai",
+      "outcome_description": "Proportion of time developers spend waiting on AI generated outputs when AI is allowed, on subset of 44 issues with valid labeled screen recordings.",
+      "measurement_unit": "percentage of time",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_generation_acceptance_rate",
+      "outcome_description": "Percentage of AI generations that developers accept when using Cursor.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_review_behavior",
+      "outcome_description": "Percentage of developers who report reading every line of AI generated code.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_cleanup_frequency",
+      "outcome_description": "Percentage of developers who report that they often need to make major changes to clean up AI code.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_modification_requirement",
+      "outcome_description": "Percentage of developers who report needing to modify AI generated code.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "post_review_implementation_time",
+      "outcome_description": "Mean post-review implementation time for issues in each condition.",
+      "measurement_unit": "hours",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_usage_rate_when_allowed",
+      "outcome_description": "Percentage of AI-allowed issues where developers actually use AI, on subset of 74 manually labeled valid screen recordings.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "protocol_violation_rate",
+      "outcome_description": "Estimated cheating rate: instances where AI tools were used on AI-disallowed issues, out of 54 labeled AI-disallowed screen recordings.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_no_uncompleted_ai_disallowed",
+      "outcome_description": "Slowdown estimate when subsetting developers to those with no uncompleted AI-disallowed issues.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_no_uncompleted_ai_allowed",
+      "outcome_description": "Slowdown estimate when subsetting to developers with no uncompleted AI-allowed issues.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_no_dropout",
+      "outcome_description": "Slowdown estimate when subsetting to developers with no dropout on any issues.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_screen_recording_time",
+      "outcome_description": "Slowdown estimate when using total screen recording time instead of self-reported time spent.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_volume_per_hour",
+      "outcome_description": "Percentage difference in code written per hour on AI-allowed issues compared to AI-disallowed forecasts.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "continued_ai_usage_post_study",
+      "outcome_description": "Percentage of developers who continue using AI tools after the study period has ended.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_comparable_ides",
+      "outcome_description": "Slowdown estimate when restricting to developers using comparable IDEs between treatment conditions.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "raw_percentage_difference_implementation_time",
+      "outcome_description": "Raw percentage difference in implementation times between AI-allowed and AI-disallowed issues.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_high_prior_task_exposure",
+      "outcome_description": "Slowdown on issues where developers have high prior task exposure.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_fewer_external_resources",
+      "outcome_description": "Slowdown on issues where developers need fewer external resources.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_scope_creep",
+      "outcome_description": "Slowdown for developers who report scope creep on AI-allowed issues compared to those who do not.",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "developer_slowdown_prevalence",
+      "outcome_description": "Percentage of developers who experience slowdown.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "slowdown_high_forecasted_speedup",
+      "outcome_description": "Slowdown on issues where developers predict significant speedup (\u226533% or top tertile of forecasted speedup).",
+      "measurement_unit": "percentage change",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "completion_time_percentage_change",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19% slowdown",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Surprisingly, we find that allowing AI actually increases completion time by 19%\u2014developers are slower when using AI tooling."
+    },
+    {
+      "outcome_name": "completion_time_percentage_change",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "19% more time on average",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that when developers use AI tools, they implement issues in 19% more time on average (Figure 1), and nearly all quantiles of observed implementation time see AI-allowed issues taking longer (Figure 5)."
+    },
+    {
+      "outcome_name": "developer_forecast_speedup",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "24% reduction in completion time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Before tasks are randomized, developers forecast that allowing AI will reduce completion time by 24%."
+    },
+    {
+      "outcome_name": "post_study_developer_estimate",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "20% reduction in completion time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "After study participation, developers estimate that allowing AI reduced completion time by 20%."
+    },
+    {
+      "outcome_name": "expert_forecast_speedup_economics",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "39% decrease in implementation time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Speedup forecasts from 34 economics experts and 54 machine learning experts overestimate speedup even more drastically than developers, predicting AI will lead to decreases in implementation time of 39% and 38%, respectively (Figure 1)."
+    },
+    {
+      "outcome_name": "expert_forecast_speedup_ml",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "38% decrease in implementation time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Speedup forecasts from 34 economics experts and 54 machine learning experts overestimate speedup even more drastically than developers, predicting AI will lead to decreases in implementation time of 39% and 38%, respectively (Figure 1)."
+    },
+    {
+      "outcome_name": "forecast_accuracy_correlation_ai_allowed",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The Pearson correlation between the time developers forecast AI-allowed issues taking and the actual time they take is 0.64, and the correlation between the time developers forecast AI-disallowed issues taking and the actual time they take is 0.59."
+    },
+    {
+      "outcome_name": "forecast_accuracy_correlation_ai_disallowed",
+      "arm_comparison": "ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The Pearson correlation between the time developers forecast AI-allowed issues taking and the actual time they take is 0.64, and the correlation between the time developers forecast AI-disallowed issues taking and the actual time they take is 0.59."
+    },
+    {
+      "outcome_name": "time_reviewing_ai_outputs",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 9% of their time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On the subset of 44 issues with valid labeled screen recordings, we find that when AI is allowed, developers spend approximately 9% of their time reviewing and cleaning AI generated outputs when working with AI."
+    },
+    {
+      "outcome_name": "time_waiting_on_ai",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 4% of their time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On the subset of 44 issues with valid labeled screen recordings, we find that when AI is allowed, developers spend approximately 4% of their time waiting on AI generated outputs when working with AI."
+    },
+    {
+      "outcome_name": "ai_generation_acceptance_rate",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "<44%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When using Cursor, developers accept <44% of the generations."
+    },
+    {
+      "outcome_name": "code_review_behavior",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "75%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "75% report that they read every line of AI generated code, and 56% of developers report that they often need to make major changes to clean up AI code\u2014when asked, 100% developers report needing to modify AI generated code."
+    },
+    {
+      "outcome_name": "code_cleanup_frequency",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "56%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "75% report that they read every line of AI generated code, and 56% of developers report that they often need to make major changes to clean up AI code\u2014when asked, 100% developers report needing to modify AI generated code."
+    },
+    {
+      "outcome_name": "code_modification_requirement",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "100%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "75% report that they read every line of AI generated code, and 56% of developers report that they often need to make major changes to clean up AI code\u2014when asked, 100% developers report needing to modify AI generated code."
+    },
+    {
+      "outcome_name": "post_review_implementation_time",
+      "arm_comparison": "ai_disallowed",
+      "means_and_sds": {
+        "ai_disallowed": {
+          "mean": 9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We observe a statistically insignificant difference in the mean post-review implementation time (9 and 15 for AI-disallowed and AI-allowed issues respectively)."
+    },
+    {
+      "outcome_name": "post_review_implementation_time",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {
+        "ai_allowed": {
+          "mean": 15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We observe a statistically insignificant difference in the mean post-review implementation time (9 and 15 for AI-disallowed and AI-allowed issues respectively)."
+    },
+    {
+      "outcome_name": "ai_usage_rate_when_allowed",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "83.6% of issues",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On the subset of 74 manually labeled valid screen recordings where AI is allowed, we find that developers do not use AI in only 16.4% of them, indicating that AI assistance was typically used on issues where AI was allowed."
+    },
+    {
+      "outcome_name": "protocol_violation_rate",
+      "arm_comparison": "ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 6%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We observe 3 specific instances where AI tools were used on AI-disallowed issues, out of 54 labeled AI-disallowed screen recordings, suggesting an overall cheating rate of \u2248 6%."
+    },
+    {
+      "outcome_name": "slowdown_no_uncompleted_ai_disallowed",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "42% slowdown",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When we subset developers to those who have no uncompleted AI-disallowed issues, we still find a slowdown of 42%."
+    },
+    {
+      "outcome_name": "slowdown_no_uncompleted_ai_allowed",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21% slowdown",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When we subset to developers who have no uncompleted AI-allowed issues, we find a slowdown of 21%."
+    },
+    {
+      "outcome_name": "slowdown_no_dropout",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "21% slowdown",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "And when we subset to developers with no dropout on any issues, we find a slowdown of 21%."
+    },
+    {
+      "outcome_name": "slowdown_screen_recording_time",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "25% slowdown",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We observe a 25% slowdown when using total screen recording time instead of the self-reported time spent, which is similar to the 24% we observe when estimating speedup from self-reported implementation times on the same subset of issues."
+    },
+    {
+      "outcome_name": "code_volume_per_hour",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "47% more code per hour",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.16",
+      "confidence_interval": null,
+      "verbatim_quote": "We observe that developers write 47% ( p = 0.16 ) more code per hour of AI-disallowed forecasts, on issues where AI is allowed."
+    },
+    {
+      "outcome_name": "continued_ai_usage_post_study",
+      "arm_comparison": "ai_allowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "69%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "69% of developers continue using it after the study period has ended."
+    },
+    {
+      "outcome_name": "slowdown_comparable_ides",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "24% slowdown",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When we restrict to developers who are using comparible IDEs between treatment conditions, we observe a slowdown of 24%."
+    },
+    {
+      "outcome_name": "raw_percentage_difference_implementation_time",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "34%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The raw percentage difference in implementation times between AI-allowed and AI-disallowed issues is 34%, which is larger in absolute value than the 19% slowdown estimated using the regression specified in Section D.1."
+    },
+    {
+      "outcome_name": "developer_slowdown_prevalence",
+      "arm_comparison": "ai_allowed vs ai_disallowed",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "75%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "75% of developers experience slowdown."
+    }
+  ],
+  "notes": "This RCT measures the impact of AI tools (primarily Cursor Pro with Claude 3.5/3.7 Sonnet, GPT-4o, Gemini 2.5 Pro, and o1) on experienced open-source developer productivity. The primary finding is a 19% slowdown when AI is allowed, contradicting developer forecasts (24% speedup) and expert forecasts (38-39% speedup). The study included 16 developers completing 246 tasks (136 AI-allowed, 110 AI-disallowed). The paper includes extensive factor analysis examining potential explanations for the slowdown. Post-review implementation time difference was statistically insignificant. The study notes several caveats: experimental artifacts cannot be entirely ruled out; results may not generalize to greenfield projects or unfamiliar codebases; better-scoped issues in the study may have biased results; developer selection may have excluded those who rely heavily on AI; and learning effects with AI tools remain unclear. Screen recording labeling was prioritized for shorter recordings, potentially biasing time allocation estimates. One developer later reported having >100 hours of prior Cursor experience (not captured during initial screening). The paper cautions against over-indexing on individual pieces of evidence given multiple comparisons without correction.",
+  "_paper_id": "METR Becker et al. 2025"
+}

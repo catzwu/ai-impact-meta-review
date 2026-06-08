@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-10",
+  "onet_label": "Making Decisions and Solving Problems",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task involves strategic decision-making in a resource allocation simulation: choosing when to move, which resources to gather, whether to trade, and when to build houses to maximize earnings under labor cost constraints. The task description explicitly states participants 'choose to use one unit of wood and one unit of stone to construct a house' and must manage trade-offs between different actions with associated costs. This is fundamentally about making strategic decisions and solving optimization problems within a constrained economic simulation, which directly maps to 'Making Decisions and Solving Problems.'",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-36",
+      "onet_label": "Organizing, Planning, and Prioritizing Work"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "zheng_2020_ai_economist"
+}

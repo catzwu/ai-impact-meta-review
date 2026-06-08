@@ -1,0 +1,49 @@
+{
+  "_paper_id": "AI_Copilots_in_Real_Estate_Evidence_from_China",
+  "citation_key": "ai_copilots_real_estate_2025",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_copilot_access",
+    "ai_arm_selection_rationale": "Only one AI arm present: ai_copilot_access, which provides the copilot feature to agents. Control arm has the copilot disabled.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 3.757,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 34,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 34,
+    "reported_percent_change": -0.0527,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -0.4434,
+    "regression_coefficient_se": 0.145,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a DiD design with treatment intensity based on pre-treatment app penetration (transaction ratio = 0.446). The primary statistic uses the DiD coefficient Post\u00d7Ratio_tran = -0.4434 (SE 0.145). The outcome is log-transformed (log of 1 + days on market), so the coefficient directly represents the log ratio. The paper reports the effect as -0.198 log-points at mean treatment intensity (=-0.4434*0.446), which translates to a 5.27% decrease relative to baseline mean of 3.757. Since the outcome is already log-transformed, the regression coefficient can be used directly as the log ratio. Multiple specifications are reported (field experiment in Jinan, buyer-facing vs seller-facing exposure, heterogeneity by tenure), but the main DiD with transaction ratio is the primary specification for the overall treatment effect.",
+    "source_quotes": [
+      "the time on market for sellers is lower by 0.198 (\u22120.4434*0.446) compared to the control group. Relative to a baseline pre-treatment mean of 3.757, this represents a 5.27% decrease.",
+      "Post\u00d7Ratio tran = -0.4434 (SE 0.145)",
+      "p < 0.001"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.05413944610064823,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.055631795629684344,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a DiD design with treatment intensity based on pre-treatment app penetration (transaction ratio = 0.446). The primary statistic uses the DiD coefficient Post\u00d7Ratio_tran = -0.4434 (SE 0.145). The outcome is log-transformed (log of 1 + days on market), so the coefficient directly represents the log ratio. The paper reports the effect as -0.198 log-points at mean treatment intensity (=-0.4434*0.446), which translates to a 5.27% decrease relative to baseline mean of 3.757. Since the outcome is already log-transformed, the regression coefficient can be used directly as the log ratio. Multiple specifications are reported (field experiment in Jinan, buyer-facing vs seller-facing exposure, heterogeneity by tenure), but the main DiD with transaction ratio is the primary specification for the overall treatment effect. | CI missing; variance not computable",
+    "n_human": 34,
+    "n_ai": 34
+  }
+}

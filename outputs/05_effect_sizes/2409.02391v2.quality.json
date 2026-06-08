@@ -1,0 +1,47 @@
+{
+  "_paper_id": "2409.02391v2",
+  "citation_key": "merali_2024_scaling_productivity",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm available: ai_assisted, which pools all thirteen AI models of differing compute sizes. This is compared against the control arm with no AI assistance.",
+    "direction_convention": "larger_is_better",
+    "m_human": 4.51,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 4.71,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.14,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.148,
+    "extraction_confidence": "medium",
+    "notes": "Sample sizes (n) are not provided in the arms data. The paper reports means for both arms and a standardized effect of 0.14 standard deviations, which is treated as Cohen's d. The effect is not statistically significant (p=0.148). Without sample sizes or SDs, Hedges' g calculation will require the reported Cohen's d and sample sizes from elsewhere in the paper.",
+    "source_quotes": [
+      "When participants were able to use an AI model this increased to 4.71, an increase of 0.2 points on a seven-point scale. This equates to an increase of 0.14 standard deviations in the average grade. Not only were participants much quicker in completing tasks with access to AI models, however, but their tasks were also associated with higher quality scores although this result was not statistically significant (p=0.148)."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Sample sizes (n) are not provided in the arms data. The paper reports means for both arms and a standardized effect of 0.14 standard deviations, which is treated as Cohen's d. The effect is not statistically significant (p=0.148). Without sample sizes or SDs, Hedges' g calculation will require the reported Cohen's d and sample sizes from elsewhere in the paper. | insufficient numbers for d",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": "larger_is_better"
+  }
+}

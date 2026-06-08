@@ -1,0 +1,48 @@
+{
+  "_paper_id": "cuietal",
+  "citation_key": "cui_2025_generative_ai_developers",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "copilot_access",
+    "ai_arm_selection_rationale": "Only one AI arm (GitHub Copilot access) vs. control (no Copilot access). This is a between-subjects randomized controlled trial across three companies.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": 0.2608,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Primary effect is a 26.08% increase in pull requests completed (SE: 10.3%) from the combined IV estimate across three experiments with 4,867 developers. The outcome is a throughput measure (number of weekly pull requests), so larger values indicate better performance. Raw means and SDs are not reported; only the percent change is available. Sample sizes per arm are not specified in the arms array (both show n=null), though total N=4,867 is mentioned. The SE of 10.3% applies to the percent change estimate itself.",
+    "source_quotes": [
+      "when data is combined across three experiments and 4,867 developers, our analysis reveals a 26.08% increase (SE: 10.3%) in completed tasks among developers using the AI tool.",
+      "Our preferred estimates from an instrumental variable regression suggest that usage of the coding assistant causes a 26.08% (SE: 10.3%) increase in the weekly number of completed tasks for those using the tool."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.23174644012147758,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.2607999999999999,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "Primary effect is a 26.08% increase in pull requests completed (SE: 10.3%) from the combined IV estimate across three experiments with 4,867 developers. The outcome is a throughput measure (number of weekly pull requests), so larger values indicate better performance. Raw means and SDs are not reported; only the percent change is available. Sample sizes per arm are not specified in the arms array (both show n=null), though total N=4,867 is mentioned. The SE of 10.3% applies to the percent change estimate itself. | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

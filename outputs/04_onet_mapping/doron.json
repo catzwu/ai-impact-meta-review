@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The participants are open-source software developers performing the core work activity of writing code, committing changes, and documenting those changes in repositories. The paper explicitly states it analyzes 'the types of innovation' in their commits through code analysis and LLM classification. While 'Software Developers' (15-1252.00) exists as an occupation, the task description focuses narrowly on the specific activity of coding and committing changes rather than the full breadth of software development work (which includes design, testing, deployment, etc.). 'Working with Computers' best captures this focused programming activity.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "yeverechyahu_2025_github_copilot"
+}

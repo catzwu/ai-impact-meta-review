@@ -1,0 +1,52 @@
+{
+  "_paper_id": "meincke2025",
+  "citation_key": "meincke_2025_chatgpt_diversity",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "Human-only / Web-search-assisted",
+    "ai_arm_name": "ChatGPT-assisted",
+    "ai_arm_selection_rationale": "The paper compares ChatGPT-assisted idea generation against human-only and web-search-assisted baselines across multiple experiments. ChatGPT-assisted is the primary AI intervention arm.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "low",
+    "notes": "This is a 'Matters Arising' commentary paper that re-analyzes Lee & Chung (2024) data. The paper does NOT measure speed/productivity/throughput as its primary outcome. Instead, it measures DIVERSITY of idea sets using metrics like 'percentage of unique ideas' and cosine similarity between ideas. The primary finding is that ChatGPT-aided idea sets have LOWER diversity (e.g., Experiment 1: web-search 0.96 vs ChatGPT 0.74 unique fraction; Experiment 2a: human 0.92, web-search 0.91, ChatGPT 0.70; Experiment 2b: human-only 1.00, ChatGPT-human 0.41, ChatGPT-only 0.06). These are NOT speed metrics. The paper explicitly states it is analyzing 'diversity of ideas' and 'originality at the set level' rather than individual creativity scores or completion time. The original Lee & Chung paper may have measured creativity scores, but this commentary focuses exclusively on diversity metrics. There are no means, SDs, or effect sizes reported for any speed/productivity outcome. Sample sizes are mentioned in passing (e.g., '20 out of 96 ChatGPT-aided ideas included the word sprinkler') but these refer to idea counts, not participant counts for a speed measure. The paper is fundamentally about a different outcome dimension (diversity) than what the SPEED extraction schema requires (productivity/throughput/time).",
+    "source_quotes": [
+      "While generative AI benefits individual ideas, its collective use leads to a narrower scope of novel content produced.",
+      "In our primary analysis, AI-aided idea sets are less diverse than non-AI-aided idea sets in all five experiments",
+      "we compared the diversity of idea sets created in each of their experiments with the aid of ChatGPT with that of ideas in the various comparison sets",
+      "These comparisons operationalize the diversity of an idea set as the ratio between the number of unique concepts it includes and the total number of ideas",
+      "In the extreme case of study 2b (suggesting a toy for a seven-year-old child using a brick and a fan), only 6% of the AI-generated ideas (ChatGPT-only) were unique, compared with 100% of human ideas"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": "larger_is_better",
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This is a 'Matters Arising' commentary paper that re-analyzes Lee & Chung (2024) data. The paper does NOT measure speed/productivity/throughput as its primary outcome. Instead, it measures DIVERSITY of idea sets using metrics like 'percentage of unique ideas' and cosine similarity between ideas. The primary finding is that ChatGPT-aided idea sets have LOWER diversity (e.g., Experiment 1: web-search 0.96 vs ChatGPT 0.74 unique fraction; Experiment 2a: human 0.92, web-search 0.91, ChatGPT 0.70; Experiment 2b: human-only 1.00, ChatGPT-human 0.41, ChatGPT-only 0.06). These are NOT speed metrics. The paper explicitly states it is analyzing 'diversity of ideas' and 'originality at the set level' rather than individual creativity scores or completion time. The original Lee & Chung paper may have measured creativity scores, but this commentary focuses exclusively on diversity metrics. There are no means, SDs, or effect sizes reported for any speed/productivity outcome. Sample sizes are mentioned in passing (e.g., '20 out of 96 ChatGPT-aided ideas included the word sprinkler') but these refer to idea counts, not participant counts for a speed measure. The paper is fundamentally about a different outcome dimension (diversity) than what the SPEED extraction schema requires (productivity/throughput/time). | no usable numbers",
+    "n_human": null,
+    "n_ai": null
+  }
+}

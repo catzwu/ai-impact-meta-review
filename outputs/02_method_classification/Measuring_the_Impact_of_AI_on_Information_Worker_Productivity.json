@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study explicitly states \"Two randomized controlled trials\" where \"Subjects were randomly granted access to M365's 'Copilot' AI tools...or assigned to a control group.\" This is random assignment to AI vs. no-AI conditions conducted online via Upwork, not in a controlled lab or real workplace setting.",
+  "citation_key": "edelman_2023_copilot_productivity"
+}

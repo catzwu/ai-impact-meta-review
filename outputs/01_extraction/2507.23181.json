@@ -1,0 +1,176 @@
+{
+  "citation_key": "whitfill_2025_compute_bottlenecks",
+  "authors": [
+    "Parker Whitfill",
+    "Cheryl Wu"
+  ],
+  "title": "Will Compute Bottlenecks Prevent an Intelligence Explosion?",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "A panel dataset was constructed for four leading AI labs (OpenAI, DeepMind, Anthropic, and DeepSeek) from 2014 to 2024. Two alternative Constant Elasticity of Substitution (CES) production function models were fit to the data. The elasticity of substitution (\u03c3) was estimated by examining how AI firms allocated research compute and human labor over this period, using firm fixed effects to correct for time-invariant productivity differences between firms.",
+  "primary_task_description": "Estimate \u03c3 (elasticity of substitution between research compute and cognitive labor) using the static optimization problem. By taking first-order conditions with respect to compute and cognitive labor, the authors derived the equation: ln(Kit,res/Hit) = \u03c3 ln(wit/rit) + \u03c3 ln(\u03b3/(1 \u2212 \u03b3)). The elasticity was estimated by regressing ln(Kit,res/Hit) on a constant and ln(wit/rit) and examining the coefficient on ln(wit/rit).",
+  "population_description": "Data covers OpenAI from 2016\u20132024, Anthropic from 2022\u20132024, DeepMind from 2014\u20132024, and DeepSeek from 2023\u20132024. Headcount estimates were obtained from PitchBook at roughly annual frequency. Wage data specifically targeted level III employees (scientific researchers) at each firm.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "outcome_description": "\u03c3 is the elasticity of substitution between research compute and cognitive labor in the CES in compute specification. \u03c3 > 1 denotes gross substitutes, \u03c3 < 1 denotes gross complements, and \u03c3 = 1 denotes the Cobb-Douglas case.",
+      "measurement_unit": null,
+      "is_primary": true
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "outcome_description": "\u03c3 is the elasticity of substitution between research compute and cognitive labor in the CES in frontier experiments specification. \u03c3 > 1 denotes gross substitutes, \u03c3 < 1 denotes gross complements, and \u03c3 = 1 denotes the Cobb-Douglas case.",
+      "measurement_unit": null,
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "arm_comparison": "main_specification",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = 2.583",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = 2.583 (SE 0.449)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the CES in compute specification, we estimate \u03c3 = 2.583, which implies research compute and cognitive labor are highly substitutable."
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "arm_comparison": "main_specification",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = \u22120.103",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = \u22120.103 (SE 0.128)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, in the frontier experiments case, we estimate \u03c3 = \u22120.103."
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "arm_comparison": "robustness_2020_onwards",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = 1.486",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = 1.486 (SE 0.672)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A2: Sample Restricted to 2020 Onwards - Elasticity of Substitution (\u03c3) 1.486 (0.672) for CES in Compute and \u22120.769 (0.464) for CES in Frontier Experiments, Observations 16, R2 0.562 and 0.886"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "arm_comparison": "robustness_2020_onwards",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = \u22120.769",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = \u22120.769 (SE 0.464)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A2: Sample Restricted to 2020 Onwards - Elasticity of Substitution (\u03c3) 1.486 (0.672) for CES in Compute and \u22120.769 (0.464) for CES in Frontier Experiments, Observations 16, R2 0.562 and 0.886"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "arm_comparison": "robustness_excluding_2024",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = 2.638",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = 2.638 (SE 0.449)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A3: Excluding Year 2024 - Elasticity of Substitution (\u03c3) 2.638 (0.449) for CES in Compute and \u22120.129 (0.128) for CES in Frontier Experiments, Observations 23, R2 0.835 and 0.992"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "arm_comparison": "robustness_excluding_2024",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = \u22120.129",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = \u22120.129 (SE 0.128)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A3: Excluding Year 2024 - Elasticity of Substitution (\u03c3) 2.638 (0.449) for CES in Compute and \u22120.129 (0.128) for CES in Frontier Experiments, Observations 23, R2 0.835 and 0.992"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "arm_comparison": "robustness_deepmind_subsample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = 2.297",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = 2.297 (SE 0.556)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A4: DeepMind Subsample Only - Elasticity of Substitution (\u03c3) 2.297 (0.556) for CES in Compute and \u22120.007 (0.281) for CES in Frontier Experiments, Observations 11, R2 0.820 and 0.995"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "arm_comparison": "robustness_deepmind_subsample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = \u22120.007",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = \u22120.007 (SE 0.281)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A4: DeepMind Subsample Only - Elasticity of Substitution (\u03c3) 2.297 (0.556) for CES in Compute and \u22120.007 (0.281) for CES in Frontier Experiments, Observations 11, R2 0.820 and 0.995"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "arm_comparison": "robustness_adjusted_compute_cost",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = 0.893",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = 0.893 (SE 0.103)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A5: Adjusted Compute Cost Specification - Elasticity of Substitution (\u03c3) 0.893 (0.103) for CES in Compute and \u22120.127 (0.116) for CES in Frontier Experiments, Observations 27, R2 0.879 and 0.983"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "arm_comparison": "robustness_adjusted_compute_cost",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = \u22120.127",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = \u22120.127 (SE 0.116)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A5: Adjusted Compute Cost Specification - Elasticity of Substitution (\u03c3) 0.893 (0.103) for CES in Compute and \u22120.127 (0.116) for CES in Frontier Experiments, Observations 27, R2 0.879 and 0.983"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "arm_comparison": "robustness_instrumental_variable",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = 2.768",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = 2.768 (SE 0.309)",
+      "test_statistic": "First-Stage F-statistic = 124.94",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A6: Instrumental Variable Estimates - Elasticity of Substitution (\u03c3) 2.768 (0.309) for CES in Compute and 0.126 (0.384) for CES in Frontier Experiments, Observations 27, R2 0.853 and 0.981, First-Stage F-statistic 124.94 and 9.88"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "arm_comparison": "robustness_instrumental_variable",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u03c3 = 0.126",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03c3 = 0.126 (SE 0.384)",
+      "test_statistic": "First-Stage F-statistic = 9.88",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table A6: Instrumental Variable Estimates - Elasticity of Substitution (\u03c3) 2.768 (0.309) for CES in Compute and 0.126 (0.384) for CES in Frontier Experiments, Observations 27, R2 0.853 and 0.981, First-Stage F-statistic 124.94 and 9.88"
+    }
+  ],
+  "notes": "This is an observational econometric study, not an RCT. The paper estimates elasticity of substitution using panel data from four AI firms (OpenAI, DeepMind, Anthropic, DeepSeek) from 2014\u20132024. Two alternative CES specifications yield divergent results: the CES in compute specification consistently estimates \u03c3 > 1 (substitutes), while the frontier experiments specification consistently estimates \u03c3 < 0 (complements). Standard errors are clustered at the firm level. The authors acknowledge significant data limitations: (1) data does not distinguish research/engineering from operations/product staff; (2) training compute is assumed constant when firms do not release models; (3) research-to-training compute ratio is assumed constant at 1:3 across all firms and times (based on OpenAI 2024 data); (4) imputed wage data involves significant estimation; (5) salary is used instead of total compensation, assuming salary is 40% of total compensation; (6) GPU mix estimation involves guesswork; (7) small sample size (4 firms, limited years); (8) endogeneity/simultaneity bias; (9) reliance on CES functional form and homogeneous labor assumptions. The authors caution that findings should be interpreted with care and note that the choice of model specification significantly affects results. No p-values are reported for any estimates.",
+  "_paper_id": "2507.23181"
+}

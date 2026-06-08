@@ -1,0 +1,50 @@
+{
+  "_paper_id": "burning glass",
+  "citation_key": "levanon_2025_entry_level",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper does not report a controlled experiment comparing human-only vs. human+AI performance on a quality outcome. The study examines structural forces affecting entry-level employment for young college graduates, including AI's impact on job markets, unemployment rates, and underemployment. It is an observational/analytical report using labor market data (BLS statistics, job postings analysis, demographic projections). There are no experimental arms, no baseline vs. intervention comparison, and no quality outcome measured in a controlled setting. The paper discusses AI's *effects* on the labor market (e.g., declining entry-level job postings in AI-exposed occupations), but does not measure task performance or quality in a human vs. human+AI experimental design. Therefore, no arm pair can be resolved for effect-size calculation.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After full re-read: This is a labor economics research report, not an experimental study. It analyzes unemployment and underemployment trends among young college graduates using secondary data sources (BLS, job postings, Census projections). The paper identifies structural forces (AI-driven 'Expertise Upheaval', post-pandemic hiring shifts, rising graduate supply) affecting entry-level job markets. No human-only vs. human+AI task performance is measured. No experimental arms exist. The prior pass correctly identified that no speed or quality primary outcome (in the experimental sense) is present. This paper is ineligible for Hedges' g extraction under the current protocol, which requires a controlled comparison of human vs. human+AI performance on a measurable outcome.",
+    "source_quotes": [
+      "This report documents how these forces are coming to shape a new reality in which traditional assumptions about education and employment may no longer hold.",
+      "Our analysis reveals four interlocking factors that appear to be rewriting the rules of professional employment: The AI-Powered 'Expertise Upheaval'... The Post-Pandemic Hiring Shift... AI as Accelerant... The Graduate Glut...",
+      "This analysis utilizes several data sources and specific methodologies to examine trends in unemployment, underemployment, and the impact of Generative AI on the job market. (Methodology section, p.16)"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After full re-read: This is a labor economics research report, not an experimental study. It analyzes unemployment and underemployment trends among young college graduates using secondary data sources (BLS, job postings, Census projections). The paper identifies structural forces (AI-driven 'Expertise Upheaval', post-pandemic hiring shifts, rising graduate supply) affecting entry-level job markets. No human-only vs. human+AI task performance is measured. No experimental arms exist. The prior pass correctly identified that no speed or quality primary outcome (in the experimental sense) is present. This paper is ineligible for Hedges' g extraction under the current protocol, which requires a controlled comparison of human vs. human+AI performance on a measurable outcome. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

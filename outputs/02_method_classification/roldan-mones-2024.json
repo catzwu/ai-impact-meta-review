@@ -1,0 +1,6 @@
+{
+  "classification": "lab_task",
+  "confidence": "high",
+  "rationale": "This is a randomized controlled trial conducted in a controlled academic setting with structured debate rounds, audio recording, and standardized evaluation rubrics. While randomization occurred ('Randomization was conducted at the individual level'), the highly controlled nature of the debate task with expert judges and standardized protocols makes this a lab task rather than a field experiment in a real work setting.",
+  "citation_key": "roldan_2024_genai_inequality"
+}

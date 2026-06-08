@@ -1,0 +1,47 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "quality_human_graded",
+      "category": "quality",
+      "operationalization": "Mean rubric score across three independent human graders per response, then averaged across all 18 questions"
+    },
+    {
+      "outcome_name": "quality_gpt_graded",
+      "category": "quality",
+      "operationalization": "Rubric score assigned by GPT-4 for each of 18 questions, then averaged into composite score"
+    },
+    {
+      "outcome_name": "task_completion_rate",
+      "category": "speed",
+      "operationalization": "Percentage of 18 tasks completed within the allotted time period"
+    },
+    {
+      "outcome_name": "time_to_complete_first_17_questions",
+      "category": "speed",
+      "operationalization": "Time in seconds from task start until reaching the 18th question after completing first 17"
+    },
+    {
+      "outcome_name": "correctness_outside_frontier",
+      "category": "quality",
+      "operationalization": "Binary indicator (0/1) of whether strategic recommendation correctly identified contradictory interview details"
+    },
+    {
+      "outcome_name": "time_spent_outside_frontier",
+      "category": "speed",
+      "operationalization": "Time in seconds spent on the outside-the-frontier business case task"
+    },
+    {
+      "outcome_name": "subjective_coherence_quality",
+      "category": "quality",
+      "operationalization": "Persuasiveness and coherence rated 1-10 by BCG consultants and business students, averaged across two grader sets"
+    },
+    {
+      "outcome_name": "creativity_score",
+      "category": "quality",
+      "operationalization": "Design-oriented creativity of shoe ideas assessed by independent design experts using rubric"
+    }
+  ],
+  "primary_speed_outcome": "task_completion_rate",
+  "primary_quality_outcome": "quality_human_graded",
+  "citation_key": "dellacqua_2026_jagged_frontier"
+}

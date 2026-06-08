@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "11-1021.00",
+  "onet_label": "General and Operations Managers",
+  "mapping_confidence": "high",
+  "rationale": "The participants are SMB entrepreneurs running their own businesses across diverse sectors (food, clothing, agriculture, etc.), making strategic decisions about 'how to motivate employees, allocate resources when expanding a store, adopt best practices...and manage bankruptcy.' These are the core responsibilities of general and operations managers. While the businesses are small (median has no employees), the entrepreneurs are performing the full range of managerial work\u2014planning, organizing, directing, and controlling business operations\u2014rather than executing a narrow technical task. The study measures their productivity as business owners doing managerial work, not as workers performing a specific occupational activity.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-10",
+      "onet_label": "Making Decisions and Solving Problems"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-28",
+      "onet_label": "Developing Objectives and Strategies"
+    }
+  ],
+  "citation_key": "otis_2024_ai_entrepreneurship"
+}

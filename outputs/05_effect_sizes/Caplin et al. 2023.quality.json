@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Caplin et al. 2023",
+  "citation_key": "caplin_2024_ability_beliefs_calibration",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treatment",
+    "ai_arm_selection_rationale": "The treatment group received AI assistance in blocks 2, 3, 5, and 8. The control group never received AI assistance. This is the only AI vs. no-AI comparison in the study.",
+    "direction_convention": "larger_is_better",
+    "m_human": 65.46,
+    "sd_human": null,
+    "se_human": 0.48,
+    "n_human": 239,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 493,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Table 1 Column 1 reports the treatment effect coefficient (6.93, SE=0.56) and constant (65.46, SE=0.48) from a regression of accuracy on treatment indicator. The constant represents the control group mean. The treatment coefficient represents the mean difference (AI - control). Therefore: m_human = 65.46 (constant), se_human = 0.48; m_ai = 65.46 + 6.93 = 72.39. However, the SE for the AI arm is not directly reported. The regression SE (0.56) is for the difference, not for the AI arm mean itself. We can extract m_human with its SE, and the treatment effect, but lack sd_ai or se_ai. The paper states n=732 total with 493 treatment and 239 control (from text on p.12). With means and one SE plus sample sizes, Python may be able to compute an approximate effect size, though precision will be limited.",
+    "source_quotes": [
+      "We recruited 732 participants over two sessions, with 376 participants in the first session and 356 in the second session. Of those, 493 were assigned to the treatment of working with AI, and 239 were assigned to the control of never working with the AI.",
+      "Table 1 Column 1: Treatment 6.93 (0.56), Constant 65.46 (0.48), Observations 732",
+      "AI improves participants' ability to accurately identify an image by 6.9 percentage points, an increase of more than 10 percent relative to the control mean of 65.5 percent."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Table 1 Column 1 reports the treatment effect coefficient (6.93, SE=0.56) and constant (65.46, SE=0.48) from a regression of accuracy on treatment indicator. The constant represents the control group mean. The treatment coefficient represents the mean difference (AI - control). Therefore: m_human = 65.46 (constant), se_human = 0.48; m_ai = 65.46 + 6.93 = 72.39. However, the SE for the AI arm is not directly reported. The regression SE (0.56) is for the difference, not for the AI arm mean itself. We can extract m_human with its SE, and the treatment effect, but lack sd_ai or se_ai. The paper states n=732 total with 493 treatment and 239 control (from text on p.12). With means and one SE plus sample sizes, Python may be able to compute an approximate effect size, though precision will be limited. | insufficient numbers for d",
+    "n_human": 239,
+    "n_ai": 493,
+    "direction_convention": "larger_is_better"
+  }
+}

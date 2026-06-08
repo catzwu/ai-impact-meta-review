@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Can_AI_Improve_Marketing_Communications_for_Small_Businesses_Field_Evidence_fro",
+  "citation_key": "goetz_2025_ai_marketing",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Control (re-write without ChatGPT)",
+    "ai_arm_name": "Treatment (re-write with ChatGPT)",
+    "ai_arm_selection_rationale": "The paper studies practices that re-write their descriptions with ChatGPT (treatment) versus those that re-write without ChatGPT (control). The treatment arm uses ChatGPT (gpt-3.5-turbo) to re-write practice descriptions.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 4248,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1062,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "The primary outcome is 'Demand Waitlist', a binary indicator for whether a practice has a waitlist. Table 2 Column 1 reports the treatment effect coefficient of 0.0164 (SE=0.0069, p<0.05) from a difference-in-differences regression with practice fixed effects. The baseline waitlist propensity is 0.063 (from Table 1). The paper states this represents a '25% increase in the probability of having a waitlist from adopting the LLM' (page 13). Sample sizes are from the matched sample: 1062 treated practices and 4248 control practices (4:1 matching ratio), yielding 54,588 practice-month observations total (Table 2). The coefficient 0.0164 is the estimated treatment effect on the probability scale. For a binary outcome in a linear probability model with fixed effects, we cannot directly compute Hedges' g from the reported coefficient without individual-level data or additional statistics (means, SDs, or t-statistics for the outcome variable itself). The paper does not report means or SDs of the waitlist indicator by arm, nor a t-statistic for the treatment coefficient that would allow conversion to standardized effect size. The reported p-value is given as p<0.05 (inequality), not an exact value.",
+    "source_quotes": [
+      "The average post-treatment effect is a 1.6 percentage point increase in the probability of having a waitlist. The average share of individuals in the sample who have a waitlist is 0.063, yielding a 25% increase in the probability of having a waitlist from adopting the LLM.",
+      "Table 2: Effect of Adoption on Demand. Dependent Variable: Demand Waitlist. Model: (1). Adopt 0.0164** (0.0069). Observations 54,588.",
+      "Table 1: Practice-month level summary statistics. All Units: Demand Waitlist Mean 0.06 St. Dev. (0.24).",
+      "I match four control practices to each treated practice resulting in 5310 unique practices in the panel, with control practices downweighted"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "The primary outcome is 'Demand Waitlist', a binary indicator for whether a practice has a waitlist. Table 2 Column 1 reports the treatment effect coefficient of 0.0164 (SE=0.0069, p<0.05) from a difference-in-differences regression with practice fixed effects. The baseline waitlist propensity is 0.063 (from Table 1). The paper states this represents a '25% increase in the probability of having a waitlist from adopting the LLM' (page 13). Sample sizes are from the matched sample: 1062 treated practices and 4248 control practices (4:1 matching ratio), yielding 54,588 practice-month observations total (Table 2). The coefficient 0.0164 is the estimated treatment effect on the probability scale. For a binary outcome in a linear probability model with fixed effects, we cannot directly compute Hedges' g from the reported coefficient without individual-level data or additional statistics (means, SDs, or t-statistics for the outcome variable itself). The paper does not report means or SDs of the waitlist indicator by arm, nor a t-statistic for the treatment coefficient that would allow conversion to standardized effect size. The reported p-value is given as p<0.05 (inequality), not an exact value. | insufficient numbers for d",
+    "n_human": 4248,
+    "n_ai": 1062,
+    "direction_convention": "larger_is_better"
+  }
+}

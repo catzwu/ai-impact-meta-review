@@ -1,0 +1,49 @@
+{
+  "_paper_id": "haslberger",
+  "citation_key": "haslberger_2025_ai_productivity",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "chatgpt_encouraged",
+    "ai_arm_selection_rationale": "Only one AI arm available: chatgpt_encouraged. Control arm is the human-only baseline.",
+    "direction_convention": "larger_is_better",
+    "m_human": 3.1,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 537,
+    "m_ai": 4.36,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 504,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.92,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "Mean for AI arm calculated as 3.1 + 1.26 = 4.36 from reported effect. Standardized effect explicitly reported as '0.92 SD' which we treat as Cohen's d. P-value reported as inequality 'p < 0.001' so exact value set to null. Regression coefficient confirms the 1.262 point increase with p < 0.001.",
+    "source_quotes": [
+      "AI use increased the average score in the \u2014 arguably least complicated \u2014 email task by 1.26 points (0.92 SD)",
+      "Used AI 1.262*** (0.122) for Email Score",
+      "p < 0.001"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.92,
+    "hedges_g": 0.9193357400722022,
+    "variance": 0.004246717465616801,
+    "computation_method": "reported_d",
+    "confidence": "high",
+    "notes": "Mean for AI arm calculated as 3.1 + 1.26 = 4.36 from reported effect. Standardized effect explicitly reported as '0.92 SD' which we treat as Cohen's d. P-value reported as inequality 'p < 0.001' so exact value set to null. Regression coefficient confirms the 1.262 point increase with p < 0.001.",
+    "n_human": 537,
+    "n_ai": 504,
+    "direction_convention": "larger_is_better"
+  }
+}

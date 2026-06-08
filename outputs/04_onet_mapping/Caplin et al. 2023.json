@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-26",
+  "onet_label": "Judging the Qualities of Objects, Services, or People",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is making judgments about human characteristics (age) based on visual information\u2014specifically, 'report[ing] the probability (0-100 slider) that the individual was over 21 years old' from face images. This is a clear instance of evaluating and judging qualities of people. While the AI provides assistance in some blocks, the participants themselves are the ones performing the judgment task being measured. This maps directly to O*NET work activity WA-26 'Judging the Qualities of Objects, Services, or People,' which encompasses assessing value, importance, or quality of things or people.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-10",
+      "onet_label": "Making Decisions and Solving Problems"
+    }
+  ],
+  "citation_key": "caplin_2024_ability_beliefs_calibration"
+}

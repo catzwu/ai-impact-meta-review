@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task involves 'reviewing and extracting information from a Solvency and Financial Conditions Report (SFCR) document' and 'analyzing Quantitative Reporting Templates (QRTs) data' to answer specific questions. This is fundamentally about analyzing financial/regulatory data and information to derive answers. While the participants are Central Bank staff, the study measures their performance on these specific analytical tasks rather than their full occupational role. The task is narrow and well-defined: data analysis and information extraction from financial documents.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-22",
+      "onet_label": "Getting Information"
+    }
+  ],
+  "citation_key": "fitzpatrick_2025_generative_ai_public"
+}

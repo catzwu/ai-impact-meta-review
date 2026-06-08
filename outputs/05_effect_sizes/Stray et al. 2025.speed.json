@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Stray et al. 2025",
+  "citation_key": "stray_2026_copilot_productivity",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "non_users",
+    "ai_arm_name": "copilot_users",
+    "ai_arm_selection_rationale": "Only one AI arm present: developers who adopted GitHub Copilot",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 3.5,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 14,
+    "m_ai": 6.5,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 25,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "Extracted approximate means from Figure 2 (lower panel showing 'Number of Commits'). Before Copilot introduction (2023-09-01), non-users averaged approximately 3.5 commits/week and Copilot users averaged approximately 6.5 commits/week. After Copilot introduction, both groups maintained similar levels with no statistically significant change. The paper states 'We did not find any statistically significant changes in commit-based activity for Copilot users after they adopted the tool' and Mann-Whitney U tests confirmed Copilot users were significantly more active than non-users (p < 0.00555) both before and after adoption. Figure 3 shows similar patterns. No standard deviations or standard errors are reported in the text or figures. The 95% confidence intervals shown in figures are visual only and exact values are not provided in tables.",
+    "source_quotes": [
+      "On average, Copilot users committed more than twice as frequently as non-users and made greater weekly contributions.",
+      "The Mann\u2013Whitney U tests comparing Copilot users and non-users also confirmed that Copilot users were significantly more active than non-users (p < 0.00555), both before and after adoption.",
+      "We did not find any statistically significant changes in commit-based activity for Copilot users after they adopted the tool, although minor increases were observed.",
+      "Before Copilot's launch, users were adding 188 lines and deleting 105 lines per week on average, compared to non-users' 80 additions and 40 deletions."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.6190392084062235,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.8571428571428572,
+    "direction_convention": "larger_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Extracted approximate means from Figure 2 (lower panel showing 'Number of Commits'). Before Copilot introduction (2023-09-01), non-users averaged approximately 3.5 commits/week and Copilot users averaged approximately 6.5 commits/week. After Copilot introduction, both groups maintained similar levels with no statistically significant change. The paper states 'We did not find any statistically significant changes in commit-based activity for Copilot users after they adopted the tool' and Mann-Whitney U tests confirmed Copilot users were significantly more active than non-users (p < 0.00555) both before and after adoption. Figure 3 shows similar patterns. No standard deviations or standard errors are reported in the text or figures. The 95% confidence intervals shown in figures are visual only and exact values are not provided in tables. | SDs/SEs missing; variance not computable",
+    "n_human": 14,
+    "n_ai": 25
+  }
+}

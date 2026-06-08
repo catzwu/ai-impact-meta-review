@@ -1,0 +1,110 @@
+{
+  "citation_key": "handa_2025_economic_tasks",
+  "authors": [
+    "Kunal Handa",
+    "Alex Tamkin",
+    "Miles McCain",
+    "Saffron Huang",
+    "Esin Durmus",
+    "Sarah Heck",
+    "Jared Mueller",
+    "Jerry Hong",
+    "Stuart Ritchie",
+    "Tim Belonax",
+    "Kevin K. Troy",
+    "Dario Amodei",
+    "Jared Kaplan",
+    "Jack Clark",
+    "Deep Ganguli"
+  ],
+  "title": "Which Economic Tasks are Performed with AI? Evidence from Millions of Claude Conversations",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "Here, we present a novel empirical framework for measuring AI usage across different tasks in the economy, drawing on privacy-preserving analysis of millions of real-world conversations on Claude.ai [Tamkin et al., 2024].",
+      "Using Clio on a dataset of one million Claude.ai Free and Pro conversations, we analyzed each interaction to map it to its most relevant task category in the O*NET database.",
+      "All analyses draw from conversation data collected during December 2024 and January 2025.",
+      "We use Clio to classify conversations across occupational tasks, skills, and interaction patterns, revealing breakdowns across these different categories."
+    ],
+    "task": [
+      "By mapping these conversations to occupational categories in the U.S. Department of Labor's O*NET Database, we can identify not just current usage patterns, but also early indicators of which parts of the economy may be most affected as these technologies continue to advance.",
+      "We map conversations from Claude.ai to occupational categories in the U.S. Department of Labor's O*NET Database to surface current usage patterns.",
+      "To understand how AI systems are being used for different economic tasks, we leverage Clio [Tamkin et al., 2024], an analysis tool that uses Claude [Anthropic, 2024] to provide aggregated insights from millions of human-model conversations."
+    ],
+    "population": [
+      "We use snapshots of Claude.ai Free and Pro conversations over 7-day periods.",
+      "Using Clio on a dataset of one million Claude.ai Free and Pro conversations, we analyzed each interaction to map it to its most relevant task category in the O*NET database.",
+      "Our sample consisted of approximately 54% Claude 3.5 Sonnet (new) conversations and 46% Claude 3 Opus conversations.",
+      "We generated clusters from a random sample of approximately 2.8 million Claude.ai Free and Pro conversations between November 28, 2024 and December 18, 2024."
+    ],
+    "arms": [
+      "We explore this by comparing usage patterns between two Claude models: Claude 3 Opus, released in March 2024, and Claude 3.5 Sonnet (new), released in October 2024.",
+      "Our sample consisted of approximately 54% Claude 3.5 Sonnet (new) conversations and 46% Claude 3 Opus conversations."
+    ],
+    "outcome_definitions": [
+      "We analyze each interaction to map it to its most relevant task category in the O*NET database.",
+      "To assess the depth of AI integration across occupations, we examined what fraction of each occupation's tasks appeared in our Clio run.",
+      "Task usage is defined as occurrence across five or more unique user accounts and fifteen or more conversations.",
+      "We use Clio to identify all of the occupational skills exhibited by the moel in relevant to a given Claude.ai conversation.",
+      "To understand which pattern is more prevalent, we used Clio to classify conversations into one of five different collaboration patterns grouped into automative vs. augmentative behaviors.",
+      "We classify conversations into five distinct patterns across two broad categories based on how people integrate AI into their workflow."
+    ],
+    "statistical_results": [
+      "Our analysis reveals that AI usage primarily concentrates in software development and writing tasks, which together account for nearly half of all total usage.",
+      "\u223c 36% of occupations using AI for at least a quarter of their associated tasks.",
+      "We also analyze how AI is being used for tasks, finding 57% of usage suggests augmentation of human capabilities (e.g., learning or iterating on an output) while 43% suggests automation (e.g., fulfilling a request with minimal human involvement).",
+      "Computer and Mathematical occupations show the highest associated AI usage rate, comprising 37.2% of all queries.",
+      "Arts, Design, Entertainment, Sports, and Media occupations were second most common (10.3%), likely reflecting the prevalence of marketing, writing, and other kinds of content generation in Claude.ai traffic.",
+      "Only \u223c 4% of occupations exhibit AI usage for at least 75% of their tasks\u2014for example, in Foreign Language and Literature Teachers (75% of tasks), we observe AI usage for tasks related to collaborating with colleagues on teaching issues and planning course content, though not for activities like writing grant proposals or maintaining student records.",
+      "Just \u223c 11% of occupations show usage for half or more of their tasks, as illustrated by Marketing Managers (50% of tasks) where we see AI usage in tasks involving market research analysis and strategy development, but not in activities like product specification consultation or trade show coordination.",
+      "The picture broadens at lower thresholds, where \u223c 36% of occupations see at least a quarter of their tasks with some usage of AI\u2014exemplified by Physical Therapists (25% of tasks), where we observe AI interactions in tasks related to research and patient education, but not in hands-on treatment or home care instruction.",
+      "Both augmentative and automative collaboration behaviors are present in users' with Claude.ai interactions, with slightly more conversations being labeled as augmentative (57%) than automative (43%).",
+      "At the top level, 95.3% of conversations are judged as assigned to an acceptable task.",
+      "At the middle level, 91.3% of conversations are judged as assigned to an acceptable task.",
+      "At the base (O*NET) level, 86% of conversations are judged as assigned to an acceptable task.",
+      "We find that 90.7% of conversations are assigned to their optimal label as assessed by human raters.",
+      "We find strong correlation between the usage of occupational categories determined via direct assignment and via clusters at various aggregation levels. When comparing direct assignment to cluster-based approaches, we observe minimum correlation values of 0.95 (Pearson), 0.95 (Spearman), and 0.82 (Kendall's Tau-b).",
+      "When comparing direct assignment to cluster-based approaches, we observe minimum correlation values of 0.70 (Pearson), 0.58 (Spearman), and 0.46 (Kendall's Tau-b).",
+      "When comparing these methods, we observe minimum correlation values of 0.47 (Pearson), 0.22 (Spearman), and 0.18 (Kendall's Tau-b).",
+      "We find that non-work conversations only comprise 23% of the dataset, and usage relating to coursework comprises only 5-10% of conversations, depending on the chosen level of confidence.",
+      "At the top-level (Figure 11), we see that IT, technology, and associated related tasks dominate the distribution, at nearly 50% of conversations.",
+      "The second tier consists of creative and cultural work, with tasks related to creating and preserving art, culture, and religious artifacts making up approximately 20% of conversations.",
+      "Business management, finance, and customer service operations form the third major category at around 15% of conversations.",
+      "Software development and website maintenance is the most prevalent activity at about 14% of conversations, followed by computer systems programming and debugging at roughly 11%.",
+      "System administration, hardware/software troubleshooting, and document publishing processes each account for 4-6% of conversations.",
+      "Marketing/promotional strategies, network optimization, academic tutoring, and public relations management appear but at lower frequencies around 2-3% each.",
+      "Data science and machine learning applications represent approximately 2% of conversations.",
+      "Job Zone 4 (requiring bachelor's degree-level preparation), with a representation ratio of 1.50, indicating 50% higher usage than expected given its baseline distribution.",
+      "Both minimal preparation (Job Zone 1) and extensive preparation roles (Job Zone 5) show lower usage rates, with representation ratios of 0.40 and 0.58 respectively.",
+      "Job Zones 2 and 3 demonstrate usage rates more closely aligned with their baseline distribution (ratios of 0.78 and 0.94).",
+      "Eloundou et al. [2023] predicted that 80% of U.S. workers could have at least 10% of their work tasks affected by language models; by contrast, our empirical data shows current adoption at \u223c 57% of occupations using AI for at least 10% of their tasks\u2014lower than predicted but potentially trending toward their forecast as capabilities improve and adoption barriers decrease."
+    ],
+    "ambiguity_or_caveats": [
+      "It is worth noting that the occupational classification of a conversation does not necessarily mean the user was a professional in that field. For instance, while some nutrition-related queries might come from dietitians, others likely come from individuals seeking personal dietary advice.",
+      "We acknowledge multiple key limitations (discussed in Section 4.1); for example, our usage data cannot reveal how Claude's outputs are actually used in practice, and our reliance on O*NET's static occupational descriptions means we cannot account for entirely new tasks or jobs that AI might create.",
+      "We use snapshots of Claude.ai Free and Pro conversations over 7-day periods. It is possible that this sample is not representative of usage on Claude.ai across longer time windows, and quite likely that our sample differs in important ways from API data or data from other AI model providers due to differing model capabilities, product features, and user bases.",
+      "Additionally, Claude.ai only outputs text as opposed to other modalities. This removes key potential users who may rely on image or video outputs (e.g. fashion designers).",
+      "For these reasons our findings should be interpreted as an imperfect snapshot of AI usage across the labor market, while noting that a broader understanding of model interaction patterns will emerge as more researchers and organizations are able to share usage data from diverse deployment contexts.",
+      "Our use of Claude to classify user conversations may also introduce potential inconsistencies if the model's understanding of tasks differs from the intended reading in the O*NET database.",
+      "While we conduct human validation of our pipeline (Appendix C), rely upon past validations of Clio [Tamkin et al., 2024], and corroborate our results with cluster-level analyses (Appendix G), it is important to note that these classifications likely contain some inherent noise.",
+      "While we make efforts to exclude conversations without relevance to any occupational tasks (Appendix B), our method does not account for the complexity of user queries\u2014for example, providing instructions for a basic omelette does not indicate culinary expertise. Consequently, we may overestimate usage rates for certain tasks by classifying conversations from novice users.",
+      "While the O*NET database offers valuable insights into current economic sectors, its static nature presents key limitations for analyzing AI's impact on the labor market. The database cannot capture emerging tasks and occupations that AI systems such as Claude may create or transform.",
+      "Additionally, while O*NET captures a very large number of tasks, it cannot contain all tasks in the economy.",
+      "Furthermore, these tasks are often written in general terms, leading to inherent ambiguity when classifying conversations\u2014many tasks are similar across multiple different occupations.",
+      "Finally, as a U.S.-centric classification system, O*NET may overlook significant occupational categories and tasks from other regions, potentially skewing our distributional analysis of global Claude.ai usage. This limits our analysis as AI usage patterns can vary across international contexts Gmyrek et al. [2023].",
+      "Although our work analyzes conversation data on Claude.ai, our methods are not able to capture how users are using the outputs of Claude.ai conversations. For example, we cannot observe whether users are copying code snippets into development environments, incorporating writing suggestions into documents, fact-checking responses against other sources, or using outputs as inspiration rather than verbatim content.",
+      "Thus, it remains out of reach to make definitive judgments as to how much Claude's outputs are actually incorporated by users in their tasks.",
+      "However, our analysis captures only whether a skill was exhibited in Claude's responses, not whether that skill was central to the user's purpose or was performed at an expert level. For instance, while Active Listening appears as the second most common skill, this likely reflects Claude's default conversational behaviors\u2014such as rephrasing user inputs and asking clarifying questions\u2014rather than users specifically seeking out listening-focused interactions.",
+      "We note an important caveat that users might edit and adjust the response they receive from Claude outside the chat window, suggesting that the true proportion of augmentative conversations may be even higher.",
+      "In addition, even automation of simple tasks can serve to enhance human capabilities when embedded within broader human-directed workflows.",
+      "While the O*NET database offers valuable insights into current economic sectors, its static nature presents key limitations for analyzing AI's impact on the labor market.",
+      "The relatively weak correlation at the task level can be attributed to two key factors. First, there is intrinsic noise in the O*NET task dataset itself, with many tasks being highly similar or overlapping.",
+      "Second, there exists a many-to-many relationship between conversations and tasks (a single conversation might involve multiple tasks) and between tasks and occupations (a single task might map to multiple occupations). This means that uncertainty expands at the task level but naturally narrows as we aggregate upward to occupational categories; therefore, we see stronger correlations at higher levels of aggregation.",
+      "Given the granular nature of individual tasks in the O*NET database and significant overlap between similar tasks, we expect considerable variation in which specific tasks are identified by each method."
+    ]
+  },
+  "notes": "This is an observational study analyzing real-world usage patterns from Claude.ai conversations. It is not a randomized controlled trial or experimental study comparing AI vs. no-AI conditions. The paper maps conversations to O*NET occupational tasks and analyzes patterns of usage across occupations, skills, wages, barriers to entry, and collaboration modes (automation vs. augmentation). The study uses Clio, a privacy-preserving analysis tool, to classify approximately 1-2.8 million conversations. Key findings include: (1) AI usage concentrates in software development and writing tasks (~50% of usage); (2) ~36% of occupations show AI usage for at least 25% of their tasks; (3) 57% of interactions show augmentation patterns vs. 43% automation; (4) usage peaks in mid-to-high wage occupations and those requiring considerable preparation (Job Zone 4). The paper includes extensive validation studies and acknowledges multiple limitations regarding sample representativeness, model-driven classification reliability, and inability to observe actual use of AI outputs.",
+  "_paper_id": "Handa et al. 2025",
+  "_source_pdf": "papers/Handa et al. 2025.pdf"
+}

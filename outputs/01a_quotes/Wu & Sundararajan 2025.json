@@ -1,0 +1,50 @@
+{
+  "citation_key": "wu_2025_digital_twins",
+  "authors": [
+    "Catherine Wu",
+    "Arun Sundararajan"
+  ],
+  "title": "Incentives for Digital Twins: Task-Based Productivity Enhancements with Generative AI",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "We analyze this trade-off using a principal-agent model in which agents have the opportunity to make investments into training an AI twin that lead to a lower cost of agent effort, a higher probability of success, or both.",
+      "We situate our problem in a two-outcome limited liability moral hazard model with hidden action.",
+      "The manager (principal) chooses whether or not to offer the capability to customize an AI system to the worker (agent).",
+      "We use a two-outcome, limited-liability, hidden action model.",
+      "We first consider a short-run problem, investigating how the worker's level of investment in the creation of their AI twin depends on intrinsic task properties\u2014specifically, (i) how easily a human worker can modify AI output to reach a desired quality level, which we term the editability of the task, and (ii) whether the manager is able to verify the quality of AI output absent the human worker, which we term the task's verifiability."
+    ],
+    "task": [
+      "A manager (principal) wishes to hire a worker (agent) to perform a task.",
+      "The agent chooses between two effort levels e, high ( e = 1) and low ( e = 0).",
+      "The principal's payoff is shaped by outcomes that are realized from the agent's exertion of effort."
+    ],
+    "population": [],
+    "arms": [
+      "The agent can choose to invest in training an AI twin or not invest (v = 0).",
+      "The principal can choose to offer the capability to customize an AI system to the worker (agent) or not offer it.",
+      "e = 0 as characterizing the \"AI only\" setting, where \u03c00(v) is the outcome distribution induced by AI without additional human effort, and e = 1 as characterizing the \"human+AI\" setting, where \u03c01(v) is the outcome distribution induced when human effort complements the AI twin."
+    ],
+    "outcome_definitions": [
+      "We assume two possible outcomes that, respectively, provide benefit \u00afS and S to the principal, where \u00afS > S.",
+      "We designate \u03c01 as the probability that high effort produces the better outcome, and \u03c00 as the probability that low effort produces the better outcome.",
+      "The agent's expected surplus is U (v) = \u03c00(v) c(v) / (\u03c01(v) \u2212 \u03c00(v)).",
+      "Define Q\u03c0(v), the outcome separability of the work in question, as: Q\u03c0(v) = \u03c01(v) / \u03c00(v).",
+      "We define ( \u00afS \u2212 S) as the quality importance of the work being done, since it measures the difference in payoff to the principal from high-quality and low-quality output."
+    ],
+    "statistical_results": [],
+    "ambiguity_or_caveats": [
+      "A more detailed paper with mathematical details and proofs is available on request.",
+      "The objective function U (v) in (12) is not necessarily strictly quasiconcave in v.",
+      "Rather than imposing additional structure through assumptions that would ensure an interior solution, we instead focus on deriving and interpreting conditions under which (12) has a well-defined solution, which may either be an interior solution or one of the end points.",
+      "Although \u00aft(v) is not a primitive of our model but a derived function, its properties (and, in particular, whether it is increasing or decreasing) are a convenient way to characterize the results about when an agent is threatened by displacement by their AI twin.",
+      "The empirical literature connecting generative AI to productivity changes is growing rapidly.",
+      "As we encounter new results that deepen our understanding of the nature of interaction between generative AI and human workers, it is possible that other aspects of work beyond editability and verifiability could be relevant.",
+      "While our model has been chosen to be as parsimonious as is possible while still demonstrating the key economic tradeoffs, a hallmark of our framework is that it does not make assumptions about the nature of the AI implementation or work it supports."
+    ]
+  },
+  "notes": "This is a theoretical paper presenting a principal-agent model with mathematical analysis. It is not an empirical study with experimental data. The paper synthesizes findings from recent empirical studies (cited in Table 1) to motivate the framework but does not report original experimental results. The paper includes a single-period model and a two-period extension with myopic agents. No numerical experimental results are reported.",
+  "_paper_id": "Wu & Sundararajan 2025",
+  "_source_pdf": "papers/Wu & Sundararajan 2025.pdf"
+}

@@ -1,0 +1,723 @@
+{
+  "citation_key": "roldan_2024_genai_inequality",
+  "authors": [
+    "Antonio Rold\u00e1n-Mon\u00e9s"
+  ],
+  "title": "When GenAI increases inequality: evidence from a university debating competition",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": "A randomized controlled trial (RCT) involving 142 undergraduate students at ESADE Business School and CUNEF University across three debating days in March-April 2023. Randomization was conducted at the individual level on each debating day, assigning participants to treatment and control groups, debating partners, and debating positions. After the first round (baseline), treatment students received a 20-minute ChatGPT training and were allowed to use ChatGPT throughout the remaining three to four rounds of debates, while control students could only use conventional internet resources. Each debate was audio recorded and evaluated by three independent expert judges using a standardized rubric.",
+  "primary_task_description": "Three to four rounds of short one-on-one debates on public policy topics over a three-hour session. Each debate consisted of 3 minutes for an opening statement and 2 minutes for refutation and conclusion per debater, with 15 minutes of preparation time per round. Students had approximately two hours of total debating time including preparation and actual debates.",
+  "population_description": "142 undergraduate university students from ESADE Business School and CUNEF University. Most participants were enrolled in law, business, or economics degrees, drawn primarily from two Debating courses at ESADE and an Economic Policy class at CUNEF. The first session (38 students) and second session (50 students) were conducted in English at ESADE on March 20 and 24, 2023; the third session (58 students) was conducted in Spanish on April 19, 2023. At the time of intervention, ChatGPT 3.5 had been available for approximately four months, and less than half of participating students reported prior ChatGPT use.",
+  "arms": [
+    {
+      "arm_name": "chatgpt_treatment",
+      "description": "After the first round, treatment students received a 20-minute intense training on ChatGPT by a ChatGPT heavy user and were allowed to use ChatGPT as support throughout the remaining three to four rounds of debates. Treatment and control students remained separated in two rooms during preparation. AI tools were explicitly prohibited for control students, and treatment students were explicitly told not to disclose ChatGPT use.",
+      "n": 71
+    },
+    {
+      "arm_name": "control",
+      "description": "Control students received an extra 20-minute break instead of ChatGPT training and could only use conventional resources on the internet. AI tools were explicitly prohibited for control students.",
+      "n": 71
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "debating_points",
+      "outcome_description": "Individual debating points computed as the average score given by three independent judges to each participant for each round of debates. Judges awarded up to 50 points per debater following a rubric with five indicators: (1) clarity and validity of the defended position; (2) credibility of the evidence used; (3) formal quality and rhetoric; (4) ability to refute the rival's arguments; and (5) superiority of the arguments used. Each indicator received ten points.",
+      "measurement_unit": "points (0-50 scale)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "winning_debate",
+      "outcome_description": "Binary outcome indicating whether an individual won a debate. An individual is classified as winner if their average score (across three judges) in a debate was higher than that of their rival.",
+      "measurement_unit": "binary (win/loss)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "clarity_position",
+      "outcome_description": "Rubric dimension measuring clarity and validity of the defended position, one of five standard categories evaluated by judges.",
+      "measurement_unit": "points (0-10 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "credibility_evidence",
+      "outcome_description": "Rubric dimension measuring credibility of the evidence used, one of five standard categories evaluated by judges.",
+      "measurement_unit": "points (0-10 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "rhetoric_quality",
+      "outcome_description": "Rubric dimension measuring formal quality and rhetoric, one of five standard categories evaluated by judges.",
+      "measurement_unit": "points (0-10 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "refutation_ability",
+      "outcome_description": "Rubric dimension measuring ability to refute the rival's arguments, one of five standard categories evaluated by judges.",
+      "measurement_unit": "points (0-10 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "argument_superiority",
+      "outcome_description": "Rubric dimension measuring superiority of the arguments used, one of five standard categories evaluated by judges.",
+      "measurement_unit": "points (0-10 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_sufficiency_perception",
+      "outcome_description": "Self-reported perception of time needed to prepare the debates, measured via survey.",
+      "measurement_unit": "points (survey scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "usefulness_materials",
+      "outcome_description": "Self-reported perception of the usefulness of the tools used for the debate, measured via survey.",
+      "measurement_unit": "points (survey scale)",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.2% higher",
+      "standardized_effect_reported": "0.15 standard deviations",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Treatment debaters are 9.2% more likely to win than control debaters and score on average 2.2% (equivalent to an increase by 0.15 standard deviations) higher than control individuals, but the differences are not statistically different from zero."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (with debate day and round fixed effects, baseline performance control)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.518 points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.518 (Column 1, debate day and round fixed effects, baseline performance control)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Column 1, which estimates equation 1 and includes debate day and round fixed effects, and controls for baseline performance, treatment group individuals score 0.518 points higher than control individuals."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (with additional controls)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.672 points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.672 (Column 2, with additional controls)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When including additional controls (Column 2), the coefficient increases to 0.672, but remains imprecisely estimated and is not significant at conventional levels."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "9.2 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Treatment debaters are 9.2% more likely to win than control debaters and score on average 2.2% (equivalent to an increase by 0.15 standard deviations) higher than control individuals, but the differences are not statistically different from zero."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control (Column 3)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.9 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When looking at \"winning the debate\" (Columns 3 and 4), ChatGPT increases the probability of winning by between 3.9 and 4.6 percentage points, but neither of these estimates is significant at conventional levels."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control (Column 4)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "4.6 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When looking at \"winning the debate\" (Columns 3 and 4), ChatGPT increases the probability of winning by between 3.9 and 4.6 percentage points, but neither of these estimates is significant at conventional levels."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (scholarship students)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.1 points higher",
+      "standardized_effect_reported": "12% improvement",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I find that students on such scholarships experience significantly larger improvements from ChatGPT than those without a scholarship. They improve their total debating points by 3.1 points compared to control students, while those without a scholarship just show a small positive but insignificant improvement."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (non-scholarship students)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.7% higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient estimate shows an improvement of 12% among treatment students who are on a scholarship, and a 1.7% (insignificant) effect of ChatGPT among those without a merit scholarship."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control (scholarship students)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "11.8 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient estimate represents a significant improvement by 11.8% for students using ChatGPT among those on a scholarship, and a 1.5% (insignificant) effect of ChatGPT among those without a scholarship."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control (non-scholarship students)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.5 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient estimate represents a significant improvement by 11.8% for students using ChatGPT among those on a scholarship, and a 1.5% (insignificant) effect of ChatGPT among those without a scholarship."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (high ability, top 50% baseline)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.36 points higher",
+      "standardized_effect_reported": "0.8 standard deviation increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I find that those with high scores at baseline (top 50% of the debate performance distribution) benefit from ChatGPT - they improve their total debating points by 2.36 points (equivalent to a 0.8 standard deviation increase) compared to control students-, while those with lower baseline debate points (bottom 50%) do not benefit at all."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (low ability, bottom 50% baseline)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "no benefit",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I find that those with high scores at baseline (top 50% of the debate performance distribution) benefit from ChatGPT - they improve their total debating points by 2.36 points (equivalent to a 0.8 standard deviation increase) compared to control students-, while those with lower baseline debate points (bottom 50%) do not benefit at all."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (high ability, top 50% baseline, percentage)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "5.2% higher",
+      "standardized_effect_reported": "0.47 standard deviation increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Among those in the top 50% in debating points in the baseline round (before the treatment was implemented), treatment students have on average 5.2% higher points than control students - the equivalent of a 0.47 standard deviation increase compared to control students-. Among those with lower baseline debating points (bottom 50%), treatment individuals do not benefit at all from ChatGPT."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (low ability, bottom 50% baseline, percentage)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "no benefit",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Among those in the top 50% in debating points in the baseline round (before the treatment was implemented), treatment students have on average 5.2% higher points than control students - the equivalent of a 0.47 standard deviation increase compared to control students-. Among those with lower baseline debating points (bottom 50%), treatment individuals do not benefit at all from ChatGPT."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control (high ability, top 50% baseline, Column 3)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "High ability treated students are also significantly more likely to win the debate (even though the coefficient becomes insignificant in the specification with controls, column 4), whereas their low-ability counterparts do not benefit from the treatment in this respect."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control (high ability, top 50% baseline, Column 4)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "High ability treated students are also significantly more likely to win the debate (even though the coefficient becomes insignificant in the specification with controls, column 4), whereas their low-ability counterparts do not benefit from the treatment in this respect."
+    },
+    {
+      "outcome_name": "credibility_evidence",
+      "arm_comparison": "chatgpt_treatment vs control (high ability)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ChatGPT significantly boosts high-ability participants' productivity in four out of five dimensions, including credibility and superiority of the arguments and refutation and rhetoric capacity (when pooled together, the overall effect in credibility and rhetoric is neutralized by the low-ability students)."
+    },
+    {
+      "outcome_name": "argument_superiority",
+      "arm_comparison": "chatgpt_treatment vs control (high ability)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ChatGPT significantly boosts high-ability participants' productivity in four out of five dimensions, including credibility and superiority of the arguments and refutation and rhetoric capacity (when pooled together, the overall effect in credibility and rhetoric is neutralized by the low-ability students)."
+    },
+    {
+      "outcome_name": "refutation_ability",
+      "arm_comparison": "chatgpt_treatment vs control (high ability)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ChatGPT significantly boosts high-ability participants' productivity in four out of five dimensions, including credibility and superiority of the arguments and refutation and rhetoric capacity (when pooled together, the overall effect in credibility and rhetoric is neutralized by the low-ability students)."
+    },
+    {
+      "outcome_name": "rhetoric_quality",
+      "arm_comparison": "chatgpt_treatment vs control (high ability)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ChatGPT significantly boosts high-ability participants' productivity in four out of five dimensions, including credibility and superiority of the arguments and refutation and rhetoric capacity (when pooled together, the overall effect in credibility and rhetoric is neutralized by the low-ability students)."
+    },
+    {
+      "outcome_name": "clarity_position",
+      "arm_comparison": "chatgpt_treatment vs control (low ability)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "low-skill seem to significantly benefit from ChatGPT in one specific task: improving the clarity of their defended position."
+    },
+    {
+      "outcome_name": "time_sufficiency_perception",
+      "arm_comparison": "chatgpt_treatment vs control (high ability)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "31 points higher",
+      "standardized_effect_reported": "1.06 standard deviations",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I find a positive and significant effect of ChatGPT on self-reported perception of time needed to prepare the debates, but only for high-ability individuals: they self-rate the sufficiency of time 31 points (or 1.06 standard deviations) higher than control individuals."
+    },
+    {
+      "outcome_name": "usefulness_materials",
+      "arm_comparison": "chatgpt_treatment vs control (non-scholarship students)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "36 points higher",
+      "standardized_effect_reported": "1.07 standard deviations",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I also find a positive effect of the treatment on students' perceptions of the usefulness of the tools used for the debate: among those not on a scholarship, treatment individuals value the usefulness of materials 36 points higher than students having only internet access (or 1.07 standard deviations), and the effect was similar in size among those on a scholarship (albeit not significant)."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (strong evidence position)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.7 points higher",
+      "standardized_effect_reported": "0.38 SD",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When individuals had to defend the strong evidence position, treatment had a positive effect and increased total points by 1.7 on average (0.38 SD). However, when individuals had to defend the weak evidence position, being assigned to using ChatGPT had no positive effect in performance."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (weak evidence position)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "no positive effect",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When individuals had to defend the strong evidence position, treatment had a positive effect and increased total points by 1.7 on average (0.38 SD). However, when individuals had to defend the weak evidence position, being assigned to using ChatGPT had no positive effect in performance."
+    },
+    {
+      "outcome_name": "debating_points",
+      "arm_comparison": "chatgpt_treatment vs control (treatment vs control opponent)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.605 points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Individuals using ChatGPT score on average 0.605 points more than control individuals (not significant), and this is not affected by whether they debated against a student in treatment (also using ChatGPT) or control group."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs control (treatment vs control opponent)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "10.5 percentage points higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The probability of winning a debate is 10.5 percentage points higher (not significant) when treatment individuals debate with a control group person. When treatment individuals compete against a treated student, their probability of winning is the same as that of control individuals (interaction effect=-0.125)."
+    },
+    {
+      "outcome_name": "winning_debate",
+      "arm_comparison": "chatgpt_treatment vs chatgpt_treatment (treatment vs treatment opponent)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "same as control",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "interaction effect = -0.125",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The probability of winning a debate is 10.5 percentage points higher (not significant) when treatment individuals debate with a control group person. When treatment individuals compete against a treated student, their probability of winning is the same as that of control individuals (interaction effect=-0.125)."
+    }
+  ],
+  "notes": "This is a preregistered RCT (AEA RCT Registry ID: AEARCTR-0011113). The study examines heterogeneous effects of ChatGPT access on debating performance across 142 undergraduate students (71 per arm), with particular focus on ability-based differences. The main finding contradicts the \"productivity compression hypothesis\" from prior GenAI literature: high-ability students benefit significantly more from ChatGPT than low-ability students in this task requiring higher-order skills and unpredictable interactions. The paper includes detailed mechanism analysis examining performance across five rubric dimensions and self-reported survey measures. The minimum detectable effect size at 90% confidence levels was estimated at 0.4 SD given the sample size of 142 students. Most reported effects are described as \"not significant\" or \"insignificant\" at conventional levels, but specific p-values are not provided in the quotes for most comparisons. The heterogeneous effects by ability level and scholarship status are described as \"significant\" or \"significantly larger\" in the quotes.",
+  "_paper_id": "roldan-mones-2024"
+}

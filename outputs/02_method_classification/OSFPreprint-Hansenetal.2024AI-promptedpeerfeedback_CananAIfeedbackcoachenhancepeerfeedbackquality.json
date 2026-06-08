@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly states it used a 'quasi-experimental design' comparing an intervention group with AI feedback coach to a control group without it, and notes that 'ecological validity was therefore prioritized over randomization.' This is a quasi-experimental comparison without random assignment, fitting the natural_experiment category.",
+  "citation_key": "hansen_2024_ai_peer_feedback"
+}

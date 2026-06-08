@@ -1,0 +1,111 @@
+{
+  "citation_key": "cambon_2023_copilot_productivity",
+  "authors": [
+    "Alexia Cambon",
+    "Brent Hecht",
+    "Ben Edelman",
+    "Donald Ngwe",
+    "Sonia Jaffe",
+    "Amy Heger",
+    "Mihaela Vorvoreanu",
+    "Sida Peng",
+    "Jake Hofman",
+    "Alex Farach",
+    "Margarita Bermejo-Cano",
+    "Eric Knudsen",
+    "James Bono",
+    "Hardik Sanghavi",
+    "Sofia Spatharioti",
+    "David Rothschild",
+    "Daniel G. Goldstein",
+    "Eirini Kalliamvakou",
+    "Peter Cihon",
+    "Mert Demirer",
+    "Michael Schwarz",
+    "Jaime Teevan"
+  ],
+  "title": "Early LLM-based Tools for Enterprise Information Workers Likely Provide Meaningful Boosts to Productivity",
+  "year": 2023,
+  "venue": "Microsoft Technical Report",
+  "quotes": {
+    "study_design": [
+      "This experiment assessed productivity gains from Copilot across multiple tasks common among office workers: email information retrieval, intranet (SharePoint) information retrieval, content creation, and meeting summarization. We recruited 147 participants via the Upwork platform. We randomly divided participants into treatment (Copilot) and control (no Copilot) groups.",
+      "Microsoft first launched Copilot to the public via an \"Early Access Program.\" Only a small number of people in each organization invited to join the program had access to Copilot. We surveyed these early adopters to understand their experiences and perceived productivity gains using Copilot. We excluded responses from anyone who said they had been using Copilot for less than three weeks, with a final sample consisting of 297 responses. The survey was 10 minutes in length and was deployed globally from October 3 to November 2, 2023, with a cross-functional representation in its sample. The survey was fully anonymous.",
+      "This study sought to test productivity effects of Copilot for catching up on missed meetings. We recruited 57 Microsoft employees for the study. Access to Copilot was deployed across Microsoft largely on a division-by-division basis, with certain divisions gaining access before others. Thirty-three of the participants in the study had access to Copilot, while the rest did not. We provided participants with a recording and transcript of a scripted 35-minute Teams meeting between four employees planning a fictional team offsite. We then asked participants to write a 200- to 300-word email summarizing details from the \"missed\" meeting. Participants completed the study unmoderated and online. They recorded their computer screens after providing consent.",
+      "This experiment examined productivity gains in enterprise information retrieval. We recruited 163 participants via Upwork, randomly split them into treatment (Copilot) and control (no Copilot) groups, and we brought them into a simulated enterprise environment.",
+      "This early-stage study used an LLM-based search tool based on GPT-3.5 and compared the tool with traditional search for complex information retrieval tasks. Participants were recruited via Amazon Mechanical Turk. We ran two experiments: one that examined speed and accuracy of the task (90 participants) and another focused on the effectiveness of a simple intervention for when the LLM produced incorrect results (120 participants).",
+      "In this study, we assessed the quality of emails written using Copilot in Outlook versus ordinary emails written without Copilot. We recruited 62 participants from Upwork, all native speakers of US English. For a corpus of actual emails among business professionals and executives, we selected authors and messages from the Enron email corpus, a common dataset for e-mail research. For each original email we selected, we then used the Outlook \"Sound Like Me\" feature to create a variant rewritten by Copilot in the style of the underlying author. We repeated this process for numerous emails from numerous authors. We then showed the human-written and Copilot-written messages to participants in various arrangements and combinations, and we asked them to evaluate both the human- and AI-written emails on factors such as clarity, conciseness, and the degree to which an email \"sounded like\" the original author.",
+      "This experiment studied productivity gains in enterprise security operations. We recruited 149 participants from Upwork, security novices with standard IT skills but no specific security expertise. We gave them all access to M365 Defender, and we randomly granted half of them access to Security Copilot, which provides AI-based interpretation of security incidents, recommends responses, and interprets attack scripts. We asked participants to explore the tool, then answer questions about what they found.",
+      "The first study in the research program whose results have already been widely disseminated, this study recruited 95 developers from Upwork to implement an HTTP server in JavaScript and gave half of them access to GitHub Copilot. Participants were incentivized to complete the task quickly. The task was considered complete when a participant's code passed twelve programmed tests. Researchers measured both the completion rate and average time to completion for participants with and without Copilot."
+    ],
+    "task": [
+      "This experiment assessed productivity gains from Copilot across multiple tasks common among office workers: email information retrieval, intranet (SharePoint) information retrieval, content creation, and meeting summarization.",
+      "We provided participants with a recording and transcript of a scripted 35-minute Teams meeting between four employees planning a fictional team offsite. We then asked participants to write a 200- to 300-word email summarizing details from the \"missed\" meeting.",
+      "We asked participants to answer questions about information in the files, emails, and meeting invites.",
+      "This early-stage study used an LLM-based search tool based on GPT-3.5 and compared the tool with traditional search for complex information retrieval tasks.",
+      "We then showed the human-written and Copilot-written messages to participants in various arrangements and combinations, and we asked them to evaluate both the human- and AI-written emails on factors such as clarity, conciseness, and the degree to which an email \"sounded like\" the original author.",
+      "We asked participants to explore the tool, then answer questions about what they found.",
+      "this study recruited 95 developers from Upwork to implement an HTTP server in JavaScript and gave half of them access to GitHub Copilot."
+    ],
+    "population": [
+      "We recruited 147 participants via the Upwork platform.",
+      "We surveyed these early adopters to understand their experiences and perceived productivity gains using Copilot. We excluded responses from anyone who said they had been using Copilot for less than three weeks, with a final sample consisting of 297 responses.",
+      "We recruited 57 Microsoft employees for the study.",
+      "We recruited 163 participants via Upwork, randomly split them into treatment (Copilot) and control (no Copilot) groups, and we brought them into a simulated enterprise environment.",
+      "Participants were recruited via Amazon Mechanical Turk.",
+      "We recruited 62 participants from Upwork, all native speakers of US English.",
+      "We recruited 149 participants from Upwork, security novices with standard IT skills but no specific security expertise.",
+      "this study recruited 95 developers from Upwork to implement an HTTP server in JavaScript and gave half of them access to GitHub Copilot."
+    ],
+    "arms": [
+      "We randomly divided participants into treatment (Copilot) and control (no Copilot) groups.",
+      "Thirty-three of the participants in the study had access to Copilot, while the rest did not.",
+      "We recruited 163 participants via Upwork, randomly split them into treatment (Copilot) and control (no Copilot) groups, and we brought them into a simulated enterprise environment.",
+      "We ran two experiments: one that examined speed and accuracy of the task (90 participants) and another focused on the effectiveness of a simple intervention for when the LLM produced incorrect results (120 participants).",
+      "We randomly granted half of them access to Security Copilot, which provides AI-based interpretation of security incidents, recommends responses, and interprets attack scripts.",
+      "gave half of them access to GitHub Copilot."
+    ],
+    "outcome_definitions": [
+      "To assess the quality of participants' information retrieval, we asked them questions about the information they found, and we scored their accuracy. To assess the quality of the content they drafted, we asked a LLM both to check for key facts and to assess quality along multiple dimensions. To assess speed, we measured the time taken for each subtask and for the series of tasks as a whole.",
+      "To assess speed, we used time on the task. To measure quality, two independent (human) raters scored email contents for key details from the meeting. After the task was complete, we asked participants how productive they felt and how draining they perceived the task to be, among other questions.",
+      "We scored their work for accuracy, and we measured the time required for completion.",
+      "We track how quickly participants finish a task, the output per unit time (speed). Since the lab studies asked participants to do a fixed set (quantity) of tasks, we look at the quality of their work as a measure of output. The definition of quality varies from study to study, but accuracy on the task in question is the most common.",
+      "The studies in this paper that track effort operationalize it differently, and usually do so through survey-based approaches that seek to understand the degree of exhaustion experienced or perceived energy expended by a participant.",
+      "Researchers measured both the completion rate and average time to completion for participants with and without Copilot."
+    ],
+    "statistical_results": [
+      "Copilot users completed the task in 26% to 73% of the time, on average, when compared with people not using Copilot, with the largest difference being in the Copilot in Teams Meeting Study.",
+      "In the Copilot Common Tasks Study, we asked participants with Copilot to estimate how much time that tool saved them. They guessed 36 minutes on average, when actual time savings were 12 minutes on average, indicating their perception of significant time reduction on the tasks.",
+      "73% of employees surveyed in the Early Access Program research agreed that Copilot helped them complete tasks faster, and 85% said it would help them get to a good first draft faster.",
+      "When asked to estimate how much time Copilot saved them on a daily basis, respondents most often reported 11-30 minutes (35%) and another 22% reported greater than that. Average daily time saved was 14 minutes a day, or 1.2 hours a week when calculated using the lower end of the time range bins (\"0 minutes\", \"<5 minutes\", \"5-10 minutes\", \"11-30 minutes\", \"31-60 minutes\", and \">1 hour\").",
+      "in both the Copilot Common Task Study and the Copilot Information Retrieval Study, we did not see a statistically significant effect on task accuracy, despite the substantial increases in speed discussed above.",
+      "68% agreed that Copilot actually improved quality of their work.",
+      "In the Copilot in Teams Meetings Study, there was a slight decrease in summarization comprehensiveness relative to the comparison group. While Copilot users took much less time, their summaries on average included 11.06 out of 15 specific pieces of information in the assessment rubric versus the 12.40 of 15 for users who did not have access to Copilot.",
+      "Emails written with Copilot were rated 18% clearer and 19% more concise. Participants also scored emails written with Copilot 25% higher on, \"Couldn't have said it better myself.\"",
+      "when the LLM got the answer right, there was no significant difference between the treatment (LLM-based search) and the control group (LLM-based search), but when the LLM got the answer wrong accuracy dropped to under 50% in the treatment group.",
+      "Security novices with Copilot were 44% more accurate in answering questions about the security incidents they examined. We also asked subjects to write an essay about a security incident, and those with Copilot included 151% more key facts (based on the experts' assessment rubric) and scored 32% higher on summary quality, both as graded by LLM.",
+      "in the Copilot in Teams Meeting Study, participants with access to Copilot found the task to be 58% less draining than participants without access.",
+      "In the M365 Defender Security Copilot Study, subjects with Copilot reported 16% lower agreement with the statement \"This task was a lot of effort\" (compared to control users doing the same task without Copilot), and Copilot users reported 83% agreement with the statement \"Copilot reduced my effort on this task.\"",
+      "Copilot users overall agreed that Copilot helped them spend less mental effort on mundane or repetitive tasks (72%).",
+      "the majority (70%) of respondents believed that Copilot increased their productivity.",
+      "77% of respondents said they would choose Copilot over a weekly free lunch worth $40 / month.",
+      "In the Copilot Common Task Study, the reported willingness-to-pay for Copilot was 35% greater than for those who had used Copilot in the study versus those who received only a description of the tool.",
+      "those in the treatment group of the Copilot Information Retrieval Study were 40% more likely to say they would pay >$20 USD for the tool relative to those in the control group."
+    ],
+    "ambiguity_or_caveats": [
+      "Importantly, for this stage of work, we did not seek to evaluate Copilot's (or LLM's) overall increase in information worker productivity using a fully representative set of tasks, nor did we attempt to run experiments in fully ecologically valid scenarios. We are moving in these directions in ongoing research. Rather, for this phase of research, we sought to explore whether Copilot provides meaningful productivity boosts on some common tasks for which we believed it was likely to do so based on the properties of the technology.",
+      "Of course, the overall current speed increase from using Copilot is likely to be much lower than this, given the tasks studied were ones we believed were particularly likely to benefit from AI support.",
+      "This report should not be read as an assessment of overall productivity gains on a representative set of tasks in wide variety of ecologically valid work environments. Rather, in this wave of work, we sought to test whether we saw productivity boosts for some common tasks that enterprise information workers perform.",
+      "Given that the tools were only available to survey respondents in pre-release form, these results suggest more general productivity benefits as we broaden our research scope, even if these initial results are likely skewed by some novelty effects.",
+      "It is also important to note that the tools studied in this paper \u2013 and the underlying language models \u2013 are under active development. As such, the results in this paper should be viewed as capturing a moment in time versus providing evidence for strong claims about LLM-based productivity tools in a long-term persistent steady state. This is a key reason we put the word \"early\" in the title of this paper. Running the same studies on the same tools in a year may yield different results. Similarly, user expectations are changing quickly as well, with any novelty effects likely moderating relatively quickly.",
+      "This paper must also be viewed with awareness of the conflicts of interest involved: the authors are Microsoft researchers studying Microsoft products. While the studies were done using standard scientific practices and many are being submitted for peer review, it is useful to make these conflicts explicit.",
+      "Another limitation of the research presented is that it was all done with English speakers doing tasks in English. It is likely that for some languages, especially low-resource ones, the observed productivity gains will be less due to a decrease in quality of the tools' output.",
+      "The one exception to this trend related not to the capabilities of the AI, but rather challenges with using pre-release software. For instance, in the Copilot Common Task Study, technical disruptions hindered some AI functions, and participants who experienced this problem reported notably lower scores on metrics associated with effort.",
+      "While none of these studies have yet gone through peer review, several are currently under review with more to be submitted soon.",
+      "The search question the AI got wrong is an example of a task on the other side of the \"technological frontier\", unlike most of the tasks considered in this report for which we hypothesized the early version of these tools presented strong aptitude for AI assistance."
+    ]
+  },
+  "notes": "This is a technical report synthesizing findings from 8 studies (with over 30 total studies in progress) examining the productivity impact of LLM-based tools (primarily Microsoft Copilot) on enterprise information workers. The studies employ a mix of methodologies including randomized controlled trials, surveys, and lab experiments. The report focuses on three dimensions of productivity: speed, quality, and effort. Most studies are not yet peer-reviewed but several are under review. The authors explicitly acknowledge conflicts of interest as Microsoft researchers studying Microsoft products.",
+  "_paper_id": " ba",
+  "_source_pdf": "papers/ ba.pdf"
+}

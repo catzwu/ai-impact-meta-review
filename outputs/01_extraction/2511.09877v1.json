@@ -1,0 +1,506 @@
+{
+  "citation_key": "wang_2025_ai_writing_guidance",
+  "authors": [
+    "Fangyan Wang",
+    "Sai Liang",
+    "Zaiyan Wei"
+  ],
+  "title": "AI in the Pen: How Real-time AI Writing Guidance Shapes Online Reviews",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "The study employs a differences-in-differences approach comparing observations from calendar year 2023 (the inception of Yelp's AI writing guidance) with the previous year 2022 in seven major cities in the United States: Atlanta, Chicago, Houston, Los Angeles, Minneapolis, New York, and San Francisco. To account for holiday surges in review activity, the analysis focuses on reviews generated from the second week of January to the third week of November in both years, excluding the holiday seasons. Analyses are conducted at both the business and review levels. A panel difference estimator is employed to compare review outcomes from year 2023 to those from year 2022, relying on the assumption that review volumes and characteristics exhibit seasonal stability from one year to the next.",
+  "primary_task_description": "Yelp's AI writing guidance, adopted in April 2023, is designed to reduce reviewers' writer's block by providing interactive prompts\u2014specifically, \"Food,\" \"Service,\" and \"Ambiance.\" When drafting a review, users can see these three topics displayed above their text box. Each topic helps users track what they have covered and reminds them of additional aspects they may wish to address. Once a topic is included in the review, it turns green with a checkmark in real time. However, users are not required to cover all three topics, so the list of keywords serves primarily as a reminder rather than a mandatory requirement.",
+  "population_description": "The study examines Yelp, one of the largest user-generated review platforms in the United States. As of 2023, Yelp had hosted almost 265.29 million reviews in the United States. The analysis covers reviews from seven major cities: Atlanta, Chicago, Houston, Los Angeles, Minneapolis, New York, and San Francisco. To ensure the analysis captures meaningful review activity, the study restricts analysis to active restaurants with at least one review posted in 2022. The final dataset includes 44,019 restaurants and 1,559,528 reviews.",
+  "arms": [
+    {
+      "arm_name": "treatment_2023",
+      "description": "Observations from 2023 (the year Yelp's AI writing guidance was introduced in April 2023)",
+      "n": null
+    },
+    {
+      "arm_name": "control_2022",
+      "description": "Observations from one year prior (2022), before AI writing guidance was introduced",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "review_length",
+      "outcome_description": "The number of characters per review",
+      "measurement_unit": "characters",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "review_volume",
+      "outcome_description": "The number of reviews posted per week at the restaurant level",
+      "measurement_unit": "reviews per week",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "helpfulness_votes",
+      "outcome_description": "The number of helpfulness votes received per week at the restaurant level",
+      "measurement_unit": "votes per week",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "food_score",
+      "outcome_description": "The proportion of review content attributed to the food topic",
+      "measurement_unit": "proportion",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "service_score",
+      "outcome_description": "The proportion of review content attributed to the service topic",
+      "measurement_unit": "proportion",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ambiance_score",
+      "outcome_description": "The proportion of review content attributed to the ambiance topic",
+      "measurement_unit": "proportion",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "food_lengths",
+      "outcome_description": "The amount of text devoted to food topics",
+      "measurement_unit": "characters",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "service_lengths",
+      "outcome_description": "The amount of text devoted to service topics",
+      "measurement_unit": "characters",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ambiance_lengths",
+      "outcome_description": "The amount of text devoted to ambiance topics",
+      "measurement_unit": "characters",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "topic_entropy",
+      "outcome_description": "A measure of textual complexity using the Shannon index of the review's topic features",
+      "measurement_unit": "Shannon index",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "gunning_fog_index",
+      "outcome_description": "Estimates the years of formal education needed to understand a text, based on sentence length and the proportion of complex words",
+      "measurement_unit": "years of education",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "smog_index",
+      "outcome_description": "Estimates the grade level of a text based on the frequency of polysyllabic words",
+      "measurement_unit": "grade level",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "lexical_density",
+      "outcome_description": "Measures the proportion of content words (nouns, verbs, adjectives, adverbs) relative to total words",
+      "measurement_unit": "proportion",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "review_length",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4.8% longer",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.048 (SE 0.004), outcome: log(Lengths)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Numerically, we estimate that reviews written with the AI writing guidance were on average about 4.8% longer, while the number of reviews decreased by roughly 2.5%. Treat*Post 0.048*** (0.004) for log(Lengths) in Table 3, Column 1"
+    },
+    {
+      "outcome_name": "review_volume",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.5% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.025 (SE 0.002), outcome: log(Review Volume)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Numerically, we estimate that reviews written with the AI writing guidance were on average about 4.8% longer, while the number of reviews decreased by roughly 2.5%. Treat*Post -0.025*** (0.002) for log(Review Volume) in Table 3, Column 2"
+    },
+    {
+      "outcome_name": "helpfulness_votes",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.7% fewer helpfulness votes",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.037 (SE 0.004), outcome: log(Helpfulness Votes)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Quantitatively, reviews posted on Yelp received, on average, 3.7% fewer helpfulness votes under AI writing guidance. Treat*Post -0.037*** (0.004) for log(Helpfulness Votes) in Table 6, Column 1"
+    },
+    {
+      "outcome_name": "service_score",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.006 (SE 0.001), outcome: log(Service Score)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Results are reported in Table 2. Results reported in columns (1) \u2013 (3) indicate that the introduction of AI writing guidance significantly increased the likelihood that users discussed service, while simultaneously reducing the relative emphasis on food. Treat*Post 0.006*** (0.001) for log(Service Score) in Table 2, Column 1"
+    },
+    {
+      "outcome_name": "food_score",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.005 (SE 0.001), outcome: log(Food Score)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Results are reported in Table 2. Results reported in columns (1) \u2013 (3) indicate that the introduction of AI writing guidance significantly increased the likelihood that users discussed service, while simultaneously reducing the relative emphasis on food. Treat*Post -0.005*** (0.001) for log(Food Score) in Table 2, Column 2"
+    },
+    {
+      "outcome_name": "ambiance_score",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.001 (SE 0.001), outcome: log(Ambiance Score)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Treat*Post -0.001 (0.001) for log(Ambiance Score) in Table 2, Column 3"
+    },
+    {
+      "outcome_name": "service_lengths",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.055 (SE 0.008), outcome: log(Service Lengths)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Columns (4) \u2013 (6) further reveal that the amount of text devoted to all topics increased substantially. Treat*Post 0.055*** (0.008) for log(Service Lengths) in Table 2, Column 4"
+    },
+    {
+      "outcome_name": "food_lengths",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.020 (SE 0.006), outcome: log(Food Lengths)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Columns (4) \u2013 (6) further reveal that the amount of text devoted to all topics increased substantially. Treat*Post 0.020** (0.006) for log(Food Lengths) in Table 2, Column 5"
+    },
+    {
+      "outcome_name": "ambiance_lengths",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.033 (SE 0.006), outcome: log(Ambiance Lengths)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Columns (4) \u2013 (6) further reveal that the amount of text devoted to all topics increased substantially. Treat*Post 0.033*** (0.006) for log(Ambiance Lengths) in Table 2, Column 6"
+    },
+    {
+      "outcome_name": "topic_entropy",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.002 (SE 0.0007), outcome: log(Entropy)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Treat*Post 0.002** (0.0007) for log(Entropy) in Table 6, Column 2"
+    },
+    {
+      "outcome_name": "gunning_fog_index",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.008 (SE 0.001), outcome: log(Gunning Fog Index)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Treat*Post -0.008*** (0.001) for log(Gunning Fog Index) in Table 9, Column 1"
+    },
+    {
+      "outcome_name": "smog_index",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.039 (SE 0.003), outcome: log(SMOG Index)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Treat*Post 0.039* (0.003) for log(SMOG Index) in Table 9, Column 2"
+    },
+    {
+      "outcome_name": "lexical_density",
+      "arm_comparison": "treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.004 (SE 0.000), outcome: log(Lexical Density)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Treat*Post -0.004*** (0.000) for log(Lexical Density) in Table 9, Column 3"
+    },
+    {
+      "outcome_name": "service_score",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.009 (SE 0.001), outcome: log(Service Score), less experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users (Panel A of Tables 4 and 5), Treat*Post 0.009*** (0.001) for log(Service Score)"
+    },
+    {
+      "outcome_name": "food_score",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.008 (SE 0.001), outcome: log(Food Score), less experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post -0.008*** (0.001) for log(Food Score)"
+    },
+    {
+      "outcome_name": "ambiance_score",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.001 (SE 0.001), outcome: log(Ambiance Score), less experienced users",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post -0.001 (0.001) for log(Ambiance Score)"
+    },
+    {
+      "outcome_name": "service_lengths",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.074 (SE 0.009), outcome: log(Service Lengths), less experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post 0.074*** (0.009) for log(Service Lengths)"
+    },
+    {
+      "outcome_name": "food_lengths",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.004 (SE 0.007), outcome: log(Food Lengths), less experienced users",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post 0.004 (0.007) for log(Food Lengths)"
+    },
+    {
+      "outcome_name": "ambiance_lengths",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.028 (SE 0.007), outcome: log(Ambiance Lengths), less experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post 0.028*** (0.007) for log(Ambiance Lengths)"
+    },
+    {
+      "outcome_name": "service_score",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.001 (SE 0.001), outcome: log(Service Score), experienced users",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users (Panel B of Tables 4 and 5), Treat*Post -0.001 (0.001) for log(Service Score)"
+    },
+    {
+      "outcome_name": "food_score",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.003 (SE 0.001), outcome: log(Food Score), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post -0.003** (0.001) for log(Food Score)"
+    },
+    {
+      "outcome_name": "ambiance_score",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.004 (SE 0.001), outcome: log(Ambiance Score), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post 0.004*** (0.001) for log(Ambiance Score)"
+    },
+    {
+      "outcome_name": "service_lengths",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.018 (SE 0.014), outcome: log(Service Lengths), experienced users",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post 0.018 (0.014) for log(Service Lengths)"
+    },
+    {
+      "outcome_name": "food_lengths",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.024 (SE 0.009), outcome: log(Food Lengths), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post 0.024** (0.009) for log(Food Lengths)"
+    },
+    {
+      "outcome_name": "ambiance_lengths",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.062 (SE 0.011), outcome: log(Ambiance Lengths), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post 0.062*** (0.011) for log(Ambiance Lengths)"
+    },
+    {
+      "outcome_name": "review_length",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.046 (SE 0.004), outcome: log(Lengths), less experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post 0.046*** (0.004) for log(Lengths) in Table 5, Panel A, Column 1"
+    },
+    {
+      "outcome_name": "review_volume",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.022 (SE 0.002), outcome: log(Review Volume), less experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post -0.022*** (0.002) for log(Review Volume) in Table 5, Panel A, Column 2"
+    },
+    {
+      "outcome_name": "review_length",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.028 (SE 0.005), outcome: log(Lengths), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post 0.028*** (0.005) for log(Lengths) in Table 5, Panel B, Column 1"
+    },
+    {
+      "outcome_name": "review_volume",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.008 (SE 0.002), outcome: log(Review Volume), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post -0.008*** (0.002) for log(Review Volume) in Table 5, Panel B, Column 2"
+    },
+    {
+      "outcome_name": "helpfulness_votes",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.023 (SE 0.003), outcome: log(Helpfulness Votes), less experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users (Panel A of Table 7), Treat*Post -0.023*** (0.003) for log(Helpfulness Votes)"
+    },
+    {
+      "outcome_name": "topic_entropy",
+      "arm_comparison": "less_experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.001 (SE 0.001), outcome: log(Entropy), less experienced users",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For less experienced users, Treat*Post 0.001 (0.001) for log(Entropy)"
+    },
+    {
+      "outcome_name": "helpfulness_votes",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = -0.072 (SE 0.007), outcome: log(Helpfulness Votes), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users (Panel B of Table 7), Treat*Post -0.072*** (0.007) for log(Helpfulness Votes)"
+    },
+    {
+      "outcome_name": "topic_entropy",
+      "arm_comparison": "experienced_users: treatment_2023 vs control_2022",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Treat*Post = 0.003 (SE 0.001), outcome: log(Entropy), experienced users",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced users, Treat*Post 0.003*** (0.001) for log(Entropy)"
+    }
+  ],
+  "notes": "This is a differences-in-differences study examining the effects of Yelp's AI writing guidance feature introduced in April 2023. The analysis compares 2023 (treatment year) with 2022 (control year) across seven major U.S. cities. The final dataset includes 44,019 restaurants and 1,559,528 reviews. Analyses are conducted at both the restaurant and review levels. Heterogeneous effects are examined by user experience level (less experienced vs. experienced users, classified by Yelp Elite badges). The study employs topic modeling (LDA) to measure topic coverage and complexity, and uses readability indices (Gunning Fog, SMOG, Lexical Density) to assess review quality. Multiple robustness checks are conducted including relative-time models, cross-platform analysis with Google reviews, and analyses with/without detrending and city-specific time trends. The authors note that ChatGPT became available in November 2022, affecting both treatment and control groups, but the DID approach minimizes this impact. Helpfulness votes are cumulative and non-decreasing, so older reviews tend to have more votes. Arm-level sample sizes (n) are not explicitly stated in the quotes; the total dataset size is 44,019 restaurants and 1,559,528 reviews.",
+  "_paper_id": "2511.09877v1"
+}

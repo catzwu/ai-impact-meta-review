@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "correct_decision",
+      "category": "quality",
+      "operationalization": "binary indicator of whether the radiologist's treatment/follow-up recommendation matches the diagnostic standard aggregated from five board-certified radiologists with 10+ years experience"
+    },
+    {
+      "outcome_name": "deviation_from_diagnostic_standard",
+      "category": "quality",
+      "operationalization": "absolute difference between radiologist's reported probability of pathology presence and the diagnostic standard probability from expert panel"
+    },
+    {
+      "outcome_name": "active_time",
+      "category": "speed",
+      "operationalization": "time in seconds spent by radiologist on the diagnosis task, measured by experimental platform"
+    },
+    {
+      "outcome_name": "deviation_from_ai",
+      "category": "other",
+      "operationalization": "absolute difference between human radiologist's reported probability and AI model's reported probability; measures alignment with AI rather than correctness or speed"
+    }
+  ],
+  "primary_speed_outcome": "active_time",
+  "primary_quality_outcome": "correct_decision",
+  "citation_key": "agarwal_2023_radiology_ai"
+}

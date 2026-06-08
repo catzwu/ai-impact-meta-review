@@ -1,0 +1,107 @@
+{
+  "citation_key": "song_2024_copilot_oss",
+  "authors": [
+    "Fangchen Song",
+    "Ashish Agarwal",
+    "Wen Wen"
+  ],
+  "title": "The Impact of Generative AI on Collaborative Open-Source Software Development: Evidence from GitHub Copilot",
+  "year": 2024,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "Using GitHub's proprietary Copilot usage data, combined with public OSS project data obtained from GitHub, we find that Copilot use increases project-level code contributions by 5.9%.",
+      "Our unit of analysis is at the project-month-level, with the sample period from January 2021 to December 2022.",
+      "We use a combination of publicly available data on GitHub projects and proprietary data on Copilot use provided by GitHub organization.",
+      "Our treatment group consists of projects where Copilot was both supported by local coding environments and used by developers to code.",
+      "The control group includes projects where Copilot was not used throughout the sample period.",
+      "We estimate our model using the Generalized Synthetic Control Method (GSCM) and validate the results through different samples, matching techniques, instrumental variable estimation, alternative estimation and a range of additional robustness checks.",
+      "We adopt the Generalized Synthetic Control Method (GSCM) (Xu 2017), which allows for improved estimation of treatment effects by generating weighted synthetic controls that closely resemble the treated units prior to treatment."
+    ],
+    "task": [
+      "We investigate how the AI pair programmer, GitHub Copilot, influences project-level code contributions and coordination time of OSS projects on GitHub, as well as how its effect varies among core versus peripheral developers.",
+      "In OSS settings, developers often work asynchronously and coordinate without formal managerial structures (Eseryel et al. 2020).",
+      "OSS development usually begins with core developers designing the primary codebase and hosting it for open collaboration (Singh and Phelps 2013).",
+      "Both core and peripheral developers make code contributions.",
+      "With the write access and full control over the projects, core developers can submit code and either directly integrate it into the primary codebase, or have it reviewed by other core developers for integrity.",
+      "Meanwhile, without the write access to codebases, peripheral developers' code needs to be reviewed by core developers, who decide whether to accept the code changes, request additional modifications, or reject them (Gousios et al. 2014, Medappa and Srivastava 2019)."
+    ],
+    "population": [
+      "We select projects with non-zero size, at least one specified programming language and license, a description, and no mirror or personal store designation.",
+      "To exclude ghost or abandoned projects, we require at least one code submission every six months from 2021 to 2022 and at least one additional activity, such as a release or creation, each year.",
+      "As we are interested in evaluating project-level code contributions and coordination time involving multiple developers, we focus on projects with at least three developers contributing each month.",
+      "These criteria result in a sample of 9,244 projects.",
+      "In total, our sample includes 5,687 projects in the treatment group and 3,557 projects in the control group.",
+      "The final sample includes 7,637 projects, with 4,491 in the treatment group and 3,146 in the control group."
+    ],
+    "arms": [
+      "We categorize projects with developers who used Copilot and one of the supported IDEs as our treatment group, and those using unsupported IDEs and not using Copilot as our control group.",
+      "In total, our sample includes 5,687 projects in the treatment group and 3,557 projects in the control group.",
+      "The final sample includes 7,637 projects, with 4,491 in the treatment group and 3,146 in the control group.",
+      "We designate the first month when Copilot was supported by IDEs and used by a non-zero proportion of developers as the treatment start time for each project.",
+      "The months before this time are defined as the pre-treatment period and the months after this time as the post-treatment period for each project, covering the two-year span from 2021 to 2022."
+    ],
+    "outcome_definitions": [
+      "To measure project-level code contributions, we use the total number of pull requests (PRs) submitted to each project that were eventually merged.",
+      "PRs represent code changes submitted by developers and need further evaluation by core developers.",
+      "This evaluation results in either approval, leading to merged PRs, or rejection, leading to closed but unmerged PRs.",
+      "Thus, merged PRs reflect successful code changes eventually incorporated into the OSS projects and are commonly used in the literature to assess meaningful contributions by developers (Gousios et al. 2014, Kononenko et al. 2018).",
+      "To evaluate coordination time, we follow prior work in both economics (Simcoe 2012) and software engineering (Espinosa et al. 2007, Yu et al. 2015, El Mezouar et al. 2019) by measuring the duration between the submission and acceptance of each PR.",
+      "Because a project may receive many PRs in a month, we then compute the average duration (i.e., average time) to merge a PR for a project in a month.",
+      "We measure developer's coding participation by counting the number of unique developers whose PRs have been merged into the primary codebase (Subramaniam et al. 2009, Medappa and Srivastava 2019).",
+      "We measure individual productivity using the average number of merged PRs per developer as the dependent variable (Subramaniam et al. 2009, Medappa and Srivastava 2019).",
+      "We measure code discussion volume using the average number of total comments per merged PR (Oh and Jeon 2007, Gousios et al. 2014).",
+      "We measure code discussion participation using the average number of unique developers who left comments per merged PR (Oh and Jeon 2007).",
+      "We measure code discussion intensity using the average number of comments per developer per merged PR (Oh and Jeon 2007)."
+    ],
+    "statistical_results": [
+      "Copilot use increases project-level code contributions by 5.9%.",
+      "Copilot use also leads to an increase in coordination time by 8% due to more code discussions.",
+      "Copilot increased the number of developers whose PRs have been merged by 3.4%.",
+      "Copilot use is associated with a 2.1% increase in average number of merged PRs per developer in active projects.",
+      "Copilot adoption is associated with a 6.5% increase in code discussion volume per merged PR.",
+      "Copilot impacts code discussion participation, showing a significant 1.7% increase in code discussion participation.",
+      "Projects using Copilot show a 5.9% increase in code discussion intensity per developer.",
+      "Copilot adoption is associated with an increase in all three measures of core developer review activity.",
+      "Copilot adoption is associated with a 3.5% increase in PRs merged within one day, a 4.1% increase in PRs merged within three days, and a 5.1% increase in PRs merged within ten days.",
+      "Although Copilot adoption is associated with an increase in the total number of issues and bugs, the normalized measures remained statistically unchanged.",
+      "The proportion of merged PRs from core developers significantly increased by 0.054 or 6.5%.",
+      "Peripheral developers experienced an increase of 0.085 or 5.4% in their relative average merge time.",
+      "Following the adoption of Copilot, core developers had relatively higher coding participation, as shown in column (1), and relatively higher individual productivity, as shown in column (2).",
+      "Core developers account for a larger share of feature-related PRs, consistent with our argument that, even when engaging in comparable tasks, core developers derive greater expected net benefits from using AI pair programmers.",
+      "Copilot adoption is associated with a relative increase in the share of code contributions made by high familiarity developers.",
+      "Copilot adoption led to a relative reduction in the coordination time for merging code contributed by high familiarity developers compared to the project level average.",
+      "Peripheral developers' code contributions received relatively greater code discussion volume, more developers participating in discussing their code, and greater code discussion intensity per developer on their code.",
+      "Following Copilot adoption, core developers experienced a 6.1% increase in project-level code contributions, a 6.7% increase in coordination time, and increases in timely integrated code contributions within one, three, and ten days by 4.4%, 4.8%, and 5.8%, respectively.",
+      "Peripheral developers experienced a 5.4% increase in project-level code contributions and a 5.3% increase in coordination time.",
+      "Their timely integrated code contributions increased by 2.3%, 2.4%, and 3.6% within one, three, and ten days, respectively.",
+      "Core developers experienced a 5.5% increase in developer coding participation, a 5.6% increase in individual code contributions, and increases of 4.1%, 1.6%, and 3.6% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively.",
+      "Peripheral developers experienced a 2.8% increase in developer coding participation, a 2.2% increase in individual code contributions, and increases of 12.6%, 2.3%, and 11.4% in code discussion volume, code discussion participation, and code discussion intensity per developer, respectively.",
+      "Copilot increased the diversity of discussion topics per merged PR, suggesting that Copilot also expanded the range of topics being discussed, further increasing coordination time.",
+      "Copilot increased the number of discussion cycles per merged PR, which increases overall coordination time.",
+      "The results show that Copilot significantly increased the number of merged PRs and the average time taken to merge a single PR, which are qualitatively consistent with our findings from the main analysis.",
+      "The results show that Copilot increased the number of merged PRs and the average time taken to merge a single PR, which are qualitatively consistent with our main findings.",
+      "The results indicate that Copilot increased both the number of merged PRs and the average time to merge a single PR, consistent with our main findings.",
+      "The results remain consistent with our main findings.",
+      "The results remain consistent with our main findings, indicating that Copilot adoption led to an increase in the number of merged PRs as well as a longer average time to merge a PR."
+    ],
+    "ambiguity_or_caveats": [
+      "Due to privacy constraints, we do not observe individual-level Copilot usage, limiting our ability to directly measure heterogeneous AI adoption behaviors, role transitions, and spillover effects in OSS development.",
+      "In addition, because our data are observational, we cannot fully capture unobserved developer characteristics such as motivation, ability, or work preferences that may shape responses to AI tools.",
+      "While we examine coordination outcomes such as discussion activity and coordination time, our dataset does not allow us to identify the intermediate mechanisms through which AI tools alleviate or exacerbate coordination bottlenecks.",
+      "Due to our panel size, we cannot assess the long-term effects of AI pair programmers as developers gain experience with these tools.",
+      "Our study does not examine the broader social and governance implications of AI pair programmers in OSS communities.",
+      "We acknowledge that the downstream effects of AI pair programmers on community recognition may take time to materialize.",
+      "Thus, cautions should be taken when interpreting this set of results which are based on our relatively short sample period.",
+      "Although these developers might not be using Copilot for the control projects due to IDE restrictions, there is potential for knowledge transfer, which could bias our results.",
+      "There may be spillover effects wherein projects not using Copilot could still benefit if their developers have prior experience with Copilot from other projects.",
+      "In such cases, our estimates would represent a lower bound on the true impact of Copilot on code contributions and coordination time.",
+      "We acknowledge that because developers may sign up gradually after the initial availability date, this approach may consider the period when Copilot was actually not used as the post-treatment period, leading to an underestimation of the positive effect.",
+      "We do not know the identity of individual Copilot users because of privacy concerns.",
+      "Although such Copilot usage is measured at the GitHub platform level, developers are likely to integrate Copilot into their workflows extensively and thus would use it for all projects where it is feasible."
+    ]
+  },
+  "notes": "This is an empirical study examining the impact of GitHub Copilot (a generative AI pair programmer) on open-source software development. The paper uses a combination of proprietary Copilot usage data from GitHub and public GitHub project data. The analysis employs the Generalized Synthetic Control Method (GSCM) as the primary estimation approach, with extensive robustness checks including PSM+DID, instrumental variable analysis, and various alternative specifications. The study finds that Copilot increases project-level code contributions by 5.9% but also increases coordination time by 8%, with differential effects between core and peripheral developers. The paper includes a comprehensive online appendix with additional analyses, mechanism tests, and robustness checks.",
+  "_paper_id": "songetal",
+  "_source_pdf": "papers/songetal.pdf"
+}

@@ -1,0 +1,48 @@
+{
+  "_paper_id": "2409-ChatGPTRoldan_ecpol",
+  "citation_key": "roldan_2024_genai_inequality",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treatment",
+    "ai_arm_selection_rationale": "Only one AI arm (treatment with ChatGPT training and access) vs. control (no AI tools allowed). Using the overall treatment vs control comparison as the primary effect.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 71,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 71,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.15,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "The paper reports a standardized effect of 0.15 standard deviations for the overall treatment vs control comparison. The effect is described as not statistically significant at conventional levels. The paper provides regression coefficients (0.518-0.672 points) but no raw means, SDs, or exact p-values for the primary comparison. Multiple subgroup analyses are reported (scholarship students, baseline performance, evidence position strength) but the overall effect is the appropriate primary comparison.",
+    "source_quotes": [
+      "Treatment debaters are 9.2% more likely to win than control debaters and score on average 2.2% (equivalent to an increase by 0.15 standard deviations) higher than control individuals, but the differences are not statistically different from zero.",
+      "In Column 1, which estimates equation 1 and includes debate day and round fixed effects, and controls for baseline performance, treatment group individuals score 0.518 points higher than control individuals. When including additional controls (Column 2), the coefficient increases to 0.672, but remains imprecisely estimated and is not significant at conventional levels."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.15,
+    "hedges_g": 0.14919499105545617,
+    "variance": 0.0279458518965277,
+    "computation_method": "reported_d",
+    "confidence": "medium",
+    "notes": "The paper reports a standardized effect of 0.15 standard deviations for the overall treatment vs control comparison. The effect is described as not statistically significant at conventional levels. The paper provides regression coefficients (0.518-0.672 points) but no raw means, SDs, or exact p-values for the primary comparison. Multiple subgroup analyses are reported (scholarship students, baseline performance, evidence position strength) but the overall effect is the appropriate primary comparison.",
+    "n_human": 71,
+    "n_ai": 71,
+    "direction_convention": "larger_is_better"
+  }
+}

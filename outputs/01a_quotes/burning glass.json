@@ -1,0 +1,56 @@
+{
+  "citation_key": "levanon_2025_entry_level",
+  "authors": [
+    "Gad Levanon",
+    "Matt Sigelman",
+    "Mariano Mamertino",
+    "Mels de Zeeuw",
+    "Gwynn Guilford"
+  ],
+  "title": "No Country for Young Grads: The Structural Forces That Are Reshaping Entry-Level Employment",
+  "year": 2025,
+  "venue": "Burning Glass Institute",
+  "quotes": {
+    "study_design": [
+      "This analysis utilizes several data sources and specific methodologies to examine trends in unemployment, underemployment, and the impact of Generative AI on the job market.",
+      "Our initial analysis of unemployment and labor force participation data was conducted using information from the Bureau of Labor Statistics (BLS).",
+      "Underemployment was measured by identifying bachelor's degree holders working in occupations that typically do not require a college degree.",
+      "To project and identify the impacts of Generative AI (GenAI), we use exposure scores from Felten et al. (2023)."
+    ],
+    "task": [],
+    "population": [
+      "Young graduates face unemployment rates that are rising faster than any other education or age cohort",
+      "Young degree holders are uniquely and negatively affected by these changes, facing a deteriorating job market, with a rise in unemployment rate that is sharper than for any other education or age cohort.",
+      "Looking at 20-24 year olds, the unemployment rate for those with at least a bachelor's degree increased from 5.2% in 2018-19 to 6.2% in the two years through June 2025.",
+      "For the Class of 2023 \u2013 the latest class for which data is available \u2013 52% found themselves one year after graduation working in jobs that didn't require a degree."
+    ],
+    "arms": [],
+    "outcome_definitions": [
+      "Unemployment Rate: This metric represents the number of unemployed people as a percentage of the labor force (which is the sum of the employed and unemployed). The unemployment rate is calculated as: (Unemployed \u00f7 Labor Force) x 100.",
+      "A worker is classified as underemployed if they hold a bachelor's degree but are employed in an occupation where less than half of the workers either have or are required to have one, based on this composite measure."
+    ],
+    "statistical_results": [
+      "Looking at 20-24 year olds, the unemployment rate for those with at least a bachelor's degree increased from 5.2% in 2018-19 to 6.2% in the two years through June 2025.",
+      "By contrast, rates for individuals with less education have generally declined since 2016-2017.",
+      "As a result, the unemployment rate for young college grads is now higher than for any other group except those with only a high school diploma.",
+      "In both 2023 and 2024, the gap in unemployment between young graduates and their less-educated peers shrank to its smallest margin in three decades.",
+      "For the Class of 2023 \u2013 the latest class for which data is available \u2013 52% found themselves one year after graduation working in jobs that didn't require a degree.",
+      "even in engineering more than a quarter of graduates wind up underemployed.",
+      "these dynamics translate to a net increase of somewhere between 7 and 11 million more college-educated Americans of working age by 2034.",
+      "The layoff rates for degree-holders in this age group have nearly doubled compared to pre-pandemic levels, with the highest concentrations in information, finance, and professional services."
+    ],
+    "ambiguity_or_caveats": [
+      "While cyclical factors may contribute, the evidence points to something more concerning: structural shifts that systematically disadvantage new college graduates, even as the broader economy remains resilient.",
+      "However, such attitudinal shifts are notoriously difficult to measure and may prove temporary as memories of the resignation wave fade.",
+      "Notably, this trend predates both the pandemic and the rise of generative AI, suggesting that deeper structural forces are at work for some time.",
+      "While it is certainly possible that these industries may simply be working off their post-pandemic hiring binge, with each passing quarter, it is becoming more likely that we may be witnessing the emergence of a new, higher productivity model.",
+      "The mechanisms at play suggest both temporary shocks and permanent change.",
+      "The shift to lean staffing models and employer wariness stemming from the Great Resignation may be one-time adaptations, eventually stabilizing at a new equilibrium.",
+      "AI's replacement of junior roles might peak in these early years, tapering off once the easiest substitutions have been made.",
+      "Yet other forces point toward lasting change."
+    ]
+  },
+  "notes": "This is a policy/research report analyzing structural trends in entry-level employment for college graduates. It is not an original empirical experiment with experimental arms or a randomized controlled trial. The paper uses observational data from BLS, job postings data, and exposure scores from prior research (Felten et al. 2023) to document trends and propose explanatory frameworks (the \"Expertise Upheaval\" framework). No direct AI vs. no-AI comparison is conducted; rather, the paper analyzes correlations between AI exposure and hiring patterns in job postings.",
+  "_paper_id": "burning glass",
+  "_source_pdf": "papers/burning glass.pdf"
+}

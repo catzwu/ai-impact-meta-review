@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Measuring_the_Impact_of_AI_on_Information_Worker_Productivity",
+  "citation_key": "edelman_2023_copilot_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Control",
+    "ai_arm_name": "Copilot",
+    "ai_arm_selection_rationale": "Single AI arm (Copilot) compared to Control. Using Experiment 1 data as it is the first complete experiment with accuracy as primary outcome.",
+    "direction_convention": "larger_is_better",
+    "m_human": 8.7,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 87,
+    "m_ai": 8.5,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 80,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.612,
+    "extraction_confidence": "medium",
+    "notes": "Sample sizes extracted from text: Experiment 1 had 167 total subjects randomly assigned to Copilot or Control groups. The 'Perceived Time Savings and Willingness to Pay' section states 'We surveyed our 80 subjects who had access to Copilot' in Experiment 1, giving n_ai=80. Therefore n_human=167-80=87. Means are reported in Table 1 (Control: 8.7, Copilot: 8.5 out of 10 questions). SDs are not reported. P-value is 0.612. This is Level F extraction (p-value + n only). Accuracy measured as number of correct answers out of 10 multiple-choice questions.",
+    "source_quotes": [
+      "In Experiment 1, we assigned 167 subjects an information retrieval task consisting of ten multiple-choice questions.",
+      "We surveyed our 80 subjects who had access to Copilot.",
+      "Table 1: Outcomes in Experiment 1 ... Accuracy (%) 8.5 8.7 2.0% 0.612",
+      "There was no statistically significant difference in accuracy between the groups, but the Copilot users were significantly faster in completing the assigned task."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Sample sizes extracted from text: Experiment 1 had 167 total subjects randomly assigned to Copilot or Control groups. The 'Perceived Time Savings and Willingness to Pay' section states 'We surveyed our 80 subjects who had access to Copilot' in Experiment 1, giving n_ai=80. Therefore n_human=167-80=87. Means are reported in Table 1 (Control: 8.7, Copilot: 8.5 out of 10 questions). SDs are not reported. P-value is 0.612. This is Level F extraction (p-value + n only). Accuracy measured as number of correct answers out of 10 multiple-choice questions. | insufficient numbers for d",
+    "n_human": 87,
+    "n_ai": 80,
+    "direction_convention": "larger_is_better"
+  }
+}

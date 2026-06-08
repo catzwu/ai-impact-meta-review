@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are software developers writing Python code for open-source projects on GitHub. The primary task is 'analysis of code commits' involving 'blocks of code representing functions' and measuring 'quarterly number of commits and library usage patterns.' This is fundamentally computer programming work\u2014writing, committing, and managing code. While '15-1252.00 Software Developers' is tempting, the task description focuses narrowly on the coding activity itself (commits, functions, library usage) rather than the full occupational role of software development (which includes design, testing, deployment, etc.). The work activity 'Working with Computers' (WA-25) best captures this specific, well-defined programming task that is the subject of measurement.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "daniotti_2025_ai_code"
+}

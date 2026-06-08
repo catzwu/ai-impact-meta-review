@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "29-1224.00",
+  "onet_label": "Radiologists",
+  "mapping_confidence": "high",
+  "rationale": "The participants are professional radiologists performing their core occupational duties: diagnosing pathologies from diagnostic images (chest X-rays), reviewing clinical history and lab results, and making treatment recommendations. The task description explicitly states 'Professional radiologists diagnose the presence of a given pathology in retrospective patient cases' \u2014 this is the substantive work of radiologists as an occupation, not a narrow isolated activity. While the study involves retrospective cases rather than real-time clinical work, the radiologists are performing the full scope of diagnostic radiology work across their workday.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-10",
+      "onet_label": "Making Decisions and Solving Problems"
+    }
+  ],
+  "citation_key": "agarwal_2023_radiology_ai"
+}

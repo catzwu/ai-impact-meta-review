@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "accuracy",
+      "category": "quality",
+      "operationalization": "Percentage of correct classifications of whether individuals in photographs were over 21, based on participant probability judgments compared to true age status"
+    },
+    {
+      "outcome_name": "calibration",
+      "category": "quality",
+      "operationalization": "Negative absolute value of net confidence, calculated as the difference between participant confidence levels and actual correctness across judgments"
+    },
+    {
+      "outcome_name": "performance_inequality",
+      "category": "other",
+      "operationalization": "Interquartile range of accuracy scores across participants; measures dispersion/inequality rather than individual speed or quality of task performance"
+    },
+    {
+      "outcome_name": "ai_recommendation_adherence",
+      "category": "other",
+      "operationalization": "Percentage of trials where participant's response matched the AI recommendation within one percentage point; measures behavioral compliance rather than output quality"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "accuracy",
+  "citation_key": "caplin_2024_ability_beliefs_calibration"
+}

@@ -1,0 +1,47 @@
+{
+  "_paper_id": "roldan-mones-2024",
+  "citation_key": "roldan_2024_genai_inequality",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "chatgpt_treatment",
+    "ai_arm_selection_rationale": "Only one AI arm (ChatGPT treatment) vs control. Using the overall comparison (first row) as the primary effect.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 71,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 71,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.15,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "The paper reports a standardized effect of 0.15 standard deviations for the overall treatment effect. The effect is described as not statistically significant (p-value not exactly reported, only stated as 'not statistically different from zero'). Multiple subgroup analyses are reported showing heterogeneous effects (e.g., 0.8 SD for high-ability students, 0.47 SD for top 50% baseline, 0.38 SD for strong evidence position), but the primary overall effect is 0.15 SD.",
+    "source_quotes": [
+      "Treatment debaters are 9.2% more likely to win than control debaters and score on average 2.2% (equivalent to an increase by 0.15 standard deviations) higher than control individuals, but the differences are not statistically different from zero."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.15,
+    "hedges_g": 0.14919499105545617,
+    "variance": 0.0279458518965277,
+    "computation_method": "reported_d",
+    "confidence": "medium",
+    "notes": "The paper reports a standardized effect of 0.15 standard deviations for the overall treatment effect. The effect is described as not statistically significant (p-value not exactly reported, only stated as 'not statistically different from zero'). Multiple subgroup analyses are reported showing heterogeneous effects (e.g., 0.8 SD for high-ability students, 0.47 SD for top 50% baseline, 0.38 SD for strong evidence position), but the primary overall effect is 0.15 SD.",
+    "n_human": 71,
+    "n_ai": 71,
+    "direction_convention": "larger_is_better"
+  }
+}

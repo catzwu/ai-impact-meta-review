@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a case study applying AI and NLP techniques to analyze user feedback on three crane products. There is no experimental manipulation, no comparison groups, and no human participants\u2014only analysis of existing product feedback comments. This is a descriptive case study of AI application, not a study evaluating AI's impact on human performance or outcomes.",
+  "citation_key": "tian_2024_ai_feedback"
+}

@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "This is a panel data analysis of four AI labs from 2014-2024 using observational firm-level data on compute and labor allocation. There is no randomization or quasi-experimental design; the study uses firm fixed effects to control for time-invariant differences but does not employ a clear identification strategy like DiD, RD, or IV.",
+  "citation_key": "whitfill_2025_compute_bottlenecks"
+}

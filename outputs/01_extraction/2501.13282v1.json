@@ -1,0 +1,407 @@
+{
+  "citation_key": "bakal_2025_copilot_productivity",
+  "authors": [
+    "Gal Bakal",
+    "Ali Dasdan",
+    "Yaniv Katz",
+    "Michael Kaufman",
+    "Guy Levin"
+  ],
+  "title": "Experience with GitHub Copilot for Developer Productivity at Zoominfo",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "A systematic four-phase approach to evaluating and deploying GitHub Copilot across an engineering organization from July to August 2023. The study included an initial qualitative assessment with five engineers (July 10\u201317, 2023), a structured recruitment process (July 17\u2013August 14, 2023), a two-week controlled trial with 126 participating engineers (August 15\u201329, 2023), and a full-scale deployment phase (September 7, 2023 onward). The trial cohort comprised 126 engineers stratified across technical specializations, experience levels, geographical locations, and technology stacks.",
+  "primary_task_description": "Evaluation of GitHub Copilot's deployment and impact on developer productivity at Zoominfo, a Go-To-Market Intelligence Platform. The study aimed to answer five key questions: (1) How is GitHub Copilot evaluated to reach a production deployment decision? (2) What are the acceptance rates for different programming languages? (3) What are the key factors influencing developer satisfaction with AI-assisted coding? (4) How effective is GitHub Copilot in improving developer productivity? (5) What are the observed and potential limitations of GitHub Copilot? Analysis combined quantitative metrics (acceptance rates of suggestions) and qualitative feedback (developer satisfaction surveys).",
+  "population_description": "Over 400 developers at Zoominfo, a Go-To-Market Intelligence Platform with close to 4,000 total employees geographically distributed over the US, Europe, India, and Israel. A quarter of employees are in the engineering department; 400 engineers are active developers producing and deploying production software. The trial cohort comprised 126 engineers (about 32% of the developers), with participation stratified across technical specializations, experience levels, geographical locations, and technology stacks. At trial conclusion, 72 respondents completed a comprehensive survey (about 57% response rate).",
+  "arms": [
+    {
+      "arm_name": "copilot_trial",
+      "description": "126 engineers actively integrating GitHub Copilot into their daily development workflows during a two-week controlled trial from August 15th to August 29th, 2023.",
+      "n": 126
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "acceptance_rate_suggestions",
+      "outcome_description": "Acceptance rate of shown suggestions for one developer is the ratio of the suggestions accepted by the developer to the total number of suggestions shown to the developer. The acceptance rate for a team is the average over the rates for developers. Even a partial acceptance gets the full credit.",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "acceptance_rate_lines_of_code",
+      "outcome_description": "Acceptance rate measured in terms of lines of code accepted relative to lines of code shown.",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "developer_satisfaction",
+      "outcome_description": "Overall satisfaction score calculated as the difference between the two positive sentiment scores and the two negative sentiment scores on a five-category satisfaction scale ranging from \"Very satisfied\" (highest) to \"Very unsatisfied\" (lowest).",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "overall_experience_rating",
+      "outcome_description": "Rating of overall experience with GitHub Copilot.",
+      "measurement_unit": "scale 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "productivity_improvement_rating",
+      "outcome_description": "Rating of perceived productivity improvement when using GitHub Copilot.",
+      "measurement_unit": "scale 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_standards_alignment",
+      "outcome_description": "Assessment of alignment of GitHub Copilot suggestions with existing coding standards.",
+      "measurement_unit": "categorical (good to excellent)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "security_vulnerability_assessment_confidence",
+      "outcome_description": "Confidence in assessing security vulnerabilities when using GitHub Copilot.",
+      "measurement_unit": "scale 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "sensitive_information_exposure_awareness",
+      "outcome_description": "Awareness of sensitive information exposure risks when using GitHub Copilot.",
+      "measurement_unit": "scale 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "security_consideration_in_development",
+      "outcome_description": "Consideration of security in development practices when using GitHub Copilot.",
+      "measurement_unit": "scale 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_reduction_perception",
+      "outcome_description": "Percentage of respondents who stated that GitHub Copilot reduces the amount of time it takes to complete their tasks, with median reduction reported.",
+      "measurement_unit": "percentage reduction in time",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_completion_per_sprint",
+      "outcome_description": "Percentage of respondents who stated that using GitHub Copilot allowed them to complete more tasks per sprint.",
+      "measurement_unit": "percentage of respondents",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "work_quality_improvement",
+      "outcome_description": "Percentage of respondents who stated that the quality of their work was improved when using GitHub Copilot.",
+      "measurement_unit": "percentage of respondents",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "acceptance_rate_suggestions",
+      "arm_comparison": "copilot_trial overall",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 33,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results show an average acceptance rate of 33% for suggestions and 20% for lines of code, with high developer satisfaction scores of 72%."
+    },
+    {
+      "outcome_name": "acceptance_rate_lines_of_code",
+      "arm_comparison": "copilot_trial overall",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 20,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results show an average acceptance rate of 33% for suggestions and 20% for lines of code, with high developer satisfaction scores of 72%."
+    },
+    {
+      "outcome_name": "developer_satisfaction",
+      "arm_comparison": "copilot_trial overall",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 72,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results show an average acceptance rate of 33% for suggestions and 20% for lines of code, with high developer satisfaction scores of 72%."
+    },
+    {
+      "outcome_name": "overall_experience_rating",
+      "arm_comparison": "copilot_trial initial assessment phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 8.8,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The preliminary feedback was overwhelmingly positive, with key metrics including: Overall experience rating: 8.8 out of 10; Productivity improvement rating: 8.6 out of 10; and Code standards alignment: All five participants reported good to excellent alignment with existing coding standards."
+    },
+    {
+      "outcome_name": "productivity_improvement_rating",
+      "arm_comparison": "copilot_trial initial assessment phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 8.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The preliminary feedback was overwhelmingly positive, with key metrics including: Overall experience rating: 8.8 out of 10; Productivity improvement rating: 8.6 out of 10; and Code standards alignment: All five participants reported good to excellent alignment with existing coding standards."
+    },
+    {
+      "outcome_name": "overall_experience_rating",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 8.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The overall experience was positive with the following ratings: Mean satisfaction rating: 8.0 out of 10, and Mean productivity improvement rating: 7.6 out of 10."
+    },
+    {
+      "outcome_name": "productivity_improvement_rating",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 7.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The overall experience was positive with the following ratings: Mean satisfaction rating: 8.0 out of 10, and Mean productivity improvement rating: 7.6 out of 10."
+    },
+    {
+      "outcome_name": "security_vulnerability_assessment_confidence",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 8.2,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Regarding security considerations, survey participants demonstrated high security consciousness: Mean security vulnerability assessment confidence: 8.2 out of 10; Mean sensitive information exposure awareness: 8.2 out of 10; and Mean security consideration in development: 8.6 out of 10."
+    },
+    {
+      "outcome_name": "sensitive_information_exposure_awareness",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 8.2,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Regarding security considerations, survey participants demonstrated high security consciousness: Mean security vulnerability assessment confidence: 8.2 out of 10; Mean sensitive information exposure awareness: 8.2 out of 10; and Mean security consideration in development: 8.6 out of 10."
+    },
+    {
+      "outcome_name": "security_consideration_in_development",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 8.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Regarding security considerations, survey participants demonstrated high security consciousness: Mean security vulnerability assessment confidence: 8.2 out of 10; Mean sensitive information exposure awareness: 8.2 out of 10; and Mean security consideration in development: 8.6 out of 10."
+    },
+    {
+      "outcome_name": "acceptance_rate_suggestions",
+      "arm_comparison": "copilot_trial by language TypeScript",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 30,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The acceptance rates for the top four languages used by our developers, i.e., TypeScript, Java, Python, and JavaScript, are sustained at about 30%."
+    },
+    {
+      "outcome_name": "acceptance_rate_suggestions",
+      "arm_comparison": "copilot_trial by language Java",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 30,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The acceptance rates for the top four languages used by our developers, i.e., TypeScript, Java, Python, and JavaScript, are sustained at about 30%."
+    },
+    {
+      "outcome_name": "acceptance_rate_suggestions",
+      "arm_comparison": "copilot_trial by language Python",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 30,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The acceptance rates for the top four languages used by our developers, i.e., TypeScript, Java, Python, and JavaScript, are sustained at about 30%."
+    },
+    {
+      "outcome_name": "acceptance_rate_suggestions",
+      "arm_comparison": "copilot_trial by language JavaScript",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 30,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The acceptance rates for the top four languages used by our developers, i.e., TypeScript, Java, Python, and JavaScript, are sustained at about 30%."
+    },
+    {
+      "outcome_name": "time_reduction_perception",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "median reduction of 20%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "90% respondents stated that GitHub Copilot reduces the amount of time it takes to complete their tasks with a median reduction of 20%."
+    },
+    {
+      "outcome_name": "task_completion_per_sprint",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 63,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "63% respondents stated using GitHub Copilot allowed them to complete more tasks per sprint."
+    },
+    {
+      "outcome_name": "work_quality_improvement",
+      "arm_comparison": "copilot_trial trial phase",
+      "means_and_sds": {
+        "copilot_trial": {
+          "mean": 77,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "77% respondents stated that the quality of their work was improved when using GitHub Copilot."
+    }
+  ],
+  "notes": "This is a case study of GitHub Copilot deployment at a single enterprise (Zoominfo) with no control group or comparison with non-Copilot users. The study combines quantitative metrics (acceptance rates) with qualitative feedback (developer satisfaction surveys). Four phases are described: initial assessment (5 engineers, July 10\u201317, 2023), trial recruitment (July 17\u2013August 14, 2023), two-week trial (126 engineers, August 15\u201329, 2023, with 72 survey respondents at 57% response rate), and full rollout (September 7, 2023 onward). The paper measures success primarily through acceptance rates and developer satisfaction rather than traditional productivity metrics like DORA metrics, which the authors note they plan to analyze in future work. Acceptance rate is acknowledged as a proxy measure with limitations: partial acceptances receive full credit, and the number of lines shown is not included in the rate calculation. The paper notes that acceptance rates during weekends increase rather than decrease, and the reason is unknown. Developers reported concerns about domain-specific logic, code quality consistency, and the need for rigorous reviews of AI-generated code to mitigate security and quality risks.",
+  "_paper_id": "2501.13282v1"
+}

@@ -1,0 +1,280 @@
+{
+  "citation_key": "noy_2023_chatgpt_productivity",
+  "authors": [
+    "Shakked Noy",
+    "Whitney Zhang"
+  ],
+  "title": "Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence",
+  "year": 2023,
+  "venue": "working paper",
+  "study_design_description": "A preregistered online randomized controlled trial with 444 college-educated professionals assigned to either ChatGPT access (treatment) or Overleaf access (control). A randomly-selected 50% of participants were instructed to sign up for ChatGPT between the first and second task and were permitted to use it on the second task if they found it useful; the control group was instructed to sign up for the LaTeX editor Overleaf instead. The design uses a combination of within-person and between-person variation, with performance on the first task serving as a baseline ability measure. Supplementary arms included a fixed-time condition (15 minutes per task) and an editing opportunity condition.",
+  "primary_task_description": "Participants completed two occupation-specific, incentivized writing tasks (20-to-30-minute assignments) designed to resemble real work. Tasks included writing press releases, short reports, analysis plans, and delicate emails. Occupations included marketers, grant writers, consultants, data analysts, human resource professionals, and managers. Participants faced high-powered incentives in the form of large bonus payments to produce high-quality work. Quality was assessed by blinded experienced professionals in the same occupations, who assigned overall grades and separate grades for writing quality, content quality, and originality. Each piece of output was evaluated by three evaluators.",
+  "population_description": "444 experienced, college-educated professionals across six occupations: marketers, grant writers, consultants, data analysts, human resource professionals, and managers. Prior to treatment, approximately 70% of participants had heard of ChatGPT and 30% had used it before. The attrition rate was 5% in the control group and 10% in the treatment group.",
+  "arms": [
+    {
+      "arm_name": "chatgpt_treatment",
+      "description": "A randomly-selected 50% of participants were instructed to sign up for ChatGPT between the first and second task, were walked through how to use it, and were told they were permitted to use it on the second task if they found it useful. In the treatment group, 92% of treated participants successfully signed up for ChatGPT, and 81% chose to use it on the second task, giving it an average self-assessed usefulness score of 4.4 out of 5.",
+      "n": 222
+    },
+    {
+      "arm_name": "control",
+      "description": "The control group was instructed to sign up for the LaTeX editor Overleaf.",
+      "n": 222
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "time_taken",
+      "outcome_description": "Time taken to complete the task, measured in minutes.",
+      "measurement_unit": "minutes",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "outcome_description": "Average evaluator grades assessing overall quality, writing quality, content quality, and originality on a 1-7 point scale.",
+      "measurement_unit": "rubric 1-7",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "productivity_earnings_per_minute",
+      "outcome_description": "Productivity measured as earnings per minute.",
+      "measurement_unit": "earnings per minute",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "job_satisfaction",
+      "outcome_description": "Self-reported job satisfaction measured on a 1-10 Likert scale asking how much participants enjoyed the task.",
+      "measurement_unit": "Likert 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "self_efficacy",
+      "outcome_description": "Self-reported self-efficacy measured on a 1-10 Likert scale asking how skilled/effective participants felt while completing the task.",
+      "measurement_unit": "Likert 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "worry_about_automation",
+      "outcome_description": "Self-reported worry about workers in their occupation being replaced by AI, measured on a 1-10 scale.",
+      "measurement_unit": "Likert 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "optimism_about_ai_productivity",
+      "outcome_description": "Self-reported optimism that AI will make workers in their occupation more productive, measured on a 1-10 scale.",
+      "measurement_unit": "Likert 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "net_optimism_about_ai",
+      "outcome_description": "Overall self-reported optimism or pessimism about future advances in AI, measured on a 1-10 scale.",
+      "measurement_unit": "Likert 1-10",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "correlation_first_second_task_grades",
+      "outcome_description": "Correlation between a participant's average grade on the first task and their average grade on the second task, measuring persistence of productivity inequality.",
+      "measurement_unit": "correlation coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "chatgpt_usage_in_real_job",
+      "outcome_description": "Percentage of participants using ChatGPT in their job in the past week, measured in a two-week follow-up survey.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "time_taken",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 27,
+          "sd": null,
+          "se": null
+        },
+        "chatgpt_treatment": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "10 minutes faster (37% reduction)",
+      "standardized_effect_reported": "0.8 SD decrease",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "In the treatment group, time taken on the post-treatment task drops by 10 minutes (37%) relative to the control group, who take an average of 27 minutes (p = 0.000)."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.45 SD increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "Average evaluator grades in the treatment group increase by 0.45 standard deviations (p = 0.000), with roughly similar increases for overall grades and specific grades for writing quality, content quality, and originality."
+    },
+    {
+      "outcome_name": "productivity_earnings_per_minute",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our results show that ChatGPT substantially raises average productivity: time taken decreases by 0.8 SDs and output quality rises by 0.4 SDs."
+    },
+    {
+      "outcome_name": "output_quality_grade",
+      "arm_comparison": "chatgpt_treatment vs control (fixed time arm)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.39 SD increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.13",
+      "confidence_interval": null,
+      "verbatim_quote": "In this arm, the treatment increases grades by a similar 0.39 standard deviations (p = 0.13), albeit imprecisely estimated and with a slight imbalance in pre-treatment outcomes (see Online Appendix Figure A.7)."
+    },
+    {
+      "outcome_name": "correlation_first_second_task_grades",
+      "arm_comparison": "control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The control group exhibits persistent productivity inequality: participants who score well on the first task also tend to score well on the second task. As Figure 2 Panel (a) shows, there is a correlation of 0.49 between a control participant's average grade on the first task and their average grade on the second task."
+    },
+    {
+      "outcome_name": "correlation_first_second_task_grades",
+      "arm_comparison": "chatgpt_treatment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.004",
+      "confidence_interval": null,
+      "verbatim_quote": "In the treatment group, initial inequalities are half-erased by the treatment: the correlation between first-task and second-task grades is only 0.25 (p-value on difference in slopes = 0.004)."
+    },
+    {
+      "outcome_name": "job_satisfaction",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.40 SD increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "Figure 4 Panel (a) shows that ChatGPT substantially increases job satisfaction, by about 0.40 standard deviations (p = 0.000)."
+    },
+    {
+      "outcome_name": "self_efficacy",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.20 SD increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.060",
+      "confidence_interval": null,
+      "verbatim_quote": "Panel B shows that it mildly and imprecisely increases self-efficacy, by 0.20 standard deviations (p = 0.060), despite the fact that participants are mostly using it to substitute for their own effort."
+    },
+    {
+      "outcome_name": "worry_about_automation",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.26 SD increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.006",
+      "confidence_interval": null,
+      "verbatim_quote": "worry about automation increases by 0.26 standard deviations (p = 0.006), excitement by 0.39 (p = 0.000), and net optimism increases by about 0.20 (p = 0.037)."
+    },
+    {
+      "outcome_name": "optimism_about_ai_productivity",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.39 SD increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "worry about automation increases by 0.26 standard deviations (p = 0.006), excitement by 0.39 (p = 0.000), and net optimism increases by about 0.20 (p = 0.037)."
+    },
+    {
+      "outcome_name": "net_optimism_about_ai",
+      "arm_comparison": "chatgpt_treatment vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.20 SD increase",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.037",
+      "confidence_interval": null,
+      "verbatim_quote": "worry about automation increases by 0.26 standard deviations (p = 0.006), excitement by 0.39 (p = 0.000), and net optimism increases by about 0.20 (p = 0.037)."
+    },
+    {
+      "outcome_name": "chatgpt_usage_in_real_job",
+      "arm_comparison": "chatgpt_treatment vs control (two-week follow-up)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": 33,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 18,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "15 percentage point difference",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "33% of former treatment group participants have used ChatGPT in their job in the past week, relative to 18% of control group participants."
+    },
+    {
+      "outcome_name": "chatgpt_usage_in_real_job",
+      "arm_comparison": "chatgpt_treatment vs control (prior non-users only, two-week follow-up)",
+      "means_and_sds": {
+        "chatgpt_treatment": {
+          "mean": 26,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "17 percentage point difference",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.048",
+      "confidence_interval": null,
+      "verbatim_quote": "Restricting to workers who had not previously used ChatGPT when they participated in our main experiment, 26% of treated and 9% of control workers are now using ChatGPT in their jobs (p-value on difference 0.048)."
+    }
+  ],
+  "notes": "This is a preregistered RCT (AEARCTR-0010882) approved by the MIT Committee on the Use of Humans as Experimental Subjects. The main analysis covers 444 participants randomized 50/50 to treatment and control. Attrition was 5% in control and 10% in treatment. The paper includes supplementary arms: one with fixed time (15 minutes per task, 20% of participants) and one with editing opportunity (30% of treatment group). Self-reported and objective measures indicate 10-20% of control participants used ChatGPT on tasks, meaning estimates provide lower bounds on treatment effects. The two-week follow-up survey had an 82% response rate among 423 invited respondents with no evidence of differential response by treatment status. The paper notes that tasks were relatively short and self-contained, lacking context-specific knowledge, which may inflate estimates of ChatGPT's usefulness. Job satisfaction and self-efficacy results reflect enjoyment of a small task rather than feelings about a worker's whole job, as evidenced by no difference in real job satisfaction after two weeks.",
+  "_paper_id": "Noy & Zhang 2023"
+}

@@ -1,0 +1,380 @@
+{
+  "citation_key": "zhang_2024_generative_equilibrium",
+  "authors": [
+    "Kaichen Zhang",
+    "Zixuan Yuan",
+    "Hui Xiong"
+  ],
+  "title": "The Impact of Generative Artificial Intelligence on Market Equilibrium: Evidence from a Natural Experiment",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "Using a difference-in-differences research design with two-way fixed effects, the study compares the anime market (treated) to the wallpaper market (control) before and after the unanticipated leak of NovelAI's anime generative AI in October 2022. The leak served as a natural experiment because China's painting markets were previously unaffected by generative AI due to policy, language, and payment restrictions; the leaked AI specialized exclusively in anime-style images; and the leak was exogenous and sudden.",
+  "primary_task_description": "Consumers post orders on an art outsourcing platform specifying an art category, price range, and description. Artists express interest in accepting orders, and consumers select an artist and enter into a contract. Once the artist completes the task, the consumer makes payment. Art categories include \"original character\", \"artwork\", \"avatar\", \"Q style\", \"tachie\", \"wallpaper\", \"live2d\", \"scenario\", \"cover\", \"poster\", \"UI\", \"character design\", and \"CG\".",
+  "population_description": "197,068 records were collected from a leading art outsourcing platform in China from January 2022 to February 2023. After removing 408 outlier orders priced above 70,000 yuan, data were aggregated to the category-week level. Orders were classified into personal orders (for personal use only) and commercial orders (permitted for commercial purposes).",
+  "arms": [
+    {
+      "arm_name": "treated_tachie",
+      "description": "The \"tachie\" category, a Japanese term referring to full-body standing drawings of characters in anime, manga, and video games. This is precisely the style that NovelAI's AI produces.",
+      "n": null
+    },
+    {
+      "arm_name": "control_wallpaper",
+      "description": "The \"wallpaper\" category, selected as the control market because it is unlikely that NovelAI's generative AI will generate elaborate wallpapers.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "average_price",
+      "outcome_description": "The average price of orders in each category-week. Calculated based on the lower bound of the price range because the lower bound may better reflect the true willingness of consumers to accept their orders than the upper bound. Currency is Chinese yuan (7 yuan = $1).",
+      "measurement_unit": "Chinese yuan",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "order_volume",
+      "outcome_description": "The order volume for each category-week, representing the number of orders.",
+      "measurement_unit": "orders per week",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "overall_revenue",
+      "outcome_description": "The overall revenue for each category-week, calculated as the total monetary value of completed transactions. Currency is Chinese yuan (7 yuan = $1).",
+      "measurement_unit": "Chinese yuan",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "log_price",
+      "outcome_description": "Log-transformed average price.",
+      "measurement_unit": "log(Chinese yuan)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "log_volume",
+      "outcome_description": "Log-transformed order volume.",
+      "measurement_unit": "log(orders per week)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "log_revenue",
+      "outcome_description": "Log-transformed overall revenue.",
+      "measurement_unit": "log(Chinese yuan)",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "average_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "64% reduction; 646 yuan decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = -646.5 (SE 2.0\u00d710^-12)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient estimate of price is -646, indicating generative AI lowered the average price by 646 yuan. Our analysis reveals a promising effect on market equilibrium following the emergence of generative AI. Specifically, although this emergence leads to a 64% reduction in the average price"
+    },
+    {
+      "outcome_name": "order_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "121% increase; 140 orders per week increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 140.3 (SE 4.9\u00d710^-13)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient estimates of volume and revenue are 140 and 56,674, showing that generative AI increased the number of orders by 140 per week and increased the total revenue by 56,674 yuan per week. the generative AI also leads to a remarkable 121% increase in order volume"
+    },
+    {
+      "outcome_name": "overall_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "56% increase; 56,674 yuan per week increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 56,674.4 (SE 1.7\u00d710^-10)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient estimates of volume and revenue are 140 and 56,674, showing that generative AI increased the number of orders by 140 per week and increased the total revenue by 56,674 yuan per week. and a consequent 56% increase in overall revenue. All effects are statistically significant at the 1% level."
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = -0.643 (SE 1.8\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after -0.643*** (1.8\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 1.21 (SE 3.8\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after 1.21*** (3.8\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 0.567 (SE 1.5\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after 0.567*** (1.5\u00d710^-15)"
+    },
+    {
+      "outcome_name": "average_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, personal orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "personal_treated\u00d7after = -746.0 (SE 17.61)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "personal_treated\u00d7after -746.0 ** (17.61)"
+    },
+    {
+      "outcome_name": "order_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, personal orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "personal_treated\u00d7after = 129.5 (SE 1.520)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "personal_treated\u00d7after 129.5*** (1.520)"
+    },
+    {
+      "outcome_name": "overall_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, personal orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "personal_treated\u00d7after = 41,244.4 (SE 195.6)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "personal_treated\u00d7after 41,244.4*** (195.6)"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, personal orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "personal_treated\u00d7after = -0.9892 (SE 0.0101)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "personal_treated\u00d7after -0.9892*** (0.0101)"
+    },
+    {
+      "outcome_name": "log_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, personal orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "personal_treated\u00d7after = 2.953 (SE 0.0162)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "personal_treated\u00d7after 2.953*** (0.0162)"
+    },
+    {
+      "outcome_name": "log_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, personal orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "personal_treated\u00d7after = 1.964 (SE 0.0061)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "personal_treated\u00d7after 1.964*** (0.0061)"
+    },
+    {
+      "outcome_name": "average_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, commercial orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "commercial_treated\u00d7after = -50.57 (SE 1.36\u00d710^-12)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "commercial_treated\u00d7after -50.57*** (1.36\u00d710^-12)"
+    },
+    {
+      "outcome_name": "order_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, commercial orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "commercial_treated\u00d7after = 37.25 (SE 2.62\u00d710^-13)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "commercial_treated\u00d7after 37.25*** (2.62\u00d710^-13)"
+    },
+    {
+      "outcome_name": "overall_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, commercial orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "commercial_treated\u00d7after = 21,115.6 (SE 1.03\u00d710^-10)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "commercial_treated\u00d7after 21,115.6*** (1.03\u00d710^-10)"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, commercial orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "commercial_treated\u00d7after = -0.0967 (SE 2.27\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "commercial_treated\u00d7after -0.0967*** (2.27\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, commercial orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "commercial_treated\u00d7after = 0.3903 (SE 6.77\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "commercial_treated\u00d7after 0.3903*** (6.77\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, commercial orders, after vs before leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "commercial_treated\u00d7after = 0.2936 (SE 4.43\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "commercial_treated\u00d7after 0.2936*** (4.43\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak, robustness check 1",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = -0.4915 (SE 1.33\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after -0.4915*** (1.33\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak, robustness check 1",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 1.171 (SE 3.51\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after 1.171*** (3.51\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak, robustness check 1",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 0.6790 (SE 2.02\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after 0.6790*** (2.02\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak, robustness check 2",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = -0.5127 (SE 1.5\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after -0.5127*** (1.5\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_volume",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak, robustness check 2",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 1.168 (SE 3.1\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after 1.168*** (3.1\u00d710^-15)"
+    },
+    {
+      "outcome_name": "log_revenue",
+      "arm_comparison": "treated_tachie vs control_wallpaper, after vs before leak, robustness check 2",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "treated\u00d7after = 0.6556 (SE 1.92\u00d710^-15)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "treated\u00d7after 0.6556*** (1.92\u00d710^-15)"
+    },
+    {
+      "outcome_name": "order_volume",
+      "arm_comparison": "incumbents vs entrants, treated_tachie, after leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "116% increase in orders for incumbents",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results in Panel B are consistent with our main effects, indicating that incumbents benefit from generative AI by gaining more orders (116%) and more revenue (65%)."
+    },
+    {
+      "outcome_name": "overall_revenue",
+      "arm_comparison": "incumbents vs entrants, treated_tachie, after leak",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "65% increase in revenue for incumbents",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results in Panel B are consistent with our main effects, indicating that incumbents benefit from generative AI by gaining more orders (116%) and more revenue (65%)."
+    }
+  ],
+  "notes": "This is a natural experiment study using the October 2022 leak of NovelAI's anime generative AI model as an exogenous shock. The treated unit is the \"tachie\" (anime character standing art) category, and the control is the \"wallpaper\" category. Data come from a Chinese art outsourcing platform covering January 2022 to February 2023 (197,068 records, 408 outliers removed). The study employs difference-in-differences with two-way fixed effects. All main effects are reported as statistically significant at the 1% level (p < 0.01). Heterogeneous analyses are provided by order type (personal vs. commercial) and supplier type (incumbents registered before October 2022 vs. entrants). The paper notes potential caveats: seasonal effects may confound estimates; randomized experiments are infeasible at the market level; other art categories may be partially affected by the AI; and generative AI may struggle with complex, detailed descriptions and lacks capacity for iterative modifications in response to feedback. Incumbents captured 97.41% of orders and 97.96% of revenue after the leak.",
+  "_paper_id": "2311.07071v2"
+}

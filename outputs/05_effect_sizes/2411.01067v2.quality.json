@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2411.01067v2",
+  "citation_key": "bono_2024_security_copilot",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "copilot",
+    "ai_arm_selection_rationale": "Only one AI arm (copilot) vs. one control arm (no AI). Copilot arm selected as the human+AI condition.",
+    "direction_convention": "larger_is_better",
+    "m_human": 5.18,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 90,
+    "m_ai": 6.97,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 91,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "After thorough re-read of the entire paper, no additional statistical information was found beyond what was previously extracted. The paper reports only means and percentage improvements for the primary outcome (accuracy_all_content). No standard deviations, standard errors, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) are provided anywhere in the document for the overall accuracy comparison. P-values are consistently reported only as inequalities (p < .001, indicated by *** notation) rather than exact values. Table 2 on page 6 shows the means (Treatment: 6.97, Control: 5.18) but no SDs or SEs. The methodology section describes the experimental design and grading but does not report dispersion statistics. The results section (pages 5-6) focuses on percentage improvements and significance levels but never provides the underlying variance measures needed for effect size calculation. This remains a Level F extraction (means + n + p-value inequality only), which is insufficient for computing a reliable Hedges' g. The paper appears to have been designed to report percentage improvements rather than standardized effect sizes.",
+    "source_quotes": [
+      "Across all scenarios and tasks, Copilot subjects experienced a 34.53% improvement in overall accuracy and a 29.79% reduction in task completion time.",
+      "Table 2: Copilot's effect on accuracy by question type and scenario. Aggregate Results All Content: Possible Points 11, Treatment 6.97, Control 5.18, Improvement 34.53%***",
+      "We had 181 subjects complete the task satisfactorily.",
+      "Half of the subjects were assigned to the control group and were granted access to the Entra and Intune admin centers. The other half were assigned to the treatment group"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After thorough re-read of the entire paper, no additional statistical information was found beyond what was previously extracted. The paper reports only means and percentage improvements for the primary outcome (accuracy_all_content). No standard deviations, standard errors, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) are provided anywhere in the document for the overall accuracy comparison. P-values are consistently reported only as inequalities (p < .001, indicated by *** notation) rather than exact values. Table 2 on page 6 shows the means (Treatment: 6.97, Control: 5.18) but no SDs or SEs. The methodology section describes the experimental design and grading but does not report dispersion statistics. The results section (pages 5-6) focuses on percentage improvements and significance levels but never provides the underlying variance measures needed for effect size calculation. This remains a Level F extraction (means + n + p-value inequality only), which is insufficient for computing a reliable Hedges' g. The paper appears to have been designed to report percentage improvements rather than standardized effect sizes. | arm pair unresolvable",
+    "n_human": 90,
+    "n_ai": 91,
+    "direction_convention": "larger_is_better"
+  }
+}

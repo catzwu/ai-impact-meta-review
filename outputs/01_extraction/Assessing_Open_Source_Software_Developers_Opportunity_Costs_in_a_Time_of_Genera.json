@@ -1,0 +1,734 @@
+{
+  "citation_key": "li_2026_copilot_oss",
+  "authors": [
+    "Xinyu Li",
+    "Francis Joseph Costello",
+    "Keongtae Kim",
+    "Xiaoquan (Michael) Zhang"
+  ],
+  "title": "Exploring Altered Open Source Software Development Patterns in a Time of Generative AI",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "study_design_description": "The study leverages the March 2023 announcement and April 2023 public release of GitHub Copilot X (CX) as a natural experiment, analyzing a 27-week user-week panel of 1,350 GitHub developers using difference-in-differences with coarsened exact matching. The panel spans 12 weeks prior to the announcement, a 5-week pre-launch promotion/registration period, and 10 weeks post-launch. The authors construct comparable user pairs by matching on key characteristics and pre-treatment programming activities, yielding a matched sample of 1,373 users (567 treated and 806 controls) with stratum-specific weights carried forward into subsequent DID analyses. The study further augments GitHub data with matched LinkedIn career trajectories over the subsequent 6\u201312 months for 470 developers.",
+  "primary_task_description": "GitHub developers advance their projects through an iterative process comprising local code development and subsequent submission of modifications as commits to remote repositories. Within this cycle, developers generate ideas for new features or improvements, then implement these ideas through programming. The coding phase requires developers to understand existing code architecture, recall syntax and language conventions, consult documentation, and write new code that integrates with the existing codebase. Once satisfied with their changes, developers commit these modifications locally before pushing them to the remote repository.",
+  "population_description": "The study employed a snowball sampling strategy that began with the five most popular GitHub users and expanded through their starred-user networks, yielding a final sample of 4,021 developers. Users are retained if they contribute at least one commit in both the pre-announcement and any of two post-announcement windows. The analytical sample comprises 1,350 users (encompassing 36,450 user-week observations in the panel structure), of which 1,373 matched users had 23 excluded due to incomplete data coverage. Developers average 1.93 commits per week and actively contribute to 0.37 repositories. For career analysis, 2,978 users from the full sample were successfully matched to verified LinkedIn profiles, with a cross-sectional analytical dataset comprising 470 developers.",
+  "arms": [
+    {
+      "arm_name": "pro_users",
+      "description": "Users with GitHub Pro subscription status at the announcement date, assumed to be more likely Copilot X users. Pro users are treated as having access to CX following the announcement and public release.",
+      "n": 567
+    },
+    {
+      "arm_name": "non_pro_users",
+      "description": "Users without GitHub Pro subscription status, serving as the control group.",
+      "n": 806
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "commit_frequency",
+      "outcome_description": "Each user's weekly commit frequency, providing a general proxy for development effort.",
+      "measurement_unit": "commits per week",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "active_repositories",
+      "outcome_description": "The count of concurrently active projects (repositories) a user contributes to per week.",
+      "measurement_unit": "repositories per week",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "line_changes",
+      "outcome_description": "Meaningful line changes metric that isolates substantive developmental contributions by excluding non-programming file modifications and auto-generated code patterns.",
+      "measurement_unit": "lines changed per commit",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "diff_delta",
+      "outcome_description": "An empirically validated developer effort metric that assigns operation-specific weighted scores to classified edit operations (additions, deletions, modifications, relocation) within meaningful line changes.",
+      "measurement_unit": "weighted effort score",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "working_hours",
+      "outcome_description": "Weekly time allocation to development activities, measured through work sessions (commit-activity clusters with \u22654 hours of inactivity marking session boundaries).",
+      "measurement_unit": "hours per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "session_frequency",
+      "outcome_description": "Average number of commit-activity clusters (sessions) in a given week; a new session begins after \u22654 hours of inactivity.",
+      "measurement_unit": "sessions per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "session_duration",
+      "outcome_description": "Average duration of sessions within the week.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "session_intermission",
+      "outcome_description": "Average gap between consecutive sessions.",
+      "measurement_unit": "hours",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "work_day_distribution_std",
+      "outcome_description": "Standard deviation of the distribution of work sessions within a week.",
+      "measurement_unit": "standard deviation",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "weekend_commit_percentage",
+      "outcome_description": "Share of commits that occur on Saturday or Sunday.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_churn_percentage",
+      "outcome_description": "Percentage of code added in the week that is modified or removed within the subsequent 2 weeks, serving as a proxy for near-term rework intensity and code stability.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "copy_pasted_percentage",
+      "outcome_description": "Percentage of code that appears to be copy-pasted (e.g., duplicated blocks, low edit distance with external sources, or repeated snippets within the repo).",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "project_novelty",
+      "outcome_description": "Mean cosine distance between embeddings of repository descriptions for repos created in the week and embeddings of the developer's existing repos (repos created within the 12 months prior to the observation window).",
+      "measurement_unit": "cosine distance",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "languages_added",
+      "outcome_description": "Number of distinct programming languages first observed in a given week (relative to all previously seen languages).",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "internal_job_transitions",
+      "outcome_description": "Probability of internal job transitions (lateral transfers and hierarchical promotions) within the organization.",
+      "measurement_unit": "binary (0/1)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "internal_promotions",
+      "outcome_description": "Probability of hierarchical promotions within the organization.",
+      "measurement_unit": "binary (0/1)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "external_job_hopping",
+      "outcome_description": "Probability of external job transitions (employer changes).",
+      "measurement_unit": "binary (0/1)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_generated_code_propensity",
+      "outcome_description": "Likelihood of new code addition being AI-generated, predicted using a bespoke Deep Learning model.",
+      "measurement_unit": "probability",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "personal_project_push_frequency",
+      "outcome_description": "Push frequency to personal projects.",
+      "measurement_unit": "pushes per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "personal_project_push_size",
+      "outcome_description": "Size of pushes to personal projects.",
+      "measurement_unit": "lines changed per push",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "collaborative_project_push_frequency",
+      "outcome_description": "Push frequency to collaborative projects.",
+      "measurement_unit": "pushes per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "collaborative_project_push_size",
+      "outcome_description": "Size of pushes to collaborative projects.",
+      "measurement_unit": "lines changed per push",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "new_project_creation",
+      "outcome_description": "Frequency of new project launches.",
+      "measurement_unit": "projects per month",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, announcement phase",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.1 commits per week increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b4\u2081 = 0.1 (announcement phase)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Column 1 reveals that the CX announcement is associated with a statistically significant increase (\u03b4\u2081 =0.1, p-value<0.01) in the weekly commit frequency among Pro users, relative to the control group."
+    },
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, post-launch phase",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.21 commits per week increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Following the public release of CX chat features on the IDE marketplaces, this positive treatment effect on commit volume demonstrates persistence, with the absolute marginal difference expanding from 0.16 to 0.21 commits per week."
+    },
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, announcement phase with controls",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.09 commits per week increase, 28% proportional increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b4\u2081 = 0.09 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Upon incorporating controls for average project lifecycle stage and cumulative developer experience in column 2, the estimated treatment effects weaken modestly yet retain statistical significance (\u03b4\u2081 =0.09, p-value<0.05; \u03b4\u2082 =0.12, p-value<0.01). When compared against the sample mean baseline of 0.5 weekly commits, the coefficients in column 2 corresponds to a proportional increase of approximately 28% and 34% during the announcement and post-release phase, respectively."
+    },
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, post-launch phase with controls",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.12 commits per week increase, 34% proportional increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b4\u2082 = 0.12 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Upon incorporating controls for average project lifecycle stage and cumulative developer experience in column 2, the estimated treatment effects weaken modestly yet retain statistical significance (\u03b4\u2081 =0.09, p-value<0.05; \u03b4\u2082 =0.12, p-value<0.01)."
+    },
+    {
+      "outcome_name": "active_repositories",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.08 additional repositories per week, 35% proportional increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On average, treated users contributed to 0.08 additional repositories per week relative to their outcomes absent CX access, representing a 35% proportional increase in active project portfolios compared to the control cohort. While modest in absolute terms, this relative increase is sizable against a baseline mean of 0.23 active repositories."
+    },
+    {
+      "outcome_name": "line_changes",
+      "arm_comparison": "pro_users vs non_pro_users, post-launch phase",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "32% proportional increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "While the announcement phase yields statistically insignificant treatment effects, the post-launch phase demonstrates a statistically significant effect whereby we observe a 32% proportional increase in line changes among Pro users, indicating that the operational deployment of CX capabilities corresponded to meaningful shifts in per-commit code contributions and intensity."
+    },
+    {
+      "outcome_name": "line_changes",
+      "arm_comparison": "pro_users vs non_pro_users, overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "63% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Treated developers increase commit frequency by approximately 12% and active repositories by about 6% relative to controls, while meaningful line changes per commit rise by roughly 63%."
+    },
+    {
+      "outcome_name": "working_hours",
+      "arm_comparison": "pro_users vs non_pro_users, announcement phase",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "A temporary elevation in working hours emerges during the announcement phase (column 1), yet this effect appears predominantly attributable to an increased frequency of session initiations (column 2) rather than extended session durations (column 3)."
+    },
+    {
+      "outcome_name": "working_hours",
+      "arm_comparison": "pro_users vs non_pro_users, post-launch phase",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Upon looking at the post-launch phase, coefficient estimates across all three specifications indicate negligible magnitudes in time allocation changes, both at the aggregate weekly level and at the per-session granularity."
+    },
+    {
+      "outcome_name": "session_intermission",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "increase in average intermission duration",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column 1 demonstrates that average intermission duration between consecutive sessions increases substantially."
+    },
+    {
+      "outcome_name": "work_day_distribution_std",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "elevated standard deviation",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column 2 provides additional support, demonstrating elevated standard deviation in daily activity levels that indicates greater temporal fragmentation across the weekly cycle."
+    },
+    {
+      "outcome_name": "weekend_commit_percentage",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Critically, this temporal restructuring operates predominantly within developers' pre-existing schedules rather than expanding into discretionary leisure periods, as column 3 demonstrates no pronounced treatment effect on weekend contribution patterns among average Pro users."
+    },
+    {
+      "outcome_name": "languages_added",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "68% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "e^0.52 - 1 = 0.68",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Employing a Poisson specification appropriate for count data with low-frequency outcomes, we estimate that CX launch corresponds to a 68% increase (e^0.52 \u22121) in the rate of novel programming language adoption among Pro users relative to control developers."
+    },
+    {
+      "outcome_name": "code_churn_percentage",
+      "arm_comparison": "pro_users vs non_pro_users, announcement phase",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Code Churn % shows no statistically significant change in the post-announcement period, and the estimated effect becomes modestly positive after launch."
+    },
+    {
+      "outcome_name": "copy_pasted_percentage",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 2 percentage-point increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coefficient \u2248 0.02",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient on Copy-pasted % is approximately 0.02 in both periods, implying an increase of about two percentage points in duplicated lines."
+    },
+    {
+      "outcome_name": "copy_pasted_percentage",
+      "arm_comparison": "pro_users vs non_pro_users, overall summary",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "roughly two percentage points increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We observe an increase of roughly two percentage points in copy-pasted code, indicating greater reliance on duplicated or template-like solutions."
+    },
+    {
+      "outcome_name": "project_novelty",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column 4 shows no aggregate effect, indicating that expansion in activity does not automatically translate into more distinctive project themes."
+    },
+    {
+      "outcome_name": "internal_job_transitions",
+      "arm_comparison": "pro_users vs non_pro_users, 6 months",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coefficient = 0.5",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Pro users show higher probabilities of internal transitions (coefficient = 0.5, p-value<0.05) in the first 6 months, with a consistently strong association (coefficient = 0.46, p-value<0.01) extending to 12 months."
+    },
+    {
+      "outcome_name": "internal_job_transitions",
+      "arm_comparison": "pro_users vs non_pro_users, 12 months",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coefficient = 0.46",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Pro users show higher probabilities of internal transitions (coefficient = 0.5, p-value<0.05) in the first 6 months, with a consistently strong association (coefficient = 0.46, p-value<0.01) extending to 12 months."
+    },
+    {
+      "outcome_name": "internal_promotions",
+      "arm_comparison": "pro_users vs non_pro_users, short-term",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coefficient = 0.46",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Within these internal moves, we observe substantial promotion effects (coefficient = 0.46, p-value<0.05) in the short term."
+    },
+    {
+      "outcome_name": "internal_promotions",
+      "arm_comparison": "pro_users vs non_pro_users, longer-term",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "coefficient = 0.31",
+      "test_statistic": null,
+      "p_value": "p < 0.1",
+      "confidence_interval": null,
+      "verbatim_quote": "The longer-term analysis reveals persistent associations with internal mobility, though the promotion effect moderates somewhat (coefficient = 0.31, p-value<0.1), potentially reflecting broader organizational adoption of AI development tools that diminishes relative advantages."
+    },
+    {
+      "outcome_name": "external_job_hopping",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Notably, we detect no statistically significant relationship with external job hopping, indicating that career benefits materialize predominantly through internal advancement pathways."
+    },
+    {
+      "outcome_name": "ai_generated_code_propensity",
+      "arm_comparison": "pro_users vs non_pro_users, pre-launch period",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2\u2081 = 0.0955",
+      "test_statistic": null,
+      "p_value": "p = 0.144",
+      "confidence_interval": null,
+      "verbatim_quote": "In the Pre-Launch period, Pro users showed a higher propensity for AI commits (\u03b2\u2081 = 0.0955), but this difference was not statistically significant (p= 0.144), suggesting a comparable baseline between groups."
+    },
+    {
+      "outcome_name": "ai_generated_code_propensity",
+      "arm_comparison": "pro_users vs non_pro_users, post-launch period",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2\u2081 = 0.1030",
+      "test_statistic": null,
+      "p_value": "p = 0.035",
+      "confidence_interval": null,
+      "verbatim_quote": "However, in the Post-Launch period, the gap widened (\u03b2\u2081 = 0.1030) and became statistically significant (p= 0.035)."
+    },
+    {
+      "outcome_name": "ai_generated_code_propensity",
+      "arm_comparison": "pro_users vs non_pro_users, longitudinal change",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 3.75 percentage-point increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2\u2081 = 0.0375",
+      "test_statistic": null,
+      "p_value": "p = 0.011",
+      "confidence_interval": null,
+      "verbatim_quote": "Furthermore, the longitudinal analysis confirms that Pro users significantly increased their AI adoption rate by approximately 3.75 percentage points (\u03b2\u2081 = 0.0375, p= 0.011) following the release of Copilot X tools."
+    },
+    {
+      "outcome_name": "working_hours",
+      "arm_comparison": "casual_developers vs active_developers",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "47.2% increase for casual users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Most notably, while the average treatment effect on working duration remained non-significant in the post-launch period (Table 4), casual users experienced substantial increases in time investment (47.2%)\u2013both their session initiation volume (column 4 of Table 7) and session duration (column 1 of Table A3) rose significantly."
+    },
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, overall summary",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 12% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that treated developers increase commit frequency by approximately 12% and active repositories by 6%."
+    },
+    {
+      "outcome_name": "active_repositories",
+      "arm_comparison": "pro_users vs non_pro_users, overall summary",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that treated developers increase commit frequency by approximately 12% and active repositories by 6%."
+    },
+    {
+      "outcome_name": "working_hours",
+      "arm_comparison": "casual_developers vs active_developers, overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around 48% increase for casual developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "These effects are highly heterogeneous: the increase in work hours (around 48%) and in new programming-language adoption is concentrated among previously casual developers, whereas highly active developers show no significant change in time spent."
+    },
+    {
+      "outcome_name": "languages_added",
+      "arm_comparison": "casual_developers vs active_developers",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "These effects are highly heterogeneous: the increase in work hours (around 48%) and in new programming-language adoption is concentrated among previously casual developers, whereas highly active developers show no significant change in time spent."
+    },
+    {
+      "outcome_name": "session_frequency",
+      "arm_comparison": "casual_developers vs active_developers",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant increase for casual users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Most notably, while the average treatment effect on working duration remained non-significant in the post-launch period (Table 4), casual users experienced substantial increases in time investment (47.2%)\u2013both their session initiation volume (column 4 of Table 7) and session duration (column 1 of Table A3) rose significantly."
+    },
+    {
+      "outcome_name": "session_duration",
+      "arm_comparison": "casual_developers vs active_developers",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant increase for casual users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Most notably, while the average treatment effect on working duration remained non-significant in the post-launch period (Table 4), casual users experienced substantial increases in time investment (47.2%)\u2013both their session initiation volume (column 4 of Table 7) and session duration (column 1 of Table A3) rose significantly."
+    },
+    {
+      "outcome_name": "personal_project_push_frequency",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results reveal that ACA adoption significantly increases push frequency and size to Personal Projects (columns 2 and 5), while showing no significant effects on contributions to Collaborative Projects (columns 3 and 6)."
+    },
+    {
+      "outcome_name": "personal_project_push_size",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results reveal that ACA adoption significantly increases push frequency and size to Personal Projects (columns 2 and 5), while showing no significant effects on contributions to Collaborative Projects (columns 3 and 6)."
+    },
+    {
+      "outcome_name": "collaborative_project_push_frequency",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no significant effect",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results reveal that ACA adoption significantly increases push frequency and size to Personal Projects (columns 2 and 5), while showing no significant effects on contributions to Collaborative Projects (columns 3 and 6)."
+    },
+    {
+      "outcome_name": "collaborative_project_push_size",
+      "arm_comparison": "pro_users vs non_pro_users",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no significant effect",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The results reveal that ACA adoption significantly increases push frequency and size to Personal Projects (columns 2 and 5), while showing no significant effects on contributions to Collaborative Projects (columns 3 and 6)."
+    },
+    {
+      "outcome_name": "new_project_creation",
+      "arm_comparison": "pro_users vs non_pro_users, announcement stage",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "transient significant rise",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Result in A16 highlights a transient significant rise in new project creation during the announcement stage, coinciding with a rise in public interest in Gen-AI projects."
+    },
+    {
+      "outcome_name": "new_project_creation",
+      "arm_comparison": "pro_users vs non_pro_users, longer time horizon",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "effect becomes insignificant",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, the effect becomes insignificant at a longer time horizon."
+    },
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, heterogeneity by experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "persistent and statistically significant elevations for casual users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For casual users, CX introduction serves as a catalyst for sustained participation increases. As shown in columns 1-4, these Pro users exhibit persistent and statistically significant elevations in development activity during both post-announcement and post-launch periods."
+    },
+    {
+      "outcome_name": "languages_added",
+      "arm_comparison": "casual_developers vs active_developers, heterogeneity",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "more pronounced effects for casual users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We also observe more pronounced effects on new language adoption among casual users (column 5), while CX appears to dampen language exploration among experienced users."
+    },
+    {
+      "outcome_name": "project_novelty",
+      "arm_comparison": "casual_developers vs active_developers",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "declining for casual users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, casual users exhibit declining project novelty (column 6)."
+    },
+    {
+      "outcome_name": "internal_job_transitions",
+      "arm_comparison": "pro_users vs non_pro_users, heterogeneity by employment contract",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significantly greater for interns",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "1) ACA usage among interns is associated with significantly greater internal progression opportunities (internal changes and promotions) compared to other contract types (columns 5-6)."
+    },
+    {
+      "outcome_name": "external_job_hopping",
+      "arm_comparison": "pro_users vs non_pro_users, heterogeneity by work experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negative association for senior employees",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "2) Senior employees with more prior work experience appear less likely to leverage ACA usage for external job hopping (column 4), as indicated by the negative interaction term."
+    },
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, student status heterogeneity",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no significant difference between student and non-student users",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find statistically insignificant results across all six outcome variables. This indicates that student status does not significantly moderate the treatment effect. The productivity gains associated with CX adoption are evident for both student and non-student users, confirming that our main results are not an artifact of the student population."
+    },
+    {
+      "outcome_name": "commit_frequency",
+      "arm_comparison": "pro_users vs non_pro_users, parallel trends test",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p > 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Overall, the estimated coefficients of the \"leads\" (i.e., weeks in the pre-treatment periods) are rarely statistically insignificant at the 5% level, indicating no significant differences between treatment and control groups across pretreatment weeks. A joint test of all pretreatment coefficients fails to reject the null of no systematic difference between treatment and control groups prior to CX exposure."
+    },
+    {
+      "outcome_name": "sentiment_about_copilot",
+      "arm_comparison": "casual_developers vs active_developers",
+      "means_and_sds": {
+        "casual_developers": {
+          "mean": 0.2,
+          "sd": null,
+          "se": null
+        },
+        "active_developers": {
+          "mean": 0.13,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(1,710) = 3.92",
+      "p_value": "p = 0.048",
+      "confidence_interval": null,
+      "verbatim_quote": "The analysis revealed a statistically significant main effect of experience (F(1,710) = 3.92,p=.048). As illustrated in Figure A6, casual developers exhibited significantly higher sentiment (estimated marginal mean = 0.20) compared to active developers (estimated marginal mean = 0.13) when discussing Copilot."
+    }
+  ],
+  "notes": "This is a natural experiment study using difference-in-differences with coarsened exact matching (CEM) to estimate intent-to-treat (ITT) effects of GitHub Copilot X (CX) on open source software developers. The study uses GitHub Pro subscription status as a proxy for CX access, justified by the bundling of Pro and Copilot subscriptions and validated through AI code detection analysis. The analytical sample comprises 1,350 developers (567 treated, 806 controls) observed over 27 weeks (12 pre-announcement, 5 pre-launch, 10 post-launch). The paper documents substantial heterogeneity in treatment effects by developer experience level: casual developers show large increases in work hours (~48%), language adoption (~68%), and session frequency, while experienced developers show minimal time changes. The paper identifies a key trade-off: while CX increases productivity (commits +12%, repositories +6%, line changes +63%), it also increases code redundancy (copy-pasted code +2 percentage points) and reduces project novelty for casual users. Career analysis using LinkedIn data (470 matched developers) shows CX access is associated with higher rates of internal job transitions and promotions within 6-12 months, with stronger effects for interns and junior employees. Robustness checks include parallel trends tests (pre-treatment coefficients not significantly different), alternative matching specifications (propensity score matching), and heterogeneity analyses by student status, OSS collaboration propensity, and employment contract type. Mediation analysis suggests commit volume does not mediate career outcomes, implying signaling or efficiency mechanisms rather than output volume. The paper acknowledges limitations: observation window captures only short-run responses; analysis limited to public GitHub repositories; ITT design relies on Pro status as proxy; and longer-horizon data needed for career durability assessment.",
+  "_paper_id": "Assessing_Open_Source_Software_Developers_Opportunity_Costs_in_a_Time_of_Genera"
+}

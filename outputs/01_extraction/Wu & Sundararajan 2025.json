@@ -1,0 +1,80 @@
+{
+  "citation_key": "wu_2025_digital_twins",
+  "authors": [
+    "Catherine Wu",
+    "Arun Sundararajan"
+  ],
+  "title": "Incentives for Digital Twins: Task-Based Productivity Enhancements with Generative AI",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "This is a theoretical study using a principal-agent model in which agents have the opportunity to invest in training an AI twin that leads to a lower cost of agent effort, a higher probability of success, or both. The framework employs a two-outcome limited liability moral hazard model with hidden action. The manager (principal) chooses whether or not to offer the capability to customize an AI system to the worker (agent). The analysis investigates how the worker's level of investment in their AI twin depends on intrinsic task properties, specifically editability (how easily a human worker can modify AI output to reach a desired quality level) and verifiability (whether the manager can verify the quality of AI output absent the human worker).",
+  "primary_task_description": "A manager (principal) wishes to hire a worker (agent) to perform a task. The agent chooses between two effort levels: high (e = 1) and low (e = 0). The principal's payoff is shaped by outcomes realized from the agent's exertion of effort.",
+  "population_description": null,
+  "arms": [
+    {
+      "arm_name": "ai_twin_investment",
+      "description": "The agent invests in training an AI twin (v > 0)",
+      "n": null
+    },
+    {
+      "arm_name": "no_ai_twin_investment",
+      "description": "The agent does not invest in training an AI twin (v = 0)",
+      "n": null
+    },
+    {
+      "arm_name": "ai_only",
+      "description": "e = 0 as characterizing the \"AI only\" setting, where \u03c0\u2080(v) is the outcome distribution induced by AI without additional human effort",
+      "n": null
+    },
+    {
+      "arm_name": "human_plus_ai",
+      "description": "e = 1 as characterizing the \"human+AI\" setting, where \u03c0\u2081(v) is the outcome distribution induced when human effort complements the AI twin",
+      "n": null
+    },
+    {
+      "arm_name": "ai_capability_offered",
+      "description": "The principal offers the capability to customize an AI system to the worker (agent)",
+      "n": null
+    },
+    {
+      "arm_name": "ai_capability_not_offered",
+      "description": "The principal does not offer the capability to customize an AI system to the worker (agent)",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "agent_investment_level",
+      "outcome_description": "The worker's level of investment in the creation of their AI twin, which depends on intrinsic task properties including editability and verifiability",
+      "measurement_unit": null,
+      "is_primary": true
+    },
+    {
+      "outcome_name": "outcome_quality",
+      "outcome_description": "Two possible outcomes that provide benefit S\u0304 and S to the principal, where S\u0304 > S",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "agent_expected_surplus",
+      "outcome_description": "The agent's expected surplus defined as U(v) = \u03c0\u2080(v)c(v) / (\u03c0\u2081(v) \u2212 \u03c0\u2080(v))",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "outcome_separability",
+      "outcome_description": "Outcome separability of the work, defined as Q\u03c0(v) = \u03c0\u2081(v) / \u03c0\u2080(v)",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "quality_importance",
+      "outcome_description": "Quality importance of the work being done, defined as (S\u0304 \u2212 S), which measures the difference in payoff to the principal from high-quality and low-quality output",
+      "measurement_unit": null,
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [],
+  "notes": "This is a theoretical paper presenting a principal-agent model with mathematical analysis. It is not an empirical study with experimental data. The paper synthesizes findings from recent empirical studies to motivate the framework but does not report original experimental results or numerical statistics. The paper includes a single-period model and a two-period extension with myopic agents. No numerical experimental results, p-values, or statistical tests are reported. A more detailed paper with mathematical details and proofs is available on request. The objective function U(v) is not necessarily strictly quasiconcave in v, and the paper focuses on deriving conditions under which the objective function has a well-defined solution, which may be either an interior solution or one of the endpoints.",
+  "_paper_id": "Wu & Sundararajan 2025"
+}

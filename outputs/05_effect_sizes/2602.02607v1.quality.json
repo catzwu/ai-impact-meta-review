@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2602.02607v1",
+  "citation_key": "kikuchi_2026_innovation_tax",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper does not report a controlled experiment comparing human-only vs. human+AI performance on a quality outcome. The study is a descriptive empirical analysis of GenAI adoption in the U.S. banking sector using observational data (SEC filings + Federal Reserve regulatory data). The 'treatment' is AI adoption (measured by keyword mentions in filings), and the outcomes are productivity metrics (ROA, ROE) at the bank level. There are no experimental arms, no baseline human task performance, and no controlled AI intervention. The DSDM and SDID estimates compare AI-adopting banks to non-adopting banks in an observational setting, not a randomized or controlled experiment with individual worker or task-level quality measurements. The paper explicitly states it examines 'causal impact of Generative Artificial Intelligence (GenAI) adoption on productivity and systemic risk' at the institutional level, not worker-level quality outcomes. No speed or quality metrics (in the sense of task completion time or task output quality) are reported. The outcomes are financial performance ratios (ROA, ROE) which are not quality outcomes in the schema's intended sense (accuracy, error rate, rubric score, etc.). Therefore, this paper does not fit the extraction schema's requirements.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After re-reading the full PDF, I confirm that this is an observational study of bank-level productivity (ROA, ROE) following GenAI adoption, not an experiment measuring human task performance with and without AI assistance. The paper uses econometric methods (DSDM, SDID) to estimate causal effects of institutional AI adoption on financial performance, but does not report individual-level quality outcomes, task completion metrics, or experimental arms. The 'arms' in the prior context refer to banks classified by adoption status (AI-adopting vs. non-adopting), not experimental conditions. No means, SDs, or effect sizes for a quality outcome (accuracy, error rate, rubric score) are present. The paper is not resolvable under the schema.",
+    "source_quotes": [
+      "This paper evaluates the causal impact of Generative Artificial Intelligence (GenAI) adoption on productivity and systemic risk in the U.S. banking sector.",
+      "Using a novel dataset linking SEC 10-Q filings to Federal Reserve regulatory data for 809 financial institutions over 2018\u20132025, we employ two complementary identification strategies: Dynamic Spatial Durbin Models (DSDM) to capture network spillovers and Synthetic Difference-in-Differences (SDID) for causal inference using the November 2022 ChatGPT release as an exogenous shock.",
+      "Our primary productivity measures are: ROAit = Net Incomeit / Total Assetsit \u00d7 100; ROEit = Net Incomeit / Total Equityit \u00d7 100",
+      "The treatment indicator D^GenAI_it equals one if bank i mentions any GenAI-related keyword in quarter t's filing."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After re-reading the full PDF, I confirm that this is an observational study of bank-level productivity (ROA, ROE) following GenAI adoption, not an experiment measuring human task performance with and without AI assistance. The paper uses econometric methods (DSDM, SDID) to estimate causal effects of institutional AI adoption on financial performance, but does not report individual-level quality outcomes, task completion metrics, or experimental arms. The 'arms' in the prior context refer to banks classified by adoption status (AI-adopting vs. non-adopting), not experimental conditions. No means, SDs, or effect sizes for a quality outcome (accuracy, error rate, rubric score) are present. The paper is not resolvable under the schema. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

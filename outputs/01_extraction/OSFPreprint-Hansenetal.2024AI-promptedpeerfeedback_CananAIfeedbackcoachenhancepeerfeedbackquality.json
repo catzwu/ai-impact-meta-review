@@ -1,0 +1,249 @@
+{
+  "citation_key": "hansen_2024_ai_peer_feedback",
+  "authors": [
+    "Hansen, R. R.",
+    "Hougaard, R. F.",
+    "Lindberg, A. B.",
+    "M\u00f8ller, K. L.",
+    "Nielsen, T. A.",
+    "Prilop, C. N."
+  ],
+  "title": "AI-prompted peer feedback: Can an AI feedback coach enhance peer feedback quality?",
+  "year": 2024,
+  "venue": "OSF Preprint",
+  "study_design_description": "In a quasi-experimental design, students' peer feedback quality and their perception of the peer feedback process were analysed when taking part in a digital peer feedback activity. In the first iteration, a quasi-experimental study was conducted to compare an intervention group (IG 1) with an enabled AI feedback coach with a control group (CG 1) without an AI feedback coach. The use of two parallel groups in a competency course meant that the research design was quasi-experimental, and ecological validity was therefore prioritized over randomization. In the second iteration of the course, the group of PhD students only took part in the peer feedback activity with the AI feedback coach enabled.",
+  "primary_task_description": "Participants provided peers with feedback on their assignments. After uploading the project report to the digital feedback environment, each student was tasked with providing peer feedback to two of their peers. For each project report they provide feedback on, they must submit at least four feedback comments about what parts are good and what needs improvement. In the feedback environment, they are presented with a document, in which they can highlight certain passages to connect their individual comments to. After submitting their comments, they are then presented with a rubric to give an overall assessment of the project report within predefined criteria.",
+  "population_description": "The study was conducted in a pedagogical course (3 ECTS) for PhD students who work as teaching assistants (TAs) within STEM disciplines at a Danish university. Data was collected from PhD students enrolled in two iterations of the course.",
+  "arms": [
+    {
+      "arm_name": "intervention_group_1_ai_enabled",
+      "description": "In the first iteration, an intervention group had access to the AI feedback coach enabled in the digital feedback environment.",
+      "n": 20
+    },
+    {
+      "arm_name": "control_group_1_no_ai",
+      "description": "In the first iteration, the control group had the same task description and digital environment, except for the lack of the AI feedback coach.",
+      "n": 26
+    },
+    {
+      "arm_name": "intervention_group_2_ai_enabled",
+      "description": "In the second iteration, participants took part in the same intervention as the IG of the first iteration (AI feedback coach enabled).",
+      "n": 62
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "reflective_questions",
+      "outcome_description": "Feedback comments were analysed using an adapted version of Prins et al.'s (2006) feedback quality index, which assesses feedback comments according to a set of criteria including Questions.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "criteria_based_feedback",
+      "outcome_description": "Feedback comments were analysed using an adapted version of Prins et al.'s (2006) feedback quality index, which assesses feedback comments according to a set of criteria including Content/Criteria.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "sentiment_score",
+      "outcome_description": "The feedback comments were analysed concerning sentiment. The analysis utilized the Python packages TextDescriptives and VADER (Valence Aware Dictionary and sEntiment Reasoner) sentiment analysis, which provide ready-to-use algorithms for calculating the relevant descriptive values based on the supplied text input.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "sentence_length",
+      "outcome_description": "The feedback comments were analysed concerning text complexity, specifically sentence length.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "tokens_per_comment",
+      "outcome_description": "The feedback comments were analysed concerning text complexity, specifically tokens per comment.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "syllables_per_token",
+      "outcome_description": "The feedback comments were analysed concerning text complexity, specifically syllables per token.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "flesch_reading_ease",
+      "outcome_description": "Members of the IG wrote significantly more complex feedback comments, as measured by Flesch Reading Ease, a measure for text complexity.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "smog",
+      "outcome_description": "Members of the IG wrote significantly more complex feedback comments, as measured by SMOG, a measure for text complexity.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coleman_liau",
+      "outcome_description": "Members of the IG wrote significantly more complex feedback comments, as measured by Coleman Liau, a measure for text complexity.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "lix",
+      "outcome_description": "Members of the IG wrote significantly more complex feedback comments, as measured by Lix, a measure for text complexity.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "survey_sentiment",
+      "outcome_description": "Survey responses were coded for sentiment and themes.",
+      "measurement_unit": null,
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "reflective_questions",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.217",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = 2.155",
+      "p_value": "p = 0.031",
+      "confidence_interval": null,
+      "verbatim_quote": "The analyses of differences in feedback quality between participants of the CG and IG showed that members of the IG included significantly fewer reflective questions, t(44)= 2.155, p=.031, d=.217"
+    },
+    {
+      "outcome_name": "criteria_based_feedback",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.203",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = 2.014",
+      "p_value": "p = 0.044",
+      "confidence_interval": null,
+      "verbatim_quote": "their feedback was significantly less criteria-based, t(44)= 2.014, p=.044, d=0.203"
+    },
+    {
+      "outcome_name": "sentiment_score",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {
+        "intervention_group_1_ai_enabled": {
+          "mean": 0.46,
+          "sd": null,
+          "se": null
+        },
+        "control_group_1_no_ai": {
+          "mean": 0.467,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Analyses showed no significant differences between the CG and IG concerning the sentiment score. Both means were found to be positive (MIG=0.460, MCG=0.467)."
+    },
+    {
+      "outcome_name": "sentence_length",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.7",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = 3.274",
+      "p_value": "p = 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "IG members used significantly shorter sentences, t(44)=3.274, p=.001, d=0.7"
+    },
+    {
+      "outcome_name": "tokens_per_comment",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.491",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = 2.285",
+      "p_value": "p = 0.024",
+      "confidence_interval": null,
+      "verbatim_quote": "used fewer tokens per comment, t(44)= 2.285, p=.024, d=0.491"
+    },
+    {
+      "outcome_name": "syllables_per_token",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 1.108",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = -4.969",
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Furthermore, IG members had a significantly higher count of syllables per token, t(44=-4.969, p<0.001, d=1.108)."
+    },
+    {
+      "outcome_name": "flesch_reading_ease",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.739",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = 3.331",
+      "p_value": "p = 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "These metrics are 'Flesch Reading Ease', t(44)=3.331, p=.001, d=0.739"
+    },
+    {
+      "outcome_name": "smog",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.539",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = -2.459",
+      "p_value": "p = 0.016",
+      "confidence_interval": null,
+      "verbatim_quote": "'SMOG', t(44)=-2.459, p=.016, d=0.539"
+    },
+    {
+      "outcome_name": "coleman_liau",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.985",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = -4.437",
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "'Coleman Liau', t(44)=-4.437, p<.001, d=0.985"
+    },
+    {
+      "outcome_name": "lix",
+      "arm_comparison": "intervention_group_1_ai_enabled vs control_group_1_no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "d = 0.551",
+      "regression_coefficient": null,
+      "test_statistic": "t(44) = -2.505",
+      "p_value": "p = 0.014",
+      "confidence_interval": null,
+      "verbatim_quote": "and 'Lix', t(44)=-2.505, p=.014, d=0.551"
+    },
+    {
+      "outcome_name": "survey_sentiment",
+      "arm_comparison": "all_participants",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "A total of 25 answers were coded as 'positive' or 'somewhat positive', while 11 were neutral, and 24 were 'negative' or 'somewhat negative'."
+    }
+  ],
+  "notes": "This is a quasi-experimental study with two iterations. Iteration 1 compared intervention group (IG1, n=20) with AI feedback coach enabled to control group (CG1, n=26) without AI coach. Iteration 2 (n=62) included only the intervention condition with AI coach enabled. The study reports adverse effects of the AI feedback coach on peer feedback quality: IG members included significantly fewer reflective questions and their feedback was significantly less criteria-based. IG members also used significantly shorter sentences, fewer tokens per comment, but had higher syllables per token and more complex feedback as measured by multiple text complexity metrics (Flesch Reading Ease, SMOG, Coleman Liau, Lix). No significant differences were found in sentiment scores between groups. Survey responses showed mixed views on the AI feedback coach. The paper notes that as the AI is a proprietary model with limited access to prompts, interactions could not be systematically controlled or recorded. Sample size was lower than ideal due to consent rates (less than half of students consented to have their feedback analyzed). The quasi-experimental design prioritized ecological validity over randomization, and causality cannot be firmly established. The study design did not include a pre- and post-test.",
+  "_paper_id": "OSFPreprint-Hansenetal.2024AI-promptedpeerfeedback_CananAIfeedbackcoachenhancepeerfeedbackquality"
+}

@@ -1,0 +1,48 @@
+{
+  "_paper_id": "2503.18238v3",
+  "citation_key": "ju_2026_collaborating_ai",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "human_human",
+    "ai_arm_name": "human_ai",
+    "ai_arm_selection_rationale": "Only one AI arm exists (human_ai). This is compared against the human-only baseline (human_human) where participants collaborated with another human.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 976,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1258,
+    "reported_percent_change": 0.5,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 1.954,
+    "regression_coefficient_se": 0.197,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "The primary statistic reports '50% more ads per worker, per unit time' for human_ai vs human_human, which is a clear +50% increase in productivity (throughput). The regression coefficient 1.954 (SE 0.197) is also provided, but the paper does not explicitly state whether the outcome was log-transformed or in levels. Given the magnitude of the coefficient (~1.95) and the reported 50% increase, it is plausible the outcome was log-transformed (since exp(1.954) \u2248 7.05, which doesn't match 1.50), but this is not explicitly confirmed. The 50% increase is the clearest effect measure. Additional rows report communication and delegation effects within each arm type, but these are not the main human_ai vs human_human comparison.",
+    "source_quotes": [
+      "Participants in human-AI teams submitted 50% more ads per worker, per unit time than their counterparts in human-human teams, with results consistent when demographic controls are added (Table 2).",
+      "1.954 (SE 0.197), ***"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.4054651081081644,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.5,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "The primary statistic reports '50% more ads per worker, per unit time' for human_ai vs human_human, which is a clear +50% increase in productivity (throughput). The regression coefficient 1.954 (SE 0.197) is also provided, but the paper does not explicitly state whether the outcome was log-transformed or in levels. Given the magnitude of the coefficient (~1.95) and the reported 50% increase, it is plausible the outcome was log-transformed (since exp(1.954) \u2248 7.05, which doesn't match 1.50), but this is not explicitly confirmed. The 50% increase is the clearest effect measure. Additional rows report communication and delegation effects within each arm type, but these are not the main human_ai vs human_human comparison. | CI missing; variance not computable",
+    "n_human": 976,
+    "n_ai": 1258
+  }
+}

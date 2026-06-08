@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The participants are open-source software developers writing code, committing changes, and managing pull requests on GitHub. The task description explicitly states 'Developers commit code changes' and focuses on programming activities in Python, R, Rust, and Haskell. While '15-1252.00 Software Developers' exists as an occupation, the study measures a specific, narrow activity\u2014writing and committing code\u2014rather than the full breadth of software development work (which includes requirements gathering, design, testing, deployment, etc.). The activity of programming and working with version control systems is best captured by 'Working with Computers,' which generalizes better across the meta-analysis than mapping to the full occupation.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "yeverechyahu_2026_llm_opensource"
+}

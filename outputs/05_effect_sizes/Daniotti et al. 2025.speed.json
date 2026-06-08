@@ -1,0 +1,49 @@
+{
+  "_paper_id": "Daniotti et al. 2025",
+  "citation_key": "daniotti_2025_ai_code",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "0% AI usage",
+    "ai_arm_name": "29% AI usage",
+    "ai_arm_selection_rationale": "This is an observational natural experiment comparing developers with 0% genAI usage (baseline) to those with 29% genAI usage (the estimated US adoption rate by end of 2024). The 29% usage level represents the primary treatment condition analyzed.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": 0.036,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.122,
+    "regression_coefficient_se": 0.048,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is an observational study using regression analysis. The outcome is commits per quarter (throughput measure, larger is better). The regression coefficient 0.122 (SE 0.048) represents the effect of AI usage on log-transformed commit rates. The paper reports that moving from 0% to 29% AI usage is associated with a 3.6% increase in commit rates. The coefficient appears to be from a log-transformed outcome based on the small magnitude and the percentage interpretation provided. The study also reports heterogeneous effects by experience level, with experienced developers showing a 6.2% increase (coefficient 0.189, SE 0.086 for the interaction term).",
+    "source_quotes": [
+      "Moving from 0 to 29% genAI usage\u2014the estimated US adoption rate by the end of 2024\u2014is associated with a 3.6% increase in commit rates across all these commit types.",
+      "AI Use 0.122 (SE 0.048)",
+      "However, these associations with user productivity are fully driven by experienced users, for whom a 29% adoption rate would imply a 6.2% increase in commit rates (Fig. 3D)."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.035367143837291344,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.03600000000000003,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is an observational study using regression analysis. The outcome is commits per quarter (throughput measure, larger is better). The regression coefficient 0.122 (SE 0.048) represents the effect of AI usage on log-transformed commit rates. The paper reports that moving from 0% to 29% AI usage is associated with a 3.6% increase in commit rates. The coefficient appears to be from a log-transformed outcome based on the small magnitude and the percentage interpretation provided. The study also reports heterogeneous effects by experience level, with experienced developers showing a 6.2% increase (coefficient 0.189, SE 0.086 for the interaction term). | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

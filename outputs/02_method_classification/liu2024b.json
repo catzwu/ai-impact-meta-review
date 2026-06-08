@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study explicitly states \"A within-subjects user study was conducted\" where \"Each participant completed two tasks...using both designs in counterbalanced order.\" This is a clear within-subject design where the same participants experienced both conditions (breadth-first and depth-first RQ generation).",
+  "citation_key": "liu_2024_coquest"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-01",
+  "onet_label": "Analyzing Data or Information",
+  "mapping_confidence": "high",
+  "rationale": "This is a research study analyzing spatial distribution dynamics, productivity patterns, and agglomeration effects using comprehensive panel data. The participants are researchers conducting quantitative analysis of economic data across multiple dimensions (employment, productivity, AI adoption). The core task is 'Analysis of AI-driven spatial distribution dynamics and productivity agglomeration effects' which directly maps to analyzing data or information. This is not a study of people doing their jobs, but rather researchers performing data analysis work.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-15",
+      "onet_label": "Updating and Using Relevant Knowledge"
+    }
+  ],
+  "citation_key": "kikuchi_2025_ai_spatial"
+}

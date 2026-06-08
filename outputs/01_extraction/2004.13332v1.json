@@ -1,0 +1,385 @@
+{
+  "citation_key": "zheng_2020_ai_economist",
+  "authors": [
+    "Stephan Zheng",
+    "Alexander Trott",
+    "Sunil Srinivasa",
+    "Nikhil Naik",
+    "Melvin Gruesbeck",
+    "David C. Parkes",
+    "Richard Socher"
+  ],
+  "title": "The AI Economist: Improving Equality and Productivity with AI-Driven Tax Policies",
+  "year": 2020,
+  "venue": "arXiv preprint",
+  "study_design_description": "A two-level deep reinforcement learning approach was used to learn dynamic tax policies in economic simulations where both agents and a government learn and adapt. The data-driven approach does not rely on economic modeling assumptions and learns from observational data alone. The simulation environment features competitive pressures and market dynamics, with baseline tax systems validated to perform consistently with economic theory. Experiments were conducted both with AI agents and with human participants on Amazon Mechanical Turk, comparing four tax models: free-market (no taxes), US federal single-filer 2018 tax schedule, Saez tax formula, and the AI Economist planner.",
+  "primary_task_description": "Agents move around, collect resources (wood and stone), and build houses. Agents can trade resources and choose to use one unit of wood and one unit of stone to construct a house, earning coins based on their skill level. Each type of action (moving, gathering, trading, and building) is associated with a specific labor cost. Episodes last either 1000 timesteps (AI experiments) or 3000 timesteps (human experiments) with ten tax periods per episode. For human participants, trading was disabled and only the build action incurred a labor cost.",
+  "population_description": "US-based participants recruited from Amazon Mechanical Turk. The first batch consisted of 57 episodes with 58 participants. The second batch consisted of 68 episodes with 57 participants. A qualification pool of around 300 qualified participants familiar with the instructions and simulation environment was built. All participants were grouped into groups of four and instructed not to communicate with each other. Experiments were conducted during 10am-12pm and 7-10pm Pacific Time.",
+  "arms": [
+    {
+      "arm_name": "free_market",
+      "description": "Free-market tax policy with no taxes",
+      "n": null
+    },
+    {
+      "arm_name": "us_federal",
+      "description": "US federal single-filer 2018 tax schedule",
+      "n": null
+    },
+    {
+      "arm_name": "saez_formula",
+      "description": "Saez tax formula adapted for a multi-period setting",
+      "n": null
+    },
+    {
+      "arm_name": "ai_economist",
+      "description": "AI Economist planner tax policy",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "productivity",
+      "outcome_description": "Total amount of income generated within an episode, analogous to GDP, measured as total coins produced",
+      "measurement_unit": "coins",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "income_equality",
+      "outcome_description": "Income equality defined as 1 - Gini index and computed at the end of an episode; higher Gini index means incomes are less equal",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "equality_productivity_product",
+      "outcome_description": "The product of equality and productivity, measuring the balance between equality and productivity",
+      "measurement_unit": "product score",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "inverse_income_weighted_utility",
+      "outcome_description": "Social welfare evaluated at the end of an episode using inverse post-tax endowments as social welfare weights",
+      "measurement_unit": "utility score",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "equality_productivity_product",
+      "arm_comparison": "ai_economist vs saez_formula",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "16% gain improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The AI Economist achieves a 16% gain improvement over the next best model, which is the Saez model."
+    },
+    {
+      "outcome_name": "income_equality",
+      "arm_comparison": "ai_economist vs free_market",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "47% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The AI Economist also improves equality by 47% compared to the free-market, at only an 11% decrease in productivity."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "ai_economist vs free_market (AI experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 3285,
+          "sd": null,
+          "se": null
+        },
+        "ai_economist": {
+          "mean": 3285,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coin Produced: Free Market 3285, US Federal 2656, Saez Formula 2907, AI Economist 3285."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "us_federal vs free_market (AI experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 3285,
+          "sd": null,
+          "se": null
+        },
+        "us_federal": {
+          "mean": 2656,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coin Produced: Free Market 3285, US Federal 2656, Saez Formula 2907, AI Economist 3285."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "saez_formula vs free_market (AI experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 3285,
+          "sd": null,
+          "se": null
+        },
+        "saez_formula": {
+          "mean": 2907,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coin Produced: Free Market 3285, US Federal 2656, Saez Formula 2907, AI Economist 3285."
+    },
+    {
+      "outcome_name": "income_equality",
+      "arm_comparison": "free_market vs us_federal vs saez_formula vs ai_economist (AI experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 0.39,
+          "sd": null,
+          "se": null
+        },
+        "us_federal": {
+          "mean": 0.52,
+          "sd": null,
+          "se": null
+        },
+        "saez_formula": {
+          "mean": 0.48,
+          "sd": null,
+          "se": null
+        },
+        "ai_economist": {
+          "mean": 0.57,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Income equality (middle panel, higher is better): Free Market 39%, US Federal 52%, Saez Formula 48%, AI Economist 57%."
+    },
+    {
+      "outcome_name": "equality_productivity_product",
+      "arm_comparison": "free_market vs us_federal vs saez_formula vs ai_economist (AI experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 1278,
+          "sd": null,
+          "se": null
+        },
+        "us_federal": {
+          "mean": 1435,
+          "sd": null,
+          "se": null
+        },
+        "saez_formula": {
+          "mean": 1261,
+          "sd": null,
+          "se": null
+        },
+        "ai_economist": {
+          "mean": 1664,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Equality x Productivity: Free Market 1278, US Federal 1435, Saez Formula 1261, AI Economist 1664."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "free_market vs us_federal vs saez_formula vs ai_economist (human experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 2605,
+          "sd": null,
+          "se": null
+        },
+        "us_federal": {
+          "mean": 2270,
+          "sd": null,
+          "se": null
+        },
+        "saez_formula": {
+          "mean": 1658,
+          "sd": null,
+          "se": null
+        },
+        "ai_economist": {
+          "mean": 2339,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coin Produced: Free Market 2605, US Federal 2270, Saez Formula 1658, AI Economist 2339."
+    },
+    {
+      "outcome_name": "income_equality",
+      "arm_comparison": "free_market vs us_federal vs saez_formula vs ai_economist (human experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 0.37,
+          "sd": null,
+          "se": null
+        },
+        "us_federal": {
+          "mean": 0.48,
+          "sd": null,
+          "se": null
+        },
+        "saez_formula": {
+          "mean": 0.59,
+          "sd": null,
+          "se": null
+        },
+        "ai_economist": {
+          "mean": 0.52,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Income Equality: Free Market 37%, US Federal 48%, Saez Formula 59%, AI Economist 52%."
+    },
+    {
+      "outcome_name": "equality_productivity_product",
+      "arm_comparison": "free_market vs us_federal vs saez_formula vs ai_economist (human experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 855,
+          "sd": null,
+          "se": null
+        },
+        "us_federal": {
+          "mean": 1033,
+          "sd": null,
+          "se": null
+        },
+        "saez_formula": {
+          "mean": 984,
+          "sd": null,
+          "se": null
+        },
+        "ai_economist": {
+          "mean": 1179,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Equality x Productivity: Free Market 855, US Federal 1033, Saez Formula 984, AI Economist 1179."
+    },
+    {
+      "outcome_name": "equality_productivity_product",
+      "arm_comparison": "ai_economist vs free_market (human experiments)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The AI Economist achieves statistically significantly outperforms the free market (at p = 0.05)."
+    },
+    {
+      "outcome_name": "inverse_income_weighted_utility",
+      "arm_comparison": "free_market vs us_federal vs saez_formula vs ai_economist (human experiments)",
+      "means_and_sds": {
+        "free_market": {
+          "mean": 24,
+          "sd": null,
+          "se": null
+        },
+        "us_federal": {
+          "mean": 37,
+          "sd": null,
+          "se": null
+        },
+        "saez_formula": {
+          "mean": 36,
+          "sd": null,
+          "se": null
+        },
+        "ai_economist": {
+          "mean": 42,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Inverse Income Weighted Utility: Free Market 24, US Federal 37, Saez Formula 36, AI Economist 42."
+    },
+    {
+      "outcome_name": "inverse_income_weighted_utility",
+      "arm_comparison": "ai_economist vs all baselines (human experiments)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The AI Economist achieves significantly higher weighted social welfare than all baselines (statistically significant at p = 0.05)."
+    }
+  ],
+  "notes": "Sample sizes for individual arms are not explicitly stated in the quotes. The study reports 57 episodes with 58 participants in batch 1 and 68 episodes with 57 participants in batch 2, with participants grouped into groups of four. Episodes where overall productivity was less than 1000 Coin were excluded from analysis (6 out of 57 episodes from batch 1 and 8 out of 68 episodes from batch 2). The paper notes that productivity was lower in human experiments due to suboptimal human behavior and lower response times compared to AI agents. The AI Economist planner is referred to as the \"Camelback\" tax schedule in human experiments. Two p-values are reported as \"p = 0.05\" but the quotes do not specify whether these are one-tailed or two-tailed tests, or whether they represent exact values or thresholds.",
+  "_paper_id": "2004.13332v1"
+}

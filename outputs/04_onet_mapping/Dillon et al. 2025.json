@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are knowledge workers performing email, document creation, video meetings, and chat tasks using Microsoft Office tools. The primary task description explicitly states workers used Copilot 'integrated into applications they already used at work for email, meetings, and writing.' These are quintessential computer-based work activities spanning multiple specific tasks (emailing, word processing, video conferencing). 'Working with Computers' is the most appropriate generalized work activity because it captures the common thread across all measured tasks without overfitting to any single occupation.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-03",
+      "onet_label": "Communicating with Supervisors, Peers, or Subordinates"
+    }
+  ],
+  "citation_key": "dillon_2025_shifting_work"
+}

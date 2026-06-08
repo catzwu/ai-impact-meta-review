@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Local secrets / configs
+.env
+config/settings.local.yaml
+
+# Heavy logs (regenerated on each run)
+logs/*.jsonl
+logs/*.log
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Large per-run artifacts you usually don't want in source control:
+# (commented out — user opted to keep papers + outputs in the repo)
+# papers/
+# papers_hold/
+# outputs/

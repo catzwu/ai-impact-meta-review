@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "quality_score_documents",
+      "category": "quality",
+      "operationalization": "Rubric score 0-4 per question, dual-graded by independent panel, averaged across all questions in the Documents task"
+    },
+    {
+      "outcome_name": "quality_score_data",
+      "category": "quality",
+      "operationalization": "Count of correct values retrieved out of 40 total values across six questions, compared to ground truth"
+    },
+    {
+      "outcome_name": "time_to_completion_documents",
+      "category": "speed",
+      "operationalization": "Self-reported time in minutes from task start to completion for the Documents task"
+    },
+    {
+      "outcome_name": "time_to_completion_data",
+      "category": "speed",
+      "operationalization": "Self-reported time in minutes from task start to completion for the Data task"
+    }
+  ],
+  "primary_speed_outcome": "time_to_completion_documents",
+  "primary_quality_outcome": "quality_score_documents",
+  "citation_key": "fitzpatrick_2025_generative_ai_public"
+}

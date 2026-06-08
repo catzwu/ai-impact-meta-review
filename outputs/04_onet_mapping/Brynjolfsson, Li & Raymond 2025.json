@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "43-4051.00",
+  "onet_label": "Customer Service Representatives",
+  "mapping_confidence": "high",
+  "rationale": "The participants are customer support agents handling technical support chats for enterprise software. The task description explicitly states they are 'customer support agents' conducting 'support sessions' where they diagnose technical problems and respond to customers. This matches the occupation of Customer Service Representatives, who interact with customers to provide information and resolve complaints. While the work involves some technical troubleshooting, the core activity is customer service communication rather than technical repair or software development.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-03",
+      "onet_label": "Communicating with Supervisors, Peers, or Subordinates"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-22",
+      "onet_label": "Getting Information"
+    }
+  ],
+  "citation_key": "brynjolfsson_2023_generative_ai"
+}

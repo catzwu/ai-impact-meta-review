@@ -1,0 +1,104 @@
+{
+  "citation_key": "zha_2024_llm_pbl",
+  "authors": [
+    "Siyu Zha",
+    "Yuehan Qiao",
+    "Qingyu Hu",
+    "Zhongsheng Li",
+    "Jiangtao Gong",
+    "Yingqing Xu"
+  ],
+  "title": "Designing Child-Centric AI Learning Environments: Insights from LLM-Enhanced Creative Project-Based Learning",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "This study employed a mixed-method approach across two phases. The exploratory study involved 12 middle school students divided into three groups over a seven-day PBL program. The instructional experiment engaged 31 students divided into seven groups over a 48-hour week-long program centered on \"Low-Carbon Campus.\" Both phases used structured observations, comprehensive interviews, and thematic analysis. Four researchers conducted detailed observations and tracked students' performance throughout the program, with semi-structured interviews conducted with all students and mentors at the end, lasting between 30 minutes to an hour.",
+  "primary_task_description": "Students were tasked with developing innovative solutions for creating a low-carbon campus environment through a four-stage process: (1) Discover Stage\u2014identifying carbon emission issues in daily life using user journey maps and LLMs for information retrieval; (2) Define Stage\u2014discussing, evaluating, and refining problems to extract a core problem; (3) Develop Stage\u2014brainstorming at least 15 solutions and using LLMs for information retrieval, idea generation, and feasibility checks; (4) Deliver Stage\u2014refining solutions using LEGO Spike and Arduino, prototyping, and presenting final problem and prototype solutions to teachers for evaluation.",
+  "population_description": "The exploratory study involved 12 students aged 14-16 (M = 15, SD = 0.58) guided by college-level mentors (M = 23.3, SD = 1.89). The instructional experiment engaged 31 students aged 15-16 years old (M = 15.06, SD = 0.36), randomly recruited from a local middle school. Both studies included mentors consisting of graduate and undergraduate students with diverse academic backgrounds in education, environmental science, and design technology (M = 23.1, SD = 2.03). Students were divided into groups ensuring a balanced representation of skills, knowledge, and experience with LLMs and environmental concepts.",
+  "arms": [
+    {
+      "arm_name": "exploratory_study_group_1",
+      "description": "One of three groups (OG1-OG3) in the exploratory study tasked with developing innovative solutions for creating a low-carbon campus environment",
+      "n": null
+    },
+    {
+      "arm_name": "exploratory_study_group_2",
+      "description": "One of three groups (OG1-OG3) in the exploratory study tasked with developing innovative solutions for creating a low-carbon campus environment",
+      "n": null
+    },
+    {
+      "arm_name": "exploratory_study_group_3",
+      "description": "One of three groups (OG1-OG3) in the exploratory study tasked with developing innovative solutions for creating a low-carbon campus environment",
+      "n": null
+    },
+    {
+      "arm_name": "instructional_experiment_group_1",
+      "description": "One of seven groups (G1-G7) in the instructional experiment consisting of four to five students and one mentor",
+      "n": null
+    },
+    {
+      "arm_name": "instructional_experiment_group_2",
+      "description": "One of seven groups (G1-G7) in the instructional experiment consisting of four to five students and one mentor",
+      "n": null
+    },
+    {
+      "arm_name": "instructional_experiment_group_3",
+      "description": "One of seven groups (G1-G7) in the instructional experiment consisting of four to five students and one mentor",
+      "n": null
+    },
+    {
+      "arm_name": "instructional_experiment_group_4",
+      "description": "One of seven groups (G1-G7) in the instructional experiment consisting of four to five students and one mentor",
+      "n": null
+    },
+    {
+      "arm_name": "instructional_experiment_group_5",
+      "description": "One of seven groups (G1-G7) in the instructional experiment consisting of four to five students and one mentor",
+      "n": null
+    },
+    {
+      "arm_name": "instructional_experiment_group_6",
+      "description": "One of seven groups (G1-G7) in the instructional experiment consisting of four to five students and one mentor",
+      "n": null
+    },
+    {
+      "arm_name": "instructional_experiment_group_7",
+      "description": "One of seven groups (G1-G7) in the instructional experiment consisting of four to five students and one mentor",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "problem_identification_and_definition",
+      "outcome_description": "Students' ability to identify issues in their surroundings and define the problems they aimed to address through the Discover and Define stages",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "solution_proposal_and_creativity",
+      "outcome_description": "Students' ability to propose innovative solutions and demonstrate creative thinking during the Develop stage",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "prototype_development",
+      "outcome_description": "Students' ability to craft creative prototypes using available materials (LEGO Spike and Arduino) during the Deliver stage",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "program_completion",
+      "outcome_description": "Successful completion of the week-long PBL program encompassing 48 hours of activities",
+      "measurement_unit": null,
+      "is_primary": true
+    },
+    {
+      "outcome_name": "presentation_approval",
+      "outcome_description": "Final presentations receiving approval from peers and teachers",
+      "measurement_unit": null,
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [],
+  "notes": "This is a qualitative, mixed-methods study with no quantitative outcome comparisons between experimental conditions or control groups. The paper reports on design considerations, student and mentor attitudes, challenges, and reflections on the program design through thematic analysis of interviews and observations rather than statistical hypothesis testing. The study has two phases: an exploratory study with 12 students in 3 groups, and an instructional experiment with 31 students in 7 groups. The paper explicitly notes limitations including limited generalizability due to recruitment from a top-tier school in a major urban area with high-achieving students. No p-values, effect sizes, or comparative statistics are reported.",
+  "_paper_id": "2403.16159v2"
+}

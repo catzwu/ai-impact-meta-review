@@ -1,0 +1,12 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "idea_set_diversity",
+      "category": "other",
+      "operationalization": "Ratio of unique idea concepts to total ideas, where uniqueness is determined by cosine similarity <0.8 using Universal Sentence Encoder embeddings"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "meincke_2025_chatgpt_diversity"
+}

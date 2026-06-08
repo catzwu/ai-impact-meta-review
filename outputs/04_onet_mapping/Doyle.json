@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-26",
+  "onet_label": "Judging the Qualities of Objects, Services, or People",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is 'rating the effectiveness of AI tools in higher education for seven categories.' This is fundamentally an evaluative judgment task where faculty assess and rate the quality/effectiveness of AI tools. This maps directly to WA-26 'Judging the Qualities of Objects, Services, or People,' which involves assessing value, importance, or quality. The participants are the faculty doing the rating, not researchers collecting data.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "25-1199.00",
+      "onet_label": "Postsecondary Teachers, All Other"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    }
+  ],
+  "citation_key": "kotsiovos_2024_generative_ai"
+}

@@ -1,0 +1,89 @@
+{
+  "citation_key": "levanon_2025_entry_level",
+  "authors": [
+    "Gad Levanon",
+    "Matt Sigelman",
+    "Mariano Mamertino",
+    "Mels de Zeeuw",
+    "Gwynn Guilford"
+  ],
+  "title": "No Country for Young Grads: The Structural Forces That Are Reshaping Entry-Level Employment",
+  "year": 2025,
+  "venue": "Burning Glass Institute",
+  "study_design_description": "This analysis utilizes several data sources and specific methodologies to examine trends in unemployment, underemployment, and the impact of Generative AI on the job market. Unemployment and labor force participation data were analyzed using information from the Bureau of Labor Statistics (BLS). Underemployment was measured by identifying bachelor's degree holders working in occupations that typically do not require a college degree. To project and identify the impacts of Generative AI (GenAI), exposure scores from Felten et al. (2023) were used.",
+  "primary_task_description": null,
+  "population_description": "Young graduates, specifically 20-24 year olds with at least a bachelor's degree, and the Class of 2023 (the latest class for which data is available). Young degree holders face a deteriorating job market, with unemployment rates rising faster than any other education or age cohort.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "unemployment_rate",
+      "outcome_description": "The number of unemployed people as a percentage of the labor force (which is the sum of the employed and unemployed). The unemployment rate is calculated as: (Unemployed \u00f7 Labor Force) x 100.",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "underemployment",
+      "outcome_description": "A worker is classified as underemployed if they hold a bachelor's degree but are employed in an occupation where less than half of the workers either have or are required to have one, based on this composite measure.",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "layoff_rates",
+      "outcome_description": "Layoff rates for degree-holders in the young age group.",
+      "measurement_unit": null,
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "unemployment_rate",
+      "arm_comparison": "20-24 year olds with bachelor's degree, 2018-19 vs 2024-25",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "increased from 5.2% to 6.2%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Looking at 20-24 year olds, the unemployment rate for those with at least a bachelor's degree increased from 5.2% in 2018-19 to 6.2% in the two years through June 2025."
+    },
+    {
+      "outcome_name": "underemployment",
+      "arm_comparison": "Class of 2023, one year after graduation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "52% working in jobs that did not require a degree",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For the Class of 2023 \u2013 the latest class for which data is available \u2013 52% found themselves one year after graduation working in jobs that didn't require a degree."
+    },
+    {
+      "outcome_name": "underemployment",
+      "arm_comparison": "Engineering graduates",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "more than a quarter of graduates wind up underemployed",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "even in engineering more than a quarter of graduates wind up underemployed."
+    },
+    {
+      "outcome_name": "layoff_rates",
+      "arm_comparison": "Degree-holders in young age group, pre-pandemic vs current",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "nearly doubled compared to pre-pandemic levels",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The layoff rates for degree-holders in this age group have nearly doubled compared to pre-pandemic levels, with the highest concentrations in information, finance, and professional services."
+    }
+  ],
+  "notes": "This is a policy/research report analyzing structural trends in entry-level employment for college graduates using observational data from BLS, job postings data, and exposure scores from prior research (Felten et al. 2023). It is not an original empirical experiment with experimental arms or a randomized controlled trial. No direct AI vs. no-AI comparison is conducted; rather, the paper analyzes correlations between AI exposure and hiring patterns. The paper notes that these dynamics are driven by structural shifts that predate both the pandemic and the rise of generative AI, and that the mechanisms at play suggest both temporary shocks and permanent change.",
+  "_paper_id": "burning glass"
+}

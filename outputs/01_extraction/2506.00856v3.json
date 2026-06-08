@@ -1,0 +1,1127 @@
+{
+  "citation_key": "chen_2026_econometrics_ai",
+  "authors": [
+    "Qiang Chen",
+    "Tianyang Han",
+    "Jin Li",
+    "Ye Luo",
+    "Zigan Wang",
+    "Yuxiao Wu",
+    "Xiaowei Zhang",
+    "Tuo Zhou"
+  ],
+  "title": "Can AI Master Econometrics? Evidence from Econometrics AI Agent on Expert-Level Tasks",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "study_design_description": "The study conducted extensive tests using two real-world datasets: doctoral-level econometrics coursework assignments (18 exercises) and published empirical economics papers (45 randomly selected seminal articles). Performance evaluation compared generated coefficients, standard errors, and p-values against standard solutions from coursework materials or original papers. Two replication standards were defined: perfect replication requires all three errors to be below 1%, while partial replication requires coefficient and standard error gaps below 5%.",
+  "primary_task_description": "The first task comprises 18 exercises from a doctoral-level \"Applied Econometrics\" course at the University of Hong Kong, covering OLS & PanelOLS regression, propensity score matching, IV-2SLS regression, Difference-in-Differences (DID) analysis, and Regression Discontinuity Design. The second task consists of test datasets from randomly selected seminal articles in reputable journals, primarily accompanied by Stata-based replication packages. Generated prompts are fed directly to the AI agent, which automatically executes code in a Jupyter kernel and iteratively updates based on error messages.",
+  "population_description": "The study evaluates performance through two sets of inquiries: 18 exercises from a doctoral-level econometrics course at the University of Hong Kong with Python-generated standard solutions, and test datasets from randomly selected seminal articles in reputable journals, primarily accompanied by Stata-based replication packages.",
+  "arms": [
+    {
+      "arm_name": "gpt_4o_python",
+      "description": "Direct GPT-4o Python code generation: single-round code generation ability of GPT-4o by feeding it structured prompts prefixed with \"use Python language to compute the following task\" and manually executing the generated code.",
+      "n": null
+    },
+    {
+      "arm_name": "gpt_4o_stata",
+      "description": "Direct GPT-4o Stata code generation: testing LLM code generation in Stata, the most popular software in empirical research. Results are recorded in \".smcl\" log files.",
+      "n": null
+    },
+    {
+      "arm_name": "data_interpreter",
+      "description": "General-purpose Data Interpreter agent (Hong et al., 2024b): a standard AI agent for data analysis without econometric tool packages.",
+      "n": null
+    },
+    {
+      "arm_name": "metricsai",
+      "description": "MetricsAI: the proposed specialized AI agent for econometric analysis with econometric tool packages and systematic internal prompts.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "directional_replication_rate",
+      "outcome_description": "Percentage of cases where the generated coefficient direction matches the standard solution",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "perfect_replication_rate",
+      "outcome_description": "Percentage of cases where all three errors (coefficient, standard error, p-value) are below 1%",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "partial_replication_rate",
+      "outcome_description": "Percentage of cases where coefficient and standard error gaps are below 5%",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "compilation_success_rate",
+      "outcome_description": "Percentage of cases where generated code compiles successfully",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coefficient_median_error",
+      "outcome_description": "Median L1-norm distance of coefficients expressed as percentage",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coefficient_error_below_1_percent",
+      "outcome_description": "Percentage of cases where coefficient error is below 1%",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "coefficient_error_below_10_percent",
+      "outcome_description": "Percentage of cases where coefficient error is below 10%",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "standard_error_median_error",
+      "outcome_description": "Median L1-norm distance of standard errors expressed as percentage",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "standard_error_error_below_1_percent",
+      "outcome_description": "Percentage of cases where standard error error is below 1%",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "standard_error_error_below_10_percent",
+      "outcome_description": "Percentage of cases where standard error error is below 10%",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "p_value_average_absolute_error",
+      "outcome_description": "Average absolute distance of p-values",
+      "measurement_unit": "absolute distance",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "p_value_median_absolute_error",
+      "outcome_description": "Median absolute distance of p-values",
+      "measurement_unit": "absolute distance",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "p_value_error_below_1_percent",
+      "outcome_description": "Percentage of cases where p-value absolute error is below 1%",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "p_value_error_below_10_percent",
+      "outcome_description": "Percentage of cases where p-value absolute error is below 10%",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "significant_level_correctness",
+      "outcome_description": "Percentage of cases where significance level is correctly identified",
+      "measurement_unit": "percent",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "directional_replication_rate",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 35.56,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 21.11,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 77.78,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 96.11,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "MetricsAI demonstrates superior performance with a 96.11% directional replication rate and very low level of coefficient error (median value of errors only around 0.01%). In contrast, both GPT-generated Python and Stata control groups show incorrect directions in over half of test cases. While the general AI Agent achieves a 77.78% directional replication rate, its coefficient values frequently deviate significantly from true values, with the median value of coefficient errors reaching 11.06%."
+    },
+    {
+      "outcome_name": "perfect_replication_rate",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 12.22,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 10.0,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 26.67,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 57.78,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In addition, MetricsAI perfectly replicates around 58% of cases, compared to approximately 10% ~ 27% for control groups."
+    },
+    {
+      "outcome_name": "partial_replication_rate",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 16.67,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 11.11,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 32.22,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 66.11,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Partial Replication 16.67% 11.11% 32.22% 66.11%"
+    },
+    {
+      "outcome_name": "compilation_success_rate",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 35.56,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 23.33,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 96.67,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 98.33,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Both AI agents - MetricsAI and general-purpose AI agent (Data Interpreter) - achieve almost perfect compilation rates through error-feedback mechanisms, while direct LLM generation groups compile successfully less than 36% of the time."
+    },
+    {
+      "outcome_name": "coefficient_median_error",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 0.99,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 0.04,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 11.06,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 0.01,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "MetricsAI demonstrates superior performance with a 96.11% directional replication rate and very low level of coefficient error (median value of errors only around 0.01%). In contrast, both GPT-generated Python and Stata control groups show incorrect directions in over half of test cases. While the general AI Agent achieves a 77.78% directional replication rate, its coefficient values frequently deviate significantly from true values, with the median value of coefficient errors reaching 11.06%."
+    },
+    {
+      "outcome_name": "coefficient_error_below_1_percent",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 17.78,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 11.11,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 16.67,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 68.33,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coefficient Error < 1% 17.78% 11.11% 16.67% 68.33%"
+    },
+    {
+      "outcome_name": "coefficient_error_below_10_percent",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 30.0,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 15.56,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 38.89,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 78.33,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coefficient Error < 10% 30% 15.56% 38.89% 78.33%"
+    },
+    {
+      "outcome_name": "standard_error_median_error",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 2.14,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 2.12,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 8.01,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 0.28,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Standard Error Median Error 2.14% 2.12% 8.01% 0.28%"
+    },
+    {
+      "outcome_name": "standard_error_error_below_1_percent",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 13.75,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 8.75,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 25.0,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 55.62,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Standard Error Error < 1% 13.75% 8.75% 25% 55.62%"
+    },
+    {
+      "outcome_name": "standard_error_error_below_10_percent",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 32.5,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 17.5,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 43.75,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 80.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Standard Error Error < 10% 32.5% 17.5% 43.75% 80%"
+    },
+    {
+      "outcome_name": "p_value_average_absolute_error",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 0.0197,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 0.0306,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 0.0584,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 0.0243,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value Average abs Error .0197 .0306 .0584 .0243"
+    },
+    {
+      "outcome_name": "p_value_median_absolute_error",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 0.0,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 0.0004,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 0.0,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 0.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value Median abs Error 0 .0004 0 0"
+    },
+    {
+      "outcome_name": "p_value_error_below_1_percent",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 37.5,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 15.0,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 68.75,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 89.38,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value abs Error < 1% 37.5% 15% 68.75% 89.38%"
+    },
+    {
+      "outcome_name": "p_value_error_below_10_percent",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 37.5,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 16.25,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 68.75,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 90.62,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value abs Error < 10% 37.5% 16.25% 68.75% 90.62%"
+    },
+    {
+      "outcome_name": "significant_level_correctness",
+      "arm_comparison": "coursework_assignments_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 37.5,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 17.5,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 68.75,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 90.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Significant Level Correctness 37.5% 17.5% 68.75% 90%"
+    },
+    {
+      "outcome_name": "directional_replication_rate",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 24.44,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 36.11,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 74.67,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 87.78,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Correct Direction 24.44% 36.11% 74.67% 87.78%"
+    },
+    {
+      "outcome_name": "perfect_replication_rate",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 8.44,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 17.78,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 19.78,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 32.67,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Perfect Replication 8.44% 17.78% 19.78% 32.67%"
+    },
+    {
+      "outcome_name": "partial_replication_rate",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 13.78,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 22.22,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 36.22,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 42.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Partial Replication 13.78% 22.22% 36.22% 42%"
+    },
+    {
+      "outcome_name": "compilation_success_rate",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 28.89,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 38.89,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 88.44,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 96.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Compilation Success 28.89% 38.89% 88.44% 96%"
+    },
+    {
+      "outcome_name": "coefficient_median_error",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 0.86,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 0.0,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 3.24,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 0.16,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coefficient Median Error 0.86% 0.00% 3.24% 0.16%"
+    },
+    {
+      "outcome_name": "coefficient_error_below_1_percent",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 12.44,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 18.89,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 30.44,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 48.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coefficient Error < 1% 12.44% 18.89% 30.44% 48%"
+    },
+    {
+      "outcome_name": "coefficient_error_below_10_percent",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 13.33,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 24.44,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 43.33,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 59.78,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Coefficient Error < 10% 13.33% 24.44% 43.33% 59.78%"
+    },
+    {
+      "outcome_name": "standard_error_median_error",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 1.84,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 0.0,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 5.94,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 8.77,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Standard Error Median Error 1.84% 0.00% 5.94% 8.77%"
+    },
+    {
+      "outcome_name": "standard_error_error_below_1_percent",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 11.58,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 22.37,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 20.0,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 27.63,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Standard Error Error < 1% 11.58% 22.37% 20% 27.63%"
+    },
+    {
+      "outcome_name": "standard_error_error_below_10_percent",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 20.53,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 28.95,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 38.42,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 46.58,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Standard Error Error < 10% 20.53% 28.95% 38.42% 46.58%"
+    },
+    {
+      "outcome_name": "p_value_average_absolute_error",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 0.0385,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 0.016,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 0.0765,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 0.0371,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value Average Error .0385 .0160 .0765 .0371"
+    },
+    {
+      "outcome_name": "p_value_median_absolute_error",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 0.0001,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 0.0,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 0.001,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 0.0017,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value Median abs Error .0001 0 .001 .0017"
+    },
+    {
+      "outcome_name": "p_value_error_below_1_percent",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 15.79,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 27.63,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 43.16,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 53.42,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value Error < 1% 15.79% 27.63% 43.16% 53.42%"
+    },
+    {
+      "outcome_name": "p_value_error_below_10_percent",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 24.21,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 35.53,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 63.16,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 79.47,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "P-value Error < 10% 24.21% 35.53% 63.16% 79.47%"
+    },
+    {
+      "outcome_name": "significant_level_correctness",
+      "arm_comparison": "published_papers_all_arms",
+      "means_and_sds": {
+        "gpt_4o_python": {
+          "mean": 25.26,
+          "sd": null,
+          "se": null
+        },
+        "gpt_4o_stata": {
+          "mean": 31.58,
+          "sd": null,
+          "se": null
+        },
+        "data_interpreter": {
+          "mean": 57.11,
+          "sd": null,
+          "se": null
+        },
+        "metricsai": {
+          "mean": 73.68,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Significant Level Correctness 25.26% 31.58% 57.11% 73.68%"
+    }
+  ],
+  "notes": "This study evaluates MetricsAI, a specialized AI agent for econometric analysis, against three control conditions: GPT-4o Python code generation, GPT-4o Stata code generation, and a general-purpose Data Interpreter agent. Two datasets were tested: 18 doctoral-level coursework assignments and 45 published empirical papers. The paper reports extensive performance metrics including directional replication rates, perfect replication rates (all three errors below 1%), partial replication rates (coefficient and SE gaps below 5%), and detailed error statistics for coefficients, standard errors, and p-values. MetricsAI substantially outperforms all control groups on coursework assignments (96.11% directional replication vs. 21-78% for controls) and published papers (87.78% directional replication vs. 24-75% for controls). The authors note that MetricsAI's performance declines for complex methods like DID and RDD compared to simpler approaches, and results deteriorate when moving from coursework to published paper replication tasks. However, they suggest these limitations can be addressed through enhanced domain knowledge architecture and customized tools.",
+  "_paper_id": "2506.00856v3"
+}

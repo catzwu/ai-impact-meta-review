@@ -1,0 +1,51 @@
+{
+  "_paper_id": "liu2024b",
+  "citation_key": "liu_2024_coquest",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is a within-subjects study comparing two different AI-assisted generation strategies (breadth-first vs. depth-first). There is no human-only baseline condition. All participants used the CoQuest AI system in both conditions; the manipulation was only the degree of AI initiative (breadth-first = lower AI initiative, depth-first = higher AI initiative). The study explicitly states 'Our work makes novel and significant contributions as follows... we proposed a new agent LLM system and implemented two interaction designs (breadth-first and depth-first), where the AI agent took different levels of initiative in supporting users to develop RQs.' Both conditions involve human-AI co-creation. Without a no-AI control, we cannot compute a human vs. human+AI effect size.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 20,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 20,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": 3.79,
+    "reported_F_df1": 4,
+    "reported_F_df2": 209,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.0057,
+    "extraction_confidence": "high",
+    "notes": "After careful re-reading, this study definitively does NOT include a human-only baseline. The study design is a within-subjects comparison of two AI-assisted conditions that differ only in the level of AI initiative during co-creation. The paper states: 'We conducted an experiment with 20 HCI researchers to examine the impact of two interaction designs: breadth-first and depth-first RQ generation.' Both designs use the CoQuest LLM-based agent system. The MANOVA F-statistic (df1=4) is a multivariate test across four dependent variables (novelty, value, surprise, relevance), not a simple two-group comparison on a single outcome. The study's research questions focus on comparing these two AI-assisted approaches, not on comparing AI assistance to no AI assistance. Total N=20 participants, each completing both conditions in counterbalanced order.",
+    "source_quotes": [
+      "We conducted an experiment with 20 HCI researchers to examine the impact of two interaction designs: breadth-first and depth-first RQ generation.",
+      "A within-subjects user study was conducted to understand the difference in users' behavior and perception of the system potentially brought by the two different conditions using the two designs, referred to as breadth-first condition and depth-first condition.",
+      "To account for the problem of multiple comparisons, we conducted a MANOVA and found a significant difference (F (4, 209) = 3.79, p = .0057**;Wilk's \u039b = 0.909) in the user-provided ratings for RQs between the two conditions (i.e., breadth-first and depth-first).",
+      "Our work makes novel and significant contributions as follows... Second, we proposed a new agent LLM system and implemented two interaction designs (breadth-first and depth-first), where the AI agent took different levels of initiative in supporting users to develop RQs."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After careful re-reading, this study definitively does NOT include a human-only baseline. The study design is a within-subjects comparison of two AI-assisted conditions that differ only in the level of AI initiative during co-creation. The paper states: 'We conducted an experiment with 20 HCI researchers to examine the impact of two interaction designs: breadth-first and depth-first RQ generation.' Both designs use the CoQuest LLM-based agent system. The MANOVA F-statistic (df1=4) is a multivariate test across four dependent variables (novelty, value, surprise, relevance), not a simple two-group comparison on a single outcome. The study's research questions focus on comparing these two AI-assisted approaches, not on comparing AI assistance to no AI assistance. Total N=20 participants, each completing both conditions in counterbalanced order. | arm pair unresolvable",
+    "n_human": 20,
+    "n_ai": 20,
+    "direction_convention": null
+  }
+}

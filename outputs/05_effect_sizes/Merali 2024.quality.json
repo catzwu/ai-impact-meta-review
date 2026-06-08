@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Merali 2024",
+  "citation_key": "merali_2024_scaling_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": 0.2,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm available: ai_assisted, which pools all thirteen AI models. This is compared against the control arm with no AI assistance. The design is within-subject as participants completed tasks both with and without AI.",
+    "direction_convention": "larger_is_better",
+    "m_human": 4.51,
+    "sd_human": 1.4,
+    "se_human": null,
+    "n_human": 1499,
+    "m_ai": 4.71,
+    "sd_ai": 1.4,
+    "se_ai": null,
+    "n_ai": 1499,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.14,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.148,
+    "extraction_confidence": "high",
+    "notes": "Within-subject design where participants completed tasks both with and without AI. Sample size n=1499 is found in Table 2 (Appendix A). The SD can be calculated from the standardized effect: the paper reports 0.14 standard deviations for a 0.2-point difference, which implies SD \u2248 0.2/0.14 \u2248 1.43. This is consistent with the Root MSE = 1.3865 reported in Table 4 for the quality outcome. Using SD = 1.4 as a conservative estimate based on these values.",
+    "source_quotes": [
+      "The average grade without access to an AI model was 4.51. When participants were able to use an AI model this increased to 4.71, an increase of 0.2 points on a seven-point scale. This equates to an increase of 0.14 standard deviations in the average grade.",
+      "Observations 1,500 1,499 1,500 1,499 (Table 2, page 20)",
+      "Root MSE 1.3865 1.0097 (Table 4, page 22)"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.142857142857143,
+    "hedges_g": 0.14282137790441232,
+    "variance": 0.0013369567666278125,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Within-subject design where participants completed tasks both with and without AI. Sample size n=1499 is found in Table 2 (Appendix A). The SD can be calculated from the standardized effect: the paper reports 0.14 standard deviations for a 0.2-point difference, which implies SD \u2248 0.2/0.14 \u2248 1.43. This is consistent with the Root MSE = 1.3865 reported in Table 4 for the quality outcome. Using SD = 1.4 as a conservative estimate based on these values.",
+    "n_human": 1499,
+    "n_ai": 1499,
+    "direction_convention": "larger_is_better"
+  }
+}

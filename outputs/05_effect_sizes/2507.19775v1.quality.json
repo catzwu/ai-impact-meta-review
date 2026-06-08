@@ -1,0 +1,52 @@
+{
+  "_paper_id": "2507.19775v1",
+  "citation_key": "ganuthula_2025_ai_structural",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is a cross-sectional observational study examining the structural and performance impacts of AI adoption on Indian startups. It compares two cohorts of firms (pre-AI era: 2016\u20132020, n=713; AI-era: 2021\u20132025, n=201) using a natural experiment framework. There is no experimental manipulation, no human-only baseline arm in the sense of a controlled trial, and no quality outcome measured at the individual task or worker level. The study reports firm-level metrics (employee count, valuation per employee, revenue-to-funding ratio, etc.) and uses t-tests and regression to compare cohorts. While the paper does report statistics (t-values, means, SDs, p-values) for these firm-level outcomes, none of these outcomes represent a 'quality' measure in the sense required by the extraction schema (e.g., accuracy, error rate, rubric score, or rating of output quality). The outcomes are structural and efficiency metrics of startups, not quality of work or output. Therefore, there is no arm pair or quality outcome to extract for computing Hedges' g as specified.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After re-reading the full PDF, I confirm that this study is not a controlled experiment or RCT comparing human-only vs. human+AI performance on a task. It is an observational, cross-sectional analysis of Indian startup firms founded in two time periods (pre-AI and AI-era cohorts). The paper reports firm-level structural and efficiency metrics (e.g., age-adjusted employee count, valuation per employee, revenue-to-funding ratio) and compares these across cohorts using t-tests and regression. No quality outcome (accuracy, error rate, rubric score, rating) is measured. The prior pass correctly identified 'no speed or quality primary outcome.' The study's focus is on organizational structure and capital efficiency, not on the quality of work output. Therefore, no arm pair or quality outcome is resolvable for Hedges' g extraction as specified by the schema.",
+    "source_quotes": [
+      "This study explores the structural and performance impacts of artificial intelligence (AI) adoption on India's knowledge-intensive startups, spanning information technology, financial technology, health technology, and educational technology, founded between 2016 and 2025.",
+      "Using a natural experiment framework with the founding year as an exogenous treatment proxy, it examines firm size, revenue productivity, valuation efficiency, and capital utilization across pre-AI and AI-era cohorts.",
+      "Findings reveal larger structures and lower efficiency in AI-era firms, supported by a dataset of 914 cleaned firms.",
+      "The sample of 914 firms included 713 pre-AI and 201 AI-era startups within India's knowledge-intensive sector. Descriptive analysis revealed the mean age-adjusted employee count increasing from 4.961 to 11.641, suggesting a shift toward larger organizational structures in AI-era firms. Valuation per employee decreased from 1.188 to 0.788, indicating reduced value creation per worker potentially due to scaled growth in AI-era. The revenue-to-funding ratio decreased from 8.941 to 1.530, reflecting lower capital efficiency, a trend that may reflect heavier investments in AI-era firms.",
+      "Independent samples t-tests confirmed significant differences between pre-AI and AI-era cohorts. AI-era firms employed more individuals on an age-adjusted basis (mean = 11.641, standard deviation = 9.684) compared to pre-AI firms (mean = 4.961, standard deviation = 5.252), with a t-value of -12.891 and 912 degrees of freedom, yielding a p-value less than 0.001."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After re-reading the full PDF, I confirm that this study is not a controlled experiment or RCT comparing human-only vs. human+AI performance on a task. It is an observational, cross-sectional analysis of Indian startup firms founded in two time periods (pre-AI and AI-era cohorts). The paper reports firm-level structural and efficiency metrics (e.g., age-adjusted employee count, valuation per employee, revenue-to-funding ratio) and compares these across cohorts using t-tests and regression. No quality outcome (accuracy, error rate, rubric score, rating) is measured. The prior pass correctly identified 'no speed or quality primary outcome.' The study's focus is on organizational structure and capital efficiency, not on the quality of work output. Therefore, no arm pair or quality outcome is resolvable for Hedges' g extraction as specified by the schema. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

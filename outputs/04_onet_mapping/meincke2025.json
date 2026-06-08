@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task was 'coming up with gift ideas, designing toys from everyday objects, and repurposing household items' \u2014 all creative ideation activities. This maps directly to O*NET's 'Thinking Creatively' work activity, which encompasses developing, designing, or creating new applications, ideas, relationships, systems, or products, including artistic contributions. The task is narrow and well-defined (creative brainstorming/ideation), making a work activity mapping more appropriate than an occupation.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-10",
+      "onet_label": "Making Decisions and Solving Problems"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "27-1019.00",
+      "onet_label": "Artists and Related Workers, All Other"
+    }
+  ],
+  "citation_key": "meincke_2025_chatgpt_diversity"
+}

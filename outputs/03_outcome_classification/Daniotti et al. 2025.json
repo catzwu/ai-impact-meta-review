@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "AI-generated code prevalence",
+      "category": "other",
+      "operationalization": "Percentage of Python functions classified as AI-generated using machine learning on commit data"
+    },
+    {
+      "outcome_name": "commit_rate_all",
+      "category": "speed",
+      "operationalization": "Count of all commits by a user per quarter, extracted from version control system"
+    },
+    {
+      "outcome_name": "commit_rate_multiple_files",
+      "category": "speed",
+      "operationalization": "Count of commits modifying multiple files per quarter, extracted from version control system"
+    },
+    {
+      "outcome_name": "commit_rate_library_imports",
+      "category": "speed",
+      "operationalization": "Count of commits adding library imports per quarter, extracted from version control system"
+    },
+    {
+      "outcome_name": "unique_libraries_added",
+      "category": "other",
+      "operationalization": "Count of distinct libraries added by a user across all commits in a quarter"
+    },
+    {
+      "outcome_name": "new_library_combinations",
+      "category": "other",
+      "operationalization": "Count of distinct libraries added in a quarter that the user had never used before"
+    }
+  ],
+  "primary_speed_outcome": "commit_rate_all",
+  "primary_quality_outcome": null,
+  "citation_key": "daniotti_2025_ai_code"
+}

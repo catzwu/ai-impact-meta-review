@@ -1,0 +1,17 @@
+{
+  "citation_key": "autor_2024_ai_middle_class",
+  "authors": [
+    "David Autor"
+  ],
+  "title": "Applying AI to Rebuild Middle Class Jobs",
+  "year": 2024,
+  "venue": "NBER Working Paper",
+  "study_design_description": null,
+  "primary_task_description": null,
+  "population_description": null,
+  "arms": [],
+  "outcomes": [],
+  "reported_statistics": [],
+  "notes": "This is a position/opinion paper by David Autor, not a report of original empirical research. The paper discusses three recent empirical studies (Peng et al. 2023 on GitHub Copilot; Noy and Zhang 2023 on ChatGPT for writing; Brynjolfsson et al. 2023 on AI for customer service; and Agarwal et al. 2023 on AI for radiology) but does not conduct its own experiment. The paper makes a theoretical argument about how AI could be used to augment worker expertise and restore middle-class jobs, drawing on historical parallels and economic reasoning. The statistical results quoted are from the cited studies, not from original work by Autor. No original study design, population, arms, or outcomes are present in the provided quotes.",
+  "_paper_id": "Autor 2024"
+}

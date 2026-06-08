@@ -1,0 +1,62 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "information_coverage",
+      "category": "quality",
+      "operationalization": "Count of distinct facts (out of 30 total) mentioned at least once in the group's chat discussion"
+    },
+    {
+      "outcome_name": "information_density",
+      "category": "quality",
+      "operationalization": "Ratio of covered facts to total non-facilitator messages sent during discussion"
+    },
+    {
+      "outcome_name": "gini_coefficient_covered_facts",
+      "category": "quality",
+      "operationalization": "Gini coefficient measuring evenness of fact distribution across the three candidate cities in discussion"
+    },
+    {
+      "outcome_name": "minimum_new_facts_shared",
+      "category": "quality",
+      "operationalization": "Minimum count of previously unmentioned facts contributed by any single group member"
+    },
+    {
+      "outcome_name": "maximum_new_facts_shared",
+      "category": "quality",
+      "operationalization": "Maximum count of previously unmentioned facts contributed by any single group member"
+    },
+    {
+      "outcome_name": "all_members_shared_facts",
+      "category": "quality",
+      "operationalization": "Proportion of groups where every member contributed at least one new fact to the discussion"
+    },
+    {
+      "outcome_name": "optimal_choice_selection",
+      "category": "quality",
+      "operationalization": "Proportion of groups selecting Eldoron (the objectively optimal city) as their majority decision"
+    },
+    {
+      "outcome_name": "group_messages_sent",
+      "category": "other",
+      "operationalization": "Average count of messages sent by group members, excluding facilitator messages; measures engagement/activity level"
+    },
+    {
+      "outcome_name": "facilitator_message_frequency",
+      "category": "other",
+      "operationalization": "Average count of messages sent by the AI facilitator; measures intervention intensity rather than task output"
+    },
+    {
+      "outcome_name": "facilitator_message_length",
+      "category": "other",
+      "operationalization": "Average word count per facilitator message; measures intervention characteristics rather than task output"
+    },
+    {
+      "outcome_name": "facilitator_direct_address_rate",
+      "category": "other",
+      "operationalization": "Proportion of facilitator messages addressing a specific group member; measures intervention style rather than task output"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "information_coverage",
+  "citation_key": "alsobay_2025_llm_facilitated"
+}

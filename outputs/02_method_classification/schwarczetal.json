@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study explicitly states it is \"a randomized controlled trial\" where \"Upper-level law students from the University of Minnesota and University of Michigan were randomly assigned to one of three groups of equal size.\" Students completed tasks remotely online (via Canvas), which is neither a controlled lab setting nor a real workplace, making this a standard RCT.",
+  "citation_key": "schwarcz_2026_ai_lawyering"
+}

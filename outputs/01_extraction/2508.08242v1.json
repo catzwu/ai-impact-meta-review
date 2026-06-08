@@ -1,0 +1,352 @@
+{
+  "citation_key": "alsobay_2025_llm_facilitated",
+  "authors": [
+    "Mohammed Alsobay",
+    "David M. Rothschild",
+    "Jake M. Hofman",
+    "Daniel G. Goldstein"
+  ],
+  "title": "Bringing Everyone to the Table: An Experimental Study of LLM-Facilitated Group Decision Making",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "A pre-registered randomized experiment (AsPredicted #192061) with 1,475 participants assigned to 281 five-person groups completing a hidden profile task\u2014selecting an optimal city for a hypothetical sporting event. Groups were randomly assigned to one of four facilitation conditions: no facilitation, a one-time message prompting information sharing, a human facilitator, or an LLM (GPT-4o) facilitator. The primary outcome was information coverage (number of distinct facts mentioned); exploratory analyses examined information density, diversity, decision quality, and participant attitudes.",
+  "primary_task_description": "Groups were tasked with selecting one of three fictional cities\u2014Eldoron, Myloria, and Cragnio\u2014to host an international sporting event. Each city was described by 10 different facts across five categories: weather, tourism, transportation, community, and miscellaneous. Each group member had access to only a subset of facts (public, shared, or private), with information asymmetrically distributed such that Myloria appeared most appealing in each individual's information set, obscuring the true optimal choice (Eldoron). Groups had 10 minutes to discuss the task via chat interface.",
+  "population_description": "A total of 1,475 participants were recruited from Prolific, filtered to those from the United States with self-declared fluency in English, more than 50 previous submissions to Prolific, and a submission acceptance rate greater than 95%. Participants were compensated a flat amount of $3.75 for full completion of the study, with a median hourly compensation rate of $14.40/hr. The study was approved by the Microsoft Research Institutional Review Board (MSR IRB; Record #10883), and all participants provided explicit consent.",
+  "arms": [
+    {
+      "arm_name": "no_facilitation",
+      "description": "Groups completed the task without any facilitative support.",
+      "n": 70
+    },
+    {
+      "arm_name": "message",
+      "description": "Groups were shown a one-time reminder at the beginning of deliberation: \"People may have different information about what is being discussed in this meeting, so encourage everyone to share all of the relevant information they have.\" The reminder disappeared once the discussion began.",
+      "n": 71
+    },
+    {
+      "arm_name": "human_facilitator",
+      "description": "A sixth human participant was added to the group to act as a facilitator. The facilitator was presented with a core prompt to \"first, make sure that everyone is heard from and shares what they know and, second, act as a scoreboard and keep track of pros and cons\", and was also given the reminder presented in the \"Message\" condition. The facilitator was not provided with information relevant to any of the options in the hidden profile task.",
+      "n": 70
+    },
+    {
+      "arm_name": "llm_facilitator",
+      "description": "An LLM (GPT-4o) acted as a facilitator. The LLM was presented with the same core prompt as the human facilitator and was given the reminder from the \"Message\" condition. The LLM sent a message to the group every 90 seconds, in addition to responding when directly addressed; each request included the full timestamped transcript, general information about meeting objectives, attendees, and time elapsed/remaining. The LLM was not provided with information relevant to any of the options in the hidden profile task.",
+      "n": 70
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "information_coverage",
+      "outcome_description": "The number of distinct facts mentioned at least once throughout a group's discussion, ranging from 0 to 30.",
+      "measurement_unit": "number of facts",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "information_density",
+      "outcome_description": "The ratio of covered facts to the number of non-facilitator messages in the discussion.",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "gini_coefficient_covered_facts",
+      "outcome_description": "A measure of the evenness of information distribution among the three candidate cities, with lower values indicating more even distribution.",
+      "measurement_unit": "Gini coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "minimum_new_facts_shared",
+      "outcome_description": "The minimum number of new facts (not previously covered in the group's discussion) shared by any member of the group.",
+      "measurement_unit": "number of facts",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "maximum_new_facts_shared",
+      "outcome_description": "The maximum number of new facts (not previously covered in the group's discussion) shared by any individual member.",
+      "measurement_unit": "number of facts",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "all_members_shared_facts",
+      "outcome_description": "Whether all group members shared at least one new fact during the discussion.",
+      "measurement_unit": "proportion of groups",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "optimal_choice_selection",
+      "outcome_description": "The proportion of groups that chose Eldoron (the optimal choice) as their collective decision, defined as the option chosen by a majority.",
+      "measurement_unit": "proportion",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "group_messages_sent",
+      "outcome_description": "The average number of overall messages sent by group members, excluding facilitators.",
+      "measurement_unit": "number of messages",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "facilitator_message_frequency",
+      "outcome_description": "The average number of messages sent by the facilitator during the discussion.",
+      "measurement_unit": "number of messages",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "facilitator_message_length",
+      "outcome_description": "The average length of facilitator messages.",
+      "measurement_unit": "words",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "facilitator_direct_address_rate",
+      "outcome_description": "The proportion of facilitator messages that directly address a group member.",
+      "measurement_unit": "proportion",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "information_coverage",
+      "arm_comparison": "message vs no_facilitation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = 1.32 facts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(139) = 1.52",
+      "p_value": "p = 0.07",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that neither the one-time message treatment (\u0394 = 1.32, t(139) = 1.52, p = 0.07) nor human facilitation (\u0394 = 0.43, t(138) = 0.51, p = 0.31) significantly increased the average number of facts shared relative to no facilitation."
+    },
+    {
+      "outcome_name": "information_coverage",
+      "arm_comparison": "human_facilitator vs no_facilitation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = 0.43 facts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(138) = 0.51",
+      "p_value": "p = 0.31",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that neither the one-time message treatment (\u0394 = 1.32, t(139) = 1.52, p = 0.07) nor human facilitation (\u0394 = 0.43, t(138) = 0.51, p = 0.31) significantly increased the average number of facts shared relative to no facilitation."
+    },
+    {
+      "outcome_name": "information_coverage",
+      "arm_comparison": "llm_facilitator vs no_facilitation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = 2.9 facts",
+      "standardized_effect_reported": "Cohen's d = 0.61",
+      "regression_coefficient": null,
+      "test_statistic": "t(138) = 3.58",
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "However, we find that LLM facilitation increased information sharing relative to all other conditions: \u0394 = 2.9, t(138) = 3.58, p < 0.001 for \"None\"; \u0394 = 1.58, t(139) = 2.1, p = 0.02 for \"Message\"; and \u0394 = 2.47, t(138) = 3.37, p < 0.001 for \"Human\"; to contextualize the observed increase in information coverage with LLM facilitation relative to no facilitation (\"LLM\" vs. \"None\"), the effect size (Cohen's d) is 0.61, indicating a moderate-to-large practical effect of LLM facilitation on information coverage."
+    },
+    {
+      "outcome_name": "information_coverage",
+      "arm_comparison": "llm_facilitator vs message",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = 1.58 facts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(139) = 2.1",
+      "p_value": "p = 0.02",
+      "confidence_interval": null,
+      "verbatim_quote": "However, we find that LLM facilitation increased information sharing relative to all other conditions: \u0394 = 2.9, t(138) = 3.58, p < 0.001 for \"None\"; \u0394 = 1.58, t(139) = 2.1, p = 0.02 for \"Message\"; and \u0394 = 2.47, t(138) = 3.37, p < 0.001 for \"Human\"; to contextualize the observed increase in information coverage with LLM facilitation relative to no facilitation (\"LLM\" vs. \"None\"), the effect size (Cohen's d) is 0.61, indicating a moderate-to-large practical effect of LLM facilitation on information coverage."
+    },
+    {
+      "outcome_name": "information_coverage",
+      "arm_comparison": "llm_facilitator vs human_facilitator",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = 2.47 facts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(138) = 3.37",
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "However, we find that LLM facilitation increased information sharing relative to all other conditions: \u0394 = 2.9, t(138) = 3.58, p < 0.001 for \"None\"; \u0394 = 1.58, t(139) = 2.1, p = 0.02 for \"Message\"; and \u0394 = 2.47, t(138) = 3.37, p < 0.001 for \"Human\"; to contextualize the observed increase in information coverage with LLM facilitation relative to no facilitation (\"LLM\" vs. \"None\"), the effect size (Cohen's d) is 0.61, indicating a moderate-to-large practical effect of LLM facilitation on information coverage."
+    },
+    {
+      "outcome_name": "group_messages_sent",
+      "arm_comparison": "all conditions",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F(3,277) = 0.46",
+      "p_value": "p = 0.71",
+      "confidence_interval": null,
+      "verbatim_quote": "Despite LLM facilitators eliciting more facts from groups, we detect no significant difference in the average number of overall messages sent by the group members (excluding the facilitators) between treatments (F(3,277) = 0.46, p = 0.71), and find that LLM-facilitated discussions are more information dense than unfacilitated discussions on average, where density is defined as the ratio of covered facts to the number of non-facilitator messages in the discussion (\u0394 = 0.067, 95% CI [0.025, 0.109], t(138) = 3.17, p = 0.002; see Figure 3B)."
+    },
+    {
+      "outcome_name": "information_density",
+      "arm_comparison": "llm_facilitator vs no_facilitation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = 0.067",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(138) = 3.17",
+      "p_value": "p = 0.002",
+      "confidence_interval": "95% CI [0.025, 0.109]",
+      "verbatim_quote": "Despite LLM facilitators eliciting more facts from groups, we detect no significant difference in the average number of overall messages sent by the group members (excluding the facilitators) between treatments (F(3,277) = 0.46, p = 0.71), and find that LLM-facilitated discussions are more information dense than unfacilitated discussions on average, where density is defined as the ratio of covered facts to the number of non-facilitator messages in the discussion (\u0394 = 0.067, 95% CI [0.025, 0.109], t(138) = 3.17, p = 0.002; see Figure 3B)."
+    },
+    {
+      "outcome_name": "gini_coefficient_covered_facts",
+      "arm_comparison": "llm_facilitator vs no_facilitation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = -0.05",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(138) = -2.42",
+      "p_value": "p = 0.017",
+      "confidence_interval": "95% CI [-0.091, -0.009]",
+      "verbatim_quote": "Moreover, the information covered in LLM-facilitated groups may be more evenly distributed among the three candidate cities than in groups with no facilitation, as suggested by the decrease in the average Gini coefficient of covered facts for each city (\u0394 = -0.05, 95% CI [-0.091, -0.009], t(138) = -2.42, p = 0.017; Figure 3C), hinting that LLM facilitation may encourage groups to more holistically evaluate the decision at hand."
+    },
+    {
+      "outcome_name": "facilitator_message_frequency",
+      "arm_comparison": "human_facilitator vs llm_facilitator",
+      "means_and_sds": {
+        "human_facilitator": {
+          "mean": 9,
+          "sd": null,
+          "se": null
+        },
+        "llm_facilitator": {
+          "mean": 7,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(138) = 2.74",
+      "p_value": "p = 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "By the volume and length of their messages, human facilitators appear to adopt a more conversational style than their LLM counterparts. Human facilitators communicate more frequently, sending 9 messages to their group on average, while the LLM facilitator sends an average of 7 messages (by design, as detailed in Appendix A4; t(138) = 2.74, p = 0.01), yet the average human facilitator message is much shorter with a length of 9 words, compared to the average LLM facilitator message containing 79 words."
+    },
+    {
+      "outcome_name": "facilitator_message_length",
+      "arm_comparison": "human_facilitator vs llm_facilitator",
+      "means_and_sds": {
+        "human_facilitator": {
+          "mean": 9,
+          "sd": null,
+          "se": null
+        },
+        "llm_facilitator": {
+          "mean": 79,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "By the volume and length of their messages, human facilitators appear to adopt a more conversational style than their LLM counterparts. Human facilitators communicate more frequently, sending 9 messages to their group on average, while the LLM facilitator sends an average of 7 messages (by design, as detailed in Appendix A4; t(138) = 2.74, p = 0.01), yet the average human facilitator message is much shorter with a length of 9 words, compared to the average LLM facilitator message containing 79 words."
+    },
+    {
+      "outcome_name": "facilitator_direct_address_rate",
+      "arm_comparison": "human_facilitator vs llm_facilitator",
+      "means_and_sds": {
+        "human_facilitator": {
+          "mean": 0.25,
+          "sd": null,
+          "se": null
+        },
+        "llm_facilitator": {
+          "mean": 0.68,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On average, 25% of a human facilitator's messages in a discussion directly address a group member, while LLM facilitators do so in 68% of the messages they share within a single discussion; while the LLM facilitator directly addressed a group member at least once in every group it interacted with, only 77% of human facilitators ever did so."
+    },
+    {
+      "outcome_name": "minimum_new_facts_shared",
+      "arm_comparison": "llm_facilitator vs no_facilitation",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "\u0394 = 0.41 facts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t(138) = 3.04",
+      "p_value": "p = 0.003",
+      "confidence_interval": "95% CI [0.145, 0.684]",
+      "verbatim_quote": "In parallel, LLM facilitation correlates with an increase in the minimum number of new facts (i.e., not previously covered in the group's discussion) shared by any member of the group (\u0394 = 0.41, 95% CI [0.145, 0.684], t(138) = 3.04, p = 0.003), but not the maximum number of new facts shared by an individual (as illustrated in Figures 4A and 4B, respectively), suggesting that the increase in covered facts is partly driven by increasing the baseline level of individual engagement with the task."
+    },
+    {
+      "outcome_name": "all_members_shared_facts",
+      "arm_comparison": "all conditions",
+      "means_and_sds": {
+        "no_facilitation": {
+          "mean": 0.39,
+          "sd": null,
+          "se": null
+        },
+        "message": {
+          "mean": 0.44,
+          "sd": null,
+          "se": null
+        },
+        "human_facilitator": {
+          "mean": 0.47,
+          "sd": null,
+          "se": null
+        },
+        "llm_facilitator": {
+          "mean": 0.61,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "\u03c7\u00b2(3, N = 281) = 8.10",
+      "p_value": "p = 0.044",
+      "confidence_interval": null,
+      "verbatim_quote": "Although only 39%, 44%, and 47% of groups achieve this in the \"None\", \"Message\", and \"Human\" conditions respectively, 61% of LLM-facilitated groups do so (\u03c7\u00b2(3, N = 281) = 8.10, p=0.044)."
+    },
+    {
+      "outcome_name": "optimal_choice_selection",
+      "arm_comparison": "all conditions",
+      "means_and_sds": {
+        "no_facilitation": {
+          "mean": 0.31,
+          "sd": null,
+          "se": null
+        },
+        "message": {
+          "mean": 0.21,
+          "sd": null,
+          "se": null
+        },
+        "human_facilitator": {
+          "mean": 0.3,
+          "sd": null,
+          "se": null
+        },
+        "llm_facilitator": {
+          "mean": 0.23,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "\u03c7\u00b2(3, N = 281) = 2.85",
+      "p_value": "p = 0.42",
+      "confidence_interval": null,
+      "verbatim_quote": "Eldoron (the optimal choice) was chosen by 31% of unfacilitated groups, 21% of groups presented with the one-time message, 30% of groups facilitated by a human, and 23% of groups facilitated by an LLM; however, these proportions are not statistically distinguishable from one another (\u03c7\u00b2(3, N = 281) = 2.85, p = 0.42)."
+    }
+  ],
+  "notes": "This is a pre-registered randomized controlled experiment (AsPredicted #192061). The study had 281 groups total, with 70 groups in the \"None\", \"Human\", and \"LLM\" conditions, and 71 groups in the \"Message\" condition. The paper notes that 7 groups in each of the \"None\", \"Message\", and \"LLM\" conditions and 15 groups in the \"Human\" condition failed to satisfy pre-registered inclusion criteria (each participant sends at least one message, the group collectively sends at least 10 messages, and all participants submit the task completion code). The primary outcome was information coverage, which was significantly increased by LLM facilitation (Cohen's d = 0.61, a moderate-to-large effect). However, LLM facilitation did not improve the final decision quality (optimal choice selection), with no significant difference across conditions (p = 0.42). The paper notes that the results are likely contingent on the experimental design, including factors such as time pressure, group size, communication modality, task domain, information load, and the collaborative nature of the hidden profile task. The authors deliberately avoided prompting the LLM to provide a decision to preserve its role as an aid and maximize the group's sense of ownership.",
+  "_paper_id": "2508.08242v1"
+}

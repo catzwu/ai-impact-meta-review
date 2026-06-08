@@ -1,0 +1,535 @@
+{
+  "citation_key": "brynjolfsson_2024_generative_ai",
+  "authors": [
+    "Erik Brynjolfsson",
+    "Danielle Li",
+    "Lindsey Raymond"
+  ],
+  "title": "Generative AI at Work",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "The study uses a staggered difference-in-differences design to isolate the causal impact of access to a generative AI-based conversational assistant. Data come from 5,172 customer support agents at a Fortune 500 software firm, with 3 million chats observed (1.2 million in the post-AI period by 1,636 agents). AI assistance was introduced after a small randomized pilot involving approximately 50 workers (about half randomized to treatment). Variation in access and timing was driven by bottlenecks in onboarding due to limited training resources and the firm's budget constraints. The paper employs the interaction weighted (IW) estimator proposed in Sun and Abraham (2021) to study treatment effect dynamics, with robustness checks using alternative event study estimators.",
+  "primary_task_description": "Agents are engaged in answering technical support questions from US-based small business owners. Support sessions are relatively long, averaging 40 minutes, with much of the conversation spent diagnosing the underlying technical problem. The job requires detailed product knowledge, problem-solving skills, and the ability to deal with frustrated customers. The AI system is designed to identify conversational patterns that predict efficient call resolution and generates two main types of output: (1) real-time suggestions for how agents should respond to customers, and (2) links to internal documentation for relevant technical issues. The AI system is designed to augment rather than replace human agents, with output shown only to the agent, who has full discretion over whether to incorporate the AI suggestions.",
+  "population_description": "The study examines 5,172 customer support agents working for a Fortune 500 software firm that provides business process software. In total, 3 million chats by these agents are observed, with 1.2 million chats by 1,636 agents in the post-AI period. Most agents in the sample (89%) are located outside the United States, mainly in the Philippines, with a smaller group working in the United States and other countries. For each agent, the data include assigned manager, tenure, geographic location, and employment status (direct employee or subcontractor).",
+  "arms": [
+    {
+      "arm_name": "ai_assisted",
+      "description": "Agents gained access to the AI tool after completing a three-hour online onboarding session conducted by the AI firm. Within the same team and office, individuals were onboarded to AI assistance at different times.",
+      "n": null
+    },
+    {
+      "arm_name": "control",
+      "description": "Agents without access to AI assistance during the study period.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "resolutions_per_hour",
+      "outcome_description": "The number of chats a worker successfully resolves per hour; serves as the summary measure of a worker's productivity.",
+      "measurement_unit": "chats per hour",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "outcome_description": "The average time it takes to handle an individual chat; standard in the customer service industry.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "chats_per_hour",
+      "outcome_description": "The number of chats an agent is able to handle per hour, which accounts for multitasking.",
+      "measurement_unit": "chats per hour",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "resolution_rate",
+      "outcome_description": "The share of chats that are successfully resolved.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "net_promoter_score",
+      "outcome_description": "Customer satisfaction, calculated by randomly surveying customers after a chat and calculating the percentage of customers who would recommend an agent minus the percentage who would not.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "comprehensibility_score",
+      "outcome_description": "Assesses whether the agent produces text that is cogent and easy to understand, using a scale of 1 to 5, where 1 indicates \"very difficult to comprehend\" and 5 signifies \"very fluent and easily understandable, with no significant errors.\"",
+      "measurement_unit": "rubric 1-5",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "native_fluency",
+      "outcome_description": "Whether the text was likely to have been produced by a native speaker of American English.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "customer_sentiment",
+      "outcome_description": "Sentiment measured on a scale from \u22121 to 1, where \u22121 indicates negative sentiment and 1 indicates positive.",
+      "measurement_unit": "scale -1 to 1",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "agent_sentiment",
+      "outcome_description": "Sentiment of the agent, measured on a scale from \u22121 to 1.",
+      "measurement_unit": "scale -1 to 1",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "manager_escalation_requests",
+      "outcome_description": "The share of an agent's chats in which a customer requests to speak to a manager or supervisor, aggregated to the year-month level.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "worker_attrition",
+      "outcome_description": "Worker attrition rate, particularly for newer workers.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "textual_similarity",
+      "outcome_description": "Cosine similarity between high-skill and low-skill workers' language use.",
+      "measurement_unit": "cosine similarity (0-1)",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 1.97,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.47 chats per hour (23.9% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Column 1, we show that, controlling for time and location fixed effects, access to AI recommendations increases resolutions per hour by 0.47 chats, up 23.9% from their pre-treatment mean of 1.97."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (with agent and tenure fixed effects)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.30 chats per hour (15.2% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As we add controls, our effects fall slightly, so that, with agent and tenure fixed effects, we find that the deployment of AI increases RPH by 0.30 chats or 15.2%."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (main specification)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "15% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Access to AI assistance increases worker productivity, as measured by issues resolved per hour, by 15% on average, with substantial heterogeneity across workers."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (lowest skill quintile)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.5 chats per hour (36% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the productivity impact of AI assistance is most pronounced for workers in the lowest skill quintile (leftmost side), who see a 0.5 increase or 36% increase in resolutions per hour."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (highest skill quintile)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no productivity increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, AI assistance does not lead to any productivity increase for the most skilled workers (rightmost side)."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (agents with <1 month tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.7 chats per hour",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Agents with less than 1 month of tenure improve their resolutions per hour by 0.7 resolutions per hour, with larger effects for less-experienced workers."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (agents with >1 year tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no effect",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, we see no effect for agents with more than a year of tenure."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (pilot study, treatment group n=22)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Focusing on the treatment group of 22 workers, we still see a significant increase in resolutions per hour, as well as a significant decrease in average handle time."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (IV approach)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.55 chats per hour",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Using this approach, we estimate that individual AI adoption increases resolutions per hour by 0.55 chats per hour, compared to 0.30 under our main specification."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (by adherence quintile, lowest)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10% gain",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find a steady and monotonic increase in returns by agent adherence: among agents in the lowest quintile, we still see a 10% gain in productivity, but for agents in the highest quintile, the estimated impact is over twice as high, close to 25%."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (by adherence quintile, highest)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "close to 25% gain",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find a steady and monotonic increase in returns by agent adherence: among agents in the lowest quintile, we still see a 10% gain in productivity, but for agents in the highest quintile, the estimated impact is over twice as high, close to 25%."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted vs control (less-skilled and less-experienced workers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 30% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that less-skilled and less-experienced workers improve significantly across all productivity measures we consider, including approximate increase of 30% in the number of issues they are able to resolve per hour."
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 43,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.7 minute decrease (8.5% decline)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column 1 documents a 3.7 minute decrease in the average duration of customer chats, an 8.5% decline from the baseline mean of 43 minutes (shorter handle times are considered better)."
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "arm_comparison": "ai_assisted vs control (pilot study, treatment group n=22)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Focusing on the treatment group of 22 workers, we still see a significant increase in resolutions per hour, as well as a significant decrease in average handle time."
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "arm_comparison": "ai_assisted vs control (routine problems: payroll and account management)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4 to 5 minutes faster (approximately 10% decrease)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Workers with access to AI assistance handle the most routine problems\u2014payroll and account management\u2014about 4 to 5 minutes faster, which corresponds to an approximately 10% decrease off the pre-treatment mean duration for these topics."
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "arm_comparison": "ai_assisted vs control (moderately rare problems: 75th-90th percentile)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "5 to 6 minutes decrease (14% reduction)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We see the largest decline, 5 to 6 minutes, for issues that are in the 75th to 90th percentiles of topic rarity, corresponding to a 14% reduction given the pre-treatment means for those topics."
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "arm_comparison": "ai_assisted vs control (most rare problems)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4 minute decrease (11% reduction)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Finally, we see a smaller 4 minute or 11% decrease for the most rare problems."
+    },
+    {
+      "outcome_name": "chats_per_hour",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.37 unit increase (roughly 15% increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Next, Column 2 indicates a 0.37 unit increase in the number of chats that an agent can handle per hour. Relative to a baseline mean of 2.4, this represents an increase of roughly 15%."
+    },
+    {
+      "outcome_name": "resolution_rate",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 82,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.3 percentage point increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column 3 of Table 3 indicates a small 1.3 percentage point increase in chat resolution rates. This effect is economically modest and insignificant, given a high baseline resolution rate of 82%; we interpret this as evidence that improvements in chat handling do not come at the expense of problem solving on average."
+    },
+    {
+      "outcome_name": "net_promoter_score",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 80,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-0.12 percentage points (no economically significant change)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Finally, Column 4 finds no economically significant change in customer satisfaction, as measured by net promoter scores: the coefficient is -0.12 percentage points and the mean is 80%."
+    },
+    {
+      "outcome_name": "comprehensibility_score",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 4.28,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "positive impact for all workers, larger improvement for workers based in the Philippines",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Prior to having AI access, the interquartile range of comprehensibility scores was 4.28 to 4.67; for native fluency it was 4.26 to 4.65. Despite this high baseline level, we find clear evidence that access to AI assistance increases proficiency scores in our data. We see a positive impact for all workers, but a larger improvement for workers based in the Philippines."
+    },
+    {
+      "outcome_name": "customer_sentiment",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.18 points increase (equivalent to half of a standard deviation)",
+      "standardized_effect_reported": "0.18 points, equivalent to half of a standard deviation",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "According to Column 1 of Table 4, access to AI improves the mean customer sentiments (averaged over an agent-month) by 0.18 points, equivalent to half of a standard deviation."
+    },
+    {
+      "outcome_name": "agent_sentiment",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.02 points increase (about 1% of a standard deviation)",
+      "standardized_effect_reported": "0.02 points, about 1% of a standard deviation",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column 2 of Table 4 indicates that agent sentiments increase by only 0.02 points or about 1% of a standard deviation."
+    },
+    {
+      "outcome_name": "manager_escalation_requests",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "almost 25% decline relative to baseline rate of approximately 6 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Relative to a baseline rate of approximately 6 percentage points, these coefficients suggest that AI assistance generates an almost 25% decline in customer requests to speak to a manager."
+    },
+    {
+      "outcome_name": "worker_attrition",
+      "arm_comparison": "ai_assisted vs control (newer workers)",
+      "means_and_sds": {
+        "control": {
+          "mean": 25,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "approximately 10 percentage points decrease (40% decrease relative to baseline attrition rate of 25%)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The magnitude of this coefficient, around 10 percentage points, translates into a 40% decrease relative to a baseline attrition rate in this group of 25%."
+    },
+    {
+      "outcome_name": "worker_attrition",
+      "arm_comparison": "ai_assisted vs control (all skill groups)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant decrease for all skill groups",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Here, we find a significant decrease in attrition for all skill groups, although without a clear gradient."
+    },
+    {
+      "outcome_name": "textual_similarity",
+      "arm_comparison": "ai_assisted vs control (high-skill vs low-skill workers)",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.55,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 0.61,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "increase from 0.55 to 0.61 (equivalent to about half of a standard deviation)",
+      "standardized_effect_reported": "equivalent to half of a standard deviation of the average high and low worker textual similarity",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post-AI adoption, however, text similarity between high and slow skill workers begins increasing, from 0.55 to 0.61. While this change may seem modest, it represents a substantial narrowing of language gaps, given that the average similarity of a high-skill worker's own pre and post AI text is only 0.67. The change is equivalent to half of a standard deviation of the average high and low worker textual similarity."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted (2 months tenure) vs control (6+ months tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "treated agents with 2 months tenure perform as well as or better than untreated agents with 6+ months tenure",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Across many of the outcomes we examine, agents with two months of tenure and access to AI assistance perform as well as or better than agents with more than six months of tenure who do not have access."
+    },
+    {
+      "outcome_name": "resolutions_per_hour",
+      "arm_comparison": "ai_assisted (outage periods) vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "productivity gains relative to pre-AI baseline even when recommendations unavailable",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Workers see productivity gains relative to their pre-AI baseline even when recommendations are unavailable."
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "arm_comparison": "ai_assisted (outage periods, high initial adherence) vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "significant and rapid declines in chat processing times relative to pre-adoption baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Workers with high initial adherence to AI recommendations experience significant and rapid declines in chat processing times, even during outages, relative to their pre-adoption baseline."
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "arm_comparison": "ai_assisted (outage periods, low initial adherence) vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no reduction in chat times during outage periods",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, workers who frequently deviate from AI suggestions see no reduction in chat times during outage periods, even after prolonged AI access."
+    }
+  ],
+  "notes": "This is an observational study using staggered difference-in-differences design with 5,172 customer support agents at a Fortune 500 software firm. The paper reports substantial heterogeneity in treatment effects by worker skill and experience, with larger gains for less-skilled and less-experienced workers. The study includes a small randomized pilot (approximately 50 workers, about half randomized to treatment; treatment group n=22 reported separately). Multiple robustness checks are employed, including alternative event study estimators (Callaway and Sant'Anna 2021, Borusyak et al. 2022, de Chaisemartin and D'Haultf\u00f6uille 2020, traditional two-way fixed effects) and IV approaches. The paper examines mechanisms including adherence rates (average 38%, interquartile range 23-50%), learning effects, topic-specific effects, language fluency improvements, and textual convergence between skill groups. Effects on worker experience include customer sentiment, manager escalation requests, and attrition (particularly for newer workers). The paper notes several caveats: findings are medium-run impacts within a single firm and occupation; longer-run equilibrium effects on employment and wages are unknown; potential mean reversion concerns are addressed through event-study analysis; selection on adherence cannot be fully ruled out; and results may not generalize to other occupations or AI systems. The paper also notes that changes in agent text may reflect factors beyond worker style, such as changes in conversation topics driven by customers.",
+  "_paper_id": "2304.11771v2"
+}

@@ -1,0 +1,27 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "task_completion_time",
+      "category": "speed",
+      "operationalization": "Time in minutes from repository creation timestamp to first commit passing all 12 tests, measured by platform timestamps"
+    },
+    {
+      "outcome_name": "task_success",
+      "category": "quality",
+      "operationalization": "Percentage of participants who successfully completed the task by passing all 12 tests"
+    },
+    {
+      "outcome_name": "self_reported_productivity_increase",
+      "category": "other",
+      "operationalization": "Participant self-reported estimate of their own productivity increase, expressed as percentage"
+    },
+    {
+      "outcome_name": "willingness_to_pay",
+      "category": "other",
+      "operationalization": "Average self-reported willingness to pay for GitHub Copilot subscription per month in dollars"
+    }
+  ],
+  "primary_speed_outcome": "task_completion_time",
+  "primary_quality_outcome": "task_success",
+  "citation_key": "peng_2023_copilot_productivity"
+}

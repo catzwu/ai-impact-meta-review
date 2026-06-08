@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is creative writing \u2014 specifically, generating original short stories for a teenage/young adult audience on assigned adventure topics. The paper explicitly measures 'novelty' as a key outcome, and the task fundamentally requires participants to produce creative narrative content. While the study involves AI assistance as a treatment variable, the human participants are the ones doing the creative work of story generation. This maps cleanly to O*NET's 'Thinking Creatively' work activity, which encompasses developing imaginative and original ideas, designs, or solutions.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "27-3043.00",
+      "onet_label": "Writers and Authors"
+    }
+  ],
+  "citation_key": "doshi_2024_generative_creativity"
+}

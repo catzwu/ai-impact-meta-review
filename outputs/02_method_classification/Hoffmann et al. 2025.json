@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly employs a regression discontinuity design (RDD) exploiting an eligibility threshold in GitHub Copilot's deployment where developers below a certain internal ranking threshold received free access while others did not. This is described as a 'natural experiment' using RDD 'interpreted as a localized randomized control trial' for causal identification.",
+  "citation_key": "hoffmann_2025_generative_ai_work"
+}

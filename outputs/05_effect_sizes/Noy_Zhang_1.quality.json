@@ -1,0 +1,49 @@
+{
+  "_paper_id": "Noy_Zhang_1",
+  "citation_key": "noy_2023_chatgpt_productivity",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "chatgpt_treatment",
+    "ai_arm_selection_rationale": "Only one AI arm (chatgpt_treatment) vs. control. Treatment group was given access to ChatGPT for the task.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 222,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 222,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.45,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.0,
+    "extraction_confidence": "high",
+    "notes": "Level E extraction: Cohen's d = 0.45 directly reported with p = 0.000 and 95% CI [0.27, 0.63]. Sample sizes from arms. Overall grade is a 1-7 rubric where higher is better.",
+    "source_quotes": [
+      "Average evaluator grades in the treatment group increase by 0.45 standard deviations (p = 0.000), with roughly similar increases for overall grades and specific grades for writing quality, content quality, and originality.",
+      "Cohen's d = 0.45 SD",
+      "95% CI [0.27, 0.63]"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.45,
+    "hedges_g": 0.4492359932088285,
+    "variance": 0.00920571098163403,
+    "computation_method": "reported_d",
+    "confidence": "high",
+    "notes": "Level E extraction: Cohen's d = 0.45 directly reported with p = 0.000 and 95% CI [0.27, 0.63]. Sample sizes from arms. Overall grade is a 1-7 rubric where higher is better.",
+    "n_human": 222,
+    "n_ai": 222,
+    "direction_convention": "larger_is_better"
+  }
+}

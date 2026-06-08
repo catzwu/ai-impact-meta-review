@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study compares projects where Copilot 'was supported by local coding environments and used by developers' (treatment) versus 'projects where Copilot was not used' (control) without random assignment. While GSCM and instrumental variables are used for causal identification attempts, this is fundamentally an observational comparison of users vs. non-users based on proprietary usage data, not a designed experiment with randomization or a clear quasi-experimental design like DiD or RD.",
+  "citation_key": "song_2024_copilot_oss"
+}

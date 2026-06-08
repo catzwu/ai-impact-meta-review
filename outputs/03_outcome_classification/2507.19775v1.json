@@ -1,0 +1,57 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "annual_revenue",
+      "category": "other",
+      "operationalization": "Annual revenue in USD millions, adjusted for firm age, source not specified"
+    },
+    {
+      "outcome_name": "age_adjusted_employee_count",
+      "category": "other",
+      "operationalization": "Employee count adjusted for firm age since founding, source not specified"
+    },
+    {
+      "outcome_name": "age_adjusted_valuation",
+      "category": "other",
+      "operationalization": "Firm valuation in USD millions adjusted for firm age, source not specified"
+    },
+    {
+      "outcome_name": "age_adjusted_total_funding",
+      "category": "other",
+      "operationalization": "Total funding received in USD millions adjusted for firm age, source not specified"
+    },
+    {
+      "outcome_name": "valuation_per_employee",
+      "category": "other",
+      "operationalization": "Firm valuation divided by employee count, measured in USD millions per employee"
+    },
+    {
+      "outcome_name": "revenue_per_employee",
+      "category": "other",
+      "operationalization": "Annual revenue divided by employee count, measured in USD millions per employee"
+    },
+    {
+      "outcome_name": "funding_per_employee",
+      "category": "other",
+      "operationalization": "Total funding divided by employee count, measured in USD millions per employee"
+    },
+    {
+      "outcome_name": "revenue_to_valuation_ratio",
+      "category": "other",
+      "operationalization": "Revenue divided by valuation, expressed as a ratio"
+    },
+    {
+      "outcome_name": "funding_to_valuation_ratio",
+      "category": "other",
+      "operationalization": "Total funding divided by valuation, expressed as a ratio"
+    },
+    {
+      "outcome_name": "revenue_to_funding_ratio",
+      "category": "other",
+      "operationalization": "Revenue divided by total funding, expressed as a ratio"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "ganuthula_2025_ai_structural"
+}

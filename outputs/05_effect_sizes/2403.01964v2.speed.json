@@ -1,0 +1,49 @@
+{
+  "_paper_id": "2403.01964v2",
+  "citation_key": "kreitmeir_2024_chatgpt_productivity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "italian_users_post_ban",
+    "ai_arm_name": "control_users",
+    "ai_arm_selection_rationale": "This is a natural experiment exploiting Italy's ChatGPT ban. The 'control_users' (Austria, France, Spain) retained ChatGPT access throughout, representing the human+AI condition. The 'italian_users_post_ban' lost ChatGPT access during April 3\u20136, representing the human-only condition. The treatment effect (Treated \u00d7 Post) captures the impact of losing AI assistance.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -0.0042,
+    "regression_coefficient_se": 0.0021,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "medium",
+    "notes": "This is a difference-in-differences natural experiment. The outcome is a binary indicator (0/1), not log-transformed. The repository-level overall sample analysis (N=33,512) is chosen as the primary specification because it is the most aggregated and has reported SE. The coefficient -0.0042 represents the decrease in the probability of any output on a given day for Italian users after losing ChatGPT access, relative to control users. Since the outcome is in levels (probability) and no baseline mean is provided, Python will need to use a fallback method or approximate log ratio as log(1 + coef/assumed_baseline). The negative coefficient indicates Italian users (human-only post-ban) had lower output than controls (human+AI), consistent with AI assistance being beneficial. Multiple subgroup analyses are available but the overall repository-level analysis is selected as primary.",
+    "source_quotes": [
+      "Treated \u00d7 Post -0.0042** -0.0022 -0.0007 -0.0021** -0.0011 (0.0021) (0.0021) (0.0040) (0.0009) (0.0007) Overall (N = 33,512)",
+      "Overall Treated \u00d7 Post 0.0062 0.0102 0.0090 -0.0045** 0.0045 (N = 290,864)",
+      "binary indicator (1 if any action recorded on day, 0 otherwise)"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": "larger_is_better",
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment. The outcome is a binary indicator (0/1), not log-transformed. The repository-level overall sample analysis (N=33,512) is chosen as the primary specification because it is the most aggregated and has reported SE. The coefficient -0.0042 represents the decrease in the probability of any output on a given day for Italian users after losing ChatGPT access, relative to control users. Since the outcome is in levels (probability) and no baseline mean is provided, Python will need to use a fallback method or approximate log ratio as log(1 + coef/assumed_baseline). The negative coefficient indicates Italian users (human-only post-ban) had lower output than controls (human+AI), consistent with AI assistance being beneficial. Multiple subgroup analyses are available but the overall repository-level analysis is selected as primary. | regression coefficient on levels but baseline mean unknown",
+    "n_human": null,
+    "n_ai": null
+  }
+}

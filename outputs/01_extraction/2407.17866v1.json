@@ -1,0 +1,1406 @@
+{
+  "citation_key": "kim_2024_financial_statement",
+  "authors": [
+    "Alex G. Kim",
+    "Maximilian Muhn",
+    "Valeri V. Nikolaev"
+  ],
+  "title": "Financial Statement Analysis with Large Language Models",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "The research design involves passing anonymized and standardized balance sheets and income statements to large language models and asking them to analyze the statements and predict the direction of future earnings. The researchers anonymize and standardize corporate financial statements by omitting company names and replacing years with labels (t, t\u22121) to prevent potential memory of the company by the language model. The study tests the model's performance using the Compustat universe and, when necessary, intersects it with the IBES universe. Two prompt approaches are tested: a \"simple\" prompt instructing the model to analyze financial statements and predict earnings direction, and a Chain-of-Thought (CoT) prompt that breaks down the problem into steps paralleling those followed by human analysts.",
+  "primary_task_description": "Based on the analysis of balance sheet and income statement, the model must decide whether a firm's economic performance is sustainable and, more specifically, whether a company's earnings will grow or decline in the following period. The focus is on predicting the direction of future earnings because earnings are the primary variable forecasted by financial analysts and fundamental for valuation. The CoT prompt instructs the model to take on the role of a financial analyst and perform financial statement analysis by: (i) identifying notable changes in certain financial statement items, (ii) computing key financial ratios and stating the formulae first before performing computations, (iii) providing economic interpretations of the computed ratios, and then (iv) predicting whether earnings are likely to increase or decrease in the subsequent period.",
+  "population_description": "The full sample spans the 1968-2021 period and includes 150,678 firm-year observations from 15,401 distinct firms. The analyst sample spans the 1983-2021 period with 39,533 observations from 3,152 distinct firms. All observations require non-missing total assets, year-end assets value exceeding one million dollars, a year-end stock price exceeding one dollar per share, and a fiscal period end date of December 31. For analyses involving analyst forecasts using IBES data starting in 1983, observations are restricted to firm-years with analyst following and require at least three analyst forecasts issued.",
+  "arms": [
+    {
+      "arm_name": "simple_prompt",
+      "description": "A \"simple\" prompt that instructs an LLM to analyze the two financial statements of a company and determine the direction of future earnings.",
+      "n": null
+    },
+    {
+      "arm_name": "chain_of_thought_prompt",
+      "description": "A Chain-of-Thought prompt that breaks down the problem into steps that parallel those followed by human analysts.",
+      "n": null
+    },
+    {
+      "arm_name": "gpt_4",
+      "description": "GPT-4-0125-preview, the most updated GPT model by OpenAI at the time of the experiment.",
+      "n": null
+    },
+    {
+      "arm_name": "gpt_3_5_turbo",
+      "description": "A less powerful LLM version from the same family as GPT-4, used with the same experimental settings.",
+      "n": null
+    },
+    {
+      "arm_name": "gemini_pro_1_5",
+      "description": "Another family of LLMs provided by Google, used with the same experimental settings.",
+      "n": null
+    },
+    {
+      "arm_name": "analyst_forecasts",
+      "description": "Consensus forecasts from financial analysts (the median of individual analyst forecasts issued in the month following the release of financial statements).",
+      "n": null
+    },
+    {
+      "arm_name": "naive_model",
+      "description": "A naive model that extrapolates the prior year's change.",
+      "n": null
+    },
+    {
+      "arm_name": "stepwise_logistic_regression",
+      "description": "Stepwise logistic regression following Ou and Penman (1989), retaining only significant variables from the first step when performing the second step.",
+      "n": null
+    },
+    {
+      "arm_name": "artificial_neural_network",
+      "description": "An artificial neural network model with an input layer with 59 neurons, two hidden layers with 256 and 64 neurons each, and an output layer with two neurons.",
+      "n": null
+    },
+    {
+      "arm_name": "embedding_based_ann",
+      "description": "An artificial neural network trained on GPT's narrative insights using embeddings.",
+      "n": null
+    },
+    {
+      "arm_name": "dual_input_model",
+      "description": "A model that uses dual inputs combining financial statement information with narrative insights.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "accuracy",
+      "outcome_description": "The percentage of correctly predicted cases scaled by the total number of predictions made.",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "f1_score",
+      "outcome_description": "The harmonic mean of precision and recall, defined as F1 = 2 \u00d7 TP / (2 \u00d7 TP + FP + FN) where TP is the number of true positive predictions, FP is the number of false positive predictions, and FN is the number of false negative predictions.",
+      "measurement_unit": "percentage",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "sharpe_ratio",
+      "outcome_description": "Risk-adjusted return metric for portfolios based on model predictions.",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "alpha",
+      "outcome_description": "Monthly alpha generated by portfolios based on model predictions, controlling for various factors.",
+      "measurement_unit": "basis points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "auc",
+      "outcome_description": "Area under the receiver operating characteristic curve.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "firm_name_identification_accuracy",
+      "outcome_description": "Accuracy of correctly identifying the firm name from anonymized financial statements.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "year_identification_accuracy",
+      "outcome_description": "Accuracy of correctly guessing the year of financial statements.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "analyst_forecasts (first-month) vs naive_model",
+      "means_and_sds": {
+        "analyst_forecasts": {
+          "mean": 53,
+          "sd": null,
+          "se": null
+        },
+        "naive_model": {
+          "mean": 49,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "4 percentage points higher for analysts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the first-month analysts' forecasts achieve an accuracy of 53% in predicting the direction of future earnings, which dominates the 49% accuracy of a naive model that extrapolates the prior year's change."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "analyst_forecasts (three-month) vs analyst_forecasts (first-month)",
+      "means_and_sds": {
+        "analyst_forecasts_three_month": {
+          "mean": 56,
+          "sd": null,
+          "se": null
+        },
+        "analyst_forecasts_first_month": {
+          "mean": 53,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3 percentage points higher for three-month forecasts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Three- and six-month ahead forecasts achieve a meaningfully higher accuracy of 56% and 57% respectively, which is intuitive given that they incorporate more timely information."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "analyst_forecasts (six-month) vs analyst_forecasts (first-month)",
+      "means_and_sds": {
+        "analyst_forecasts_six_month": {
+          "mean": 57,
+          "sd": null,
+          "se": null
+        },
+        "analyst_forecasts_first_month": {
+          "mean": 53,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "4 percentage points higher for six-month forecasts",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Three- and six-month ahead forecasts achieve a meaningfully higher accuracy of 56% and 57% respectively, which is intuitive given that they incorporate more timely information."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "simple_prompt vs analyst_forecasts",
+      "means_and_sds": {
+        "simple_prompt": {
+          "mean": 52,
+          "sd": null,
+          "se": null
+        },
+        "analyst_forecasts": {
+          "mean": 53,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1 percentage point lower for simple prompt",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "A \"simple\" non-CoT prompt GPT-based forecasts achieve a performance of 52%, which is lower compared to the analyst benchmarks, which is in line with our prior."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt vs analyst_forecasts",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 60,
+          "sd": null,
+          "se": null
+        },
+        "analyst_forecasts": {
+          "mean": 53,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "7 percentage points higher for chain-of-thought",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "However, when we use the chain of thought prompt to emulate human reasoning, we find that GPT achieves an accuracy of 60%, which is remarkably higher than that achieved by the analysts."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "analyst_forecasts (first-month, detailed sample)",
+      "means_and_sds": {
+        "analyst_forecasts": {
+          "mean": 52.71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Based on the first-month forecast following the release of prior year financial statements, analysts' accuracy is 52.71% and F1 score is 54.48% when predicting the direction of one-year-ahead earnings."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "analyst_forecasts (first-month, detailed sample)",
+      "means_and_sds": {
+        "analyst_forecasts": {
+          "mean": 54.48,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Based on the first-month forecast following the release of prior year financial statements, analysts' accuracy is 52.71% and F1 score is 54.48% when predicting the direction of one-year-ahead earnings."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "naive_model (detailed sample)",
+      "means_and_sds": {
+        "naive_model": {
+          "mean": 49.11,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As expected, this is better than predictions based on a naive model (accuracy = 49.11% and F1 score = 53.02%)."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "naive_model (detailed sample)",
+      "means_and_sds": {
+        "naive_model": {
+          "mean": 53.02,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As expected, this is better than predictions based on a naive model (accuracy = 49.11% and F1 score = 53.02%)."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "analyst_forecasts (three-month, detailed sample)",
+      "means_and_sds": {
+        "analyst_forecasts_three_month": {
+          "mean": 55.95,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As expected, the analysts' prediction accuracy improves through the course of the year t + 1, achieving an accuracy of 55.95% and 56.58% for month-three and month-six forecasts, respectively."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "analyst_forecasts (six-month, detailed sample)",
+      "means_and_sds": {
+        "analyst_forecasts_six_month": {
+          "mean": 56.58,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As expected, the analysts' prediction accuracy improves through the course of the year t + 1, achieving an accuracy of 55.95% and 56.58% for month-three and month-six forecasts, respectively."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "simple_prompt (detailed sample)",
+      "means_and_sds": {
+        "simple_prompt": {
+          "mean": 52.33,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Using a simple prompt instructing GPT to analyze financial statements and predict the direction of future earnings yields an accuracy of 52.33% and an F1-score of 54.52%."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "simple_prompt (detailed sample)",
+      "means_and_sds": {
+        "simple_prompt": {
+          "mean": 54.52,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Using a simple prompt instructing GPT to analyze financial statements and predict the direction of future earnings yields an accuracy of 52.33% and an F1-score of 54.52%."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (detailed sample)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 60.35,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "7 percentage points increase compared to analyst predictions one month after the earnings release",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "With chain-of-thought prompts, GPT achieves an accuracy of 60.35%, or a 7 percentage points increase compared to analyst predictions one month after the earnings release. The difference is statistically significant at 1% level."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "stepwise_logistic_regression",
+      "means_and_sds": {
+        "stepwise_logistic_regression": {
+          "mean": 52.94,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Stepwise logistic regressions following Ou and Penman (1989) achieve an accuracy of 52.94% and an F1 score of 57.23%."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "stepwise_logistic_regression",
+      "means_and_sds": {
+        "stepwise_logistic_regression": {
+          "mean": 57.23,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Stepwise logistic regressions following Ou and Penman (1989) achieve an accuracy of 52.94% and an F1 score of 57.23%."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "artificial_neural_network",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 60.45,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The model achieves a 60.45% accuracy and an F1-score of 61.62%."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "artificial_neural_network",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 61.62,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The model achieves a 60.45% accuracy and an F1-score of 61.62%."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (full sample)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 60.31,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "on par with the specialized ANN model",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Consistent with the results in the analyst sample, our CoT-based GPT predictions achieve an accuracy of 60.31%, which is on par with the specialized ANN model. In fact, in terms of the F1-score, GPT achieves a value of 63.45%, which is the highest among all prediction methods."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "chain_of_thought_prompt (full sample)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 63.45,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "highest among all prediction methods",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Consistent with the results in the analyst sample, our CoT-based GPT predictions achieve an accuracy of 60.31%, which is on par with the specialized ANN model. In fact, in terms of the F1-score, GPT achieves a value of 63.45%, which is the highest among all prediction methods."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "artificial_neural_network (full sample)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 60.12,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "slightly lower than GPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The ANN model with financial statement information achieves an accuracy of 60.12% and an F1-score of 61.30%, which are slightly lower than those of GPT."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "artificial_neural_network (full sample)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 61.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "slightly lower than GPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The ANN model with financial statement information achieves an accuracy of 60.12% and an F1-score of 61.30%, which are slightly lower than those of GPT."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (time trend analysis)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "decreased by 0.1 percentage points per year on average, translating into a decrease of 5.4 percentage points over the 54-year sample period",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In terms of the economic magnitude, GPT's accuracy has decreased, on average, by 0.1% point per year, which translates into a decrease in accuracy by 5.4 percentage points over the 54-year sample period."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (firm size effect)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "A one standard deviation decrease in firm size reduces GPT's prediction accuracy by 3.4 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "A one standard deviation decrease in firm size reduces GPT's prediction accuracy by 3.4 percentage points. In contrast, the same change in firm size is associated with a 5.5 percentage point decrease in prediction accuracy for the ANN model. The difference between the two coefficients is statistically significant at the 1% level."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "artificial_neural_network (firm size effect)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "A one standard deviation decrease in firm size is associated with a 5.5 percentage point decrease in prediction accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "A one standard deviation decrease in firm size reduces GPT's prediction accuracy by 3.4 percentage points. In contrast, the same change in firm size is associated with a 5.5 percentage point decrease in prediction accuracy for the ANN model. The difference between the two coefficients is statistically significant at the 1% level."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (high confidence group)",
+      "means_and_sds": {
+        "chain_of_thought_prompt_high_confidence": {
+          "mean": 62.44,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "approximately 2.6 percentage points higher than the corresponding accuracy of the low confidence group",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the high confidence group, the model achieves an average accuracy of 62.44% (63.15%) based on the reported confidence value (confidence score derived from logistic probabilities), which is approximately 2.6 (4.6) percentage points higher than the corresponding accuracy of the low confidence group."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (high confidence group, logistic probabilities)",
+      "means_and_sds": {
+        "chain_of_thought_prompt_high_confidence_logistic": {
+          "mean": 63.15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "approximately 4.6 percentage points higher than the corresponding accuracy of the low confidence group",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the high confidence group, the model achieves an average accuracy of 62.44% (63.15%) based on the reported confidence value (confidence score derived from logistic probabilities), which is approximately 2.6 (4.6) percentage points higher than the corresponding accuracy of the low confidence group."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (large changes)",
+      "means_and_sds": {
+        "chain_of_thought_prompt_large_changes": {
+          "mean": 62.03,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the average accuracy is 62.03% when the model predicts large changes whereas it decreases to 60.22% for small changes."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (small changes)",
+      "means_and_sds": {
+        "chain_of_thought_prompt_small_changes": {
+          "mean": 60.22,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the average accuracy is 62.03% when the model predicts large changes whereas it decreases to 60.22% for small changes."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "chain_of_thought_prompt (large changes)",
+      "means_and_sds": {
+        "chain_of_thought_prompt_large_changes": {
+          "mean": 61.16,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We document a similar pattern for F1 scores: 61.16% for large changes vs. 57.95% for small changes."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "chain_of_thought_prompt (small changes)",
+      "means_and_sds": {
+        "chain_of_thought_prompt_small_changes": {
+          "mean": 57.95,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We document a similar pattern for F1 scores: 61.16% for large changes vs. 57.95% for small changes."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "gpt_4 vs gpt_3_5_turbo vs gemini_pro_1_5 (20% sample)",
+      "means_and_sds": {
+        "gpt_4": {
+          "mean": 61.05,
+          "sd": null,
+          "se": null
+        },
+        "gemini_pro_1_5": {
+          "mean": 59.15,
+          "sd": null,
+          "se": null
+        },
+        "gpt_3_5_turbo": {
+          "mean": 52.29,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "GPT 4 achieves the best performance, followed by Gemini 1.5, and GPT 3.5",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "GPT 4 achieves the best performance, followed by Gemini 1.5, and GPT 3.5. Gemini 1.5 achieves an overall accuracy of 59.15%, which is close to that of GPT 4 (61.05%) in the same 20% sample. However, GPT 3.5 achieves an accuracy of only 52.29% and an F1-score of 59.17%, which are all substantially lower than our GPT 4 benchmarks."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "gpt_3_5_turbo (20% sample)",
+      "means_and_sds": {
+        "gpt_3_5_turbo": {
+          "mean": 59.17,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "substantially lower than GPT 4 benchmarks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, GPT 3.5 achieves an accuracy of only 52.29% and an F1-score of 59.17%, which are all substantially lower than our GPT 4 benchmarks."
+    },
+    {
+      "outcome_name": "firm_name_identification_accuracy",
+      "arm_comparison": "chain_of_thought_prompt",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 0.07,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "lower than the accuracy of a random guess from the population of names",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the model correctly identifies the firm name with an accuracy of 0.07%, which is lower than the accuracy of a random guess from the population of names in our data."
+    },
+    {
+      "outcome_name": "year_identification_accuracy",
+      "arm_comparison": "chain_of_thought_prompt",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 2.95,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The accuracy of correctly guessing the year of financial statements is 2.95%."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (out-of-sample, 2022 data to predict 2023)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 58.96,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "slightly lower than the average reported in Table 4, Panel A",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "GPT achieves an accuracy of 58.96% and an F1 score of 63.91%. The accuracy (but not the F1 score) is slightly lower than the average reported in Table 4, Panel A."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "chain_of_thought_prompt (out-of-sample, 2022 data to predict 2023)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 63.91,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "GPT achieves an accuracy of 58.96% and an F1 score of 63.91%. The accuracy (but not the F1 score) is slightly lower than the average reported in Table 4, Panel A."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (fiscal year 2021)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 54.36,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Specifically, as shown in Appendix A, GPT's prediction accuracy is only 54.36% for the fiscal year 2021, and 59.01% for 2019 (GPT's prediction accuracy plummets in 2020 during Covid-19 outbreak)."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (fiscal year 2019)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 59.01,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Specifically, as shown in Appendix A, GPT's prediction accuracy is only 54.36% for the fiscal year 2021, and 59.01% for 2019 (GPT's prediction accuracy plummets in 2020 during Covid-19 outbreak)."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt (out-of-sample, last 10 years average)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 58.01,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "substantially higher than the average over the last 10 years",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In fact, both the out-of-GPT-sample accuracy and the F1 score are substantially higher than the average over the last 10 years (58.01% and 59.15%)."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "chain_of_thought_prompt (out-of-sample, last 10 years average)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 59.15,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In fact, both the out-of-GPT-sample accuracy and the F1 score are substantially higher than the average over the last 10 years (58.01% and 59.15%)."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "chain_of_thought_prompt vs artificial_neural_network (out-of-sample)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 58.96,
+          "sd": null,
+          "se": null
+        },
+        "artificial_neural_network": {
+          "mean": 59.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "very similar accuracy score out-of-sample",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Furthermore, GPT achieves a very similar accuracy score out-of-sample as the ANN model (58.96% versus 59.10%) and an even higher F1 score (63.91% versus 61.13%) for the same year, which is closely in line with our main findings."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "chain_of_thought_prompt vs artificial_neural_network (out-of-sample)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 63.91,
+          "sd": null,
+          "se": null
+        },
+        "artificial_neural_network": {
+          "mean": 61.13,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "even higher F1 score for GPT",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Furthermore, GPT achieves a very similar accuracy score out-of-sample as the ANN model (58.96% versus 59.10%) and an even higher F1 score (63.91% versus 61.13%) for the same year, which is closely in line with our main findings."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "embedding_based_ann (trained on GPT narratives)",
+      "means_and_sds": {
+        "embedding_based_ann": {
+          "mean": 59,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "almost as high as the GPT forecast accuracy (60%)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that the ANN trained on the GPT's narrative insights achieves an accuracy of 59%, which is almost as high as the GPT forecast accuracy (60%)."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "embedding_based_ann (trained on GPT narratives)",
+      "means_and_sds": {
+        "embedding_based_ann": {
+          "mean": 65,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "higher than GPT's (65% vs. 63%)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In fact, the embedding-based ANN achieves an F1-score that is higher than GPT's (65% vs. 63%)."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "embedding_based_ann (full model)",
+      "means_and_sds": {
+        "embedding_based_ann": {
+          "mean": 58.95,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our embedding model achieves an accuracy of 58.95%, an F1-score of 65.26%, and an AUC of 64.22%."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "embedding_based_ann (full model)",
+      "means_and_sds": {
+        "embedding_based_ann": {
+          "mean": 65.26,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our embedding model achieves an accuracy of 58.95%, an F1-score of 65.26%, and an AUC of 64.22%."
+    },
+    {
+      "outcome_name": "auc",
+      "arm_comparison": "embedding_based_ann (full model)",
+      "means_and_sds": {
+        "embedding_based_ann": {
+          "mean": 64.22,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our embedding model achieves an accuracy of 58.95%, an F1-score of 65.26%, and an AUC of 64.22%."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "artificial_neural_network (financial statement information only)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 60.12,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This model achieves only a somewhat higher accuracy of 60.12%, but a considerably lower F1-score (61.30%) and AUC (59.13%)."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "artificial_neural_network (financial statement information only)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 61.3,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "considerably lower",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This model achieves only a somewhat higher accuracy of 60.12%, but a considerably lower F1-score (61.30%) and AUC (59.13%)."
+    },
+    {
+      "outcome_name": "auc",
+      "arm_comparison": "artificial_neural_network (financial statement information only)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 59.13,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This model achieves only a somewhat higher accuracy of 60.12%, but a considerably lower F1-score (61.30%) and AUC (59.13%)."
+    },
+    {
+      "outcome_name": "sharpe_ratio",
+      "arm_comparison": "chain_of_thought_prompt (equal-weighted portfolio)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 3.36,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "substantially larger than the Sharpe ratio of ANN-based portfolios (2.54) or logistic regression-based portfolios (2.05)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that equal-weighted portfolios based on GPT predictions achieve a Sharpe ratio of 3.36, which is substantially larger than the Sharpe ratio of ANN-based portfolios (2.54) or logistic regression-based portfolios (2.05)."
+    },
+    {
+      "outcome_name": "sharpe_ratio",
+      "arm_comparison": "artificial_neural_network (equal-weighted portfolio)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 2.54,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that equal-weighted portfolios based on GPT predictions achieve a Sharpe ratio of 3.36, which is substantially larger than the Sharpe ratio of ANN-based portfolios (2.54) or logistic regression-based portfolios (2.05)."
+    },
+    {
+      "outcome_name": "sharpe_ratio",
+      "arm_comparison": "stepwise_logistic_regression (equal-weighted portfolio)",
+      "means_and_sds": {
+        "stepwise_logistic_regression": {
+          "mean": 2.05,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that equal-weighted portfolios based on GPT predictions achieve a Sharpe ratio of 3.36, which is substantially larger than the Sharpe ratio of ANN-based portfolios (2.54) or logistic regression-based portfolios (2.05)."
+    },
+    {
+      "outcome_name": "sharpe_ratio",
+      "arm_comparison": "artificial_neural_network (value-weighted portfolio)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": 1.79,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "performs relatively better than GPT (1.47)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, for value-weighted portfolios, we observe that ANN performs relatively better (Sharpe = 1.79) than GPT (1.47)."
+    },
+    {
+      "outcome_name": "sharpe_ratio",
+      "arm_comparison": "chain_of_thought_prompt (value-weighted portfolio)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": 1.47,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, for value-weighted portfolios, we observe that ANN performs relatively better (Sharpe = 1.79) than GPT (1.47)."
+    },
+    {
+      "outcome_name": "sharpe_ratio",
+      "arm_comparison": "stepwise_logistic_regression (value-weighted portfolio)",
+      "means_and_sds": {
+        "stepwise_logistic_regression": {
+          "mean": 0.81,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Both dominate the logistic regressions (0.81)."
+    },
+    {
+      "outcome_name": "alpha",
+      "arm_comparison": "chain_of_thought_prompt (equal-weighted portfolio, five factors and momentum)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "84 basis points monthly, or 10% annually",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, even after controlling for five factors and momentum, portfolios based on GPT's predictions generate a monthly alpha of 84 basis points (column (5)), or 10% annually."
+    },
+    {
+      "outcome_name": "alpha",
+      "arm_comparison": "artificial_neural_network (equal-weighted portfolio, five factors and momentum)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "60 basis points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t-statistic = 1.89",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Portfolios based on ANN and logistic regression estimates also generate positive alphas. However, their magnitudes and economic significance are smaller (60 basis points with a t-statistic of 1.89 for ANN and 43 basis points with a t-statistic of 1.96 for logistic regressions)."
+    },
+    {
+      "outcome_name": "alpha",
+      "arm_comparison": "stepwise_logistic_regression (equal-weighted portfolio, five factors and momentum)",
+      "means_and_sds": {
+        "stepwise_logistic_regression": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "43 basis points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t-statistic = 1.96",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Portfolios based on ANN and logistic regression estimates also generate positive alphas. However, their magnitudes and economic significance are smaller (60 basis points with a t-statistic of 1.89 for ANN and 43 basis points with a t-statistic of 1.96 for logistic regressions)."
+    },
+    {
+      "outcome_name": "alpha",
+      "arm_comparison": "artificial_neural_network (value-weighted portfolio, five factors and momentum)",
+      "means_and_sds": {
+        "artificial_neural_network": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "50 basis points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For value-weighted portfolios, consistent with Sharpe ratio results, ANN-based portfolios perform better compared to GPT with 50 basis points alphas even after controlling for the five factors and momentum."
+    },
+    {
+      "outcome_name": "alpha",
+      "arm_comparison": "chain_of_thought_prompt (value-weighted portfolio, five factors and momentum)",
+      "means_and_sds": {
+        "chain_of_thought_prompt": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "37 basis points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t-statistic = 2.43",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Portfolios based on GPT's predictions achieve 37 basis points alpha with a t-statistic of 2.43 (column (10))."
+    },
+    {
+      "outcome_name": "alpha",
+      "arm_comparison": "stepwise_logistic_regression (value-weighted portfolio, five factors and momentum)",
+      "means_and_sds": {
+        "stepwise_logistic_regression": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "31 basis points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t-statistic = 1.55",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Portfolios based on logit estimates also exhibit positive alphas (31 basis points) though they are marginally insignificant (t-statistic = 1.55)."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "artificial_neural_network (excluding trend analysis)",
+      "means_and_sds": {
+        "artificial_neural_network_no_trend": {
+          "mean": 57.11,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "approximately 1.8 percentage points lower than that of the ANN model that uses the entire text embedding",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The ANN model that omits trend analysis exhibits an accuracy of 57.11%, which is approximately 1.8 percentage points lower than that of the ANN model that uses the entire text embedding."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "artificial_neural_network (excluding ratio analysis)",
+      "means_and_sds": {
+        "artificial_neural_network_no_ratio": {
+          "mean": 55.65,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "almost 3.3 percentage points lower than that of the full ANN model",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The ANN model, excluding ratio analysis, achieves an accuracy of 55.65%, which is almost 3.3 percentage points lower than that of the full ANN model."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "artificial_neural_network (excluding rationale narrative)",
+      "means_and_sds": {
+        "artificial_neural_network_no_rationale": {
+          "mean": 58.88,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "does not change the model performance substantially",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, excluding the rationale narrative does not change the model performance substantially (58.88%), implying that the rationale does not add information beyond the trend and ratio analyses."
+    },
+    {
+      "outcome_name": "accuracy",
+      "arm_comparison": "dual_input_model",
+      "means_and_sds": {
+        "dual_input_model": {
+          "mean": 63.16,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "highest accuracy metrics",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This model is reported in row (3) of the table. We find that the dual-input model achieves the highest accuracy metrics: accuracy of 63.16%, an F1-score of 66.33%, and an AUC of 65.90%."
+    },
+    {
+      "outcome_name": "f1_score",
+      "arm_comparison": "dual_input_model",
+      "means_and_sds": {
+        "dual_input_model": {
+          "mean": 66.33,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This model is reported in row (3) of the table. We find that the dual-input model achieves the highest accuracy metrics: accuracy of 63.16%, an F1-score of 66.33%, and an AUC of 65.90%."
+    },
+    {
+      "outcome_name": "auc",
+      "arm_comparison": "dual_input_model",
+      "means_and_sds": {
+        "dual_input_model": {
+          "mean": 65.9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "This model is reported in row (3) of the table. We find that the dual-input model achieves the highest accuracy metrics: accuracy of 63.16%, an F1-score of 66.33%, and an AUC of 65.90%."
+    }
+  ],
+  "notes": "This paper compares GPT-4's financial statement analysis capabilities to human analysts and machine learning models. The main sample includes 150,678 firm-year observations from 1968-2021 (Compustat), and the analyst sample includes 39,533 observations from 1983-2021 (IBES). The paper tests multiple prompt approaches (simple vs. chain-of-thought) and multiple LLM models (GPT-4, GPT-3.5, Gemini Pro 1.5). Key finding: GPT-4 with chain-of-thought prompts achieves 60.35% accuracy in predicting earnings direction, outperforming analyst forecasts (52.71%) by 7 percentage points (p < .01). The paper includes out-of-sample tests using 2022 data to predict 2023 earnings, asset pricing tests showing GPT-based portfolios generate 84 basis points monthly alpha (10% annually), and ablation studies examining sources of predictive ability. The authors note that predicting earnings direction is a highly complex task as EPS time series approximate a random walk. They also note potential look-ahead bias concerns are mitigated by their anonymization approach. A 20% random sample was used for some analyses due to processing time constraints. The paper reports that GPT and Gemini 1.5 have only 6% opposing predictions (1,808 out of 30,135 firm-years).",
+  "_paper_id": "2407.17866v1"
+}

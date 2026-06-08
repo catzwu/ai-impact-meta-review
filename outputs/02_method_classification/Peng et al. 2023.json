@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study is described as 'A controlled randomized experiment' where 'professional programmers recruited through Upwork were randomly assigned to control and treatment groups.' This is randomized assignment but conducted online through Upwork and GitHub Classroom, not in a controlled lab or real workplace setting, making it a standard RCT.",
+  "citation_key": "peng_2023_copilot_productivity"
+}

@@ -1,0 +1,247 @@
+{
+  "citation_key": "huang_2025_llm_education",
+  "authors": [
+    "Jiayu Huang",
+    "Ruoxin Ritter Wang",
+    "Jen-Hao Liu",
+    "Boming Xia",
+    "Yue Huang",
+    "Ruoxi Sun",
+    "Jason (Minhui) Xue",
+    "Jinan Zou"
+  ],
+  "title": "A Meta-Analysis of LLM Effects on Students Across Qualification, Socialisation, and Subjectification",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "A meta-analysis of 133 experimental and quasi-experimental studies (k = 188 effect sizes) following PRISMA 2020 guidelines. Studies were included if they were peer-reviewed publications in English, examined LLM interventions targeting student learning outcomes, and employed an experimental or quasi-experimental design with a control or comparison group. Independent comparisons between experimental and control groups were treated as separate entries. Given high heterogeneity across studies (I\u00b2 = 80.8%\u201388.2%, p < .0001), random-effects models were applied throughout.",
+  "primary_task_description": "Large language models serving as tutors, writing partners, and coding assistants in educational settings. Work on student-facing LLM uses includes writing support, problem-solving, and exam preparation. Applications span language learning, computer science, and health education.",
+  "population_description": "The corpus spans higher education (81.20%), secondary education (12.03%), primary education (6.02%), and kindergarten (0.75%). The evidence base is heavily skewed towards Asia (78.20%), with North America (5.36%) and Europe (10.53%) under-represented. Studies cluster around domains where LLM relevance is most immediate: language and writing (36.84%) and computer science (24.06%) dominate, whereas mathematics (3.76%) and arts and music (1.50%) are rarely addressed. Nearly nine in ten studies (87.22%) relied exclusively on ChatGPT, while only 12.78% involved other large language models such as Gemini, LLaMA, ERNIE Bot, and Qwen.",
+  "arms": [
+    {
+      "arm_name": "llm_intervention",
+      "description": "Studies examined LLM interventions specifically targeting student learning outcomes. LLM roles included: Intelligent tutor (60 studies, 45.11%), Intelligent learning tool (44 studies, 33.08%), and Intelligent partner (29 studies, 21.80%).",
+      "n": null
+    },
+    {
+      "arm_name": "control",
+      "description": "Control or comparison group as required by inclusion criteria.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "qualification",
+      "outcome_description": "The acquisition of knowledge, skills, and dispositions that enable learners to \"do something.\" Includes vocational and academic competencies as well as broader life skills. Measured through academic performance, test scores, and higher-order thinking skills (e.g., critical thinking, creativity, problem-solving ability).",
+      "measurement_unit": "Hedges' g (standardized mean difference)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "socialisation",
+      "outcome_description": "The processes through which individuals become part of social, cultural, or political communities. Measured through willingness to communicate and collaboration engagement (e.g., participation in group discussions).",
+      "measurement_unit": "Hedges' g (standardized mean difference)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "subjectification",
+      "outcome_description": "The formation of learners as autonomous and responsible beings. Measured through self-efficacy, self-regulated learning strategies, learning motivation, learning interest, and positive affective states (e.g., greater learning enjoyment).",
+      "measurement_unit": "Hedges' g (standardized mean difference)",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "qualification",
+      "arm_comparison": "llm_intervention vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.751",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .0001",
+      "confidence_interval": "95% CI [0.635, 0.867]",
+      "verbatim_quote": "The estimated effect size was large and robust (g= 0.751 , 95% CI [0.635, 0.867], p < .0001)"
+    },
+    {
+      "outcome_name": "socialisation",
+      "arm_comparison": "llm_intervention vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.745",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .0001",
+      "confidence_interval": "95% CI [0.429, 1.060]",
+      "verbatim_quote": "LLMs also exerted a significant positive influence on socialisation outcomes (g= 0.745 , 95% CI [0.429, 1.060], p < .0001)"
+    },
+    {
+      "outcome_name": "subjectification",
+      "arm_comparison": "llm_intervention vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.654",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .0001",
+      "confidence_interval": "95% CI [0.506, 0.802]",
+      "verbatim_quote": "The effect on subjectification, defined here as the development of learner autonomy, agency, and identity, was positive but smaller (g= 0.654 , 95% CI [0.506, 0.802], p < .0001)."
+    },
+    {
+      "outcome_name": "qualification",
+      "arm_comparison": "llm_as_tutor vs llm_as_tool",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.902 (tutor) vs g = 0.436 (tool)",
+      "regression_coefficient": null,
+      "test_statistic": "QB = 13.341",
+      "p_value": "p = .0013",
+      "confidence_interval": null,
+      "verbatim_quote": "For qualification outcomes (see Table 5), both the LLM's role (QB = 13.341, p=.0013 ) and intervention duration (QB = 18.091, p < .001) were highly significant moderators. LLMs framed as interactive tutors (g= 0.902 ) or collaborative partners (g= 0.842 ) generated substantially larger improvements in performance than when they functioned as passive tools ( g= 0.436 )."
+    },
+    {
+      "outcome_name": "qualification",
+      "arm_comparison": "llm_as_partner vs llm_as_tool",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.842 (partner) vs g = 0.436 (tool)",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "LLMs framed as interactive tutors (g= 0.902 ) or collaborative partners (g= 0.842 ) generated substantially larger improvements in performance than when they functioned as passive tools ( g= 0.436 )."
+    },
+    {
+      "outcome_name": "qualification",
+      "arm_comparison": "intervention_duration_greater_than_8_weeks vs intervention_duration_1_to_4_weeks",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 1.024 (>8 weeks) vs g = 0.389 (1\u20134 weeks)",
+      "regression_coefficient": null,
+      "test_statistic": "QB = 18.091",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "interventions longer than eight weeks produced the largest effects (g= 1.024 ), while those lasting only 1\u20134 weeks were far weaker (g= 0.389)."
+    },
+    {
+      "outcome_name": "socialisation",
+      "arm_comparison": "intervention_duration_greater_than_8_weeks vs intervention_duration_less_than_4_weeks",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 1.204 (>8 weeks) vs negligible effects (<4 weeks)",
+      "regression_coefficient": null,
+      "test_statistic": "QB = 16.470",
+      "p_value": "p = .0009",
+      "confidence_interval": null,
+      "verbatim_quote": "For socialisation, which involves skills like communication and collaboration, the analysis revealed that intervention duration (QB = 16.470, p=.0009 ) and learning strategy (QB = 12.752, p=.0052 ) were the decisive moderators. interventions lasting more than eight weeks yielded exceptionally large gains ( g= 1.204 ), whereas those under four weeks produced negligible effects."
+    },
+    {
+      "outcome_name": "socialisation",
+      "arm_comparison": "personalised_learning vs contextual_learning",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 1.299 (personalised) vs g = 0.168 (contextual)",
+      "regression_coefficient": null,
+      "test_statistic": "QB = 12.752",
+      "p_value": "p = .0052",
+      "confidence_interval": null,
+      "verbatim_quote": "pedagogical structure was critical; actively engaging approaches like personalised learning (g= 1.299 ) and reflective learning (g= 0.921 ) generated strong outcomes, in sharp contrast to the ineffectiveness of contextual learning (g= 0.168)."
+    },
+    {
+      "outcome_name": "socialisation",
+      "arm_comparison": "reflective_learning vs contextual_learning",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.921 (reflective) vs g = 0.168 (contextual)",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "pedagogical structure was critical; actively engaging approaches like personalised learning (g= 1.299 ) and reflective learning (g= 0.921 ) generated strong outcomes, in sharp contrast to the ineffectiveness of contextual learning (g= 0.168)."
+    },
+    {
+      "outcome_name": "subjectification",
+      "arm_comparison": "llm_as_tutor vs llm_as_partner",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.857 (tutor) vs g = 0.476 (partner)",
+      "regression_coefficient": null,
+      "test_statistic": "QB = 6.062",
+      "p_value": "p = .048",
+      "confidence_interval": null,
+      "verbatim_quote": "For subjectification, the development of learner agency and autonomy, both the role of the LLM (QB = 6.062, p=.048) and duration of intervention (QB = 12.283, p=.0065 ) again proved decisive. Framing the LLM as a tutor (g= 0.857 ) was significantly more effective than using it as a partner (g= 0.476 ) or tool (g= 0.503 )."
+    },
+    {
+      "outcome_name": "subjectification",
+      "arm_comparison": "llm_as_tutor vs llm_as_tool",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.857 (tutor) vs g = 0.503 (tool)",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Framing the LLM as a tutor (g= 0.857 ) was significantly more effective than using it as a partner (g= 0.476 ) or tool (g= 0.503 )."
+    },
+    {
+      "outcome_name": "subjectification",
+      "arm_comparison": "intervention_duration_greater_than_8_weeks vs shorter_duration",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 0.955 (>8 weeks)",
+      "regression_coefficient": null,
+      "test_statistic": "QB = 12.283",
+      "p_value": "p = .0065",
+      "confidence_interval": null,
+      "verbatim_quote": "Programs extending beyond eight weeks (g= 0.955 ) produced the strongest outcomes."
+    },
+    {
+      "outcome_name": "subjectification",
+      "arm_comparison": "sample_size_1_to_50 vs sample_size_greater_than_100",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Hedges' g = 1.044 (1\u201350 participants) vs g = 0.470 (>100 participants)",
+      "regression_coefficient": null,
+      "test_statistic": "QB = 9.019",
+      "p_value": "p = .011",
+      "confidence_interval": null,
+      "verbatim_quote": "sample size moderated effects (QB = 9.019, p=.011). Studies with 1\u201350 participants reported very large impacts on learner agency (g= 1.044 ), while effects diminished sharply in cohorts larger than 100 (g= 0.470 )."
+    },
+    {
+      "outcome_name": "qualification",
+      "arm_comparison": "publication_bias_assessment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "Egger's test",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Visual inspection revealed asymmetry in the funnel plots for Qualification (Figure 2) and Subjectification (Figure 4), which Egger's test confirmed as statistically significant (p < .001and p=.0016 , respectively)."
+    },
+    {
+      "outcome_name": "subjectification",
+      "arm_comparison": "publication_bias_assessment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "Egger's test",
+      "p_value": "p = .0016",
+      "confidence_interval": null,
+      "verbatim_quote": "Visual inspection revealed asymmetry in the funnel plots for Qualification (Figure 2) and Subjectification (Figure 4), which Egger's test confirmed as statistically significant (p < .001and p=.0016 , respectively)."
+    },
+    {
+      "outcome_name": "socialisation",
+      "arm_comparison": "publication_bias_assessment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "Egger's test",
+      "p_value": "p = .8038",
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, the plot for Socialisation (Figure 3) appeared symmetrical, a finding supported by a non-significant Egger's test (p=.8038)."
+    }
+  ],
+  "notes": "This is a meta-analysis of 133 experimental and quasi-experimental studies (k = 188 effect sizes) examining LLM effects on student learning outcomes. The paper uses Biesta's tripartite framework (qualification, socialisation, subjectification) to organize outcomes rather than treating all effects as a single construct. The study includes moderator analyses examining how LLM role, intervention duration, learning strategy, educational level, subject category, and sample size influence effects within each educational purpose. The paper notes significant geographic and disciplinary concentration in the evidence base (78.2% from Asia, 81.2% from higher education, 36.8% from language/writing and 24.1% from computer science). Publication bias was detected for qualification and subjectification domains (Egger's test p < .001 and p = .0016 respectively) but did not substantially threaten conclusions based on fail-safe N analyses (Fail-safe Ns of 4583 and 872 respectively, both exceeding tolerance thresholds). The result for socialisation is noted as fragile, with Fail-safe N (34) falling below the required threshold of 65. High heterogeneity across studies (I\u00b2 = 80.8%\u201388.2%, p < .0001) prompted use of random-effects models throughout. The paper cautions that unguided or answer-provision use can harm long-term learning, and over-reliance may undermine creativity and learner autonomy. Many studies rely on immediate post-tests, making it difficult to judge whether observed gains persist or coincide with delayed drawbacks from over-reliance.",
+  "_paper_id": "2509.22725v2"
+}

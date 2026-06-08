@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "15-1252.00",
+  "onet_label": "Software Developers",
+  "mapping_confidence": "high",
+  "rationale": "The participants are GitHub contributors who maintain open source software projects and engage in comprehensive software development activities: writing code, managing repositories, submitting pull requests, reviewing contributions, and managing project boards. The task description explicitly identifies them as 'developers' and 'maintainers of open source software projects,' performing the full range of software development work rather than a narrow subset. This maps to the occupation of Software Developers, not merely to isolated coding activities.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1251.00",
+      "onet_label": "Computer Programmers"
+    }
+  ],
+  "citation_key": "hoffmann_2025_generative_ai_work"
+}

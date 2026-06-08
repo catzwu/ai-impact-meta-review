@@ -1,0 +1,17 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "elasticity_of_substitution_ces_in_compute",
+      "category": "other",
+      "operationalization": "Coefficient on ln(wit/rit) from regression of ln(Kit,res/Hit) on ln(wit/rit) and a constant, using CES in compute specification"
+    },
+    {
+      "outcome_name": "elasticity_of_substitution_frontier_experiments",
+      "category": "other",
+      "operationalization": "Coefficient on ln(wit/rit) from regression of ln(Kit,res/Hit) on ln(wit/rit) and a constant, using frontier experiments specification"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "whitfill_2025_compute_bottlenecks"
+}

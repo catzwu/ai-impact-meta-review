@@ -1,0 +1,57 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "novelty",
+      "category": "quality",
+      "operationalization": "Average of evaluator ratings on three components (novel, original, rare) using a multi-item index with Cronbach's \u03b1 = 0.92"
+    },
+    {
+      "outcome_name": "usefulness",
+      "category": "quality",
+      "operationalization": "Average of evaluator ratings on three components (appropriate for audience, feasible to develop, publishable) with Cronbach's \u03b1 = 0.89"
+    },
+    {
+      "outcome_name": "enjoyability",
+      "category": "quality",
+      "operationalization": "Reader evaluations of how enjoyable the story was, measurement scale not specified"
+    },
+    {
+      "outcome_name": "well_written",
+      "category": "quality",
+      "operationalization": "Reader evaluations of how well written the story was, measurement scale not specified"
+    },
+    {
+      "outcome_name": "boring",
+      "category": "quality",
+      "operationalization": "Reader evaluations of how boring the story was (reverse-coded quality measure), measurement scale not specified"
+    },
+    {
+      "outcome_name": "funny",
+      "category": "quality",
+      "operationalization": "Reader evaluations of how funny the story was, measurement scale not specified"
+    },
+    {
+      "outcome_name": "surprising_twist",
+      "category": "quality",
+      "operationalization": "Reader evaluations of whether the story had a surprising twist, measurement scale not specified"
+    },
+    {
+      "outcome_name": "changed_expectations",
+      "category": "other",
+      "operationalization": "Reader evaluations of whether the story changed expectations for future stories; measures reader impact/learning rather than story quality itself"
+    },
+    {
+      "outcome_name": "similarity_to_condition_average",
+      "category": "other",
+      "operationalization": "Cosine similarity of story embeddings to average embeddings of other stories in same condition, scaled 0-100; measures conformity/diversity, not quality"
+    },
+    {
+      "outcome_name": "similarity_to_genai_ideas",
+      "category": "other",
+      "operationalization": "Cosine similarity of story embeddings to GenAI idea embeddings, scaled 0-100; measures AI influence/reliance, not output quality"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "novelty",
+  "citation_key": "doshi_2024_generative_creativity"
+}

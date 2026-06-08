@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Designing_human_and_generative_AI_collaboration",
+  "citation_key": "hosanagar_2024_human_ai_collaboration",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "no_ai",
+    "ai_arm_name": "copilot",
+    "ai_arm_selection_rationale": "This is a within-subject design where participants wrote stories on Day 1 without AI and Day 2 with AI. The copilot arm represents the most collaborative human+AI condition and showed the highest quality scores among AI arms. Table S7 provides means for Day 1 (Without AI) and Day 2 (With AI) for the copilot group, along with standard errors. The same participants completed both conditions, making this a paired design.",
+    "direction_convention": "larger_is_better",
+    "m_human": 4.92,
+    "sd_human": null,
+    "se_human": 0.068,
+    "n_human": 278,
+    "m_ai": 5.0622,
+    "sd_ai": null,
+    "se_ai": 0.528,
+    "n_ai": 278,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Table S7 provides means and standard errors for overall quality on Day 1 (without AI) and Day 2 (with AI) for the copilot group. The constant row shows Day 1 mean=4.92 (SE=0.068) and Day 2 mean=5.0622 (SE=0.528) for the copilot condition. Total N=285 participants per Table 1, but 278 stories were produced on Day 1 per page 4. Using n=278 as the paired sample size. The design is within-subject (same participants, Day 1 vs Day 2). The SE for Day 2 appears unusually large compared to Day 1, which may reflect model uncertainty rather than pure sampling error. No SD of differences or paired t-statistic is reported. Python will need to convert SEs to SDs and apply paired-design correction.",
+    "source_quotes": [
+      "Table S7. Overall Quality: Day 1 (Without AI): Constant 4.9200*** (0.068); Day 2 (With AI): Constant 5.0622*** (0.528); T3: Copilot -0.1518 (0.098) [Day 1], 0.3158*** (0.105) [Day 2]",
+      "A total of 549 stories were produced (278 from Day 1 and 271 from Day 2)",
+      "On Day 1, participants completed an initial survey... They then wrote a 1,000-word story without any AI assistance... On Day 2, participants wrote a new 1,000-word story... using ChatGPT 3.5, following their assigned collaboration model."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.022656151683071928,
+    "hedges_g": 0.02262546615031833,
+    "variance": 0.007175230357966392,
+    "computation_method": "means_and_ses",
+    "confidence": "medium",
+    "notes": "Table S7 provides means and standard errors for overall quality on Day 1 (without AI) and Day 2 (with AI) for the copilot group. The constant row shows Day 1 mean=4.92 (SE=0.068) and Day 2 mean=5.0622 (SE=0.528) for the copilot condition. Total N=285 participants per Table 1, but 278 stories were produced on Day 1 per page 4. Using n=278 as the paired sample size. The design is within-subject (same participants, Day 1 vs Day 2). The SE for Day 2 appears unusually large compared to Day 1, which may reflect model uncertainty rather than pure sampling error. No SD of differences or paired t-statistic is reported. Python will need to convert SEs to SDs and apply paired-design correction.",
+    "n_human": 278,
+    "n_ai": 278,
+    "direction_convention": "larger_is_better"
+  }
+}

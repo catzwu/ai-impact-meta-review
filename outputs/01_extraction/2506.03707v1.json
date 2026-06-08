@@ -1,0 +1,191 @@
+{
+  "citation_key": "yang_2025_human_ai_collaboration",
+  "authors": [
+    "Cathy (Liu) Yang",
+    "Kevin Bauer",
+    "Xitong Li",
+    "Oliver Hinz"
+  ],
+  "title": "My Advisor, Her AI and Me: Evidence from a Field Experiment on Human-AI Collaboration and Investment Decisions",
+  "year": 2025,
+  "venue": "Management Science (forthcoming)",
+  "study_design_description": "A two-staged field experiment in which customers visiting bank branches were randomly assigned to receive investment advice from either pure AI (baseline), human-AI collaboration (main treatment), or human-AI collaboration labeled as human (additional control). In Stage 2, the core of the study, customers made initial investment decisions and risk assessments for ten personal loan investment opportunities, then received advice and made final decisions. The field experiment was conducted in person with trained research assistants at two bank branches between October 4 and November 26, 2021. A complementary controlled online experiment was conducted to uncover underlying mechanisms.",
+  "primary_task_description": "Customers invested in real personal loans from a peer-to-peer lending platform, with each loan characterized by seven key pieces of information: loan amount, duration (in months), annual percentage rate (APR), monthly installments, borrowers' annual income, occupation, and loan purpose. Investment advice consisted of an investment recommendation (whether it is profitable to invest or not) and a default risk assessment categorized into seven levels (extremely low to extremely high risk). Customers made two rounds of investment decisions and risk assessments: once before receiving advice and once after receiving advice on ten loan investment opportunities. A minimum of 10% of all participants were lottery winners for whom one of their twenty investment decisions was randomly drawn to realize the actual final investment outcome.",
+  "population_description": "Field experiment: 137 customers recruited from two geographically proximate bank branches of one of the largest savings banks in Germany with similar consumer demographics; 7 excluded due to poor-quality responses (straight-lining), leaving 130 customers in final analysis (45 AI-only, 42 Human-AI, 43 Human-only). Twenty-seven experienced bankers from the two bank branches participated in generating human-AI collaborative advice over a two-week period in September 2021. Online experiment: 100 German-speaking participants (36.36% female, Mage = 32.6) recruited via Prolific platform from July 30 to August 2, 2024; 13 excluded (10 failed attention check, 3 low-quality responses), leaving 87 participants (44 AI-only, 43 Human-AI).",
+  "arms": [
+    {
+      "arm_name": "ai_only",
+      "description": "Bank customers receive investment advice from pure AI (baseline condition)",
+      "n": 45
+    },
+    {
+      "arm_name": "human_ai",
+      "description": "Bank customers receive investment advice from human-AI collaboration (main treatment condition)",
+      "n": 42
+    },
+    {
+      "arm_name": "human_only",
+      "description": "Bank customers receive human-AI collaborative advice without revealing the banker's use of AI (additional control treatment)",
+      "n": 43
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "final_investment_alignment",
+      "outcome_description": "A dummy variable indicating the alignment of the customer's final investment decision with the advisor's recommendation, denoted as FinalAlign. Measures the degree of advice-taking by customers.",
+      "measurement_unit": "binary (aligned vs. not aligned)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "final_risk_assessment_gap",
+      "outcome_description": "The absolute difference between the customer's final risk assessment and the observed assessment, denoted as GapFinalRiskAssess. Measures reliance on advice through risk assessment alignment on a seven-point scale.",
+      "measurement_unit": "absolute difference on 7-point scale",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "final_payoff",
+      "outcome_description": "The realized monetary payoff contingent on one's final investment decision, calculated as 100 \u00d7 (1 \u2212 Default) \u00d7 Invest \u00d7 (1 + APR)(Term/12) + 100 \u00d7 (1 \u2212 FinalInvest). Measures the economic consequences of customers' reliance on advice.",
+      "measurement_unit": "Euros",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "recommendation_accuracy",
+      "outcome_description": "A recommendation is accurate if it advises investing when the loan does not default and not investing when it does default. Measures whether the involvement of bankers in advice production compromises accuracy.",
+      "measurement_unit": "proportion accurate",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "final_investment_alignment",
+      "arm_comparison": "human_ai vs ai_only",
+      "means_and_sds": {
+        "human_ai": {
+          "mean": 0.792,
+          "sd": 0.407,
+          "se": null
+        },
+        "ai_only": {
+          "mean": 0.683,
+          "sd": 0.466,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "15.5 percentage point increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "two-sample Student's t-test",
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The estimated coefficient indicates an 15.5 percentage point increase as the average treatment effect in bank customers' final investment alignment with advice when AI-based investment recommendations involve a banker. the percentage of aligned investment decisions is higher in the Human-AI condition ( M = 0.792, SD = 0.407, N = 168) than in the AI-only condition ( M = 0.683, SD = 0.466, N = 180), with this difference being statistically significant ( p <0.05; two-sample Student's t-test)."
+    },
+    {
+      "outcome_name": "final_risk_assessment_gap",
+      "arm_comparison": "human_ai vs ai_only",
+      "means_and_sds": {
+        "human_ai": {
+          "mean": 1.208,
+          "sd": 0.095,
+          "se": null
+        },
+        "ai_only": {
+          "mean": 1.517,
+          "sd": 0.113,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "20.4% greater alignment",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "two-sample Student's t-test",
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "customers exhibit greater alignment (20.4%) in their final risk assessments with the advice in the Human-AI condition ( M = 1.208, SD = 0.095, N = 168) compared to the AI-only condition ( M = 1.517, SD = 0.113, N = 180). This difference is also statistically significant (p <0.05; two-sample Student's t-test)."
+    },
+    {
+      "outcome_name": "final_payoff",
+      "arm_comparison": "human_ai vs ai_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "44.92% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "an average increase of 44.92% in the final payoff for the bank customers under the Human-AI than the AI-only condition across all loans"
+    },
+    {
+      "outcome_name": "recommendation_accuracy",
+      "arm_comparison": "human_ai vs ai_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "one-sample Student's t-test",
+      "p_value": "p = 0.23",
+      "confidence_interval": null,
+      "verbatim_quote": "the involvement of bankers in the advice production process does not compromise the accuracy of the investment recommendations in our specific setting. We define a recommendation as accurate if it advises investing when the loan does not default and not investing when it does default. The difference in the investment recommendation accuracy between the 27 sets of human-AI collaborative advice generated from each banker-AI pair and the AI-only advice is not statistically significant ( M = \u22120.03, p = 0.23, one-sample Student's t-test)."
+    },
+    {
+      "outcome_name": "final_investment_alignment",
+      "arm_comparison": "human_ai vs human_only",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "customers' alignment in their final investment decisions with advice does not differ between the Human-AI and the Human-only conditions"
+    },
+    {
+      "outcome_name": "final_investment_alignment",
+      "arm_comparison": "human_ai vs ai_only (online experiment)",
+      "means_and_sds": {
+        "human_ai": {
+          "mean": 0.71,
+          "sd": 0.46,
+          "se": null
+        },
+        "ai_only": {
+          "mean": 0.65,
+          "sd": 0.48,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "9.2% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "two-sample Student's t-test",
+      "p_value": "p = 0.08",
+      "confidence_interval": null,
+      "verbatim_quote": "participants in the online experiment are more likely to align their final investment decisions with advice in the Human-AI condition ( M = 0.71, SD = 0 .46, N = 430) compared to the AI-only condition ( M = 0 .65, SD = 0 .48, N = 440). This difference, is both economically meaningful (+9.2%) and approaches statistical significance even in this model-free testing where we do not control for co-variates and clustering of standard errors (two-sample Student's t-test, p = 0.08)."
+    },
+    {
+      "outcome_name": "final_investment_alignment",
+      "arm_comparison": "human_ai vs ai_only (moderated mediation by decision uncertainty and emotional trust)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "effect size = 0.040",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": "95% CI [0.005, 0.076]",
+      "verbatim_quote": "Our findings indicate that involving a human banker in AI-based advice, compared to AI-only advice, has an indirect effect of increasing alignment with the advice under conditions of higher decision uncertainty, mediated by emotional trust (effect size = 0.040, 95% confidence interval = [0.005, 0.076], p <0.05). This positive mediation effect is not observed when participants are more certain about their decisions (effect size = \u22120.015, 95% confidence interval = [ \u22120.042, 0.012], p = 0.27). Furthermore, we identify a significant moderated mediation effect, indicating that the positive mediation effect of emotional trust under greater uncertainty is significantly stronger than under lower uncertainty (effect size = 0 .056, 95% confidence interval = [0 .006, 0.105], p <0.05)."
+    },
+    {
+      "outcome_name": "final_investment_alignment",
+      "arm_comparison": "human_ai vs ai_only (moderated mediation moderation effect)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "effect size = 0.056",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": "95% CI [0.006, 0.105]",
+      "verbatim_quote": "Furthermore, we identify a significant moderated mediation effect, indicating that the positive mediation effect of emotional trust under greater uncertainty is significantly stronger than under lower uncertainty (effect size = 0 .056, 95% confidence interval = [0 .006, 0.105], p <0.05)."
+    }
+  ],
+  "notes": "Field experiment (N=130 after exclusions) with three arms: AI-only (n=45), Human-AI (n=42), Human-only (n=43). Each customer made investment decisions on 10 loans twice (before and after advice), yielding N=168 observations for Human-AI and N=180 for AI-only in the main analysis (accounting for the 10 loans per customer). Online experiment (N=87 after exclusions) with two arms: AI-only (n=44), Human-AI (n=43), with N=430 and N=440 observations respectively (accounting for multiple decisions per participant). The paper reports that the Human-AI and Human-only conditions did not differ significantly on final investment alignment, suggesting the effect is driven by the AI involvement disclosure rather than human presence per se. The moderated mediation analysis shows emotional trust mediates the effect under high decision uncertainty (effect size 0.040, p<0.05) but not under low uncertainty (effect size -0.015, p=0.27). The moderated mediation effect itself is significant (effect size 0.056, p<0.05). Caveats: (1) variations in how advice source was communicated across conditions could confound results, though online experiment with standardized communication shows consistent effects; (2) customers were unaware of the number of bankers or that advice was most frequent among banker-AI pairs; (3) actual AI and human-AI advice differed across conditions, though online experiment with identical advice shows consistent results; (4) online participants significantly younger than field customers (p<0.01); (5) AI accuracy approximately 70% (mid-level); (6) no genuine human-only condition (Human-only condition conceals AI involvement); (7) findings specific to investment advisory domain; (8) low reliability on some trust items required dropping items from cognitive and emotional trust constructs (correlations 0.50 and 0.72 respectively).",
+  "_paper_id": "2506.03707v1"
+}

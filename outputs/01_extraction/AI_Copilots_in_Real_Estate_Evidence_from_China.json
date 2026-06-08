@@ -1,0 +1,784 @@
+{
+  "citation_key": "ai_copilots_real_estate_2025",
+  "authors": [],
+  "title": "AI Copilots in Real Estate: Evidence from China",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "The study employs a difference-in-differences (DiD) design exploiting cross-district variation in pre-existing app penetration, estimated using a continuous diff-in-diffs regression with a flexible event-study specification to test for parallel pre-trends. This is complemented by a field experiment in Jinan that randomized AI copilot access at the neighborhood level, with half (34) of 68 neighborhoods assigned to control and half to treatment. The experiment ran for roughly eleven months through the end of 2019, with the AI copilot introduced on 16 January 2019.",
+  "primary_task_description": "The AI copilot is embedded in the agent-client chat workflow and advises agents on four tasks: for buyers, it recommends suitable properties based on conversation text and browsing histories, and suggests professional reply scripts to improve communication; for sellers, it suggests dynamic price adjustments using comparable listings and market information, and proposes optimized titles and descriptions to highlight key selling points.",
+  "population_description": "The main analysis uses a proprietary dataset from 18 cities covering roughly one year before and after the copilot's introduction, including about 230,000 completed transactions with observed final prices and time on market. A subset of 90,000 transactions are rated, with 75,596 buyer ratings and 20,336 seller ratings. The data contains a weekly panel of over 13 million listings. The field experiment in Jinan involved 68 neighborhoods total.",
+  "arms": [
+    {
+      "arm_name": "ai_copilot_access",
+      "description": "In treated neighborhoods, the copilot was available in the agent app. Treatment intensity in the DiD is based on pre-treatment app penetration at the district level (share of transactions conducted through the app).",
+      "n": 34
+    },
+    {
+      "arm_name": "control",
+      "description": "In control neighborhoods, the copilot was disabled (agents were told the feature was under maintenance).",
+      "n": 34
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "sold_within_3_months",
+      "outcome_description": "An indicator for whether the listed property is sold within three months of listing. Chosen because 54% of properties that are eventually sold are sold within 3 months.",
+      "measurement_unit": "binary indicator / probability",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "outcome_description": "Natural logarithm of one plus days on market for sellers",
+      "measurement_unit": "log(days)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "outcome_description": "Natural logarithm of one plus days on market for buyers",
+      "measurement_unit": "log(days)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "log_price",
+      "outcome_description": "Natural logarithm of transaction prices",
+      "measurement_unit": "log(RMB)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "outcome_description": "Post-transaction overall rating from buyers, comprising 5-point overall ratings to evaluate agent's service",
+      "measurement_unit": "5-point scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "rating_seller",
+      "outcome_description": "Post-transaction overall rating from sellers, comprising 5-point overall ratings to evaluate agent's service",
+      "measurement_unit": "5-point scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "recommend_optimal",
+      "outcome_description": "Structured feedback label evaluating whether agent provided accurate recommendations",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "talk_inefficiency",
+      "outcome_description": "Structured feedback label evaluating talk inefficiency",
+      "measurement_unit": "continuous measure",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "talk_comfort",
+      "outcome_description": "Structured feedback label evaluating talk comfort",
+      "measurement_unit": "continuous measure",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "trust",
+      "outcome_description": "Structured feedback label evaluating trustworthiness",
+      "measurement_unit": "continuous measure",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "viewing",
+      "outcome_description": "Number of on-site viewings",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "log_listed_price",
+      "outcome_description": "Natural logarithm of listed price",
+      "measurement_unit": "log(RMB)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "pricing_optimal",
+      "outcome_description": "Structured feedback label evaluating whether pricing was optimal",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "sellpoint_accuracy",
+      "outcome_description": "Structured feedback label evaluating accuracy of selling-point descriptions",
+      "measurement_unit": "binary indicator",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "total_adjust_times",
+      "outcome_description": "Weekly frequency of price adjustments",
+      "measurement_unit": "count per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "total_adjust_mag",
+      "outcome_description": "Average magnitude of price adjustments",
+      "measurement_unit": "continuous measure",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "sold_within_3_months",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18.8 percentage points increase at mean pre-treatment app penetration (0.446)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.4215 (SE 0.080)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "for a district at mean pre-treatment app penetration (0.446), the likelihood that a listed property is sold within the first three months after it is listed increases by 18.8 percentage points (0.4215*0.446) compared to the control group (agents without access to AI)."
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {
+        "control": {
+          "mean": 3.757,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.198 log-point decrease (5.27% decrease relative to baseline mean of 3.757)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = -0.4434 (SE 0.145)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "the time on market for sellers is lower by 0.198 (\u22120.4434*0.446) compared to the control group. Relative to a baseline pre-treatment mean of 3.757, this represents a 5.27% decrease."
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.747,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.111 log-point decrease (4.04% decrease relative to baseline mean of 2.747)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = -0.2484 (SE 0.047)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "access to AI copilots reduces the time on market for buyers by 0.111 (-0.2484*0.446), or by 4.04% relative to the baseline mean of 2.747."
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {
+        "control": {
+          "mean": 10.535,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.045 log-point increase (0.43% increase from pre-treatment mean of 10.535)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.1005 (SE 0.029)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "The estimated coefficient indicates an increase in transaction prices by 0.045 (0.10 \u00d70.446), relative to the control group, a 0.43% increase from the pre-treatment mean of 10.535."
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "9.84% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.2206 (SE 0.053)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "buyer ratings rise by 9.84% (0.2206 \u00d7 0.446)"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "15.49% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.3481 (SE 0.061)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "ratings from sellers by 15.49% (0.3474 \u00d70.446)."
+    },
+    {
+      "outcome_name": "recommend_optimal",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.176 increase (42% relative to pre-treatment mean)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.3944 (SE 0.092)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "the likelihood increases by a remarkable 0.176 (0.3944\u00d70.446), or 42% relative to the pre-treatment mean"
+    },
+    {
+      "outcome_name": "talk_inefficiency",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = -0.0683 (SE 0.024)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran -0.0683*** (0.024) for Talk inefficiency"
+    },
+    {
+      "outcome_name": "talk_comfort",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.0688 (SE 0.029)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran 0.0688** (0.029) for Talk comfort"
+    },
+    {
+      "outcome_name": "trust",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.0575 (SE 0.023)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran 0.0575** (0.023) for Trust"
+    },
+    {
+      "outcome_name": "viewing",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio, buyer-facing)",
+      "means_and_sds": {
+        "control": {
+          "mean": 1.6,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.138 decrease (8.57% decrease from pre-treatment mean of 1.6)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = -0.3548 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "AI's buyer-facing functions reduces on-site viewings by 0.138 (-0.3548 \u00d70.388), representing a 8.57% decrease from the pre-treatment mean of 1.6."
+    },
+    {
+      "outcome_name": "log_listed_price",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {
+        "control": {
+          "mean": 10.57,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.043 log-point increase (0.41% increase from pre-treatment mean of 10.57)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.0963 (SE 0.029)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "average access to AI copilot increases Log listed price by 0.043 (0.0963 \u00d70.446), a 0.41% increase from the pre-treatment mean of 10.57."
+    },
+    {
+      "outcome_name": "pricing_optimal",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.11 increase (36.7% increase relative to pre-treatment mean)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.2465 (SE 0.065)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "the likelihood increases by 0.11 (0.2465\u00d70.446), representing a 36.7% increase relative to the pre-treatment mean"
+    },
+    {
+      "outcome_name": "sellpoint_accuracy",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "14.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.3270 (SE 0.087)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "The AI increases this likelihood by 14.6%. Post\u00d7Ratio tran 0.3270*** (0.087) for Sellpoint Accuracy"
+    },
+    {
+      "outcome_name": "total_adjust_times",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio, seller-facing)",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.16,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.032 increase (20% increase from pre-treatment mean of 0.16)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = 0.0639 (SE 0.013)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "average access to the supply-side AI function increases the weekly frequency of price adjustments by 0.032 (0.0820 \u00d7 0.388), or a 20% increase from its pre-treatment mean of 0.16."
+    },
+    {
+      "outcome_name": "total_adjust_mag",
+      "arm_comparison": "ai_copilot_access vs control (DiD, transaction ratio, seller-facing)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.308 reduction (7.3% reduction from pre-treatment mean)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran = -0.4054 (SE 0.155)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "this reduced the average magnitude of those adjustments by 0.308 (-0.7933 \u00d7 0.388), a 7.3% reduction from its pre-treatment"
+    },
+    {
+      "outcome_name": "sold_within_3_months",
+      "arm_comparison": "ai_copilot_access vs control (field experiment, Jinan)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "11 percentage points increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Treat = 0.1106 (SE 0.040)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Relative to control neighborhoods, AI access increases the probability a listing sells within three months by about 11 percentage points. Post\u00d7Treat 0.1106*** (0.040) for Sold<3 month"
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "arm_comparison": "ai_copilot_access vs control (field experiment, Jinan)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 10% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Treat = -0.3704 (SE 0.096)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "reduces time on market for sellers and buyers (about 10% and 19%, respectively). Post\u00d7Treat -0.3704*** (0.096) for Log days seller"
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "arm_comparison": "ai_copilot_access vs control (field experiment, Jinan)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 19% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Treat = -0.4506 (SE 0.121)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "reduces time on market for sellers and buyers (about 10% and 19%, respectively). Post\u00d7Treat -0.4506*** (0.121) for Log days buyer"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "ai_copilot_access vs control (field experiment, Jinan)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "roughly 0.8% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Treat = 0.0817 (SE 0.017)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "raises prices by roughly 0.8%. Post\u00d7Treat 0.0817*** (0.017) for Log price unit"
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "arm_comparison": "ai_copilot_access vs control (field experiment, Jinan)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Treat = 0.1247 (SE 0.041)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Treat 0.1247*** (0.041) for Rating (buyer)"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "arm_comparison": "ai_copilot_access vs control (field experiment, Jinan)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Treat = 0.2323 (SE 0.096)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Treat 0.2323** (0.096) for Rating (seller)"
+    },
+    {
+      "outcome_name": "sold_within_3_months",
+      "arm_comparison": "buyer-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.77% increase (0.1744*0.388)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer = 0.1744 (SE 0.100)",
+      "test_statistic": null,
+      "p_value": "p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "both P ost\u00d7 Ratio buyer and P ost\u00d7 Ratio seller increase the probability a listing sells within three months, by 6.77% (0.1744*0.388) and 10.91% (0.4117*0.265), respectively. Post\u00d7Ratio buyer 0.1744* (0.100)"
+    },
+    {
+      "outcome_name": "sold_within_3_months",
+      "arm_comparison": "seller-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10.91% increase (0.4117*0.265)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller = 0.4117 (SE 0.103)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "both P ost\u00d7 Ratio buyer and P ost\u00d7 Ratio seller increase the probability a listing sells within three months, by 6.77% (0.1744*0.388) and 10.91% (0.4117*0.265), respectively. Post\u00d7Ratio seller 0.4117*** (0.103) for Sold<3 month"
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "arm_comparison": "buyer-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer = -0.2376 (SE 0.107)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer -0.2376** (0.107) for Log days seller"
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "arm_comparison": "seller-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller = -0.4877 (SE 0.229)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller -0.4877** (0.229) for Log days seller"
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "arm_comparison": "buyer-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer = -0.1411 (SE 0.055)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer -0.1411** (0.055) for Log days buyer"
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "arm_comparison": "seller-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller = -0.2550 (SE 0.089)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller -0.2550*** (0.089) for Log days buyer"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "buyer-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer = 0.1152 (SE 0.028)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer 0.1152*** (0.028) for Log price unit"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "seller-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller = -0.0005 (SE 0.033)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller -0.0005 (0.033) for Log price unit"
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "arm_comparison": "buyer-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer = 0.1340 (SE 0.041)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer 0.1340*** (0.041) for Rating (buyer)"
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "arm_comparison": "seller-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller = 0.1525 (SE 0.048)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller 0.1525*** (0.048) for Rating (buyer)"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "arm_comparison": "buyer-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer = 0.2936 (SE 0.056)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer 0.2936*** (0.056) for Rating (seller)"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "arm_comparison": "seller-facing exposure vs control (DiD)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller = 0.1354 (SE 0.055)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller 0.1354** (0.055) for Rating (seller)"
+    },
+    {
+      "outcome_name": "sold_within_3_months",
+      "arm_comparison": "ai_copilot_access vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran\u00d7Tenure = -0.0341 (SE 0.003)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran\u00d7Tenure -0.0341*** (0.003) for Sold<3 month"
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "arm_comparison": "ai_copilot_access vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran\u00d7Tenure = 0.0222 (SE 0.008)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran\u00d7Tenure 0.0222*** (0.008) for Log days seller"
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "arm_comparison": "ai_copilot_access vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran\u00d7Tenure = 0.0249 (SE 0.007)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran\u00d7Tenure 0.0249*** (0.007) for Log days buyer"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "ai_copilot_access vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran\u00d7Tenure = -0.0002 (SE 0.001)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran\u00d7Tenure -0.0002 (0.001) for Log price unit"
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "arm_comparison": "ai_copilot_access vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran\u00d7Tenure = -0.0147 (SE 0.007)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran\u00d7Tenure -0.0147** (0.007) for Rating (buyer)"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "arm_comparison": "ai_copilot_access vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio tran\u00d7Tenure = -0.0683 (SE 0.033)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio tran\u00d7Tenure -0.0683** (0.033) for Rating (seller)"
+    },
+    {
+      "outcome_name": "sold_within_3_months",
+      "arm_comparison": "buyer-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer\u00d7Tenure = -0.0308 (SE 0.004)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer\u00d7Tenure -0.0308*** (0.004) for Sold<3 month"
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "arm_comparison": "buyer-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer\u00d7Tenure = 0.0229 (SE 0.009)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer\u00d7Tenure 0.0229** (0.009) for Log days seller"
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "arm_comparison": "buyer-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer\u00d7Tenure = 0.0158 (SE 0.010)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer\u00d7Tenure 0.0158 (0.010) for Log days buyer"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "buyer-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer\u00d7Tenure = -0.0005 (SE 0.001)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer\u00d7Tenure -0.0005 (0.001) for Log price unit"
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "arm_comparison": "buyer-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer\u00d7Tenure = -0.0144 (SE 0.007)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer\u00d7Tenure -0.0144** (0.007) for Rating (buyer)"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "arm_comparison": "buyer-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio buyer\u00d7Tenure = -0.0838 (SE 0.034)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio buyer\u00d7Tenure -0.0838** (0.034) for Rating (seller)"
+    },
+    {
+      "outcome_name": "sold_within_3_months",
+      "arm_comparison": "seller-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller\u00d7Tenure = -0.0109 (SE 0.007)",
+      "test_statistic": null,
+      "p_value": "p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller\u00d7Tenure -0.0109* (0.007) for Sold<3 month"
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "arm_comparison": "seller-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller\u00d7Tenure = 0.0053 (SE 0.009)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller\u00d7Tenure 0.0053 (0.009) for Log days seller"
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "arm_comparison": "seller-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller\u00d7Tenure = 0.0247 (SE 0.013)",
+      "test_statistic": null,
+      "p_value": "p < 0.10",
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller\u00d7Tenure 0.0247* (0.013) for Log days buyer"
+    },
+    {
+      "outcome_name": "log_price",
+      "arm_comparison": "seller-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller\u00d7Tenure = 0.0015 (SE 0.002)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller\u00d7Tenure 0.0015 (0.002) for Log price unit"
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "arm_comparison": "seller-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller\u00d7Tenure = 0.0021 (SE 0.006)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller\u00d7Tenure 0.0021 (0.006) for Rating (buyer)"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "arm_comparison": "seller-facing exposure vs control (heterogeneity by agent tenure)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "Post\u00d7Ratio seller\u00d7Tenure = 0.0309 (SE 0.037)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Post\u00d7Ratio seller\u00d7Tenure 0.0309 (0.037) for Rating (seller)"
+    }
+  ],
+  "notes": "This is a difference-in-differences study of an AI copilot tool introduced on a Chinese real estate platform on 16 January 2019. The main DiD exploits cross-district variation in pre-treatment app penetration (continuous treatment intensity). A complementary randomized field experiment in Jinan randomized AI access at the neighborhood level (34 treated, 34 control neighborhoods). The paper decomposes effects into buyer-facing and seller-facing workflows and examines heterogeneity by agent tenure. Key findings: AI access increases probability of sale within 3 months, reduces time-on-market for both buyers and sellers, increases transaction prices (driven by buyer-side exposure), and improves satisfaction ratings. Effects are larger for less-experienced agents. The paper notes that AI recommendations are advisory and visible only to agents, who retain full discretion. The post-period covers about one year, so longer-run equilibrium effects are not captured. Adoption rate by late 2019 was about 60% of AI recommendations. The paper reports that adoption led to an average price increase of about 17,160 RMB (approximately 2,400 USD) per transaction.",
+  "_paper_id": "AI_Copilots_in_Real_Estate_Evidence_from_China"
+}

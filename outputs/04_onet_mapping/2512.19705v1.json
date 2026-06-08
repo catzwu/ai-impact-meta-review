@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "13-2051.00",
+  "onet_label": "Financial and Investment Analysts",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are equity research analysts employed at brokerages who produce research reports on publicly traded companies. The paper explicitly describes their work as 'financial analysts' conducting equity research, which directly corresponds to the O*NET occupation 'Financial and Investment Analysts.' These professionals perform the full scope of financial analyst work including acquiring information, synthesizing data, and producing research output that impacts markets\u2014core activities of this occupation rather than a narrow subset of tasks.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "xue_2025_generative_analysts"
+}

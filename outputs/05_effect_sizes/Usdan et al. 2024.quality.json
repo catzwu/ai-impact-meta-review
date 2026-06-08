@@ -1,0 +1,49 @@
+{
+  "_paper_id": "Usdan et al. 2024",
+  "citation_key": "usdan_2024_generative_writing",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": 5.8,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "no_genai",
+    "ai_arm_name": "genai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm (genai_assisted) compared to the human-only baseline (no_genai). This is a within-subjects design where the same students completed both assignments.",
+    "direction_convention": "larger_is_better",
+    "m_human": 88.3,
+    "sd_human": 10.3,
+    "se_human": null,
+    "n_human": 26,
+    "m_ai": 94.1,
+    "sd_ai": 8.0,
+    "se_ai": null,
+    "n_ai": 26,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": 4.74,
+    "reported_F_df1": 1,
+    "reported_F_df2": 25,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.04,
+    "extraction_confidence": "high",
+    "notes": "Within-subjects design with repeated measures ANOVA. Sample size n=26 inferred from df2=25 (n-1). The F-statistic is from a repeated-measures design. Mean difference = 94.1 - 88.3 = 5.8. The paper reports \u03b7\u00b2=.16 (eta-squared), not Cohen's d or Hedges' g. SD of difference scores not reported, but means, SDs, and F-statistic are available for paired-design Hedges' g calculation.",
+    "source_quotes": [
+      "There was a significant main effect of writing condition (f(1,25) = 4.74, p = .04, \u03b7p2 = .16) indicating that students earned higher grades on the assignment prepared with genAI assistance.",
+      "On average, students' grades change from a B+ (M = 88.3%, SD = 10.3%) without genAI to an A (M = 94.1%, SD = 8.0%) with genAI assistance.",
+      "First assignment completed without genAI assistance... Third writing assignment completed with genAI assistance."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.6289318677376602,
+    "hedges_g": 0.6194504827968915,
+    "variance": 0.07831087506146354,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Within-subjects design with repeated measures ANOVA. Sample size n=26 inferred from df2=25 (n-1). The F-statistic is from a repeated-measures design. Mean difference = 94.1 - 88.3 = 5.8. The paper reports \u03b7\u00b2=.16 (eta-squared), not Cohen's d or Hedges' g. SD of difference scores not reported, but means, SDs, and F-statistic are available for paired-design Hedges' g calculation.",
+    "n_human": 26,
+    "n_ai": 26,
+    "direction_convention": "larger_is_better"
+  }
+}

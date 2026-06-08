@@ -1,0 +1,53 @@
+{
+  "_paper_id": "ziegler",
+  "citation_key": "ziegler_2024_copilot_productivity",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "GitHub Copilot users (baseline/control)",
+    "ai_arm_name": "GitHub Copilot users (with AI assistance)",
+    "ai_arm_selection_rationale": "This is a single-arm observational study of GitHub Copilot users. The 'arms' are implicit: developers' behavior without accepting AI suggestions vs. with accepting AI suggestions. The paper correlates acceptance rate with productivity measures. The primary analysis uses regression to predict perceived productivity from usage metrics, particularly acceptance rate.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 2047,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 2047,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.24,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "low",
+    "notes": "This paper does not have a traditional RCT design with separate human-only and AI arms. Instead, it's an observational study of 2,047 GitHub Copilot users who completed a survey. The analysis correlates usage metrics (particularly acceptance rate = accepted_per_shown) with self-reported aggregate productivity scores. The key finding is a Pearson correlation coefficient \u03c1 = 0.24 (P < 0.0001) between acceptance rate and aggregate productivity. This is NOT a mean difference or percent change in throughput, but rather a correlation coefficient. The paper states: 'Of all usage measurements, acceptance rate correlates best with aggregate productivity (\u03c1 = 0.24, P < 0.0001).' The outcome 'contribution_speed' (characters per hour) is one of many metrics examined, but the primary finding is about the correlation with perceived productivity, not a direct comparison of speed with vs. without AI. The sample size n=2047 represents survey respondents matched to usage data. Without separate human-only and AI arms, or reported means/SDs for contribution_speed, we cannot compute a traditional log ratio of means. The regression_coefficient_value of 0.24 is the correlation coefficient, not a regression coefficient in the traditional sense for computing effect sizes. This study design does not cleanly map to the SPEED extraction schema.",
+    "source_quotes": [
+      "We analyze 2,631 survey responses from developers using GitHub Copilot and match their responses to measurements collected from the IDE.",
+      "We received a total of 2,047 responses we could match to usage data from the study period",
+      "Of all usage measurements, acceptance rate correlates best with aggregate productivity (\u03c1 = 0.24, P < 0.0001).",
+      "We find acceptance rate (accepted_per_shown) most positively predicts users' perception of productivity, although, given the confounding and human factors, there is still notable unexplained variance.",
+      "acceptance rate (number of acceptances normalized by the number of shown completions)",
+      "GitHub Copilot has an acceptance rate of 27% and a mean DCPU in excess of 312"
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": "larger_is_better",
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "This paper does not have a traditional RCT design with separate human-only and AI arms. Instead, it's an observational study of 2,047 GitHub Copilot users who completed a survey. The analysis correlates usage metrics (particularly acceptance rate = accepted_per_shown) with self-reported aggregate productivity scores. The key finding is a Pearson correlation coefficient \u03c1 = 0.24 (P < 0.0001) between acceptance rate and aggregate productivity. This is NOT a mean difference or percent change in throughput, but rather a correlation coefficient. The paper states: 'Of all usage measurements, acceptance rate correlates best with aggregate productivity (\u03c1 = 0.24, P < 0.0001).' The outcome 'contribution_speed' (characters per hour) is one of many metrics examined, but the primary finding is about the correlation with perceived productivity, not a direct comparison of speed with vs. without AI. The sample size n=2047 represents survey respondents matched to usage data. Without separate human-only and AI arms, or reported means/SDs for contribution_speed, we cannot compute a traditional log ratio of means. The regression_coefficient_value of 0.24 is the correlation coefficient, not a regression coefficient in the traditional sense for computing effect sizes. This study design does not cleanly map to the SPEED extraction schema. | regression coefficient on levels but baseline mean unknown",
+    "n_human": 2047,
+    "n_ai": 2047
+  }
+}

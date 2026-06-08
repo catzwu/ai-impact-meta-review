@@ -1,0 +1,6 @@
+{
+  "classification": "observational",
+  "confidence": "high",
+  "rationale": "The study compares '25 Copilot users and 14 non-users' where '100 software developers volunteered to receive a GitHub Copilot license' without random assignment. This is a comparison of self-selected users versus non-users without a clear quasi-experimental identification strategy, making it observational.",
+  "citation_key": "stray_2026_copilot_productivity"
+}

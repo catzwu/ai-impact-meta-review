@@ -1,0 +1,18 @@
+{
+  "citation_key": "alvarez_telena_2025_agentic_ai",
+  "authors": [
+    "Sergio \u00c1lvarez-Tele\u00f1a",
+    "Marta D\u00edez-Fern\u00e1ndez"
+  ],
+  "title": "Advances in Agentic AI: Back to the Future",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": null,
+  "primary_task_description": null,
+  "population_description": null,
+  "arms": [],
+  "outcomes": [],
+  "reported_statistics": [],
+  "notes": "This is a position/white paper with no original empirical experiments. It is a conceptual and theoretical framework paper that synthesizes the authors' decade of work in what they call 'Algorithmization' - a discipline at the intersection of Economics, Technology, and Machine Learning. The paper distinguishes between M1 (model calibration infrastructure) and M2 (enterprise-scale algorithmic orchestration), arguing that competitive advantage lies in M2 rather than in model development. The authors explicitly state: \"This challenge is also compounded by the proprietary and highly customized nature of such systems, which precludes the possibility of standardized quantitative performance comparisons.\" They further note: \"such comparisons cannot be meaningfully constructed nor responsibly disclosed - neither by us nor by other actors operating in this niche.\" The paper includes extensive discussion of their Centre of Excellence (SciTheWorld), their prior publications, and their vision for future work. An appendix includes a conversation with Claude.AI demonstrating how LLMs can be guided to understand outlier/novel concepts. The paper is published on SSRN rather than in traditional academic venues, which the authors justify based on the interdisciplinary and applied nature of their work. No quantitative empirical results are reported.",
+  "_paper_id": "2512.24856v1"
+}

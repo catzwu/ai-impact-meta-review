@@ -1,0 +1,87 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "task_completion_time",
+      "category": "speed",
+      "operationalization": "Total time in minutes from task start to completion, measured by the experimental platform"
+    },
+    {
+      "outcome_name": "accuracy_overall",
+      "category": "quality",
+      "operationalization": "Percentage or raw score of correct answers across all multiple-choice questions in the task"
+    },
+    {
+      "outcome_name": "accuracy_meeting_recap",
+      "category": "quality",
+      "operationalization": "Number of correct answers out of 10 multiple-choice questions about the meeting transcript"
+    },
+    {
+      "outcome_name": "accuracy_sharepoint_retrieval",
+      "category": "quality",
+      "operationalization": "Number of correct answers out of 5 multiple-choice questions based on SharePoint files"
+    },
+    {
+      "outcome_name": "accuracy_email_retrieval",
+      "category": "quality",
+      "operationalization": "Number of correct answers out of 8 multiple-choice questions from email thread"
+    },
+    {
+      "outcome_name": "creation_accuracy",
+      "category": "quality",
+      "operationalization": "Score out of 20 assigned by LLM graders evaluating the blog post creation task"
+    },
+    {
+      "outcome_name": "creation_quality",
+      "category": "quality",
+      "operationalization": "Score out of 10 assigned by LLM graders evaluating the quality of the blog post"
+    },
+    {
+      "outcome_name": "meeting_recap_duration",
+      "category": "speed",
+      "operationalization": "Time in minutes to complete the meeting recap subtask with 10 questions"
+    },
+    {
+      "outcome_name": "creation_duration",
+      "category": "speed",
+      "operationalization": "Time in minutes to complete the 400-500 word blog post writing subtask"
+    },
+    {
+      "outcome_name": "user_satisfaction_time_saved",
+      "category": "other",
+      "operationalization": "Subjective user perception of time saved, not an objective speed measure but a satisfaction/perception outcome"
+    },
+    {
+      "outcome_name": "user_satisfaction_willingness_to_pay",
+      "category": "other",
+      "operationalization": "Percentage of users willing to pay more than USD 20 monthly for Copilot subscription"
+    },
+    {
+      "outcome_name": "user_satisfaction_creative_process",
+      "category": "other",
+      "operationalization": "Percentage of users agreeing Copilot helped jump-start creative process on blog-writing task"
+    },
+    {
+      "outcome_name": "user_satisfaction_effort_reduction",
+      "category": "other",
+      "operationalization": "Percentage of users agreeing Copilot reduced effort on the task"
+    },
+    {
+      "outcome_name": "user_satisfaction_productivity",
+      "category": "other",
+      "operationalization": "Percentage of users agreeing Copilot made them more productive"
+    },
+    {
+      "outcome_name": "user_satisfaction_quality_improvement",
+      "category": "other",
+      "operationalization": "Percentage of users agreeing Copilot helped improve work quality, subjective perception not objective quality measure"
+    },
+    {
+      "outcome_name": "user_satisfaction_future_use",
+      "category": "other",
+      "operationalization": "Percentage of users agreeing they would want Copilot for future similar tasks"
+    }
+  ],
+  "primary_speed_outcome": "task_completion_time",
+  "primary_quality_outcome": "accuracy_overall",
+  "citation_key": "edelman_2023_copilot_productivity"
+}

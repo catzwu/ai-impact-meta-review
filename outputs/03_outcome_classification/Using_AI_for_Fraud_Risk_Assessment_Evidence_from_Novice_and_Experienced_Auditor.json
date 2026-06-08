@@ -1,0 +1,52 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "total_unique_risks",
+      "category": "other",
+      "operationalization": "Count of distinct fraud risk factors listed by each participant, regardless of relevance or quality."
+    },
+    {
+      "outcome_name": "highly_relevant_risks",
+      "category": "quality",
+      "operationalization": "Count of risks falling into categories rated as highly relevant by 10 expert auditors with average 23 years experience."
+    },
+    {
+      "outcome_name": "irrelevant_risks",
+      "category": "quality",
+      "operationalization": "Count of risks falling into categories rated as irrelevant by expert auditors (lower is better quality)."
+    },
+    {
+      "outcome_name": "average_risk_relevance",
+      "category": "quality",
+      "operationalization": "Weighted relevance score averaging all identified risks on 1-4 scale, where 1=irrelevant and 4=highly relevant."
+    },
+    {
+      "outcome_name": "task_efficiency",
+      "category": "speed",
+      "operationalization": "Time in seconds from task start to completion of the fraud risk assessment task."
+    },
+    {
+      "outcome_name": "pass_rate",
+      "category": "quality",
+      "operationalization": "Percentage of participants who successfully identified the fraud scenario embedded in the case."
+    },
+    {
+      "outcome_name": "audit_planning_hours",
+      "category": "other",
+      "operationalization": "Hours budgeted for audit procedures in response to identified fraud risks in the modified audit plan."
+    },
+    {
+      "outcome_name": "testing_window",
+      "category": "other",
+      "operationalization": "Number of days post-fiscal-year-end designated for testing cash receipts and sales returns in the audit plan."
+    },
+    {
+      "outcome_name": "high_risk_population_testing",
+      "category": "other",
+      "operationalization": "Percentage of sampled transactions drawn from the highest-risk population in the audit plan."
+    }
+  ],
+  "primary_speed_outcome": "task_efficiency",
+  "primary_quality_outcome": "highly_relevant_risks",
+  "citation_key": "christensen_2025_fraud_risk"
+}

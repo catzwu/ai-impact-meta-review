@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-19",
+  "onet_label": "Interpreting the Meaning of Information for Others",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is 'providing peer feedback' where they evaluate project reports, highlight passages, submit comments about strengths and weaknesses, and assess work against rubric criteria. This is fundamentally about interpreting academic work and communicating its meaning/quality to peers. While the participants are PhD students serving as teaching assistants, the measured activity is peer feedback provision (not their TA duties or the researchers' experimental design). WA-19 'Interpreting the Meaning of Information for Others' captures this evaluative communication work better than WA-16 'Training and Teaching Others' (too broad for this specific feedback task) or occupation 25-1199.00 'Postsecondary Teachers, All Other' (would require measuring their full TA role, not just peer feedback).",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-26",
+      "onet_label": "Judging the Qualities of Objects, Services, or People"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-16",
+      "onet_label": "Training and Teaching Others"
+    }
+  ],
+  "citation_key": "hansen_2024_ai_peer_feedback"
+}

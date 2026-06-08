@@ -1,0 +1,47 @@
+{
+  "_paper_id": "Measuring_the_Impact_of_AI_on_Information_Worker_Productivity",
+  "citation_key": "edelman_2023_copilot_productivity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "copilot",
+    "ai_arm_selection_rationale": "Only one AI arm (copilot) is present in the study; it is compared against a control group without AI access.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 24.3,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 17.9,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.266,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Primary statistic extracted from Experiment 1. The paper reports 26.6% faster completion time with Copilot, which translates to a -0.266 relative change (time decreased). Experiment 2 shows similar results (29.4% faster, means 29.7 vs 42.1 minutes). Sample sizes (n) are not provided in the arms data. The third reported statistic compares subjective vs actual time savings within the copilot group and is not a between-arm comparison, so it was not used.",
+    "source_quotes": [
+      "The Copilot-enabled group completed the task in approximately 17.9 minutes, while the Control group required an average of 24.3 minutes. This represents a notable difference, with the Copilot-enabled group completing the task in approximately 26.6% less time compared to the Control group. This difference is statistically significant at P<0.001."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.3056756374997935,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.35754189944134085,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Primary statistic extracted from Experiment 1. The paper reports 26.6% faster completion time with Copilot, which translates to a -0.266 relative change (time decreased). Experiment 2 shows similar results (29.4% faster, means 29.7 vs 42.1 minutes). Sample sizes (n) are not provided in the arms data. The third reported statistic compares subjective vs actual time savings within the copilot group and is not a between-arm comparison, so it was not used. | SDs/SEs missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

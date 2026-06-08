@@ -1,0 +1,52 @@
+{
+  "_paper_id": "ssrn-5929576",
+  "citation_key": "kim_2024_generative_ai_tutoring",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treated",
+    "ai_arm_selection_rationale": "Single AI arm (treated students who used AI-tutor mode) vs control (students who never used AI-tutor mode). The primary outcome is correctness rate. Table 2 reports the main difference-in-differences regression with standard errors, allowing computation of t-statistic and thus Hedges' g.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 6469,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 12435,
+    "reported_t": 24.0,
+    "reported_t_df": 2114827,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Table 2, column (3) reports the main effect on correctness rate: coefficient = 0.0264, SE = 0.0011, p < 0.01 (indicated by ***). The t-statistic can be computed as 0.0264 / 0.0011 = 24.0. The degrees of freedom are N - k where N = 2,114,829 observations (student-day level) and k is the number of parameters (student FE + date FE + controls). With large N and fixed effects, df \u2248 N - number of students - number of dates. Given the massive sample size, df is effectively N - 18,904 students - ~365 dates \u2248 2,095,560, but conservatively using N-2 = 2,114,827 for the df. The outcome is measured in percentage points (0.0264 = 2.64 percentage points increase in correctness rate). The paper reports p < 0.01 but not an exact p-value. The effect is from a difference-in-differences regression with student and date fixed effects, comparing treated vs control students post-AI rollout. This is an observational study with quasi-random assignment based on device availability, not a true RCT, but the parallel trends assumption is supported by Figure 4 and the paper's robustness checks.",
+    "source_quotes": [
+      "Table 2: Main Effects of AI Tutor on Learning Outcomes (GRADUALLY) ... Avg. correctness rate (3) ... Treat \u00b7 Post 0.0264*** (0.0011)",
+      "The coefficient 0.0264 indicates that the average daily correctness rate increases by 2.64 percentage points for treated students relative to controls.",
+      "Given that baseline post-treatment correctness is around 74%, this represents about a 3.6% improvement.",
+      "Notes: S.E.s clustered at the student level; *p < 0.1; **p < 0.05; ***p < 0.01.",
+      "N 2,114,829"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.3679142639478662,
+    "hedges_g": 0.3678996655271929,
+    "variance": 0.00023856285793729274,
+    "computation_method": "t_statistic",
+    "confidence": "medium",
+    "notes": "Table 2, column (3) reports the main effect on correctness rate: coefficient = 0.0264, SE = 0.0011, p < 0.01 (indicated by ***). The t-statistic can be computed as 0.0264 / 0.0011 = 24.0. The degrees of freedom are N - k where N = 2,114,829 observations (student-day level) and k is the number of parameters (student FE + date FE + controls). With large N and fixed effects, df \u2248 N - number of students - number of dates. Given the massive sample size, df is effectively N - 18,904 students - ~365 dates \u2248 2,095,560, but conservatively using N-2 = 2,114,827 for the df. The outcome is measured in percentage points (0.0264 = 2.64 percentage points increase in correctness rate). The paper reports p < 0.01 but not an exact p-value. The effect is from a difference-in-differences regression with student and date fixed effects, comparing treated vs control students post-AI rollout. This is an observational study with quasi-random assignment based on device availability, not a true RCT, but the parallel trends assumption is supported by Figure 4 and the paper's robustness checks.",
+    "n_human": 6469,
+    "n_ai": 12435,
+    "direction_convention": "larger_is_better"
+  }
+}

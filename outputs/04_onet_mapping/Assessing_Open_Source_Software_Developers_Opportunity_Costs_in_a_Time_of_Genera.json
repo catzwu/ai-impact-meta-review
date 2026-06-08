@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The primary task description explicitly focuses on software developers' core programming work: 'developers generate ideas for new features or improvements, then implement these ideas through programming. The coding phase requires developers to understand existing code architecture, recall syntax and language conventions, consult documentation, and write new code that integrates with the existing codebase.' This is quintessentially computer-based work involving code development, version control (Git commits), and repository management. While an occupation like 'Software Developers' (15-1252.00) might seem relevant, the task description is narrowly focused on the specific activity of programming and code management rather than the full breadth of a software developer role (which includes design, testing, deployment, client interaction, etc.). The work activity 'Working with Computers' best captures this focused coding and version control activity.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "li_2026_copilot_oss"
+}

@@ -1,0 +1,334 @@
+{
+  "citation_key": "otis_2024_ai_entrepreneurship",
+  "authors": [
+    "Nicholas G. Otis",
+    "Rowan Clarke",
+    "Sol\u00e8ne Delecourt",
+    "David Holtz",
+    "Rembrand Koning"
+  ],
+  "title": "The Uneven Impact of Generative AI on Entrepreneurial Performance: Evidence from a Field Experiment in Kenya",
+  "year": 2024,
+  "venue": "working paper",
+  "study_design_description": "A randomized controlled trial (RCT) with 640 Kenyan small business entrepreneurs, half of whom were randomly assigned to receive access to a GPT-4-powered AI assistant over WhatsApp. The other half received access to a set of publicly available business training guides. Stratified random assignment was used by quartiles of pre-treatment business performance and by gender. The experiment ran from May to November 2023, with three pre-treatment survey waves and four post-treatment survey waves.",
+  "primary_task_description": "Entrepreneurs in the treatment group could interact with a GPT-4-powered AI business assistant deployed through WhatsApp to discuss a wide range of business topics including how to motivate employees, allocate resources when expanding a store, adopt best practices in poultry farming, and manage bankruptcy. Entrepreneurs could ask follow-up questions, explore alternatives, and learn more before deciding whether to implement advice. Control group participants received access to a series of business training guides developed by the International Labour Organization for SMB entrepreneurs in emerging markets, focused on strategies for business development and growth.",
+  "population_description": "Final sample of 640 Kenya SMB entrepreneurs, geographically diverse across 44 of Kenya's 47 counties. The median entrepreneur was 26 years old with at least some college education (only 10% reporting no college experience). Women made up 32% of the sample. Businesses ranged from fast food vendors to poultry farmers to cybershop owners, with the most common sectors being Food and Beverage (27%), Clothing (21%), and Agriculture (19%). The median entrepreneur had been running their business for one year or less and had no employees. Average pre-treatment monthly profit was about KSh 19,550, with reported monthly profits ranging from about KSh 2,650 at the 5th percentile to about KSh 55,100 at the 95th percentile.",
+  "arms": [
+    {
+      "arm_name": "ai_assistant",
+      "description": "Received access to a generative AI-powered business assistant built on GPT-4, deployed through WhatsApp. Access was restricted so that the assistant would only respond to phone numbers belonging to participants in the treatment group. Participants completed a short (5\u201310 minute) online survey-based training explaining that the chatbot was an AI system (not a human), that the AI's information would not be up to date, and that the advice it provided could sometimes be inaccurate.",
+      "n": 315
+    },
+    {
+      "arm_name": "control",
+      "description": "Received access to a series of business training guides developed by the International Labour Organization for SMB entrepreneurs in emerging markets, focused on strategies for business development and growth. Control group participants were sent links to three PDFs from a nine-part series, along with a link to access the remaining materials, all sent over WhatsApp.",
+      "n": 320
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "business_performance_index",
+      "outcome_description": "A composite standardized index aggregating weekly and monthly profits and revenues. Constructed by winsorizing each of the four measures (at either the 99% or 95% level), standardizing each variable by subtracting the mean and dividing by the standard deviation of the control group's post-treatment outcomes, and averaging the four standardized components. The index is measured in standard deviations of the control group's post-treatment performance distribution.",
+      "measurement_unit": "standard deviations",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "monthly_revenue",
+      "outcome_description": "Self-reported monthly revenue collected in pre-treatment and post-treatment survey waves.",
+      "measurement_unit": "Kenyan Shillings",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "monthly_profit",
+      "outcome_description": "Self-reported monthly profit collected in pre-treatment and post-treatment survey waves.",
+      "measurement_unit": "Kenyan Shillings",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "reference_ai_assistant",
+      "outcome_description": "Whether treated entrepreneurs reference working with or learning from the AI assistant in post-treatment surveys.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "uncommon_words_usage",
+      "outcome_description": "Use of uncommon words in business changes text, measured as a ratio comparing treated entrepreneurs to control group.",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "price_cuts_or_advertising",
+      "outcome_description": "Whether entrepreneurs report price cuts or advertising as business strategies.",
+      "measurement_unit": "percentage points",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_advice_implementation",
+      "outcome_description": "Correlation between AI advice embedding elements and corresponding business changes embedding elements, measured via text embeddings.",
+      "measurement_unit": "standard deviations",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "performance_level_prediction_accuracy",
+      "outcome_description": "Machine learning model accuracy in predicting whether an entrepreneur is a low or high performer based solely on their business changes text.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "treatment_status_prediction_accuracy",
+      "outcome_description": "Machine learning model accuracy in predicting treatment status based on business changes text.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "combined_prediction_accuracy",
+      "outcome_description": "Machine learning model accuracy in simultaneously predicting both performance level and treatment status (four categories total).",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "business_performance_index",
+      "arm_comparison": "ai_assistant vs control (overall)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.04 standard deviations",
+      "regression_coefficient": "\u03b2 = 0.04 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p = 0.34",
+      "confidence_interval": "95% CI = [-0.05, 0.15]",
+      "verbatim_quote": "We find no statistically significant average treatment effect of access to the AI assistant on firm performance (winsorized at the 99% level) relative to control, as shown in Estimate A in Figure 3 and Table 1 (\u03b2 = 0.04 standard deviations (sd), p = 0.34, 95% CI = [\u22120.05, 0.15])."
+    },
+    {
+      "outcome_name": "business_performance_index",
+      "arm_comparison": "ai_assistant vs control (low performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "-0.08 standard deviations",
+      "regression_coefficient": "\u03b2 = -0.08 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p = 0.01",
+      "confidence_interval": "95% CI = [-0.13, -0.03]",
+      "verbatim_quote": "For low performers, access to the AI assistant reduced average business performance relative to the control group (\u03b2 = \u22120.08 s.d., p = 0.01, 95% CI = [\u22120.13, \u22120.03])."
+    },
+    {
+      "outcome_name": "monthly_revenue",
+      "arm_comparison": "ai_assistant vs control (low performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "-4,748 Shillings per month (-9.2% relative decrease)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Multiplying the standard deviation by our \u22120.08 s.d. estimate suggests that the AI assistant caused a drop of 4,748 Shillings ($33.34) in revenue per month; a 9.2% relative decrease."
+    },
+    {
+      "outcome_name": "business_performance_index",
+      "arm_comparison": "ai_assistant vs control (high performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.16 standard deviations",
+      "regression_coefficient": "\u03b2 = 0.16 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p = 0.07",
+      "confidence_interval": "95% CI = [-0.02, 0.33]",
+      "verbatim_quote": "For high performers, we find suggestive evidence that AI assistance improved performance relative to control (\u03b2 = 0.16 s.d., p = 0.07, 95% CI = [\u22120.02, 0.33])."
+    },
+    {
+      "outcome_name": "monthly_revenue",
+      "arm_comparison": "ai_assistant vs control (high performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "9,496 Shillings per month (18% relative increase)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Multiplying the standard deviation of monthly revenue by our estimate, now a 0.16 s.d. increase, which suggests that AI caused an increase of 9,496 Shillings (USD $66.69) in monthly revenue; a 18% relative increase."
+    },
+    {
+      "outcome_name": "business_performance_index",
+      "arm_comparison": "high performers vs low performers (treatment effect heterogeneity)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.23 standard deviations lower for low performers",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.01",
+      "confidence_interval": "95% CI = [-0.41, -0.05]",
+      "verbatim_quote": "Initially, low-performing entrepreneurs experienced a 0.23 sd lower causal effect (p = 0.01, 95% CI = [\u22120.41, \u22120.05]) of the AI assistant compared to high performers."
+    },
+    {
+      "outcome_name": "monthly_revenue",
+      "arm_comparison": "high performers vs low performers (treatment effect heterogeneity)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "13,651 Shillings difference (USD $95.86)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In monetary terms, the estimated difference in effect size between the two groups represents a change in in the impact of AI on a firm's monthly revenue of roughly 13,651 Shillings (USD $95.86)."
+    },
+    {
+      "outcome_name": "business_performance_index",
+      "arm_comparison": "ai_assistant vs control (robustness: 95% winsorization)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.18 standard deviations (treatment effect heterogeneity)",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": "95% CI = [0.02, 0.34]",
+      "verbatim_quote": "Across these specifications, our most conservative estimate of treatment effect heterogeneity is 0.18 s.d. (p < 0.05, 95% CI = [0.02, 0.34])."
+    },
+    {
+      "outcome_name": "reference_ai_assistant",
+      "arm_comparison": "ai_assistant vs control (overall)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "6.3 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.0001",
+      "confidence_interval": "95% CI = [3.336, 9.188]",
+      "verbatim_quote": "Panel A shows that treated entrepreneurs are 6.3 percentage points more likely to reference working with or learning from the AI assistant (p < 0.0001, 95% CI = [3.336; 9.188])."
+    },
+    {
+      "outcome_name": "reference_ai_assistant",
+      "arm_comparison": "ai_assistant vs control (high performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10.8 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "This effect is concentrated among high performers, where the increase is 10.8 percentage points (p < 0.001)"
+    },
+    {
+      "outcome_name": "reference_ai_assistant",
+      "arm_comparison": "ai_assistant vs control (low performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.8 percentage points",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.19",
+      "confidence_interval": null,
+      "verbatim_quote": "compared to a 1.8 point increase among low performers that is not statistically significant (p = 0.19)"
+    },
+    {
+      "outcome_name": "uncommon_words_usage",
+      "arm_comparison": "ai_assistant vs control (high performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "20% more uncommon words",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": "95% CI = [1.04, 1.36]",
+      "verbatim_quote": "Panel B provides direct evidence for our tailored implementation hypothesis: treated high performers use 20% more uncommon words than those in the control group (p < 0.05, 95% CI = [1.04; 1.36])"
+    },
+    {
+      "outcome_name": "price_cuts_or_advertising",
+      "arm_comparison": "ai_assistant vs control (low performers)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "11.8 percentage points (51% treated vs 39% control)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": "95% CI = [0.8775, 22.78]",
+      "verbatim_quote": "Panel C supports our generic implementation hypothesis: treated low performers are significantly more likely to report price cuts or advertising. Among low performers, 39% in the control group mention these strategies, compared to 51% in the treated group (a difference of 11.8 percentage points, p < 0.05, 95% CI = [0.8775; 22.78])."
+    },
+    {
+      "outcome_name": "ai_advice_implementation",
+      "arm_comparison": "ai_assistant (Model 1: unadjusted)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.26 standard deviations",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.0001",
+      "confidence_interval": null,
+      "verbatim_quote": "Model 1 shows that a one standard deviation increase in a given AI advice embedding element correlates with a 0.26 standard deviation increase in the corresponding business changes embedding element (p < 0.0001)."
+    },
+    {
+      "outcome_name": "ai_advice_implementation",
+      "arm_comparison": "ai_assistant (Model 2: adjusted for control group)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.127 standard deviations",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.0001",
+      "confidence_interval": "95% CI = [0.1073, 0.1475]",
+      "verbatim_quote": "With this control, a one standard deviation increase in an AI advice embedding dimension leads to a 0.127 standard deviation increase in the same dimension for subsequent business changes (p < 0.0001, 95% CI = [0.1073, 0.1475])."
+    },
+    {
+      "outcome_name": "performance_level_prediction_accuracy",
+      "arm_comparison": "ai_assistant and control combined",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "58.4% accuracy vs 50.5% baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.012",
+      "confidence_interval": "95% CI = [0.52, 0.65]",
+      "verbatim_quote": "Model 3 in Table 3 predicts whether an entrepreneur is a low or high performer based solely on their business changes text, achieving 58.4% accuracy\u2014significantly better than the 50.5% no-information benchmark (p = 0.012, 95% CI = [0.52, 0.65])."
+    },
+    {
+      "outcome_name": "treatment_status_prediction_accuracy",
+      "arm_comparison": "ai_assistant vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "59.8% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.004",
+      "confidence_interval": "95% CI = [0.53, 0.66]",
+      "verbatim_quote": "Model 4 shows we can also predict treatment status with 59.8% accuracy (p = 0.004, 95% CI = [0.53, 0.66])"
+    },
+    {
+      "outcome_name": "combined_prediction_accuracy",
+      "arm_comparison": "ai_assistant and control combined (performance level and treatment status)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "33.8% accuracy vs 25.4% baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.004",
+      "confidence_interval": "95% CI = [0.27, 0.41]",
+      "verbatim_quote": "Model 5 simultaneously predicts both performance level and treatment status (four categories total), achieving 33.8% accuracy compared to a 25.4% baseline (p = 0.004, 95% CI = [0.27, 0.41])."
+    },
+    {
+      "outcome_name": "performance_level_prediction_accuracy",
+      "arm_comparison": "ai_assistant and control combined (test set)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "43.2% accuracy vs 51.4% baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.97",
+      "confidence_interval": "95% CI = [0.34, 0.53]",
+      "verbatim_quote": "Table 3 shows that our model achieves an accuracy of only 43.2% on the test set (p = 0.97, 95% CI = [0.34, 0.53]), which is not statistically distinguishable from the \"no information\" random-guess benchmark of 51.4% accuracy."
+    },
+    {
+      "outcome_name": "treatment_status_prediction_accuracy",
+      "arm_comparison": "ai_assistant vs control (test set)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "51.8% accuracy vs 51.8% baseline",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.54",
+      "confidence_interval": "95% CI = [0.42, 0.61]",
+      "verbatim_quote": "The model achieves an accuracy of only 51.8% (Table 3; p = 0.54, 95% CI = [0.42, 0.61]), which is exactly the same as the \"no information\" random-guess benchmark of 51.8%."
+    }
+  ],
+  "notes": "Attrition was minimal and balanced: 11 from AI-assistant group and 7 from control group (1.2 percentage point difference, p \u2248 0.35). The study collected 4,434 total performance observations (2,226 from treatment, 2,208 from control). Average monthly revenue was 51,392 Kenyan Shillings (USD $360.90) with SD of 59,353 Shillings. The paper reports no evidence that low and high performers differ in their likelihood of following AI advice. The authors note several important caveats: (1) findings are from a single context (Kenya) over a limited time span (5 months) testing a specific GPT-4 implementation; (2) the experiment occurred May\u2013November 2023 when exposure to generative AI was still low in developing markets; (3) the AI assistant used only a relatively short system prompt and entrepreneurs received only 5\u201310 minutes of training; (4) results rely on self-reported survey data, so findings could partially reflect differences in reporting behavior rather than actual business changes; (5) sample size of 640 is comparable to other emerging-market firm experiments but still faces statistical power challenges; (6) the control condition (static training content via text messages) is interpreted as a placebo control based on prior evidence that such interventions have little effect on firm performance. The paper's mechanism analysis uses text embeddings and machine learning to infer why low and high performers experienced different effects, but the authors acknowledge they cannot fully rule out alternative explanations.",
+  "_paper_id": "Otis et al. 2023"
+}

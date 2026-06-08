@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This study involves passing financial statements to large language models to predict earnings direction, with no human participants. The 'population' consists of firm-year observations from corporate financial data (Compustat/IBES), not people. This is a computational analysis of AI model performance on archival financial data, which does not fit any of the human-subjects research designs in the taxonomy.",
+  "citation_key": "kim_2024_financial_statement"
+}

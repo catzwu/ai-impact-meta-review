@@ -1,0 +1,50 @@
+{
+  "_paper_id": "ssrn-5929576",
+  "citation_key": "kim_2024_generative_ai_tutoring",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "treated",
+    "ai_arm_selection_rationale": "Only one AI arm exists: students who used AI-tutor mode at least once. Control arm is students who never used AI-tutor mode.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 6469,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 12435,
+    "reported_percent_change": 0.36,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.3057,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a difference-in-differences natural experiment. The primary effect is reported as a 36% increase in problems solved (0.3057 log-point coefficient on Treat\u00b7Post interaction). The outcome is log-transformed, so the regression coefficient directly approximates the log ratio. Standard error not reported in the extraction. Multiple subgroup and alternative specifications are available (high/low performers, within-student day-level comparisons), but the main DiD estimate (treated vs control, Treat\u00b7Post = 0.3057) is the primary comparison for the overall treatment effect.",
+    "source_quotes": [
+      "treated students complete 36% more math problems",
+      "0.3057 on Treat\u00b7Post, implying approximately 35.8% increase (exp(0.3057)\u22121\u22480.358)",
+      "Students who used AI-tutor mode at least once during the sample period.",
+      "Students who never used AI-tutor mode during the sample period."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.30748469974796055,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.3599999999999999,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment. The primary effect is reported as a 36% increase in problems solved (0.3057 log-point coefficient on Treat\u00b7Post interaction). The outcome is log-transformed, so the regression coefficient directly approximates the log ratio. Standard error not reported in the extraction. Multiple subgroup and alternative specifications are available (high/low performers, within-student day-level comparisons), but the main DiD estimate (treated vs control, Treat\u00b7Post = 0.3057) is the primary comparison for the overall treatment effect. | CI missing; variance not computable",
+    "n_human": 6469,
+    "n_ai": 12435
+  }
+}

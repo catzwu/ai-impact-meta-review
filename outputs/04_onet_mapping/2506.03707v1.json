@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-10",
+  "onet_label": "Making Decisions and Solving Problems",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is making investment decisions about peer-to-peer loans\u2014evaluating loan characteristics, assessing default risk across seven levels, and deciding whether to invest. This is quintessential decision-making under uncertainty with financial consequences. The task description explicitly states 'Customers made two rounds of investment decisions and risk assessments,' and notes that 10% had real financial stakes ('one of their twenty investment decisions was randomly drawn to realize the actual final investment outcome'). While the study involves AI advice as a treatment, the participants are not providing advice themselves\u2014they are making consequential financial decisions, which maps directly to 'Making Decisions and Solving Problems.'",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "13-2051.00",
+      "onet_label": "Financial and Investment Analysts"
+    }
+  ],
+  "citation_key": "yang_2025_human_ai_collaboration"
+}

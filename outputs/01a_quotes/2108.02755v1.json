@@ -1,0 +1,81 @@
+{
+  "citation_key": "zheng_2021_ai_economist",
+  "authors": [
+    "Stephan Zheng",
+    "Alexander Trott",
+    "Sunil Srinivasa",
+    "David C. Parkes",
+    "Richard Socher"
+  ],
+  "title": "The AI Economist: Optimal Economic Policy Design via Two-level Deep Reinforcement Learning",
+  "year": 2021,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "We first validate our approach in these simplified one-step economies.",
+      "We study the Gather-Trade-Build economy, a two-dimensional, spatiotemporal economy with agents who move, gather resources (stone and wood), trade, and build houses.",
+      "Each simulation simulates 10 tax years. Each tax year lasts 100 timesteps (so that H = 1000), with the agents acting each timestep, and the planner setting and changing tax rates at the start of each tax year.",
+      "We use two spatial layouts, Open-Quadrant and Split-World, each with different physical barrier placements and different agent starting positions.",
+      "All experiments in the Open-Quadrant Gather-Trade-Build scenarios were repeated with 10 random seeds; experiments in the Split-World Gather-Trade-Build scenarios and the One-Step Economy were repeated with 5 random seeds."
+    ],
+    "task": [
+      "Each agent chooses an amount of labor that optimizes its post-tax utility, and this optimal labor depends on its skill and the tax rates, and it does not depend on the labor choices of other agents.",
+      "Agents can gather resources, earn coins by using the resources of stone and wood to build houses, and trade with other agents to exchange resources for coins.",
+      "Agents can move spatially to collect resources, trade with one another, or spend resources to build houses; each such action accrues labor but may generate income, with higher skill \u03bd leading to higher incomes for the same actions.",
+      "The action space of the agents includes 4 movement actions: up, down, left, and right.",
+      "Agents can gather these resources by moving to populated resource cells.",
+      "Agents can buy and sell resources from one another through a continuous double auction.",
+      "Agents can choose to spend one unit of wood and one unit of stone to build a house, and this places a house tile at the agent's current location and earns the agent some number of coins."
+    ],
+    "population": [
+      "We trained the AI Economist in a stylized, one-step economy with N = 100 agents, indexed by i, that each choose how many hours of labor li to perform.",
+      "We consider four Split-World scenarios, each with 10 agents but differing in the subset of agents assigned to the resource-rich half. We consider two Open-Quadrant scenarios, with 4 agents in one version and 10 agents in the other.",
+      "Each agent i has a skill level \u03bdi, which is a private value that represents its hourly wage.",
+      "All of our experiments use a fixed set of build-skills, which, along with labor costs, are roughly calibrated so that (1) agents need to be strategic in how they choose to earn income, (2) the shape of the resulting income distribution roughly matches that of the 2018 US economy with trained optimal agent behaviors."
+    ],
+    "arms": [
+      "We compare the economy under the Saez tax, and the AI Economist.",
+      "We include two additional baseline tax models here and throughout this work: the free market (no taxes) and a stylized version of the US Federal progressive tax schedule.",
+      "We compare four kinds of planners: (1) Free Market: a fixed-rate planner where all tax rates are 0%; (2) US Federal: a fixed-rate planner where bracketed marginal tax rates follow a progressive scheme adapted from the 2018 US federal single-filer income tax schedule; (3) Saez tax: an adaptive planner that computes theoretically optimal marginal rates using the empirical income distribution and elasticity of income with respect to taxation; and (4) AI Economist: a deep neural network, adaptive planner that maps a set of planner observations to bracketed marginal tax rates, which is trained via reinforcement learning (RL) to maximize social welfare."
+    ],
+    "outcome_definitions": [
+      "We take swf as a utilitarian objective (an average of all agent utilities weighted by their inverse pre-tax income), or alternatively as the product of equality and productivity (representing a balance between equality and productivity).",
+      "We define equality eq(Ct) as: eq(Ct) = 1\u2212 N/(N\u2212 1) gini(Ct), 0\u2264 eq(Ct)\u2264 1, where the Gini index is defined as gini(Ct) = \u2211N i=1 \u2211N j=1|Ci,t\u2212Cj,t| / (2N\u2211N i=1Ci,t), 0\u2264 gini(Ct)\u2264 N\u2212 1/N.",
+      "We also define productivity as the sum of all incomes: prod(Ct) = \u2211i Ci,t.",
+      "The utilitarian social welfare objective is the family of linear-weighted sums of agent utilities, defined for weights \u03c9i\u2265 0: swft = \u2211N i=1 \u03c9i\u00b7ui,t.",
+      "We use inverse-income as the weights: \u03c9i\u221d 1/Ci, normalized to sum to 1.",
+      "We also adopt an objective that optimizes a trade-off between equality and productivity, defined as the product of equality and productivity: swft = eq(Ct)\u00b7 prod(Ct)."
+    ],
+    "statistical_results": [
+      "In the Open-Quadrant layout with four (ten) agents (Figure 3), AI-driven taxes improve the utilitarian objective by over 8% (2%) and the product of equality and productivity by over 12% (8.6%) over the Saez tax.",
+      "All social welfare, productivity, and equality differences between the AI Economist and baselines are statistically significant, except for the difference in social welfare between the AI Economist and the Saez tax in the one-step economy (a).",
+      "Asterisks indicate a statistically significant difference at an \u03b1 level of 0.05 (*), 0.001 (**), or 0.00001 (***).",
+      "All social welfare differences between the AI Economist and baselines are statistically significant, except for the difference in equality-times-productivity (f) between the AI Economist and the US Federal tax in the Split-World-5,6 scenario.",
+      "Under the AI Economist, the low build-skill agents earn 9% more from trading (Figure 6b), wealth transfers from the highest build-skill agent to others are 46% larger (Figure 5d), income equality is at least 9% higher (Figure 3e), the number of incomes in the second-to-highest bracket (204 to 510 coins) is at least 64% higher, and, 92% smaller for the top bracket, compared to baselines (Figure 5b).",
+      "For a given repetition, we compute each performance metric, e.g. equality or social welfare, as its average value over the last 3000 episodes of training (the last 100 episodes for each of the 30 parallel environments).",
+      "We report the average and standard error of these metrics across the 5 or 10 random seeds within a particular experiment group (Figure 3, Figure 4).",
+      "Statistical significance is computed using a two-sample t-test.",
+      "Empirically, we observe that the elasticity does not vary greatly across income ranges, hence justifying using a global elasticity.",
+      "Using a global constant elasticity for all agents, we instantiate this method by regression on K tuples [(Zk,\u03c4k)]K k=1 of observed total income Z =\u2211 izi and manually fixed flat tax rates \u03c4 in the simulation.",
+      "Regression on income and marginal tax-rate data yields elasticity estimates \u02c6e of approximately 0.87 (slope of the red dotted line).",
+      "Social welfare is highest under the Saez tax when the used elasticity parameter is approximately 3 (blue star), for both the inverse-income-weighted-utility objective (top) and the equality-times-productivity objective (bottom)."
+    ],
+    "ambiguity_or_caveats": [
+      "As a point of caution, while the Gather-Trade-Build environments provide a rich testbed for demonstrating the potential of AI-driven simulation, they do not articulate the full range of economic opportunities, costs, and decisions faced by real-world individuals, nor their distribution of relevant attributes.",
+      "More realistic AI-driven simulations are needed to support real-world policymaking, and defining the criteria for sufficient realism will require widespread consultation.",
+      "By extension, any conclusions drawn from experiments in these environments face the same limitations and, therefore, are not meant to be applied to any specific real-world economies.",
+      "However, these results are a first step and are not ready to be implemented as real-world policy.",
+      "Future research should scale up AI-driven simulations and calibrate them to real-world data, along with learning AI policies that are explainable and robust to simulation-to-reality gaps.",
+      "Owing to the complexity of these environments, it is not possible to provide an intuitive explanation of these AI tax schedules.",
+      "The most substantial obstacle to implementing the Saez tax is correctly identifying the elasticity e(z), defined as in Equation 19.",
+      "Owing to the complexity of the Gather-Trade-Build economy and agent learning dynamics, it is challenging to reliably measure local elasticities e(z) as a function of income z.",
+      "The large variance in empirical incomes caused large variance in the estimated local elasticity, leading to unstable two-level RL.",
+      "We recognize that it could be possible to manipulate future, large-scale iterations of the AI Economist to increase inequality and hide this action behind the results of an AI system.",
+      "Furthermore, either out of ignorance or malice, bad training data may result in biased policy recommendations, particularly in cases where users will train the tool using their own data.",
+      "For instance, the under-representation of communities and segments of the work-force in training data might lead to bias in AI-driven tax models."
+    ]
+  },
+  "notes": "This is a computational study using reinforcement learning to design economic policies. The paper presents both a one-step economy validation and a more complex multi-agent Gather-Trade-Build environment. The main comparison is between the AI Economist (trained via two-level deep RL) and three baselines: Free Market, US Federal tax, and Saez tax. The paper includes extensive ethical discussion and caveats about the limitations of the simulations for real-world policy application.",
+  "_paper_id": "2108.02755v1",
+  "_source_pdf": "papers/2108.02755v1.pdf"
+}

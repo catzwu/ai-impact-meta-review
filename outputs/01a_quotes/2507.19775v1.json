@@ -1,0 +1,113 @@
+{
+  "citation_key": "ganuthula_2025_ai_structural",
+  "authors": [
+    "Venkat Ram Reddy Ganuthula",
+    "Ramesh Kuruva"
+  ],
+  "title": "AI's Structural Impact on India's Knowledge-Intensive Startup Ecosystem: A Natural Experiment in Firm Efficiency and Design",
+  "year": 2025,
+  "venue": "working paper",
+  "quotes": {
+    "study_design": [
+      "Using a natural experiment framework with the founding year as an exogenous treatment proxy, it examines firm size, revenue productivity, valuation efficiency, and capital utilization across pre-AI and AI-era cohorts.",
+      "The research adopted a natural experiment design, treating the founding year as an exogenous variable due to the increasing availability of AI technologies across industries.",
+      "This approach leveraged the exogenous shock of AI proliferation as a quasi-experimental breakpoint, minimizing endogeneity concerns that might arise from self-selection into technology adoption.",
+      "The sample was divided into pre-AI and AI-era cohorts based on this criterion, allowing for a comparative analysis of structural and performance differences."
+    ],
+    "task": [
+      "This study explores the structural and performance impacts of artificial intelligence (AI) adoption on India's knowledge-intensive startups, spanning information technology, financial technology, health technology, and educational technology, founded between 2016 and 2025."
+    ],
+    "population": [
+      "The dataset comprises 3,450 Indian startups founded between 2016 and 2025, sourced from public financial records, industry reports, and startup databases as of mid-2025.",
+      "A meticulous cleaning process was implemented to enhance data integrity, systematically removing entries with missing values in key variables such as revenue, funding, valuation, and employee count.",
+      "Outliers were identified and excluded using the interquartile range method, resulting in a final sample of 914 firms, with 713 pre-AI (2016-2020) and 201 AI-era startups (2021-2025).",
+      "A thorough keyword analysis of startup descriptions confirmed that all firms operate within knowledge-intensive domains, focusing on technology-related activities, providing a unified basis for the study."
+    ],
+    "arms": [
+      "The sample was divided into pre-AI and AI-era cohorts based on this criterion, allowing for a comparative analysis of structural and performance differences.",
+      "resulting in a final sample of 914 firms, with 713 pre-AI (2016-2020) and 201 AI-era startups (2021-2025)",
+      "A binary indicator, AI_Era (1 for AI-era, 0 for pre-AI), was established to distinguish cohorts based on the founding year, reflecting the growing availability of AI technologies."
+    ],
+    "outcome_definitions": [
+      "Valuation, annual revenue, total funding, and employee count were measured in USD for the periods 2016\u20132020 and 2021\u20132025, with currency conversions based on rates from a national financial authority to maintain consistency.",
+      "Derived metrics were calculated to provide deeper insights into efficiency and productivity: Revenue/Employee assessed labor productivity, Valuation/Employee indicated value creation per worker, and Revenue/Funding served as a proxy for capital efficiency.",
+      "These metrics were adjusted for firm age\u2014calculated as the duration since founding\u2014to account for maturity effects, ensuring comparability across cohorts with varying operational histories."
+    ],
+    "statistical_results": [
+      "Descriptive analysis revealed the mean age-adjusted employee count increasing from 4.961 to 11.641, suggesting a shift toward larger organizational structures in AI-era firms.",
+      "Valuation per employee decreased from 1.188 to 0.788, indicating reduced value creation per worker potentially due to scaled growth in AI-era.",
+      "The revenue-to-funding ratio decreased from 8.941 to 1.530, reflecting lower capital efficiency, a trend that may reflect heavier investments in AI-era firms.",
+      "Variability in valuation per employee decreased (standard deviation from 2.622 to 1.689), highlighting less diversity in AI-era, while the revenue-to-funding ratio's standard deviation narrowed (from 55.213 to 10.087), suggesting more uniform strategies.",
+      "AI-era firms employed more individuals on an age-adjusted basis (mean = 11.641, standard deviation = 9.684) compared to pre-AI firms (mean = 4.961, standard deviation = 5.252), with a t-value of -12.891 and 912 degrees of freedom, yielding a p-value less than 0.001.",
+      "Valuation per employee was lower in AI-era firms (mean = 0.788, standard deviation = 1.689) than in pre-AI firms (mean = 1.188, standard deviation = 2.622), with a t-value of 2.044 and 912 degrees of freedom, p = 0.041.",
+      "The revenue-to-funding ratio also decreased for AI-era firms (mean = 1.530, standard deviation = 10.087) compared to pre-AI firms (mean = 8.941, standard deviation = 55.213), with a t-value of 1.893 and 912 degrees of freedom, p = 0.059 (marginal).",
+      "For valuation per employee, the model explained 0.9% of the variance (adjusted R\u00b2 = 0.007), with cohort emerging as a significant predictor (\u03b2 = -0.830, p = 0.005), indicating lower valuation per employee in the AI-era cohort, controlling for firm age.",
+      "For revenue per employee, the model explained 1.3% of the variance (adjusted R\u00b2 = 0.011), with the overall model significant (F = 5.907, p = 0.003), but individual predictors not significant (cohort \u03b2 = -0.254, p = 0.194).",
+      "For funding per employee, the model explained 1.2% of the variance (adjusted R\u00b2 = 0.010), with cohort significant (\u03b2 = -0.339, p < 0.001), indicating lower funding per employee in AI-era.",
+      "For revenue to valuation ratio, the model explained 1.8% of the variance (adjusted R\u00b2 = 0.016), with firm age significant (\u03b2 = 0.445, p < 0.001).",
+      "For funding to valuation ratio, the model explained 0.3% of the variance (adjusted R\u00b2 = 0.001), not significant (F = 1.374, p = 0.254).",
+      "For revenue to funding ratio, the model explained 2.4% of the variance (adjusted R\u00b2 = 0.021), with firm age significant (\u03b2 = 4.847, p < 0.001).",
+      "Annual Revenue (USD; In Millions) 2016-2020: mean = 0.757, standard deviation = 0.832, minimum = 0.000, maximum = 3.423",
+      "Annual Revenue (USD; In Millions) 2021-2025: mean = 0.457, standard deviation = 0.657, minimum = 0.000, maximum = 3.226",
+      "Age-Adjusted Employee Count 2016-2020: mean = 4.961, standard deviation = 5.252, minimum = 0.111, maximum = 29.200",
+      "Age-Adjusted Employee Count 2021-2025: mean = 11.641, standard deviation = 9.684, minimum = 0.250, maximum = 49.333",
+      "Age-Adjusted Valuation 2016-2020: mean = 1.535, standard deviation = 1.419, minimum = 0.010, maximum = 8.215",
+      "Age-Adjusted Valuation 2021-2025: mean = 3.756, standard deviation = 4.078, minimum = 0.041, maximum = 38.643",
+      "Age-Adjusted Total Funding 2016-2020: mean = 0.515, standard deviation = 0.583, minimum = 0.001, maximum = 4.135",
+      "Age-Adjusted Total Funding 2021-2025: mean = 1.120, standard deviation = 1.312, minimum = 0.014, maximum = 8.650",
+      "Valuation per Employee 2016-2020: mean = 1.188, standard deviation = 2.622, minimum = 0.003, maximum = 25.241",
+      "Valuation per Employee 2021-2025: mean = 0.788, standard deviation = 1.689, minimum = 0.001, maximum = 12.483",
+      "Revenue per Employee 2016-2020: mean = 0.568, standard deviation = 1.829, minimum = 0.000, maximum = 20.540",
+      "Revenue per Employee 2021-2025: mean = 0.145, standard deviation = 0.555, minimum = 0.000, maximum = 5.717",
+      "Funding per Employee 2016-2020: mean = 0.376, standard deviation = 0.935, minimum = 1.100\u00d710-4, maximum = 12.192",
+      "Funding per Employee 2021-2025: mean = 0.227, standard deviation = 0.467, minimum = 4.650\u00d710-4, maximum = 3.750",
+      "Revenue to Valuation Ratio 2016-2020: mean = 1.265, standard deviation = 5.833, minimum = 0.000, maximum = 122.265",
+      "Revenue to Valuation Ratio 2021-2025: mean = 0.405, standard deviation = 3.211, minimum = 0.000, maximum = 45.544",
+      "Funding to Valuation Ratio 2016-2020: mean = 0.437, standard deviation = 0.885, minimum = 0.002, maximum = 14.527",
+      "Funding to Valuation Ratio 2021-2025: mean = 0.397, standard deviation = 0.774, minimum = 0.009, maximum = 9.978",
+      "Revenue to Funding Ratio 2016-2020: mean = 8.941, standard deviation = 55.213, minimum = 0.000, maximum = 1234.458",
+      "Revenue to Funding Ratio 2021-2025: mean = 1.530, standard deviation = 10.087, minimum = 0.000, maximum = 136.521",
+      "Annual Revenue (USD; In Millions): t = 4.702, df = 912, p < .001, Mean Difference = 0.299, Cohen's d = 0.376",
+      "Age-Adjusted Employee Count: t = -12.891, df = 912, p < .001, Mean Difference = -6.680, Cohen's d = -1.029",
+      "Age-Adjusted Valuation: t = -12.174, df = 912, p < .001, Mean Difference = -2.221, Cohen's d = -0.972",
+      "Age-Adjusted Total Funding: t = -9.448, df = 912, p < .001, Mean Difference = -0.605, Cohen's d = -0.754",
+      "Valuation per Employee: t = 2.044, df = 912, p = 0.041, Mean Difference = 0.400, Cohen's d = 0.163",
+      "Revenue per Employee: t = 3.234, df = 912, p = 0.001, Mean Difference = 0.423, Cohen's d = 0.258",
+      "Funding per Employee: t = 2.187, df = 912, p = 0.029, Mean Difference = 0.149, Cohen's d = 0.175",
+      "Revenue to Valuation Ratio: t = 2.007, df = 912, p = 0.045, Mean Difference = 0.860, Cohen's d = 0.160",
+      "Funding to Valuation Ratio: t = 0.583, df = 912, p = 0.560, Mean Difference = 0.040, Cohen's d = 0.047",
+      "Revenue to Funding Ratio: t = 1.893, df = 912, p = 0.059, Mean Difference = 7.411, Cohen's d = 0.151",
+      "Firm Age: \u03b2 = -0.113, standard error = 0.057, standardized = -0.098, t = -1.983, p = 0.048",
+      "Cohort (2021-2025): \u03b2 = -0.830, standard error = 0.292, t = -2.844, p = 0.005",
+      "Intercept: \u03b2 = 2.009, standard error = 0.424, t = 4.735, p < .001",
+      "Firm Age: \u03b2 = 0.044, standard error = 0.038, standardized = 0.057, t = 1.163, p = 0.245",
+      "Cohort (2021-2025): \u03b2 = -0.254, standard error = 0.195, t = -1.300, p = 0.194",
+      "Intercept: \u03b2 = 0.245, standard error = 0.284, t = 0.863, p = 0.388",
+      "Cohort (2021-2025): \u03b2 = -0.339, standard error = 0.102, t = -3.329, p < .001",
+      "Firm Age: \u03b2 = -0.050, standard error = 0.020, standardized = -0.123, t = -2.505, p = 0.012",
+      "Intercept: \u03b2 = 0.738, standard error = 0.148, t = 4.989, p < .001",
+      "Cohort (2021-2025): \u03b2 = 0.832, standard error = 0.637, t = 1.307, p = 0.192",
+      "Firm Age: \u03b2 = 0.445, standard error = 0.124, standardized = 0.175, t = 3.577, p < .001",
+      "Intercept: \u03b2 = -1.968, standard error = 0.926, t = -2.126, p = 0.034",
+      "Cohort (2021-2025): \u03b2 = -0.159, standard error = 0.103, t = -1.544, p = 0.123",
+      "Firm Age: \u03b2 = -0.031, standard error = 0.020, standardized = -0.077, t = -1.551, p = 0.121",
+      "Intercept: \u03b2 = 0.664, standard error = 0.150, t = 4.440, p < .001",
+      "Cohort (2021-2025): \u03b2 = 11.014, standard error = 5.795, t = 1.901, p = 0.058",
+      "Firm Age: \u03b2 = 4.847, standard error = 1.133, standardized = 0.209, t = 4.278, p < .001",
+      "Intercept: \u03b2 = -26.269, standard error = 8.429, t = -3.117, p = 0.002"
+    ],
+    "ambiguity_or_caveats": [
+      "The absence of survival data represents a significant limitation, constraining the ability to assess the long-term viability of AI-era startups within India's knowledge-intensive sector.",
+      "Without insights into failure rates or sustained growth, the durability of observed efficiency lags remains uncertain, limiting the predictive power of the findings.",
+      "The reliance on text-based classification introduces potential bias, as the quality and intent of startup descriptions may vary, potentially skewing the identification of AI adoption trends.",
+      "Additionally, the study's focus on India restricts its generalizability to other knowledge-intensive startup landscapes globally, where economic, cultural, and technological contexts may differ.",
+      "These constraints highlight the need for a more comprehensive dataset and broader comparative analysis to enhance the study's scope.",
+      "However, limitations such as the lack of survival data and potential classification bias due to variability in description quality necessitate cautious interpretation.",
+      "The study's India-centric perspective limits its immediate global applicability, though comparative analyses in other knowledge-intensive markets could corroborate these trends.",
+      "The robust sample size bolsters confidence in the findings, yet contextual factors like policy support within the ecosystem warrant further exploration to fully understand their influence."
+    ]
+  },
+  "notes": "This is an empirical study using a natural experiment design comparing pre-AI (2016-2020) and AI-era (2021-2025) Indian startups in knowledge-intensive sectors. The study finds that AI-era firms have larger employee counts but lower efficiency metrics (valuation per employee, revenue per employee, revenue-to-funding ratio) compared to pre-AI firms, contradicting the initial hypothesis based on general-purpose technology theory. The paper includes descriptive statistics, independent samples t-tests, and linear regression analyses. Key limitation: no survival data to assess long-term viability.",
+  "_paper_id": "2507.19775v1",
+  "_source_pdf": "papers/2507.19775v1.pdf"
+}

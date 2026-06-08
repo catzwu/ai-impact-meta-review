@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly uses a differences-in-differences (DiD) empirical strategy to exploit the release of GitHub Copilot in 2021 as a positive shock, comparing software-developing startups (treatment) to other startups (control). This is a clear quasi-experimental identification strategy without random assignment.",
+  "citation_key": "asam_2025_generative_startup"
+}

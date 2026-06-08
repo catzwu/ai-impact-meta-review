@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a benchmarking study evaluating AI performance on econometrics tasks using existing datasets (coursework exercises and published papers). There are no human participants; the 'population' consists of test datasets and exercises, not people. No experimental manipulation or comparison of human behavior is involved.",
+  "citation_key": "chen_2026_econometrics_ai"
+}

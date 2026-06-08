@@ -1,0 +1,107 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "writing_time",
+      "category": "speed",
+      "operationalization": "Self-reported minutes actively engaged in completing memo writing assignments (research and writing combined)"
+    },
+    {
+      "outcome_name": "overall_grade",
+      "category": "quality",
+      "operationalization": "Total points earned on standardized rubric (0-24 points), summing eight criteria each scored 1-3"
+    },
+    {
+      "outcome_name": "summarization_quality",
+      "category": "quality",
+      "operationalization": "Single rubric criterion scored 1 (insufficient), 2 (sufficient), or 3 (proficient)"
+    },
+    {
+      "outcome_name": "external_survey_research",
+      "category": "quality",
+      "operationalization": "Combined score on two rubric criteria (quality of research and integration/analysis), each scored 1-3"
+    },
+    {
+      "outcome_name": "external_survey_analysis",
+      "category": "quality",
+      "operationalization": "Single rubric criterion scored 1 (insufficient), 2 (sufficient), or 3 (proficient)"
+    },
+    {
+      "outcome_name": "policy_articulation",
+      "category": "quality",
+      "operationalization": "Single rubric criterion scored 1 (insufficient), 2 (sufficient), or 3 (proficient)"
+    },
+    {
+      "outcome_name": "policy_logic_and_holistics",
+      "category": "quality",
+      "operationalization": "Single rubric criterion scored 1 (insufficient), 2 (sufficient), or 3 (proficient)"
+    },
+    {
+      "outcome_name": "policy_argument",
+      "category": "quality",
+      "operationalization": "Single rubric criterion scored 1 (insufficient), 2 (sufficient), or 3 (proficient)"
+    },
+    {
+      "outcome_name": "style_flow_concision",
+      "category": "quality",
+      "operationalization": "Combined score on two rubric criteria (style/flow/concision and organization), each scored 1-3"
+    },
+    {
+      "outcome_name": "organization",
+      "category": "quality",
+      "operationalization": "Single rubric criterion scored 1 (insufficient), 2 (sufficient), or 3 (proficient)"
+    },
+    {
+      "outcome_name": "perceived_writing_competency",
+      "category": "other",
+      "operationalization": "Self-evaluation of professional writing competency relative to CMU graduate students, scale 1-5. This is a self-perception measure, not an objective quality assessment of task output."
+    },
+    {
+      "outcome_name": "genai_usefulness_summarization",
+      "category": "other",
+      "operationalization": "Self-reported usefulness of AI tool for summarization sub-task, scale 1-4. This measures perceived utility, not speed or quality of output."
+    },
+    {
+      "outcome_name": "genai_usefulness_writing",
+      "category": "other",
+      "operationalization": "Self-reported usefulness of AI tool for writing sub-task, scale 1-4. This measures perceived utility, not speed or quality of output."
+    },
+    {
+      "outcome_name": "genai_usefulness_web_research",
+      "category": "other",
+      "operationalization": "Self-reported usefulness of AI tool for web research sub-task, scale 1-4. This measures perceived utility, not speed or quality of output."
+    },
+    {
+      "outcome_name": "genai_usefulness_policy_development",
+      "category": "other",
+      "operationalization": "Self-reported usefulness of AI tool for policy development sub-task, scale 1-4. This measures perceived utility, not speed or quality of output."
+    },
+    {
+      "outcome_name": "genai_usefulness_analysis",
+      "category": "other",
+      "operationalization": "Self-reported usefulness of AI tool for analysis sub-task, scale 1-4. This measures perceived utility, not speed or quality of output."
+    },
+    {
+      "outcome_name": "perceived_speed_improvement",
+      "category": "other",
+      "operationalization": "Self-reported belief about speed improvement from first to third assignment, scale 1-5. This is perceived change, not measured speed."
+    },
+    {
+      "outcome_name": "perceived_quality_improvement",
+      "category": "other",
+      "operationalization": "Self-reported belief about quality improvement from first to third assignment, scale 1-5. This is perceived change, not measured quality."
+    },
+    {
+      "outcome_name": "attribution_improvement_to_ai",
+      "category": "other",
+      "operationalization": "Self-reported attribution of improvement to AI versus experience, scale 1-10. This measures causal attribution beliefs, not speed or quality."
+    },
+    {
+      "outcome_name": "value_quality_vs_speed",
+      "category": "other",
+      "operationalization": "Self-reported valuation of quality versus speed benefits, scale 1-10. This measures preferences, not speed or quality of output."
+    }
+  ],
+  "primary_speed_outcome": "writing_time",
+  "primary_quality_outcome": "overall_grade",
+  "citation_key": "usdan_2024_generative_writing"
+}

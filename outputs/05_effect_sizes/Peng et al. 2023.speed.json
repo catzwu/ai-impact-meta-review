@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Peng et al. 2023",
+  "citation_key": "peng_2023_copilot_productivity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "copilot",
+    "ai_arm_selection_rationale": "Only one AI arm (GitHub Copilot) is present in the study; control group had no AI assistance.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 160.89,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 50,
+    "m_ai": 71.17,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 45,
+    "reported_percent_change": -0.558,
+    "reported_percent_change_ci_low": -0.89,
+    "reported_percent_change_ci_high": -0.21,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "The paper reports task completion time in minutes (smaller is better). The treatment group completed the task 55.8% faster, which represents a reduction in time. The 95% CI [21%, 89%] refers to the percent reduction/improvement. Means are clearly reported: control = 160.89 min, copilot = 71.17 min. Multiple heterogeneous effect regression coefficients are reported but these are interaction terms, not the main effect, so they are not used for the primary log ratio calculation.",
+    "source_quotes": [
+      "The treatment group, with access to the AI pair programmer, completed the task 55.8% faster than the control group.",
+      "the treated group completed the task 55.8% faster (95% confidence interval: 21-89%)",
+      "Conditioning on completing the task, the average completion time from the treated group is 71.17 minutes and 160.89 minutes for the control group.",
+      "This represents a 55.8% reduction in completion time.",
+      "The p-value for the t-test is 0.0017, and a 95% confidence interval for the improvement is between [21%, 89%]."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.8156495203517637,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 1.2606435295770688,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "The paper reports task completion time in minutes (smaller is better). The treatment group completed the task 55.8% faster, which represents a reduction in time. The 95% CI [21%, 89%] refers to the percent reduction/improvement. Means are clearly reported: control = 160.89 min, copilot = 71.17 min. Multiple heterogeneous effect regression coefficients are reported but these are interaction terms, not the main effect, so they are not used for the primary log ratio calculation. | SDs/SEs missing; variance not computable",
+    "n_human": 50,
+    "n_ai": 45
+  }
+}

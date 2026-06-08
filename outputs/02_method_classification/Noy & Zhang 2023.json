@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study is described as 'A preregistered online randomized controlled trial with 444 college-educated professionals assigned to either ChatGPT access (treatment) or Overleaf access (control).' This is randomized assignment conducted online (neither a controlled lab nor a real workplace setting), making it a standard RCT rather than a field experiment or lab task.",
+  "citation_key": "noy_2023_chatgpt_productivity"
+}

@@ -1,0 +1,254 @@
+{
+  "citation_key": "zheng_2021_ai_economist",
+  "authors": [
+    "Stephan Zheng",
+    "Alexander Trott",
+    "Sunil Srinivasa",
+    "David C. Parkes",
+    "Richard Socher"
+  ],
+  "title": "The AI Economist: Optimal Economic Policy Design via Two-level Deep Reinforcement Learning",
+  "year": 2021,
+  "venue": "arXiv preprint",
+  "study_design_description": "The study validates an AI-driven economic policy design approach in simplified one-step economies and a more complex Gather-Trade-Build economy, a two-dimensional, spatiotemporal economy with agents who move, gather resources, trade, and build houses. Each simulation runs for 10 tax years, with each tax year lasting 100 timesteps (H = 1000 total). Experiments use two spatial layouts (Open-Quadrant and Split-World) and are repeated with either 5 or 10 random seeds depending on the scenario.",
+  "primary_task_description": "Agents choose labor amounts to optimize post-tax utility based on their skill level and tax rates. Agents can move spatially to collect resources (stone and wood), trade with one another through a continuous double auction, and build houses by spending resources to earn coins. The planner sets and changes tax rates at the start of each tax year to maximize social welfare.",
+  "population_description": "The one-step economy includes N = 100 agents, each with a private skill level (hourly wage). The Gather-Trade-Build scenarios include four Split-World scenarios with 10 agents each (differing in resource-rich half assignment) and two Open-Quadrant scenarios with 4 and 10 agents respectively. All agents have fixed build-skills calibrated so that agents must be strategic in earning income and the resulting income distribution roughly matches the 2018 US economy.",
+  "arms": [
+    {
+      "arm_name": "free_market",
+      "description": "A fixed-rate planner where all tax rates are 0%",
+      "n": null
+    },
+    {
+      "arm_name": "us_federal",
+      "description": "A fixed-rate planner where bracketed marginal tax rates follow a progressive scheme adapted from the 2018 US federal single-filer income tax schedule",
+      "n": null
+    },
+    {
+      "arm_name": "saez_tax",
+      "description": "An adaptive planner that computes theoretically optimal marginal rates using the empirical income distribution and elasticity of income with respect to taxation",
+      "n": null
+    },
+    {
+      "arm_name": "ai_economist",
+      "description": "A deep neural network, adaptive planner that maps a set of planner observations to bracketed marginal tax rates, which is trained via reinforcement learning (RL) to maximize social welfare",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "utilitarian_social_welfare",
+      "outcome_description": "A utilitarian objective defined as a family of linear-weighted sums of agent utilities with inverse-income weights: swft = \u2211\u1d62 \u03c9\u1d62\u00b7u\u1d62,\u209c, where \u03c9\u1d62 \u221d 1/C\u1d62, normalized to sum to 1",
+      "measurement_unit": null,
+      "is_primary": true
+    },
+    {
+      "outcome_name": "equality",
+      "outcome_description": "Equality defined as eq(C\u209c) = 1 \u2212 N/(N\u22121) gini(C\u209c), where the Gini index is gini(C\u209c) = \u2211\u1d62 \u2211\u2c7c |C\u1d62,\u209c\u2212C\u2c7c,\u209c| / (2N\u2211\u1d62 C\u1d62,\u209c), with 0 \u2264 eq(C\u209c) \u2264 1 and 0 \u2264 gini(C\u209c) \u2264 N\u22121/N",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "productivity",
+      "outcome_description": "Productivity defined as the sum of all incomes: prod(C\u209c) = \u2211\u1d62 C\u1d62,\u209c",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "equality_times_productivity",
+      "outcome_description": "An objective that optimizes a trade-off between equality and productivity, defined as the product of equality and productivity: swf\u209c = eq(C\u209c)\u00b7prod(C\u209c)",
+      "measurement_unit": null,
+      "is_primary": true
+    },
+    {
+      "outcome_name": "low_skill_trading_income",
+      "outcome_description": "Income earned by low build-skill agents from trading",
+      "measurement_unit": "percent change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "wealth_transfers",
+      "outcome_description": "Wealth transfers from the highest build-skill agent to others",
+      "measurement_unit": "percent change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "income_equality_improvement",
+      "outcome_description": "Income equality improvement",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "second_highest_bracket_incomes",
+      "outcome_description": "Number of incomes in the second-to-highest bracket (204 to 510 coins)",
+      "measurement_unit": "percent change",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "top_bracket_incomes",
+      "outcome_description": "Number of incomes in the top bracket",
+      "measurement_unit": "percent change",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "utilitarian_social_welfare",
+      "arm_comparison": "ai_economist vs saez_tax (Open-Quadrant, 4 agents)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 8% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the Open-Quadrant layout with four (ten) agents (Figure 3), AI-driven taxes improve the utilitarian objective by over 8% (2%) and the product of equality and productivity by over 12% (8.6%) over the Saez tax."
+    },
+    {
+      "outcome_name": "utilitarian_social_welfare",
+      "arm_comparison": "ai_economist vs saez_tax (Open-Quadrant, 10 agents)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the Open-Quadrant layout with four (ten) agents (Figure 3), AI-driven taxes improve the utilitarian objective by over 8% (2%) and the product of equality and productivity by over 12% (8.6%) over the Saez tax."
+    },
+    {
+      "outcome_name": "equality_times_productivity",
+      "arm_comparison": "ai_economist vs saez_tax (Open-Quadrant, 4 agents)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "over 12% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the Open-Quadrant layout with four (ten) agents (Figure 3), AI-driven taxes improve the utilitarian objective by over 8% (2%) and the product of equality and productivity by over 12% (8.6%) over the Saez tax."
+    },
+    {
+      "outcome_name": "equality_times_productivity",
+      "arm_comparison": "ai_economist vs saez_tax (Open-Quadrant, 10 agents)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "8.6% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the Open-Quadrant layout with four (ten) agents (Figure 3), AI-driven taxes improve the utilitarian objective by over 8% (2%) and the product of equality and productivity by over 12% (8.6%) over the Saez tax."
+    },
+    {
+      "outcome_name": "utilitarian_social_welfare",
+      "arm_comparison": "ai_economist vs baselines (multiple scenarios)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "\u03b1 = 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "All social welfare, productivity, and equality differences between the AI Economist and baselines are statistically significant, except for the difference in social welfare between the AI Economist and the Saez tax in the one-step economy (a). Asterisks indicate a statistically significant difference at an \u03b1 level of 0.05 (*), 0.001 (**), or 0.00001 (***)."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "ai_economist vs baselines (multiple scenarios)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "\u03b1 = 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "All social welfare, productivity, and equality differences between the AI Economist and baselines are statistically significant, except for the difference in social welfare between the AI Economist and the Saez tax in the one-step economy (a)."
+    },
+    {
+      "outcome_name": "equality",
+      "arm_comparison": "ai_economist vs baselines (multiple scenarios)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "\u03b1 = 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "All social welfare, productivity, and equality differences between the AI Economist and baselines are statistically significant, except for the difference in social welfare between the AI Economist and the Saez tax in the one-step economy (a)."
+    },
+    {
+      "outcome_name": "equality_times_productivity",
+      "arm_comparison": "ai_economist vs us_federal (Split-World-5,6 scenario)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "All social welfare differences between the AI Economist and baselines are statistically significant, except for the difference in equality-times-productivity (f) between the AI Economist and the US Federal tax in the Split-World-5,6 scenario."
+    },
+    {
+      "outcome_name": "low_skill_trading_income",
+      "arm_comparison": "ai_economist vs baselines",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "9% more",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Under the AI Economist, the low build-skill agents earn 9% more from trading (Figure 6b), wealth transfers from the highest build-skill agent to others are 46% larger (Figure 5d), income equality is at least 9% higher (Figure 3e), the number of incomes in the second-to-highest bracket (204 to 510 coins) is at least 64% higher, and, 92% smaller for the top bracket, compared to baselines (Figure 5b)."
+    },
+    {
+      "outcome_name": "wealth_transfers",
+      "arm_comparison": "ai_economist vs baselines",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "46% larger",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Under the AI Economist, the low build-skill agents earn 9% more from trading (Figure 6b), wealth transfers from the highest build-skill agent to others are 46% larger (Figure 5d), income equality is at least 9% higher (Figure 3e), the number of incomes in the second-to-highest bracket (204 to 510 coins) is at least 64% higher, and, 92% smaller for the top bracket, compared to baselines (Figure 5b)."
+    },
+    {
+      "outcome_name": "income_equality_improvement",
+      "arm_comparison": "ai_economist vs baselines",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "at least 9% higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Under the AI Economist, the low build-skill agents earn 9% more from trading (Figure 6b), wealth transfers from the highest build-skill agent to others are 46% larger (Figure 5d), income equality is at least 9% higher (Figure 3e), the number of incomes in the second-to-highest bracket (204 to 510 coins) is at least 64% higher, and, 92% smaller for the top bracket, compared to baselines (Figure 5b)."
+    },
+    {
+      "outcome_name": "second_highest_bracket_incomes",
+      "arm_comparison": "ai_economist vs baselines",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "at least 64% higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Under the AI Economist, the low build-skill agents earn 9% more from trading (Figure 6b), wealth transfers from the highest build-skill agent to others are 46% larger (Figure 5d), income equality is at least 9% higher (Figure 3e), the number of incomes in the second-to-highest bracket (204 to 510 coins) is at least 64% higher, and, 92% smaller for the top bracket, compared to baselines (Figure 5b)."
+    },
+    {
+      "outcome_name": "top_bracket_incomes",
+      "arm_comparison": "ai_economist vs baselines",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "92% smaller",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Under the AI Economist, the low build-skill agents earn 9% more from trading (Figure 6b), wealth transfers from the highest build-skill agent to others are 46% larger (Figure 5d), income equality is at least 9% higher (Figure 3e), the number of incomes in the second-to-highest bracket (204 to 510 coins) is at least 64% higher, and, 92% smaller for the top bracket, compared to baselines (Figure 5b)."
+    }
+  ],
+  "notes": "This is a computational study using two-level deep reinforcement learning to design economic policies in simulated multi-agent economies. The paper compares four policy approaches: Free Market (no taxes), US Federal (fixed progressive schedule), Saez tax (theoretically optimal adaptive), and AI Economist (learned adaptive policy). Open-Quadrant experiments used 10 random seeds; Split-World and One-Step Economy experiments used 5 random seeds. Statistical significance was computed using two-sample t-tests at \u03b1 = 0.05, 0.001, and 0.00001 levels. The paper includes extensive caveats about the limitations of the simulations for real-world policy application, noting that the environments do not capture the full range of economic opportunities and decisions faced by real-world individuals, and that results are not meant to be applied to specific real-world economies. The authors acknowledge challenges in measuring local elasticities and potential risks of bias in AI-driven policy systems.",
+  "_paper_id": "2108.02755v1"
+}

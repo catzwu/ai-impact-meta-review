@@ -1,0 +1,98 @@
+{
+  "citation_key": "daniotti_2025_ai_code",
+  "authors": [
+    "Simone Daniotti",
+    "Johannes Wachs",
+    "Xiangnan Feng",
+    "Frank Neffke"
+  ],
+  "title": "Who is using AI to code? Global diffusion and impact of generative AI",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "To answer these questions, we study genAI use at a fine-grained level in one of its main domains of application: software development, an important and high-value sector that is uniquely exposed to genAI. To do so, we design and implement a machine learning classifier to identify code written with substantial AI assistance in over 30 million software developer contributions, also known as commits, to open-source Python projects on GitHub.",
+      "To collect a large dataset of coding activity, we gather all commits by about 100k US GitHub users to Python-based open-source projects, recursively cloning all GitHub directories related to each project. Next, we add commits from a random sample of 2,000 programmers per year for each of five other major countries in software development: China, France, Germany, India and Russia.",
+      "To determine the effects of AI adoption on the quantity and nature of output that GitHub users produce, we rely on regression models with user and quarter-of-year fixed effects. This compares the output \u2014 in terms of quarterly number of commits \u2014 of the same programmer at different points of AI adoption, controlling for economy-wide trends."
+    ],
+    "task": [
+      "We limit this analysis to blocks of code that represent functions to focus on a fine-grained, self-contained, yet substantial unit of code.",
+      "To assess how genAI impacts the quantity and nature of code that programmers produce, we rely on regression models with user and quarter-of-year fixed effects. This compares the output \u2014 in terms of quarterly number of commits \u2014 of the same programmer at different points of AI adoption, controlling for economy-wide trends. These models, summarized in Fig. 3C, suggest a substantial impact of genAI on developer productivity. We find consistent effects across different sets of commits: all commits, commits that modify multiple files (which typically require navigating complex dependencies across scripts), and commits that add new libraries or library combinations (which typically introduce new functionality to scripts)."
+    ],
+    "population": [
+      "we gather all commits by about 100k US GitHub users to Python-based open-source projects",
+      "we add commits from a random sample of 2,000 programmers per year for each of five other major countries in software development: China, France, Germany, India and Russia.",
+      "we leverage this novel source of micro-data to study how quickly the use of genAI in coding diffuses in six major countries, how this diffusion relates to demographic characteristics, and how it affects programming activity in a sample of over 100,000 US software developers.",
+      "Focusing on the full population of US developers, we find that AI adoption rates drop with the number of years that developers have been active on GitHub. Fig. 3B shows that whereas the most experienced developers use genAI in 27% of their code, programmers who have just joined the GitHub platform use these tools for 37% of code.",
+      "In contrast, using (self-reported) first-name-based gender inference algorithms, we find no difference between men and women (Fig. 3A).",
+      "This yields a user-quarter level dataset that describes AI usage rates of 100,097 users over a time span of, on average, 5.1 quarters."
+    ],
+    "arms": [],
+    "outcome_definitions": [
+      "We analyze these commits to assess the prevalence of AI-generated code",
+      "To assess how genAI impacts the quantity and nature of code that programmers produce, we rely on regression models with user and quarter-of-year fixed effects. This compares the output \u2014 in terms of quarterly number of commits \u2014 of the same programmer at different points of AI adoption, controlling for economy-wide trends.",
+      "We create three types of commit counts. The first, \ud835\udc41 all \ud835\udc62\ud835\udc5e , counts all commits by a user in a quarter. The second, \ud835\udc41 mult \ud835\udc62\ud835\udc5e counts commits that make changes to multiple files (scripts) in a project. For these commits, it is more likely that they need to navigate project-level dependencies, making them in principle more complex. The third, \ud835\udc41 imp \ud835\udc62\ud835\udc5e , counts commits that add library imports to a script.",
+      "We study two broad kinds of library usage in user commit histories. \u2022 \ud835\udc3fall \ud835\udc62\ud835\udc5e : the number of unique libraries that a user adds across all their commits in a given quarter and \u2022 \ud835\udc3fentry \ud835\udc62\ud835\udc5e : the number of unique libraries that a user adds in quarter \ud835\udc5e that had not been used in any prior quarter by the same user.",
+      "Apart from increasing activity rates, AI adoption is also associated with increased experimentation with new libraries and combinations of libraries, which [33] interpret as signs of innovation. Because libraries often focus on specific types of functionality \u2014 such as visualization, natural language processing, web interactions, or database operations \u2014 this suggests that genAI helps programmers expand their capabilities to new domains of software development."
+    ],
+    "statistical_results": [
+      "The classifier performs remarkably well, achieving an out-of-sample ROC AUC Score of 0.96 (Fig. S2D) and Average Rate of True positives of 0.95.",
+      "About 29% of Python functions in the US were generated by AI by the end of 2024, closely followed by 23/24% for Germany and France. India draws close at 20%, after having initially lagged in adoption.",
+      "Whereas the most experienced developers use genAI in 27% of their code, programmers who have just joined the GitHub platform use these tools for 37% of code.",
+      "Moving from 0 to 29% genAI usage\u2014the estimated US adoption rate by the end of 2024\u2014is associated with a 3.6% increase in commit rates across all these commit types.",
+      "However, these associations with user productivity are fully driven by experienced users, for whom a 29% adoption rate would imply a 6.2% increase in commit rates (Fig. 3D). In contrast, we observe no statistically significant effects among inexperienced users.",
+      "At average end-of-2024 AI use rates for US developers, our models predict that developers will implement 2.7% more new combinations of libraries.",
+      "Our estimates of the most recent adoption rates in the US of around 29% are remarkably similar to adoption rates claimed for coding work at Microsoft and Amazon.",
+      "The classifier performs remarkably well, achieving an out-of-sample ROC AUC Score of 0.96 (Fig. S2D) and Average Rate of True positives of 0.95.",
+      "reaching an out-of-sample ROC AUC Score of 0.96, Average Precision Score [52] of 0.9685 and Average true positive rate of 0.95 (F1 score 0.8911 with a 0.5 threshold).",
+      "The average probability of true positives is very similar across samples at around 0.7 (GPT-3.5 turbo \u2014 synthetic: 0.701, assisted: 0.698; GPT-4 \u2014 synthetic: 0.675, assisted: 0.651).",
+      "AI Use 0.122*(0.048)",
+      "High Experience\u00d7AI Use 0.189*(0.086)",
+      "Male -0.004 (0.013)",
+      "Exp 2 -0.017 (0.013)",
+      "Exp 10 -0.075*** (0.013)",
+      "Exp 4 -0.026* (0.013)",
+      "Exp 12 -0.083*** (0.014)",
+      "Exp 6 -0.052*** (0.013)",
+      "Exp 14 -0.099*** (0.014)",
+      "Exp 8 -0.066*** (0.013)",
+      "p-values of our AI use range from 0.11 to 0.93",
+      "Assuming our estimated diffusion rates of 29% by the end of 2024 (based on open-source Python contributions) are representative of code in general, the annual value generated by genAI coding assistants in the US would depend on how much they increase productivity. Using our own, conservative, baseline estimates, genAI would have increased the volume of commits by 3.6%. Assuming these commits reflect valuable code contributions, our calculation implies that genAI generates 23\u201338B USD of additional code per year.",
+      "Averaging across such studies (see Materials and Methods for details) yields an estimated 6.0%-15.7% increase in productivity at a 29% adoption rate, translating into a range of 38-167B USD for the direct impact of genAI on US coding activities.",
+      "By the end of 2024, 28.6% of functions from US developers were produced by genAI.",
+      "Based on our baseline, conservative point estimate of 0.122 for the effect of genAI on commit volumes, a 29% usage rate will translate into an overall increase of \ud835\udc520.122\u22170.286\u2212 1= 3.55%\u2248 3.6%.",
+      "the US spends between an estimated 637 and 1,063B USD on coding-related labor costs per year",
+      "If we are willing to assume that (1) our estimated productivity effects (based on open-source Python contributions) are representative of code in general and (2) that the associated increase in commits accurately reflects the underlying causal effect on labor productivity of coders \u2014 including that more commits translate into more valuable code \u2014 we arrive at a total value of productivity increases in US coding work of between 23 and 38B USD a year.",
+      "If, instead, productivity effects are negligible outside Python, the value of genAI could be as low as 17% [40], of our most conservative estimate above (i.e., 3.2-5.3B USD).",
+      "Field experiments that track developers in live codebases report increases of roughly 13.6% in commits and a 26% faster task completion rate [6]. Natural experiments exploiting the staggered roll-out of GitHub Copilot find that access to Copilot leads to a 6% increase in merged pull-requests [24] and a 5.5% increase in commits [22]. In lab experiments, subjects with access to genAI complete software tasks 21-55% faster, translating to a 6.0%-15.7% effect assuming a 28.6% AI use rate [21, 36].",
+      "Combining the average of the three estimates of improvement in task-completion time from RCTs (55% [21], 21% [36], and 26% [6]) with our estimated 28.6% AI use rate would imply a 9.7% effect and an annual value of $62B-$103B USD.",
+      "Relying instead on the average increased commit and merged pull request rates across one RCT and two natural experiments (13.6% [6], 5.5% [22], and 5.6% [24]) with the estimated AI use rate yields an 2.35% increase in productivity or 15B-25B USD in annual value.",
+      "total welfare effects may lie anywhere between 21B and 126B USD based on our own effect estimates, with even larger gains possible if effects are closer to the ones reported in lab and field experiments.",
+      "\u03a3elas=\u2212\ud835\udeff \ud835\udf02\ud835\udc491  1+ \ud835\udeff 2  = 0.035 0.3 \u2217 787  1+ 0.035 2  = 93.1",
+      "\u03a3inelas=\ud835\udeff\ud835\udc491  1+ 1 2 \ud835\udeff \ud835\udf02  = 0.035\u2217 787  1\u2212 1 2 0.035 0.3  = 25.9"
+    ],
+    "ambiguity_or_caveats": [
+      "There are several limitations to our study. First, our analysis focuses on software development. Although this limits its scope, work in this sector is uniquely amenable to quantitative analysis at a level of granularity that is required to study how AI affects workers and their tasks.",
+      "Within software, we focus only on Python-based open-source contributions. While Python is a widely used language, adoption patterns may differ in other programming ecosystems.",
+      "More generally, we also do not account for potential externalities between coworkers or heterogeneity in productivity across firms, all of which may be relevant factors in how genAI affects programming activity.",
+      "Beyond firms, our geographic analysis is limited to a subset of countries and it would be important to widen the analysis to include countries at different income levels.",
+      "In the specific case of China \u2014 where the programming community also relies on an alternative collaboration platform, Gitee [32] \u2014 there is some additional risk that our focus on GitHub projects distorts estimates.",
+      "Finally, when it comes to the effects of genAI, there are many other ways to evaluate the productivity of programmers that heed more attention to code quality, from tracking how issues get resolved and code merges to the implemented test coverage. While feasible in principle, such analysis requires new data collection and careful design of metrics. We therefore leave questions of the effect of genAI on code quality for future research.",
+      "In the Materials and Methods, we show that the classifier also correctly identifies code generated by more recent LLMs introduced after our data collection ended, as well as code produced in real-world interactions with LLMs, albeit with somewhat lower accuracy.",
+      "Our estimates of the most recent adoption rates in the US of around 29% are remarkably similar to adoption rates claimed for coding work at Microsoft and Amazon. This shows that, despite our focus on code from open source Python libraries, our results closely align with estimates of adoption rates from other contexts and may generalize beyond the specific setting of this study.",
+      "When it comes to the productivity effects of genAI, our estimates are generally smaller than those found in RCTs [36, 6] and studies exploiting natural experiments [22, 24]. In robustness checks (SI section S4) we study whether nonlinearities or threshold effects in the benefits of genAI adoption can explain such discrepancies, but find little significant evidence for this hypothesis. A more promising explanation is measurement error, which is likely to bias effect estimates downwards.",
+      "In line with this, Fig. S6 of the SI shows that our effect estimates increase substantially if we correct them for measurement error. Moreover, we show that effects concentrate in experienced programmers, while junior developers seem not to benefit much from genAI. The higher effect estimates in prior literature may therefore also reflect differences in the populations and complier samples they studied.",
+      "Although the amount of measurement error is unknown, we can create different versions of \ud835\udc34\ud835\udc3c\ud835\udc62\ud835\udc5e across which measurement error varies in a known way.",
+      "Measurement error is known to lead to attenuation bias, which typically biases the estimated effect of a variable towards zero.",
+      "Across all models, as measurement error falls, effect estimates rise. Measurement errors are therefore likely to lead to conservative estimates.",
+      "Although point estimates suggest there may be a threshold above which benefits of additional AI usage rates flatten off, the precision of these estimates is too low to warrant strong conclusions.",
+      "Despite controlling for observed and unobserved user characteristics, our estimation design is not optimized for identifying causal effects. Moreover, we cannot account for any spillover effects from genAI usage across workers. In fact, our estimates almost certainly understate the full economic impact of genAI in software development.",
+      "Note, however, that none of these estimates account for general equilibrium effects. If genAI raises worker output, the price of code will drop, leading to savings for its consumers. This in turn, increases the demand for code.",
+      "The (equally unlikely) lower bounds, in contrast, are very close to our initial estimates that do not adjust for general equilibrium effects. These initial estimates can therefore be considered conservative, also in the longer run.",
+      "Use of LLMs may be lower in countries like China and Russia because providers such as OpenAI and Anthropic block access (supply side) and censorship limits local use (demand side), even though many users connect using VPNs [35]."
+    ]
+  },
+  "notes": "This is an observational study using machine learning classification to detect AI-generated code in GitHub commits. The study tracks AI adoption patterns across countries and analyzes productivity effects using within-developer variation (fixed effects regression). The paper includes extensive supplementary materials with robustness checks, measurement error analysis, and general equilibrium calculations. Key finding: experienced programmers capture nearly all productivity and exploration gains from AI, widening rather than closing skill gaps.",
+  "_paper_id": "Daniotti et al. 2025",
+  "_source_pdf": "papers/Daniotti et al. 2025.pdf"
+}

@@ -1,0 +1,84 @@
+{
+  "citation_key": "tian_2024_ai_feedback",
+  "authors": [
+    "Tian Tian",
+    "Liu Zehui",
+    "Zichen Huang",
+    "Yubing Tang"
+  ],
+  "title": "Enhancing Organizational Performance: Harnessing AI and NLP for User Feedback Analysis in Product Development",
+  "year": null,
+  "venue": null,
+  "study_design_description": "This is a case study applying AI and NLP techniques to analyze user feedback on three crane products. The analysis involved data collection from questionnaires and direct user comments, data cleaning to remove irrelevant or duplicate data, data analysis using sentiment analysis and topic modeling, and results interpretation to generate recommendations.",
+  "primary_task_description": "Text analysis and rating analysis of customer feedback using NLP techniques to process and analyze written customer feedback such as reviews, support tickets, and surveys, combined with analysis of numerical ratings that customers provide.",
+  "population_description": "The research used three crane products: XCMG XCR100U, Tadano GR1000XL, and Grove GRT8100. Number of valid comments for each product are XCMG: 76, Tadano: 49, Grove: 43.",
+  "arms": [
+    {
+      "arm_name": "xcmg_xcr100u",
+      "description": "XCMG XCR100U crane product",
+      "n": 76
+    },
+    {
+      "arm_name": "tadano_gr1000xl",
+      "description": "Tadano GR1000XL crane product",
+      "n": 49
+    },
+    {
+      "arm_name": "grove_grt8100",
+      "description": "Grove GRT8100 crane product",
+      "n": 43
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "sentiment_score",
+      "outcome_description": "Sentiment analysis using natural language processing and machine learning algorithms to classify user feedback, with sentiment classified as positive (0.05+), negative (below -0.05), and neutral (-0.05-0.05).",
+      "measurement_unit": "sentiment score",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "topic_modeling",
+      "outcome_description": "Topic modeling using NLP techniques to identify the underlying topics or themes present in a large corpus of user feedback.",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "word_frequency",
+      "outcome_description": "Word cloud as a visual representation of the most frequently occurring words in a given text.",
+      "measurement_unit": null,
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "sentiment_score",
+      "arm_comparison": "xcmg_xcr100u vs tadano_gr1000xl vs grove_grt8100",
+      "means_and_sds": {
+        "xcmg_xcr100u": {
+          "mean": -0.017,
+          "sd": 0.331,
+          "se": null
+        },
+        "tadano_gr1000xl": {
+          "mean": 0.05,
+          "sd": 0.234,
+          "se": null
+        },
+        "grove_grt8100": {
+          "mean": 0.101,
+          "sd": 0.303,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Table. 1 Results of sentiment analysis of each product Brand Mean Std XCMG XCR100U -0.017 0.331 Tadano GR1000XL 0.050 0.234 Grove GRT8100 0.101 0.303"
+    }
+  ],
+  "notes": "This is a case study / application paper demonstrating the use of AI and NLP techniques for analyzing user feedback on heavy machine crane products. It is not an experimental study comparing AI-assisted vs. non-AI-assisted conditions. No statistical tests, p-values, or hypothesis tests are reported. The study has no control group or experimental manipulation. The paper presents descriptive statistics (means and standard deviations) for sentiment analysis across three products and qualitative findings from topic modeling. The study acknowledges several limitations: AI and NLP techniques are dependent on data quality and extent; algorithms may struggle with context and sarcasm; findings are limited to a specific product type within a particular industry; user feedback may not represent the entire customer base; and AI should augment rather than replace human analysis.",
+  "_paper_id": "2405.04692v1"
+}

@@ -1,0 +1,47 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "agglomeration_concentration",
+      "category": "other",
+      "operationalization": "Changes in spatial concentration of economic activity measured in percentage points, method not specified"
+    },
+    {
+      "outcome_name": "location_gini_quotient",
+      "category": "other",
+      "operationalization": "Gini coefficient measuring inequality in spatial distribution of employment or establishments across wards"
+    },
+    {
+      "outcome_name": "herfindahl_hirschman_index",
+      "category": "other",
+      "operationalization": "Sum of squared market shares measuring concentration of employment or establishments across geographic units"
+    },
+    {
+      "outcome_name": "primary_ward_employment_share",
+      "category": "other",
+      "operationalization": "Percentage of total employment located in the single ward with highest employment concentration"
+    },
+    {
+      "outcome_name": "ai_adoption_rate",
+      "category": "other",
+      "operationalization": "Percentage of firms or establishments adopting AI technologies, measurement method not specified"
+    },
+    {
+      "outcome_name": "employment_distribution",
+      "category": "other",
+      "operationalization": "R-squared from regression model explaining variance in employment distribution patterns"
+    },
+    {
+      "outcome_name": "industry_concentration",
+      "category": "other",
+      "operationalization": "R-squared from regression model explaining variance in industry concentration patterns"
+    },
+    {
+      "outcome_name": "productivity_measures",
+      "category": "other",
+      "operationalization": "R-squared from regression model explaining variance in productivity metrics"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "kikuchi_2025_ai_spatial"
+}

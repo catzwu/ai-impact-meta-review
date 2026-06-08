@@ -1,0 +1,53 @@
+{
+  "_paper_id": "38",
+  "citation_key": "nain_2024_ai_recruitment",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This paper is a conceptual/theoretical analysis of AI in HR recruitment and selection, not an empirical experiment comparing human-only vs. human+AI performance. It presents survey data on attitudes and behavioral intentions (TAM constructs) but does not measure actual recruitment speed, quality, or productivity outcomes. The R-square values (0.707, 0.892) measure variance explained in behavioral intention and actual usage constructs, not task performance. No speed or throughput metrics are reported.",
+    "direction_convention": null,
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "After careful re-reading, this paper is a survey-based empirical study examining HR professionals' attitudes toward AI adoption in recruitment using the Technology Acceptance Model (TAM). The study measures constructs like Perceived Usefulness (PU), Perceived Ease of Use (PEU), Trustworthiness of AI (TAI), Behavioral Intention to Use (BIUHRRS), and Actual Usage (AUHRRS). The reported statistics (Cronbach's alpha, composite reliability, AVE, R-square, correlation coefficients, path coefficients) all relate to psychometric properties and structural equation modeling of these attitudinal constructs. No actual recruitment or selection performance outcomes (time to hire, number of candidates screened, quality of hires, etc.) are measured or compared between human-only and human+AI conditions. The paper is purely about technology acceptance, not task performance. Therefore, no speed effect size can be computed.",
+    "source_quotes": [
+      "This study provides an empirical evaluation of AI's function in the field of human resources (HR) hiring and selection.",
+      "The primary objective of this research is to conduct an empirical examination of the function and consequences of artificial intelligence (AI) in the recruiting and selection procedures used by companies.",
+      "The research results of this study are based on a combination of primary and secondary sources... The majority of the study's material was derived from original data collected using a structured survey.",
+      "The survey was divided into four discrete portions. The primary phase of the study was the collection of demographic data from the participants... The next segments of the survey were customized to correspond with the study goals, assessing the participants' level of knowledge and willingness to embrace the integration of artificial intelligence (AI) in the recruiting and selection processes of human resources (HR).",
+      "Table 3 presents the R-square and modified R-square values... The R-square value for the construct AUHRRS is 0.707, indicating that about 70.7% of the variability in the actual use of AI tools in HR recruitment and selection can be accounted for by the independent variables or predictors being examined.",
+      "The construct BIUHRRS, the R-square value exhibits a significant magnitude of 0.892, signifying that approximately 89.2% of the variability in behavioral intention to employ AI in HR recruitment and selection can be ascribed to the factors that exert influence as examined in the study."
+    ]
+  },
+  "computed": {
+    "log_ratio": null,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": null,
+    "direction_convention": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After careful re-reading, this paper is a survey-based empirical study examining HR professionals' attitudes toward AI adoption in recruitment using the Technology Acceptance Model (TAM). The study measures constructs like Perceived Usefulness (PU), Perceived Ease of Use (PEU), Trustworthiness of AI (TAI), Behavioral Intention to Use (BIUHRRS), and Actual Usage (AUHRRS). The reported statistics (Cronbach's alpha, composite reliability, AVE, R-square, correlation coefficients, path coefficients) all relate to psychometric properties and structural equation modeling of these attitudinal constructs. No actual recruitment or selection performance outcomes (time to hire, number of candidates screened, quality of hires, etc.) are measured or compared between human-only and human+AI conditions. The paper is purely about technology acceptance, not task performance. Therefore, no speed effect size can be computed. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

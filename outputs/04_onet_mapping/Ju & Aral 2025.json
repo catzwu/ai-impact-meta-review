@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task was creating marketing campaigns, which centrally involves 'generating and selecting ad images and writing ad copy and calls to action.' This is fundamentally creative work\u2014developing novel advertising content within constraints. While the study measured team collaboration and AI assistance as treatments, the core work activity being performed by participants was creative ideation and content generation for marketing materials. This maps most directly to 'Thinking Creatively' rather than to a specific occupation, as the task is a well-defined creative activity rather than the full scope of a marketing role.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-03",
+      "onet_label": "Communicating with Supervisors, Peers, or Subordinates"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "11-2021.00",
+      "onet_label": "Marketing Managers"
+    }
+  ],
+  "citation_key": "ju_2026_collaborating_ai"
+}

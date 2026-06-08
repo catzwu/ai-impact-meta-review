@@ -1,0 +1,57 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "business_performance_index",
+      "category": "other",
+      "operationalization": "Composite index averaging four standardized measures (weekly/monthly profits and revenues), winsorized and standardized to control group post-treatment distribution"
+    },
+    {
+      "outcome_name": "monthly_revenue",
+      "category": "other",
+      "operationalization": "Self-reported monthly revenue in Kenyan Shillings collected via pre-treatment and post-treatment surveys"
+    },
+    {
+      "outcome_name": "monthly_profit",
+      "category": "other",
+      "operationalization": "Self-reported monthly profit in Kenyan Shillings collected via pre-treatment and post-treatment surveys"
+    },
+    {
+      "outcome_name": "reference_ai_assistant",
+      "category": "other",
+      "operationalization": "Percentage of treated entrepreneurs who mention working with or learning from the AI assistant in post-treatment surveys"
+    },
+    {
+      "outcome_name": "uncommon_words_usage",
+      "category": "other",
+      "operationalization": "Ratio of uncommon word usage in business changes text comparing treated entrepreneurs to control group"
+    },
+    {
+      "outcome_name": "price_cuts_or_advertising",
+      "category": "other",
+      "operationalization": "Percentage of entrepreneurs reporting price cuts or advertising as business strategies in surveys"
+    },
+    {
+      "outcome_name": "ai_advice_implementation",
+      "category": "other",
+      "operationalization": "Correlation between text embeddings of AI advice elements and business changes elements, measured in standard deviations"
+    },
+    {
+      "outcome_name": "performance_level_prediction_accuracy",
+      "category": "other",
+      "operationalization": "Machine learning model accuracy predicting low vs. high performer status from business changes text alone"
+    },
+    {
+      "outcome_name": "treatment_status_prediction_accuracy",
+      "category": "other",
+      "operationalization": "Machine learning model accuracy predicting treatment vs. control status from business changes text"
+    },
+    {
+      "outcome_name": "combined_prediction_accuracy",
+      "category": "other",
+      "operationalization": "Machine learning model accuracy predicting both performance level and treatment status simultaneously (four categories)"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "otis_2024_ai_entrepreneurship"
+}

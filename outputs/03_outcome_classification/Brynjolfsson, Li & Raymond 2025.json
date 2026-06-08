@@ -1,0 +1,62 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "resolutions_per_hour",
+      "category": "speed",
+      "operationalization": "count of successfully resolved customer chats per agent per hour, accounting for simultaneous conversations"
+    },
+    {
+      "outcome_name": "average_handle_time",
+      "category": "speed",
+      "operationalization": "mean duration in minutes from chat start to completion per agent"
+    },
+    {
+      "outcome_name": "chats_per_hour",
+      "category": "speed",
+      "operationalization": "count of customer conversations handled per agent per hour, including simultaneous chats"
+    },
+    {
+      "outcome_name": "resolution_rate",
+      "category": "quality",
+      "operationalization": "percentage of agent conversations that result in successful resolution of the customer issue"
+    },
+    {
+      "outcome_name": "net_promoter_score",
+      "category": "other",
+      "operationalization": "customer satisfaction metric: percentage who would recommend the agent minus percentage who would not, from post-chat surveys"
+    },
+    {
+      "outcome_name": "adherence_rate",
+      "category": "other",
+      "operationalization": "percentage of AI recommendations followed by agent, coded as copy-click or self-input of similar text"
+    },
+    {
+      "outcome_name": "customer_sentiment",
+      "category": "other",
+      "operationalization": "sentiment analysis score of customer text on -1 to 1 scale, averaged over agent-month"
+    },
+    {
+      "outcome_name": "agent_sentiment",
+      "category": "other",
+      "operationalization": "sentiment analysis score of agent text on -1 to 1 scale"
+    },
+    {
+      "outcome_name": "manager_escalation_rate",
+      "category": "quality",
+      "operationalization": "percentage of agent chats where customer requests to speak to manager, aggregated to year-month level"
+    },
+    {
+      "outcome_name": "agent_attrition",
+      "category": "other",
+      "operationalization": "percentage of agents who leave the firm"
+    },
+    {
+      "outcome_name": "textual_similarity",
+      "category": "other",
+      "operationalization": "cosine similarity of agent text to pre-AI baseline communication patterns, scale 0-1"
+    }
+  ],
+  "primary_speed_outcome": "resolutions_per_hour",
+  "primary_quality_outcome": "resolution_rate",
+  "citation_key": "brynjolfsson_2023_generative_ai"
+}

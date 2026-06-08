@@ -1,0 +1,45 @@
+{
+  "_paper_id": "2304.11771v2",
+  "citation_key": "brynjolfsson_2024_generative_ai",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI-assisted arm is present in the study. The 'ai_assisted' arm represents agents with access to the AI tool after onboarding, compared against the 'control' arm without AI assistance.",
+    "direction_convention": "smaller_is_better",
+    "m_human": 43,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.085,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "The primary statistic reports a 3.7 minute decrease in average handle time, representing an 8.5% decline from the baseline mean of 43 minutes. Since this is a time-based outcome (minutes), smaller values are better. The paper explicitly states 'shorter handle times are considered better.' The reported_percent_change is -0.085 (negative because the outcome decreased). Only the control baseline mean is provided; the AI-assisted mean is not directly reported but can be inferred as 43 - 3.7 = 39.3 minutes. Sample sizes (n) are not provided in the arms data. Multiple subgroup analyses are reported for different problem types and adherence levels, but the main effect (first row) is used as the primary statistic.",
+    "source_quotes": [
+      "Column 1 documents a 3.7 minute decrease in the average duration of customer chats, an 8.5% decline from the baseline mean of 43 minutes (shorter handle times are considered better)."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.0888312137066157,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.09289617486338786,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "The primary statistic reports a 3.7 minute decrease in average handle time, representing an 8.5% decline from the baseline mean of 43 minutes. Since this is a time-based outcome (minutes), smaller values are better. The paper explicitly states 'shorter handle times are considered better.' The reported_percent_change is -0.085 (negative because the outcome decreased). Only the control baseline mean is provided; the AI-assisted mean is not directly reported but can be inferred as 43 - 3.7 = 39.3 minutes. Sample sizes (n) are not provided in the arms data. Multiple subgroup analyses are reported for different problem types and adherence levels, but the main effect (first row) is used as the primary statistic. | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "_paper_id": "schwarczetal",
+  "citation_key": "schwarcz_2026_ai_lawyering",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "o1_preview",
+    "ai_arm_selection_rationale": "o1-preview is the most capable model (newest reasoning model from OpenAI, September 2024) and shows larger effects than vincent_ai (0.52-0.53 vs 0.26-0.27 points). Both AI arms have n=45.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 47,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 45,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": 0.325,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "This is a between-subjects design with three arms. The paper reports standardized effects as '0.30 to 0.35 standard deviations' for o1_preview vs control. I extracted the midpoint (0.325) as Cohen's d. The regression coefficients show \u03b2 = 0.52*** (SE 0.09) without participant FEs and \u03b2 = 0.53*** (SE 0.09) with participant FEs, but without raw means and SDs, we rely on the reported standardized effect. The p-value is indicated as highly significant (***) but no exact value is provided.",
+    "source_quotes": [
+      "o1-preview improves quality by 0.52*** (0.09) points without participant FEs and 0.53*** (0.09) with participant FEs.",
+      "0.30 to 0.35 standard deviations"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.325,
+    "hedges_g": 0.32228412256267414,
+    "variance": 0.04333935069480301,
+    "computation_method": "reported_d",
+    "confidence": "medium",
+    "notes": "This is a between-subjects design with three arms. The paper reports standardized effects as '0.30 to 0.35 standard deviations' for o1_preview vs control. I extracted the midpoint (0.325) as Cohen's d. The regression coefficients show \u03b2 = 0.52*** (SE 0.09) without participant FEs and \u03b2 = 0.53*** (SE 0.09) with participant FEs, but without raw means and SDs, we rely on the reported standardized effect. The p-value is indicated as highly significant (***) but no exact value is provided.",
+    "n_human": 47,
+    "n_ai": 45,
+    "direction_convention": "larger_is_better"
+  }
+}

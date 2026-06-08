@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task was creative fiction writing\u2014specifically 'wrote 1,000-word creative fiction stories' involving 'ideation and outlining' and 'drafting and editing.' This is fundamentally a creative thinking activity. While the paper involves students in a classroom setting, they are not being studied as students learning; they are being studied as people performing creative writing work. The task maps directly to 'Thinking Creatively' rather than to a specific occupation, as creative writing is a discrete, well-defined activity that generalizes across multiple occupational contexts (authors, content creators, marketing professionals, etc.).",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "27-3043.00",
+      "onet_label": "Writers and Authors"
+    }
+  ],
+  "citation_key": "hosanagar_2024_human_ai_collaboration"
+}

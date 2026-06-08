@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study employs a difference-in-differences (DiD) design exploiting cross-district variation in pre-existing app penetration, with a flexible event-study specification to test for parallel pre-trends. While a field experiment is also mentioned, the main analysis uses the quasi-experimental DiD approach across 18 cities, making natural_experiment the primary classification.",
+  "citation_key": "ai_copilots_real_estate_2025"
+}

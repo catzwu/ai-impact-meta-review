@@ -1,0 +1,50 @@
+{
+  "_paper_id": "2403.01964v2",
+  "citation_key": "kreitmeir_2024_chatgpt_productivity",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is a natural experiment studying the effect of a ChatGPT ban on Italian users versus control users in other countries. This is NOT a human vs. human+AI comparison. The 'italian_users_post_ban' arm represents users who lost access to AI (ChatGPT), while 'control_users' maintained access. This is the inverse of the typical experimental setup where we compare human-only baseline to human+AI intervention. The study uses difference-in-differences regression to estimate treatment effects, but does not provide the means, SDs, or sample sizes per arm needed to compute Hedges' g. Only regression coefficients and p-value inequalities are reported.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "This study examines a natural experiment (ChatGPT ban in Italy) rather than a controlled human vs. human+AI comparison. The design is difference-in-differences with treated (Italian users post-ban, who lost AI access) vs. control (users in Austria, France, Spain who retained access). This is conceptually the opposite of the target comparison. Additionally, the paper reports only regression coefficients (Treated \u00d7 Post interaction terms) and p-value inequalities (p < 0.05, p < 0.1), without means, SDs, SEs, exact t-statistics, or per-arm sample sizes. The total N values given (290,864; 149,680; 141,184; 47,328) are pooled across all conditions and time periods. Cannot compute Hedges' g from the available information.",
+    "source_quotes": [
+      "Overall Treated \u00d7 Post 0.0062 0.0102 0.0090 -0.0045** 0.0045 (N = 290,864)",
+      "Less experienced Treated \u00d7 Post 0.0193* 0.0216** 0.0203* -0.0017 0.0118*** (N = 149,680)",
+      "Experienced Treated \u00d7 Post -0.0079 -0.0020 -0.0030 -0.0077* -0.0034 (N = 141,184)",
+      "Pkg. contributor Treated \u00d7 Post 0.0181 0.0164 0.0270 -0.0151* 0.0113 (N = 47,328)"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This study examines a natural experiment (ChatGPT ban in Italy) rather than a controlled human vs. human+AI comparison. The design is difference-in-differences with treated (Italian users post-ban, who lost AI access) vs. control (users in Austria, France, Spain who retained access). This is conceptually the opposite of the target comparison. Additionally, the paper reports only regression coefficients (Treated \u00d7 Post interaction terms) and p-value inequalities (p < 0.05, p < 0.1), without means, SDs, SEs, exact t-statistics, or per-arm sample sizes. The total N values given (290,864; 149,680; 141,184; 47,328) are pooled across all conditions and time periods. Cannot compute Hedges' g from the available information. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

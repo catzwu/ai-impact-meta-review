@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "15-1252.00",
+  "onet_label": "Software Developers",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are 'developers using GitHub Copilot with their everyday programming tasks' who are 'professional programmers' working on real code generation and completion tasks. This describes the full scope of software development work, not just a narrow coding activity. The participants are performing their actual occupational duties as software developers, making this a clear occupation-level mapping rather than a specific work activity.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1251.00",
+      "onet_label": "Computer Programmers"
+    }
+  ],
+  "citation_key": "ziegler_2024_copilot_productivity"
+}

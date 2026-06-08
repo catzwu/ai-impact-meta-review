@@ -1,0 +1,53 @@
+{
+  "_paper_id": "Tipnis et al. 2025",
+  "citation_key": "tipnis_2025_ai_philanthropy",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "Control (no AI)",
+    "ai_arm_name": "Treated (introduced to Rapid AI)",
+    "ai_arm_selection_rationale": "Single AI intervention: volunteers introduced to Rapid (AI-powered mapping editor) during Turkey-Syria earthquake response. This is the only AI arm in the study.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 360,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 360,
+    "reported_percent_change": -0.213,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -0.24,
+    "regression_coefficient_se": 0.052,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Primary outcome is ln(Tasks_it), the log-transformed number of tasks completed by volunteer i in month t. The paper reports a DID coefficient of -0.240*** (SE=0.052) for the Treated_it variable in Table 1. The authors interpret this as 'volunteers reduce their monthly contributions by 21.3% on average' (page 17), which they calculate as e^(-0.240) - 1 = -0.213. The outcome is explicitly log-transformed (larger values = more tasks = better), so the negative coefficient indicates AI introduction reduces volunteer engagement. Sample sizes are from the matched CEM sample: 360 treated and 360 control volunteers (Table EC.2). The regression uses volunteer and month fixed effects with clustered standard errors.",
+    "source_quotes": [
+      "ln(T asksit) = \u03b1 \u00b7 T reatedit + \u03b2 \u00b7 Xit + \u03b4t + \u03b3i + \u03f5it",
+      "T reatedit -0.240*** (0.052)",
+      "Volunteers introduced to AI reduce their monthly contributions by 21.3% on average compared to those who were not",
+      "Our final dataset consists of 836 treated volunteers who performed 151,929 tasks and 32,298 control volunteers who performed 1,156,124 tasks during the observation window",
+      "This matching process leads to a matched sample of 360 treated volunteers and 360 control volunteers",
+      "Our dependent variable, T asksit, is operationalized as the number of tasks completed on HOTTM by volunteer i in month t... Since T asksit is highly right-skewed, we log transform this variable"
+    ]
+  },
+  "computed": {
+    "log_ratio": -0.2395270305647338,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": -0.21299999999999997,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "Primary outcome is ln(Tasks_it), the log-transformed number of tasks completed by volunteer i in month t. The paper reports a DID coefficient of -0.240*** (SE=0.052) for the Treated_it variable in Table 1. The authors interpret this as 'volunteers reduce their monthly contributions by 21.3% on average' (page 17), which they calculate as e^(-0.240) - 1 = -0.213. The outcome is explicitly log-transformed (larger values = more tasks = better), so the negative coefficient indicates AI introduction reduces volunteer engagement. Sample sizes are from the matched CEM sample: 360 treated and 360 control volunteers (Table EC.2). The regression uses volunteer and month fixed effects with clustered standard errors. | CI missing; variance not computable",
+    "n_human": 360,
+    "n_ai": 360
+  }
+}

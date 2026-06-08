@@ -1,0 +1,52 @@
+You classify each measured outcome in a study as either a SPEED outcome or a QUALITY outcome, then identify the single best speed outcome and the single best quality outcome for our meta-analysis (a paper may contribute one of each, or only one type, or neither).
+
+INPUT: a JSON object with:
+- `primary_task_description`: what participants did.
+- `outcomes`: list of outcome objects from the extraction stage.
+
+CATEGORIES (per outcome)
+- "speed": underlying construct is "how fast" — time-to-completion, throughput, tasks per unit time, words per minute, latency, etc.
+- "quality": underlying construct is "how good" — accuracy, rubric scores, expert ratings, error rates (lower-is-better is still quality), correctness, helpfulness.
+- "both": rare — a composite that mixes speed and quality into one number. Flag for review; do NOT select these as a primary.
+- "other": engagement, learning, well-being, adoption, willingness to pay, satisfaction — anything that is neither speed nor quality of the produced output. Explain.
+
+PRIMARY SELECTION (one per type, independently)
+For `primary_speed_outcome`: pick the single best SPEED outcome, or null if there is none.
+For `primary_quality_outcome`: pick the single best QUALITY outcome, or null if there is none.
+
+Within each type, prefer:
+1. The outcome the paper marks `is_primary: true`, if it matches the type.
+2. Otherwise the outcome the paper foregrounds in its abstract/headline.
+3. Otherwise the cleanest / least composite measurement.
+
+A paper can yield both a speed and a quality primary; that is encouraged when supported by the data.
+
+CRITICAL — OUTCOME NAME COPY RULE
+Every `outcome_name` you emit (in `per_outcome`, `primary_speed_outcome`, `primary_quality_outcome`) MUST be a byte-for-byte exact copy of an `outcome_name` string from the input list. Do not normalize, rename, rephrase, expand, or shorten. Examples of FORBIDDEN behavior:
+  - input has "time_taken" → you write "time_on_task"   ← WRONG, hallucinated
+  - input has "average_grade" → you write "evaluator_grades"  ← WRONG
+  - input has "weekly_commits" → you write "weekly_commit_count"  ← WRONG
+  - input has "task_completion_time" → you write "task_completion_time_minutes"  ← WRONG (added a suffix)
+Copy the string. If you cannot find a suitable speed (or quality) outcome among the input names, return `null` for that primary — DO NOT invent a name.
+
+OPERATIONALIZATION FIELD
+For each outcome, provide a brief description of HOW the outcome is operationalized — the concrete measurement procedure the paper uses. NOT a rationale for the speed/quality classification, but a factual description of how the number is produced. Examples:
+  - "time in minutes from task start to submission, measured by the experimental platform"
+  - "accuracy as percentage of multiple-choice items answered correctly, blind-graded"
+  - "rubric score 1-7 averaged across three independent evaluators on writing quality, content, and originality"
+  - "pull requests per developer per week, counted from GitHub API"
+  - "count of resolved customer chats per agent per hour"
+Keep it to one phrase, ≤30 words. If unclear from the paper, write "not specified".
+
+OUTPUT (single JSON object, no prose, no fences):
+{
+  "per_outcome": [
+    {
+      "outcome_name": string,             // EXACT copy of an outcome_name from the input
+      "category": "speed" | "quality" | "both" | "other",
+      "operationalization": string        // see OPERATIONALIZATION FIELD above
+    }
+  ],
+  "primary_speed_outcome": string | null,    // EXACT outcome_name from input, or null
+  "primary_quality_outcome": string | null   // EXACT outcome_name from input, or null
+}

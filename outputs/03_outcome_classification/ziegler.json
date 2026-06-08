@@ -1,0 +1,102 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "aggregate_productivity_score",
+      "category": "other",
+      "operationalization": "Mean of 12 self-reported measures on 1-5 scale covering satisfaction, performance, communication, efficiency, and overall productivity perception"
+    },
+    {
+      "outcome_name": "acceptance_rate",
+      "category": "other",
+      "operationalization": "Ratio of AI-generated code completions shown that were accepted by the developer"
+    },
+    {
+      "outcome_name": "shown_rate",
+      "category": "other",
+      "operationalization": "Ratio of completion opportunities where the AI system displayed a suggestion to the user"
+    },
+    {
+      "outcome_name": "persistence_rate",
+      "category": "quality",
+      "operationalization": "Ratio of accepted completions that remained unchanged after 30, 120, 300, and 600 seconds"
+    },
+    {
+      "outcome_name": "fuzzy_persistence_rate",
+      "category": "quality",
+      "operationalization": "Ratio of accepted completions that remained mostly unchanged after 30, 120, 300, and 600 seconds"
+    },
+    {
+      "outcome_name": "efficiency",
+      "category": "both",
+      "operationalization": "Ratio of completion opportunities resulting in accepted completions unchanged after 30, 120, 300, and 600 seconds"
+    },
+    {
+      "outcome_name": "contribution_speed",
+      "category": "speed",
+      "operationalization": "Number of characters in accepted completions per distinct active hour of coding"
+    },
+    {
+      "outcome_name": "acceptance_frequency",
+      "category": "speed",
+      "operationalization": "Number of accepted completions per distinct active hour of coding"
+    },
+    {
+      "outcome_name": "persistence_frequency",
+      "category": "speed",
+      "operationalization": "Number of unchanged completions per distinct active hour of coding"
+    },
+    {
+      "outcome_name": "total_volume",
+      "category": "other",
+      "operationalization": "Total count of completions shown to the user across the study period"
+    },
+    {
+      "outcome_name": "loquaciousness",
+      "category": "other",
+      "operationalization": "Number of shown completions per distinct active hour, measuring system suggestion frequency"
+    },
+    {
+      "outcome_name": "eagerness",
+      "category": "other",
+      "operationalization": "Number of shown completions per opportunity, measuring system propensity to suggest"
+    },
+    {
+      "outcome_name": "better_code",
+      "category": "quality",
+      "operationalization": "Self-reported perception of code quality on 1-5 scale from SPACE framework"
+    },
+    {
+      "outcome_name": "stay_in_flow",
+      "category": "other",
+      "operationalization": "Self-reported flow state maintenance on 1-5 scale from SPACE framework"
+    },
+    {
+      "outcome_name": "focus_satisfying",
+      "category": "other",
+      "operationalization": "Self-reported satisfaction with focus on 1-5 scale from SPACE framework"
+    },
+    {
+      "outcome_name": "less_effort_repetitive",
+      "category": "other",
+      "operationalization": "Self-reported effort reduction on repetitive tasks on 1-5 scale from SPACE framework"
+    },
+    {
+      "outcome_name": "repetitive_faster",
+      "category": "other",
+      "operationalization": "Self-reported speed on repetitive tasks on 1-5 scale from SPACE framework"
+    },
+    {
+      "outcome_name": "less_frustrated",
+      "category": "other",
+      "operationalization": "Self-reported frustration reduction on 1-5 scale from SPACE framework"
+    },
+    {
+      "outcome_name": "unfamiliar_progress",
+      "category": "other",
+      "operationalization": "Self-reported progress on unfamiliar tasks on 1-5 scale from SPACE framework"
+    }
+  ],
+  "primary_speed_outcome": "contribution_speed",
+  "primary_quality_outcome": "persistence_rate",
+  "citation_key": "ziegler_2024_copilot_productivity"
+}

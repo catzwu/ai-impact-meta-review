@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-13",
+  "onet_label": "Thinking Creatively",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task is 'research idea formulation' in HCI topics, explicitly described as thinking aloud while generating ideas for research scenarios. This is fundamentally creative ideation work. While the participants are doctoral researchers, the study is measuring their performance on a specific creative thinking task (idea generation), not evaluating their performance across the full breadth of a researcher occupation. The task is narrow and well-defined: formulating research ideas on given topics.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1299.00",
+      "onet_label": "Computer Occupations, All Other"
+    }
+  ],
+  "citation_key": "liu_2024_coquest"
+}

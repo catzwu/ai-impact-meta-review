@@ -1,0 +1,441 @@
+{
+  "citation_key": "dellacqua_2026_jagged_frontier",
+  "authors": [
+    "Fabrizio Dell'Acqua",
+    "Edward McFowland III",
+    "Ethan Mollick",
+    "Hila Lifshitz",
+    "Katherine C. Kellogg",
+    "Saran Rajendran",
+    "Lisa Krayer",
+    "Fran\u00e7ois Candelon",
+    "Karim R. Lakhani"
+  ],
+  "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality",
+  "year": 2026,
+  "venue": "Organization Science",
+  "study_design_description": "A preregistered randomized controlled field experiment conducted with 758 BCG management consultants. Participants first completed a baseline task without AI, then were randomly assigned to one of three conditions: control (no AI), GPT-only (access to GPT-4 via custom platform), or GPT + overview (GPT-4 plus supplementary prompt engineering training). The study examined AI effects across two distinct experimental arms: inside-the-frontier tasks (18 realistic consulting tasks spanning creativity, analytical thinking, writing, and persuasiveness) and outside-the-frontier tasks (complex business case analysis requiring human judgment and subtle data interpretation). Performance-based incentives aligned with BCG's evaluation system motivated honest effort.",
+  "primary_task_description": "Inside-the-frontier arm: 18 realistic management consulting tasks spanning four types\u2014creativity (e.g., proposing shoe ideas for underserved markets), analytical thinking (e.g., market segmentation), writing proficiency (e.g., press releases), and persuasiveness (e.g., inspirational memos to employees). Participants were required to complete as many tasks as possible within the allotted time. Outside-the-frontier arm: business case analysis requiring participants to analyze company sales distribution channels and brand performance using quantitative data and interview insights to provide strategic recommendations to a hypothetical CEO. Success required identifying subtle but crucial details in interview notes that contradicted surface-level spreadsheet conclusions.",
+  "population_description": "758 BCG management consultants (~7% of their individual-contributor consulting workforce), representing an elite group of knowledge workers with degrees from top universities (Harvard, Yale, Oxford). BCG admits only around 1% of applicants. Participants were in early stages of their consulting careers. The population is ideal for studying knowledge work defined as nonroutine, cognitively demanding activities centered on creation, application, or integration of specialized intellectual expertise.",
+  "arms": [
+    {
+      "arm_name": "control",
+      "description": "Proceeded without AI support",
+      "n": null
+    },
+    {
+      "arm_name": "gpt_only",
+      "description": "Had assistance of an AI tool based on GPT-4 accessed via custom-built company platform using OpenAI's API, mirroring ChatGPT dynamics with default system prompts and temperature",
+      "n": null
+    },
+    {
+      "arm_name": "gpt_plus_overview",
+      "description": "Utilized the same AI tool as GPT-only but also received supplementary prompt engineering overview to increase familiarity with the AI tool",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "quality_human_graded",
+      "outcome_description": "Quality of subjects' responses evaluated by three independent human graders per response. Mean grade assigned by humans to each response was calculated, then averaged across all questions to derive a composite \"quality\" score.",
+      "measurement_unit": "rubric score (scale not specified in quotes)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "quality_gpt_graded",
+      "outcome_description": "Quality of subjects' responses independently scored by GPT-4. A score was produced for each of the 18 questions and then a composite \"quality (GPT)\" score was calculated.",
+      "measurement_unit": "rubric score (scale not specified in quotes)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_completion_rate",
+      "outcome_description": "Percentage of tasks completed by subjects out of 18 total tasks",
+      "measurement_unit": "percentage of tasks completed",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "time_to_complete_first_17_questions",
+      "outcome_description": "Time spent by participants to reach the final (18th) question after completing the first 17 questions, measured in seconds",
+      "measurement_unit": "seconds",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "correctness_outside_frontier",
+      "outcome_description": "Binary variable indicating whether subjects provided an accurate strategic recommendation on the outside-the-frontier business case task (1 = correct, 0 = incorrect)",
+      "measurement_unit": "binary (0/1)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "time_spent_outside_frontier",
+      "outcome_description": "Time spent by participants on the outside-the-frontier task, measured in seconds",
+      "measurement_unit": "seconds",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "subjective_coherence_quality",
+      "outcome_description": "Persuasiveness and internal coherence of recommendations in the outside-the-frontier experiment, independent of correctness. Assessed on a 1-10 scale by two independent sets of graders (BCG consultants not involved in experiment and business school students with prior grading experience) using a rubric based on workplace evaluation practices. Metric uses average of the two grades.",
+      "measurement_unit": "rubric 1-10 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "creativity_score",
+      "outcome_description": "Creativity of shoe design ideas assessed by independent design experts focusing on design-oriented creativity perspective",
+      "measurement_unit": "rubric score (scale not specified in quotes)",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "quality_human_graded",
+      "arm_comparison": "gpt_plus_overview vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 4.37,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.48 point increase, 33.9% increase over control mean",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column (1) in Table 4, GPT + overview leads to a 1.48 increase in scores over the control mean of 4.37, representing a 33.9% increase, with GPT only producing a 1.31 (or 29.9%) increase."
+    },
+    {
+      "outcome_name": "quality_human_graded",
+      "arm_comparison": "gpt_only vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 4.37,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.31 point increase, 29.9% increase over control mean",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column (1) in Table 4, GPT + overview leads to a 1.48 increase in scores over the control mean of 4.37, representing a 33.9% increase, with GPT only producing a 1.31 (or 29.9%) increase."
+    },
+    {
+      "outcome_name": "quality_gpt_graded",
+      "arm_comparison": "gpt_plus_overview vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.35 point increase above control group, 19% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column (4) in Table 4 uses GPT scores as the dependent variable and shows coefficients of 1.35 above the control group for the GPT + overview treatment and 1.22 above the control group for the GPT-only treatment, corresponding to 19% and 17.1% improvements in performance, respectively."
+    },
+    {
+      "outcome_name": "quality_gpt_graded",
+      "arm_comparison": "gpt_only vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.22 point increase above control group, 17.1% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column (4) in Table 4 uses GPT scores as the dependent variable and shows coefficients of 1.35 above the control group for the GPT + overview treatment and 1.22 above the control group for the GPT-only treatment, corresponding to 19% and 17.1% improvements in performance, respectively."
+    },
+    {
+      "outcome_name": "task_completion_rate",
+      "arm_comparison": "gpt_plus_overview vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.82,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": 0.93,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "12.2% increase in completion rates",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The control group completed on average 82% of their tasks; those in the GPT + overview group completed about 93%; and those in the GPT-only group completed about 91%."
+    },
+    {
+      "outcome_name": "task_completion_rate",
+      "arm_comparison": "gpt_only vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.82,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": 0.91,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "12.2% increase in completion rates",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The control group completed on average 82% of their tasks; those in the GPT + overview group completed about 93%; and those in the GPT-only group completed about 91%."
+    },
+    {
+      "outcome_name": "time_to_complete_first_17_questions",
+      "arm_comparison": "gpt_plus_overview vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1,129 seconds faster (18.8 minutes or 22.5% faster than control)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The GPT + overview treatment reduces time spent on the first 17 questions by 1,129 seconds (18.8 minutes or 22.5% faster than the control), and the GPT-only treatment reduces time spent on the first 17 questions by 1,388 seconds (23.1 minutes or 27.6% faster than the control)."
+    },
+    {
+      "outcome_name": "time_to_complete_first_17_questions",
+      "arm_comparison": "gpt_only vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1,388 seconds faster (23.1 minutes or 27.6% faster than control)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The GPT + overview treatment reduces time spent on the first 17 questions by 1,129 seconds (18.8 minutes or 22.5% faster than the control), and the GPT-only treatment reduces time spent on the first 17 questions by 1,388 seconds (23.1 minutes or 27.6% faster than the control)."
+    },
+    {
+      "outcome_name": "correctness_outside_frontier",
+      "arm_comparison": "ai_treatments vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.845,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "19 percentage point decrease when combining AI treatment conditions; GPT + overview 24.5% decrease, GPT only 13.9% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Subjects in the control group were correct about this exercise about 84.5% of the time, but the AI conditions scored at 60% and 70.6% (an average decrease of 19 percentage points when combining the AI treatment conditions and comparing them with the control condition)."
+    },
+    {
+      "outcome_name": "time_spent_outside_frontier",
+      "arm_comparison": "gpt_plus_overview vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "more than 11 minutes less (30% decrease in time spent compared with control mean)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The findings for both AI treatments\u2014GPT + overview and GPT only\u2014document a reduction in the time spent: more than 11 minutes less for GPT + overview (a 30% decrease in time spent compared with the control mean) and more than 6 minutes less for GPT only (a decrease of 18% in time spent compared with the control mean)."
+    },
+    {
+      "outcome_name": "time_spent_outside_frontier",
+      "arm_comparison": "gpt_only vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "more than 6 minutes less (18% decrease in time spent compared with control mean)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The findings for both AI treatments\u2014GPT + overview and GPT only\u2014document a reduction in the time spent: more than 11 minutes less for GPT + overview (a 30% decrease in time spent compared with the control mean) and more than 6 minutes less for GPT only (a decrease of 18% in time spent compared with the control mean)."
+    },
+    {
+      "outcome_name": "subjective_coherence_quality",
+      "arm_comparison": "gpt_plus_overview vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.47-point-greater score (25.1% increase over control mean)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column (1) in Table 9 shows that the treatment GPT + overview leads to a 1.47-point-greater score (a 25.1% increase over the control mean), with GPT only increasing the score by 1.05 points (a 17.9% increase over the control mean)."
+    },
+    {
+      "outcome_name": "subjective_coherence_quality",
+      "arm_comparison": "gpt_only vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.05 point increase (17.9% increase over control mean)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Column (1) in Table 9 shows that the treatment GPT + overview leads to a 1.47-point-greater score (a 25.1% increase over the control mean), with GPT only increasing the score by 1.05 points (a 17.9% increase over the control mean)."
+    },
+    {
+      "outcome_name": "creativity_score",
+      "arm_comparison": "gpt_plus_overview vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_plus_overview": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "14% higher than control group",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column (1) in Table 11, the GPT + overview and GPT-only treatment groups had creativity scores that were 14% and 11.7% higher than the control group, respectively, as compared with 33.9% and 29.9% in the main analysis, respectively."
+    },
+    {
+      "outcome_name": "creativity_score",
+      "arm_comparison": "gpt_only vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "gpt_only": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "11.7% higher than control group",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column (1) in Table 11, the GPT + overview and GPT-only treatment groups had creativity scores that were 14% and 11.7% higher than the control group, respectively, as compared with 33.9% and 29.9% in the main analysis, respectively."
+    }
+  ],
+  "notes": "This is a preregistered field experiment with 758 BCG consultants. The study introduces the concept of a \"jagged technological frontier\" to characterize uneven AI capabilities. Two main experimental arms examined: (1) inside-the-frontier tasks (18 realistic consulting tasks on footwear product development spanning creativity, analytical thinking, writing, and persuasiveness) and (2) outside-the-frontier tasks (complex business case requiring subtle reasoning). Participants completed baseline task without AI, then were randomly assigned to control, GPT-only, or GPT + overview conditions. Key findings: inside-the-frontier tasks showed 12.2% more completion, 25.1% faster speed, and ~32% quality improvement with AI; outside-the-frontier tasks showed 19 percentage point decrease in correctness with AI. The paper notes that 97.6% of treatment participants used AI at least once. Robustness checks with design experts confirmed main findings with even stronger effects. Important limitations acknowledged: (1) subjective evaluation metrics may contain bias; (2) findings apply most directly to contexts prioritizing quality within time frames (like BCG) rather than pure efficiency; (3) early-career consultants studied; (4) single outside-the-frontier task examined; (5) adoption gaps may widen existing gender and skill gaps; (6) AI may substitute workers entirely. Arm-level sample sizes not explicitly stated in quotes; total n = 758 with approximately half (385) in inside-frontier arm and half (373) in outside-frontier arm, but allocation to control/GPT-only/GPT + overview conditions not specified in provided quotes. Statistical significance testing used t-tests, chi-squared tests, and Mann-Whitney U tests with Bonferroni correction applied. Effect sizes reported as Cohen's d, Cohen's h, and rank biserial, described as ranging from moderate to large.",
+  "_paper_id": "Dell'Acqua et al. 2023"
+}

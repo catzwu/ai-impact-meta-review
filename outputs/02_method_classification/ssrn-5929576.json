@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study employs a difference-in-differences design leveraging the partial rollout of an AI tutor, with AI-enabled devices rolled out unevenly due to capacity constraints. Although centers were instructed to allocate devices randomly, the setting is explicitly 'treated as quasi-random rather than a fully controlled field experiment' and uses IV regressions as robustness checks, indicating a natural experiment identification strategy.",
+  "citation_key": "kim_2024_generative_ai_tutoring"
+}

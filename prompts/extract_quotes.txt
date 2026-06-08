@@ -1,0 +1,38 @@
+You are reading the full text of a research paper. Your ONLY job in this stage is to pull verbatim quotes from the paper, grouped by topic. You do not summarize, paraphrase, normalize, infer, or structure anything yet — that happens in a later stage. Think of this as evidence-gathering.
+
+CRITICAL RULES
+1. Every entry in `quotes.*` must be a contiguous, verbatim run of text copied directly from the paper. No paraphrasing. No ellipses unless an ellipsis appears in the original. No reordering of words.
+2. If a sentence is relevant to more than one topic, copy it under each relevant topic — duplication across topics is fine.
+3. For numbers (especially p-values, test statistics, means, SDs, confidence intervals): the verbatim quote MUST preserve the value as written. Do NOT round, normalize, or rewrite "p < .01" as "p = 0.01" or vice versa. Just copy it as it appears.
+4. Pull EVERY sentence that contains a reported numerical result related to the AI vs. no-AI comparison (or any other comparison the paper makes). It is much better to include a borderline quote than to miss a real one.
+5. If a topic has no relevant content in the paper, return an empty list for that topic. Do NOT fabricate.
+6. Output a single JSON object. No prose, no markdown fences, no commentary.
+7. **JSON escaping** (CRITICAL — most common failure mode): every quote you copy is going inside a JSON string. Any double-quote character within the quoted text MUST be escaped with a backslash. For example, if the source sentence contains a "linear" scheme, the JSON value must be written as "a \"linear\" scheme". Do NOT replace inner double quotes with curly quotes, apostrophes, or anything else — escape them with a backslash. Also escape backslashes (\\) and newlines (\n). The text inside the string must otherwise remain byte-for-byte verbatim.
+
+OUTPUT SCHEMA (every field required)
+
+{
+  "citation_key": string,            // lowercase: first-author-lastname + "_" + year + "_" + 1-2 distinctive keywords from the title (skip stopwords like "the", "of", "and", "in", "on"; prefer concrete nouns; e.g. "noy_2023_writing", "brynjolfsson_2024_customer_service", "yeverechyahu_2025_copilot"). If first author is unknown or anonymous, use the first 1-2 distinctive title keywords as the prefix (e.g. "real_estate_2025"). Keep total length under 35 chars. Use only [a-z0-9_]. No punctuation, no spaces.
+  "authors": [string, ...],
+  "title": string,
+  "year": int | null,
+  "venue": string | null,            // journal or "arXiv preprint" or "working paper"; null if unknown
+  "quotes": {
+    "study_design":            [string, ...],   // sentences describing the design (RCT, lab, DiD, etc.)
+    "task":                    [string, ...],   // sentences describing what participants did
+    "population":              [string, ...],   // sentences describing who participated (occupation, expertise, demographics, sample size in aggregate)
+    "arms":                    [string, ...],   // sentences describing each experimental condition / arm (incl. arm-level n if reported)
+    "outcome_definitions":     [string, ...],   // sentences defining each outcome / dependent variable and its measurement unit
+    "statistical_results":     [string, ...],   // EVERY sentence containing a reported numerical result: means, SDs, SEs, CIs, t/F/z/χ², p-values, effect sizes, percent changes
+    "ambiguity_or_caveats":    [string, ...]    // sentences flagging limitations, ambiguities, caveats about the design or results that a downstream reader should know
+  },
+  "notes": string                    // anything important about the paper that doesn't fit above (e.g. "this is a position paper with no original experiment", or "results are reported across multiple sub-experiments labeled Study 1, Study 2, ...")
+}
+
+GUIDANCE ON SCOPE
+- `statistical_results` is the most important topic. Be exhaustive. Include sentences that report exact means/SDs/SEs/CIs/test-statistics/p-values/effect-sizes, including any reported in tables that appear inline as text. Do not include numerical content that is unrelated to the comparison of interest (e.g., demographic averages of the sample go under `population`, not `statistical_results`).
+- For p-values: copy them exactly as written, whether that's "p = 0.021", "p < .001", "p < .01", "p > .05", etc. A later stage will decide what to do with imprecise values.
+- For arms: if the paper has more than two conditions (e.g., no-AI / GPT-3.5 / GPT-4), include sentences describing ALL conditions.
+- For policy/review/conceptual papers without original empirical work: most topics will be empty lists. That's fine. Use `notes` to flag the paper type so the downstream stage knows not to invent structure.
+
+The paper text follows after the marker "===PAPER==="

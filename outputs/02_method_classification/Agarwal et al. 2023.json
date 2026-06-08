@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study employs three experimental designs, with the first using 'a random sequence of four information treatments' per participant, the second having 'radiologists diagnose patients in each of four information environments,' and the third having 'participants diagnose fifty patients first without and then with AI assistance.' All three designs have the same participants complete multiple conditions, making this a within-subject design despite also incorporating randomization.",
+  "citation_key": "agarwal_2023_radiology_ai"
+}

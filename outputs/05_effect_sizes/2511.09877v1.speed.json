@@ -1,0 +1,49 @@
+{
+  "_paper_id": "2511.09877v1",
+  "citation_key": "wang_2025_ai_writing_guidance",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control_2022",
+    "ai_arm_name": "treatment_2023",
+    "ai_arm_selection_rationale": "This is a natural experiment with a single treatment arm (2023, after Yelp introduced AI writing guidance in April 2023) compared to a control period (2022, before AI guidance). The treatment arm represents the human+AI condition.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": 0.048,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.048,
+    "regression_coefficient_se": 0.004,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a difference-in-differences natural experiment studying Yelp's AI writing guidance introduction. The outcome (review length in characters) is a throughput/productivity measure where larger is better. The regression uses log(Lengths) as the dependent variable, so the coefficient 0.048 directly represents the log ratio. The paper reports this as '4.8% longer' which matches the coefficient. Additional heterogeneous effects are reported for less experienced users (coef=0.046, SE=0.004) and experienced users (coef=0.028, SE=0.005), but the primary overall effect is used here. Sample sizes are not reported in the arms data.",
+    "source_quotes": [
+      "Numerically, we estimate that reviews written with the AI writing guidance were on average about 4.8% longer, while the number of reviews decreased by roughly 2.5%. Treat*Post 0.048*** (0.004) for log(Lengths) in Table 3, Column 1",
+      "For less experienced users, Treat*Post 0.046*** (0.004) for log(Lengths) in Table 5, Panel A, Column 1",
+      "For experienced users, Treat*Post 0.028*** (0.005) for log(Lengths) in Table 5, Panel B, Column 1"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.04688358589885046,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.04800000000000004,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment studying Yelp's AI writing guidance introduction. The outcome (review length in characters) is a throughput/productivity measure where larger is better. The regression uses log(Lengths) as the dependent variable, so the coefficient 0.048 directly represents the log ratio. The paper reports this as '4.8% longer' which matches the coefficient. Additional heterogeneous effects are reported for less experienced users (coef=0.046, SE=0.004) and experienced users (coef=0.028, SE=0.005), but the primary overall effect is used here. Sample sizes are not reported in the arms data. | CI missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

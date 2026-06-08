@@ -1,0 +1,72 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "review_length",
+      "category": "speed",
+      "operationalization": "Number of characters per review, measured from submitted review text"
+    },
+    {
+      "outcome_name": "review_volume",
+      "category": "speed",
+      "operationalization": "Count of reviews posted per week at the restaurant level"
+    },
+    {
+      "outcome_name": "helpfulness_votes",
+      "category": "quality",
+      "operationalization": "Number of helpfulness votes received per week at the restaurant level, as voted by other Yelp users"
+    },
+    {
+      "outcome_name": "food_score",
+      "category": "quality",
+      "operationalization": "Proportion of review content attributed to the food topic, measured via topic modeling or text classification"
+    },
+    {
+      "outcome_name": "service_score",
+      "category": "quality",
+      "operationalization": "Proportion of review content attributed to the service topic, measured via topic modeling or text classification"
+    },
+    {
+      "outcome_name": "ambiance_score",
+      "category": "quality",
+      "operationalization": "Proportion of review content attributed to the ambiance topic, measured via topic modeling or text classification"
+    },
+    {
+      "outcome_name": "food_lengths",
+      "category": "quality",
+      "operationalization": "Character count of text devoted to food topics, identified via topic classification"
+    },
+    {
+      "outcome_name": "service_lengths",
+      "category": "quality",
+      "operationalization": "Character count of text devoted to service topics, identified via topic classification"
+    },
+    {
+      "outcome_name": "ambiance_lengths",
+      "category": "quality",
+      "operationalization": "Character count of text devoted to ambiance topics, identified via topic classification"
+    },
+    {
+      "outcome_name": "topic_entropy",
+      "category": "quality",
+      "operationalization": "Shannon index calculated from the distribution of review topic features, measuring textual complexity"
+    },
+    {
+      "outcome_name": "gunning_fog_index",
+      "category": "quality",
+      "operationalization": "Readability score based on sentence length and proportion of complex words, estimating years of education needed"
+    },
+    {
+      "outcome_name": "smog_index",
+      "category": "quality",
+      "operationalization": "Grade level estimate based on frequency of polysyllabic words in the review text"
+    },
+    {
+      "outcome_name": "lexical_density",
+      "category": "quality",
+      "operationalization": "Proportion of content words (nouns, verbs, adjectives, adverbs) relative to total words in review"
+    }
+  ],
+  "primary_speed_outcome": "review_length",
+  "primary_quality_outcome": "helpfulness_votes",
+  "citation_key": "wang_2025_ai_writing_guidance"
+}

@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Generative_AIs_Impact_on_Graduate_Student_Writing_Productivity_and_Quality",
+  "citation_key": "usdan_2024_generative_writing",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": 5.8,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "no_genai",
+    "ai_arm_name": "genai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm available (genai_assisted). This is a within-subject design where all students completed both conditions.",
+    "direction_convention": "larger_is_better",
+    "m_human": 88.3,
+    "sd_human": 10.3,
+    "se_human": null,
+    "n_human": 26,
+    "m_ai": 94.1,
+    "sd_ai": 8.0,
+    "se_ai": null,
+    "n_ai": 26,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": 4.74,
+    "reported_F_df1": 1,
+    "reported_F_df2": 25,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": 0.04,
+    "extraction_confidence": "high",
+    "notes": "Within-subject/crossover design with n=26 students (df2=25 implies n-1=25, so n=26). Students completed assignment 1 without genAI, then after instruction completed assignment 3 with genAI. F-statistic from repeated-measures ANOVA provided. Means and SDs are available for both conditions. Mean difference = 94.1 - 88.3 = 5.8. SD of difference scores not reported, but F-statistic can be used for paired design calculation.",
+    "source_quotes": [
+      "There was a significant main effect of writing condition (f(1,25) = 4.74, p = .04, \u03b7p2 = .16) indicating that students earned higher grades on the assignment prepared with genAI assistance.",
+      "no_genai: mean: 88.3, sd: 10.3",
+      "genai_assisted: mean: 94.1, sd: 8.0",
+      "After instruction on how to effectively co-author with genAI, students were given their third writing assignment. Students could choose whether to complete this assignment with genAI assistance or independently without genAI. Every student chose to use genAI as an assistant"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.6289318677376602,
+    "hedges_g": 0.6194504827968915,
+    "variance": 0.07831087506146354,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Within-subject/crossover design with n=26 students (df2=25 implies n-1=25, so n=26). Students completed assignment 1 without genAI, then after instruction completed assignment 3 with genAI. F-statistic from repeated-measures ANOVA provided. Means and SDs are available for both conditions. Mean difference = 94.1 - 88.3 = 5.8. SD of difference scores not reported, but F-statistic can be used for paired design calculation.",
+    "n_human": 26,
+    "n_ai": 26,
+    "direction_convention": "larger_is_better"
+  }
+}

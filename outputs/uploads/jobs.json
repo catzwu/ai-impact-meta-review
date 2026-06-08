@@ -1,0 +1,27 @@
+{
+  "cccdc37e1f": {
+    "job_id": "cccdc37e1f",
+    "paper_id": "choi_monahan_schwarcz",
+    "state": "done",
+    "queued": 1780888095.762746,
+    "started": 1780888095.763683,
+    "finished": 1780888272.548447,
+    "_reconciled": true
+  },
+  "test": {
+    "job_id": "test",
+    "paper_id": "choi_monahan_schwarcz",
+    "state": "done",
+    "queued": 0,
+    "finished": 1780889125.680319,
+    "_reconciled": true,
+    "outcome": {
+      "speed_added": true,
+      "quality_added": true,
+      "reasons": [
+        "speed: added \u2192 log_ratio=0.275, O*NET 23-1011.00 (Lawyers)",
+        "quality: added \u2192 g=0.307, O*NET 23-1011.00 (Lawyers)"
+      ]
+    }
+  }
+}

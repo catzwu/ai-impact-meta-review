@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Generative_AIs_Impact_on_Graduate_Student_Writing_Productivity_and_Quality",
+  "citation_key": "usdan_2024_generative_writing",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "human_arm_name": "no_genai",
+    "ai_arm_name": "genai_assisted",
+    "ai_arm_selection_rationale": "Only one AI-assisted arm available. All participants completed both conditions (first assignment without genAI, third assignment with genAI after instruction), making this a within-subject design.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": -123.7,
+    "m_human": 191.8,
+    "sd_human": 130.3,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 68.1,
+    "sd_ai": 28.4,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.645,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Within-subject design where all participants completed both conditions. Sample size n not reported in arms but can be inferred from test statistic df(1,23) suggesting n=24 or 25 participants. The 64.5% reduction is consistent with the means: (68.1-191.8)/191.8 = -0.645. F-statistic reported rather than t-statistic for the paired comparison.",
+    "source_quotes": [
+      "There was a significant main effect of writing condition on writing time (f(1,23) = 23.15, p < .001, \u03b7p2 = .50) showing that students spent significantly less time writing their memo when they used genAI assistance.",
+      "64.5% reduction in time",
+      "no_genai mean: 191.8, sd: 130.3",
+      "genai_assisted mean: 68.1, sd: 28.4"
+    ]
+  },
+  "computed": {
+    "log_ratio": 1.0354759492938714,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 1.8164464023494866,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Within-subject design where all participants completed both conditions. Sample size n not reported in arms but can be inferred from test statistic df(1,23) suggesting n=24 or 25 participants. The 64.5% reduction is consistent with the means: (68.1-191.8)/191.8 = -0.645. F-statistic reported rather than t-statistic for the paired comparison. | SDs/SEs missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

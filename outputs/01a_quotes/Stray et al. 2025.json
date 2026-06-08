@@ -1,0 +1,64 @@
+{
+  "citation_key": "stray_2026_copilot_productivity",
+  "authors": [
+    "Viktoria Stray",
+    "Elias Goldmann Brandtz\u00e6g",
+    "Viggo Tellefsen Wivestad",
+    "Astri Barbala",
+    "Nils Brede Moe"
+  ],
+  "title": "Developer Productivity With and Without GitHub Copilot: A Longitudinal Mixed-Methods Case Study",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "We conducted a mixed-methods case study in NAV IT, a large public sector agile organization.",
+      "We adopted a case study approach to understand how Copilot influenced development work in practice. Our study combines quantitative and qualitative data, including survey responses, interview insights, and analysis of the developers' activity on GitHub.",
+      "The data spans a two-year period, allowing us to compare developer activity before and after the introduction of Copilot."
+    ],
+    "task": [
+      "We analyzed 26,317 unique non-merge commits from 703 of NAV IT's GitHub repositories over a two-year period, focusing on commit-based activity metrics from 25 Copilot users and 14 non-users.",
+      "In order to retrieve the commit activity for the relevant developers, several custom Python scripts were developed. First, a list of all NAV IT's public repos was collected using GitHub's APIs. Next, using the Python framework PyDriller (Spadini et al., 2018), each repository was cloned, mined for data locally, and then deleted, storing only commit data for participants who provided their username in the survey."
+    ],
+    "population": [
+      "This case study was conducted in NAV IT, the technology division of a large Norwegian public sector organization. With nearly one thousand employees, the division includes cross-functional teams of developers, designers, infrastructure and cloud specialists, architects, data scientists, and team leads.",
+      "In September 2023, 100 software developers at NAV IT volunteered to receive a GitHub Copilot license. By May 2025, the number of Copilot users had grown to 250.",
+      "In November and December 2023, we conducted 13 interviews with developers, each lasting between 30 and 60 minutes, with an average duration of 47 minutes.",
+      "The survey was distributed between March and April 2024.",
+      "A total of 63 participants provided their username.",
+      "The cleaned dataset consisted of 26,317 commits from 703 repositories spread across 39 developers: 25 Copilot users and 14 non-users.",
+      "We include the roles of these participants as stated in their survey responses; see Figure 1."
+    ],
+    "arms": [
+      "Developers who eventually adopted Copilot (n=25) were already pushing commits more frequently and contributing more code overall per week than their colleagues who had not adopted Copilot (n=14), as shown in Figure 2.",
+      "The cleaned dataset consisted of 26,317 commits from 703 repositories spread across 39 developers: 25 Copilot users and 14 non-users."
+    ],
+    "outcome_definitions": [
+      "As part of the survey, respondents who stated having adopted GitHub Copilot were given the following question: Since getting access to GitHub Copilot, have you noticed a change in the following: Your own productivity (from \"Major decrease\" (-2) to \"Major increase\" (+2)), which we have used in this case study.",
+      "Individual commit data can vary significantly in both size and frequency. To better investigate the overall trends for a broad concept like productivity, we aggregated the data into weekly chunks.",
+      "For weeks with no commits, we manually imputed the value \"0\". The final dataset consisted of N=4095 weekly observations, based on 105 weeks of activity data for each of the 39 developers."
+    ],
+    "statistical_results": [
+      "The Mann\u2013Whitney U tests comparing Copilot users and non-users also confirmed that Copilot users were significantly more active than non-users (p <0.00555), both before and after adoption.",
+      "Before Copilot's launch, users were adding 188 lines and deleting 105 lines per week on average, compared to non-users' 80 additions and 40 deletions.",
+      "After Copilot's launch, the user group's insertions ticked up slightly (to 200/week) while deletions ticked down (98/week), yielding an increase in net lines of code (+16 net lines as average weekly).",
+      "Non-users, by contrast, showed a small decline in both additions (70) and deletions (30) in the same period (thus a roughly flat net change).",
+      "Our quantitative analysis found no strong correlation between a developer's change in weekly commits and their self-reported productivity change from the survey.",
+      "Although a slight upward trend is visible, the correlation is not statistically significant (Spearman \u03c1\u22480.17, p= 0.40).",
+      "The strongest correlation was observed for commit count, with a \u03c1= 0.17, which is considered a weak correlation, but with a p-value of 0.406, which did not allow us to reject the null hypothesis when using a Bonferroni corrected threshold for six tests of \u03b1= 0.0083.",
+      "Interestingly, the one activity metric that showed a negligible correlation with perceived productivity was net lines of code (\u2206Diff, \u03c1\u22480.09, where \u2206Diff is average weekly net diff after adoption minus average weekly net diff before adoption).",
+      "Across all six activity metrics we examined, the correlations with perceived productivity were not found to be significant."
+    ],
+    "ambiguity_or_caveats": [
+      "However, this dataset contained some issues that were discovered by a mix of statistical and manual inspection: Duplicates: Some commits were present across multiple repos and were removed. Outliers: Some commits contained an extreme amount of code insertions or deletions. Manual inspection revealed that this typically was due to non-human-generated code (e.g., someone adding or removing log or build files). The dataset was therefore trimmed at the 95th percentile, calculated individually for each commit activity metric. Low activity users: Users with fewer than one commit per week on average were excluded from the study, as they were not considered representative of professional developers.",
+      "It is important to note that we found no evidence of any negative impact on code quality metrics from Copilot adoption. The structural metrics (e.g., function complexity, average module size) remained virtually unchanged and showed no significant differences between users and non-users.",
+      "The reported roles of the two groups were quite similar, with many reported having multiple roles, and both groups containing managerial roles such as \"Tech lead\" (see Figure 1). This may explain why some individuals appear less productive in terms of commit-based metrics, as many of their responsibilities are likely less focused on writing code.",
+      "For example, Cui et al. (2024) found that senior developers typically code less than junior developers, which explained much of the variation in software output.",
+      "This highlights how perceptions of productivity are complex and deeply subjective, making them difficult to capture through objective metrics alone. Developers vary in how they work, where some deliver in larger batches, others contribute more steadily throughout the week, and some follow more flexible schedules. These individual work patterns can significantly influence how activity is reflected in the data, further complicating the relationship between actual contributions and how productivity is measured or perceived.",
+      "Some findings from the surveys and interviews have been reported previously; however, we have conducted further analysis on this data to explore our new findings on GitHub activity (Barbala et al., 2025; Brandtz\u00e6g, 2025; Stray, Barbala, & Wivestad, 2025; Wivestad & Ulfsnes, 2024; Wivestad et al., 2024)."
+    ]
+  },
+  "notes": "This is a longitudinal mixed-methods case study combining quantitative GitHub activity data with qualitative survey and interview data. The study analyzes commit-based metrics before and after GitHub Copilot adoption. Key finding: Copilot users were already significantly more active than non-users before adoption (self-selection effect), and no statistically significant changes in commit-based activity were found after adoption, despite developers reporting perceived productivity improvements. The paper emphasizes a discrepancy between objective metrics and subjective experience of productivity.",
+  "_paper_id": "Stray et al. 2025",
+  "_source_pdf": "papers/Stray et al. 2025.pdf"
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-10",
+  "onet_label": "Making Decisions and Solving Problems",
+  "mapping_confidence": "high",
+  "rationale": "The participants' substantive task was 'selecting one of three fictional cities...to host an international sporting event' based on distributed information requiring collaborative analysis and decision-making. This is a clear instance of group problem-solving and decision-making work. The AI treatment (chat interface) is merely the medium, not the task itself. The participants are doing decision-making work, not software development, data analysis, or any occupation-specific role.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    }
+  ],
+  "citation_key": "alsobay_2025_llm_facilitated"
+}

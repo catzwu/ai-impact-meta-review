@@ -1,0 +1,190 @@
+{
+  "citation_key": "merali_2024_scaling_productivity",
+  "authors": [
+    "Ali Merali"
+  ],
+  "title": "Scaling Laws for Economic Productivity: Experimental Evidence in LLM-Assisted Translation",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "A preregistered randomized controlled trial (RCT) involving 300 professional translators conducting 1,800 tasks of varying complexities. Participants were randomly assigned to either treatment groups where they could utilize one of thirteen LLMs of differing model training compute to help them complete their task, or to a control group where they completed tasks without any AI assistance. Participants faced high-powered incentives with significant bonus payments for high-quality tasks as evaluated by three experienced professionals in the field.",
+  "primary_task_description": "Participants completed six translation tasks (five during the experiment plus one baseline task without AI assistance). The tasks were all short, taking almost exactly ten minutes to complete each on average. The texts to be translated covered a range of materials including business, academic, and literary texts to simulate a wide variety of potential professional use cases. Before each genuine task, participants were given a practice task to use the model so that they could understand the performance of the AI model they had been assigned.",
+  "population_description": "Three hundred professional translators recruited through online recruiting platforms Freelancer and Fiverr. Participants were split evenly based on their proficiency on three languages: Spanish, Hindi, and Arabic (all translations were made from English into the target language). All participants had at least one year of experience as a professional translator, completed paid translation tasks in the past year, met certain standards of language ability, and were comfortable having their AI model usage monitored. Over 70% of eligible participants had at least three years of professional experience as a translator and just over a third had at least five years of experience.",
+  "arms": [
+    {
+      "arm_name": "control",
+      "description": "Completed tasks without any AI assistance",
+      "n": null
+    },
+    {
+      "arm_name": "ai_assisted",
+      "description": "Assigned one of thirteen AI models of differing compute sizes to aid them in completing tasks. All thirteen AI models of differing compute sizes are pooled into a single treatment group.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "task_completion_time",
+      "outcome_description": "Time taken to complete a translation task, measured in seconds",
+      "measurement_unit": "seconds",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "task_quality_grade",
+      "outcome_description": "Quality of tasks completed, graded by three professional translators on a 7-point scale. A task was deemed of high-quality if it received an average grade of 6 or higher; a task was considered satisfactory if it received an average grade of 2 or higher.",
+      "measurement_unit": "rubric 1-7",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "earnings_per_minute",
+      "outcome_description": "Earnings per minute inclusive of bonuses. Participants were offered a flat rate of $10 for completing all six tasks to a satisfactory standard and were offered a $2 bonus per task for a high-quality completion.",
+      "measurement_unit": "dollars per minute",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 600.7,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 413.8,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "31.1% reduction in time (187 seconds faster)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "The average time taken by participants to conduct a task without access to any AI model was almost exactly ten minutes (600.7 seconds). With access to any AI model this was reduced to 413.8 seconds (p=0.000), a statistically significant reduction in time of 31.1%."
+    },
+    {
+      "outcome_name": "task_quality_grade",
+      "arm_comparison": "ai_assisted vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 4.51,
+          "sd": null,
+          "se": null
+        },
+        "ai_assisted": {
+          "mean": 4.71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.2 points increase on 7-point scale",
+      "standardized_effect_reported": "0.14 standard deviations",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.148",
+      "confidence_interval": null,
+      "verbatim_quote": "The average grade without access to an AI model was 4.51. When participants were able to use an AI model this increased to 4.71, an increase of 0.2 points on a seven-point scale. This equates to an increase of 0.14 standard deviations in the average grade. Not only were participants much quicker in completing tasks with access to AI models, however, but their tasks were also associated with higher quality scores although this result was not statistically significant (p=0.148)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "scaling relationship: per 10x increase in model compute",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12.3% reduction in time per 10x increase in model compute",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "For every 10x increase in model training compute, translator's managed to complete a task 12.3% quicker (p=0.001)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "scaling relationship: per GPT-jump (70x increase in model compute)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "22.7% decrease in time per GPT-jump",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Converted into 'GPT-jumps', denoting the 70x difference in model training compute between successively numbered GPT models, this equates to a 22.7% decrease in time per model jump."
+    },
+    {
+      "outcome_name": "task_quality_grade",
+      "arm_comparison": "scaling relationship: per 10x increase in model compute",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.25 points increase on 7-point scale per 10x increase in model compute",
+      "standardized_effect_reported": "0.18 standard deviations per 10x increase in model compute",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.000",
+      "confidence_interval": null,
+      "verbatim_quote": "For every 10x increase in model compute grades improved by 0.25 points on a 7-point scale or by 0.18 standard deviations (p=0.000)."
+    },
+    {
+      "outcome_name": "task_quality_grade",
+      "arm_comparison": "scaling relationship: per GPT-jump (70x increase in model compute)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "0.33 standard deviation increase per GPT-jump",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "A 'GPT-jump' of a 70x increase in model compute is therefore associated with a 0.33 standard deviation increase in grades."
+    },
+    {
+      "outcome_name": "earnings_per_minute",
+      "arm_comparison": "scaling relationship: per 10x increase in model compute",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "16.1% increase in earnings per 10x increase in model compute; $0.19 per minute increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "This increased by $0.19 a minute for every 10x increase in compute the model they received was given in training (p=0.001). As such, the average participant gained an 16.1% increase in earnings for every 10x increase in model training compute or a 29.7% increase for every 'GPT-jump'."
+    },
+    {
+      "outcome_name": "earnings_per_minute",
+      "arm_comparison": "scaling relationship: per GPT-jump (70x increase in model compute)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "29.7% increase in earnings per GPT-jump",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As such, the average participant gained an 16.1% increase in earnings for every 10x increase in model training compute or a 29.7% increase for every 'GPT-jump'."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "high-skill vs low-skill workers: per 10x increase in model compute",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "high-skill: 4.9% reduction; low-skill: 21.1% reduction per 10x increase in model compute",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.017",
+      "confidence_interval": null,
+      "verbatim_quote": "Those with 'high-skill' reduced their time taken per task by 4.9% whilst those with 'low-skill' saw a more than 4x larger reduction of 21.1% (p=0.017)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "high-skill vs low-skill workers: per GPT-jump (70x increase in model compute)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "high-skill: 9% reduction; low-skill: 39.0% reduction per GPT-jump",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "These translate into 9% and 39.0% reductions in time taken per 'GPT-Jump'."
+    }
+  ],
+  "notes": "This is a preregistered RCT (AEARCTR-0013743) with 300 professional translators assigned to 13 different LLM treatment conditions or a control condition. The paper derives scaling laws relating model training compute to economic outcomes. Results are reported for the overall AI vs. no-AI comparison, and separately for scaling relationships across the 13 models. The paper also includes an aggregate productivity calculation for the U.S. economy over the next decade based on the experimental scaling laws. Arm-level sample sizes (n per treatment condition) are not explicitly stated in the provided quotes; only the total N=300 is given. The paper notes several limitations: it focused on a single professional skill (translation), tested participants on short tasks only, and results were derived on a range of just over two orders of magnitude of compute. The authors note that translators are estimated to be among the occupations with the highest AI exposure, so the scaling effects may be larger for translators than for other tasks, potentially yielding an underestimate for the scaling effects of all other tasks.",
+  "_paper_id": "Merali 2024"
+}

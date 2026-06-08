@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a system validation study, not a study of AI impact on human performance or outcomes. The paper describes 'manual and automated evaluations to validate the performance of Clio' through reconstruction studies, manual reviews, and clustering evaluations. There is no comparison of conditions (AI vs. no-AI), no randomization of participants, and no measurement of human task performance\u2014only technical validation of a privacy-preserving analytics system.",
+  "citation_key": "tamkin_2024_clio_privacy"
+}

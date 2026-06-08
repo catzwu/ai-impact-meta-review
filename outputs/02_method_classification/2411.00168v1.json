@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study explicitly states it is \"A within-subjects experimental study\" where \"All participants completed both sessions, with the order of conditions counterbalanced.\" Each participant designed both with and without GenAI support, making this a clear within-subject design.",
+  "citation_key": "fu_2024_creativity_ai"
+}

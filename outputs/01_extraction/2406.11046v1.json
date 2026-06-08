@@ -1,0 +1,1291 @@
+{
+  "citation_key": "quispe_2024_chatgpt_software",
+  "authors": [
+    "Alexander Quispe",
+    "Rodrigo Grijalba"
+  ],
+  "title": "Impact of the Availability of Chat-GPT on Software Development Activity",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "This study utilizes natural experiments where some governments banned ChatGPT to estimate its effects on software development. The design consists of 120 treatment units and 27 control units, with 11 pre-treatment periods and 2 treatment periods. The authors employ Difference-in-Differences (DID), Synthetic Control (SC), and Synthetic Difference-in-Differences (SDID) methods to analyze quasi-experimental data and estimate ChatGPT's effect on software production in each country-quarter.",
+  "primary_task_description": "The study analyzes software development activity using data from GitHub's Innovation Graph, specifically examining the number of pushes per country and per quarter, as well as the number of unique developers in each economy who made at least one git push to a repository with a given programming language.",
+  "population_description": "The data spans from the first quarter of 2020 until the first quarter of 2023, covering 151 country units (after dropping 28 units that lacked observations for the whole time span, excluding the EU aggregate and Hong Kong). The treatment period begins in the fourth quarter of 2022, when ChatGPT was initially launched on November 30th.",
+  "arms": [
+    {
+      "arm_name": "chatgpt_available",
+      "description": "Countries that were originally announced to have access to ChatGPT at launch",
+      "n": 120
+    },
+    {
+      "arm_name": "control",
+      "description": "Countries without ChatGPT access during the study period",
+      "n": 27
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "code_pushes",
+      "outcome_description": "The number of times developers in a given economy uploaded code to GitHub per 100,000 people. This metric includes all instances where developers pushed code changes to repositories, whether through the command line or GitHub's online platform, with each push potentially containing multiple commits.",
+      "measurement_unit": "pushes per 100,000 people",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "repositories",
+      "outcome_description": "The number of software projects (repositories) in a given economy per 100,000 people. This metric is based on the modal location of all repository members with triage and above access. It includes all repositories, regardless of whether they are actively developed or maintained.",
+      "measurement_unit": "repositories per 100,000 people",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "developers",
+      "outcome_description": "The number of developer accounts located in a given economy per 100,000 people, based on the modal daily location. This metric excludes bot accounts and users flagged as \"spammy\" within internal systems. It includes developer accounts that may no longer be active.",
+      "measurement_unit": "developers per 100,000 people",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "unique_developers_python",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with Python programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_javascript",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with JavaScript programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_ruby",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with Ruby programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_php",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with PHP programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_typescript",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with TypeScript programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_c",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with C programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_cpp",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with C++ programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_rust",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with Rust programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_assembly",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with Assembly programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_shell",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with Shell programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_batchfile",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with Batchfile programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_powershell",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with PowerShell programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_tsql",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with TSQL programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_plpgsql",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with PLpgSQL programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_html",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with HTML programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_css",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with CSS programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_matlab",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with MATLAB programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_developers_r",
+      "outcome_description": "The number of unique developers in each economy who made at least one git push to a repository with R programming language.",
+      "measurement_unit": "unique developers",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "code_pushes",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 741.5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "899.268 pushes",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 899.268 (SE 147.395)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The DID estimation shows an increase of approximately 899.268 pushes, which is highly significant with a standard error of 147.395."
+    },
+    {
+      "outcome_name": "code_pushes",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 741.5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "595.059 pushes",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 595.059",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Both the SC and SDID methods also show positive impacts, with coefficients of 595.059 and 645.623 respectively, though the SC estimate is not statistically significant."
+    },
+    {
+      "outcome_name": "code_pushes",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 741.5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "645.623 pushes",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 645.623",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Both the SC and SDID methods also show positive impacts, with coefficients of 595.059 and 645.623 respectively, though the SC estimate is not statistically significant."
+    },
+    {
+      "outcome_name": "repositories",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 1097.8,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1657.141 repositories",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 1657.141",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The DID estimate shows a substantial and statistically significant increase of 1657.141 repositories, indicating a robust positive effect."
+    },
+    {
+      "outcome_name": "repositories",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 1097.8,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "464.735 repositories",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 464.735",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, the SC and SDID estimates, while still positive (464.735 and 204.734 respectively), are not statistically significant."
+    },
+    {
+      "outcome_name": "repositories",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 1097.8,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "204.734 repositories",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 204.734",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, the SC and SDID estimates, while still positive (464.735 and 204.734 respectively), are not statistically significant."
+    },
+    {
+      "outcome_name": "developers",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 527.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "578.912 developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 578.912 (SE 109.398)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The DID results indicate a significant increase of 578.912 developers, with a standard error of 109.398, highlighting a substantial positive impact."
+    },
+    {
+      "outcome_name": "developers",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 527.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "13.752 developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 13.752",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, the SC and SDID methods show much smaller effects (13.752 and 51.693 respectively), with neither reaching statistical significance."
+    },
+    {
+      "outcome_name": "developers",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 527.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "51.693 developers",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 51.693",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, the SC and SDID methods show much smaller effects (13.752 and 51.693 respectively), with neither reaching statistical significance."
+    },
+    {
+      "outcome_name": "unique_developers_python",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 6.137,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "8.754",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 8.754 (SE 1.636)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 8.754*** (1.636) for Python DID, with baseline mean outcome 6.137"
+    },
+    {
+      "outcome_name": "unique_developers_python",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 6.137,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.586",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 1.586 (SE 5.387)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.586 (5.387) for Python SC, with baseline mean outcome 6.137"
+    },
+    {
+      "outcome_name": "unique_developers_python",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 6.137,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "5.231",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 5.231 (SE 1.351)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 5.231*** (1.351) for Python SDID, with baseline mean outcome 6.137"
+    },
+    {
+      "outcome_name": "unique_developers_javascript",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 12.65,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "13.568",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 13.568 (SE 2.536)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 13.568*** (2.536) for JavaScript DID, with baseline mean outcome 12.65"
+    },
+    {
+      "outcome_name": "unique_developers_javascript",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 12.65,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "9.484",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 9.484 (SE 4.735)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 9.484** (4.735) for JavaScript SC, with baseline mean outcome 12.65"
+    },
+    {
+      "outcome_name": "unique_developers_javascript",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 12.65,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "8.257",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 8.257 (SE 2.776)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 8.257*** (2.776) for JavaScript SDID, with baseline mean outcome 12.65"
+    },
+    {
+      "outcome_name": "unique_developers_ruby",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.831,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.631",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 0.631 (SE 0.525)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.631 (0.525) for Ruby DID, with baseline mean outcome 2.831"
+    },
+    {
+      "outcome_name": "unique_developers_ruby",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.831,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.460",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 2.460 (SE 1.234)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 2.460** (1.234) for Ruby SC, with baseline mean outcome 2.831"
+    },
+    {
+      "outcome_name": "unique_developers_ruby",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.831,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.019",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 1.019 (SE 0.287)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.019*** (0.287) for Ruby SDID, with baseline mean outcome 2.831"
+    },
+    {
+      "outcome_name": "unique_developers_php",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.577,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.060",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 1.060 (SE 0.481)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.060** (0.481) for PHP DID, with baseline mean outcome 2.577"
+    },
+    {
+      "outcome_name": "unique_developers_php",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.577,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.285",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 1.285 (SE 1.363)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.285 (1.363) for PHP SC, with baseline mean outcome 2.577"
+    },
+    {
+      "outcome_name": "unique_developers_php",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.577,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.045",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 1.045 (SE 0.497)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.045** (0.497) for PHP SDID, with baseline mean outcome 2.577"
+    },
+    {
+      "outcome_name": "unique_developers_typescript",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "8.421",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 8.421 (SE 1.591)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 8.421*** (1.591) for TypeScript DID, with baseline mean outcome 2.710"
+    },
+    {
+      "outcome_name": "unique_developers_typescript",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.887",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 3.887 (SE 2.776)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 3.887 (2.776) for TypeScript SC, with baseline mean outcome 2.710"
+    },
+    {
+      "outcome_name": "unique_developers_typescript",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.863",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 3.863 (SE 0.982)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 3.863*** (0.982) for TypeScript SDID, with baseline mean outcome 2.710"
+    },
+    {
+      "outcome_name": "unique_developers_c",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.043,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.005",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 3.005 (SE 0.794)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 3.005*** (0.794) for C DID, with baseline mean outcome 2.043"
+    },
+    {
+      "outcome_name": "unique_developers_c",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.043,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.469",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 3.469 (SE 1.361)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 3.469** (1.361) for C SC, with baseline mean outcome 2.043"
+    },
+    {
+      "outcome_name": "unique_developers_c",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.043,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.690",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 1.690 (SE 0.564)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.690*** (0.564) for C SDID, with baseline mean outcome 2.043"
+    },
+    {
+      "outcome_name": "unique_developers_cpp",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.684,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.681",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 2.681 (SE 0.673)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 2.681*** (0.673) for C++ DID, with baseline mean outcome 2.684"
+    },
+    {
+      "outcome_name": "unique_developers_cpp",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.684,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.983",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 1.983 (SE 1.692)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.983 (1.692) for C++ SC, with baseline mean outcome 2.684"
+    },
+    {
+      "outcome_name": "unique_developers_cpp",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.684,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.466",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 1.466 (SE 0.521)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.466*** (0.521) for C++ SDID, with baseline mean outcome 2.684"
+    },
+    {
+      "outcome_name": "unique_developers_rust",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.402,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.783",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 2.783 (SE 0.470)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 2.783*** (0.470) for Rust DID, with baseline mean outcome 0.402"
+    },
+    {
+      "outcome_name": "unique_developers_rust",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.402,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.779",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 3.779 (SE 0.795)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 3.779*** (0.795) for Rust SC, with baseline mean outcome 0.402"
+    },
+    {
+      "outcome_name": "unique_developers_rust",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.402,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.728",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 1.728 (SE 0.553)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.728*** (0.553) for Rust SDID, with baseline mean outcome 0.402"
+    },
+    {
+      "outcome_name": "unique_developers_assembly",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.674,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.877",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 0.877 (SE 0.226)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.877*** (0.226) for Assembly DID, with baseline mean outcome 0.674"
+    },
+    {
+      "outcome_name": "unique_developers_assembly",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.674,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.447",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 1.447 (SE 0.485)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.447*** (0.485) for Assembly SC, with baseline mean outcome 0.674"
+    },
+    {
+      "outcome_name": "unique_developers_assembly",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.674,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.643",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 0.643 (SE 0.181)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.643*** (0.181) for Assembly SDID, with baseline mean outcome 0.674"
+    },
+    {
+      "outcome_name": "unique_developers_shell",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 5.664,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "5.888",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 5.888 (SE 1.410)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 5.888*** (1.410) for Shell DID, with baseline mean outcome 5.664"
+    },
+    {
+      "outcome_name": "unique_developers_shell",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 5.664,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "8.417",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 8.417 (SE 3.766)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 8.417** (3.766) for Shell SC, with baseline mean outcome 5.664"
+    },
+    {
+      "outcome_name": "unique_developers_shell",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 5.664,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "4.974",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 4.974 (SE 1.506)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 4.974*** (1.506) for Shell SDID, with baseline mean outcome 5.664"
+    },
+    {
+      "outcome_name": "unique_developers_batchfile",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 1.752,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.776",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 1.776 (SE 0.373)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.776*** (0.373) for Batchfile DID, with baseline mean outcome 1.752"
+    },
+    {
+      "outcome_name": "unique_developers_batchfile",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 1.752,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.766",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 1.766 (SE 1.554)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.766 (1.554) for Batchfile SC, with baseline mean outcome 1.752"
+    },
+    {
+      "outcome_name": "unique_developers_batchfile",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 1.752,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.218",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 1.218 (SE 0.254)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.218*** (0.254) for Batchfile SDID, with baseline mean outcome 1.752"
+    },
+    {
+      "outcome_name": "unique_developers_powershell",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.975,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.262",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 1.262 (SE 0.228)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.262*** (0.228) for PowerShell DID, with baseline mean outcome 0.975"
+    },
+    {
+      "outcome_name": "unique_developers_powershell",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.975,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.719",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 1.719 (SE 0.815)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.719** (0.815) for PowerShell SC, with baseline mean outcome 0.975"
+    },
+    {
+      "outcome_name": "unique_developers_powershell",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.975,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.841",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 0.841 (SE 0.184)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.841*** (0.184) for PowerShell SDID, with baseline mean outcome 0.975"
+    },
+    {
+      "outcome_name": "unique_developers_tsql",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.836,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-0.699",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = -0.699 (SE 0.263)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available -0.699*** (0.263) for TSQL DID, with baseline mean outcome 0.836"
+    },
+    {
+      "outcome_name": "unique_developers_tsql",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.836,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.019",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 0.019 (SE 0.547)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.019 (0.547) for TSQL SC, with baseline mean outcome 0.836"
+    },
+    {
+      "outcome_name": "unique_developers_tsql",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.836,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.053",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 0.053 (SE 0.400)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.053 (0.400) for TSQL SDID, with baseline mean outcome 0.836"
+    },
+    {
+      "outcome_name": "unique_developers_plpgsql",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.278,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.344",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 0.344 (SE 0.144)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.344** (0.144) for PLpgSQL DID, with baseline mean outcome 0.278"
+    },
+    {
+      "outcome_name": "unique_developers_plpgsql",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.278,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.564",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 0.564 (SE 0.287)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.564** (0.287) for PLpgSQL SC, with baseline mean outcome 0.278"
+    },
+    {
+      "outcome_name": "unique_developers_plpgsql",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.278,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.270",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 0.270 (SE 0.085)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.270*** (0.085) for PLpgSQL SDID, with baseline mean outcome 0.278"
+    },
+    {
+      "outcome_name": "unique_developers_html",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 15.44,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "12.347",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 12.347 (SE 2.347)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 12.347*** (2.347) for HTML DID, with baseline mean outcome 15.44"
+    },
+    {
+      "outcome_name": "unique_developers_html",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 15.44,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "9.674",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 9.674 (SE 4.247)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 9.674** (4.247) for HTML SC, with baseline mean outcome 15.44"
+    },
+    {
+      "outcome_name": "unique_developers_html",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 15.44,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "7.981",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 7.981 (SE 2.352)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 7.981*** (2.352) for HTML SDID, with baseline mean outcome 15.44"
+    },
+    {
+      "outcome_name": "unique_developers_css",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 11.72,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "12.303",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 12.303 (SE 1.753)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 12.303*** (1.753) for CSS DID, with baseline mean outcome 11.72"
+    },
+    {
+      "outcome_name": "unique_developers_css",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 11.72,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "8.378",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 8.378 (SE 4.210)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 8.378** (4.210) for CSS SC, with baseline mean outcome 11.72"
+    },
+    {
+      "outcome_name": "unique_developers_css",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 11.72,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "7.775",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 7.775 (SE 2.101)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 7.775*** (2.101) for CSS SDID, with baseline mean outcome 11.72"
+    },
+    {
+      "outcome_name": "unique_developers_matlab",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.292,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.157",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 0.157 (SE 0.074)",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.157** (0.074) for MATLAB DID, with baseline mean outcome 0.292"
+    },
+    {
+      "outcome_name": "unique_developers_matlab",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.292,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.518",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 1.518 (SE 0.301)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 1.518*** (0.301) for MATLAB SC, with baseline mean outcome 0.292"
+    },
+    {
+      "outcome_name": "unique_developers_matlab",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.292,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.190",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 0.190 (SE 0.101)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.190* (0.101) for MATLAB SDID, with baseline mean outcome 0.292"
+    },
+    {
+      "outcome_name": "unique_developers_r",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.251,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.308",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "DID = 0.308 (SE 0.116)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.308*** (0.116) for R DID, with baseline mean outcome 0.251"
+    },
+    {
+      "outcome_name": "unique_developers_r",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.251,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.202",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SC = 3.202 (SE 0.598)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 3.202*** (0.598) for R SC, with baseline mean outcome 0.251"
+    },
+    {
+      "outcome_name": "unique_developers_r",
+      "arm_comparison": "chatgpt_available vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 0.251,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.366",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SDID = 0.366 (SE 0.141)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Chat GPT Available 0.366*** (0.141) for R SDID, with baseline mean outcome 0.251"
+    }
+  ],
+  "notes": "This is a natural experiment study exploiting government bans of ChatGPT to estimate causal effects on software development activity. The paper employs three quasi-experimental methods (DID, Synthetic Control, and Synthetic Difference-in-Differences) and reports results across multiple outcomes at both the aggregate country level and the country-programming language level. The study design consists of 120 treatment units (countries with ChatGPT access) and 27 control units (countries without access), with 11 pre-treatment periods and 2 treatment periods. The treatment period begins in Q4 2022 when ChatGPT was launched on November 30th. Results show generally positive effects of ChatGPT availability on code pushes, repositories, and developers across most programming languages, though the magnitude and statistical significance vary by method. One notable exception is TSQL, which shows a negative DID coefficient. The authors note potential concerns about code quality and suggest future research should examine long-term impacts on code quality, developer skills, and broader economic implications.",
+  "_paper_id": "2406.11046v1"
+}

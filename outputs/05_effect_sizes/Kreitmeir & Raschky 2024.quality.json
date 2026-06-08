@@ -1,0 +1,52 @@
+{
+  "_paper_id": "Kreitmeir & Raschky 2024",
+  "citation_key": "kreitmeir_2024_chatgpt_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "After re-reading the full paper, this study remains fundamentally incompatible with the required extraction schema. The design is a natural experiment using difference-in-differences (DiD) regression to estimate the causal effect of Italy's ChatGPT ban. There is no 'human-only baseline' vs. 'human+AI intervention' comparison. Instead, the study compares Italian users (who lost ChatGPT access post-ban) to control-country users (who retained access), across pre/post periods. The 'treatment' is the *removal* of AI access, not its introduction. All reported statistics are DiD regression coefficients (Treated \u00d7 Post interaction terms) with clustered standard errors, not simple group means, SDs, or effect sizes. The paper does not report: (1) simple means and SDs for 'with ChatGPT' vs. 'without ChatGPT' conditions, (2) t-statistics or F-statistics from two-group comparisons, (3) Cohen's d or Hedges' g for a human vs. human+AI contrast, or (4) any other statistics that can be converted to Hedges' g for the required arm comparison. The descriptive statistics in Table C.1 and D.1 provide means and SDs for the *overall sample* and subsamples, but these are pooled across treatment/control and pre/post periods\u2014they do not represent separate 'human-only' and 'human+AI' arms. The study design is observational quasi-experimental (DiD), not a randomized or non-randomized trial with discrete human-only and human+AI arms. Per-arm sample sizes (n_human, n_ai) cannot be meaningfully defined because the 'arms' are not independent groups but rather the same users observed across time under different policy regimes (ban vs. no ban). The prior extraction correctly identified this as unresolvable.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "This is a difference-in-differences natural experiment, not a controlled trial with human-only and human+AI arms. The 'treatment' is the removal of ChatGPT access (Italy's ban), not the introduction of AI. All reported statistics are DiD regression coefficients (Treated \u00d7 Post) with clustered SEs, not means/SDs or effect sizes for a human vs. human+AI comparison. Descriptive statistics (Tables C.1, D.1) are pooled across treatment/control and pre/post, not separated by 'with AI' vs. 'without AI' conditions. The study does not report any of the statistics required to compute Hedges' g for a human-only vs. human+AI contrast (no simple group means/SDs, no t/F from two-group tests, no reported Cohen's d or Hedges' g for the required comparison). The design is fundamentally incompatible with the extraction schema, which assumes discrete human-only and human+AI arms. The prior extraction was correct to mark this as unresolvable.",
+    "source_quotes": [
+      "We analyse the individual productivity effects of Italy's ban on ChatGPT, a generative pretrained transformer chatbot. We compile data on the daily coding output quantity and quality of over 36,000 GitHub users in Italy and other European countries and combine these data with the sudden announcement of the ban in a difference-in-differences framework.",
+      "To analyse the effect of the Italian ChatGPT ban on GitHub users' output, we estimate variants of the following difference-in-difference (DID) specification: Yit = \u03b2Dit + \u03b1i + \u03bbt + \u03b3dow + \u03c3d \u00d7 t + \u03f5it, where Yit denotes the outcome variable, i.e. one of the user-specific output and task variables, and Dit is the treatment indicator variable equaling 1 for Italian users in the first four work days post the ChatGPT ban. The parameters of interest is \u03b2.",
+      "Table 1: Effect of ChatGPT Ban on GitHub Output ... Overall Treated \u00d7 Post 0.0062 0.0102 0.0090 -0.0045** 0.0045 (N = 290,864) ... Less experienced Treated \u00d7 Post 0.0193* 0.0216** 0.0203* -0.0017 0.0118*** (N = 149,680) ... Experienced Treated \u00d7 Post -0.0079 -0.0020 -0.0030 -0.0077* -0.0034 (N = 141,184)",
+      "Table C.1: Descriptive Statistics ... A - User-Day\u2013Level (N = 290,864) ... PR merge ratio 0.0359 0.1846 0.0258 0.1572 0.0467 0.2092 0.0615 0.2381 ... Notes: Panel A presents descriptive statistics for the baseline sample period Pre 27-30.03 \u2013 Post 03-06.04.",
+      "All specifications include user\u2013fixed effects, day-of-the-week\u2013fixed effects, and a linear time trend for the control and treatment group. ... Robust standard errors in parentheses are clustered on the user-level"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment, not a controlled trial with human-only and human+AI arms. The 'treatment' is the removal of ChatGPT access (Italy's ban), not the introduction of AI. All reported statistics are DiD regression coefficients (Treated \u00d7 Post) with clustered SEs, not means/SDs or effect sizes for a human vs. human+AI comparison. Descriptive statistics (Tables C.1, D.1) are pooled across treatment/control and pre/post, not separated by 'with AI' vs. 'without AI' conditions. The study does not report any of the statistics required to compute Hedges' g for a human-only vs. human+AI contrast (no simple group means/SDs, no t/F from two-group tests, no reported Cohen's d or Hedges' g for the required comparison). The design is fundamentally incompatible with the extraction schema, which assumes discrete human-only and human+AI arms. The prior extraction was correct to mark this as unresolvable. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

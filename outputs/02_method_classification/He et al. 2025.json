@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly uses a difference-in-differences (DiD) design with staggered adoption, propensity score matching for control group selection, and the Borusyak et al. imputation estimator designed for staggered adoption. This is a clear quasi-experimental identification strategy comparing repositories that adopted Cursor at different times to matched controls that never adopted.",
+  "citation_key": "he_2026_cursor_velocity"
+}

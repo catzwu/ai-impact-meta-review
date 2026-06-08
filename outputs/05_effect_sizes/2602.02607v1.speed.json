@@ -1,0 +1,51 @@
+{
+  "_paper_id": "2602.02607v1",
+  "citation_key": "kikuchi_2026_innovation_tax",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "Control Banks (Non-AI Adopters)",
+    "ai_arm_name": "AI-Adopting Banks",
+    "ai_arm_selection_rationale": "The paper compares banks that adopted GenAI (identified through SEC filings mentioning GenAI keywords after November 2022 ChatGPT release) versus banks that never mentioned GenAI. This is the primary treatment contrast throughout the paper.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 85,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 41,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -4.282,
+    "regression_coefficient_se": 0.887,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 10.815,
+    "extraction_confidence": "high",
+    "notes": "The paper uses SDID (Synthetic Difference-in-Differences) to estimate causal effects. Table 6 reports the Average Treatment Effect on the Treated (ATT) for ROE as -4.282*** (SE=0.887) percentage points. This is the causal effect of AI adoption on Return on Equity. The outcome is in levels (percentage points), not log-transformed. Table 3 provides the baseline mean ROE of 10.815% across the full sample. The sample sizes come from the notes to Table 6: 10 treated banks and 36 control banks in the full sample analysis. However, the paper states the estimation sample includes 126 banks total with 41 AI adopters and 85 controls (page 23). Using the larger sample counts as they represent the full analytical sample. The negative ATT indicates AI adoption causes ROE to decline by 428 basis points during the implementation phase (the 'Implementation Tax'). This is a productivity measure where larger ROE values are better, so the negative effect indicates worse performance.",
+    "source_quotes": [
+      "Table 6: Synthetic Difference-in-Differences Estimates: The Implementation Tax ... Panel B: Return on Equity (ROE, %) ... ATT \u22124.282*** (0.887)",
+      "Table 3: Summary Statistics ... ROE (%) ... Mean 10.815",
+      "our estimation sample includes 126 banks with complete data, of which 41 are classified as AI adopters (having at least one quarter with positive GenAI mentions) and 85 serve as control banks (zero GenAI mentions throughout the sample period)",
+      "The aggregate estimates in Column (1) reveal the 'Implementation Tax': AI adoption causes ROA to decline by 46 basis points and ROE to decline by 428 basis points."
+    ]
+  },
+  "computed": {
+    "log_ratio": -0.5040678035464089,
+    "log_ratio_variance": 0.018434099329080595,
+    "percent_change_equivalent": -0.3959315765141008,
+    "direction_convention": "larger_is_better",
+    "computation_method": "regression_coef_level_with_baseline",
+    "confidence": "medium",
+    "notes": "The paper uses SDID (Synthetic Difference-in-Differences) to estimate causal effects. Table 6 reports the Average Treatment Effect on the Treated (ATT) for ROE as -4.282*** (SE=0.887) percentage points. This is the causal effect of AI adoption on Return on Equity. The outcome is in levels (percentage points), not log-transformed. Table 3 provides the baseline mean ROE of 10.815% across the full sample. The sample sizes come from the notes to Table 6: 10 treated banks and 36 control banks in the full sample analysis. However, the paper states the estimation sample includes 126 banks total with 41 AI adopters and 85 controls (page 23). Using the larger sample counts as they represent the full analytical sample. The negative ATT indicates AI adoption causes ROE to decline by 428 basis points during the implementation phase (the 'Implementation Tax'). This is a productivity measure where larger ROE values are better, so the negative effect indicates worse performance.",
+    "n_human": 85,
+    "n_ai": 41
+  }
+}

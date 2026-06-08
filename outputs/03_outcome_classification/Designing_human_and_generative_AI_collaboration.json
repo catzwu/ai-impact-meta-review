@@ -1,0 +1,57 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "completion_time",
+      "category": "speed",
+      "operationalization": "Self-reported time in minutes for ideation, outlining, drafting, and editing phases combined"
+    },
+    {
+      "outcome_name": "overall_quality",
+      "category": "quality",
+      "operationalization": "7-point Likert scale rating of story effectiveness in conveying ideas creatively, interestingly, coherently, with good writing"
+    },
+    {
+      "outcome_name": "originality",
+      "category": "quality",
+      "operationalization": "7-point Likert scale rating of story originality including themes, plot, setting, structure, ending, and style"
+    },
+    {
+      "outcome_name": "interestingness",
+      "category": "quality",
+      "operationalization": "7-point Likert scale rating of story's ability to engage readers through literary devices and vivid imagery"
+    },
+    {
+      "outcome_name": "writing_quality",
+      "category": "quality",
+      "operationalization": "7-point Likert scale rating of language clarity, comprehensibility, grammar, punctuation, and spelling"
+    },
+    {
+      "outcome_name": "coherence",
+      "category": "quality",
+      "operationalization": "7-point Likert scale rating of story organization and structure"
+    },
+    {
+      "outcome_name": "user_satisfaction",
+      "category": "other",
+      "operationalization": "Survey ratings of process flexibility, goal achievement effectiveness, willingness to reuse, and overall satisfaction with writing process and AI assistance"
+    },
+    {
+      "outcome_name": "genre_diversity",
+      "category": "other",
+      "operationalization": "Average number of genres per story, measuring variety in story types produced"
+    },
+    {
+      "outcome_name": "genre_similarity",
+      "category": "other",
+      "operationalization": "Similarity score (0-1 scale) measuring genre overlap between AI-supported stories across participants"
+    },
+    {
+      "outcome_name": "content_similarity",
+      "category": "other",
+      "operationalization": "Similarity score (0-1 scale) measuring aggregate content overlap between stories across participants"
+    }
+  ],
+  "primary_speed_outcome": "completion_time",
+  "primary_quality_outcome": "overall_quality",
+  "citation_key": "hosanagar_2024_human_ai_collaboration"
+}

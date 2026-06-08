@@ -1,0 +1,47 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "grade_complaint_drafting",
+      "category": "quality",
+      "operationalization": "Grade on 4.0 scale assigned by single investigator using pre-determined rubric based on law school grading standards"
+    },
+    {
+      "outcome_name": "grade_contract_drafting",
+      "category": "quality",
+      "operationalization": "Grade on 4.0 scale assigned by single investigator using pre-determined rubric based on law school grading standards"
+    },
+    {
+      "outcome_name": "grade_employee_handbook",
+      "category": "quality",
+      "operationalization": "Grade on 4.0 scale assigned by single investigator using pre-determined rubric based on law school grading standards"
+    },
+    {
+      "outcome_name": "grade_client_memo",
+      "category": "quality",
+      "operationalization": "Grade on 4.0 scale assigned by single investigator using pre-determined rubric based on law school grading standards"
+    },
+    {
+      "outcome_name": "time_complaint_drafting",
+      "category": "speed",
+      "operationalization": "Time in minutes from task start to completion, tracked and recorded separately from work product"
+    },
+    {
+      "outcome_name": "time_contract_drafting",
+      "category": "speed",
+      "operationalization": "Time in minutes from task start to completion, tracked and recorded separately from work product"
+    },
+    {
+      "outcome_name": "time_employee_handbook",
+      "category": "speed",
+      "operationalization": "Time in minutes from task start to completion, tracked and recorded separately from work product"
+    },
+    {
+      "outcome_name": "time_client_memo",
+      "category": "speed",
+      "operationalization": "Time in minutes from task start to completion, tracked and recorded separately from work product"
+    }
+  ],
+  "primary_speed_outcome": "time_complaint_drafting",
+  "primary_quality_outcome": "grade_complaint_drafting",
+  "citation_key": "choi_2023_lawyering_ai"
+}

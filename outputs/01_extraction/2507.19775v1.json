@@ -1,0 +1,393 @@
+{
+  "citation_key": "ganuthula_2025_ai_structural",
+  "authors": [
+    "Venkat Ram Reddy Ganuthula",
+    "Ramesh Kuruva"
+  ],
+  "title": "AI's Structural Impact on India's Knowledge-Intensive Startup Ecosystem: A Natural Experiment in Firm Efficiency and Design",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "Using a natural experiment framework with founding year as an exogenous treatment proxy, the study examines firm size, revenue productivity, valuation efficiency, and capital utilization across pre-AI and AI-era cohorts. The research leveraged the exogenous shock of AI proliferation as a quasi-experimental breakpoint, minimizing endogeneity concerns. The sample was divided into pre-AI and AI-era cohorts based on founding year, allowing for comparative analysis of structural and performance differences.",
+  "primary_task_description": "The study explores the structural and performance impacts of artificial intelligence (AI) adoption on India's knowledge-intensive startups, spanning information technology, financial technology, health technology, and educational technology, founded between 2016 and 2025.",
+  "population_description": "The dataset comprises 3,450 Indian startups founded between 2016 and 2025, sourced from public financial records, industry reports, and startup databases as of mid-2025. After a meticulous cleaning process to remove entries with missing values in key variables (revenue, funding, valuation, employee count) and exclusion of outliers using the interquartile range method, the final sample consisted of 914 firms. A thorough keyword analysis of startup descriptions confirmed that all firms operate within knowledge-intensive domains, focusing on technology-related activities.",
+  "arms": [
+    {
+      "arm_name": "pre_ai",
+      "description": "Startups founded 2016-2020, pre-AI era cohort",
+      "n": 713
+    },
+    {
+      "arm_name": "ai_era",
+      "description": "Startups founded 2021-2025, AI-era cohort",
+      "n": 201
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "annual_revenue",
+      "outcome_description": "Annual revenue measured in USD millions, adjusted for firm age",
+      "measurement_unit": "USD millions",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "age_adjusted_employee_count",
+      "outcome_description": "Age-adjusted employee count, adjusted for firm age since founding",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "age_adjusted_valuation",
+      "outcome_description": "Age-adjusted firm valuation, adjusted for firm age",
+      "measurement_unit": "USD millions",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "age_adjusted_total_funding",
+      "outcome_description": "Age-adjusted total funding received, adjusted for firm age",
+      "measurement_unit": "USD millions",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "valuation_per_employee",
+      "outcome_description": "Value creation per worker, calculated as valuation divided by employee count",
+      "measurement_unit": "USD millions per employee",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "revenue_per_employee",
+      "outcome_description": "Labor productivity, calculated as revenue divided by employee count",
+      "measurement_unit": "USD millions per employee",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "funding_per_employee",
+      "outcome_description": "Funding per employee, calculated as total funding divided by employee count",
+      "measurement_unit": "USD millions per employee",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "revenue_to_valuation_ratio",
+      "outcome_description": "Revenue to valuation ratio",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "funding_to_valuation_ratio",
+      "outcome_description": "Funding to valuation ratio",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "revenue_to_funding_ratio",
+      "outcome_description": "Capital efficiency proxy, calculated as revenue divided by funding",
+      "measurement_unit": "ratio",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "annual_revenue",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 0.757,
+          "sd": 0.832,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 0.457,
+          "sd": 0.657,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 0.376",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = 4.702",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Annual Revenue (USD; In Millions): t = 4.702, df = 912, p < .001, Mean Difference = 0.299, Cohen's d = 0.376"
+    },
+    {
+      "outcome_name": "age_adjusted_employee_count",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 4.961,
+          "sd": 5.252,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 11.641,
+          "sd": 9.684,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = -1.029",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = -12.891",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Age-Adjusted Employee Count: t = -12.891, df = 912, p < .001, Mean Difference = -6.680, Cohen's d = -1.029"
+    },
+    {
+      "outcome_name": "age_adjusted_valuation",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 1.535,
+          "sd": 1.419,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 3.756,
+          "sd": 4.078,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = -0.972",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = -12.174",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Age-Adjusted Valuation: t = -12.174, df = 912, p < .001, Mean Difference = -2.221, Cohen's d = -0.972"
+    },
+    {
+      "outcome_name": "age_adjusted_total_funding",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 0.515,
+          "sd": 0.583,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 1.12,
+          "sd": 1.312,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = -0.754",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = -9.448",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Age-Adjusted Total Funding: t = -9.448, df = 912, p < .001, Mean Difference = -0.605, Cohen's d = -0.754"
+    },
+    {
+      "outcome_name": "valuation_per_employee",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 1.188,
+          "sd": 2.622,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 0.788,
+          "sd": 1.689,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 0.163",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = 2.044",
+      "p_value": "p = 0.041",
+      "confidence_interval": null,
+      "verbatim_quote": "Valuation per Employee: t = 2.044, df = 912, p = 0.041, Mean Difference = 0.400, Cohen's d = 0.163"
+    },
+    {
+      "outcome_name": "valuation_per_employee",
+      "arm_comparison": "ai_era vs pre_ai (regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.830 (SE 0.292), cohort predictor",
+      "test_statistic": "t = -2.844",
+      "p_value": "p = 0.005",
+      "confidence_interval": null,
+      "verbatim_quote": "For valuation per employee, the model explained 0.9% of the variance (adjusted R\u00b2 = 0.007), with cohort emerging as a significant predictor (\u03b2 = -0.830, p = 0.005), indicating lower valuation per employee in the AI-era cohort, controlling for firm age."
+    },
+    {
+      "outcome_name": "revenue_per_employee",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 0.568,
+          "sd": 1.829,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 0.145,
+          "sd": 0.555,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 0.258",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = 3.234",
+      "p_value": "p = 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Revenue per Employee: t = 3.234, df = 912, p = 0.001, Mean Difference = 0.423, Cohen's d = 0.258"
+    },
+    {
+      "outcome_name": "revenue_per_employee",
+      "arm_comparison": "ai_era vs pre_ai (regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.254 (SE 0.195), cohort predictor",
+      "test_statistic": "F = 5.907",
+      "p_value": "p = 0.194",
+      "confidence_interval": null,
+      "verbatim_quote": "For revenue per employee, the model explained 1.3% of the variance (adjusted R\u00b2 = 0.011), with the overall model significant (F = 5.907, p = 0.003), but individual predictors not significant (cohort \u03b2 = -0.254, p = 0.194)."
+    },
+    {
+      "outcome_name": "funding_per_employee",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 0.376,
+          "sd": 0.935,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 0.227,
+          "sd": 0.467,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 0.175",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = 2.187",
+      "p_value": "p = 0.029",
+      "confidence_interval": null,
+      "verbatim_quote": "Funding per Employee: t = 2.187, df = 912, p = 0.029, Mean Difference = 0.149, Cohen's d = 0.175"
+    },
+    {
+      "outcome_name": "funding_per_employee",
+      "arm_comparison": "ai_era vs pre_ai (regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.339 (SE 0.102), cohort predictor",
+      "test_statistic": "t = -3.329",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "For funding per employee, the model explained 1.2% of the variance (adjusted R\u00b2 = 0.010), with cohort significant (\u03b2 = -0.339, p < 0.001), indicating lower funding per employee in AI-era."
+    },
+    {
+      "outcome_name": "revenue_to_valuation_ratio",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 1.265,
+          "sd": 5.833,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 0.405,
+          "sd": 3.211,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 0.160",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = 2.007",
+      "p_value": "p = 0.045",
+      "confidence_interval": null,
+      "verbatim_quote": "Revenue to Valuation Ratio: t = 2.007, df = 912, p = 0.045, Mean Difference = 0.860, Cohen's d = 0.160"
+    },
+    {
+      "outcome_name": "revenue_to_valuation_ratio",
+      "arm_comparison": "ai_era vs pre_ai (regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.445 (SE 0.124), firm age predictor",
+      "test_statistic": "t = 3.577",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "For revenue to valuation ratio, the model explained 1.8% of the variance (adjusted R\u00b2 = 0.016), with firm age significant (\u03b2 = 0.445, p < 0.001)."
+    },
+    {
+      "outcome_name": "funding_to_valuation_ratio",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 0.437,
+          "sd": 0.885,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 0.397,
+          "sd": 0.774,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 0.047",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = 0.583",
+      "p_value": "p = 0.560",
+      "confidence_interval": null,
+      "verbatim_quote": "Funding to Valuation Ratio: t = 0.583, df = 912, p = 0.560, Mean Difference = 0.040, Cohen's d = 0.047"
+    },
+    {
+      "outcome_name": "funding_to_valuation_ratio",
+      "arm_comparison": "ai_era vs pre_ai (regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "F = 1.374",
+      "p_value": "p = 0.254",
+      "confidence_interval": null,
+      "verbatim_quote": "For funding to valuation ratio, the model explained 0.3% of the variance (adjusted R\u00b2 = 0.001), not significant (F = 1.374, p = 0.254)."
+    },
+    {
+      "outcome_name": "revenue_to_funding_ratio",
+      "arm_comparison": "ai_era vs pre_ai",
+      "means_and_sds": {
+        "pre_ai": {
+          "mean": 8.941,
+          "sd": 55.213,
+          "se": null
+        },
+        "ai_era": {
+          "mean": 1.53,
+          "sd": 10.087,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": "Cohen's d = 0.151",
+      "regression_coefficient": null,
+      "test_statistic": "t(912) = 1.893",
+      "p_value": "p = 0.059",
+      "confidence_interval": null,
+      "verbatim_quote": "Revenue to Funding Ratio: t = 1.893, df = 912, p = 0.059, Mean Difference = 7.411, Cohen's d = 0.151"
+    },
+    {
+      "outcome_name": "revenue_to_funding_ratio",
+      "arm_comparison": "ai_era vs pre_ai (regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 4.847 (SE 1.133), firm age predictor",
+      "test_statistic": "t = 4.278",
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "For revenue to funding ratio, the model explained 2.4% of the variance (adjusted R\u00b2 = 0.021), with firm age significant (\u03b2 = 4.847, p < 0.001)."
+    }
+  ],
+  "notes": "Natural experiment design using founding year as exogenous treatment proxy. Final sample: 914 firms (713 pre-AI, 201 AI-era). Key findings: AI-era firms have significantly larger employee counts (mean 11.641 vs 4.961, p < .001) but lower efficiency metrics including valuation per employee (0.788 vs 1.188, p = 0.041) and revenue-to-funding ratio (1.530 vs 8.941, p = 0.059, marginal). Study limitations include absence of survival data, reliance on text-based classification for AI adoption identification, and India-centric focus limiting global generalizability. Regression models show cohort (AI-era) as significant predictor for valuation per employee (\u03b2 = -0.830, p = 0.005) and funding per employee (\u03b2 = -0.339, p < .001), with firm age significant for revenue-to-funding and revenue-to-valuation ratios.",
+  "_paper_id": "2507.19775v1"
+}

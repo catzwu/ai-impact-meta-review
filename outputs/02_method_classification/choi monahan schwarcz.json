@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study explicitly states it is \"A randomized controlled trial\" where \"Sixty students at the University of Minnesota Law School were randomly assigned to two groups of thirty each\" with one group using GPT-4 for certain tasks and the other group using GPT-4 for different tasks. While participants completed tasks remotely on their own schedule, this is not a controlled lab setting nor a real workplace field setting, making it a standard RCT.",
+  "citation_key": "choi_2023_lawyering_ai"
+}

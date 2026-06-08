@@ -1,0 +1,32 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "commits",
+      "category": "speed",
+      "operationalization": "Count of commits in the repository during the month, extracted from version control system"
+    },
+    {
+      "outcome_name": "lines_added",
+      "category": "speed",
+      "operationalization": "Total lines of code added summed across all commits in the repository during the month"
+    },
+    {
+      "outcome_name": "static_analysis_warnings",
+      "category": "quality",
+      "operationalization": "Count of reliability, maintainability, and security issues detected by SonarQube static analysis for the repository at month"
+    },
+    {
+      "outcome_name": "duplicated_lines_density",
+      "category": "quality",
+      "operationalization": "Percentage of duplicated lines in codebase detected by SonarQube (typically requiring 10+ consecutive duplicate statements or 100+ duplicate tokens)"
+    },
+    {
+      "outcome_name": "code_complexity",
+      "category": "quality",
+      "operationalization": "Cognitive complexity score of the codebase measured by SonarQube, quantifying code understandability at month"
+    }
+  ],
+  "primary_speed_outcome": "commits",
+  "primary_quality_outcome": "static_analysis_warnings",
+  "citation_key": "he_2026_cursor_velocity"
+}

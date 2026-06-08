@@ -1,0 +1,444 @@
+{
+  "citation_key": "xue_2025_generative_analysts",
+  "authors": [
+    "Jian Xue",
+    "Qian Zhang",
+    "Wu Zhu"
+  ],
+  "title": "Generative AI for Analysts",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "Using the December 2023 launch of FactSet's AI-powered platform (Mercury) as a natural experiment, the study employs a difference-in-differences framework comparing analysts who rely on FactSet with those using alternative data platforms before and after AI introduction. To address selection concerns, the authors employ propensity score matching (PSM) with entropy balancing to construct statistically equivalent treatment and control groups of reports developed with and without FactSet. Placebo tests using other major platforms (Bloomberg, Refinitiv, Capital IQ) are conducted to verify results are specific to the AI-powered FactSet platform.",
+  "primary_task_description": "The study examines how generative AI transforms the work of financial analysts, specifically investigating how AI-powered platforms affect analysts' ability to acquire, synthesize, and process information, and how these changes influence the quality, productivity, and market impact of their research output. The analysis is based on a comprehensive dataset of 52,428 equity research reports issued by U.S. analysts between 2022 and 2024.",
+  "population_description": "The sample comprises 52,428 report-level observations covering 2,616 unique firms and 409 analyst teams employed at 24 brokerages. Analysts in the sample have on average 16.6 years of general experience and 5.6 years of firm-specific experience. Approximately 10.9% of analyst teams include a member with IT experience, and 19.2% include an analyst who graduated from a top 100 university. The average brokerage employs 99.8 analyst teams, and the average research team consists of 2.8 signatory analysts. On average, an analyst issues 4.8 reports per firm per year and follows 21.9 portfolio firms in total.",
+  "arms": [
+    {
+      "arm_name": "factset_ai_assisted",
+      "description": "Reports issued after the introduction of the AI-powered FactSet Mercury platform (December 14, 2023) that cite FactSet as an information source",
+      "n": null
+    },
+    {
+      "arm_name": "control",
+      "description": "Reports developed without FactSet, matched via propensity score matching with entropy balancing to treated reports",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "textual_sources",
+      "outcome_description": "Number of distinct textual information sources cited in analyst reports",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "figure_sources",
+      "outcome_description": "Number of distinct figure sources cited in analyst reports",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "table_sources",
+      "outcome_description": "Number of distinct table sources cited in analyst reports",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "firm_specific_topics",
+      "outcome_description": "Number of firm-specific topics discussed in reports (e.g., earnings guidance, product launches)",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "industry_level_topics",
+      "outcome_description": "Number of industry-level topics discussed in reports (e.g., supply chain conditions, regulatory developments, technological changes)",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "macroeconomic_topics",
+      "outcome_description": "Number of macroeconomic topics discussed in reports (e.g., monetary policy, inflation, GDP growth)",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "historical_trend_analysis",
+      "outcome_description": "Use of historical trend analysis aimed at evaluating the firm's past performance and patterns",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "valuation_methods",
+      "outcome_description": "Use of valuation models (e.g., discounted cash flow, comparable company multiples, precedent transactions)",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "forecasting_methods",
+      "outcome_description": "Use of forecasting methods (e.g., earnings projections, demand forecasts, scenario analysis)",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "timeliness",
+      "outcome_description": "Log of leader ratio, calculated as the cumulative number of days between the focal forecast and the two most recent forecasts by other analysts for the same firm divided by the cumulative number of days between the focal forecast and the following two forecasts by other analysts",
+      "measurement_unit": "log ratio",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "outcome_description": "Negative of the absolute difference between the analyst's earnings per share (EPS) forecast and the EPS realized subsequently",
+      "measurement_unit": "dollars",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "signal_source",
+      "outcome_description": "Difference between the number of information sources that predict an increase in earnings and those that predict a decrease in earnings, scaled by the sum of the two",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "signal_balance",
+      "outcome_description": "One minus the absolute value of SignalSource; captures the extent to which a report presents a balanced view of firm fundamentals",
+      "measurement_unit": "ratio",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "cumulative_abnormal_returns",
+      "outcome_description": "Market-adjusted return over the [0,2] trading day window following the release of the analyst report",
+      "measurement_unit": "returns",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "abnormal_trading_volume",
+      "outcome_description": "Daily average market-adjusted number of shares traded over the [0,2] trading day window scaled by total shares outstanding, less the equivalent amount over the [-40,-11] window",
+      "measurement_unit": "proportion of shares outstanding",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "textual_sources",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 8.655,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "40% more distinct information sources; 2.596 additional sources (30% relative to mean of 8.655)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "FactSet\u00d7Post = 1.361 (interaction coefficient; Post coefficient = 0.377)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For instance, for textual sources, the coefficient on FactSet\u00d7Post is 1.361\u2014more than triple the magnitude of the corresponding Post coefficient (0.377). By comparison, textual sources increase by 2.596, or roughly 30% relative to their mean (8.655)"
+    },
+    {
+      "outcome_name": "figure_sources",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 3.42,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.092 additional figure sources (61% increase relative to sample mean of 3.420)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "FactSet\u00d7Post interaction coefficient = 0.648 (nearly five times larger than Post coefficient of 0.136)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For figure sources, the interaction coefficient (0.648) is nearly five times larger than that on Post (0.136), and for table sources, the effect (1.451) is roughly seven times greater than that of Post (0.199). The number of figure sources rises by 2.092, equivalent to a 61% increase relative to the sample mean (3.420)"
+    },
+    {
+      "outcome_name": "table_sources",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 7.604,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.117 additional table sources (28% relative to mean of 7.604); 25% greater use overall",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "FactSet\u00d7Post = 1.451 (roughly seven times greater than Post coefficient of 0.199)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For figure sources, the interaction coefficient (0.648) is nearly five times larger than that on Post (0.136), and for table sources, the effect (1.451) is roughly seven times greater than that of Post (0.199). table sources rise by 2.117, or 28% relative to their mean (7.604)"
+    },
+    {
+      "outcome_name": "industry_level_topics",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 5.5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.658 additional industry-level topics (48% increase relative to mean of 5.500)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The expansion in topical coverage is most pronounced for industry-level (48% = 2.658 / 5.500) and macro-level topics (41% = 2.574 / 6.338), whereas firm-specific topics rise more modestly by 14% (= 1.726 / 12.309)"
+    },
+    {
+      "outcome_name": "macroeconomic_topics",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 6.338,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.574 additional macroeconomic topics (41% increase relative to mean of 6.338)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The expansion in topical coverage is most pronounced for industry-level (48% = 2.658 / 5.500) and macro-level topics (41% = 2.574 / 6.338), whereas firm-specific topics rise more modestly by 14% (= 1.726 / 12.309)"
+    },
+    {
+      "outcome_name": "firm_specific_topics",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 12.309,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.726 additional firm-specific topics (14% increase relative to mean of 12.309); 34% broader topical coverage overall",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The expansion in topical coverage is most pronounced for industry-level (48% = 2.658 / 5.500) and macro-level topics (41% = 2.574 / 6.338), whereas firm-specific topics rise more modestly by 14% (= 1.726 / 12.309)"
+    },
+    {
+      "outcome_name": "historical_trend_analysis",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 1.605,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.212 increase in historical trend analysis (13% relative to mean of 1.605)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The use of analytical methods rises by 13% (= 0.212 / 1.605) for historical trend analysis, 25% (= 0.718 / 2.828) for valuation, and 38% (= 1.437 / 3.781) for forecasting"
+    },
+    {
+      "outcome_name": "valuation_methods",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 2.828,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.718 increase in valuation methods (25% relative to mean of 2.828)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The use of analytical methods rises by 13% (= 0.212 / 1.605) for historical trend analysis, 25% (= 0.718 / 2.828) for valuation, and 38% (= 1.437 / 3.781) for forecasting"
+    },
+    {
+      "outcome_name": "forecasting_methods",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 3.781,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.437 increase in forecasting methods (38% relative to mean of 3.781); 25% greater use of advanced analytical methods overall",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The use of analytical methods rises by 13% (= 0.212 / 1.605) for historical trend analysis, 25% (= 0.718 / 2.828) for valuation, and 38% (= 1.437 / 3.781) for forecasting"
+    },
+    {
+      "outcome_name": "timeliness",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": 1.38,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "22% improvement in timeliness (0.22 standard deviations); forecast issuance accelerated",
+      "standardized_effect_reported": "0.22 standard deviations (= 0.297/1.380)",
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Consistent with the platform's goal of enhancing workflow efficiency, we find that forecast timeliness improves by 22% of one standard deviation following AI adoption, indicating faster report issuance. The first column shows a positive and statistically significant effect on timeliness: adoption of the AI platform accelerates forecast issuance by 0.22 standard deviations (= 0.297/1.380)"
+    },
+    {
+      "outcome_name": "forecast_accuracy",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 0.742,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "forecast errors increase by $0.44 (59% of sample mean of $0.74)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "FactSet\u00d7Post coefficient is negative and significant at 1% level",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "However, forecast errors rise by 59% as AI-assisted reports convey a more balanced mix of positive and negative information that is harder to synthesize, particularly for analysts facing heavier cognitive demands. In contrast, the second column shows that the coefficient on FactSet\u00d7Post is negative and significant at the 1% level for forecast accuracy. In economic terms, forecast errors increase by $0.44, or approximately 59% (= 0.438/0.742) of the sample mean, following the AI launch"
+    },
+    {
+      "outcome_name": "signal_balance",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "approximately 23% of the standard deviation of SignalBalance",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "FactSet\u00d7Post = 0.071 (t = 2.31)",
+      "test_statistic": "t = 2.31",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient on FactSet\u00d7Post is positive and statistically significant (\u03b4= 0.071,t= 2.31), corresponding to approximately 23% of the standard deviation of SignalBalance"
+    },
+    {
+      "outcome_name": "abnormal_trading_volume",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "lower trading activity in AI-assisted reports",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "FactSet\u00d7Post = -0.211 (t = -2.45)",
+      "test_statistic": "t = -2.45",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Similarly, the coefficient on FactSet\u00d7Post in the abnormal trading volume regression is negative (-0.211,t=-2.45), suggesting that these reports trigger lower trading activity"
+    },
+    {
+      "outcome_name": "cumulative_abnormal_returns",
+      "arm_comparison": "factset_ai_assisted vs control",
+      "means_and_sds": {
+        "factset_ai_assisted": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "investors react less strongly to the informational tone of AI-assisted reports",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "SignalScore\u00d7FactSet\u00d7Post = -0.014 (t = -2.18)",
+      "test_statistic": "t = -2.18",
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The coefficient on SignalScore\u00d7FactSet\u00d7Post is negative and significant (-0.014,t=-2.18), indicating that investors react less strongly to the informational tone of AI-assisted reports"
+    }
+  ],
+  "notes": "This is a natural experiment study exploiting the December 2023 launch of FactSet's AI-powered Mercury platform. The paper uses difference-in-differences with propensity score matching and entropy balancing. Sample sizes for individual arms are not explicitly stated in the quotes; the total dataset comprises 52,428 report-level observations. Approximately 35.3% of reports are issued after the AI platform introduction. The study finds a key trade-off: AI adoption increases report richness (40% more sources, 34% broader topical coverage, 25% greater analytical methods) and timeliness (22% improvement), but decreases forecast accuracy (59% increase in forecast errors). The authors note that their treatment indicator captures only a subset of all AI-assisted research activity, as some control-group analysts may use alternative AI tools (ChatGPT, internal copilots, etc.), suggesting their estimates likely represent a conservative lower bound on true AI impacts. Pre-trend tests revealed systematic declines in FactSet-assisted reports in the quarter immediately before AI integration, which may potentially bias coefficient estimates.",
+  "_paper_id": "2512.19705v1"
+}

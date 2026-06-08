@@ -1,0 +1,37 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "self_reported_productivity_change",
+      "category": "other",
+      "operationalization": "Survey response on 5-point scale from -2 (major decrease) to +2 (major increase) for perceived productivity change since Copilot access"
+    },
+    {
+      "outcome_name": "weekly_commit_count",
+      "category": "speed",
+      "operationalization": "Number of commits per developer per week, counted from GitHub repositories with zero-commit weeks imputed as 0"
+    },
+    {
+      "outcome_name": "weekly_lines_added",
+      "category": "speed",
+      "operationalization": "Number of lines of code added per developer per week, aggregated from commit data"
+    },
+    {
+      "outcome_name": "weekly_lines_deleted",
+      "category": "speed",
+      "operationalization": "Number of lines of code deleted per developer per week, aggregated from commit data"
+    },
+    {
+      "outcome_name": "net_lines_of_code_change",
+      "category": "speed",
+      "operationalization": "Net lines per week (insertions minus deletions), measured as difference between post-adoption and pre-adoption averages"
+    },
+    {
+      "outcome_name": "developer_activity_level",
+      "category": "other",
+      "operationalization": "Composite measure of developer activity comparing Copilot users versus non-users before and after adoption; specific operationalization not specified"
+    }
+  ],
+  "primary_speed_outcome": "weekly_commit_count",
+  "primary_quality_outcome": null,
+  "citation_key": "stray_2026_copilot_productivity"
+}

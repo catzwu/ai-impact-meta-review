@@ -1,0 +1,152 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "completion_time_percentage_change",
+      "category": "speed",
+      "operationalization": "Percentage change in self-reported total implementation time (including pre- and post-pull request review) between AI-allowed and AI-disallowed issues"
+    },
+    {
+      "outcome_name": "developer_forecast_speedup",
+      "category": "other",
+      "operationalization": "Developers' pre-randomization forecast of AI's effect on completion time; measures expectations, not actual performance"
+    },
+    {
+      "outcome_name": "post_study_developer_estimate",
+      "category": "other",
+      "operationalization": "Developers' post-study retrospective estimate of AI's effect on completion time; measures perception, not actual performance"
+    },
+    {
+      "outcome_name": "expert_forecast_speedup_economics",
+      "category": "other",
+      "operationalization": "Economics experts' forecasts of AI's effect on implementation time; measures expert predictions, not actual performance"
+    },
+    {
+      "outcome_name": "expert_forecast_speedup_ml",
+      "category": "other",
+      "operationalization": "Machine learning experts' forecasts of AI's effect on implementation time; measures expert predictions, not actual performance"
+    },
+    {
+      "outcome_name": "forecast_accuracy_correlation_ai_allowed",
+      "category": "other",
+      "operationalization": "Pearson correlation between developers' forecasted and actual time on AI-allowed issues; measures forecasting accuracy, not task performance"
+    },
+    {
+      "outcome_name": "forecast_accuracy_correlation_ai_disallowed",
+      "category": "other",
+      "operationalization": "Pearson correlation between developers' forecasted and actual time on AI-disallowed issues; measures forecasting accuracy, not task performance"
+    },
+    {
+      "outcome_name": "time_reviewing_ai_outputs",
+      "category": "other",
+      "operationalization": "Proportion of time spent reviewing and cleaning AI outputs, measured from labeled screen recordings (n=44); measures process behavior, not speed or quality"
+    },
+    {
+      "outcome_name": "time_waiting_on_ai",
+      "category": "other",
+      "operationalization": "Proportion of time spent waiting on AI outputs, measured from labeled screen recordings; measures process behavior, not speed or quality"
+    },
+    {
+      "outcome_name": "ai_generation_acceptance_rate",
+      "category": "other",
+      "operationalization": "Percentage of AI generations accepted when using Cursor; measures adoption behavior, not speed or quality of final output"
+    },
+    {
+      "outcome_name": "code_review_behavior",
+      "category": "other",
+      "operationalization": "Percentage of developers self-reporting reading every line of AI code; measures review behavior, not speed or quality"
+    },
+    {
+      "outcome_name": "code_cleanup_frequency",
+      "category": "other",
+      "operationalization": "Percentage of developers self-reporting often needing major changes to clean up AI code; measures perceived effort, not speed or quality"
+    },
+    {
+      "outcome_name": "code_modification_requirement",
+      "category": "other",
+      "operationalization": "Percentage of developers self-reporting needing to modify AI code; measures modification behavior, not speed or quality"
+    },
+    {
+      "outcome_name": "post_review_implementation_time",
+      "category": "speed",
+      "operationalization": "Mean time spent on implementation after pull request review, measured in hours"
+    },
+    {
+      "outcome_name": "ai_usage_rate_when_allowed",
+      "category": "other",
+      "operationalization": "Percentage of AI-allowed issues where AI was actually used, from manually labeled screen recordings (n=74); measures adoption, not performance"
+    },
+    {
+      "outcome_name": "protocol_violation_rate",
+      "category": "other",
+      "operationalization": "Percentage of AI-disallowed issues where AI was used, from labeled screen recordings (n=54); measures compliance, not performance"
+    },
+    {
+      "outcome_name": "slowdown_no_uncompleted_ai_disallowed",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time, subsetting to developers with no uncompleted AI-disallowed issues"
+    },
+    {
+      "outcome_name": "slowdown_no_uncompleted_ai_allowed",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time, subsetting to developers with no uncompleted AI-allowed issues"
+    },
+    {
+      "outcome_name": "slowdown_no_dropout",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time, subsetting to developers with no dropout on any issues"
+    },
+    {
+      "outcome_name": "slowdown_screen_recording_time",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time using total screen recording time instead of self-reported time"
+    },
+    {
+      "outcome_name": "code_volume_per_hour",
+      "category": "other",
+      "operationalization": "Percentage difference in code written per hour on AI-allowed issues versus AI-disallowed forecasts; measures output volume, not speed or quality"
+    },
+    {
+      "outcome_name": "continued_ai_usage_post_study",
+      "category": "other",
+      "operationalization": "Percentage of developers continuing AI tool use after study completion; measures adoption, not performance"
+    },
+    {
+      "outcome_name": "slowdown_comparable_ides",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time, restricting to developers using comparable IDEs across treatment conditions"
+    },
+    {
+      "outcome_name": "raw_percentage_difference_implementation_time",
+      "category": "speed",
+      "operationalization": "Raw percentage difference in implementation times between AI-allowed and AI-disallowed issues, without adjustment"
+    },
+    {
+      "outcome_name": "slowdown_high_prior_task_exposure",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time on issues where developers have high prior task exposure"
+    },
+    {
+      "outcome_name": "slowdown_fewer_external_resources",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time on issues where developers need fewer external resources"
+    },
+    {
+      "outcome_name": "slowdown_scope_creep",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time comparing developers who report scope creep on AI-allowed issues versus those who do not"
+    },
+    {
+      "outcome_name": "developer_slowdown_prevalence",
+      "category": "other",
+      "operationalization": "Percentage of developers experiencing slowdown; measures prevalence of effect, not magnitude of speed or quality"
+    },
+    {
+      "outcome_name": "slowdown_high_forecasted_speedup",
+      "category": "speed",
+      "operationalization": "Percentage change in completion time on issues where developers predicted \u226533% speedup or top tertile forecasted speedup"
+    }
+  ],
+  "primary_speed_outcome": "completion_time_percentage_change",
+  "primary_quality_outcome": null,
+  "citation_key": "becker_2025_ai_developer_productivity"
+}

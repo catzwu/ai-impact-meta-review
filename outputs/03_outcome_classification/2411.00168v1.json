@@ -1,0 +1,67 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "design_creativity",
+      "category": "quality",
+      "operationalization": "Expert rating on 7-point scale (strongly disagree to strongly agree) to statement \"This design is creative\""
+    },
+    {
+      "outcome_name": "design_unconventionality_weirdness",
+      "category": "quality",
+      "operationalization": "Expert rating on 7-point scale (strongly disagree to strongly agree) to statement \"This design is weird\""
+    },
+    {
+      "outcome_name": "design_usefulness",
+      "category": "quality",
+      "operationalization": "Expert rating on 11-point scale responding to \"In a social media ad campaign, how well will this ad perform?\""
+    },
+    {
+      "outcome_name": "design_visual_appeal",
+      "category": "quality",
+      "operationalization": "Expert rating on 7-point scale (strongly disagree to strongly agree) to statement \"This design is visually appealing\""
+    },
+    {
+      "outcome_name": "design_brand_alignment",
+      "category": "quality",
+      "operationalization": "Expert rating on 7-point scale (strongly disagree to strongly agree) to statement about effective representation of the organization"
+    },
+    {
+      "outcome_name": "divergent_thinking_fluency",
+      "category": "other",
+      "operationalization": "Total number of unconventional uses listed for commonplace items in Alternative Uses Test with two-minute time limit"
+    },
+    {
+      "outcome_name": "divergent_thinking_flexibility",
+      "category": "other",
+      "operationalization": "Variety of categories of uses generated in Alternative Uses Test, scored as flexibility measure"
+    },
+    {
+      "outcome_name": "convergent_thinking",
+      "category": "other",
+      "operationalization": "Number of completed anagrams in three-minute Anagram Test where participants rearrange letters into different words"
+    },
+    {
+      "outcome_name": "mood_relaxation",
+      "category": "other",
+      "operationalization": "Self-reported relaxation level via short survey"
+    },
+    {
+      "outcome_name": "mood_pleasure",
+      "category": "other",
+      "operationalization": "Self-reported pleasure level via short survey"
+    },
+    {
+      "outcome_name": "mood_energy",
+      "category": "other",
+      "operationalization": "Self-reported energy level via short survey"
+    },
+    {
+      "outcome_name": "self_efficacy",
+      "category": "other",
+      "operationalization": "Self-report measure developed by Dow et al., not further specified"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "design_creativity",
+  "citation_key": "fu_2024_creativity_ai"
+}

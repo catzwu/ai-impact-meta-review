@@ -1,0 +1,60 @@
+{
+  "citation_key": "liveric_2025_ai_cognitive",
+  "authors": [
+    "Dijana Liveri\u0107"
+  ],
+  "title": "The Impact of AI Tools on Students' Cognitive Processes in Practical Software Development",
+  "year": 2025,
+  "venue": "Information Society 2025",
+  "quotes": {
+    "study_design": [
+      "An online questionnaire was used, combining closed and open-ended questions about students' background, use of AI tools, behavior during implementation, understanding and cognitive processes, motivation, and the teacher's role.",
+      "Data were collected during lessons through a voluntary and anonymous online survey.",
+      "Quantitative data were analyzed using descriptive statistics, while qualitative responses were examined through content analysis focusing on the link between AI use and cognitive engagement."
+    ],
+    "task": [
+      "Participants were high school students from grammar and vocational tracks with access to AI tools in programming classes."
+    ],
+    "population": [
+      "Participants were high school students from grammar and vocational tracks with access to AI tools in programming classes.",
+      "The survey results (N=131)"
+    ],
+    "arms": [],
+    "outcome_definitions": [
+      "Critical thinking, cognitive load, offloading, and motivation"
+    ],
+    "statistical_results": [
+      "The survey results (N=131) show that the vast majority of students use ChatGPT as their primary AI tool for programming (77.5%), while GitHub Copilot is used by only 12.5%, and CodeWhisperer by 3.3% of respondents.",
+      "Interestingly, one fifth of students (20%) reported that they do not use AI tools at all.",
+      "Regarding solution implementation, a considerable share of students (38%) reported that they first attempt to solve the problem independently before asking AI for help, while 31% stated that they at least try to understand the generated code before applying it.",
+      "Only a small portion (around 15%) admitted to simply copying and running the code.",
+      "However, perceptions of their own thinking process are more ambivalent: about 41% of students feel that using AI bypasses their own reasoning, while one third disagrees with this claim.",
+      "The motivational effects of AI are evident: more than 70% of students stated that obtaining a correct solution through AI motivates them to continue working, and 68% believe that AI helps them progress faster.",
+      "At the same time, nearly 30% of students admitted that their motivation decreases if they do not immediately obtain a correct solution, which points to dependence on external validation rather than the development of intrinsic motivation.",
+      "The teacher's role remains crucial: nearly 80% of students agreed that the teacher is necessary to ensure that AI use genuinely contributes to learning.",
+      "More than half of the students (54.96%) did not reject the statement that using AI might bypass their own thought process, suggesting ambivalent attitudes and confirming the need for clear pedagogical guidance"
+    ],
+    "ambiguity_or_caveats": [
+      "Although AI tools hold great potential in education, important questions remain about students' genuine understanding of generated solutions and their cognitive engagement.",
+      "However, there is a risk that germane load may also be reduced if students rely on generated solutions without engaging in meaningful understanding of the underlying process.",
+      "It is essential to distinguish between strategic use of external aids which frees up working memory for higher-level tasks and passive reliance on tools that reduces metacognitive engagement and hinders deep learning.",
+      "When students accept solutions without reflection or analysis, the cognitive loop necessary for learning is disrupted, weakening long-term knowledge retention.",
+      "Studies show that offloading can improve immediate task performance, but at the cost of long-term memory and understanding if it is not accompanied by conscious cognitive processing.",
+      "Moreover, learners often choose to offload even when it is unnecessary, driven by low tolerance for cognitive effort or inaccurate self-assessment of their abilities.",
+      "Within the process of learning to program, this dynamic may manifest in the way a tool intended to support cognitive processing turns into a source of ready answers, bypassing independent reasoning.",
+      "Over time, such patterns of behavior can restrict the growth of problem-solving abilities and autonomous thinking.",
+      "However, GitClear's 2024 analysis showed reduced code reusability and increased revisions when AI-generated suggestions were accepted without review.",
+      "Nearly 45% of AI-generated code samples contained at least one known security vulnerability classified by OWASP.",
+      "There are also documented cases of unintentional sensitive data exposure due to poor understanding of code publishing.",
+      "Another concern is the model collapse phenomenon, where large language models recursively trained on synthetic or AI-generated content may lose variance and degrade in their ability to produce high-quality outputs.",
+      "These findings suggest that AI, when used uncritically, can amplify existing risks rather than mitigate them.",
+      "This suggests a risk that some students may develop a habit of shifting cognitive responsibility to the external tool, potentially weakening deeper learning.",
+      "At the same time, prolonged reliance on ready-made answers may lead to the accumulation of cognitive debt.",
+      "This transformation also introduces new challenges \u2013 from questions of academic integrity and knowledge authenticity to potential misuse through identity theft and the sharing of sensitive data.",
+      "Such an environment may foster new forms of neuroplasticity and cognitive flexibility, but it also carries the risk of shallow cognitive development if reflection and independent problem-solving remain overshadowed by ready-made solutions."
+    ]
+  },
+  "notes": "This is a survey-based study with no experimental control group or randomized assignment. The paper is primarily a theoretical and empirical analysis of how high school students use AI tools (particularly ChatGPT) in programming education. It does not compare an AI-assisted condition to a no-AI control condition; rather, it reports descriptive statistics on student behaviors and perceptions regarding AI use. The study integrates survey data (N=131) with theoretical frameworks (Cognitive Load Theory, Self-Determination Theory, Cognitive Flexibility Theory) but does not test causal effects of AI on learning outcomes. The findings are observational and correlational in nature.",
+  "_paper_id": "TheImpactofAIToolsonStudentsCognitiveProcessesinPracticalSoftwareDevelopment",
+  "_source_pdf": "papers/TheImpactofAIToolsonStudentsCognitiveProcessesinPracticalSoftwareDevelopment.pdf"
+}

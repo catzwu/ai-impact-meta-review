@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly uses a 'staggered difference-in-differences design to isolate the causal impact' with variation in access driven by 'bottlenecks in onboarding due to limited training resources and the firm's budget constraints.' This is a clear quasi-experimental identification strategy using staggered rollout timing as the source of exogenous variation.",
+  "citation_key": "brynjolfsson_2024_generative_ai"
+}

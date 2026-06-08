@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-25",
+  "onet_label": "Working with Computers",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are software developers working in GitHub repositories who are adopting Cursor (an AI-powered code editor). The primary task being measured is their development work\u2014writing, modifying, and managing code across various programming languages. While '15-1252.00 Software Developers' might seem appropriate, the study focuses narrowly on the coding activity itself (measuring development velocity and code quality) rather than the full breadth of software developer responsibilities. The work activity 'Working with Computers' best captures the specific computer-based programming work being measured.",
+  "alternates": [
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1252.00",
+      "onet_label": "Software Developers"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    }
+  ],
+  "citation_key": "he_2026_cursor_velocity"
+}

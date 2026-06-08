@@ -1,0 +1,52 @@
+{
+  "_paper_id": "Zhang et al. 2024",
+  "citation_key": "zhang_2024_ai_metadata",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treatment",
+    "ai_arm_selection_rationale": "Single treatment arm (access to AI-generated titles) vs. control arm (no access). The paper reports regression results in Table 15 showing the interaction between treatment and similarity on lexical density. The control baseline mean for lexical density is 0.509 (from Table 15 footer). For the treatment group at similarity=0 (maximum human revision), the effect is Treat coefficient (0.016) applied to the baseline.",
+    "direction_convention": "larger_is_better",
+    "m_human": 0.509,
+    "sd_human": null,
+    "se_human": 0.0002,
+    "n_human": 1023093,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1024940,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "The paper reports regression coefficients rather than simple treatment vs. control means. Table 15 shows: Control Baseline (Mean) = 0.509, Treat coefficient = 0.016*** (SE=0.0002), Treat*Similarity coefficient = -0.245*** (SE=0.0002). The treatment effect varies by similarity score. At similarity=0 (fully human-revised AI titles), the treatment effect would be 0.016, giving an implied mean of ~0.525 for treatment. However, the paper does not report SDs for either arm directly, only standard errors for regression coefficients. The sample is 3,885,089 matched videos (from PSM analysis). Without SDs or a direct t-statistic comparing arms, Hedges' g cannot be reliably computed. The p-value is reported as p<0.01 (inequality only, not exact value).",
+    "source_quotes": [
+      "Table 15 Results of Lexical Richness Analysis (Matched Sample): Control Baseline (Mean) 0.509",
+      "Treat 0.016*** (0.0002)",
+      "Treat * Similarity -0.245*** (0.0002)",
+      "Observations 3,885,089",
+      "Notes: ***p<0.01; **p<0.05; *p<0.1. Values in parentheses are robust standard errors."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "The paper reports regression coefficients rather than simple treatment vs. control means. Table 15 shows: Control Baseline (Mean) = 0.509, Treat coefficient = 0.016*** (SE=0.0002), Treat*Similarity coefficient = -0.245*** (SE=0.0002). The treatment effect varies by similarity score. At similarity=0 (fully human-revised AI titles), the treatment effect would be 0.016, giving an implied mean of ~0.525 for treatment. However, the paper does not report SDs for either arm directly, only standard errors for regression coefficients. The sample is 3,885,089 matched videos (from PSM analysis). Without SDs or a direct t-statistic comparing arms, Hedges' g cannot be reliably computed. The p-value is reported as p<0.01 (inequality only, not exact value). | insufficient numbers for d",
+    "n_human": 1023093,
+    "n_ai": 1024940,
+    "direction_convention": "larger_is_better"
+  }
+}

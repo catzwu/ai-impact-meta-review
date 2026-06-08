@@ -1,0 +1,51 @@
+{
+  "_paper_id": "ziegler",
+  "citation_key": "ziegler_2024_copilot_productivity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is an observational study of GitHub Copilot users. There is no human-only baseline arm. The study examines correlations between usage metrics (e.g., acceptance rate) and self-reported productivity among developers who are all using GitHub Copilot. The paper states: 'We analyze 2,631 survey responses from developers using GitHub Copilot and match their responses to measurements collected from the IDE.' All participants were using the AI tool; the study investigates how different levels of engagement with the tool (measured by acceptance rate and other metrics) correlate with perceived productivity. There is no experimental manipulation creating a no-AI control condition. The closest the paper comes to a comparison is examining variation across subgroups (experience levels, languages, time of day), but these are all within the population of Copilot users. Therefore, no human-only vs. human+AI arm pair can be identified.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After careful re-reading, this paper is definitively an observational correlational study, not a controlled experiment or A/B test. All 2,631 survey respondents were users of GitHub Copilot during the technical preview. The study's core contribution is establishing that acceptance rate (the fraction of shown completions that developers accept) correlates with self-reported productivity (\u03c1 = 0.24, P < 0.0001). The paper explicitly states its goal: 'we investigate whether usage measurements of developer interactions with GitHub Copilot can predict perceived productivity as reported by developers.' There is no baseline condition without AI assistance. The paper does reference a prior RCT (reference 16, Peng et al.) that found task completion time reductions, but the current study does not replicate that experimental design. Instead, it analyzes naturalistic variation in how developers engage with the tool. Therefore, no arm pair can be resolved for computing Hedges' g comparing human-only vs. human+AI performance.",
+    "source_quotes": [
+      "We analyze 2,631 survey responses from developers using GitHub Copilot and match their responses to measurements collected from the IDE.",
+      "Here, we investigate whether usage measurements of developer interactions with GitHub Copilot can predict perceived productivity as reported by developers.",
+      "We find acceptance rate (accepted_per_shown) most positively predicts users' perception of productivity, although, given the confounding and human factors, there is still notable unexplained variance.",
+      "Of all usage measurements, acceptance rate correlates best with aggregate productivity (\u03c1 = 0.24, P < 0.0001)."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After careful re-reading, this paper is definitively an observational correlational study, not a controlled experiment or A/B test. All 2,631 survey respondents were users of GitHub Copilot during the technical preview. The study's core contribution is establishing that acceptance rate (the fraction of shown completions that developers accept) correlates with self-reported productivity (\u03c1 = 0.24, P < 0.0001). The paper explicitly states its goal: 'we investigate whether usage measurements of developer interactions with GitHub Copilot can predict perceived productivity as reported by developers.' There is no baseline condition without AI assistance. The paper does reference a prior RCT (reference 16, Peng et al.) that found task completion time reductions, but the current study does not replicate that experimental design. Instead, it analyzes naturalistic variation in how developers engage with the tool. Therefore, no arm pair can be resolved for computing Hedges' g comparing human-only vs. human+AI performance. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

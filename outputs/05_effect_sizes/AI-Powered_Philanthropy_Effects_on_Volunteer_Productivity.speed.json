@@ -1,0 +1,49 @@
+{
+  "_paper_id": "AI-Powered_Philanthropy_Effects_on_Volunteer_Productivity",
+  "citation_key": "tipnis_2025_ai_philanthropy",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm available: ai_assisted using ChatGPT GPT-4o. This is compared against control (no AI assistance).",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 55,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 53,
+    "reported_percent_change": null,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -0.0013,
+    "regression_coefficient_se": 0.0005,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "The outcome is explicitly log-transformed (measurement_unit = 'log(time)'). The regression coefficient -0.0013 represents the log difference in completion time between treated (AI-assisted) and control. Since the outcome is time (smaller is better) and already in log scale, the coefficient directly represents the log ratio effect. The negative coefficient indicates AI-assisted participants spent less time on tasks.",
+    "source_quotes": [
+      "T reatedit -0.0013** (0.0005)",
+      "Time spent completing tasks, measured in log scale.",
+      "Treated volunteers used Rapid for the first time during the adoption period."
+    ]
+  },
+  "computed": {
+    "log_ratio": -0.0013,
+    "log_ratio_variance": 2.5e-07,
+    "percent_change_equivalent": -0.001299155366047744,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "regression_coef_log_outcome",
+    "confidence": "high",
+    "notes": "The outcome is explicitly log-transformed (measurement_unit = 'log(time)'). The regression coefficient -0.0013 represents the log difference in completion time between treated (AI-assisted) and control. Since the outcome is time (smaller is better) and already in log scale, the coefficient directly represents the log ratio effect. The negative coefficient indicates AI-assisted participants spent less time on tasks.",
+    "n_human": 55,
+    "n_ai": 53
+  }
+}

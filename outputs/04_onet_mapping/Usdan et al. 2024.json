@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-14",
+  "onet_label": "Processing Information",
+  "mapping_confidence": "high",
+  "rationale": "The participants performed a complex sequence of professional research and writing tasks: 'summarization of a news article, web research to find survey results, analysis and synthesis of different survey results, policy development, and critical analysis.' These are graduate students practicing professional memo writing that requires gathering, organizing, analyzing, and synthesizing information from multiple sources to produce policy recommendations. This directly aligns with Processing Information (WA-14): compiling, coding, categorizing, calculating, tabulating, auditing, or verifying information or data. While the output is written communication, the core cognitive work being measured is information processing across research, analysis, and synthesis tasks.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-30",
+      "onet_label": "Documenting/Recording Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-01",
+      "onet_label": "Analyzing Data or Information"
+    }
+  ],
+  "citation_key": "usdan_2024_generative_writing"
+}

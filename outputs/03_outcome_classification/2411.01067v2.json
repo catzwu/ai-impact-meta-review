@@ -1,0 +1,47 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "accuracy_all_content",
+      "category": "quality",
+      "operationalization": "Points awarded across all tasks: MC tasks scored 0 or 1; SATA options scored proportionally; free response scored by LLM identifying key facts present"
+    },
+    {
+      "outcome_name": "accuracy_sata",
+      "category": "quality",
+      "operationalization": "Each SATA option treated as binary question, score proportional to number of options classified correctly"
+    },
+    {
+      "outcome_name": "accuracy_mc",
+      "category": "quality",
+      "operationalization": "One point for correct multiple choice answer, zero for incorrect"
+    },
+    {
+      "outcome_name": "accuracy_free_response",
+      "category": "quality",
+      "operationalization": "LLM grader identifies presence of key facts, score is proportion of key facts included in response"
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "category": "speed",
+      "operationalization": "Time in minutes from task start to completion, measured by experimental platform"
+    },
+    {
+      "outcome_name": "quality_free_response",
+      "category": "quality",
+      "operationalization": "LLM grader evaluates clarity and organization of free response answers"
+    },
+    {
+      "outcome_name": "user_satisfaction",
+      "category": "other",
+      "operationalization": "Self-reported satisfaction with Copilot on 0-100 slider scale across statements about effort, productivity, quality, and future use preference"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "category": "other",
+      "operationalization": "Self-reported feelings about task experience on 0-100 slider scale covering effectiveness, control, security, job appeal, adequacy, uncertainty, effort, and drain"
+    }
+  ],
+  "primary_speed_outcome": "task_completion_time",
+  "primary_quality_outcome": "accuracy_all_content",
+  "citation_key": "bono_2024_security_copilot"
+}

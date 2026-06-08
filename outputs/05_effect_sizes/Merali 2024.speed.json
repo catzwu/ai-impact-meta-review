@@ -1,0 +1,47 @@
+{
+  "_paper_id": "Merali 2024",
+  "citation_key": "merali_2024_scaling_productivity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "ai_assisted",
+    "ai_arm_selection_rationale": "Only one AI arm exists: ai_assisted, which pools all thirteen AI models of differing compute sizes. This is compared against the control arm with no AI assistance.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 600.7,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 413.8,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.311,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Sample sizes (n_human and n_ai) are not provided in the arms data. The primary comparison shows a 31.1% reduction in task completion time with AI assistance (600.7 seconds without AI vs 413.8 seconds with AI, p=0.000). Since time is the outcome and smaller is better, the percent change is negative (-0.311). Additional statistics about scaling relationships with model compute are reported but not extracted as they do not represent the primary human-only vs human+AI comparison.",
+    "source_quotes": [
+      "The average time taken by participants to conduct a task without access to any AI model was almost exactly ten minutes (600.7 seconds). With access to any AI model this was reduced to 413.8 seconds (p=0.000), a statistically significant reduction in time of 31.1%."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.3727128765446731,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.45166747220879655,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Sample sizes (n_human and n_ai) are not provided in the arms data. The primary comparison shows a 31.1% reduction in task completion time with AI assistance (600.7 seconds without AI vs 413.8 seconds with AI, p=0.000). Since time is the outcome and smaller is better, the percent change is negative (-0.311). Additional statistics about scaling relationships with model compute are reported but not extracted as they do not represent the primary human-only vs human+AI comparison. | SDs/SEs missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}

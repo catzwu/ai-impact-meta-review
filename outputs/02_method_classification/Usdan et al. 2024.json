@@ -1,0 +1,6 @@
+{
+  "classification": "within_subject",
+  "confidence": "high",
+  "rationale": "The study states 'All participants completed three writing assignments in the order of no genAI, full genAI, and genAI-assisted' with the same subjects experiencing all conditions. Although 'the order of writing conditions was not counterbalanced,' this is still a within-subject design where participants serve as their own controls across conditions.",
+  "citation_key": "usdan_2024_generative_writing"
+}

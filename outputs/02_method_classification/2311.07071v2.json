@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly uses a \"difference-in-differences research design\" and describes the NovelAI leak as \"a natural experiment\" that was \"exogenous and sudden,\" comparing treated (anime) vs. control (wallpaper) markets before and after the leak.",
+  "citation_key": "zhang_2024_generative_equilibrium"
+}

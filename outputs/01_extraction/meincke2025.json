@@ -1,0 +1,113 @@
+{
+  "citation_key": "meincke_2025_chatgpt_diversity",
+  "authors": [
+    "Lennart Meincke",
+    "Gideon Nave",
+    "Christian Terwiesch"
+  ],
+  "title": "ChatGPT decreases idea diversity in brainstorming",
+  "year": 2025,
+  "venue": "Nature Human Behaviour",
+  "study_design_description": "Secondary analysis of previously published data by Lee & Chung (2024). The authors reanalyzed detailed data from Lee and Chung's experiments in which participants were randomized to complete various creative challenges either with or without the help of ChatGPT. The analysis compared the diversity of idea sets created with ChatGPT against comparison sets from humans with and without web searches across five experiments.",
+  "primary_task_description": "Participants completed various creative challenges including coming up with gift ideas, designing toys from everyday objects, and repurposing household items. Each participant submitted one idea, which external evaluators rated on multiple creativity dimensions.",
+  "population_description": "Participants from Lee and Chung's original experiments who completed creative brainstorming tasks and submitted ideas that were evaluated.",
+  "arms": [
+    {
+      "arm_name": "chatgpt_aided",
+      "description": "Participants completed creative challenges with the help of ChatGPT",
+      "n": null
+    },
+    {
+      "arm_name": "web_search_aided",
+      "description": "Participants completed creative challenges with web search assistance",
+      "n": null
+    },
+    {
+      "arm_name": "human_only",
+      "description": "Participants completed creative challenges without AI or web search assistance",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "idea_set_diversity",
+      "outcome_description": "The diversity of an idea set operationalized as the ratio between the number of unique concepts it includes and the total number of ideas, where a unique idea concept is a group of one or more ideas that do not overlap with any other ideas in the set. Measured as the percentage of unique, non-overlapping idea concepts. Two ideas are defined as overlapping when their pairwise cosine similarity (using Universal Sentence Encoder embeddings) exceeds a threshold of 0.8.",
+      "measurement_unit": "percentage of unique idea concepts",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "idea_set_diversity",
+      "arm_comparison": "chatgpt_aided vs non_ai_aided (all five experiments combined)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In our primary analysis, AI-aided idea sets are less diverse than non-AI-aided idea sets in all five experiments, and the difference is statistically significant in four out of five comparisons (the non-significant result, in experiment 4, is probably due to a ceiling effect)."
+    },
+    {
+      "outcome_name": "idea_set_diversity",
+      "arm_comparison": "chatgpt_aided vs comparison sets (alternative metrics across all experiments)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Likewise, our analyses using alternative diversity metrics found that the diversity of ChatGPT-aided idea sets is lower than the diversity of the comparison sets using all metrics across experiments, where 37 of the 45 comparisons yield statistically significant effects (Supplementary Table 1)."
+    },
+    {
+      "outcome_name": "idea_set_diversity",
+      "arm_comparison": "chatgpt_aided vs human_only (experiment 2b: toy design task)",
+      "means_and_sds": {
+        "chatgpt_aided": {
+          "mean": 6,
+          "sd": null,
+          "se": null
+        },
+        "human_only": {
+          "mean": 100,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "6% of AI-generated ideas were unique compared with 100% of human ideas",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the extreme case of study 2b (suggesting a toy for a seven-year-old child using a brick and a fan), only 6% of the AI-generated ideas (ChatGPT-only) were unique, compared with 100% of human ideas."
+    },
+    {
+      "outcome_name": "idea_set_diversity",
+      "arm_comparison": "chatgpt_aided vs web_search_aided (experiment 2A: repurposing task)",
+      "means_and_sds": {
+        "chatgpt_aided": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        },
+        "web_search_aided": {
+          "mean": null,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "20 out of 96 ChatGPT-aided ideas included the word \"sprinkler\", as opposed to only 7 in the web-search-aided condition",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Lee and Chung's experiment 2A, 20 out of 96 ChatGPT-aided ideas included the word 'sprinkler', as opposed to only 7 in the web-search-aided condition and 12 in the human-only condition."
+    }
+  ],
+  "notes": "This is a secondary analysis ('Matters Arising' response) of data from Lee & Chung (2024). The authors do not conduct new experiments but reanalyze the original study's data using diversity metrics based on cosine similarity of idea embeddings rather than individual idea creativity scores. The primary analysis defines overlapping ideas using a cosine similarity threshold of 0.8; supplementary analyses use alternative thresholds (0.75 and 0.85) and alternative metrics (aggregated comparisons of similarity scores, pairwise comparisons of similarity scores, and mean edge distance in minimum spanning trees). The non-significant result in experiment 4 is noted as probably due to a ceiling effect. Exact sample sizes per arm are not provided in the quotes; the analysis draws on data from Lee and Chung's five experiments. Figure 1 reportedly shows diversity comparisons across five experiments with 95% confidence intervals.",
+  "_paper_id": "meincke2025"
+}

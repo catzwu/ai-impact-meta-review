@@ -1,0 +1,77 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "outlook_total_session_time",
+      "category": "speed",
+      "operationalization": "Total hours per week spent in Outlook sessions, aggregated from telemetry data tracking application usage."
+    },
+    {
+      "outcome_name": "outlook_sessions",
+      "category": "speed",
+      "operationalization": "Count of Outlook sessions initiated per week, tracked via telemetry."
+    },
+    {
+      "outcome_name": "email_free_work_time",
+      "category": "other",
+      "operationalization": "Hours per week in continuous non-Outlook blocks \u226530 minutes during working day, derived from telemetry. This measures work pattern/focus time, not speed or quality of output."
+    },
+    {
+      "outcome_name": "outlook_out_of_hours_session_time",
+      "category": "other",
+      "operationalization": "Hours per week in Outlook sessions outside individual's defined working hours, tracked via telemetry. This measures work-life balance/overwork, not task speed or quality."
+    },
+    {
+      "outcome_name": "unique_email_threads_replied_to",
+      "category": "speed",
+      "operationalization": "Count of distinct email threads received in a week and replied to within 7 days, from email metadata."
+    },
+    {
+      "outcome_name": "time_to_reply_from_email_delivery",
+      "category": "speed",
+      "operationalization": "Average hours from email receipt to reply, among emails received that week and replied to within 7 days."
+    },
+    {
+      "outcome_name": "emails_read",
+      "category": "speed",
+      "operationalization": "Count of distinct emails read per week, tracked via Outlook telemetry."
+    },
+    {
+      "outcome_name": "teams_meeting_time",
+      "category": "speed",
+      "operationalization": "Hours per week in scheduled Teams meetings, excluding spontaneous calls, from meeting attendance logs."
+    },
+    {
+      "outcome_name": "total_teams_meetings_attended",
+      "category": "speed",
+      "operationalization": "Count of Teams meetings attended per week, from meeting attendance logs."
+    },
+    {
+      "outcome_name": "share_of_meetings_attended_early_late",
+      "category": "other",
+      "operationalization": "Percentage of meetings joined \u22655 minutes late or left \u22655 minutes early, from meeting join/leave timestamps. This measures meeting engagement/behavior, not output speed or quality."
+    },
+    {
+      "outcome_name": "word_total_session_time",
+      "category": "speed",
+      "operationalization": "Hours per week in Word sessions, defined as action blocks with <15 minute gaps, from telemetry."
+    },
+    {
+      "outcome_name": "avg_document_time_to_complete",
+      "category": "speed",
+      "operationalization": "Average hours from first edit to completion for documents completed that week where worker is primary editor."
+    },
+    {
+      "outcome_name": "completed_documents",
+      "category": "speed",
+      "operationalization": "Count of documents completed per week where worker is primary editor, from document metadata."
+    },
+    {
+      "outcome_name": "total_out_of_hours_session_time",
+      "category": "other",
+      "operationalization": "Sum of Outlook, Teams, and Word session hours outside working hours per week. This measures work-life balance/overwork, not output speed or quality."
+    }
+  ],
+  "primary_speed_outcome": "outlook_total_session_time",
+  "primary_quality_outcome": null,
+  "citation_key": "dillon_2025_shifting_work"
+}

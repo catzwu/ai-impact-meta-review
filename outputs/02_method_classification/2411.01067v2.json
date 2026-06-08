@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study explicitly states it is a 'randomized controlled trial' where 'participants were randomly assigned to treatment and control groups' with one group receiving access to Copilot and the other not. Participants were recruited from Upwork (an online freelance platform) to complete tasks, making this an online RCT rather than a lab or field experiment.",
+  "citation_key": "bono_2024_security_copilot"
+}

@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Brynjolfsson, Li & Raymond 2025",
+  "citation_key": "brynjolfsson_2023_generative_ai",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "never_treated",
+    "ai_arm_name": "treated_post",
+    "ai_arm_selection_rationale": "treated_post is the only arm with AI access. Comparing against never_treated (pure control) rather than treated_pre to avoid confounding from time trends and selection into treatment timing.",
+    "direction_convention": "larger_is_better",
+    "m_human": 0.78,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 3523,
+    "m_ai": 0.84,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1636,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Resolution rate means extracted from Table 1 summary statistics. Never Treated arm shows resolution rate of .78, Treated Post shows .84. The prior pass missed that Table 1 provides the raw resolution rate means for each group. Sample sizes also from Table 1: Never Treated n=3,523 agents, Treated Post n=1,636 agents. No SDs are reported for resolution rate in the paper. The regression result in Table 3 Column 3 (0.0128* increase, p<.10) is consistent with the raw difference of 0.06 (0.84 - 0.78). Without SDs, we can only compute a rough effect size estimate, hence medium confidence. The p-value reported in Table 3 is an inequality (p < .10), not an exact value.",
+    "source_quotes": [
+      "Table 1: Resolution Rate .82 (All), .78 (Never Treated), .82 (Treated, Pre), .84 (Treated, Post)",
+      "Table 1: Agents 5,179 (All), 3,523 (Never Treated), 1,341 (Treated, Pre), 1,636 (Treated, Post)",
+      "Column 3 of Table 3 indicates a small 1.3 percentage point increase in chat resolution rates, significant at the 10% level."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "Resolution rate means extracted from Table 1 summary statistics. Never Treated arm shows resolution rate of .78, Treated Post shows .84. The prior pass missed that Table 1 provides the raw resolution rate means for each group. Sample sizes also from Table 1: Never Treated n=3,523 agents, Treated Post n=1,636 agents. No SDs are reported for resolution rate in the paper. The regression result in Table 3 Column 3 (0.0128* increase, p<.10) is consistent with the raw difference of 0.06 (0.84 - 0.78). Without SDs, we can only compute a rough effect size estimate, hence medium confidence. The p-value reported in Table 3 is an inequality (p < .10), not an exact value. | insufficient numbers for d",
+    "n_human": 3523,
+    "n_ai": 1636,
+    "direction_convention": "larger_is_better"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "_paper_id": "2411.00168v1",
+  "citation_key": "fu_2024_creativity_ai",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "human_only",
+    "ai_arm_name": "genai_supported",
+    "ai_arm_selection_rationale": "Only one AI arm available: genai_supported, which uses DALL-E 2 via ChatGPT for design support.",
+    "direction_convention": "larger_is_better",
+    "m_human": 3.457,
+    "sd_human": 1.359,
+    "se_human": null,
+    "n_human": 36,
+    "m_ai": 3.909,
+    "sd_ai": 1.389,
+    "se_ai": null,
+    "n_ai": 36,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "SALVAGE PASS: Found sample size n=36 participants in the Methods section (page 6): 'We recruited 36 participants via professional and academic communication channels'. This is a within-subjects design where all participants completed both conditions (human-only and GenAI-supported) in counterbalanced order. The paper states 'All participants completed both sessions, with the order of conditions counterbalanced' (page 6). The test statistic reported is Mann-Whitney U = 3.318, which appears to be an error since Mann-Whitney is for independent samples, not paired data. However, means and SDs are provided for both conditions. For within-subjects designs with n=36 paired observations, we can compute Hedges' g using the paired-samples formula. The p-value is reported as inequality 'p < .001' rather than exact value. Direction convention is larger_is_better since creativity is rated on a 7-point scale where higher values indicate more creativity.",
+    "source_quotes": [
+      "We recruited 36 participants via professional and academic communication channels (Slack, Discord, etc.), email lists, and fliers posted on a large public university campus in the United States.",
+      "All participants completed both sessions, with the order of conditions counterbalanced.",
+      "Average creativity ratings for GenAI-supported designs (M = 3.909, SD = 1.389) were rated 13% more creative than the designs from the human-only condition (M = 3.457, SD = 1.359, U = 3.318, p < .001)."
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.32894691948735816,
+    "hedges_g": 0.3254098558369565,
+    "variance": 0.05510259393018432,
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "SALVAGE PASS: Found sample size n=36 participants in the Methods section (page 6): 'We recruited 36 participants via professional and academic communication channels'. This is a within-subjects design where all participants completed both conditions (human-only and GenAI-supported) in counterbalanced order. The paper states 'All participants completed both sessions, with the order of conditions counterbalanced' (page 6). The test statistic reported is Mann-Whitney U = 3.318, which appears to be an error since Mann-Whitney is for independent samples, not paired data. However, means and SDs are provided for both conditions. For within-subjects designs with n=36 paired observations, we can compute Hedges' g using the paired-samples formula. The p-value is reported as inequality 'p < .001' rather than exact value. Direction convention is larger_is_better since creativity is rated on a 7-point scale where higher values indicate more creativity.",
+    "n_human": 36,
+    "n_ai": 36,
+    "direction_convention": "larger_is_better"
+  }
+}

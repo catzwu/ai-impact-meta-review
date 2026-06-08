@@ -1,0 +1,222 @@
+{
+  "citation_key": "fitzpatrick_2025_generative_ai_public",
+  "authors": [
+    "Trevor Fitzpatrick",
+    "Seamus Kelly",
+    "Patrick Carey",
+    "David Walsh",
+    "Ruairi Nugent"
+  ],
+  "title": "Assessing Generative AI Value in a Public Sector Context: Evidence from a Field Experiment",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "A pre-registered randomized controlled trial conducted at the Central Bank of Ireland with 143 staff participants. Participants completed an assessment task without AI to establish baseline competency, then were randomly assigned to either a treatment group receiving access to a Gen AI tool (GPT-4o web applications) or a control group without AI access. Participants completed an experiment task in their assigned condition. For the Documents task, submissions were scored by two human evaluators using a pre-defined rubric; for the Data task, submissions were scored against known ground truth values.",
+  "primary_task_description": "Two representative tasks were used: (1) a Documents task requiring participants to answer twelve questions by reviewing and extracting information from a Solvency and Financial Conditions Report (SFCR) document within a 60-minute time limit; and (2) a Data task requiring participants to answer six questions by analyzing Quantitative Reporting Templates (QRTs) data within a 60-minute time limit. Both tasks were preceded by assessment tasks with four questions and a 30-minute time limit to measure baseline competency.",
+  "population_description": "143 staff from the Central Bank of Ireland, representing approximately 7% of the organization's staff population. Approximately 208 staff registered interest in the trial. Both trials lost around 25% of participants to attrition. Participants were provided with terminology and definition sheets, and no background in insurance was assumed.",
+  "arms": [
+    {
+      "arm_name": "gpt_4o_treatment",
+      "description": "Treatment group receiving access to a Gen AI tool (web applications utilising GPT-4o configured to provide answers for the specific task)",
+      "n": null
+    },
+    {
+      "arm_name": "control",
+      "description": "Control group that did not receive access to Gen AI. For the Documents task, the control group received the document in a PDF file. For the Data task, the control group received an Excel file with data and pivot tables.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "quality_score_documents",
+      "outcome_description": "For the Documents task, quality was assessed by an independent panel of human graders using an evaluation rubric. Each response was graded on a scale from 0 (incorrect) to 4 (very good). The response to each question was evaluated by two graders, and the mean of the two grades was taken to provide a quality score for each question. The quality scores for all questions were then averaged to derive an overall quality score for the task.",
+      "measurement_unit": "rubric 0-4 scale, averaged across questions",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "quality_score_data",
+      "outcome_description": "For the Data task, quality was assessed by comparing the responses to known ground truth values. In total, across the six questions, there were forty different values to retrieve and participants were assigned a final score between 0 and 40.",
+      "measurement_unit": "score 0-40",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "time_to_completion_documents",
+      "outcome_description": "The time taken to complete the Documents task. This was self-reported - participants were asked to record the time taken to complete the task and to include this with their response submissions.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_to_completion_data",
+      "outcome_description": "The time taken to complete the Data task. This was self-reported - participants were asked to record the time taken to complete the task and to include this with their response submissions.",
+      "measurement_unit": "minutes",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "quality_score_documents",
+      "arm_comparison": "gpt_4o_treatment vs control",
+      "means_and_sds": {
+        "gpt_4o_treatment": {
+          "mean": 2.21,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 1.89,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "17% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "The average quality score for the treatment group was 2.21 compared to 1.89 in the control group, a mean difference of 0.32. This represents a 17% improvement in quality for the treatment group. A two-tailed t-test confirmed that this difference was significant (p < 0.05)."
+    },
+    {
+      "outcome_name": "quality_score_documents",
+      "arm_comparison": "gpt_4o_treatment vs control (unadjusted regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "17% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.321 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column 1, the Gen AI treatment leads to a statistically significant increase of 0.321 over the control, representing a 17% improvement."
+    },
+    {
+      "outcome_name": "quality_score_documents",
+      "arm_comparison": "gpt_4o_treatment vs control (with enrolment covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.219 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Column 2, after controlling for enrolment data covariates, the treatment effect remains positive but decreases slightly to 0.219, with marginal significance."
+    },
+    {
+      "outcome_name": "quality_score_documents",
+      "arm_comparison": "gpt_4o_treatment vs control (with enrolment and baseline covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "0.227 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "In Column 3, which includes both enrolment data and the baseline assessment, the treatment effect is 0.227 and statistically significant (p < 0.05)."
+    },
+    {
+      "outcome_name": "time_to_completion_documents",
+      "arm_comparison": "gpt_4o_treatment vs control",
+      "means_and_sds": {
+        "gpt_4o_treatment": {
+          "mean": 33,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 50,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "34% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "On average, participants in the treatment group completed the task in 33 minutes, which was significantly shorter than the control group's average completion time of 50 minutes. A mean difference of 17 minutes represents a 34% improvement for the treatment group in average time to complete the task compared to the control group. The time difference was statistically significant (p < 0.05), suggesting the use of Gen AI reduced the time participants spent in answering the comprehension questions."
+    },
+    {
+      "outcome_name": "quality_score_data",
+      "arm_comparison": "gpt_4o_treatment vs control",
+      "means_and_sds": {
+        "gpt_4o_treatment": {
+          "mean": 32.3,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 36.5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "12% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.005",
+      "confidence_interval": null,
+      "verbatim_quote": "The density plot (Figure 4) visualises the distribution of scores across the two groups and shows that the control group outperformed the treatment group with an average score of 36.5 out of 40 for control and 32.3 out of 40 for treatment. This equates to a 12% reduction in quality for the treatment group. A two-tailed t-test confirmed that this difference is significant (p < 0.005)."
+    },
+    {
+      "outcome_name": "quality_score_data",
+      "arm_comparison": "gpt_4o_treatment vs control (unadjusted regression)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "-4.241 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In column 1, the Gen AI treatment leads to a statistically significant decrease of 4.241 over the control, representing a 12% reduction."
+    },
+    {
+      "outcome_name": "quality_score_data",
+      "arm_comparison": "gpt_4o_treatment vs control (with enrolment covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "-3.453 (SE not reported)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In Column 2, after controlling for enrolment data covariates, the treatment effect remains negative but is lower in magnitude at 3.453."
+    },
+    {
+      "outcome_name": "quality_score_data",
+      "arm_comparison": "gpt_4o_treatment vs control (with enrolment and baseline covariates)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": "-3.860 (SE not reported)",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "In Column 3, which includes both enrolment data and the baseline assessment, the treatment effect is a 3.860 reduction in quality and is again statistically significant (p < 0.05)."
+    },
+    {
+      "outcome_name": "time_to_completion_data",
+      "arm_comparison": "gpt_4o_treatment vs control",
+      "means_and_sds": {
+        "gpt_4o_treatment": {
+          "mean": 33.5,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 32.5,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.7048",
+      "confidence_interval": null,
+      "verbatim_quote": "The average time for participants in the control group (32.5 minutes) was marginally lower when compared to the treatment group (33.5 minutes). This represents a 3% increase in timing for the treatment group over the control group. However a two-tailed t-test confirms that this difference is not statistically significant (p-value = 0.7048)."
+    }
+  ],
+  "notes": "This is a pre-registered RCT with 143 participants (approximately 7% of CBI staff). Approximately 208 staff registered interest; both trials lost around 25% of participants to attrition. Participants self-selected into their preferred task (Documents or Data), which introduced selection bias: the Data task comprised a higher proportion of technical and data professionals than the general population. The paper notes this may explain the relatively high control group scores on the Data task due to high baseline competency. The Documents task used a Retrieval Augmented Generation (RAG) pipeline; the Data task used a Natural-Language-to-SQL application. Results were mixed: Documents task showed 17% quality improvement and 34% time improvement for treatment; Data task showed 12% quality reduction with no significant time difference. Time values were self-reported by participants. The paper includes extensive discussion of limitations: (1) no enforcement of time limits; (2) some Documents task questions could be answered with simple \"yes\"/\"no\" responses, which scored lower but were more common in control group; (3) treatment group may have spent time exploring and verifying Gen AI outputs rather than optimizing for speed; (4) assessment task was too simple to meaningfully differentiate baseline competency (majority scored 100%); (5) intermittent application outages during the one-week experiment window; (6) human evaluation of Documents task was time-consuming. The paper notes that 66% of treatment group found the application very effective or effective; 31% copied questions directly into Gen AI while 69% shortened or rephrased; 33% took Gen AI responses directly as final answers while 50% combined Gen AI response with own knowledge. Regression models show adjusted R\u00b2 values improving from 0.081 to 0.406 for Documents task (Column 1 to 3) and 0.136 to 0.192 for Data task. Non-parametric robustness checks (Targeted Maximum Likelihood Estimators and Generalised Random Forests) yielded slightly larger effect size estimates than linear models for both tasks.",
+  "_paper_id": "2502.09479v1"
+}

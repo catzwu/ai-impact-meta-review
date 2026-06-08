@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Artificial_Intelligence_and_Analyst_Productivity",
+  "citation_key": "shanthikumar_2024_ai_analyst",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Low AI Investment (baseline)",
+    "ai_arm_name": "High AI Investment",
+    "ai_arm_selection_rationale": "This is a regression study examining the effect of AI investment (measured by % AI Hiring t-3~t-1) on forecast accuracy. While not a traditional experimental design, Table 4 Column 2 reports a regression coefficient of 0.032 (t=2.15, p<0.05) for the effect of % AI Hiring on Forecast Accuracy, controlling for other variables and including investment bank-firm fixed effects. The total sample is n=70,923 analyst-firm-year observations. We can extract the regression coefficient and its t-statistic to compute an effect size. The 'low AI investment' represents the baseline (intercept) and 'high AI investment' represents a one-unit increase in % AI Hiring. The paper reports that a one standard deviation increase in % AI Hiring (SD=0.035 from Table 1) is associated with a 2.3% increase in forecast accuracy.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 70923,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 70923,
+    "reported_t": 2.15,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "This is a regression study, not a traditional experimental comparison. Table 4 Column 2 reports the coefficient on % AI Hiring t-3~t-1 as 0.032 with t=2.15 and p<0.05 (exact p-value not reported). The sample size is 70,923 analyst-firm-year observations. The paper states that a one SD increase in % AI Hiring (SD=0.035 from Table 1) is associated with a 2.3% increase in forecast accuracy. The mean forecast accuracy is -0.048 (Table 1). While this is not a clean two-arm comparison, the regression coefficient and t-statistic can be used to estimate an effect size. The t-statistic is for the regression coefficient, not a direct comparison of means, so the effect size will be an approximation. Degrees of freedom are not explicitly reported but would be approximately n - k - 1 where k is the number of predictors.",
+    "source_quotes": [
+      "Table 4, Column 2: % AI Hiring t-3~t-1: 0.032** (2.15)",
+      "In terms of economic magnitude, a one standard deviation increase in % AI Hiring t-3~t-1 is associated with a 2.3% increase in forecast accuracy.",
+      "Table 1: % AI Hiring t-3~t-1 Mean 0.011 SD 0.035; Forecast Accuracy t Mean -0.048 SD 0.230",
+      "Observations 70,923"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.011417207887977945,
+    "hedges_g": 0.011417147519396912,
+    "variance": 2.8199758016965415e-05,
+    "computation_method": "t_statistic",
+    "confidence": "medium",
+    "notes": "This is a regression study, not a traditional experimental comparison. Table 4 Column 2 reports the coefficient on % AI Hiring t-3~t-1 as 0.032 with t=2.15 and p<0.05 (exact p-value not reported). The sample size is 70,923 analyst-firm-year observations. The paper states that a one SD increase in % AI Hiring (SD=0.035 from Table 1) is associated with a 2.3% increase in forecast accuracy. The mean forecast accuracy is -0.048 (Table 1). While this is not a clean two-arm comparison, the regression coefficient and t-statistic can be used to estimate an effect size. The t-statistic is for the regression coefficient, not a direct comparison of means, so the effect size will be an approximation. Degrees of freedom are not explicitly reported but would be approximately n - k - 1 where k is the number of predictors.",
+    "n_human": 70923,
+    "n_ai": 70923,
+    "direction_convention": "larger_is_better"
+  }
+}

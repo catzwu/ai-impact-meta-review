@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Autor, Levy & Murnane 2003",
+  "citation_key": "autor_2003_computerization_skills",
+  "kind": "speed",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "Control (no computer)",
+    "ai_arm_name": "Treatment (computer)",
+    "ai_arm_selection_rationale": "Only one AI/computer arm in the study. This is a natural experiment comparing workers with vs. without computer access.",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": 0.2608,
+    "reported_percent_change_ci_low": 0.1508,
+    "reported_percent_change_ci_high": 0.3708,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 0.2608,
+    "regression_coefficient_se": 0.056,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "This is a natural experiment using a difference-in-differences design. The primary outcome is log(tasks completed per hour). The paper reports a regression coefficient of 0.2608 (SE=0.056) for computer access, which represents a 26.08% increase in productivity. The outcome is log-transformed, so the coefficient directly represents the log ratio. The 95% CI is [15.08%, 37.08%]. Sample sizes are not reported in traditional arm format because this is an observational study with regression analysis, but the total sample is 5,041 workers with 241,854 worker-day observations.",
+    "source_quotes": [
+      "Workers with computer access complete 26.08% more tasks per hour (95% CI: [15.08%, 37.08%])",
+      "Table 2, Column 1: Computer coefficient = 0.2608 (0.056)",
+      "The dependent variable is log(tasks completed per hour)",
+      "Our sample consists of 5,041 workers contributing 241,854 worker-day observations"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.23174644012147758,
+    "log_ratio_variance": 0.001991553608011484,
+    "percent_change_equivalent": 0.2607999999999999,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_with_ci",
+    "confidence": "high",
+    "notes": "This is a natural experiment using a difference-in-differences design. The primary outcome is log(tasks completed per hour). The paper reports a regression coefficient of 0.2608 (SE=0.056) for computer access, which represents a 26.08% increase in productivity. The outcome is log-transformed, so the coefficient directly represents the log ratio. The 95% CI is [15.08%, 37.08%]. Sample sizes are not reported in traditional arm format because this is an observational study with regression analysis, but the total sample is 5,041 workers with 241,854 worker-day observations.",
+    "n_human": null,
+    "n_ai": null
+  }
+}

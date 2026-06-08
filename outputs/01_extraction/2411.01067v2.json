@@ -1,0 +1,846 @@
+{
+  "citation_key": "bono_2024_security_copilot",
+  "authors": [
+    "James Bono",
+    "Alec Xu"
+  ],
+  "title": "Randomized Controlled Trials for Security Copilot for IT Administrators",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "This study evaluates the effects of Microsoft's Security Copilot on IT administrators through a randomized controlled trial. Participants were randomly assigned to treatment and control groups, with the treatment group granted access to Copilot within Microsoft's Entra and Intune admin centers, while the control group had access to the admin centers without Copilot. The study follows a standard RCT protocol to identify and estimate the causal effect of Copilot on accuracy and task completion time. To make the design realistic, no restrictions were placed on how subjects used other tools, such as other AI tools or web searches.",
+  "primary_task_description": "Participants completed experimental tasks across three IT admin scenarios: sign-in troubleshooting (diagnosing sign-in issues and investigating access anomalies), device policy management (understanding the effects of policy settings on users and security), and device troubleshooting (diagnosing device non-compliance and identifying responsible policies). Tasks included multiple choice (MC), select-all-that-apply (SATA), and free response formats. For each task, completion time and accuracy were measured.",
+  "population_description": "The study recruited 182 subjects through Upwork, a marketplace for freelancers. Subjects were required to be proficient in reading and writing English and to have a positive reputation on Upwork. 181 subjects completed the task satisfactorily. The subject pool embodied a diverse range of experience levels across identity and network device management.",
+  "arms": [
+    {
+      "arm_name": "control",
+      "description": "Access to the Entra and Intune admin centers without Copilot",
+      "n": 90
+    },
+    {
+      "arm_name": "copilot",
+      "description": "Access to the Entra and Intune admin centers with Copilot",
+      "n": 91
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "accuracy_all_content",
+      "outcome_description": "Overall accuracy across all tasks measured on a scale from zero to one. Each task was graded on a scale from zero to one. For MC tasks, one point was awarded for correct responses and zero for incorrect. For SATA tasks, each option was treated as a separate binary question with scores proportional to correct classifications. For free response tasks, an LLM-based grader identified whether responses contained key facts, with final score as the proportion of key facts included. The maximum possible accuracy score is 11 points.",
+      "measurement_unit": "points (0-11 scale)",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "accuracy_sata",
+      "outcome_description": "Accuracy on select-all-that-apply tasks. Each option was treated as a separate binary question with scores proportional to the number of options the subject classified correctly.",
+      "measurement_unit": "points (0-4 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "accuracy_mc",
+      "outcome_description": "Accuracy on multiple choice tasks. One point awarded for correct responses and zero for incorrect responses.",
+      "measurement_unit": "points (0-4 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "accuracy_free_response",
+      "outcome_description": "Accuracy on free response tasks. An LLM-based grader identified whether the response contained each of a set of key facts, with the final score as the proportion of key facts included.",
+      "measurement_unit": "points (0-3 scale)",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "outcome_description": "Time required to complete tasks, measured in minutes. When examining Copilot's effect on task completion time while holding accuracy constant, statistical methods were used to account for differences in accuracy between groups.",
+      "measurement_unit": "minutes",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "quality_free_response",
+      "outcome_description": "Quality of free responses in terms of their clarity and organization, as judged by an LLM grader.",
+      "measurement_unit": "score",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "user_satisfaction",
+      "outcome_description": "User satisfaction measured through statements rated on sliders ranging from complete disagreement (0) to complete agreement (100). Statements included: \"Copilot reduced my effort on this task,\" \"Copilot made me more productive,\" \"Copilot helped me improve the quality of my work,\" and \"I would want to have Copilot the next time I do this task.\"",
+      "measurement_unit": "0-100 scale",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "outcome_description": "Responses to statements about task experience, including: \"I felt effective doing this task,\" \"I felt productive doing this task,\" \"I felt in control while doing this task,\" \"I felt secure while doing this task,\" \"I would like a job like this as my full-time job,\" \"I felt inadequate while doing this task,\" \"I felt uncertain while doing this task,\" \"This task was a lot of effort,\" and \"This task was draining.\"",
+      "measurement_unit": "0-100 scale",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 6.97,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 5.18,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "34.53% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all scenarios and tasks, Copilot subjects experienced a 34.53% improvement in overall accuracy and a 29.79% reduction in task completion time."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 44.29,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 53.84,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "29.79% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Across all scenarios and tasks, Copilot subjects experienced a 34.53% improvement in overall accuracy and a 29.79% reduction in task completion time."
+    },
+    {
+      "outcome_name": "accuracy_free_response",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 1.66,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 0.67,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "146.07% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "In free response tasks, Copilot users identified 146.07% more relevant facts and reduced task completion time by 61.14%."
+    },
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control - sign-in troubleshooting",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 1.8,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 1.23,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "46.88% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "In the identity management domain, our sign-in troubleshooting scenario yielded an \"All Content\" accuracy improvement of 46.88%***."
+    },
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control - device policy management",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 2.7,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 1.98,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "36.39% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "In the device management domain, the policy management scenario yielded an accuracy improvement of 36.39%***, and the device troubleshooting scenario yielded an accuracy improvement of 24.99%***."
+    },
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control - device troubleshooting",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 2.47,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 1.97,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "24.99% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "In the device management domain, the policy management scenario yielded an accuracy improvement of 36.39%***, and the device troubleshooting scenario yielded an accuracy improvement of 24.99%***."
+    },
+    {
+      "outcome_name": "accuracy_sata",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 3.3,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 2.71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "21.76% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Overall, Copilot yields an accuracy improvement of 21.76%*** on SATA tasks across the sign-in troubleshooting and device troubleshooting scenarios."
+    },
+    {
+      "outcome_name": "accuracy_mc",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 2.01,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 1.8,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "11.99% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Although Copilot's estimated effect on accuracy for the device policy management MC tasks is positive, 11.99%, this effect is the only one lacking statistical significance."
+    },
+    {
+      "outcome_name": "accuracy_mc",
+      "arm_comparison": "copilot vs control - points >= 1",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 2.09,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 1.975,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "11.39% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .05",
+      "confidence_interval": null,
+      "verbatim_quote": "Taking these subjects away, Copilot's accuracy effect on the device policy management MC questions becomes statistically significant at 11.39%*."
+    },
+    {
+      "outcome_name": "accuracy_free_response",
+      "arm_comparison": "copilot vs control - device policy management",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 0.69,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 0.18,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "275.15% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "On these, Copilot yielded an accuracy improvement of 275.15%***, which means that Copilot subjects, on average, reported almost 3.7 times more relevant facts."
+    },
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control - sign-in troubleshooting, 0-3 years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "57.1% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Both the less-experienced subjects (0-3 years) and the more-experienced subjects (3+ years) experience gains, 57.1%*** and 43.0%***, respectively."
+    },
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control - sign-in troubleshooting, 3+ years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "43.0% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Both the less-experienced subjects (0-3 years) and the more-experienced subjects (3+ years) experience gains, 57.1%*** and 43.0%***, respectively."
+    },
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control - device management, 0-3 years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "33.5% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Once again, the order of the point estimates is consistent with Copilot conferring greater benefits for less-experienced subjects (33.5%*** versus 16.2%), but the difference in these point estimates is not statistically significant."
+    },
+    {
+      "outcome_name": "accuracy_all_content",
+      "arm_comparison": "copilot vs control - device management, 3+ years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "16.2% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Once again, the order of the point estimates is consistent with Copilot conferring greater benefits for less-experienced subjects (33.5%*** versus 16.2%), but the difference in these point estimates is not statistically significant."
+    },
+    {
+      "outcome_name": "quality_free_response",
+      "arm_comparison": "copilot vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "100.17% improvement",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Finally, we note that Copilot subjects' free responses scored 100.17%*** higher in terms of their clarity and organization."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - sign-in troubleshooting",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 16.63,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 24.04,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "45.41% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "We measure time savings for Copilot across all three scenarios. The time savings included 45.41%*** for sign-in troubleshooting, 21.64%*** for device policy management, and 15.69%*** for device troubleshooting."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - device policy management",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 17.45,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 20.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "21.64% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "We measure time savings for Copilot across all three scenarios. The time savings included 45.41%*** for sign-in troubleshooting, 21.64%*** for device policy management, and 15.69%*** for device troubleshooting."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - device troubleshooting",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 10.21,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 11.24,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "15.69% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "We measure time savings for Copilot across all three scenarios. The time savings included 45.41%*** for sign-in troubleshooting, 21.64%*** for device policy management, and 15.69%*** for device troubleshooting."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - free response",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 17.03,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 30.98,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "61.14% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that Copilot's time savings track its accuracy improvements across task types. That is, the biggest gains again come from free response (61.14%*** time savings), followed by SATA (24.28%***)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - SATA",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 15.25,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 17.81,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "24.28% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that Copilot's time savings track its accuracy improvements across task types. That is, the biggest gains again come from free response (61.14%*** time savings), followed by SATA (24.28%***)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - MC",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 12.02,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 10.91,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "25.13% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "Lastly, the MC questions show a decrease in speed for Copilot users (25.13%*** time increase)."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - sign-in troubleshooting, 0-3 years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "50.1% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "The left panel illustrates Copilot's impact on task completion times for the sign-in troubleshooting task, with a 50.1%*** and 45.2%*** time savings for Copilot users with 0-3 and 3+ years of experience, respectively."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - sign-in troubleshooting, 3+ years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "45.2% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "The left panel illustrates Copilot's impact on task completion times for the sign-in troubleshooting task, with a 50.1%*** and 45.2%*** time savings for Copilot users with 0-3 and 3+ years of experience, respectively."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - device management, 0-3 years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12.6% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "The right panel of figure 3 shows time savings of 12.6%*** and 30.2%*** for 0-3 and 3+ years of experience, respectively, for device management tasks."
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - device management, 3+ years experience",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "30.2% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "The right panel of figure 3 shows time savings of 12.6%*** and 30.2%*** for 0-3 and 3+ years of experience, respectively, for device management tasks."
+    },
+    {
+      "outcome_name": "user_satisfaction",
+      "arm_comparison": "copilot users - effort reduction",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 87.51,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The lowest of these means is 87.51 for \"Copilot reduced my effort on this task.\""
+    },
+    {
+      "outcome_name": "user_satisfaction",
+      "arm_comparison": "copilot users - future use",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 96.77,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The highest is 96.77 for \"I would want to have Copilot the next time I do this task.\""
+    },
+    {
+      "outcome_name": "user_satisfaction",
+      "arm_comparison": "copilot users - productivity",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 92.84,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We presented them with the following statements, with sliders to range from complete disagreement (scored as 0) to complete agreement (100). We report their responses in table 4. The \"Rating\" column reports the mean responses from the subjects."
+    },
+    {
+      "outcome_name": "user_satisfaction",
+      "arm_comparison": "copilot users - work quality",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 95.09,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We presented them with the following statements, with sliders to range from complete disagreement (scored as 0) to complete agreement (100). We report their responses in table 4."
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - felt effective",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 88.28,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 87.9,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.43% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I felt effective doing this task 88.28 87.90 0.43%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - felt productive",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 92.15,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 89.74,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.69% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I felt productive doing this task 92.15 89.74 2.69%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - felt in control",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 85.92,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 87.45,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-1.75% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I felt in control while doing this task 85.92 87.45 -1.75%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - felt secure",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 92.55,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 89.38,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "3.56% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I felt secure while doing this task 92.55 89.38 3.56%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - would like job",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 89.11,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 86.83,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.62% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I would like a job like this as my full-time job 89.11 86.83 2.62%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - felt inadequate",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 21.3,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 19.41,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "9.72% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I felt inadequate while doing this task 21.30 19.41 9.72%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - felt uncertain",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 21.71,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 24.34,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-10.82% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "I felt uncertain while doing this task 21.71 24.34 -10.82%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - task was effort",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 32.4,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 44.81,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-27.70% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .01",
+      "confidence_interval": null,
+      "verbatim_quote": "This task was a lot of effort 32.40 44.81 -27.70**%"
+    },
+    {
+      "outcome_name": "task_experience_statements",
+      "arm_comparison": "copilot vs control - task was draining",
+      "means_and_sds": {
+        "copilot": {
+          "mean": 21.23,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 37.34,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "-43.14% decrease",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "This task was draining 21.23 37.34 -43.14***%"
+    },
+    {
+      "outcome_name": "task_completion_time",
+      "arm_comparison": "copilot vs control - time savings in minutes",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18.23 minutes saved",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < .001",
+      "confidence_interval": null,
+      "verbatim_quote": "As reported in table 3 above, Copilot saved treatment subjects, on average, 18.23*** minutes (holding accuracy constant)."
+    }
+  ],
+  "notes": "Study recruited 182 subjects through Upwork; 181 completed the task satisfactorily. Subjects were randomly assigned 50/50 to treatment (n=91) and control (n=90) groups. The study measured accuracy and task completion time across three IT admin scenarios with multiple task types (MC, SATA, free response). All reported p-values are indicated with asterisks in the source material: *** denotes p < .001, ** denotes p < .01, * denotes p < .05. The paper notes that estimates are conservative because control subjects were allowed to use other AI tools (25% used ChatGPT). The authors acknowledge that laboratory results may not fully translate to live operations and call for future field experiments. One subject was dropped for finishing in unreasonably short time and scoring worse than guessing percentage. For MC tasks, Copilot users spent more time on the first question (learning effect), and when the first question is dropped, there is no statistically significant difference in task completion time. The paper reports that differences in estimated effect sizes between experience levels (0-3 years vs 3+ years) are not statistically significant, though point estimates suggest less experienced workers may benefit more from Copilot.",
+  "_paper_id": "2411.01067v2"
+}

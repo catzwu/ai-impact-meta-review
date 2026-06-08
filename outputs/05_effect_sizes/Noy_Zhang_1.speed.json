@@ -1,0 +1,49 @@
+{
+  "_paper_id": "Noy_Zhang_1",
+  "citation_key": "noy_2023_chatgpt_productivity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "chatgpt_treatment",
+    "ai_arm_selection_rationale": "Only one AI arm (ChatGPT treatment) vs. control; straightforward selection.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 27,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 222,
+    "m_ai": 17,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 222,
+    "reported_percent_change": -0.37,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Control mean is 27 minutes. Paper reports '10 minutes reduction (37% faster)' which implies treatment mean = 27 - 10 = 17 minutes. The 95% CI [-0.63, -1.03] appears to be for Cohen's d (standardized effect), not for the percent change. SDs not reported but Cohen's d = -0.83 is available for effect size calculation.",
+    "source_quotes": [
+      "In the treatment group, time taken on the post-treatment task drops by 10 minutes (37%) relative to the control group, who take an average of 27 minutes (p = 0.000).",
+      "Cohen's d = -0.83 SD",
+      "95% CI [-0.63, -1.03]"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.46262352194811296,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.588235294117647,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Control mean is 27 minutes. Paper reports '10 minutes reduction (37% faster)' which implies treatment mean = 27 - 10 = 17 minutes. The 95% CI [-0.63, -1.03] appears to be for Cohen's d (standardized effect), not for the percent change. SDs not reported but Cohen's d = -0.83 is available for effect size calculation. | SDs/SEs missing; variance not computable",
+    "n_human": 222,
+    "n_ai": 222
+  }
+}

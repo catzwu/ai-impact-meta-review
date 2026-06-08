@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "13-1071.00",
+  "onet_label": "Human Resources Specialists",
+  "mapping_confidence": "high",
+  "rationale": "The study participants are 'human resource professionals' whose work involves 'recruiting and selection procedures.' These are core responsibilities of Human Resources Specialists. The study is measuring their attitudes and receptiveness toward AI technologies in their actual professional domain, not asking them to perform a specific isolated task. This represents the occupation as a whole rather than a narrow work activity.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-27",
+      "onet_label": "Staffing Organizational Units"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "13-1121.00",
+      "onet_label": "Human Resources Managers"
+    }
+  ],
+  "citation_key": "nain_2024_ai_recruitment"
+}

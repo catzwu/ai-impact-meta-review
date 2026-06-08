@@ -1,0 +1,571 @@
+{
+  "citation_key": "ju_2026_collaborating_ai",
+  "authors": [
+    "Harang Ju",
+    "Sinan Aral"
+  ],
+  "title": "Collaborating with AI Agents: A Field Experiment on Teamwork, Productivity, and Performance",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "study_design_description": "A randomized controlled trial in which 2,234 participants were randomly assigned to either human-human or human-AI teams using the Pairit platform. Teams worked collaboratively to create marketing campaigns for a think tank's year-end annual report over 40 minutes, producing 11,024 ads total. The study was preregistered and approved by the MIT Committee on the Use of Humans as Experimental Subjects. Participants were not informed of their partner's identity (human or AI) until after the task. Real-world advertising outcomes were assessed through ad campaigns on X (formerly Twitter) with 4,932,373 impressions and 7,546 clicks over 20 days.",
+  "primary_task_description": "Teams worked collaboratively to create marketing campaigns for a think tank's year-end annual report, including generating and selecting ad images and writing ad copy and calls to action. Participants had 40 minutes to submit as many ads as they could produce. The platform provided a carousel of seven pre-selected stock images and access to the Dall-E 3 API to generate new images. The ad copy creation and editing panel included a headline, primary text, and a description.",
+  "population_description": "A total of 2,234 participants, representative of the U.S. population, were recruited through Prolific and randomly assigned to human-human or human-AI teams. The study pre-registered a sample of 2,500 participants from Prolific based in the US, with representative stratification across gender and ethnicity. Of the 2,500 participants who entered, 23 did not enter the matching queue and were removed from the study. A further 167 participants quit the study or were timed out before they were matched to a partner. In 83 human-human sessions (14% of HH teams), the matched partner did not complete the task due to dropout or timeout. The final sample of 2,234 participants (1,258 human-AI, 976 human-human) was used for all analyses. The overall attrition rate was 8.9%. The study was conducted from October 15 to 18, 2024, and took a median of 46.32 minutes to complete. Participants were paid $9.",
+  "arms": [
+    {
+      "arm_name": "human_ai",
+      "description": "In the human-AI condition, the participant collaborates with an AI agent. A participant joined a simulated queue, in which they waited for a random amount of time between 1 and 5 seconds, after which they were paired with an AI agent.",
+      "n": 1258
+    },
+    {
+      "arm_name": "human_human",
+      "description": "In the human-human condition, the participant collaborates with another human participant. In the human-human condition, participants joined a queue until another participant was available, at which point they were paired with each other.",
+      "n": 976
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "productivity",
+      "outcome_description": "The number of submissions by participants.",
+      "measurement_unit": "count of ad submissions",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "text_quality",
+      "outcome_description": "Human ratings of ad text quality on a 7-point Likert scale based on the prompt \"The text is present, clear, relevant, and engaging\".",
+      "measurement_unit": "rubric 1-7",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "image_quality",
+      "outcome_description": "Human ratings of ad image quality on a 7-point Likert scale based on the prompt \"The image is visually appealing\".",
+      "measurement_unit": "rubric 1-7",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "click_rating",
+      "outcome_description": "Human ratings of estimated likelihood of clicking on the ad on a 7-point Likert scale based on the prompt \"I am likely to click on this ad.\"",
+      "measurement_unit": "rubric 1-7",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "output_diversity",
+      "outcome_description": "Cosine distance to treatment centroid. Ad copy (headline, primary text, and description) was embedded using OpenAI's text-embedding-3-small model. The centroid (mean embedding vector) for each treatment group was computed and the cosine distance from each submission to its own treatment's centroid was calculated. Higher values indicate greater distance from the typical output in that condition, reflecting more diverse or atypical content.",
+      "measurement_unit": "cosine distance",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "delegation",
+      "outcome_description": "The fraction of text editing work performed by the partner rather than the focal participant. Defined as one minus the participant's character contribution divided by the session's total character contribution, which, on average for human-human teams, is mechanically 50%.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "message_count",
+      "outcome_description": "The number of messages sent by a participant.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_oriented_messages",
+      "outcome_description": "The fraction of messages labeled as content or process.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "interpersonal_messages",
+      "outcome_description": "The fraction of messages labeled as emotional or social.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "copy_edits",
+      "outcome_description": "Counts of text changes (i.e., text input events).",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "click_through_rate",
+      "outcome_description": "Click-through rate (CTR) expressed as a percentage.",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "cost_per_click",
+      "outcome_description": "Cost-per-click (CPC) measured in dollars.",
+      "measurement_unit": "dollars",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "view_through_rate",
+      "outcome_description": "View-through rate (VTR) as a fraction of document viewed.",
+      "measurement_unit": "fraction",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "view_through_duration",
+      "outcome_description": "View-through duration (VTD) in seconds.",
+      "measurement_unit": "seconds",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "50% more ads per worker, per unit time",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 1.954 (SE 0.197), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Participants in human-AI teams submitted 50% more ads per worker, per unit time than their counterparts in human-human teams, with results consistent when demographic controls are added (Table 2)."
+    },
+    {
+      "outcome_name": "text_quality",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "higher quality ad text",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.327 (SE 0.024), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In human evaluations of the quality of the ads, we found that human-AI teams produced higher quality ad text but lower quality ad images compared to human-human teams (Table 2)."
+    },
+    {
+      "outcome_name": "image_quality",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "lower quality ad images",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.133 (SE 0.021), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In human evaluations of the quality of the ads, we found that human-AI teams produced higher quality ad text but lower quality ad images compared to human-human teams (Table 2)."
+    },
+    {
+      "outcome_name": "click_rating",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "indistinguishable",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.013 (SE 0.021)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The estimated likelihood of clicking on the ad was indistinguishable between the two groups."
+    },
+    {
+      "outcome_name": "output_diversity",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "human-AI teams produce outputs closer to their condition centroid",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.094 (SE 0.006), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Using cosine distance to treatment centroids as a measure of output diversity (Table 2), human-AI teams produce outputs that are closer to their condition centroid than human-human teams (\u03b2=\u22120.094 , p<0.001 ), indicating a homogenization of teams outputs."
+    },
+    {
+      "outcome_name": "cost_per_click",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no significant effect",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For CPC, measured in dollars, our analysis reveals no significant effect of collaboration type."
+    },
+    {
+      "outcome_name": "cost_per_click",
+      "arm_comparison": "image_quality effect",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "reduced CPC by $0.29 or 2.5%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Ads with stronger image quality significantly reduced CPC by $0.29 or 2.5%."
+    },
+    {
+      "outcome_name": "click_through_rate",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no direct human-AI effect",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "For CTR, expressed as a percentage, there was no direct human-AI effect."
+    },
+    {
+      "outcome_name": "click_through_rate",
+      "arm_comparison": "text_quality effect",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "increased CTR by 0.007%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Text quality increased CTR by a small but statistically significant 0.007%."
+    },
+    {
+      "outcome_name": "view_through_duration",
+      "arm_comparison": "text_quality effect",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 4% longer view-through duration per point higher text quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.051",
+      "confidence_interval": null,
+      "verbatim_quote": "While there was no direct human-AI effect, text quality was associated with longer viewing duration (p = 0.051). On average, one point higher text quality ratings were associated with approximately 4% longer view-through duration."
+    },
+    {
+      "outcome_name": "view_through_rate",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no significant effects",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our analysis of VTR showed no significant effects for collaboration type or quality."
+    },
+    {
+      "outcome_name": "message_count",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "62% more messages",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 12.580 (SE 0.843), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Participants in human-AI teams sent 62% more messages than those in human-human teams, with consistent results when demographic covariates were included (Table 4)."
+    },
+    {
+      "outcome_name": "task_oriented_messages",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "25% more task-oriented messages in human-AI teams",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.090 (SE 0.008), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "We found that human-AI teams sent 25% more task-oriented messages, while human-human teams sent 18% more interpersonal messages (Table 4)."
+    },
+    {
+      "outcome_name": "interpersonal_messages",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "18% more interpersonal messages in human-human teams",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.107 (SE 0.008), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "We found that human-AI teams sent 25% more task-oriented messages, while human-human teams sent 18% more interpersonal messages (Table 4)."
+    },
+    {
+      "outcome_name": "copy_edits",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "62% fewer direct copy edits",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -1032.406 (SE 33.588), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Participants in human-AI teams made 62% fewer direct copy edits compared to human-human teams (Table 4)."
+    },
+    {
+      "outcome_name": "delegation",
+      "arm_comparison": "human_ai vs human_human",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "58% of work delegated to AI partners compared to 50% in human-human teams, a 17% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.084 (SE 0.010), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Human-AI teams also delegated 58% of work to AI partners compared to 50% in human-human teams (\u03b2=0.084 , p<0.001 ), a 17% increase."
+    },
+    {
+      "outcome_name": "message_count",
+      "arm_comparison": "AI recognition effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "more messages sent by participants who correctly identified partner as AI",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b23 = 11.453 (SE 1.676), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Participants who correctly identified their partner as an AI agent sent more messages (\u03b23 =11.453 , p<0.001 ), with a higher proportion of task-oriented messages ( \u03b23 =0.061 , p<0.001 ) and a lower proportion of interpersonal messages (\u03b23 =\u22120.059 , p<0.01 )."
+    },
+    {
+      "outcome_name": "task_oriented_messages",
+      "arm_comparison": "AI recognition effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "higher proportion of task-oriented messages",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b23 = 0.061 (SE 0.018), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Participants who correctly identified their partner as an AI agent sent more messages (\u03b23 =11.453 , p<0.001 ), with a higher proportion of task-oriented messages ( \u03b23 =0.061 , p<0.001 ) and a lower proportion of interpersonal messages (\u03b23 =\u22120.059 , p<0.01 )."
+    },
+    {
+      "outcome_name": "interpersonal_messages",
+      "arm_comparison": "AI recognition effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "lower proportion of interpersonal messages",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b23 = -0.059 (SE 0.019), **",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Participants who correctly identified their partner as an AI agent sent more messages (\u03b23 =11.453 , p<0.001 ), with a higher proportion of task-oriented messages ( \u03b23 =0.061 , p<0.001 ) and a lower proportion of interpersonal messages (\u03b23 =\u22120.059 , p<0.01 )."
+    },
+    {
+      "outcome_name": "delegation",
+      "arm_comparison": "AI recognition effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "more delegation",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b23 = 0.056 (SE 0.023), *",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "They also delegated more (\u03b23 =0.056 , p<0.05 ) and, despite making far fewer direct copy edits overall in human-AI teams (\u03b21 =\u22121155 , p<0.001 ), made slightly more edits than participants who did not correctly identify their partner (\u03b23 =150.6 , p<0.05 )."
+    },
+    {
+      "outcome_name": "copy_edits",
+      "arm_comparison": "AI recognition effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "slightly more edits than participants who did not correctly identify their partner",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b23 = 150.6 (SE 66.080), *",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "They also delegated more (\u03b23 =0.056 , p<0.05 ) and, despite making far fewer direct copy edits overall in human-AI teams (\u03b21 =\u22121155 , p<0.001 ), made slightly more edits than participants who did not correctly identify their partner (\u03b23 =150.6 , p<0.05 )."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "task_oriented communication effect in human_human teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negatively associated with productivity",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -4.19 (SE 0.847), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In human-human teams, task-oriented communication is negatively associated with productivity (\u03b2=\u22124.19 , p<0.001 ), text quality ( \u03b2=\u22120.416 , p<0.05 ), and image quality ( \u03b2=\u22120.267 , p<0.05 )."
+    },
+    {
+      "outcome_name": "text_quality",
+      "arm_comparison": "task_oriented communication effect in human_human teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negatively associated with text quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.416 (SE 0.166), *",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "In human-human teams, task-oriented communication is negatively associated with productivity (\u03b2=\u22124.19 , p<0.001 ), text quality ( \u03b2=\u22120.416 , p<0.05 ), and image quality ( \u03b2=\u22120.267 , p<0.05 )."
+    },
+    {
+      "outcome_name": "image_quality",
+      "arm_comparison": "task_oriented communication effect in human_human teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negatively associated with image quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.267 (SE 0.126), *",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "In human-human teams, task-oriented communication is negatively associated with productivity (\u03b2=\u22124.19 , p<0.001 ), text quality ( \u03b2=\u22120.416 , p<0.05 ), and image quality ( \u03b2=\u22120.267 , p<0.05 )."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "task_oriented communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "improves productivity",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 4.69 (SE 1.242), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "However, in human-AI teams, the reverse is true: task-oriented communication improves productivity (\u03b2=4.69 , p<0.001 ) and ad quality when working with AI (\u03b2=0.746 , p<0.001 for text; \u03b2=0.506 , p<0.01 for image; \u03b2=0.584 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "text_quality",
+      "arm_comparison": "task_oriented communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "improves ad quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.746 (SE 0.206), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "However, in human-AI teams, the reverse is true: task-oriented communication improves productivity (\u03b2=4.69 , p<0.001 ) and ad quality when working with AI (\u03b2=0.746 , p<0.001 for text; \u03b2=0.506 , p<0.01 for image; \u03b2=0.584 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "image_quality",
+      "arm_comparison": "task_oriented communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "improves ad quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.506 (SE 0.173), **",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "However, in human-AI teams, the reverse is true: task-oriented communication improves productivity (\u03b2=4.69 , p<0.001 ) and ad quality when working with AI (\u03b2=0.746 , p<0.001 for text; \u03b2=0.506 , p<0.01 for image; \u03b2=0.584 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "click_rating",
+      "arm_comparison": "task_oriented communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "improves ad quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.584 (SE 0.166), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "However, in human-AI teams, the reverse is true: task-oriented communication improves productivity (\u03b2=4.69 , p<0.001 ) and ad quality when working with AI (\u03b2=0.746 , p<0.001 for text; \u03b2=0.506 , p<0.01 for image; \u03b2=0.584 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "interpersonal communication effect in human_human teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "positively associated with productivity",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 4.25 (SE 0.754), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, while interpersonal communication is positively associated with productivity in human-human teams (\u03b2=4.25 , p<0.001 ), it is negatively associated with productivity (\u03b2=\u22124.80 , p<0.001 ) and ad quality in human-AI teams ( \u03b2=\u22120.685 , p<0.001 for text; \u03b2=\u22120.581 , p<0.001 for image; \u03b2=\u22120.599 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "interpersonal communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negatively associated with productivity",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -4.80 (SE 1.141), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, while interpersonal communication is positively associated with productivity in human-human teams (\u03b2=4.25 , p<0.001 ), it is negatively associated with productivity (\u03b2=\u22124.80 , p<0.001 ) and ad quality in human-AI teams ( \u03b2=\u22120.685 , p<0.001 for text; \u03b2=\u22120.581 , p<0.001 for image; \u03b2=\u22120.599 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "text_quality",
+      "arm_comparison": "interpersonal communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negatively associated with ad quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.685 (SE 0.195), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, while interpersonal communication is positively associated with productivity in human-human teams (\u03b2=4.25 , p<0.001 ), it is negatively associated with productivity (\u03b2=\u22124.80 , p<0.001 ) and ad quality in human-AI teams ( \u03b2=\u22120.685 , p<0.001 for text; \u03b2=\u22120.581 , p<0.001 for image; \u03b2=\u22120.599 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "image_quality",
+      "arm_comparison": "interpersonal communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negatively associated with ad quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.581 (SE 0.168), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, while interpersonal communication is positively associated with productivity in human-human teams (\u03b2=4.25 , p<0.001 ), it is negatively associated with productivity (\u03b2=\u22124.80 , p<0.001 ) and ad quality in human-AI teams ( \u03b2=\u22120.685 , p<0.001 for text; \u03b2=\u22120.581 , p<0.001 for image; \u03b2=\u22120.599 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "click_rating",
+      "arm_comparison": "interpersonal communication effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "negatively associated with ad quality",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.599 (SE 0.161), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In contrast, while interpersonal communication is positively associated with productivity in human-human teams (\u03b2=4.25 , p<0.001 ), it is negatively associated with productivity (\u03b2=\u22124.80 , p<0.001 ) and ad quality in human-AI teams ( \u03b2=\u22120.685 , p<0.001 for text; \u03b2=\u22120.581 , p<0.001 for image; \u03b2=\u22120.599 , p<0.001 for click)."
+    },
+    {
+      "outcome_name": "text_quality",
+      "arm_comparison": "delegation effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "improves text ratings",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.302 (SE 0.071), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "In human-AI teams, delegation improves text ratings (\u03b2=0.302 , p<0.001 ) and click ratings (\u03b2=0.178 , p<0.01 ) but has no effect on image ratings ( \u03b2=0.132 , n.s.; Table 6, Panel B), consistent with the jagged frontier of AI capabilities (Dell'Acqua et al., 2023)."
+    },
+    {
+      "outcome_name": "click_rating",
+      "arm_comparison": "delegation effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "improves click ratings",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.178 (SE 0.065), **",
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "In human-AI teams, delegation improves text ratings (\u03b2=0.302 , p<0.001 ) and click ratings (\u03b2=0.178 , p<0.01 ) but has no effect on image ratings ( \u03b2=0.132 , n.s.; Table 6, Panel B), consistent with the jagged frontier of AI capabilities (Dell'Acqua et al., 2023)."
+    },
+    {
+      "outcome_name": "image_quality",
+      "arm_comparison": "delegation effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "no effect on image ratings",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = 0.132 (SE 0.069)",
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In human-AI teams, delegation improves text ratings (\u03b2=0.302 , p<0.001 ) and click ratings (\u03b2=0.178 , p<0.01 ) but has no effect on image ratings ( \u03b2=0.132 , n.s.; Table 6, Panel B), consistent with the jagged frontier of AI capabilities (Dell'Acqua et al., 2023)."
+    },
+    {
+      "outcome_name": "output_diversity",
+      "arm_comparison": "delegation effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "reduces output diversity",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -0.083 (SE 0.012), ***",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Delegation also reduces output diversity ( \u03b2=\u22120.083 , p<0.001 ), explaining the diversity collapse observed in human-AI teams."
+    },
+    {
+      "outcome_name": "productivity",
+      "arm_comparison": "delegation effect in human_ai teams",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "associated with lower productivity",
+      "standardized_effect_reported": null,
+      "regression_coefficient": "\u03b2 = -1.38 (SE 0.586), *",
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Notably, delegation is associated with lower productivity (\u03b2=\u22121.38 , p<0.05 ), perhaps because excessive delegators are less engaged overall."
+    }
+  ],
+  "notes": "This is a large-scale randomized controlled trial (RCT) with both lab and field components. The study uses a novel experimental platform called Pairit that enables real-time human-AI collaboration with detailed logging of all interactions. The lab experiment involved 2,234 participants (1,258 in human-AI condition, 976 in human-human condition) creating ads over 40 minutes. The field experiment tested the ads on X (formerly Twitter) with 4,932,373 impressions and 7,546 clicks over 20 days. The paper examines three main outcomes: productivity, output quality (text vs. image), and output diversity. Three mechanisms are identified: task-oriented communication, delegation, and AI recognition. The study does not include a human-alone condition, which limits ability to isolate AI's marginal contribution. Results show human-AI teams produced 50% more ads per worker with higher text quality but lower image quality (jagged frontier), and more homogeneous outputs (diversity collapse). The paper notes that AI recognition accuracy was 94.5% in the human-AI condition and 57.6% in the human-human condition. Mediation analyses are post hoc and correlational; alternative explanations remain possible. The limitations of current AI models, particularly vision models, contributed to lower image quality in human-AI teams. Results may drift as AI changes. The study may not fully capture complexities of long-term collaboration in real-world environments. Findings should apply to multi-modal creative tasks with varying AI capabilities across modalities, iterative production tasks, and settings with objective quality metrics, but may be less applicable to high-stakes decision tasks or tasks requiring deep domain expertise. Within-session adaptation was captured, but longitudinal dynamics across repeated collaborations remain unexplored.",
+  "_paper_id": "Ju & Aral 2025"
+}

@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly states it 'implements rigorous causal identification through five complementary econometric strategies: Difference-in-Differences, Event Study, Synthetic Control Method, Instrumental Variables using predetermined infrastructure, and Propensity Score Matching' and 'exploits staggered AI implementation across wards and industries with timing variation due to infrastructure schedules, policy initiatives, and industry characteristics.' These are classic quasi-experimental identification strategies applied to observational panel data without random assignment.",
+  "citation_key": "kikuchi_2025_ai_spatial"
+}

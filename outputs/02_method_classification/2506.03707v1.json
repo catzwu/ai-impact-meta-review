@@ -1,0 +1,6 @@
+{
+  "classification": "field_experiment",
+  "confidence": "high",
+  "rationale": "The study explicitly describes a 'two-staged field experiment' where 'customers visiting bank branches were randomly assigned' to different advice conditions. The experiment was 'conducted in person with trained research assistants at two bank branches' in a real banking setting, making this a randomized field experiment rather than a lab study.",
+  "citation_key": "yang_2025_human_ai_collaboration"
+}

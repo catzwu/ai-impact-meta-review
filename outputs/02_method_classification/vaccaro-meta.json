@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a 'preregistered systematic review and meta-analysis of 106 experimental studies' that synthesizes findings across multiple primary studies rather than conducting a single primary experiment. It does not fit any of the primary study design categories as it is a secondary analysis aggregating results from diverse experiments.",
+  "citation_key": "vaccaro_2024_human_ai_synergy"
+}

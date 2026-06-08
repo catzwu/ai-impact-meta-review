@@ -1,0 +1,32 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "correctness",
+      "category": "quality",
+      "operationalization": "Percentage of five multiple-choice questions answered correctly about the paper content"
+    },
+    {
+      "outcome_name": "content_grade",
+      "category": "quality",
+      "operationalization": "Rubric score 1-5 evaluating comprehensiveness of the summary report"
+    },
+    {
+      "outcome_name": "grammar_grade",
+      "category": "quality",
+      "operationalization": "Rubric score 1-5 evaluating grammar quality of the summary report"
+    },
+    {
+      "outcome_name": "flow_grade",
+      "category": "quality",
+      "operationalization": "Rubric score 1-5 evaluating flow quality of the summary report"
+    },
+    {
+      "outcome_name": "overall_grade",
+      "category": "quality",
+      "operationalization": "Average of comprehensiveness, grammar, and flow rubric scores (1-5 scale)"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": "correctness",
+  "citation_key": "ju_2023_generative_ai_learning"
+}

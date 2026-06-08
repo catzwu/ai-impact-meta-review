@@ -1,0 +1,67 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "project_level_code_contributions",
+      "category": "other",
+      "operationalization": "Total count of pull requests merged into each project per month, extracted from GitHub API"
+    },
+    {
+      "outcome_name": "coordination_time",
+      "category": "speed",
+      "operationalization": "Average duration in days from PR submission to merge acceptance, calculated per project per month"
+    },
+    {
+      "outcome_name": "developer_coding_participation",
+      "category": "other",
+      "operationalization": "Count of unique developers with at least one merged PR in the project per month"
+    },
+    {
+      "outcome_name": "individual_productivity",
+      "category": "speed",
+      "operationalization": "Mean number of merged PRs per developer per project per month"
+    },
+    {
+      "outcome_name": "code_discussion_volume",
+      "category": "other",
+      "operationalization": "Mean total comment count per merged PR, averaged across PRs in a project-month"
+    },
+    {
+      "outcome_name": "code_discussion_participation",
+      "category": "other",
+      "operationalization": "Mean count of unique commenters per merged PR, averaged across PRs in a project-month"
+    },
+    {
+      "outcome_name": "code_discussion_intensity",
+      "category": "other",
+      "operationalization": "Mean comments per commenter per merged PR, averaged across PRs in a project-month"
+    },
+    {
+      "outcome_name": "prs_merged_within_one_day",
+      "category": "speed",
+      "operationalization": "Percentage of merged PRs with submission-to-merge time \u22641 day, per project-month"
+    },
+    {
+      "outcome_name": "prs_merged_within_three_days",
+      "category": "speed",
+      "operationalization": "Percentage of merged PRs with submission-to-merge time \u22643 days, per project-month"
+    },
+    {
+      "outcome_name": "prs_merged_within_ten_days",
+      "category": "speed",
+      "operationalization": "Percentage of merged PRs with submission-to-merge time \u226410 days, per project-month"
+    },
+    {
+      "outcome_name": "core_developer_pr_share",
+      "category": "other",
+      "operationalization": "Proportion of merged PRs authored by core developers with write access, per project-month"
+    },
+    {
+      "outcome_name": "peripheral_developer_merge_time",
+      "category": "speed",
+      "operationalization": "Percent change in average merge time for peripheral developers relative to baseline, per project-month"
+    }
+  ],
+  "primary_speed_outcome": "coordination_time",
+  "primary_quality_outcome": null,
+  "citation_key": "song_2024_copilot_oss"
+}

@@ -1,0 +1,17 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "ROA",
+      "category": "other",
+      "operationalization": "Net income divided by total assets, winsorized at 1st and 99th percentiles, expressed in percentage points"
+    },
+    {
+      "outcome_name": "ROE",
+      "category": "other",
+      "operationalization": "Net income divided by total equity, winsorized at 1st and 99th percentiles, expressed in percentage points"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "kikuchi_2026_innovation_tax"
+}

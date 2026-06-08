@@ -1,0 +1,278 @@
+{
+  "citation_key": "dillon_2025_shifting_work",
+  "authors": [
+    "Eleanor W. Dillon",
+    "Sonia Jaffe",
+    "Nicole Immorlica",
+    "Christopher T. Stanton"
+  ],
+  "title": "Shifting Work Patterns with Generative AI",
+  "year": 2025,
+  "venue": "NBER Working Paper 33795",
+  "study_design_description": "A field experiment across 66 firms and 7,137 knowledge workers conducted between September 2023 and October 2024. Each firm recruited at least 100 workers for random assignment to treatment and control groups. Treated workers received access to Microsoft 365 Copilot integrated into applications they already used (email, meetings, writing), while controls continued with their current technologies. Firms maintained random assignment for six months. The main estimation uses a difference-in-differences approach with pre-experiment data to account for baseline heterogeneity, focusing on outcomes at least 12 weeks after treatment assignment. Sharpened q-values were used to account for multiple hypothesis testing.",
+  "primary_task_description": "Workers were randomly selected to access a generative AI tool (Microsoft 365 Copilot) integrated into applications they already used at work for email, meetings, and writing. Treated workers were free to use or not use the tool during their regular work. Participants came from varied occupations but all did work using Microsoft Office tools into which Copilot was integrated (emailing, video meetings, chat, document creation). Telemetry data from Microsoft products tracked workers' behavior during the experiment and for several months beforehand.",
+  "population_description": "7,137 knowledge workers across 66 large firms spanning multiple industries and countries. The sample is dominated by knowledge workers who regularly do emailing and word processing tasks for which Copilot was designed. Participating workers may not be representative of the overall worker population at participating firms or of knowledge workers more broadly. The vast majority of workers (6,485 out of 7,137) used Outlook regularly in the pre-period. Baseline samples for specific outcomes: 6,441 workers for email outcomes, 2,525 for Word outcomes, and 6,170 for Teams outcomes.",
+  "arms": [
+    {
+      "arm_name": "copilot_access",
+      "description": "Treated workers received access to Microsoft 365 Copilot integrated into applications they already used at work for email, meetings, and writing. Copilot licenses were assigned at random among experiment-eligible workers, but treated workers were not required to use the tools or deploy them for specific work tasks.",
+      "n": 3684
+    },
+    {
+      "arm_name": "control",
+      "description": "Control workers continued working with their current technologies without access to Copilot.",
+      "n": 3453
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "outlook_total_session_time",
+      "outcome_description": "The time spent aggregated across all Outlook sessions in a week, measured in hours.",
+      "measurement_unit": "hours per week",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "outlook_sessions",
+      "outcome_description": "The number of Outlook sessions in a week.",
+      "measurement_unit": "sessions per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "email_free_work_time",
+      "outcome_description": "The total time spent during an individual's working day in non-Outlook blocks at least 30 minutes long, measured in hours.",
+      "measurement_unit": "hours per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "outlook_out_of_hours_session_time",
+      "outcome_description": "The subset of Outlook session time that occurred outside the individual's working day, measured in hours.",
+      "measurement_unit": "hours per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "unique_email_threads_replied_to",
+      "outcome_description": "The number of unique email threads/conversations among emails that are received that week and replied to within 7 days.",
+      "measurement_unit": "threads per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "time_to_reply_from_email_delivery",
+      "outcome_description": "The average length of time it takes to reply to an email among emails received that week and replied to within 7 days, measured in hours.",
+      "measurement_unit": "hours",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "emails_read",
+      "outcome_description": "The number of distinct emails read within a week.",
+      "measurement_unit": "emails per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "teams_meeting_time",
+      "outcome_description": "The time spent in scheduled Teams meetings (excluding spontaneous calls) in a week.",
+      "measurement_unit": "hours per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "total_teams_meetings_attended",
+      "outcome_description": "The number of Teams meetings attended in a week.",
+      "measurement_unit": "meetings per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "share_of_meetings_attended_early_late",
+      "outcome_description": "The share of scheduled Teams meetings joined either \u22655 minutes after the Teams meeting was started or left \u22655 minutes before the meeting was ended.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "word_total_session_time",
+      "outcome_description": "The time spent in Word sessions, identified as blocks of actions with < 15 minute gaps.",
+      "measurement_unit": "hours per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "avg_document_time_to_complete",
+      "outcome_description": "The average time between the creation (first edit) and completion of a document, for documents completed that week and where the target worker is the primary editor.",
+      "measurement_unit": "hours",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "completed_documents",
+      "outcome_description": "The number of documents completed in a week where the target worker is the primary editor.",
+      "measurement_unit": "documents per week",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "total_out_of_hours_session_time",
+      "outcome_description": "The sum of Outlook, Teams, and Word out-of-hours session time, representing a maximum of the out-of-hours activity on these apps.",
+      "measurement_unit": "hours per week",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "outlook_total_session_time",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {
+        "copilot_access": {
+          "mean": 10.3,
+          "sd": null,
+          "se": null
+        },
+        "control": {
+          "mean": 11.7,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.4 fewer hours per week (ITT); 2 fewer hours per week (LATE)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "In the pre-period, the average worker spent 11.7 hours per week reading and responding to emails. Our intent-to-treat (LATE) estimates show workers with access to Copilot spent an average of 1.4 (2) fewer hours per week in email sessions over post-period months 4-6, a 12% (17%) decline from their pre-period average."
+    },
+    {
+      "outcome_name": "outlook_sessions",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "11% reduction (ITT); 17% reduction (LATE)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Workers with access to Copilot also consolidated their email work, reducing their count of Outlook sessions per week by 11% (17%), while opening up almost 1.5 hours per week of time in \"non-email\" blocks of 30 minutes or more during the regular workday with no Outlook activity (LATE = 2.2 hours)."
+    },
+    {
+      "outcome_name": "email_free_work_time",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "1.5 hours per week (ITT); 2.2 hours per week (LATE)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Workers with access to Copilot also consolidated their email work, reducing their count of Outlook sessions per week by 11% (17%), while opening up almost 1.5 hours per week of time in \"non-email\" blocks of 30 minutes or more during the regular workday with no Outlook activity (LATE = 2.2 hours)."
+    },
+    {
+      "outcome_name": "teams_meeting_time",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 5.22,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "ITT results rule out effect sizes outside of the interval between -0.01 and 0.21 hours",
+      "verbatim_quote": "The ITT results rule out effect sizes outside of the interval between -0.01 and 0.21 hours for Teams meetings relative to a mean of 5.22 hours per week."
+    },
+    {
+      "outcome_name": "word_total_session_time",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.14 hours per week (ITT); 0.19 hours per week (LATE), 8.6% increase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We estimate an increase in Word session time of 0.14 (LATE = 0.19) hours per week, an 8.6% increase from a small pre-period mean, but this effect just misses statistical significance using the sharpened q-values."
+    },
+    {
+      "outcome_name": "total_out_of_hours_session_time",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0.25 hours per week reduction, 9% reduction",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Treated workers did reduce their time spent in digital applications outside of their regular working hours by about 0.25 hours-per-week (9%), suggesting that some of the time saved on email returned to workers."
+    },
+    {
+      "outcome_name": "emails_read",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "4% reduction (ITT); 6% reduction (LATE)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "ITT estimates can rule out increases larger than 1.2% in time per email",
+      "verbatim_quote": "Workers with Copilot read 4% (LATE = 6%) fewer emails each week (Table 2) with no increase in their time spent per email. We can rule out increases larger than 1.2% in time per email in the ITT estimates."
+    },
+    {
+      "outcome_name": "unique_email_threads_replied_to",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "ITT estimates can rule out effect sizes greater than 3.4% of the mean",
+      "verbatim_quote": "No significant changes in the number of unique threads replied to or in the time from delivery to reply, suggesting that workers were not ignoring their inboxes or missing emails that required a reply. We can rule out effect sizes greater than 3.4% of the mean in the ITT estimates for email threads and greater than 4.1% of the mean for reductions in time to reply to emails."
+    },
+    {
+      "outcome_name": "time_to_reply_from_email_delivery",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "ITT estimates can rule out effect sizes greater than 4.1% of the mean",
+      "verbatim_quote": "No significant changes in the number of unique threads replied to or in the time from delivery to reply, suggesting that workers were not ignoring their inboxes or missing emails that required a reply. We can rule out effect sizes greater than 3.4% of the mean in the ITT estimates for email threads and greater than 4.1% of the mean for reductions in time to reply to emails."
+    },
+    {
+      "outcome_name": "total_teams_meetings_attended",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "ITT estimates can rule out increases in the number of meetings greater than 4.6%",
+      "verbatim_quote": "We find no evidence for these kinds of changes for Teams tasks in Table 2 (we can rule out increases in the number of meetings greater than 4.6%)."
+    },
+    {
+      "outcome_name": "avg_document_time_to_complete",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2% savings of pre-period mean (ITT)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "ITT point estimate cannot rule out that document time to complete increased by as much as 7%",
+      "verbatim_quote": "Regular Word users with Copilot completed their documents more quickly, consistent with Noy and Zhang (2023), but the ITT point estimate is a savings of only 2% of the pre-period mean, and we cannot rule out that document time to complete increased by as much as 7%."
+    },
+    {
+      "outcome_name": "completed_documents",
+      "arm_comparison": "copilot_access vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": "ITT estimates can rule out increases larger than 11% of the pre-period mean",
+      "verbatim_quote": "We estimate that Copilot use also slightly increased the total Word documents authored by the studied workers (we can rule out increases larger than 11% of the pre-period mean and cannot rule out no change)."
+    }
+  ],
+  "notes": "This is a large-scale field experiment conducted across 66 firms with 7,137 knowledge workers (3,684 treated, 3,453 control based on stated treatment group size). The study measures effects of access to Microsoft 365 Copilot on work patterns using telemetry data from Microsoft Office applications. The main analysis focuses on months 4-6 after treatment assignment (weeks 12+) when usage had stabilized at approximately 40% of treated workers. Over 90% of treated workers used Copilot at least once during the 6-month period. The paper uses difference-in-differences estimation with intent-to-treat (ITT) and local average treatment effect (LATE) specifications, and applies sharpened q-values to account for multiple hypothesis testing. Primary findings: workers with Copilot access spent 1.4-2 fewer hours per week on email (12-17% reduction) and reduced out-of-hours work by 0.25 hours/week (9% reduction), but showed no significant changes in Teams meetings or Word document quantity. The paper notes several limitations: (1) only observes activity within Microsoft Office products; (2) sample may not be representative of broader worker population; (3) Word analysis restricted to workers with above-median pre-period use (>0.25 hours/week); (4) Teams analysis excludes 10 firms primarily using non-Microsoft video conferencing; (5) does not measure email composition time directly; (6) cannot observe content of work or productivity/performance measures; (7) treated workers may have used other generative AI tools (e.g., ChatGPT) during the study period. Spillover effects on coworkers' email activity were modest and generally in the same direction as main effects, with the only statistically significant spillover estimate being on unique email threads replied to (which fell). No negative spillover effects detected on coworkers' work patterns.",
+  "_paper_id": "Dillon et al. 2025"
+}

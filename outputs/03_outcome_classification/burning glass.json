@@ -1,0 +1,22 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "unemployment_rate",
+      "category": "other",
+      "operationalization": "percentage of labor force that is unemployed, calculated as (unemployed \u00f7 labor force) \u00d7 100"
+    },
+    {
+      "outcome_name": "underemployment",
+      "category": "other",
+      "operationalization": "percentage of bachelor's degree holders employed in occupations where less than half of workers have or require a degree"
+    },
+    {
+      "outcome_name": "layoff_rates",
+      "category": "other",
+      "operationalization": "rate of layoffs among young degree-holders, measurement method not specified"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "levanon_2025_entry_level"
+}

@@ -1,0 +1,49 @@
+{
+  "_paper_id": "choi_monahan_schwarcz",
+  "citation_key": "choi_2023_lawyering_ai",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": true,
+    "human_arm_name": "no_gpt4",
+    "ai_arm_name": "with_gpt4",
+    "ai_arm_selection_rationale": "This is a within-subject crossover design where all participants completed tasks both with and without GPT-4. Group A used GPT-4 for complaint drafting (the primary outcome task), while Group B did not use AI for this task. The comparison is between the same participants' performance with vs. without GPT-4.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": -38.77,
+    "m_human": 160.69,
+    "sd_human": 72.38,
+    "se_human": null,
+    "n_human": 59,
+    "m_ai": 122.0,
+    "sd_ai": 66.8,
+    "se_ai": null,
+    "n_ai": 59,
+    "reported_percent_change": -0.241,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Within-subject crossover design with 59 total participants (30 in Group A + 29 in Group B). All participants completed the complaint drafting task both with and without GPT-4 assistance. The reported difference of -38.77 minutes represents a 24.1% reduction in time. The 95% CI (-64.00, -13.36) applies to the mean difference in minutes, not the percent change. Total n is 59 (sum of both groups), as each participant contributed both a with-AI and without-AI observation for this task.",
+    "source_quotes": [
+      "Complaint Drafting: No GPT-4 (Std. Dev.) 160.69 (72.38), With GPT-4 (Std. Dev.) 122.00 (66.80), Difference (95% CI) -38.77 (-64.00, -13.36), % Difference 24.1%, p-value 0.0018",
+      "Group A used GPT-4 for the contract drafting and complaint drafting tasks, and refrained from using GPT-4 or any other type of AI for the employee handbook and client memo tasks.",
+      "Group B used GPT-4 for the employee handbook and client memo tasks, and refrained from using GPT-4 or any other type of AI for the contract drafting and complaint drafting tasks."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.2754559983204052,
+    "log_ratio_variance": 0.008520179230760977,
+    "percent_change_equivalent": 0.3171311475409835,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_and_sds",
+    "confidence": "high",
+    "notes": "Within-subject crossover design with 59 total participants (30 in Group A + 29 in Group B). All participants completed the complaint drafting task both with and without GPT-4 assistance. The reported difference of -38.77 minutes represents a 24.1% reduction in time. The 95% CI (-64.00, -13.36) applies to the mean difference in minutes, not the percent change. Total n is 59 (sum of both groups), as each participant contributed both a with-AI and without-AI observation for this task.",
+    "n_human": 59,
+    "n_ai": 59
+  }
+}

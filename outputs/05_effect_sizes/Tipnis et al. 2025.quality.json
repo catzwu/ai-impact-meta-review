@@ -1,0 +1,51 @@
+{
+  "_paper_id": "Tipnis et al. 2025",
+  "citation_key": "tipnis_2025_ai_philanthropy",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "Control (no AI)",
+    "ai_arm_name": "AI-assisted (Rapid editor)",
+    "ai_arm_selection_rationale": "The study compares volunteers who were introduced to the AI-powered Rapid editor (treated group) versus those who were not (control group). This is the primary comparison for the main analysis.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 360,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 360,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "The paper reports a negative carryover effect where volunteers introduced to AI reduce their monthly contributions by 21.3% on average (Table 1: coefficient -0.240, p<0.01). The dependent variable is ln(Tasks_it), which is log-transformed. The paper uses a difference-in-differences design with volunteer and month fixed effects. The matched sample has 360 treated and 360 control volunteers. However, the paper does not report raw means, SDs, or other statistics needed to compute Hedges' g directly. The reported coefficient is from a regression model with fixed effects on a log-transformed outcome, which cannot be directly converted to Hedges' g without additional information. The percentage reduction (21.3%) is calculated as e^(-0.240) - 1. While the paper provides extensive robustness checks and heterogeneity analysis (Tables EC.12-EC.23), none report the raw statistics needed for effect size calculation. The CIC analysis (Table 3) shows quantile treatment effects but these are also not in a form convertible to Hedges' g.",
+    "source_quotes": [
+      "Volunteers introduced to AI reduce their monthly contributions by 21.3% on average compared to those who were not.",
+      "Table 1: T reatedit -0.240*** (0.052)",
+      "Our final dataset consists of 836 treated volunteers who performed 151,929 tasks and 32,298 control volunteers who performed 1,156,124 tasks during the observation window.",
+      "By applying CEM, we construct a control group that consists of volunteers who were not introduced to AI but demonstrate comparable engagement and experience on HOTTM to the treated volunteers who were introduced to AI, all measured prior to the adoption period. This matching process leads to a matched sample of 360 treated volunteers and 360 control volunteers."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "The paper reports a negative carryover effect where volunteers introduced to AI reduce their monthly contributions by 21.3% on average (Table 1: coefficient -0.240, p<0.01). The dependent variable is ln(Tasks_it), which is log-transformed. The paper uses a difference-in-differences design with volunteer and month fixed effects. The matched sample has 360 treated and 360 control volunteers. However, the paper does not report raw means, SDs, or other statistics needed to compute Hedges' g directly. The reported coefficient is from a regression model with fixed effects on a log-transformed outcome, which cannot be directly converted to Hedges' g without additional information. The percentage reduction (21.3%) is calculated as e^(-0.240) - 1. While the paper provides extensive robustness checks and heterogeneity analysis (Tables EC.12-EC.23), none report the raw statistics needed for effect size calculation. The CIC analysis (Table 3) shows quantile treatment effects but these are also not in a form convertible to Hedges' g. | insufficient numbers for d",
+    "n_human": 360,
+    "n_ai": 360,
+    "direction_convention": "larger_is_better"
+  }
+}

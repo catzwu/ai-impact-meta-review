@@ -1,0 +1,112 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "code_pushes",
+      "category": "other",
+      "operationalization": "Count of git pushes to GitHub repositories per 100,000 people in each economy, aggregated from GitHub platform data"
+    },
+    {
+      "outcome_name": "repositories",
+      "category": "other",
+      "operationalization": "Count of repositories per 100,000 people based on modal location of repository members with triage+ access"
+    },
+    {
+      "outcome_name": "developers",
+      "category": "other",
+      "operationalization": "Count of developer accounts per 100,000 people based on modal daily location, excluding bots and spam accounts"
+    },
+    {
+      "outcome_name": "unique_developers_python",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a Python repository"
+    },
+    {
+      "outcome_name": "unique_developers_javascript",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a JavaScript repository"
+    },
+    {
+      "outcome_name": "unique_developers_ruby",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a Ruby repository"
+    },
+    {
+      "outcome_name": "unique_developers_php",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a PHP repository"
+    },
+    {
+      "outcome_name": "unique_developers_typescript",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a TypeScript repository"
+    },
+    {
+      "outcome_name": "unique_developers_c",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a C repository"
+    },
+    {
+      "outcome_name": "unique_developers_cpp",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a C++ repository"
+    },
+    {
+      "outcome_name": "unique_developers_rust",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a Rust repository"
+    },
+    {
+      "outcome_name": "unique_developers_assembly",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to an Assembly repository"
+    },
+    {
+      "outcome_name": "unique_developers_shell",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a Shell repository"
+    },
+    {
+      "outcome_name": "unique_developers_batchfile",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a Batchfile repository"
+    },
+    {
+      "outcome_name": "unique_developers_powershell",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a PowerShell repository"
+    },
+    {
+      "outcome_name": "unique_developers_tsql",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a TSQL repository"
+    },
+    {
+      "outcome_name": "unique_developers_plpgsql",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a PLpgSQL repository"
+    },
+    {
+      "outcome_name": "unique_developers_html",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to an HTML repository"
+    },
+    {
+      "outcome_name": "unique_developers_css",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a CSS repository"
+    },
+    {
+      "outcome_name": "unique_developers_matlab",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to a MATLAB repository"
+    },
+    {
+      "outcome_name": "unique_developers_r",
+      "category": "other",
+      "operationalization": "Count of unique developers who made at least one git push to an R repository"
+    }
+  ],
+  "primary_speed_outcome": null,
+  "primary_quality_outcome": null,
+  "citation_key": "quispe_2024_chatgpt_software"
+}

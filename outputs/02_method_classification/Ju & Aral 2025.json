@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study explicitly states it is \"A randomized controlled trial in which 2,234 participants were randomly assigned to either human-human or human-AI teams.\" While participants completed a task, this was not a controlled lab setting but rather an online platform (Prolific) where participants worked remotely, making it a standard RCT rather than a lab_task or field_experiment.",
+  "citation_key": "ju_2026_collaborating_ai"
+}

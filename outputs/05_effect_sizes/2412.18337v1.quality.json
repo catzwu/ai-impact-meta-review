@@ -1,0 +1,47 @@
+{
+  "_paper_id": "2412.18337v1",
+  "citation_key": "zhang_2024_ai_metadata",
+  "kind": "quality",
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treatment",
+    "ai_arm_selection_rationale": "Only one AI arm (treatment) vs. control (human-only). However, the reported statistic is a correlation between similarity and lexical density, not a direct comparison of lexical density between treatment and control arms.",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 1023093,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1024940,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "The reported statistic describes a correlation between textual similarity (between AI-generated and adopted titles) and lexical density, not a direct treatment vs. control comparison of lexical density. The quote states '10% decrease in similarity correlated with a 4.8% increase in lexical density' but does not provide means, SDs, or test statistics comparing lexical density between the treatment and control arms. No extractable data for computing Hedges' g between arms.",
+    "source_quotes": [
+      "Lower similarity scores were also associated with richer linguistic attributes, where a 10% decrease in similarity correlated with a 4.8% increase in lexical density, 3.7% in lexical variation, and 1.1% in entropy."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "The reported statistic describes a correlation between textual similarity (between AI-generated and adopted titles) and lexical density, not a direct treatment vs. control comparison of lexical density. The quote states '10% decrease in similarity correlated with a 4.8% increase in lexical density' but does not provide means, SDs, or test statistics comparing lexical density between the treatment and control arms. No extractable data for computing Hedges' g between arms. | arm pair unresolvable",
+    "n_human": 1023093,
+    "n_ai": 1024940,
+    "direction_convention": "larger_is_better"
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "citation_key": "tamkin_2024_clio_privacy",
+  "authors": [
+    "Alex Tamkin",
+    "Miles McCain",
+    "Kunal Handa",
+    "Esin Durmus",
+    "Liane Lovitt",
+    "Ankur Rathi",
+    "Saffron Huang",
+    "Alfred Mountfield",
+    "Jerry Hong",
+    "Stuart Ritchie",
+    "Michael Stern",
+    "Brian Clarke",
+    "Landon Goldberg",
+    "Theodore R. Sumers",
+    "Jared Mueller",
+    "William McEachen",
+    "Wes Mitchell",
+    "Shan Carter",
+    "Jack Clark",
+    "Jared Kaplan",
+    "Deep Ganguli"
+  ],
+  "title": "Clio: Privacy-Preserving Insights into Real-World AI Use",
+  "year": 2024,
+  "venue": "arXiv preprint",
+  "study_design_description": "The paper presents a range of manual and automated evaluations to validate the performance of Clio, a privacy-preserving system for analyzing AI assistant usage. Evaluations include reconstruction studies using almost 20,000 synthetic chat transcripts with known topic distributions, manual review of 200 conversations and their Claude-written summaries, harmfulness ranking on a 1-5 scale, manual review of 5,904 cluster assignments across 183 distinct clusters, and manual review of 1,094 hierarchical cluster assignments. A test set of 1,237 examples (630 not privacy preserving, 607 privacy preserving) was created to quantitatively evaluate the summarizer and base-level clusterer.",
+  "primary_task_description": "Clio is a system that uses AI assistants to surface aggregated insights across millions of model interactions while preserving user privacy. The system works through a multi-stage pipeline: (1) extracting facets (attributes such as conversation topic, number of turns, language); (2) semantic clustering using embeddings and k-means; (3) describing clusters with model-generated titles and summaries; (4) building multi-level hierarchies combining k-means clustering and prompting; (5) interactive exploration through a map-like interface enabling users to zoom across granular clusters and color/sort by facets.",
+  "population_description": "The analysis focuses on one million Claude.ai Free and Pro conversations. This analysis focuses on the ways that individuals use Claude.ai, and Teams, Enterprise, and Zero Retention customers are excluded from analysis. Two distinct sampling strategies were used: (1) sample model completions then deduplicate by conversations, weighting longer conversations more; (2) sample conversations directly, weighting shorter and longer conversations equally.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "reconstruction_accuracy_regular_data",
+      "outcome_description": "Clio reconstructed the ground-truth distribution of topics in a synthetic dataset with known topic distribution",
+      "measurement_unit": "accuracy %",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "reconstruction_accuracy_concerning_data",
+      "outcome_description": "Clio reconstructed the ground-truth distribution of topics in concerning synthetic data",
+      "measurement_unit": "accuracy %",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "private_data_in_clusters",
+      "outcome_description": "Presence of private data in clusters as detected in audit",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "conversation_summary_accuracy",
+      "outcome_description": "Accuracy of Claude-written summaries of conversations",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "random_conversation_summary_accuracy",
+      "outcome_description": "Accuracy of Claude-written summaries of random conversations",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "concerning_conversation_summary_accuracy",
+      "outcome_description": "Accuracy of Claude-written summaries of concerning conversations",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "harmfulness_assessment_correlation",
+      "outcome_description": "Correlation between Claude's harmfulness assessment and manual assessment on 1-5 scale",
+      "measurement_unit": "Spearman's correlation coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "base_level_cluster_title_accuracy_random",
+      "outcome_description": "Accuracy of cluster titles on random Claude.ai conversations",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "base_level_cluster_title_accuracy_flagged",
+      "outcome_description": "Accuracy of cluster titles on conversations flagged by Trust and Safety",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "cluster_membership_accuracy",
+      "outcome_description": "Proportion of conversations in each cluster that clearly belong to that cluster",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "hierarchical_cluster_title_accuracy",
+      "outcome_description": "Accuracy of hierarchical cluster titles in reflecting their contents",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "hierarchical_cluster_title_accuracy_random",
+      "outcome_description": "Accuracy of hierarchical cluster titles on random Claude.ai conversations",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "hierarchical_cluster_title_accuracy_flagged",
+      "outcome_description": "Accuracy of hierarchical cluster titles on conversations flagged by Trust and Safety",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "concern_score_flag_rate_correlation",
+      "outcome_description": "Correlation between mean concern score and mean flag rate on per-cluster basis",
+      "measurement_unit": "Pearson correlation coefficient",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "auditor_accuracy",
+      "outcome_description": "Accuracy of auditor on hand-designed test set",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "multilingual_accuracy",
+      "outcome_description": "Clio accuracy across all languages tested",
+      "measurement_unit": "accuracy %",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "private_information_rate_raw",
+      "outcome_description": "Proportion of raw data containing private information (rated 1-2 out of 5 on privacy scale)",
+      "measurement_unit": "%",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "private_information_rate_after_summarization",
+      "outcome_description": "Proportion of data containing private information after summarization step",
+      "measurement_unit": "%",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "reconstruction_accuracy_regular_data",
+      "arm_comparison": "synthetic_regular_data",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "94% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Clio reconstructed the ground-truth distribution of topics in a synthetic dataset with 94% accuracy, and produced no clusters with private data in an audit of 5,000 conversations."
+    },
+    {
+      "outcome_name": "private_data_in_clusters",
+      "arm_comparison": "synthetic_data_audit",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "0 clusters with private data",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Clio reconstructed the ground-truth distribution of topics in a synthetic dataset with 94% accuracy, and produced no clusters with private data in an audit of 5,000 conversations."
+    },
+    {
+      "outcome_name": "reconstruction_accuracy_regular_data",
+      "arm_comparison": "synthetic_regular_data",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "94% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "As Figure 4 shows, Clio is able to accurately reconstruct these categories with 94% accuracy, giving us confidence in its results."
+    },
+    {
+      "outcome_name": "conversation_summary_accuracy",
+      "arm_comparison": "all_conversations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "96% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that 96% of the conversations were summarized accurately, including 93% of the random conversations and 98% of the concerning conversations were summarized accurately."
+    },
+    {
+      "outcome_name": "random_conversation_summary_accuracy",
+      "arm_comparison": "random_conversations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "93% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that 96% of the conversations were summarized accurately, including 93% of the random conversations and 98% of the concerning conversations were summarized accurately."
+    },
+    {
+      "outcome_name": "concerning_conversation_summary_accuracy",
+      "arm_comparison": "concerning_conversations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "98% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that 96% of the conversations were summarized accurately, including 93% of the random conversations and 98% of the concerning conversations were summarized accurately."
+    },
+    {
+      "outcome_name": "harmfulness_assessment_correlation",
+      "arm_comparison": "claude_vs_manual_assessment",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Spearman's correlation coefficient = 0.84",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that Claude's assessment and our manual assessment had a Spearman's correlation coefficient of 0.84, indicating strong directional agreement."
+    },
+    {
+      "outcome_name": "base_level_cluster_title_accuracy_random",
+      "arm_comparison": "random_conversations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "99% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Overall, we found that 99% of clusters on random Claude.ai conversations had accurate titles, and 96% of the clusters on conversations flagged by Trust and Safety had accurate titles."
+    },
+    {
+      "outcome_name": "base_level_cluster_title_accuracy_flagged",
+      "arm_comparison": "flagged_conversations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "96% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Overall, we found that 99% of clusters on random Claude.ai conversations had accurate titles, and 96% of the clusters on conversations flagged by Trust and Safety had accurate titles."
+    },
+    {
+      "outcome_name": "cluster_membership_accuracy",
+      "arm_comparison": "all_clusters",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "97% of conversations clearly belong to cluster (3% do not)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that an average of 3% of the conversations in each cluster did not clearly belong to that cluster."
+    },
+    {
+      "outcome_name": "hierarchical_cluster_title_accuracy",
+      "arm_comparison": "all_hierarchical_clusters",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "97% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that 97% of the hierarchical clusters' titles accurately reflected their contents. 95% of hierarchical clusters on random Claude.ai conversations were accurate, and 99% of hierarchical clusters on conversations flagged by Trust and Safety were accurate."
+    },
+    {
+      "outcome_name": "hierarchical_cluster_title_accuracy_random",
+      "arm_comparison": "random_conversations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "95% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that 97% of the hierarchical clusters' titles accurately reflected their contents. 95% of hierarchical clusters on random Claude.ai conversations were accurate, and 99% of hierarchical clusters on conversations flagged by Trust and Safety were accurate."
+    },
+    {
+      "outcome_name": "hierarchical_cluster_title_accuracy_flagged",
+      "arm_comparison": "flagged_conversations",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "99% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that 97% of the hierarchical clusters' titles accurately reflected their contents. 95% of hierarchical clusters on random Claude.ai conversations were accurate, and 99% of hierarchical clusters on conversations flagged by Trust and Safety were accurate."
+    },
+    {
+      "outcome_name": "reconstruction_accuracy_regular_data",
+      "arm_comparison": "synthetic_regular_data_20_clusters",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "94% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Clio achieves 94% accuracy across 20 high-level clusters on regular synthetic data and 84% accuracy across 18 high-level clusters on concerning synthetic data."
+    },
+    {
+      "outcome_name": "reconstruction_accuracy_concerning_data",
+      "arm_comparison": "synthetic_concerning_data_18_clusters",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "84% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Clio achieves 94% accuracy across 20 high-level clusters on regular synthetic data and 84% accuracy across 18 high-level clusters on concerning synthetic data."
+    },
+    {
+      "outcome_name": "multilingual_accuracy",
+      "arm_comparison": "all_languages",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "above 92% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Clio maintains overall accuracy above 92% across all languages we tested."
+    },
+    {
+      "outcome_name": "concern_score_flag_rate_correlation",
+      "arm_comparison": "per_cluster_basis",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Pearson correlation r = 0.71",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We compared our mean concern score with our mean flag rate on a per-cluster basis, and obtained Pearson correlation r = 0.71."
+    },
+    {
+      "outcome_name": "auditor_accuracy",
+      "arm_comparison": "hand_designed_test_set",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "98% accuracy",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We found that our auditor achieved a 98% accuracy rate on our hand-designed test set."
+    },
+    {
+      "outcome_name": "private_information_rate_raw",
+      "arm_comparison": "raw_data",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "approximately 10%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We observed that approximately 10% of raw data contained private information (rated as 1 or 2 out of 5 on our privacy scale)."
+    },
+    {
+      "outcome_name": "private_information_rate_after_summarization",
+      "arm_comparison": "after_summarization",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "about 1.5%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "After applying summarization, the rate of private information dropped to about 1.5%."
+    }
+  ],
+  "notes": "This is a technical paper describing Clio, a privacy-preserving system for analyzing real-world AI assistant usage patterns. The paper is not a traditional empirical study comparing two experimental conditions (AI vs. no-AI). Instead, it presents: (1) a system design and implementation, (2) validation studies of the system's accuracy and privacy properties using synthetic and real data, and (3) case studies demonstrating the system's application to understanding Claude.ai usage and improving safety systems. The main empirical contributions are: reconstruction accuracy on synthetic data (94% on regular data, 84% on concerning data), manual review validations of different pipeline components (96% accuracy for summaries, 99% for base-level clusters, 97% for hierarchical clusters), and privacy audits showing effective reduction of private information across pipeline stages. The paper also reports descriptive statistics about Claude.ai usage patterns (e.g., coding representing >10% of conversations) and cross-linguistic variations, but these are observational rather than comparative results. No arms field is populated because this is not a comparative experimental design. The paper explicitly notes multiple limitations and caveats: Clio does not provide formal privacy guarantees such as differential privacy or k-anonymity; outputs should be considered preliminary and require additional validation before being used as the basis for decision-making; the system cannot conclusively prove the absence of certain patterns; and various operational limitations exist at each stage of the pipeline including potential hallucination, suboptimal clustering, and inability to fully capture user intent.",
+  "_paper_id": "Tamkin et al. 2024"
+}

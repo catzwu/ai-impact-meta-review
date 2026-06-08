@@ -1,0 +1,49 @@
+{
+  "_paper_id": "schwarczetal",
+  "citation_key": "schwarcz_2026_ai_lawyering",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "vincent_ai",
+    "ai_arm_selection_rationale": "Vincent AI is a specialized legal AI tool using RAG with GPT-4/4o ensemble, purpose-built for lawyers. While o1-preview is a newer general reasoning model, Vincent AI shows consistently strong effects across tasks and is domain-specialized. Given the legal context and comparable or stronger effects on several tasks (e.g., analysis of complaint: -27.6% vs -25.1%), Vincent AI represents the most capable AI assistance for this legal work domain. However, o1-preview shows the largest single effect on draft motion to consolidate (-33.0%). Choosing Vincent AI as it is specialized for the domain and shows strong consistent effects.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 47,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 45,
+    "reported_percent_change": -0.202,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": -0.17,
+    "regression_coefficient_se": 0.03,
+    "regression_outcome_is_log": true,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "The outcome is 'fraction of allotted time' with smaller values = faster completion (time-type). The regression coefficients appear to be from a log-transformed outcome model, as the percent changes align closely with exp(\u03b2)-1 transformations (e.g., exp(-0.17)-1 \u2248 -15.6%, though reported as -20.2%, suggesting possible asinh or other transformation). Treating coefficients as log-scale effects. Multiple tasks reported; extracting the first task (draft client email) for Vincent AI vs control as the primary comparison. Vincent AI chosen over o1-preview due to domain specialization, though o1-preview shows comparable or slightly larger effects on some tasks. All regression coefficients have *** indicating p<0.01.",
+    "source_quotes": [
+      "Draft client email time: Vincent AI -0.17*** (0.03) -20.2%, o1-preview -0.05 (0.06) -6.4%.",
+      "The fraction of the task's allotted time spent completing the task, so that lower values correspond to faster task completion",
+      "Access to Vincent AI (VLex), a specialized AI tool for lawyers that uses RAG (Retrieval Augmented Generation) to facilitate legal work. At the time of the study, Vincent AI used an ensemble of non-reasoning models, including GPT-4 and 4o, as its underlying foundation models"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.22564668153232822,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.25313283208020043,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "The outcome is 'fraction of allotted time' with smaller values = faster completion (time-type). The regression coefficients appear to be from a log-transformed outcome model, as the percent changes align closely with exp(\u03b2)-1 transformations (e.g., exp(-0.17)-1 \u2248 -15.6%, though reported as -20.2%, suggesting possible asinh or other transformation). Treating coefficients as log-scale effects. Multiple tasks reported; extracting the first task (draft client email) for Vincent AI vs control as the primary comparison. Vincent AI chosen over o1-preview due to domain specialization, though o1-preview shows comparable or slightly larger effects on some tasks. All regression coefficients have *** indicating p<0.01. | CI missing; variance not computable",
+    "n_human": 47,
+    "n_ai": 45
+  }
+}

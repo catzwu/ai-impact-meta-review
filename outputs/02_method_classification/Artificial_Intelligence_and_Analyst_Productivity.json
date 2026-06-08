@@ -1,0 +1,6 @@
+{
+  "classification": "natural_experiment",
+  "confidence": "high",
+  "rationale": "The study uses two quasi-experimental identification strategies: (1) variation in AI job postings across investment banks over time with lagged independent variables, and (2) exploiting 'the introduction of ChatGPT in November 2022 as an exogenous shock to AI use, comparing outcomes before and after this event.' These are observational data analyzed with difference-in-differences-style approaches rather than random assignment.",
+  "citation_key": "shanthikumar_2024_ai_analyst"
+}

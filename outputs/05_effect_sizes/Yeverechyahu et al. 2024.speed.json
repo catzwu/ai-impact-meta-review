@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Yeverechyahu et al. 2024",
+  "citation_key": "yeverechyahu_2026_llm_opensource",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "r_control",
+    "ai_arm_name": "python_treated",
+    "ai_arm_selection_rationale": "This is a natural experiment using difference-in-differences. Python packages gained access to GitHub Copilot (LLM coding assistance) from October 2021, while R packages did not have Copilot access during the study period. The python_treated arm represents human+AI (developers with Copilot), and r_control represents human-only baseline (developers without AI assistance). The primary comparison is the cross-language control design (Python vs R).",
+    "direction_convention": "larger_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 1187,
+    "m_ai": 17.235,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1187,
+    "reported_percent_change": 0.3955,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": 6.816,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": false,
+    "regression_baseline_mean": 17.235,
+    "extraction_confidence": "high",
+    "notes": "This is a difference-in-differences natural experiment. The primary specification (TWFE) reports a regression coefficient of 6.816 commits per quarter increase (p<0.001), representing a 39.55% increase. The outcome is in levels (commits per quarter), not log-transformed. The pre-treatment mean for the treated group (Python packages before Copilot) is 17.235 commits per quarter, which serves as the baseline. Multiple robustness checks are reported (balanced panel: 5.496 commits/31.89%; synthetic DiD: 4.894 commits/28.40%), and a temporal control design using only Python packages across eras confirms the effect (4.638 commits/27.13%). Using the primary TWFE specification with the baseline mean allows computation of log ratio as log(17.235 + 6.816) / log(17.235). The Rust vs Haskell comparison is an additional robustness check but Python vs R is the primary analysis.",
+    "source_quotes": [
+      "GitHub Copilot increases commits by 6.816 per quarter in the TWFE specification (p<0.001), a 39.55% increase relative to the pre-treatment mean of the treated group of 17.235 commits per quarter",
+      "The effect is consistent across specifications: 5.496 commits (31.89%) in the balanced panel and 4.894 commits (28.40%) in synthetic DiD.",
+      "Python packages with access to GitHub Copilot from October 2021 onwards. GitHub Copilot, an LLM-powered coding assistance tool, initially supported Python from the start.",
+      "R packages without access to GitHub Copilot during the study period. R was not supported by Copilot; at least until the ChatGPT launch in late 2022, R packages did not have access to mainstream LLM coding assistance."
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.3332527739942398,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.39549999999999996,
+    "direction_convention": "larger_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "This is a difference-in-differences natural experiment. The primary specification (TWFE) reports a regression coefficient of 6.816 commits per quarter increase (p<0.001), representing a 39.55% increase. The outcome is in levels (commits per quarter), not log-transformed. The pre-treatment mean for the treated group (Python packages before Copilot) is 17.235 commits per quarter, which serves as the baseline. Multiple robustness checks are reported (balanced panel: 5.496 commits/31.89%; synthetic DiD: 4.894 commits/28.40%), and a temporal control design using only Python packages across eras confirms the effect (4.638 commits/27.13%). Using the primary TWFE specification with the baseline mean allows computation of log ratio as log(17.235 + 6.816) / log(17.235). The Rust vs Haskell comparison is an additional robustness check but Python vs R is the primary analysis. | CI missing; variance not computable",
+    "n_human": 1187,
+    "n_ai": 1187
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "mapping_type": "occupation",
+  "onet_code": "15-1252.00",
+  "onet_label": "Software Developers",
+  "mapping_confidence": "high",
+  "rationale": "The study examines open-source software developers working on GitHub projects\u2014both core developers with write access and peripheral contributors. These participants are performing the full scope of software development work: writing code, reviewing pull requests, coordinating contributions, and maintaining projects. This matches the occupation 'Software Developers' rather than a narrow activity like 'Working with Computers' because the study captures developers doing their actual job across multiple work activities (coding, reviewing, coordinating), not just a single isolated task.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-25",
+      "onet_label": "Working with Computers"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "15-1251.00",
+      "onet_label": "Computer Programmers"
+    }
+  ],
+  "citation_key": "song_2024_copilot_oss"
+}

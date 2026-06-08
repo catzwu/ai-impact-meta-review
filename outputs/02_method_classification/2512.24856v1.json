@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "Both study_design_description and population_description are null, providing no information about the research design or participants. Classification is impossible without any methodological details.",
+  "citation_key": "alvarez_telena_2025_agentic_ai"
+}

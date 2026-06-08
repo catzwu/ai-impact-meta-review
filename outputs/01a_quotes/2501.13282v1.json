@@ -1,0 +1,99 @@
+{
+  "citation_key": "bakal_2025_copilot_productivity",
+  "authors": [
+    "Gal Bakal",
+    "Ali Dasdan",
+    "Yaniv Katz",
+    "Michael Kaufman",
+    "Guy Levin"
+  ],
+  "title": "Experience with GitHub Copilot for Developer Productivity at Zoominfo",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "We describe our systematic four-phase approach to evaluating and deploying GitHub Copilot across our engineering organization, involving over 400 developers.",
+      "After the initial ad hoc assessment in early July of 2023, we implemented a systematic four-phase approach from July to August of 2023 to evaluate and deploy GitHub Copilot across our engineering organization: Initial assessment phase, trial recruitment phase, the two-week trial phase, and the rollout phase.",
+      "We conducted an initial qualitative assessment with five engineers from July 10th, 2023 to July 17th, 2023 to evaluate GitHub Copilot's potential impact on development workflows.",
+      "We implemented a structured recruitment process for the controlled trial phase, conducted from July 17th to August 14th, 2023.",
+      "We conducted a two-week controlled trial from August 15th to August 29th, 2023, with 126 participating engineers actively integrating GitHub Copilot into their daily development workflows.",
+      "Following the successful trial, an analysis of the survey data from Phase 3 determined that there were no outstanding issues that needed to be addressed before rolling out GitHub Copilot to the remainder of our engineers.",
+      "Thus, we initiated the full-scale deployment of GitHub Copilot across our engineering organization on September 7th, 2023 by releasing a ServiceNow Workflow for measured deployment of GitHub Copilot licenses"
+    ],
+    "task": [
+      "This paper presents a comprehensive evaluation of GitHub Copilot's deployment and impact on developer productivity at Zoominfo, a leading Go-To-Market (GTM) Intelligence Platform.",
+      "Our analysis combines both quantitative metrics, focusing on acceptance rates of suggestions given by GitHub Copilot and qualitative feedback given by developers through developer satisfaction surveys.",
+      "Our study aims to answer five key questions in a medium-scale enterprise setting: 1. How is GitHub Copilot evaluated to reach a production deployment decision? 2. What are the acceptance rates for different programming languages? 3. What are the key factors influencing developer satisfaction with AI-assisted coding? 4. How effective is GitHub Copilot in improving developer productivity? 5. What are the observed and potential limitations of GitHub Copilot?"
+    ],
+    "population": [
+      "This paper addresses this gap by presenting a detailed case study of GitHub Copilot's production deployment at Zoominfo, a leading Go-To-Market (GTM) Intelligence Platform, where it is used by over 400 developers who are geographically dispersed, with diverse technical disciplines, and programming languages.",
+      "Zoominfo has close to 4,000 employees in total, geographically distributed over the US, Europe, India, and Israel; a quarter of the employees are in the engineering department, and 400 engineers are active developers producing and deploying production software.",
+      "The trial cohort comprised 126 engineers (about 32% of the developers), with participation stratified across technical specializations, experience levels, geographical locations, and technology stacks.",
+      "At the trial's conclusion, we collected feedback through a comprehensive survey (72 respondents, about 57% response rate)."
+    ],
+    "arms": [
+      "The trial cohort comprised 126 engineers (about 32% of the developers), with participation stratified across technical specializations, experience levels, geographical locations, and technology stacks.",
+      "We conducted a two-week controlled trial from August 15th to August 29th, 2023, with 126 participating engineers actively integrating GitHub Copilot into their daily development workflows."
+    ],
+    "outcome_definitions": [
+      "Acceptance rate of shown suggestions [10] for one developer is the ratio of the suggestions accepted by the developer to the total number of suggestions shown to the developer.",
+      "The acceptance rate of shown suggestions for a team is the average over the rates for developers.",
+      "For this measure, even a partial acceptance gets the full credit.",
+      "The impact of GitHub Copilot on developer productivity seems difficult to measure after a short-term usage. As such, we resorted to a measure that was recommended by GitHub after it was found to be a \"better predictor of perceived productivity\" [34]: Acceptance rate of shown suggestions.",
+      "Each tool is presented alongside a five-category satisfaction scale ranging from \"Very satisfied\" (highest) to \"Very unsatisfied\" (lowest) that gauges the satisfaction sentiment for that specific tool.",
+      "When analyzing the results of the toolchain section, the overall satisfaction score is calculated as the difference between the two positive sentiment scores and the two negative sentiment scores, where the total satisfaction is the result of subtracting the negative sentiment from the positive sentiment while ignoring neutralities."
+    ],
+    "statistical_results": [
+      "The results show an average acceptance rate of 33% for suggestions and 20% for lines of code, with high developer satisfaction scores of 72%.",
+      "The preliminary feedback was overwhelmingly positive, with key metrics including: Overall experience rating: 8.8 out of 10; Productivity improvement rating: 8.6 out of 10; and Code standards alignment: All five participants reported good to excellent alignment with existing coding standards.",
+      "The overall experience was positive with the following ratings: Mean satisfaction rating: 8.0 out of 10, and Mean productivity improvement rating: 7.6 out of 10.",
+      "Regarding security considerations, survey participants demonstrated high security consciousness: Mean security vulnerability assessment confidence: 8.2 out of 10; Mean sensitive information exposure awareness: 8.2 out of 10; and Mean security consideration in development: 8.6 out of 10.",
+      "As shown in Fig. 4, for the period discussed in this section, the average acceptance rate over suggestions is 33% and over lines is 20%.",
+      "The average numbers of suggestions and lines suggested are close to 6,500 and 15,000, respectively.",
+      "Each suggestion has a few lines of code or comments; the average is 2.8 lines (though the number of lines ranges from one to ten).",
+      "The acceptance rates for the top four languages used by our developers, i.e., TypeScript, Java, Python, and JavaScript, are sustained at about 30%.",
+      "Interestingly we observe smaller acceptance rates for HTML, CSS, JSON, and SQL.",
+      "As shown in Fig. 7, for the 26-day period discussed in this section, the acceptance rates per language varies between about 14% to 32%.",
+      "The highest acceptance rate is for the Go language but the number of suggestions is far smaller.",
+      "Interestingly the number of lines per suggestion for the Go language is also the highest, over 6, while the number ranges from 2 to 3 for the other languages.",
+      "The acceptance rates for the top three languages are among the highest, over 30%, which agrees with the overall acceptance rate we presented in the previous section.",
+      "The acceptance rates for HTML, CSS, JSON, and SQL are interestingly smaller compare to those of the general-purpose languages.",
+      "The acceptance rates of suggestions are close to each other and also close to the 30% figure we cited for the overall rate.",
+      "At the same time, the lines acceptance rates differ with VS Code having about 50% higher value.",
+      "As seen in Fig. 9, GitHub Copilot leads the chart with the highest satisfaction rate, showing consistent results with 72% total satisfaction among all surveyed tools.",
+      "90% respondents stated that GitHub Copilot reduces the amount of time it takes to complete their tasks with a median reduction of 20%.",
+      "63% respondents stated using GitHub Copilot allowed them to complete more tasks per sprint.",
+      "77% respondents stated that the quality of their work was improved when using GitHub Copilot.",
+      "During the time period shown in Fig. 2 alone, the total number of lines accepted is about 75,000.",
+      "The top four languages cover close to 80% and 75% of the total number of suggestions and lines suggested, respectively, as well as close to 85% of the total number of acceptances and lines accepted.",
+      "The standard deviations are close to the half of these numbers in each case but such large deviations are due to the weekday and weekend periods rather than the variations from day to day.",
+      "The averages over weekdays are about 20% and 35% larger than these overall averages.",
+      "Similarly, the averages over weekends are about 60% and 75% smaller than these overall averages."
+    ],
+    "ambiguity_or_caveats": [
+      "For this measure, even a partial acceptance gets the full credit. Moreover, the number of lines shown is not included in the rate. This means a single line as well as 100s of lines get the same credit. Both of these may be seen as limitations of this measure but for now, the acceptance rate measure seems like a good one among the alternatives considered in [34].",
+      "After months of usage, we have also been monitoring for any changes in our regular developer productivity metrics such as the DORA metrics and developer satisfaction scores. Once we establish a reliable causality between these metrics and the GitHub Copilot usage, we are planning to report the results in a subsequent paper.",
+      "As the acceptance rate plots show, the acceptance rates during weekends usually increase rather than decrease. We do not know the reason for this behavior.",
+      "We do not know the reason for this difference.",
+      "We do not know the reason for this difference but it is interesting to note the lower number of lines per suggestion for VS Code.",
+      "Developers reported that the tool was useful across various languages and tech stacks, although with reservations due to some inconsistencies regarding the tool's performance on domain-specific or highly innovative tasks, requiring additional oversight.",
+      "Despite these high scores, developers emphasized the need for rigorous reviews of AI-generated code to mitigate security and quality risks.",
+      "Our developers primarily enjoy the time savings (around 20%) due to GitHub Copilot while citing as limitations the tool's lack of domain-specific logic and lack of consistency in code quality. These limitations negatively impact time savings due to the need for additional scrutiny required while vetting the generated code.",
+      "Contextual Understanding: Struggles with understanding domain-specific logic, leading to irrelevant or redundant suggestions.",
+      "Security Concerns: Potential security risks from auto-generated code requiring additional vetting.",
+      "Creativity Limitations: Generates predictable, less innovative solutions in some cases.",
+      "Though we have not observed yet, we can envision a number of potential limitations with GitHub Copilot, as follows.",
+      "Sensitive Data Exposure: GitHub Copilot may inadvertently suggest or generate code containing sensitive or proprietary information due to its training on public repositories.",
+      "Intellectual Property Issues: GitHub Copilot might suggest code snippets resembling copyrighted or proprietary code, leading to potential intellectual property infringement.",
+      "Code Quality and Vulnerabilities: The generated code could contain security vulnerabilities, requiring thorough review before being integrated.",
+      "Data Privacy: If telemetry data from GitHub Copilot is collected, there could be privacy concerns over how this information is stored and used.",
+      "Compliance Risks: Some industries have strict compliance requirements, and GitHub Copilot may unintentionally violate these by generating code or comments not in line with regulatory guidelines.",
+      "Over-reliance on AI: Developers might become too reliant on AI-generated suggestions, potentially overlooking best practices in favor of quicker implementation.",
+      "Unintended Patterns: GitHub Copilot might reinforce problematic or insecure coding patterns it has learned from public repositories.",
+      "GitHub Copilot helps with writing code but may make developers less creative and even less productive eventually. It is important to think about how developers should use it and not rely on it too much. Developers should try to balance working fast with coming up with their own ideas."
+    ]
+  },
+  "notes": "This is a case study of GitHub Copilot deployment at a single enterprise (Zoominfo) involving over 400 developers. The study combines quantitative metrics (acceptance rates) with qualitative feedback (developer satisfaction surveys). The paper includes four phases: initial assessment (5 engineers), trial recruitment (126 engineers, 57% survey response), two-week trial, and full rollout. No control group or comparison with non-Copilot users is reported. The study measures success primarily through acceptance rates and developer satisfaction rather than traditional productivity metrics like DORA metrics, which the authors note they plan to analyze in future work.",
+  "_paper_id": "2501.13282v1",
+  "_source_pdf": "papers/2501.13282v1.pdf"
+}

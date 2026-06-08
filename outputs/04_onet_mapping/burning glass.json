@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-22",
+  "onet_label": "Getting Information",
+  "mapping_confidence": "low",
+  "rationale": "This paper appears to be a pure descriptive/analytical study examining labor market conditions for young graduates rather than measuring productivity effects of AI on actual work tasks. The population description focuses on demographic characteristics (age, education level) and labor market outcomes (unemployment rates) rather than describing participants performing specific work activities. Without a primary task description and given the analytical nature suggested by the population focus, this study may not be appropriate for a meta-analysis of AI's impact on worker productivity. I've mapped to 'Getting Information' as the most general knowledge work activity, but confidence is low.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-14",
+      "onet_label": "Processing Information"
+    },
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-36",
+      "onet_label": "Organizing, Planning, and Prioritizing Work"
+    }
+  ],
+  "citation_key": "levanon_2025_entry_level"
+}

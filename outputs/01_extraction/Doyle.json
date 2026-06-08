@@ -1,0 +1,183 @@
+{
+  "citation_key": "kotsiovos_2024_generative_ai",
+  "authors": [
+    "Jean Kotsiovos",
+    "Rhonda Chicone",
+    "Sean Doyle"
+  ],
+  "title": "Optimizing Student Success: The Impact of Generative AI in Teaching and Learning",
+  "year": 2024,
+  "venue": "TCC 2024 Conference Papers",
+  "study_design_description": "This research adopts a mixed methods approach, merging a structured survey with quantitative and qualitative data to evaluate AI tools' effectiveness in higher education course development and instruction. The quantitative part involves Likert-scale questions assessing AI's efficacy, while the qualitative segment includes open-ended responses for in-depth analysis. A thematic analysis of these responses uncovers key patterns and themes, offering a detailed perspective on AI's influence on course design and student success.",
+  "primary_task_description": "The survey asked participants to rate the effectiveness of AI tools in higher education for seven categories.",
+  "population_description": "Twenty-one higher education faculty who utilize AI participated in this survey.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "ai_streamlines_curriculum_development",
+      "outcome_description": "AI streamlines curriculum development for quicker content production",
+      "measurement_unit": "% strongly agree",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "ai_creates_effective_teaching_materials",
+      "outcome_description": "AI's efficacy in creating effective teaching materials and enhancing student success through adult learning theories",
+      "measurement_unit": "% strongly agree",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "ai_accommodates_diverse_learning_styles",
+      "outcome_description": "AI's capability to accommodate diverse learning styles",
+      "measurement_unit": "% strongly agree",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_effectiveness_combined_responses",
+      "outcome_description": "Combined 'strongly agree' and 'agree' responses across all categories",
+      "measurement_unit": "% agree or strongly agree",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_creating_teaching_materials_combined",
+      "outcome_description": "AI's effectiveness in creating teaching materials, expediting curriculum development, and integrating with adult learning theories for student success (combined agree/strongly agree)",
+      "measurement_unit": "% agree or strongly agree",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "chatbots_ai_tutors_student_interaction",
+      "outcome_description": "Using chatbots and AI tutors to enhance student interaction and support",
+      "measurement_unit": "% agree or strongly agree",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "tool_preference_chatgpt",
+      "outcome_description": "ChatGPT cited as valuable tool by respondents",
+      "measurement_unit": "% of respondents",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "tool_preference_claude",
+      "outcome_description": "Anthropic Claude cited as valuable tool by respondents",
+      "measurement_unit": "% of respondents",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "tool_preference_google_bard",
+      "outcome_description": "Google Bard cited as valuable tool by respondents",
+      "measurement_unit": "% of respondents",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "ai_streamlines_curriculum_development",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "80.95% strongly agree",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The survey results reveal that 80.95% of respondents strongly agree that AI streamlines curriculum development for quicker content production."
+    },
+    {
+      "outcome_name": "ai_creates_effective_teaching_materials",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "71.43% strongly agree",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Additionally, 71.43% strongly agree on AI's efficacy in creating effective teaching materials and enhancing student success through adult learning theories, as shown in Figure 4."
+    },
+    {
+      "outcome_name": "ai_accommodates_diverse_learning_styles",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "52.38% strongly agree",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "While only 52.38% strongly agree on AI's capability to accommodate diverse learning styles, combining 'strongly agree' and 'agree' responses presents a more favorable overall view, as detailed in the following section."
+    },
+    {
+      "outcome_name": "ai_effectiveness_combined_responses",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "all categories scoring 76.19% or higher",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Combining 'strongly agree' and 'agree' responses in the survey yields overwhelmingly positive results, with all categories scoring 76.19% or higher, as depicted in Figure 5."
+    },
+    {
+      "outcome_name": "ai_creating_teaching_materials_combined",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "90.47% recognize effectiveness",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Notably, 90.47% of respondents recognize AI's effectiveness in creating teaching materials, expediting curriculum development, and integrating with adult learning theories for student success."
+    },
+    {
+      "outcome_name": "chatbots_ai_tutors_student_interaction",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "76.19%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The least ranked category, still notably high at 76.19%, pertains to using chatbots and AI tutors to enhance student interaction and support."
+    },
+    {
+      "outcome_name": "tool_preference_chatgpt",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "57% of respondents",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ChatGPT emerged as the most cited valuable tool by 57% of the respondents, with Anthropic Claude and Google Bard in succession at 24%."
+    },
+    {
+      "outcome_name": "tool_preference_claude",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "24% of respondents",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ChatGPT emerged as the most cited valuable tool by 57% of the respondents, with Anthropic Claude and Google Bard in succession at 24%."
+    },
+    {
+      "outcome_name": "tool_preference_google_bard",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "24% of respondents (in succession with Claude)",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "ChatGPT emerged as the most cited valuable tool by 57% of the respondents, with Anthropic Claude and Google Bard in succession at 24%."
+    }
+  ],
+  "notes": "This is a survey-based exploratory study with no control group or comparison condition. The paper reports faculty perceptions of AI effectiveness through Likert-scale responses (n=21 faculty). No experimental manipulation or AI vs. no-AI comparison is present. No arms are defined because this is a single-group survey study. The study cites external research (Dell'Acqua et al. 2023) reporting that generative AI in business boosts task execution by 12.2%, cuts completion time by 25.1%, and enhances output quality by over 40%, but this is not original data from the current study. Qualitative feedback points to concerns about accuracy, critical thinking, faculty training, and administrative guidance. The study is described as exploratory and a precursor to more extensive research.",
+  "_paper_id": "Doyle"
+}

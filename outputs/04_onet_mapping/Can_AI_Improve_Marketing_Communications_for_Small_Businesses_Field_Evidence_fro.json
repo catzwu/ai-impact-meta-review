@@ -1,0 +1,20 @@
+{
+  "mapping_type": "work_activity",
+  "onet_code": "WA-03",
+  "onet_label": "Communicating with Supervisors, Peers, or Subordinates",
+  "mapping_confidence": "medium",
+  "rationale": "The participants are mental health practitioners writing 'free-form written description[s] of roughly 200 words about their practice' for marketing purposes. This is a narrow communication task\u2014specifically, written self-presentation to prospective patients via a platform profile. While these practitioners' overall occupation would map to various counseling/therapy roles, the study measures productivity on one specific activity: crafting practice descriptions. This is fundamentally a communication task rather than the full scope of therapeutic work, making a work activity mapping more appropriate than an occupation mapping.",
+  "alternates": [
+    {
+      "mapping_type": "work_activity",
+      "onet_code": "WA-29",
+      "onet_label": "Communicating with People Outside the Organization"
+    },
+    {
+      "mapping_type": "occupation",
+      "onet_code": "21-1014.00",
+      "onet_label": "Mental Health Counselors"
+    }
+  ],
+  "citation_key": "goetz_2025_ai_marketing"
+}

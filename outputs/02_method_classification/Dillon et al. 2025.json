@@ -1,0 +1,6 @@
+{
+  "classification": "field_experiment",
+  "confidence": "high",
+  "rationale": "The study is explicitly described as \"A field experiment across 66 firms and 7,137 knowledge workers\" with \"random assignment to treatment and control groups\" where \"Treated workers received access to Microsoft 365 Copilot integrated into applications they already used\" in their actual work setting for six months. This is randomized assignment conducted in real work environments, not a lab.",
+  "citation_key": "dillon_2025_shifting_work"
+}

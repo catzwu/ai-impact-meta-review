@@ -1,0 +1,52 @@
+{
+  "_paper_id": "cuietal",
+  "citation_key": "cui_2025_generative_ai_developers",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "control",
+    "ai_arm_name": "treatment (Copilot access)",
+    "ai_arm_selection_rationale": "The paper reports a pooled weighted IV estimate for build success rate across three experiments. The Microsoft experiment provides the most detailed statistics. Table 3 shows the weighted IV (W-IV) estimate for build success rate. Table 2 provides pre-treatment means and SDs for control and treatment groups at Microsoft.",
+    "direction_convention": "larger_is_better",
+    "m_human": 0.72,
+    "sd_human": 0.3,
+    "se_human": null,
+    "n_human": 866,
+    "m_ai": 0.75,
+    "sd_ai": 0.29,
+    "se_ai": null,
+    "n_ai": 880,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "medium",
+    "notes": "Table 2 (Balance Table) provides pre-treatment means and SDs for Build Success Rate: Control mean=0.72 (SD=0.30), Treatment mean=0.75 (SD=0.29), with p-value=0.33 for the difference test. Sample sizes are derived from the Microsoft experiment description: 1,746 developers total, with 50.4% randomized to treatment, yielding approximately 880 treatment and 866 control. The paper states 'We find no negative effect on the build success rate' and Table 3 shows a W-IV estimate of -5.53% (SE: 3.64) which is not statistically significant. The pre-treatment balance statistics provide the cleanest comparison for computing Hedges' g, as they represent baseline measurements before any treatment effect. The treatment effect estimate in Table 3 is expressed as a percentage change from baseline, not as raw means, so we use the pre-treatment values.",
+    "source_quotes": [
+      "Table 2: Balance Table - Build Success Rate: Control Mean=0.72, SD=0.30; Treatment Mean=0.75, SD=0.29; Difference=0.02, p-value=0.33",
+      "Of these developers, 50.4% were randomly selected to receive access to GitHub Copilot.",
+      "The experiment at Microsoft started in the first week of September 2022, involving 1,746 developers primarily located in the United States.",
+      "We find no negative effect on the build success rate, which would decline if Copilot produced uncompilable code and developers failed to catch these errors.",
+      "Table 3: Build Success Rate - Microsoft W-IV: -5.53 (SE: 3.64)"
+    ]
+  },
+  "computed": {
+    "cohens_d": 0.10169414470280785,
+    "hedges_g": 0.10165040528573137,
+    "variance": 0.0022920866276383203,
+    "computation_method": "means_and_sds",
+    "confidence": "medium",
+    "notes": "Table 2 (Balance Table) provides pre-treatment means and SDs for Build Success Rate: Control mean=0.72 (SD=0.30), Treatment mean=0.75 (SD=0.29), with p-value=0.33 for the difference test. Sample sizes are derived from the Microsoft experiment description: 1,746 developers total, with 50.4% randomized to treatment, yielding approximately 880 treatment and 866 control. The paper states 'We find no negative effect on the build success rate' and Table 3 shows a W-IV estimate of -5.53% (SE: 3.64) which is not statistically significant. The pre-treatment balance statistics provide the cleanest comparison for computing Hedges' g, as they represent baseline measurements before any treatment effect. The treatment effect estimate in Table 3 is expressed as a percentage change from baseline, not as raw means, so we use the pre-treatment values.",
+    "n_human": 866,
+    "n_ai": 880,
+    "direction_convention": "larger_is_better"
+  }
+}

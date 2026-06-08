@@ -1,0 +1,194 @@
+{
+  "citation_key": "haslberger_2025_ai_productivity",
+  "authors": [
+    "Matthias Haslberger",
+    "Jane Gingrich",
+    "Jasmine Bhatia"
+  ],
+  "title": "No Great Equalizer: Experimental Evidence on Productivity Effects of Generative AI Use in the UK Labor Market",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "A large pre-registered online experiment with 1,041 UK working-age ChatGPT users recruited through YouGov. Participants were randomly assigned to a treatment group (N = 504) encouraged to use ChatGPT or a control group (N = 537) instructed to complete tasks without ChatGPT. The local average treatment effect (LATE) was estimated using two-stage least squares (2SLS). Fieldwork took place from 19\u201328 July 2023, following a pre-test in early July 2023.",
+  "primary_task_description": "Study participants performed three tasks of varying complexity: (1) an email task addressing a hypothetical workplace dispute, (2) an assessment task evaluating the persuasiveness of two opposing texts on universal basic income, and (3) a comprehension task answering three short questions about a complex text on Irish economic history. Productivity was evaluated based on two measures: time to complete the task (in seconds, top-coded at 900 seconds per task) and answer quality according to pre-specified grading criteria using a five-point scale.",
+  "population_description": "1,041 respondents who had ChatGPT accounts, recruited through the survey company YouGov. The sample approximates the demographic composition of the UK working-age population and includes demographic information on age, sex, education, occupation, income, and other variables. However, the sample is not fully representative of ChatGPT users; for example, men are overrepresented. Participants are likely more open to new technologies than the population at large. The median time to complete the survey was approximately 28 minutes.",
+  "arms": [
+    {
+      "arm_name": "chatgpt_encouraged",
+      "description": "Treatment group encouraged to use ChatGPT",
+      "n": 504
+    },
+    {
+      "arm_name": "control",
+      "description": "Control group instructed to complete the survey without using ChatGPT",
+      "n": 537
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "email_task_time",
+      "outcome_description": "Time (in seconds) respondents spent on the email task, top-coded at 900 seconds",
+      "measurement_unit": "seconds",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "assessment_task_time",
+      "outcome_description": "Time (in seconds) respondents spent on the assessment task, top-coded at 900 seconds",
+      "measurement_unit": "seconds",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "comprehension_task_time",
+      "outcome_description": "Time (in seconds) respondents spent on the comprehension task, top-coded at 900 seconds",
+      "measurement_unit": "seconds",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "email_task_score",
+      "outcome_description": "Answer quality on the email task evaluated on a five-point scale using GPT-4 and a detailed grading scheme",
+      "measurement_unit": "rubric 1-5",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "assessment_task_score",
+      "outcome_description": "Answer quality on the assessment task evaluated on a five-point scale using GPT-4 and a detailed grading scheme",
+      "measurement_unit": "rubric 1-5",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "comprehension_task_score",
+      "outcome_description": "Answer quality on the comprehension task evaluated on a five-point scale using GPT-4 and a detailed grading scheme",
+      "measurement_unit": "rubric 1-5",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "email_task_time",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "101 to 235 seconds faster (0.54 to 1.04 SD)",
+      "standardized_effect_reported": "0.54 to 1.04 SD",
+      "regression_coefficient": "Used AI \u2212134.010*** (14.548)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Predicted time savings range between 101 and 235 seconds (0.54 to 1.04 standard deviations (SD)), while performance increases amount to between 0.65 to 2.14 points (0.61 to 1.45 SD). Used AI \u2212134.010*** (14.548) for Email Time"
+    },
+    {
+      "outcome_name": "assessment_task_time",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "101 to 235 seconds faster (0.54 to 1.04 SD)",
+      "standardized_effect_reported": "0.54 to 1.04 SD",
+      "regression_coefficient": "Used AI \u2212234.902*** (18.990)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Predicted time savings range between 101 and 235 seconds (0.54 to 1.04 standard deviations (SD)), while performance increases amount to between 0.65 to 2.14 points (0.61 to 1.45 SD). Used AI \u2212234.902*** (18.990) for Assessment Time"
+    },
+    {
+      "outcome_name": "comprehension_task_time",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "101 to 235 seconds faster (0.54 to 1.04 SD)",
+      "standardized_effect_reported": "0.54 to 1.04 SD",
+      "regression_coefficient": "Used AI \u2212101.230*** (17.993)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Predicted time savings range between 101 and 235 seconds (0.54 to 1.04 standard deviations (SD)), while performance increases amount to between 0.65 to 2.14 points (0.61 to 1.45 SD). Used AI \u2212101.230*** (17.993) for Comprehension Time"
+    },
+    {
+      "outcome_name": "email_task_score",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 3.1,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "1.26 points increase (0.92 SD)",
+      "standardized_effect_reported": "0.92 SD",
+      "regression_coefficient": "Used AI 1.262*** (0.122)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "AI use increased the average score in the \u2014 arguably least complicated \u2014 email task by 1.26 points (0.92 SD), but boosted scores in the assessment task by only 0.65 points (0.61 SD). Used AI 1.262*** (0.122) for Email Score"
+    },
+    {
+      "outcome_name": "assessment_task_score",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.4,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "0.65 points increase (0.61 SD)",
+      "standardized_effect_reported": "0.61 SD",
+      "regression_coefficient": "Used AI 0.645*** (0.095)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "AI use increased the average score in the \u2014 arguably least complicated \u2014 email task by 1.26 points (0.92 SD), but boosted scores in the assessment task by only 0.65 points (0.61 SD). Used AI 0.645*** (0.095) for Assessment Score"
+    },
+    {
+      "outcome_name": "comprehension_task_score",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {
+        "control": {
+          "mean": 2.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "2.14 points increase (1.45 SD)",
+      "standardized_effect_reported": "1.45 SD",
+      "regression_coefficient": "Used AI 2.137*** (0.117)",
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "the return to AI use was greatest in the comprehension task with 2.14 points (1.45 SD). Used AI 2.137*** (0.117) for Comprehension Score"
+    },
+    {
+      "outcome_name": "email_task_score_within_task_variation",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.1",
+      "confidence_interval": null,
+      "verbatim_quote": "Compared to the control group, within-task variation in grades in the treatment group is lower but only marginally statistically significantly different for the email task (p< 0.1), significantly higher for the assessment task (p< 0.001), and significantly lower for the comprehension task (p< 0.05)."
+    },
+    {
+      "outcome_name": "assessment_task_score_within_task_variation",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.001",
+      "confidence_interval": null,
+      "verbatim_quote": "Compared to the control group, within-task variation in grades in the treatment group is lower but only marginally statistically significantly different for the email task (p< 0.1), significantly higher for the assessment task (p< 0.001), and significantly lower for the comprehension task (p< 0.05)."
+    },
+    {
+      "outcome_name": "comprehension_task_score_within_task_variation",
+      "arm_comparison": "chatgpt_encouraged vs control",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "Compared to the control group, within-task variation in grades in the treatment group is lower but only marginally statistically significantly different for the email task (p< 0.1), significantly higher for the assessment task (p< 0.001), and significantly lower for the comprehension task (p< 0.05)."
+    }
+  ],
+  "notes": "This is a pre-registered RCT examining ChatGPT productivity effects. The study uses 2SLS to estimate LATE, with treatment assignment as the instrument. Regression coefficients are reported with standard errors in parentheses and significance stars (***). The paper reports control group means for task scores (email: 3.1, assessment: 2.4, comprehension: 2.0) but not standard deviations. Time savings and performance increases are reported both in raw units and standardized (SD) units. The sample is limited to ChatGPT users and is not fully representative of the UK working-age population; men are overrepresented. The study did not collect baseline measures of task-specific skills. Heterogeneous treatment effects by frequency of AI use are mentioned qualitatively (frequent users benefit more in assessment and comprehension tasks) but specific coefficients are not provided in the quotes. Inter-coder agreement between ChatGPT and human coders was similar to human-human agreement.",
+  "_paper_id": "haslberger"
+}

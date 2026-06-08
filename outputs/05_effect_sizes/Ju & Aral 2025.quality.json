@@ -1,0 +1,50 @@
+{
+  "_paper_id": "Ju & Aral 2025",
+  "citation_key": "ju_2026_collaborating_ai",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": "human_human",
+    "ai_arm_name": "human_ai",
+    "ai_arm_selection_rationale": "Only one AI arm available (human_ai). Comparing human-AI collaboration (n=1258) vs human-human collaboration (n=976).",
+    "direction_convention": "larger_is_better",
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 976,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 1258,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "low",
+    "notes": "After re-reading the full PDF, the paper still does not report means, SDs, SEs, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) for the direct comparison between human_ai and human_human teams on text quality. Table 2 (page 22) shows only the regression coefficient \u03b2 = 0.327 (SE 0.024) with p < 0.001 (inequality only). Table G (page 51) provides the full regression model with covariates but still only reports coefficients, not raw means or SDs. The paper uses regression-based analysis throughout rather than reporting descriptive statistics by arm. Without means+SDs, t-statistics, F-statistics, or reported effect sizes, Hedges' g cannot be computed. The p-value is reported only as an inequality (p < 0.001), not an exact value. Sample sizes are confirmed from Table 1 (page 16): n_human=976, n_ai=1258.",
+    "source_quotes": [
+      "Table 2: Collaborating with AI agents improves productivity and text quality but lowers image quality (i.e., a jagged frontier), and decreases output diversity. Human-AI: \u03b2 = 0.327*** (SE 0.024) for Text quality",
+      "Notes: *p<0.05, **p<0.01, ***p<0.001. Productivity is the number of submissions by participants. Text, Image, Click are human ratings (7-point scale) with standard errors clustered at the ad level.",
+      "Table 1: Randomization checks. Individuals: 2234 (Human-AI: 1258, Human-Human: 976)"
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": "unconvertible",
+    "confidence": "low",
+    "notes": "After re-reading the full PDF, the paper still does not report means, SDs, SEs, t-statistics, F-statistics, or standardized effect sizes (Cohen's d or Hedges' g) for the direct comparison between human_ai and human_human teams on text quality. Table 2 (page 22) shows only the regression coefficient \u03b2 = 0.327 (SE 0.024) with p < 0.001 (inequality only). Table G (page 51) provides the full regression model with covariates but still only reports coefficients, not raw means or SDs. The paper uses regression-based analysis throughout rather than reporting descriptive statistics by arm. Without means+SDs, t-statistics, F-statistics, or reported effect sizes, Hedges' g cannot be computed. The p-value is reported only as an inequality (p < 0.001), not an exact value. Sample sizes are confirmed from Table 1 (page 16): n_human=976, n_ai=1258. | insufficient numbers for d",
+    "n_human": 976,
+    "n_ai": 1258,
+    "direction_convention": "larger_is_better"
+  }
+}

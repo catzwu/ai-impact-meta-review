@@ -1,0 +1,6 @@
+{
+  "classification": "other",
+  "confidence": "high",
+  "rationale": "This is a meta-analysis synthesizing 133 experimental and quasi-experimental studies, not a primary empirical study. The description states it is 'A meta-analysis of 133 experimental and quasi-experimental studies (k = 188 effect sizes) following PRISMA 2020 guidelines,' which is a systematic review of existing research rather than an original study design.",
+  "citation_key": "huang_2025_llm_education"
+}

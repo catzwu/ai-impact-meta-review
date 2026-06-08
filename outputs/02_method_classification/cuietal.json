@@ -1,0 +1,6 @@
+{
+  "classification": "field_experiment",
+  "confidence": "high",
+  "rationale": "The study consists of \"three randomized controlled trials conducted at Microsoft, Accenture, and an anonymous Fortune 100 company, where developers were randomly assigned to receive access to GitHub Copilot (treatment) or not (control)\" in their actual work settings. Developers worked on \"diverse software projects\" in real organizational contexts over multiple months, making this a field experiment rather than a lab study.",
+  "citation_key": "cui_2025_generative_ai_developers"
+}

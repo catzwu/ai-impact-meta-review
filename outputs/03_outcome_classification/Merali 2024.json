@@ -1,0 +1,22 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "task_completion_time",
+      "category": "speed",
+      "operationalization": "time in seconds from task start to completion, measured by the experimental platform"
+    },
+    {
+      "outcome_name": "task_quality_grade",
+      "category": "quality",
+      "operationalization": "rubric score 1-7 averaged across three professional translators grading translation quality"
+    },
+    {
+      "outcome_name": "earnings_per_minute",
+      "category": "both",
+      "operationalization": "dollars per minute calculated from flat rate plus quality bonuses divided by task completion time"
+    }
+  ],
+  "primary_speed_outcome": "task_completion_time",
+  "primary_quality_outcome": "task_quality_grade",
+  "citation_key": "merali_2024_scaling_productivity"
+}

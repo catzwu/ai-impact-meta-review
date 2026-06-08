@@ -1,0 +1,113 @@
+{
+  "citation_key": "xue_2025_generative_analysts",
+  "authors": [
+    "Jian Xue",
+    "Qian Zhang",
+    "Wu Zhu"
+  ],
+  "title": "Generative AI for Analysts",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "Using the 2023 launch of FactSet's AI platform as a natural experiment, we find that adoption produces markedly richer and more comprehensive reports",
+      "To identify the causal effect of AI adoption, we exploit the quasi-exogenous introduction of an AI-powered research platform by FactSet, a leading financial data provider serving more than half of the analysts in our sample.",
+      "Our baseline uses a difference-in-differences framework that compares analysts who rely on FactSet with those using alternative data platforms before and after AI introduction.",
+      "To address this concern, we employ propensity score matching (PSM) with entropy balancing to construct statistically equivalent treatment and control groups of reports developed with and without FactSet.",
+      "Using PSM with entropy balancing, we next examine how AI adoption affects the quality and productivity of analyst output.",
+      "To check whether our results are specific to the AI-powered FactSet Mercury platform rather than general improvements across data vendors, we conduct a series of placebo tests using other major platforms such as Bloomberg, Refinitiv, and Capital IQ."
+    ],
+    "task": [
+      "We study how generative artificial intelligence (AI) transforms the work of financial analysts.",
+      "This paper investigates how the integration of GenAI transforms the information production process of financial analysts.",
+      "Specifically, we examine how AI-powered platforms affect analysts' ability to acquire, synthesize, and process information, and how these changes influence the quality, productivity, and market impact of their research output.",
+      "We construct a comprehensive dataset of 52,428 equity research reports issued by U.S. analysts between 2022 and 2024.",
+      "To systematically quantify how analysts acquire, process, and produce information, we employ GPT-4o-mini, a state-of-the-art language model for the extraction of structured content."
+    ],
+    "population": [
+      "We construct a comprehensive dataset of 52,428 equity research reports issued by U.S. analysts between 2022 and 2024.",
+      "Applying these restrictions yields a final sample of 52,428 report-level observations, covering 2,616 unique firms and 409 analyst teams employed at 24 brokerages.",
+      "Report issuance is highly concentrated among the largest institutions: the top two brokerages (J.P. Morgan and Wells Fargo) account for nearly 58% of all reports, and the top five collectively generate more than 80%.",
+      "On average, analysts in our sample have 16.6 years of general experience and 5.6 years of firm-specific experience.",
+      "Approximately (10.9%) of the analyst teams include a member with IT experience, while (19.2%) include an analyst who graduated from a top 100 university.",
+      "The average brokerage employs 99.8 analyst teams, with a maximum of 199 (J.P. Morgan), and the average research team consists of 2.8 signatory analysts, with a maximum of 6.",
+      "On average, an analyst issues 4.8 reports per firm per year and follows 21.9 portfolio firms in total."
+    ],
+    "arms": [
+      "Post is an indicator that is equal to one for reports issued after the introduction of the AI-powered platform (December 14, 2023) and zero otherwise.",
+      "We interactPost with an indicator, FactSet, for whether the report cites FactSet as an information source, while controlling for the use of other data platforms.",
+      "Each FactSet-assisted (treated) report in the main sample is matched to n control reports with the closest propensity scores, where n\u2208{1,2,3}.",
+      "The resulting balanced sample provides a credible counterfactual against which we estimate the incremental treatment effect of FactSet usage in a standard difference-in-differences (DiD) setting.",
+      "Using PSM with entropy balancing, we construct statistically equivalent treatment and control groups of reports developed with and without FactSet."
+    ],
+    "outcome_definitions": [
+      "We define report richness\u2014alternatively referred to as informational breadth\u2014as the degree of informational variety embedded in an analyst report, reflected in the number and diversity of distinct sources, topics, and analytical methods it incorporates.",
+      "Following Cooper et al. (2001), we define Timeliness as log of leader ratio, which is calculated as the cumulative number of days between the focal forecast and the two most recent forecasts by other analysts for the same firm divided by the cumulative number of days between the focal forecast and the following two forecasts by other analysts.",
+      "Next, we measure forecast accuracy (Accuracy) as the negative of the absolute difference between the analyst's earnings per share (EPS) forecast and the EPS realized subsequently.",
+      "Following De Franco et al. (2015) and Blankespoor et al. (2018), we proxy for market reaction using cumulative abnormal returns (CAR) and abnormal trading volume (AbnVol). CAR is defined as the market-adjusted return over the [0,2] trading day window following the release of the analyst report.",
+      "AbnVol is calculated as the daily average market-adjusted number of shares traded over the [0,2] trading day window scaled by total shares outstanding, less the equivalent amount over the [-40,-11] window.",
+      "With each identified information source classified as conveying either a positive or negative signal about firm fundamentals, we construct two report-level measures of aggregated sentiment.",
+      "We define SignalSource as the difference between the number of information sources that predict an increase in earnings and those that predict a decrease in earnings, scaled by the sum of the two.",
+      "To capture the extent to which a report presents a balanced view of firm fundamentals, we calculate SignalBalance as one minus the absolute value of SignalSource.",
+      "We extract detailed information on the sources that analysts rely on in forming their assessments, enabling us to identify both the types of evidence used and how different sources are combined to support the analysis.",
+      "We also direct the model to classify the substantive content of each report into topics at three hierarchical levels: (i) firm-specific (e.g., earnings guidance, product launches), (ii) industry-level (e.g., supply chain conditions, regulatory developments, technological changes), and (iii) macroeconomic (e.g., monetary policy, inflation, GDP growth).",
+      "We further instruct the model to identify and classify the analytical techniques used in each report into three categories: (i) historical trend analysis aimed at evaluating the firm's past performance and patterns; (ii) valuation models (e.g., discounted cash flow, comparable company multiples, precedent transactions); and (iii) forecasting methods (e.g., earnings projections, demand forecasts, scenario analysis)."
+    ],
+    "statistical_results": [
+      "Using the 2023 launch of FactSet's AI platform as a natural experiment, we find that adoption produces markedly richer and more comprehensive reports\u2014featuring 40% more distinct information sources, 34% broader topical coverage, and 25% greater use of advanced analytical methods\u2014while also improving timeliness.",
+      "However, forecast errors rise by 59% as AI-assisted reports convey a more balanced mix of positive and negative information that is harder to synthesize, particularly for analysts facing heavier cognitive demands.",
+      "On average, an analyst report in our sample cites 8.7 sources in textual discussions, 3.4 figure sources, and 7.6 table sources.",
+      "In terms of information topics, a typical report discusses 12.3 firm-specific topics, 5.5 industry-level topics, and 6.3 macroeconomic topics.",
+      "With respect to analytical methods, the average report employs 1.6 historical analyses, 2.8 valuation methods, and 3.8 forecasting approaches.",
+      "The mean of SignalSource is 0.36, with a range of [\u22121,1], suggesting that, on average, analyst reports convey a mildly optimistic tone regarding earnings prospects.",
+      "The mean of SignalBalance is 0.48, within a range of [0,1], indicating that while analysts tend to emphasize positive signals, their discussions remain moderately balanced in covering both favorable and unfavorable aspects of firm performance.",
+      "The average forecast error is $0.74.",
+      "The mean timeliness score is 0.20, suggesting that forecasts are on average issued midway between preceding and subsequent forecasts, consistent with Cooper et al. (2001).",
+      "The post-announcement daily abnormal trading volume averages at 0.55% of total outstanding shares, with abnormal returns centered around zero, consistent with Blankespoor et al. (2018).",
+      "Bloomberg is the most frequently cited platform (44.5%), followed by FactSet (33.4%), Refinitiv (13.7%), and Capital IQ (2.8%).",
+      "For example, in terms of intensity of usage, the observed FactSet usage has risen to more than 50% by the end of 2024 from around 25% at 2023Q3.",
+      "For example, in Figure 3, the average number of textual sources fluctuates around 8.6 prior to 2023Q4, but rises sharply to over 9.8 by 2024Q4.",
+      "In Figure 4, firm-specific topics remain stable around 12.5 before 2023Q3 but increase to nearly 14.0 by the end of 2024; industry-specific topics rise from 5.5 to 6.4; and macroeconomic topics, which had declined modestly from 6.5 in 2022Q1 to 6.3 in 2023Q3, expand significantly to 7.1 by 2024Q4.",
+      "For instance, for textual sources, the coefficient on FactSet\u00d7Post is 1.361\u2014more than triple the magnitude of the corresponding Post coefficient (0.377).",
+      "For figure sources, the interaction coefficient (0.648) is nearly five times larger than that on Post (0.136), and for table sources, the effect (1.451) is roughly seven times greater than that of Post (0.199).",
+      "The number of figure sources rises by 2.092, equivalent to a 61% increase relative to the sample mean (3.420), representing the steepest growth among all source types.",
+      "By comparison, textual sources increase by 2.596, or roughly 30% relative to their mean (8.655), and table sources rise by 2.117, or 28% relative to their mean (7.604).",
+      "The expansion in topical coverage is most pronounced for industry-level (48% = 2.658 / 5.500) and macro-level topics (41% = 2.574 / 6.338), whereas firm-specific topics rise more modestly by 14% (= 1.726 / 12.309).",
+      "In terms of analytical methods, the most pronounced increase occurs in forecasting techniques, the domain where AI algorithms, particularly machine learning models, excel at detecting complex non-linear patterns.",
+      "The use of analytical methods rises by 13% (= 0.212 / 1.605) for historical trend analysis, 25% (= 0.718 / 2.828) for valuation, and 38% (= 1.437 / 3.781) for forecasting.",
+      "Consistent with the platform's goal of enhancing workflow efficiency, we find that forecast timeliness improves by 22% of one standard deviation following AI adoption, indicating faster report issuance.",
+      "However, this gain in speed comes at a cost: forecast errors increase by roughly $0.44, or 59% of the sample average.",
+      "The first column shows a positive and statistically significant effect on timeliness: adoption of the AI platform accelerates forecast issuance by 0.22 standard deviations (= 0.297/1.380).",
+      "In contrast, the second column shows that the coefficient on FactSet\u00d7Post is negative and significant at the 1% level for forecast accuracy.",
+      "In economic terms, forecast errors increase by $0.44, or approximately 59% (= 0.438/0.742) of the sample mean, following the AI launch.",
+      "The coefficient on FactSet\u00d7Post is positive and statistically significant (\u03b4= 0.071,t= 2.31), corresponding to approximately 23% of the standard deviation of SignalBalance.",
+      "The results, reported in column (2) of Panel B in Table 9, show that the coefficient on SignalBalance is negative and statistically significant (\u22120.162,t=\u22122.68).",
+      "The coefficient on SignalBalance is significantly negative for the high-constraint groups (\u22120.347, t=\u22124.00 for Firms-Followed;\u22120.338,t=\u22125.13 for #TotalSources), but statistically insignificant for their low-constraint counterparts.",
+      "The cross-group differences are large and statistically significant (p <0.01), confirming that forecast accuracy deteriorates primarily when analysts face greater informational or cognitive burdens.",
+      "The coefficient on SignalScore\u00d7FactSet\u00d7Post is negative and significant (\u22120.014,t=\u22122.18), indicating that investors react less strongly to the informational tone of AI-assisted reports.",
+      "Similarly, the coefficient on FactSet\u00d7Post in the abnormal trading volume regression is negative (\u22120.211,t=\u22122.45), suggesting that these reports trigger lower trading activity.",
+      "For example, the association between positive signals and future earnings remains strongly positive (0.580,t= 5.53), while negative signals are even more predictive in the opposite direction (\u22121.124,t=\u22127.60).",
+      "Approximately 35.3% of reports are issued after the introduction of the AI-powered platform.",
+      "On average, sample firms have a market capitalization of $7.87 billion, are 27.0 years old, and have a debt-to-asset ratio of 63.3% and a return on assets of 0.4%.",
+      "The average volatility of the monthly return is 12.1%, institutional ownership averages 76.9%, and each firm is followed by 17.5 analysts on average."
+    ],
+    "ambiguity_or_caveats": [
+      "It is important to note that our empirical design identifies the effect of AI adoption using analysts' usage of FactSet before and after the December 2023 introduction of its AI-powered platform, Mercury.",
+      "While this setting provides a plausibly exogenous shock to analysts' access to generative AI technology, the treatment indicator inevitably captures only a subset of all AI-assisted research activity.",
+      "In particular, FactSet remains a multi-purpose data vendor, and analysts may adjust their platform choices for non-AI reasons such as pricing, licensing policies, or internal brokerage IT integration.",
+      "Conversely, some analysts in the control group may independently use alternative AI tools (e.g., internal copilots, ChatGPT, or early-stage AI features offered by Bloomberg or Capital IQ).",
+      "Both forms of misclassification\u2014FactSet adoption unrelated to AI, and AI usage outside FactSet\u2014tend to attenuate our estimated treatment effects toward zero.",
+      "Hence, our results likely represent a conservative lower bound on the true impact of generative AI adoption on the information production and performance of financial analysts.",
+      "We refer to these reports as \"AI-assisted reports\" while fully acknowledging that other reports developed without the AI platform in question might also be assisted by other forms of AI technology.",
+      "This unobserved AI usage may in principle lead to an underestimation of the overall impact of AI adoption.",
+      "While we interpret the decline in forecast accuracy primarily through information synthesis cost, other mechanisms could in principle contribute.",
+      "The results in Panel A of Table 9 effectively rule out the alternative explanation of AI hallucination, as the information signals in AI-assisted reports are equally informative of firm fundamentals as those in non-AI reports.",
+      "Still, the decline in accuracy could be attributed to AI-initiated mechanical noise (e.g., redundancy and low-quality text), or to the analysts using AI to speed up report drafting at the expense of human review.",
+      "Our parallel-trend tests in Table 7 showed that there were systematic declines in report content and timeliness in FactSet-assisted reports in the quarter immediately before the integration of AI.",
+      "While this does not suggest a positive pre-trend, it might potentially bias our coefficient estimates."
+    ]
+  },
+  "notes": "This is an empirical study using a natural experiment (FactSet Mercury launch in December 2023) to identify causal effects of generative AI adoption on financial analyst behavior. The paper uses difference-in-differences with propensity score matching and entropy balancing. Multiple robustness checks are conducted including placebo tests on alternative platforms, leave-one-broker-out analyses, and alternative specifications. The study finds a trade-off: AI increases report richness and timeliness but decreases forecast accuracy due to information synthesis costs.",
+  "_paper_id": "2512.19705v1",
+  "_source_pdf": "papers/2512.19705v1.pdf"
+}

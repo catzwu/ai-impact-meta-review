@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study is described as \"A preregistered randomized controlled trial (RCT)\" where \"Participants were randomly assigned to a control group or to a treatment group equipped with one of thirteen different LLMs.\" Participants were recruited through Prolific and completed tasks online, making this a randomized trial but not in a lab setting or real workplace, fitting the RCT classification.",
+  "citation_key": "merali_2025_scaling_laws"
+}

@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "The study is described as 'A randomized controlled trial (RCT) in which 16 experienced open-source developers complete 246 tasks' with 'Each task is randomly assigned to allow or disallow usage of early-2025 AI tools via a simulated fair coin flip.' While developers work on real repositories they contribute to, this is not a field experiment in their actual work setting but rather a structured research study with assigned tasks and screen recording requirements.",
+  "citation_key": "becker_2025_ai_developer_productivity"
+}

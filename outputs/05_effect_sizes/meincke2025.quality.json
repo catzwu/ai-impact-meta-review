@@ -1,0 +1,52 @@
+{
+  "_paper_id": "meincke2025",
+  "citation_key": "meincke_2025_chatgpt_diversity",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is a secondary analysis (Matters Arising) of Lee & Chung (2024) data. The paper does not report a primary outcome experiment with human-only vs. AI-aided arms. Instead, it re-analyzes Lee & Chung's published data to compute diversity metrics (percentage of unique ideas) across their experiments. The paper compares diversity between conditions (e.g., web-search-assisted vs. ChatGPT-assisted, human-only vs. ChatGPT-aided) but does not report means, SDs, or test statistics for a quality outcome. The focus is on diversity (a set-level property), not individual idea quality. The paper states 'Lee and Chung's analyses evaluated each idea for its originality individually' and contrasts this with their own set-level diversity analysis. No extractable statistics for a quality outcome (speed, accuracy, creativity ratings at the individual level) are provided in this Matters Arising piece. The original Lee & Chung (2024) paper would contain the quality outcome data, but that is not the document provided here.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "This is a Matters Arising commentary that re-analyzes Lee & Chung (2024) data to examine idea diversity, not individual idea quality. The paper does not report a primary quality outcome with extractable means, SDs, or test statistics. All reported statistics concern diversity metrics (unique fraction of ideas, cosine similarity thresholds). The paper references Lee & Chung's finding that 'ChatGPT enhanced the average creativity of ideas' but does not reproduce those statistics here. To extract quality outcome effect sizes, one would need to access the original Lee & Chung (2024) paper (https://doi.org/10.1038/s41562-024-01953-1), not this commentary.",
+    "source_quotes": [
+      "Lee and Chung's analyses evaluated each idea for its originality individually.",
+      "Across tasks, instructing participants to use ChatGPT enhanced the average creativity of ideas, outperforming web searches and unaided human intuition, with creativity measured as the average of aggregated scores of originality (original, innovative, creative) and appropriateness (practical, effective, useful).",
+      "We answered these questions via additional analyses of the detailed and carefully reported publicly available data that Lee and Chung provide.",
+      "Specifically, we compared the diversity of idea sets created in each of their experiments with the aid of ChatGPT with that of ideas in the various comparison sets reported in the studies.",
+      "These comparisons operationalize the diversity of an idea set as the ratio between the number of unique concepts it includes and the total number of ideas."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "This is a Matters Arising commentary that re-analyzes Lee & Chung (2024) data to examine idea diversity, not individual idea quality. The paper does not report a primary quality outcome with extractable means, SDs, or test statistics. All reported statistics concern diversity metrics (unique fraction of ideas, cosine similarity thresholds). The paper references Lee & Chung's finding that 'ChatGPT enhanced the average creativity of ideas' but does not reproduce those statistics here. To extract quality outcome effect sizes, one would need to access the original Lee & Chung (2024) paper (https://doi.org/10.1038/s41562-024-01953-1), not this commentary. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

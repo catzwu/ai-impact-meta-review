@@ -1,0 +1,422 @@
+{
+  "citation_key": "handa_2025_economic_tasks",
+  "authors": [
+    "Kunal Handa",
+    "Alex Tamkin",
+    "Miles McCain",
+    "Saffron Huang",
+    "Esin Durmus",
+    "Sarah Heck",
+    "Jared Mueller",
+    "Jerry Hong",
+    "Stuart Ritchie",
+    "Tim Belonax",
+    "Kevin K. Troy",
+    "Dario Amodei",
+    "Jared Kaplan",
+    "Jack Clark",
+    "Deep Ganguli"
+  ],
+  "title": "Which Economic Tasks are Performed with AI? Evidence from Millions of Claude Conversations",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "study_design_description": "This is an observational study analyzing privacy-preserving data from millions of real-world Claude.ai conversations. Using Clio, an analysis tool, the authors classified approximately one million Claude.ai Free and Pro conversations collected during December 2024 and January 2025, mapping each interaction to occupational task categories in the U.S. Department of Labor's O*NET Database. The study examines usage patterns across occupational categories, skills, wages, and collaboration modes (automation vs. augmentation).",
+  "primary_task_description": "Mapping Claude.ai conversations to occupational categories in the U.S. Department of Labor's O*NET Database to identify current AI usage patterns and which parts of the economy may be most affected as AI technologies advance.",
+  "population_description": "Approximately one million Claude.ai Free and Pro conversations collected during December 2024 and January 2025. The sample consisted of approximately 54% Claude 3.5 Sonnet (new) conversations and 46% Claude 3 Opus conversations. An additional random sample of approximately 2.8 million Claude.ai Free and Pro conversations was generated between November 28, 2024 and December 18, 2024 for clustering analyses.",
+  "arms": [
+    {
+      "arm_name": "claude_3_opus",
+      "description": "Claude 3 Opus, released in March 2024",
+      "n": null
+    },
+    {
+      "arm_name": "claude_3_5_sonnet",
+      "description": "Claude 3.5 Sonnet (new), released in October 2024",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "occupational_task_coverage",
+      "outcome_description": "Fraction of each occupation's tasks that appeared in the Clio analysis, indicating depth of AI integration across occupations",
+      "measurement_unit": "percentage of tasks per occupation",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "outcome_description": "Task usage defined as occurrence across five or more unique user accounts and fifteen or more conversations",
+      "measurement_unit": "percentage of occupations",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "collaboration_pattern",
+      "outcome_description": "Classification of conversations into five distinct patterns across two broad categories (automative vs. augmentative behaviors) based on how people integrate AI into their workflow",
+      "measurement_unit": "percentage of conversations",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "occupational_skill_usage",
+      "outcome_description": "Identification of all occupational skills exhibited by the model relevant to a given Claude.ai conversation",
+      "measurement_unit": "skill frequency",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "task_classification_accuracy",
+      "outcome_description": "Percentage of conversations judged as assigned to an acceptable task at different aggregation levels (top level, middle level, base O*NET level)",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "optimal_label_assignment",
+      "outcome_description": "Percentage of conversations assigned to their optimal label as assessed by human raters",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "correlation_direct_vs_cluster",
+      "outcome_description": "Correlation between usage of occupational categories determined via direct assignment and via clusters at various aggregation levels",
+      "measurement_unit": "correlation coefficient (Pearson, Spearman, Kendall's Tau-b)",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "occupational_task_coverage",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "~36% of occupations using AI for at least a quarter of their associated tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "~36% of occupations using AI for at least a quarter of their associated tasks."
+    },
+    {
+      "outcome_name": "occupational_task_coverage",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "~4% of occupations exhibit AI usage for at least 75% of their tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Only ~4% of occupations exhibit AI usage for at least 75% of their tasks\u2014for example, in Foreign Language and Literature Teachers (75% of tasks), we observe AI usage for tasks related to collaborating with colleagues on teaching issues and planning course content, though not for activities like writing grant proposals or maintaining student records."
+    },
+    {
+      "outcome_name": "occupational_task_coverage",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "~11% of occupations show usage for half or more of their tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Just ~11% of occupations show usage for half or more of their tasks, as illustrated by Marketing Managers (50% of tasks) where we see AI usage in tasks involving market research analysis and strategy development, but not in activities like product specification consultation or trade show coordination."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Software development and writing tasks account for nearly half of all total usage",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Our analysis reveals that AI usage primarily concentrates in software development and writing tasks, which together account for nearly half of all total usage."
+    },
+    {
+      "outcome_name": "collaboration_pattern",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "57% of usage suggests augmentation; 43% suggests automation",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We also analyze how AI is being used for tasks, finding 57% of usage suggests augmentation of human capabilities (e.g., learning or iterating on an output) while 43% suggests automation (e.g., fulfilling a request with minimal human involvement)."
+    },
+    {
+      "outcome_name": "collaboration_pattern",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "57% augmentative, 43% automative",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Both augmentative and automative collaboration behaviors are present in users' with Claude.ai interactions, with slightly more conversations being labeled as augmentative (57%) than automative (43%)."
+    },
+    {
+      "outcome_name": "task_classification_accuracy",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "95.3% of conversations judged as assigned to an acceptable task at top level",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At the top level, 95.3% of conversations are judged as assigned to an acceptable task."
+    },
+    {
+      "outcome_name": "task_classification_accuracy",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "91.3% of conversations judged as assigned to an acceptable task at middle level",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At the middle level, 91.3% of conversations are judged as assigned to an acceptable task."
+    },
+    {
+      "outcome_name": "task_classification_accuracy",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "86% of conversations judged as assigned to an acceptable task at base O*NET level",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At the base (O*NET) level, 86% of conversations are judged as assigned to an acceptable task."
+    },
+    {
+      "outcome_name": "optimal_label_assignment",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "90.7% of conversations assigned to their optimal label",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that 90.7% of conversations are assigned to their optimal label as assessed by human raters."
+    },
+    {
+      "outcome_name": "correlation_direct_vs_cluster",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Minimum correlation values of 0.95 (Pearson), 0.95 (Spearman), and 0.82 (Kendall's Tau-b) at higher aggregation levels",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find strong correlation between the usage of occupational categories determined via direct assignment and via clusters at various aggregation levels. When comparing direct assignment to cluster-based approaches, we observe minimum correlation values of 0.95 (Pearson), 0.95 (Spearman), and 0.82 (Kendall's Tau-b)."
+    },
+    {
+      "outcome_name": "correlation_direct_vs_cluster",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Minimum correlation values of 0.70 (Pearson), 0.58 (Spearman), and 0.46 (Kendall's Tau-b) at middle aggregation level",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When comparing direct assignment to cluster-based approaches, we observe minimum correlation values of 0.70 (Pearson), 0.58 (Spearman), and 0.46 (Kendall's Tau-b)."
+    },
+    {
+      "outcome_name": "correlation_direct_vs_cluster",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Minimum correlation values of 0.47 (Pearson), 0.22 (Spearman), and 0.18 (Kendall's Tau-b) at task level",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "When comparing these methods, we observe minimum correlation values of 0.47 (Pearson), 0.22 (Spearman), and 0.18 (Kendall's Tau-b)."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Computer and Mathematical occupations comprise 37.2% of all queries",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Computer and Mathematical occupations show the highest associated AI usage rate, comprising 37.2% of all queries."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Arts, Design, Entertainment, Sports, and Media occupations comprise 10.3% of queries",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Arts, Design, Entertainment, Sports, and Media occupations were second most common (10.3%), likely reflecting the prevalence of marketing, writing, and other kinds of content generation in Claude.ai traffic."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Non-work conversations comprise 23% of the dataset",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We find that non-work conversations only comprise 23% of the dataset, and usage relating to coursework comprises only 5-10% of conversations, depending on the chosen level of confidence."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "IT, technology, and associated related tasks dominate at nearly 50% of conversations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At the top-level (Figure 11), we see that IT, technology, and associated related tasks dominate the distribution, at nearly 50% of conversations."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Creative and cultural work comprises approximately 20% of conversations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The second tier consists of creative and cultural work, with tasks related to creating and preserving art, culture, and religious artifacts making up approximately 20% of conversations."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Business management, finance, and customer service operations comprise around 15% of conversations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Business management, finance, and customer service operations form the third major category at around 15% of conversations."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Software development and website maintenance comprises about 14% of conversations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Software development and website maintenance is the most prevalent activity at about 14% of conversations, followed by computer systems programming and debugging at roughly 11%."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Computer systems programming and debugging comprises roughly 11% of conversations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Software development and website maintenance is the most prevalent activity at about 14% of conversations, followed by computer systems programming and debugging at roughly 11%."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "System administration, hardware/software troubleshooting, and document publishing each account for 4-6% of conversations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "System administration, hardware/software troubleshooting, and document publishing processes each account for 4-6% of conversations."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Marketing/promotional strategies, network optimization, academic tutoring, and public relations management appear at around 2-3% each",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Marketing/promotional strategies, network optimization, academic tutoring, and public relations management appear but at lower frequencies around 2-3% each."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Data science and machine learning applications represent approximately 2% of conversations",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Data science and machine learning applications represent approximately 2% of conversations."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Job Zone 4 shows representation ratio of 1.50, indicating 50% higher usage than expected",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Job Zone 4 (requiring bachelor's degree-level preparation), with a representation ratio of 1.50, indicating 50% higher usage than expected given its baseline distribution."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Job Zone 1 shows representation ratio of 0.40; Job Zone 5 shows representation ratio of 0.58",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Both minimal preparation (Job Zone 1) and extensive preparation roles (Job Zone 5) show lower usage rates, with representation ratios of 0.40 and 0.58 respectively."
+    },
+    {
+      "outcome_name": "task_usage_prevalence",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "Job Zones 2 and 3 demonstrate usage rates with representation ratios of 0.78 and 0.94",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Job Zones 2 and 3 demonstrate usage rates more closely aligned with their baseline distribution (ratios of 0.78 and 0.94)."
+    },
+    {
+      "outcome_name": "occupational_task_coverage",
+      "arm_comparison": "overall",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "~57% of occupations using AI for at least 10% of their tasks",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Eloundou et al. [2023] predicted that 80% of U.S. workers could have at least 10% of their work tasks affected by language models; by contrast, our empirical data shows current adoption at ~57% of occupations using AI for at least 10% of their tasks\u2014lower than predicted but potentially trending toward their forecast as capabilities improve and adoption barriers decrease."
+    }
+  ],
+  "notes": "This is an observational study analyzing real-world usage patterns from Claude.ai conversations, not a randomized controlled trial. The two arms (Claude 3 Opus vs. Claude 3.5 Sonnet) are compared descriptively in terms of conversation volume (54% vs. 46%) but no statistical comparisons between the models are reported in the provided quotes. The study maps conversations to O*NET occupational tasks and analyzes patterns across occupations, skills, wages, and collaboration modes. Key limitations acknowledged: (1) occupational classification does not indicate professional status; (2) sample may not be representative across longer time windows or other AI providers; (3) Claude.ai outputs only text, excluding image/video users; (4) use of Claude to classify conversations may introduce inconsistencies; (5) method does not capture how outputs are actually used in practice; (6) O*NET database is static and cannot capture emerging tasks; (7) task-level classifications contain inherent noise due to task similarity and many-to-many relationships between conversations, tasks, and occupations. The paper includes human validation and cluster-level corroboration of results.",
+  "_paper_id": "Handa et al. 2025"
+}

@@ -1,0 +1,295 @@
+{
+  "citation_key": "liveric_2025_ai_cognitive",
+  "authors": [
+    "Dijana Liveri\u0107"
+  ],
+  "title": "The Impact of AI Tools on Students' Cognitive Processes in Practical Software Development",
+  "year": 2025,
+  "venue": "Information Society 2025",
+  "study_design_description": "An online questionnaire was used, combining closed and open-ended questions about students' background, use of AI tools, behavior during implementation, understanding and cognitive processes, motivation, and the teacher's role. Data were collected during lessons through a voluntary and anonymous online survey. Quantitative data were analyzed using descriptive statistics, while qualitative responses were examined through content analysis focusing on the link between AI use and cognitive engagement.",
+  "primary_task_description": "Participants were high school students from grammar and vocational tracks with access to AI tools in programming classes.",
+  "population_description": "Participants were high school students from grammar and vocational tracks with access to AI tools in programming classes.",
+  "arms": [],
+  "outcomes": [
+    {
+      "outcome_name": "critical_thinking",
+      "outcome_description": "Critical thinking",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "cognitive_load",
+      "outcome_description": "Cognitive load",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "offloading",
+      "outcome_description": "Offloading",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "motivation",
+      "outcome_description": "Motivation",
+      "measurement_unit": null,
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_tool_usage_chatgpt",
+      "outcome_description": "Use of ChatGPT as primary AI tool for programming",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_tool_usage_github_copilot",
+      "outcome_description": "Use of GitHub Copilot",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_tool_usage_codewhisperer",
+      "outcome_description": "Use of CodeWhisperer",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "no_ai_tool_usage",
+      "outcome_description": "Students who do not use AI tools at all",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "independent_problem_solving_first",
+      "outcome_description": "Students who first attempt to solve the problem independently before asking AI for help",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_understanding_attempt",
+      "outcome_description": "Students who at least try to understand the generated code before applying it",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "code_copying_without_understanding",
+      "outcome_description": "Students who simply copy and run the code without understanding",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_bypasses_reasoning_perception",
+      "outcome_description": "Students who feel that using AI bypasses their own reasoning",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_bypasses_reasoning_disagreement",
+      "outcome_description": "Students who disagree that using AI bypasses their own reasoning",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "motivation_from_correct_solution",
+      "outcome_description": "Students who stated that obtaining a correct solution through AI motivates them to continue working",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_helps_progress_faster",
+      "outcome_description": "Students who believe that AI helps them progress faster",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "motivation_decrease_without_correct_solution",
+      "outcome_description": "Students whose motivation decreases if they do not immediately obtain a correct solution",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "teacher_role_necessary",
+      "outcome_description": "Students who agreed that the teacher is necessary to ensure that AI use genuinely contributes to learning",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "ai_bypasses_thought_process_ambivalent",
+      "outcome_description": "Students who did not reject the statement that using AI might bypass their own thought process",
+      "measurement_unit": "percentage",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "ai_tool_usage_chatgpt",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "77.5%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The survey results (N=131) show that the vast majority of students use ChatGPT as their primary AI tool for programming (77.5%)"
+    },
+    {
+      "outcome_name": "ai_tool_usage_github_copilot",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "12.5%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "GitHub Copilot is used by only 12.5%"
+    },
+    {
+      "outcome_name": "ai_tool_usage_codewhisperer",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "3.3%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "CodeWhisperer by 3.3% of respondents"
+    },
+    {
+      "outcome_name": "no_ai_tool_usage",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "20%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Interestingly, one fifth of students (20%) reported that they do not use AI tools at all."
+    },
+    {
+      "outcome_name": "independent_problem_solving_first",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "38%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Regarding solution implementation, a considerable share of students (38%) reported that they first attempt to solve the problem independently before asking AI for help"
+    },
+    {
+      "outcome_name": "code_understanding_attempt",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "31%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "while 31% stated that they at least try to understand the generated code before applying it"
+    },
+    {
+      "outcome_name": "code_copying_without_understanding",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "around 15%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Only a small portion (around 15%) admitted to simply copying and running the code."
+    },
+    {
+      "outcome_name": "ai_bypasses_reasoning_perception",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "about 41%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "However, perceptions of their own thinking process are more ambivalent: about 41% of students feel that using AI bypasses their own reasoning"
+    },
+    {
+      "outcome_name": "ai_bypasses_reasoning_disagreement",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "one third",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "while one third disagrees with this claim"
+    },
+    {
+      "outcome_name": "motivation_from_correct_solution",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "more than 70%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The motivational effects of AI are evident: more than 70% of students stated that obtaining a correct solution through AI motivates them to continue working"
+    },
+    {
+      "outcome_name": "ai_helps_progress_faster",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "68%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "and 68% believe that AI helps them progress faster"
+    },
+    {
+      "outcome_name": "motivation_decrease_without_correct_solution",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "nearly 30%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "At the same time, nearly 30% of students admitted that their motivation decreases if they do not immediately obtain a correct solution"
+    },
+    {
+      "outcome_name": "teacher_role_necessary",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "nearly 80%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The teacher's role remains crucial: nearly 80% of students agreed that the teacher is necessary to ensure that AI use genuinely contributes to learning."
+    },
+    {
+      "outcome_name": "ai_bypasses_thought_process_ambivalent",
+      "arm_comparison": "overall_sample",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "54.96%",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "More than half of the students (54.96%) did not reject the statement that using AI might bypass their own thought process"
+    }
+  ],
+  "notes": "This is a survey-based observational study with no experimental control group or randomized assignment. The paper reports descriptive statistics from N=131 high school students regarding their use of AI tools (primarily ChatGPT) in programming education. No causal comparisons between AI-assisted and no-AI conditions are made. The study integrates survey data with theoretical frameworks (Cognitive Load Theory, Self-Determination Theory, Cognitive Flexibility Theory) but does not test causal effects of AI on learning outcomes. All reported statistics are descriptive percentages or proportions from the overall sample. The study identifies concerns about students' cognitive engagement, code understanding, and potential over-reliance on AI tools, but these are observational findings rather than experimental results.",
+  "_paper_id": "TheImpactofAIToolsonStudentsCognitiveProcessesinPracticalSoftwareDevelopment"
+}

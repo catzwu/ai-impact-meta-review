@@ -1,0 +1,87 @@
+{
+  "per_outcome": [
+    {
+      "outcome_name": "sold_within_3_months",
+      "category": "other",
+      "operationalization": "Binary indicator of whether the property sold within 3 months of listing, measured from transaction records"
+    },
+    {
+      "outcome_name": "log_days_seller",
+      "category": "speed",
+      "operationalization": "Natural logarithm of (1 + days on market) for seller transactions, measured from listing to sale date"
+    },
+    {
+      "outcome_name": "log_days_buyer",
+      "category": "speed",
+      "operationalization": "Natural logarithm of (1 + days on market) for buyer transactions, measured from search start to purchase"
+    },
+    {
+      "outcome_name": "log_price",
+      "category": "other",
+      "operationalization": "Natural logarithm of final transaction price in RMB from completed sales records"
+    },
+    {
+      "outcome_name": "rating_buyer",
+      "category": "quality",
+      "operationalization": "Post-transaction 5-point overall rating of agent service quality provided by buyers"
+    },
+    {
+      "outcome_name": "rating_seller",
+      "category": "quality",
+      "operationalization": "Post-transaction 5-point overall rating of agent service quality provided by sellers"
+    },
+    {
+      "outcome_name": "recommend_optimal",
+      "category": "quality",
+      "operationalization": "Binary structured feedback label indicating whether agent provided accurate property recommendations"
+    },
+    {
+      "outcome_name": "talk_inefficiency",
+      "category": "other",
+      "operationalization": "Continuous structured feedback measure of communication inefficiency in agent-client conversations"
+    },
+    {
+      "outcome_name": "talk_comfort",
+      "category": "other",
+      "operationalization": "Continuous structured feedback measure of client comfort during agent conversations"
+    },
+    {
+      "outcome_name": "trust",
+      "category": "other",
+      "operationalization": "Continuous structured feedback measure of client-perceived trustworthiness of the agent"
+    },
+    {
+      "outcome_name": "viewing",
+      "category": "other",
+      "operationalization": "Count of on-site property viewings arranged, measured from scheduling records"
+    },
+    {
+      "outcome_name": "log_listed_price",
+      "category": "other",
+      "operationalization": "Natural logarithm of initial listing price in RMB when property first posted"
+    },
+    {
+      "outcome_name": "pricing_optimal",
+      "category": "quality",
+      "operationalization": "Binary structured feedback label indicating whether the pricing strategy was optimal"
+    },
+    {
+      "outcome_name": "sellpoint_accuracy",
+      "category": "quality",
+      "operationalization": "Binary structured feedback label indicating accuracy of property selling-point descriptions"
+    },
+    {
+      "outcome_name": "total_adjust_times",
+      "category": "other",
+      "operationalization": "Weekly count of price adjustment actions taken by sellers, measured from listing modification logs"
+    },
+    {
+      "outcome_name": "total_adjust_mag",
+      "category": "other",
+      "operationalization": "Average magnitude of price changes across all adjustments, measured in continuous units"
+    }
+  ],
+  "primary_speed_outcome": "log_days_seller",
+  "primary_quality_outcome": "rating_seller",
+  "citation_key": "ai_copilots_real_estate_2025"
+}

@@ -1,0 +1,53 @@
+{
+  "citation_key": "meincke_2025_chatgpt_diversity",
+  "authors": [
+    "Lennart Meincke",
+    "Gideon Nave",
+    "Christian Terwiesch"
+  ],
+  "title": "ChatGPT decreases idea diversity in brainstorming",
+  "year": 2025,
+  "venue": "Nature Human Behaviour",
+  "quotes": {
+    "study_design": [
+      "We answered these questions via additional analyses of the detailed and carefully reported publicly available data that Lee and Chung provide. Specifically, we compared the diversity of idea sets created in each of their experiments with the aid of ChatGPT with that of ideas in the various comparison sets reported in the studies (that is, humans with and without web searches).",
+      "Secondary analysis of previously published data by Lee & Chung (2024)"
+    ],
+    "task": [
+      "Lee and Chung explore how ChatGPT augments human creativity in brainstorming. In a series of experiments, they randomized participants to complete various creative challenges, either with or without the help of ChatGPT. These challenges included tasks such as coming up with gift ideas, designing toys from everyday objects and repurposing household items.",
+      "Inspired by data from Lee and Chung's experiment 2A, the following example illustrates how considering originality at the individual idea level alone might lead to misleading conclusions about the originality of an idea set. Consider two hypothetical sets of ideas for repurposing a tennis racket and a garden hose"
+    ],
+    "population": [
+      "Each participant submitted one idea, which external evaluators rated on multiple creativity dimensions, including innovativeness and usefulness."
+    ],
+    "arms": [
+      "Lee and Chung randomized participants to complete various creative challenges, either with or without the help of ChatGPT.",
+      "In Lee and Chung's experiment 2A, 20 out of 96 ChatGPT-aided ideas included the word 'sprinkler', as opposed to only 7 in the web-search-aided condition and 12 in the human-only condition."
+    ],
+    "outcome_definitions": [
+      "These comparisons operationalize the diversity of an idea set as the ratio between the number of unique concepts it includes and the total number of ideas, where a unique concept is a group of one or more ideas that do not overlap with any other ideas in the set.",
+      "Following previous work, we computed the percentage of unique, non-overlapping idea concepts for each set.",
+      "We define a pair of ideas as overlapping when the similarity between them exceeds a threshold, where similarity is the pairwise cosine similarity between the ideas' Universal Sentence Encoder embeddings.",
+      "These scores range from \u22121 to 1, where 1 indicates perfect similarity, 0 indicates no relationship and \u22121 indicates perfect opposition (in practice, negative scores are rare).",
+      "Our main analysis defines two ideas as overlapping when their pairwise cosine similarity exceeds the threshold of 0.8.",
+      "A unique idea concept is a group of one or more ideas that do not overlap with any other ideas in the set.",
+      "Diverse idea sets exhibit a higher percentage of unique idea concepts, as this implies that ideas occupy more distant positions in the semantic space."
+    ],
+    "statistical_results": [
+      "In our primary analysis, AI-aided idea sets are less diverse than non-AI-aided idea sets in all five experiments, and the difference is statistically significant in four out of five comparisons (the non-significant result, in experiment 4, is probably due to a ceiling effect).",
+      "While generative AI benefits individual ideas, its collective use leads to a narrower scope of novel content produced. In our primary analysis, AI-aided idea sets are less diverse than non-AI-aided idea sets in all five experiments, and the difference is statistically significant in four out of five comparisons (the non-significant result, in experiment 4, is probably due to a ceiling effect).",
+      "idea sets is lower than the diversity of the comparison sets using all metrics across experiments, where 37 of the 45 comparisons yield statistically significant effects (Supplementary Table 1).",
+      "In the extreme case of study 2b (suggesting a toy for a seven-year-old child using a brick and a fan), only 6% of the AI-generated ideas (ChatGPT-only) were unique, compared with 100% of human ideas.",
+      "That is, almost all AI-generated ideas overlap with other ideas (nine of them even have the same name, \"Build-a-Breeze Castle\").",
+      "These findings hold under different thresholds for overlapping ideas.",
+      "Likewise, our analyses using alternative diversity metrics found that the diversity of ChatGPT-aided idea sets is lower than the diversity of the comparison sets using all metrics across experiments, where 37 of the 45 comparisons yield statistically significant effects (Supplementary Table 1)."
+    ],
+    "ambiguity_or_caveats": [
+      "the non-significant result, in experiment 4, is probably due to a ceiling effect",
+      "To ensure that our conclusions do not depend on this specific diversity operationalization, we report supplementary analyses using different thresholds (0.75 and 0.85) and alternative metrics\u2014namely, aggregated comparisons of similarity scores, pairwise comparisons of similarity scores and mean edge distance in minimum spanning trees"
+    ]
+  },
+  "notes": "This is a 'Matters Arising' response paper that conducts secondary analysis of data from Lee & Chung (2024). The authors reanalyze the original experiments using diversity metrics (percentage of unique idea concepts measured via cosine similarity) rather than individual idea creativity scores. The paper does not conduct new experiments but instead applies new analytical approaches to publicly available data from the original study. Figure 1 shows diversity comparisons across five experiments with 95% confidence intervals.",
+  "_paper_id": "meincke2025",
+  "_source_pdf": "papers/meincke2025.pdf"
+}

@@ -1,0 +1,148 @@
+{
+  "citation_key": "jia_2024_ai_augments_creativity",
+  "authors": [
+    "Nan Jia",
+    "Xueming Luo",
+    "Zheng Fang",
+    "Chengcheng Liao"
+  ],
+  "title": "When and How Artificial Intelligence Augments Employee Creativity",
+  "year": 2024,
+  "venue": "Academy of Management Journal",
+  "study_design_description": "A randomized field experiment was conducted at a large telemarketing company in Asia, employing a two (with AI assistance versus no AI assistance) by two (top versus bottom employees) full-factorial design, resulting in four experimental groups. Double randomization was used: 3,144 customers were randomly assigned to be served by AI human teams or human agents alone, and 40 human agents were randomly assigned to work in AI human teams or independently. Subsequently, 28 semi-structured interviews were conducted with a random sample of sales agents stratified between those who received AI assistance and those who did not, and between top and bottom agents.",
+  "primary_task_description": "The task involved making outbound calls to sell credit cards to customers through a two-stage process. In the first stage, employees call customers to introduce general information about the product and probe initial interest to generate \"sales leads\" (customers interested in learning more without yet committing to purchase). This stage was well-codified with numerous protocols and scripts. In the second stage, sales persuasion, employees continued serving the leads by finding out more about their needs, matching needs with the product, and convincing the lead to make a purchase. Sales persuasion was considered much less structured than lead generation, with unexpected questions commonly occurring.",
+  "population_description": "The study involved 40 human agents (20 from the top tercile and 20 from the bottom tercile of performance) and 3,144 customers. Employees were identified based on their sales volumes of other products for previous months, with those in the lowest and highest terciles (bottom 33% and top 33%, respectively) selected such that their performance was closest to one another. On average, customers receiving outbound calls were 31 years old, approximately half were men, approximately 70% held undergraduate or postgraduate degrees, and approximately 25% owned at least one credit card before the call.",
+  "arms": [
+    {
+      "arm_name": "ai_assisted_top_agents",
+      "description": "Top-performing agents assisted by an AI conversational bot that made outbound calls to generate sales leads. If the customer indicated interest, the bot would hand over the call to the human employee (referred to as an \"exclusive VIP client manager\") to serve as the lead in the sales presentation.",
+      "n": 10
+    },
+    {
+      "arm_name": "no_ai_top_agents",
+      "description": "Top-performing agents without AI assistance who made outbound calls to generate sales leads themselves. If the customer indicated interest, the same employee would thank the customer and say they would become the \"exclusive VIP client manager\" to continue the call and engage in sales presentation.",
+      "n": 10
+    },
+    {
+      "arm_name": "ai_assisted_bottom_agents",
+      "description": "Bottom-performing agents assisted by an AI conversational bot that made outbound calls to generate sales leads. If the customer indicated interest, the bot would hand over the call to the human employee (referred to as an \"exclusive VIP client manager\") to serve as the lead in the sales presentation.",
+      "n": 10
+    },
+    {
+      "arm_name": "no_ai_bottom_agents",
+      "description": "Bottom-performing agents without AI assistance who made outbound calls to generate sales leads themselves. If the customer indicated interest, the same employee would thank the customer and say they would become the \"exclusive VIP client manager\" to continue the call and engage in sales presentation.",
+      "n": 10
+    },
+    {
+      "arm_name": "ai_alone",
+      "description": "An experimental group in which the AI conversational bot engaged in both lead generation and sales persuasion, without any human agents involved.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "employee_creativity",
+      "outcome_description": "Employee creativity is measured by solving outside-knowledge-bank questions, which is the ratio of untrained questions successfully resolved by the employee to all questions asked by the focal customer. An AI algorithm first identified whether each question asked by customers during sales persuasion was within the scope of the knowledge bank used to train employees. For questions that fell outside the scope (\"untrained\" questions), an experienced manager determined whether employees successfully answered them.",
+      "measurement_unit": "ratio of untrained questions successfully resolved",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "customer_purchase",
+      "outcome_description": "Employee performance is captured by customer purchase, a binary variable indicating whether customers used the link sent to them to open a credit card within 24 hours after the sales call.",
+      "measurement_unit": "binary (purchase yes/no)",
+      "is_primary": true
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "employee_creativity",
+      "arm_comparison": "ai_assisted vs no_ai (average agent)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "2.33 times as successful",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "With AI assistance, an average agent was 2.33 times as successful in answering questions they were not previously trained for and thus had to generate answers as their counterparts that did not have AI assistance. This difference was statistically significant (p < 0.05)."
+    },
+    {
+      "outcome_name": "employee_creativity",
+      "arm_comparison": "ai_assisted vs no_ai (top vs bottom agents interaction)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "magnitude of increase 2.81 times greater for top agents than bottom agents",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Although AI assistance helps both agents at the top and bottom to demonstrate greater creativity than without AI, the magnitude of this increase is much more pronounced among top agents than among bottom agents (p < 0.01). Specifically, for top agents, the magnitude of the increased success in answering untrained questions due to receiving AI assistance, compared with no AI assistance, was 2.81 times that of bottom agents."
+    },
+    {
+      "outcome_name": "employee_creativity",
+      "arm_comparison": "ai_assisted vs no_ai (Model 2, Table 2)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "10% of the mean value of solving outside-knowledge-bank questions",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Model 2 in Table 2 adds AI-Human Hybrids as a covariate. This shows that all else being equal, an average agent with AI assistance demonstrates greater creativity in solving outside-knowledge-bank questions than the average agent without AI assistance by a degree that amounts to 10% of the mean value of solving outside-knowledge-bank questions."
+    },
+    {
+      "outcome_name": "employee_creativity",
+      "arm_comparison": "ai_assisted_top_agents vs no_ai_top_agents and ai_assisted_bottom_agents vs no_ai_bottom_agents (Models 6 and 7, Table 3)",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "magnitude of effect among top agents is six times that of bottom agents",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Models 6 and 7 in Table 3 examine the main effect of AI-Human Hybrids on employee creativity in the subsamples of top and bottom agents, respectively. While agents with AI assistance demonstrate greater creativity than those without such assistance in both subsamples, the magnitude of the estimated effect of AI assistance among top agents is six times that of the bottom agents, further substantiating H1."
+    },
+    {
+      "outcome_name": "customer_purchase",
+      "arm_comparison": "ai_assisted vs no_ai",
+      "means_and_sds": {},
+      "effect_in_outcome_units": "almost twice as likely to make a purchase",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.05",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that customers served by an AI-assisted sales agent are almost twice as likely to make a purchase than those served by sales agents alone, and this difference is statistically significantly different from 0 (p < 0.05)."
+    },
+    {
+      "outcome_name": "customer_purchase",
+      "arm_comparison": "ai_alone vs no_ai_bottom_agents vs no_ai_top_agents",
+      "means_and_sds": {
+        "ai_alone": {
+          "mean": 0.021,
+          "sd": null,
+          "se": null
+        },
+        "no_ai_bottom_agents": {
+          "mean": 0.02,
+          "sd": null,
+          "se": null
+        },
+        "no_ai_top_agents": {
+          "mean": 0.037,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "The AI-alone group achieved a purchase rate of 0.021, which was similar to that achieved by bottom agents on their own (0.020) but half in magnitude as the purchase rate achieved by top agents on their own (0.037)."
+    }
+  ],
+  "notes": "The study employed a 2\u00d72 factorial design with 40 agents (20 top, 20 bottom) and 3,144 customers. The 40 agents were randomly assigned to AI assistance or no AI assistance, resulting in approximately 10 agents per arm (though the quotes do not explicitly state the exact split per arm; this is inferred from the 2\u00d72 design with 20 top and 20 bottom agents). The AI-alone arm (bot performing both lead generation and sales persuasion) is included but the authors note that \"insights developed from this treatment group do not directly help us address the research question of this paper which hinges on human agent's creativity demonstrated during sales persuasion.\" The paper reports that customers asked substantially fewer questions outside the scope of the knowledge bank than those within the scope. Randomization checks (F- and chi-square tests) indicated that differences in mean values across experimental groups were jointly insignificant. The study also notes that the AI conversational bot was restricted to following common protocols rather than dynamically learning customer preferences, which the authors suggest makes their results more conservative.",
+  "_paper_id": "jiaetal"
+}

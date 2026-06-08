@@ -1,0 +1,51 @@
+{
+  "_paper_id": "TheImpactofAIToolsonStudentsCognitiveProcessesinPracticalSoftwareDevelopment",
+  "citation_key": "liveric_2025_ai_cognitive",
+  "kind": "quality",
+  "_salvage": true,
+  "llm_extracted": {
+    "arm_pair_resolvable": false,
+    "design_is_within_subject": null,
+    "mean_difference_within_subject": null,
+    "sd_difference_within_subject": null,
+    "human_arm_name": null,
+    "ai_arm_name": null,
+    "ai_arm_selection_rationale": "This is a survey-based observational study examining students' self-reported perceptions and behaviors when using AI tools in programming education. There is no experimental manipulation with distinct human-only vs. human+AI arms. The study does not measure objective quality outcomes (e.g., code quality, task performance) but rather collects descriptive statistics about AI tool usage patterns, student perceptions of cognitive processes, and motivational aspects. The paper reports percentages and frequencies (e.g., 77.5% use ChatGPT, 38% try independently first, 41% feel AI bypasses thinking) but does not present comparative statistics between controlled conditions that would allow computation of an effect size for a quality outcome. The research design is fundamentally descriptive/correlational rather than experimental.",
+    "direction_convention": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_t": null,
+    "reported_t_df": null,
+    "reported_F": null,
+    "reported_F_df1": null,
+    "reported_F_df2": null,
+    "reported_cohens_d": null,
+    "reported_hedges_g": null,
+    "reported_p_value": null,
+    "extraction_confidence": "high",
+    "notes": "After thorough re-reading, this paper is a survey study (N=131 high school students) examining self-reported AI tool usage and perceptions. The methodology section states: 'An online questionnaire was used, combining closed and open-ended questions about students' background, use of AI tools, behavior during implementation, understanding and cognitive processes, motivation, and the teacher's role.' The findings section (Table 1 and surrounding text) reports only descriptive statistics: percentages of students using different AI tools, percentages reporting different behaviors, and agreement levels with various statements. There are no experimental arms, no baseline vs. intervention comparison, and no inferential statistics (t-tests, F-tests, effect sizes) comparing performance or quality outcomes between conditions. The study is purely observational and descriptive in nature.",
+    "source_quotes": [
+      "The study is grounded in Cognitive Load Theory and the concept of cognitive offloading, complemented by theories of motivation and self-determination. An online questionnaire was used, combining closed and open-ended questions about students' background, use of AI tools, behavior during implementation, understanding and cognitive processes, motivation, and the teacher's role.",
+      "The survey results (N=131) show that the vast majority of students use ChatGPT as their primary AI tool for programming (77.5%), while GitHub Copilot is used by only 12.5%, and CodeWhisperer by 3.3% of respondents.",
+      "Regarding solution implementation, a considerable share of students (38%) reported that they first attempt to solve the problem independently before asking AI for help, while 31% stated that they at least try to understand the generated code before applying it.",
+      "Quantitative data were analyzed using descriptive statistics, while qualitative responses were examined through content analysis focusing on the link between AI use and cognitive engagement."
+    ]
+  },
+  "computed": {
+    "cohens_d": null,
+    "hedges_g": null,
+    "variance": null,
+    "computation_method": null,
+    "confidence": "low",
+    "notes": "After thorough re-reading, this paper is a survey study (N=131 high school students) examining self-reported AI tool usage and perceptions. The methodology section states: 'An online questionnaire was used, combining closed and open-ended questions about students' background, use of AI tools, behavior during implementation, understanding and cognitive processes, motivation, and the teacher's role.' The findings section (Table 1 and surrounding text) reports only descriptive statistics: percentages of students using different AI tools, percentages reporting different behaviors, and agreement levels with various statements. There are no experimental arms, no baseline vs. intervention comparison, and no inferential statistics (t-tests, F-tests, effect sizes) comparing performance or quality outcomes between conditions. The study is purely observational and descriptive in nature. | arm pair unresolvable",
+    "n_human": null,
+    "n_ai": null,
+    "direction_convention": null
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "_paper_id": "METR Becker et al. 2025",
+  "citation_key": "becker_2025_ai_developer_productivity",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "ai_disallowed",
+    "ai_arm_name": "ai_allowed",
+    "ai_arm_selection_rationale": "Only one AI arm exists (ai_allowed), which permits developers to use any AI tools they choose. This is compared against ai_disallowed (no generative AI tooling).",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": null,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": 110,
+    "m_ai": null,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": 136,
+    "reported_percent_change": 0.19,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "The primary outcome is already expressed as a percentage change in completion time. The paper reports that AI increases completion time by 19% (a slowdown). Since completion time is a time-type metric where smaller is better, the AI arm performed worse (took longer). The reported_percent_change is +0.19 because the AI-allowed condition took 19% MORE time than the AI-disallowed condition. No raw means, SDs, or confidence intervals for the percentage change are provided in the input.",
+    "source_quotes": [
+      "Surprisingly, we find that allowing AI actually increases completion time by 19%\u2014developers are slower when using AI tooling.",
+      "We find that when developers use AI tools, they implement issues in 19% more time on average (Figure 1)"
+    ]
+  },
+  "computed": {
+    "log_ratio": -0.17395330712343798,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": -0.15966386554621848,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "reported_pct_change_no_ci",
+    "confidence": "low",
+    "notes": "The primary outcome is already expressed as a percentage change in completion time. The paper reports that AI increases completion time by 19% (a slowdown). Since completion time is a time-type metric where smaller is better, the AI arm performed worse (took longer). The reported_percent_change is +0.19 because the AI-allowed condition took 19% MORE time than the AI-disallowed condition. No raw means, SDs, or confidence intervals for the percentage change are provided in the input. | CI missing; variance not computable",
+    "n_human": 110,
+    "n_ai": 136
+  }
+}

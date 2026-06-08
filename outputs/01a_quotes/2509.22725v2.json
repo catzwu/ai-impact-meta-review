@@ -1,0 +1,98 @@
+{
+  "citation_key": "huang_2025_llm_education",
+  "authors": [
+    "Jiayu Huang",
+    "Ruoxin Ritter Wang",
+    "Jen-Hao Liu",
+    "Boming Xia",
+    "Yue Huang",
+    "Ruoxi Sun",
+    "Jason (Minhui) Xue",
+    "Jinan Zou"
+  ],
+  "title": "A Meta-Analysis of LLM Effects on Students Across Qualification, Socialisation, and Subjectification",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "quotes": {
+    "study_design": [
+      "we present a meta-analysis of 133 experimental and quasi-experimental studies ( k = 188)",
+      "We conduct a meta-analysis of 133 experimental and quasi-experimental studies (k= 188 ) following PRISMA 2020 guidelines [24, 25]",
+      "Studies were included if they met four conditions: (1) they were peer-reviewed publications; (2) written in English; (3) they examined LLM interventions specifically targeting student learning outcomes; and (4) they employed an experimental or quasi-experimental design that incorporated a control or comparison group.",
+      "The initial search identified 1,219 records. After removing 527 duplicates, 692 articles were screened by title and abstract, with 464 excluded for being irrelevant to LLM learning outcomes or for lacking an experimental design. The remaining 228 articles underwent full-text review. Of these, 95 were excluded for reasons such as non-experimental design, non-student participants, absence of a control group, inconsistent learning conditions, or insufficient quantitative data. The final dataset comprised 133 studies, which were retained for meta-analysis."
+    ],
+    "task": [
+      "Large language models (LLMs) are increasingly positioned as solutions for education",
+      "Work on student-facing LLM uses (e.g.,writing support [26, 27, 28], problem-solving [29, 30], and exam preparation [31, 32]) has expanded rapidly since late 2022.",
+      "Across language learning [33, 34, 35], computer science [36, 30, 37], and health education [38, 39], studies report gains in achievement and higher-order thinking, with effects that vary by setting and design [6, 7].",
+      "Large language models (LLMs) are entering classrooms at an unprecedented pace, serving as tutors, writing partners, and coding assistants [1, 2]."
+    ],
+    "population": [
+      "we present a meta-analysis of 133 experimental and quasi-experimental studies ( k = 188 )",
+      "Our corpus spans higher education and K-12 and includes a small kindergarten subset.",
+      "Research is also disproportionately concentrated in higher education (81.20%). Far fewer studies investigate secondary (12.03%) or primary (6.02%) education, levels where learners' developmental needs and classroom ecologies differ substantially.",
+      "The evidence base is heavily skewed towards Asia, which accounts for 78.20% of all studies. By contrast, North America (5.36%) and Europe (10.53%) are strikingly under-represented.",
+      "Educational Level: Higher Education 108 81.20%, Secondary Education 16 12.03%, Primary Education 8 6.02%, Kindergarten 1 0.75%"
+    ],
+    "arms": [
+      "Studies were included if they met four conditions: (1) they were peer-reviewed publications; (2) written in English; (3) they examined LLM interventions specifically targeting student learning outcomes; and (4) they employed an experimental or quasi-experimental design that incorporated a control or comparison group.",
+      "Independent comparisons between an experimental and a control group were treated as separate entries.",
+      "LLM Role: Intelligent tutor 60 45.11%, Intelligent learning tool 44 33.08%, Intelligent partner 29 21.80%"
+    ],
+    "outcome_definitions": [
+      "Qualification: the acquisition of knowledge, skills, and dispositions that enable learners to \"do something.\" This includes not only vocational and academic competencies but also broader life skills.",
+      "Socialisation: the processes through which individuals become part of social, cultural, or political communities. Education socialises learners by transmitting norms, values, and professional standards, but also by shaping their implicit understandings of belonging and participation.",
+      "Subjectification: the formation of learners as autonomous and responsible beings. It is about enabling individuals to take up their own positions, make choices, and respond to the world not merely as objects of external expectations but as subjects of their own lives.",
+      "Qualification outcomes were defined as those concerning the acquisition of knowledge, skills, and competencies. This category primarily included measures of academic performance, test scores and higher-order thinking skills (e.g.,critical thinking, creativity, problem-solving ability).",
+      "Socialisation outcomes were those related to the induction of students into social and cultural practices. This included measures of willingness to communicate and collaboration engagement (e.g.,participation in group discussions).",
+      "Subjectification outcomes were those focused on the cultivation of learner autonomy, agency, and identity. This category included measures of self-efficacy, self-regulated learning strategies, learning motivation, learning interest, and positive affective states (e.g.,greater learning enjoyment)."
+    ],
+    "statistical_results": [
+      "Qualification. The strongest and most consistent effects emerged for qualification, encompassing knowledge acquisition, skill development, and academic performance. The estimated effect size was large and robust (g= 0.751 , 95% CI [0.635, 0.867], p < .0001)",
+      "Socialisation. LLMs also exerted a significant positive influence on socialisation outcomes (g= 0.745 , 95% CI [0.429, 1.060], p < .0001)",
+      "Subjectification. The effect on subjectification, defined here as the development of learner autonomy, agency, and identity, was positive but smaller (g= 0.654 , 95% CI [0.506, 0.802], p < .0001).",
+      "Qualification 123 0.751 0.635 0.867 12.7< .00011008.69 122 88.23%< .0001",
+      "Socialisation 11 0.745 0.429 1.06 4.63< .000153.823 10 80.82%< .0001",
+      "Subjectification 54 0.654 0.506 0.802 8.66< .0001274.30 53 85.57%< .0001",
+      "For qualification outcomes (see Table 5), both the LLM's role (QB = 13.341, p=.0013 ) and intervention duration (QB = 18.091, p < .001) were highly significant moderators.",
+      "LLMs framed as interactive tutors (g= 0.902 ) or collaborative partners (g= 0.842 ) generated substantially larger improvements in performance than when they functioned as passive tools ( g= 0.436 ).",
+      "interventions longer than eight weeks produced the largest effects (g= 1.024 ), while those lasting only 1\u20134 weeks were far weaker (g= 0.389).",
+      "For socialisation, which involves skills like communication and collaboration, the analysis revealed that intervention duration (QB = 16.470, p=.0009 ) and learning strategy (QB = 12.752, p=.0052 ) were the decisive moderators",
+      "interventions lasting more than eight weeks yielded exceptionally large gains ( g= 1.204 ), whereas those under four weeks produced negligible effects.",
+      "pedagogical structure was critical; actively engaging approaches like personalised learning (g= 1.299 ) and reflective learning (g= 0.921 ) generated strong outcomes, in sharp contrast to the ineffectiveness of contextual learning (g= 0.168).",
+      "For subjectification, the development of learner agency and autonomy, both the role of the LLM (QB = 6.062, p=.048) and duration of intervention (QB = 12.283, p=.0065 ) again proved decisive",
+      "Framing the LLM as a tutor (g= 0.857 ) was significantly more effective than using it as a partner (g= 0.476 ) or tool (g= 0.503 ).",
+      "Programs extending beyond eight weeks (g= 0.955 ) produced the strongest outcomes.",
+      "sample size moderated effects (QB = 9.019, p=.011). Studies with 1\u201350 participants reported very large impacts on learner agency (g= 1.044 ), while effects diminished sharply in cohorts larger than 100 (g= 0.470 ).",
+      "Egger's regression test [108] was used to detect such effects statistically. Visual inspection revealed asymmetry in the funnel plots for Qualification (Figure 2) and Subjectification (Figure 4), which Egger's test confirmed as statistically significant (p < .001and p=.0016 , respectively). In contrast, the plot for Socialisation (Figure 3) appeared symmetrical, a finding supported by a non-significant Egger's test (p=.8038).",
+      "the Trim and Fill method [109] imputed no missing studies for any domain. More importantly, the findings for Qualification and Subjectification proved highly robust, with Fail-safe Ns (4583 and 872) [110] massively exceeding their tolerance thresholds. Conversely, the result for Socialisation is fragile, with its Fail-safe N (34) falling below the required threshold of 65"
+    ],
+    "ambiguity_or_caveats": [
+      "However, other findings caution that unguided or answer-provision use can harm long-term learning [9, 10], and prior work warns that over-reliance may undermine creativity and learner autonomy [11, 12].",
+      "Most existing evidence, however, is narrowly framed. Current meta-analyses report mainly positive effects [16, 17, 18], but almost all treat educational success as improved test scores and skills.",
+      "This leaves three gaps: (i) it zooms in on easily measured performance while underreporting interactional participation and learner agency; (ii) it offers little theoretical basis for asking what kinds of education LLMs enable (i.e.,educational purposes); and (iii) it limits empirical coverage (e.g.,narrow subjects, higher education, short interventions) and leaves open how effects vary across contexts and over longer durations.",
+      "The dominant focus of the syntheses is on performance outcomes. In our sample, nine of the ten syntheses focus exclusively on qualification outcomes, such as knowledge and skill performance.",
+      "However, Bloom-based classifications assess the the type or level of cognition rather than the purposes of education, largely overlooking crucial dimensions like social participation and learner autonomy.",
+      "Consequently, no review in our set synthesizes interactional outcomes that align with socialisation, and only one includes proxies for self-efficacy that speak to subjectification.",
+      "The dominant evidence base, therefore, reflects a narrow focus on task-based performance, with much thinner coverage of student participation or agency.",
+      "The technological scope is also mixed, with four papers restricted to ChatGPT and six including broader LLMs.",
+      "However, the evidence base remains overwhelmingly dominated by a single model. Nearly nine in ten studies (87.22%) relied exclusively on ChatGPT, while only 12.78% involved other large language models, such as Gemini, LLaMA, ERNIE Bot, and Qwen. This heavy reliance limits the generalisability of findings and underscores the need for comparative studies across different LLM architectures.",
+      "Studies cluster around domains where the relevance of LLMs is most immediate. Language and writing (36.84%) and computer science (24.06%) dominate, whereas mathematics (3.76%), arts and music (1.50%) are rarely addressed.",
+      "Given the high degree of heterogeneity across studies (I2 = 80.8%\u201388.2%, p < .0001), random-effects models were applied throughout.",
+      "However, the relatively wide confidence interval points to greater variability across studies, suggesting that socialisation gains are more context-dependent.",
+      "While significant, this finding highlights a more fragile and uneven evidence base for LLMs' ability to foster students' personal becoming.",
+      "Notably, qualification effects were otherwise stable: no significant moderation was found by education level, subject area, sample size, or learning strategy.",
+      "Notably, several other factors were not significant. The LLM's role, subject category, and sample size did not moderate the effects on socialisation. While a marginal trend was observed for education level ( p=.094 ), the sparse data in categories outside of Higher Education prevent any firm conclusions.",
+      "By contrast, education level, subject category, and learning strategy were not significant moderators. This points to a structural constraint: fostering subjectification with LLMs appears most feasible in small, highly structured, long-term programs, while scalability remains a challenge.",
+      "Because the corpus analysed in this study is anchored in Asian higher education and language or computer science, extrapolation to primary and secondary schooling or to domains like mathematics and arts remains uncertain.",
+      "When most deployments use tutor roles and assess near-term mastery, average effects will mainly reflect qualification [ 19, 20]. This does not imply that LLMs cannot support participation or autonomy; rather, it shows that current studies rarely instrument for those constructs.",
+      "Heterogeneity and durability.The positive averages sit atop substantial variability across studies. External trials are consistent with a common boundary condition: unguided answer use can inflate immediate scores yet depress delayed performance when AI is removed, whereas guardrailed tutoring and study tactics such as note-taking mitigate that risk [10, 11].",
+      "Distributional effects reported elsewhere suggest that lower-baseline readers may benefit more from summarisation tools, while higher-baseline readers can be harmed [9], and that over-reliance can weaken higher-order cognition [12].",
+      "Viewed through Biesta's framework, these tensions are expected: privileging qualification without designing for participation and agency compromises socialisation and subjectification at follow-up.",
+      "Methodologically, a limitation of the current evidence is that many socialisation measures are coarse (e.g., counts of studies). Future work should pair designs that elicit dialogue with instruments that capture thequality, not just the quantity, of participation.",
+      "Because many studies rely on immediate post-tests [112, 38, 30], it can be difficult to judge whether observed gains persist or coincide with delayed drawbacks from over-reliance (e.g., weaker performance once AI support is removed)."
+    ]
+  },
+  "notes": "This is a meta-analysis of 133 experimental and quasi-experimental studies (k=188 effect sizes) examining LLM effects on student learning outcomes. The paper uses Biesta's tripartite framework (qualification, socialisation, subjectification) to organize outcomes rather than treating all effects as a single construct. The study includes moderator analyses examining how LLM role, intervention duration, learning strategy, educational level, subject category, and sample size influence effects within each educational purpose. The paper notes significant geographic and disciplinary concentration in the evidence base (78.2% from Asia, 81.2% from higher education, 36.8% from language/writing and 24.1% from computer science). Publication bias was detected for qualification and subjectification domains but did not substantially threaten conclusions based on fail-safe N analyses.",
+  "_paper_id": "2509.22725v2",
+  "_source_pdf": "papers/2509.22725v2.pdf"
+}

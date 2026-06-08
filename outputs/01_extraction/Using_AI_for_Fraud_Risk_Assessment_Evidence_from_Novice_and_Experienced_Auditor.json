@@ -1,0 +1,532 @@
+{
+  "citation_key": "christensen_2025_fraud_risk",
+  "authors": [
+    "Brant E. Christensen",
+    "Scott A. Emett",
+    "Marc Eulerich",
+    "David A. Wood"
+  ],
+  "title": "Using Artificial Intelligence for Fraud Risk Assessment: Evidence from Novice and Experienced Auditors",
+  "year": 2025,
+  "venue": "working paper",
+  "study_design_description": "The study comprises six experiments examining how GenAI influences fraud risk assessment among auditors. Experiments 1 and 2 employ a 1\u00d72 between-participants design in which practicing auditors assess fraud risk with or without access to a GPT-4o-powered chatbot. Experiment 1 involves 79 experienced internal auditors, and Experiment 2 involves 463 novice external auditors. A third experiment examines how fully automated GenAI models (without human intervention) perform fraud risk identification, testing five GenAI models (ChatGPT-o1-preview, ChatGPT-4o, Claude 3.5 Sonnet, ChatGPT-4o mini, and Claude 3.5 Haiku), each completing 30 iterations of the case. Three additional experiments explore audit planning adjustments in response to identified fraud risks.",
+  "primary_task_description": "Participants review background information about an audit client, industry and macroeconomic trends, sales and receivables details, and preliminary analytical procedures, then identify and list any fraud risk factors for the engagement. The scenario involves a sharp increase in days' sales outstanding after shifting sales responsibilities to third-party distributors and incentivizing them to boost sales near year-end, indicative of revenue fraud and potential channel stuffing. In the GenAI condition, participants have access to a GPT-4o-powered chatbot preloaded with all case information to assist in their assessments; in the control condition, participants perform the task without technological assistance. In a secondary task, participants are informed of identified fraud risks and provided with the prior-year audit plan, then asked to modify the audit plan for the current year.",
+  "population_description": "Experiment 1 involved 79 experienced internal auditors working in multinational companies, averaging 12 years of assurance experience, who completed the task via Qualtrics during training sessions in June and July 2024. Experiment 2 involved 463 novice external auditors (interns at a Big 4 firm) with approximately one month of assurance experience, who completed the task via Qualtrics during their intern training in June 2024. All participants had received training on general AI knowledge. The majority of novices never use GenAI at work, consistent with firm policies against GenAI use on assurance engagements, though the majority of both groups believe GenAI can have positive effects on audit quality and efficiency. Overall, evidence from 1,100 practicing auditors across six experiments is reported.",
+  "arms": [
+    {
+      "arm_name": "genai_condition",
+      "description": "Participants were given access to a GPT-4o-powered chatbot designed to provide case-specific assistance. The chatbot could answer detailed questions about the case and offer suggestions for potential fraud risks.",
+      "n": null
+    },
+    {
+      "arm_name": "control_condition",
+      "description": "Participants performed the fraud risk identification task without any technological assistance. Participants in the Control Condition had access to all the same information as participants in the GenAI Condition.",
+      "n": null
+    }
+  ],
+  "outcomes": [
+    {
+      "outcome_name": "total_unique_risks",
+      "outcome_description": "Total Number of Unique Risks is a count variable that measures the overall volume of risks listed by participants. This measure is meant to capture each participant's ability to generate fraud risk ideas.",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "highly_relevant_risks",
+      "outcome_description": "Number of Highly Relevant Risks is the number of risks identified by each participant that was within a category rated as highly relevant, using relevance scores validated by 10 experts with an average of 23 years of audit experience.",
+      "measurement_unit": "count",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "irrelevant_risks",
+      "outcome_description": "Number of Irrelevant Risks captures the number of risks identified by each participant that was within a category rated as irrelevant to the case at hand.",
+      "measurement_unit": "count",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "average_risk_relevance",
+      "outcome_description": "Average Risk Relevance is a weighted relevance score that provides an aggregate measure of the quality of identified risks, wherein irrelevant risks are given a value of 1 up to highly relevant risks, which are given a value of 4.",
+      "measurement_unit": "rubric 1-4",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "task_efficiency",
+      "outcome_description": "Task Efficiency, equal to the amount of time in seconds participants spent completing the fraud risk assessment task.",
+      "measurement_unit": "seconds",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "pass_rate",
+      "outcome_description": "Pass rate on fraud risk identification task, measured as percentage of participants who successfully identified the fraud.",
+      "measurement_unit": "percent",
+      "is_primary": true
+    },
+    {
+      "outcome_name": "audit_planning_hours",
+      "outcome_description": "Budgeted hours for audit procedures in response to identified fraud risks.",
+      "measurement_unit": "hours",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "testing_window",
+      "outcome_description": "Number of days post-fiscal-year-end subject to testing for critical procedures such as cash receipts and sales returns.",
+      "measurement_unit": "days",
+      "is_primary": false
+    },
+    {
+      "outcome_name": "high_risk_population_testing",
+      "outcome_description": "Percentage of tested transactions drawn from the highest-risk population.",
+      "measurement_unit": "percent",
+      "is_primary": false
+    }
+  ],
+  "reported_statistics": [
+    {
+      "outcome_name": "total_unique_risks",
+      "arm_comparison": "genai_condition vs control_condition (experienced auditors, Experiment 1)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 8.76,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 4.74,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "approximately doubled",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 5.20",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Specifically, results from Experiment 1 show that experienced auditors with access to GenAI identified an average of 8.76 unique fraud risks, compared to 4.74 for those without GenAI (t = 5.20, p < 0.01)."
+    },
+    {
+      "outcome_name": "total_unique_risks",
+      "arm_comparison": "genai_condition vs control_condition (novice auditors, Experiment 2)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 6.41,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 3.14,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "approximately doubled",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 16.55",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "From Experiment 2, we find that novice auditors with access to GenAI identified 6.41 unique risks on average, compared to 3.14 for those without GenAI (t = 16.55, p < 0.01)."
+    },
+    {
+      "outcome_name": "total_unique_risks",
+      "arm_comparison": "novice_genai vs experienced_control",
+      "means_and_sds": {
+        "novice_genai": {
+          "mean": 6.41,
+          "sd": null,
+          "se": null
+        },
+        "experienced_control": {
+          "mean": 4.74,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 3.92",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that novice auditors with GenAI assistance not only identified more risks than novice auditors without GenAI but also more than experienced auditors working without GenAI (t = 3.92, p < 0.01)."
+    },
+    {
+      "outcome_name": "task_efficiency",
+      "arm_comparison": "genai_condition vs control_condition (novice auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 595.15,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 769.46,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": "23 percent faster",
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 2.51",
+      "p_value": "p = 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Novice auditors with GenAI completed the task in 595.15 seconds, on average, versus 769.46 seconds without GenAI (t = 2.51, p = 0.01), indicating a significant efficiency improvement for novices."
+    },
+    {
+      "outcome_name": "task_efficiency",
+      "arm_comparison": "genai_condition vs control_condition (experienced auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 1349.78,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 1908.79,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 1.38",
+      "p_value": "p = 0.09",
+      "confidence_interval": null,
+      "verbatim_quote": "Experienced auditors with GenAI completed the task in 1,349.78 seconds, compared to 1,908.79 seconds without GenAI (t = 1.38, p = 0.09, one-tailed)."
+    },
+    {
+      "outcome_name": "highly_relevant_risks",
+      "arm_comparison": "genai_condition vs control_condition (experienced auditors, Experiment 1)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 6.39,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 3.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 5.54",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "In Experiment 1, experienced auditors with GenAI identified an average of 6.39 highly relevant risks, compared to 3.00 without GenAI (t = 5.54, p < 0.01)."
+    },
+    {
+      "outcome_name": "highly_relevant_risks",
+      "arm_comparison": "genai_condition vs control_condition (novice auditors, Experiment 2)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 4.69,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 2.06,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 14.86",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Similarly, in Experiment 2, novice auditors with GenAI identified 4.69 highly relevant risks, compared to 2.06 without GenAI (t = 14.86, p < 0.01)."
+    },
+    {
+      "outcome_name": "highly_relevant_risks",
+      "arm_comparison": "novice_genai vs experienced_control",
+      "means_and_sds": {
+        "novice_genai": {
+          "mean": 4.69,
+          "sd": null,
+          "se": null
+        },
+        "experienced_control": {
+          "mean": 3.0,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 4.48",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Further, as shown in Panel B, novice auditors with access to GenAI identify significantly more highly relevant fraud risks than their experienced auditor counterparts without access to GenAI (t = 4.48, p < 0.01)."
+    },
+    {
+      "outcome_name": "irrelevant_risks",
+      "arm_comparison": "genai_condition vs control_condition (experienced auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 0.93,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 1.03,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 0.43",
+      "p_value": "p = 0.67",
+      "confidence_interval": null,
+      "verbatim_quote": "For experienced auditors, the number of irrelevant risks with GenAI (0.93) is statistically indistinguishable from the number without GenAI (1.03; t = 0.43, p = 0.67)."
+    },
+    {
+      "outcome_name": "irrelevant_risks",
+      "arm_comparison": "genai_condition vs control_condition (novice auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 0.73,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 0.64,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 1.09",
+      "p_value": "p = 0.28",
+      "confidence_interval": null,
+      "verbatim_quote": "Similarly, novice auditors with GenAI identify 0.73 irrelevant risks, versus 0.64 without GenAI (t = 1.09, p = 0.28)."
+    },
+    {
+      "outcome_name": "average_risk_relevance",
+      "arm_comparison": "genai_condition vs control_condition (novice auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 3.43,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 3.21,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 3.22",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Novice auditors' average risk relevance scores increase from 3.21 without GenAI to 3.43 with GenAI (t = 3.22, p < 0.01)."
+    },
+    {
+      "outcome_name": "average_risk_relevance",
+      "arm_comparison": "genai_condition vs control_condition (experienced auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 3.45,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 3.05,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 2.64",
+      "p_value": "p = 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Experienced auditors' scores increase from 3.05 without GenAI to 3.45 with GenAI (t = 2.64, p = 0.01)."
+    },
+    {
+      "outcome_name": "average_risk_relevance",
+      "arm_comparison": "novice_genai vs experienced_genai",
+      "means_and_sds": {
+        "novice_genai": {
+          "mean": 3.43,
+          "sd": null,
+          "se": null
+        },
+        "experienced_genai": {
+          "mean": 3.45,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 0.23",
+      "p_value": "p = 0.82",
+      "confidence_interval": null,
+      "verbatim_quote": "As shown in Panel B, access to GenAI fully levels the playing field across novice and experienced auditors as shown by statistically indistinguishable relevance scores across the two groups with access to GenAI (t = 0.23, p = 0.82)."
+    },
+    {
+      "outcome_name": "average_risk_relevance",
+      "arm_comparison": "novice_genai vs experienced_control",
+      "means_and_sds": {
+        "novice_genai": {
+          "mean": 3.43,
+          "sd": null,
+          "se": null
+        },
+        "experienced_control": {
+          "mean": 3.05,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": "t = 3.45",
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Further, novices with access to GenAI generate risks that on average are statistically more relevant than experienced auditors without access to GenAI (t = 3.45, p<0.01)."
+    },
+    {
+      "outcome_name": "pass_rate",
+      "arm_comparison": "genai_condition vs control_condition (novice auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 67,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 50,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p < 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "We find that novices significantly increase their pass rate from 50 percent to 67 percent when given access to GenAI (p<0.01)."
+    },
+    {
+      "outcome_name": "pass_rate",
+      "arm_comparison": "genai_condition vs control_condition (experienced auditors)",
+      "means_and_sds": {
+        "genai_condition": {
+          "mean": 93,
+          "sd": null,
+          "se": null
+        },
+        "control_condition": {
+          "mean": 71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.01",
+      "confidence_interval": null,
+      "verbatim_quote": "Experienced auditors experience a similar increase from 71 percent to 93 percent once given access to GenAI (p=0.01)."
+    },
+    {
+      "outcome_name": "pass_rate",
+      "arm_comparison": "novice_genai vs experienced_control",
+      "means_and_sds": {
+        "novice_genai": {
+          "mean": 67,
+          "sd": null,
+          "se": null
+        },
+        "experienced_control": {
+          "mean": 71,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": "p = 0.62",
+      "confidence_interval": null,
+      "verbatim_quote": "The pass rate of 67 percent for novices with GenAI is statistically indistinguishable from the pass rate of 71 percent for experienced auditors without AI (p=0.62)."
+    },
+    {
+      "outcome_name": "pass_rate",
+      "arm_comparison": "standalone_genai_models",
+      "means_and_sds": {
+        "standalone_genai_models": {
+          "mean": 98,
+          "sd": null,
+          "se": null
+        }
+      },
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "On average, 98 percent of standalone GenAI tools pass using this most stringent measure."
+    },
+    {
+      "outcome_name": "audit_planning_hours",
+      "arm_comparison": "genai_condition vs control_condition",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Specifically, auditors with GenAI access did not plan significantly different hours for computer-assisted auditing techniques, interviews, \"new\" procedures, or total hours than auditors without access to GenAI."
+    },
+    {
+      "outcome_name": "testing_window",
+      "arm_comparison": "genai_condition vs control_condition",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "Further, GenAI access did not lead to significant changes in the testing window for either cash receipts or sales returns\u2014both critical for detecting fictitious sales transactions."
+    },
+    {
+      "outcome_name": "high_risk_population_testing",
+      "arm_comparison": "genai_condition vs control_condition",
+      "means_and_sds": {},
+      "effect_in_outcome_units": null,
+      "standardized_effect_reported": null,
+      "regression_coefficient": null,
+      "test_statistic": null,
+      "p_value": null,
+      "confidence_interval": null,
+      "verbatim_quote": "We also find no evidence that auditors with GenAI access change their testing of populations with higher ex-ante risk of fraud relative to auditors without access to GenAI."
+    }
+  ],
+  "notes": "This paper reports six experiments examining GenAI's impact on fraud risk assessment and audit planning. The main experiments (1 and 2) involve 79 experienced internal auditors and 463 novice external auditors, respectively, in a 1\u00d72 between-participants design comparing GenAI-assisted (GPT-4o chatbot) versus control conditions. Arm-level sample sizes are not explicitly stated in the quotes; the total n for Experiment 1 is 79 and for Experiment 2 is 463. A third experiment tests five fully automated GenAI models (ChatGPT-o1-preview, ChatGPT-4o, Claude 3.5 Sonnet, ChatGPT-4o mini, Claude 3.5 Haiku), each completing 30 iterations. Three additional experiments examine audit planning adjustments. The paper's primary finding is that GenAI significantly improves fraud risk identification for both experienced and novice auditors, with novice auditors using GenAI outperforming experienced auditors without GenAI. However, GenAI does not provide clear benefits for audit planning adjustments in response to identified fraud risks. The paper notes several limitations: (1) the case is based on a published study, raising concerns about whether GenAI already \"knew the answer,\" though the authors provide evidence against this; (2) slight wording differences between the internal and external audit versions of the case complicate cross-experiment comparisons; (3) human auditors had access to GPT-4o but not more advanced reasoning models, so comparisons with fully-automated reasoning models should be interpreted with caution; (4) the study examines a simplified audit engagement scenario focused on fraud risk assessment, and results may differ across broader contexts; (5) the paper does not examine the precise mechanisms underlying observed differences; (6) none of the same individuals from risk assessment experiments participated in risk response experiments. The paper reports that experienced auditors spent more time on the task than novice auditors, with potential explanations including overreliance on GenAI among novices or greater due diligence by experienced auditors. Fully automated GenAI models showed wide variation in audit planning recommendations (e.g., budgeted hours ranged from 70 to 188 hours across models, compared to 70 hours for experienced auditors both with and without GenAI).",
+  "_paper_id": "Using_AI_for_Fraud_Risk_Assessment_Evidence_from_Novice_and_Experienced_Auditor"
+}

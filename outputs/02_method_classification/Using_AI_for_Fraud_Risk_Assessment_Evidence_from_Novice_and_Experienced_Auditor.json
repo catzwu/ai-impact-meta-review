@@ -1,0 +1,6 @@
+{
+  "classification": "rct",
+  "confidence": "high",
+  "rationale": "Experiments 1 and 2 employ a '1\u00d72 between-participants design in which practicing auditors assess fraud risk with or without access to a GPT-4o-powered chatbot,' indicating random assignment to AI vs. no-AI conditions. The setting is not a traditional lab (participants completed tasks via Qualtrics during training sessions) nor a real work engagement, making this a randomized controlled trial rather than a field experiment or lab task.",
+  "citation_key": "christensen_2025_fraud_risk"
+}

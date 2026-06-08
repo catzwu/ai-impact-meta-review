@@ -1,0 +1,49 @@
+{
+  "_paper_id": "2502.09479v1",
+  "citation_key": "fitzpatrick_2025_generative_ai_public",
+  "kind": "speed",
+  "llm_extracted": {
+    "arm_pair_resolvable": true,
+    "design_is_within_subject": false,
+    "human_arm_name": "control",
+    "ai_arm_name": "gpt_4o_treatment",
+    "ai_arm_selection_rationale": "Only one AI arm available: gpt_4o_treatment using GPT-4o. Control arm received no AI assistance.",
+    "direction_convention": "smaller_is_better",
+    "mean_difference_within_subject": null,
+    "m_human": 50,
+    "sd_human": null,
+    "se_human": null,
+    "n_human": null,
+    "m_ai": 33,
+    "sd_ai": null,
+    "se_ai": null,
+    "n_ai": null,
+    "reported_percent_change": -0.34,
+    "reported_percent_change_ci_low": null,
+    "reported_percent_change_ci_high": null,
+    "reported_t_statistic": null,
+    "reported_t_df": null,
+    "regression_coefficient_value": null,
+    "regression_coefficient_se": null,
+    "regression_outcome_is_log": null,
+    "regression_baseline_mean": null,
+    "extraction_confidence": "high",
+    "notes": "Sample sizes (n) are not reported in the arms data. The paper reports a 34% improvement in time to completion, which for a time-based outcome (smaller is better) represents a reduction, hence -0.34. Mean times are clearly stated: 33 minutes (AI) vs 50 minutes (control). Standard deviations are not reported.",
+    "source_quotes": [
+      "On average, participants in the treatment group completed the task in 33 minutes, which was significantly shorter than the control group's average completion time of 50 minutes.",
+      "A mean difference of 17 minutes represents a 34% improvement for the treatment group in average time to complete the task compared to the control group.",
+      "The time difference was statistically significant (p < 0.05)"
+    ]
+  },
+  "computed": {
+    "log_ratio": 0.4155154439616658,
+    "log_ratio_variance": null,
+    "percent_change_equivalent": 0.5151515151515151,
+    "direction_convention": "smaller_is_better",
+    "computation_method": "means_only_no_variance",
+    "confidence": "low",
+    "notes": "Sample sizes (n) are not reported in the arms data. The paper reports a 34% improvement in time to completion, which for a time-based outcome (smaller is better) represents a reduction, hence -0.34. Mean times are clearly stated: 33 minutes (AI) vs 50 minutes (control). Standard deviations are not reported. | SDs/SEs missing; variance not computable",
+    "n_human": null,
+    "n_ai": null
+  }
+}
