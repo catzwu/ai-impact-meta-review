@@ -1,0 +1,60 @@
+code,title,observed,n_studies,aioe_baseline,estimate,posterior_std
+13-1000,Agents and Business Managers of Artists; Performers; and Athletes (13-1),0.12588024588900293,1.0,0.4583,0.1271,0.0995
+13-2000,Accountants and Auditors (13-2),0.28548344827308075,3.0,0.5274,0.2853,0.0576
+15-1000,Telecommunications Engineering Specialists (15-1),0.23704046795833483,6.0,0.4736,0.2371,0.0408
+15-2000,Operations Research Analysts (15-2),,,0.5143,0.2792,0.8172
+17-1000,Landscape Architects (17-1),,,0.3288,0.2847,0.8193
+17-2000,Validation Engineers (17-2),,,0.4201,0.3003,0.8239
+17-3000,Electrical and Electronics Drafters (17-3),,,0.2698,0.2446,0.8213
+19-1000,Microbiologists (19-1),,,0.3865,0.2841,0.8201
+19-2000,Astronomers (19-2),,,0.4339,0.2681,0.8183
+19-3000,Industrial-Organizational Psychologists (19-3),,,0.5368,0.3191,0.8184
+19-4000,Nuclear Monitoring Technicians (19-4),,,0.2936,0.2454,0.8207
+19-5000,Occupational Health and Safety Specialists (19-5),,,,0.2424,1.0204
+21-1000,Substance Abuse and Behavioral Disorder Counselors (21-1),,,0.4705,0.3268,0.827
+21-2000,Clergy (21-2),,,0.5554,0.3663,0.8355
+23-1000,Judicial Law Clerks (23-1),0.2505513399263667,2.0,0.5867,0.2506,0.0705
+23-2000,Paralegals and Legal Assistants (23-2),,,0.544,0.3529,0.8192
+25-1000,Business Teachers; Postsecondary (25-1),,,0.573,0.387,0.8543
+25-2000,Career/Technical Education Teachers; Middle School (25-2),,,0.3988,0.3231,0.831
+25-3000,Self-Enrichment Teachers (25-3),,,0.4965,0.3484,0.8368
+25-4000,Curators (25-4),,,0.3328,0.2839,0.8252
+25-9000,Farm and Home Management Educators (25-9),,,0.48,0.3474,0.8271
+27-1000,Graphic Designers (27-1),0.7929925155296614,1.0,0.2744,0.7889,0.0995
+27-2000,Choreographers (27-2),,,0.2853,0.2974,0.8233
+27-3000,Broadcast Announcers and Radio Disc Jockeys (27-3),0.3727128765446731,1.0,0.5239,0.3716,0.0995
+27-4000,Broadcast Technicians (27-4),,,0.2496,0.2926,0.8223
+29-1000,Critical Care Nurses (29-1),-0.037751128203603754,1.0,0.3094,-0.0349,0.0995
+29-2000,Cytotechnologists (29-2),,,0.2309,0.2327,0.8299
+29-9000,Genetic Counselors (29-9),,,0.3748,0.2829,0.8579
+31-1000,Psychiatric Aides (31-1),,,,0.231,1.0703
+31-2000,Occupational Therapy Assistants (31-2),,,0.1902,0.2205,0.8514
+31-9000,Dental Assistants (31-9),,,0.2427,0.2371,0.8254
+33-1000,First-Line Supervisors of Correctional Officers (33-1),,,0.1746,0.2188,0.8326
+33-2000,Firefighters (33-2),,,0.1334,0.2035,0.8268
+33-3000,Bailiffs (33-3),,,0.1837,0.2213,0.8233
+33-9000,Retail Loss Prevention Specialists (33-9),,,0.2315,0.2369,0.8229
+35-1000,First-Line Supervisors of Food Preparation and Serving Workers (35-1),,,0.2244,0.262,0.8277
+35-2000,Cooks; Restaurant (35-2),,,0.1233,0.222,0.8283
+35-3000,Baristas (35-3),,,0.1654,0.2312,0.835
+35-9000,Dishwashers (35-9),,,0.0611,0.1984,0.8323
+39-1000,First-Line Supervisors of Gambling Services Workers (39-1),,,,0.2638,1.0444
+39-2000,Animal Caretakers (39-2),,,0.1261,0.2214,0.8458
+39-3000,Costume Attendants (39-3),,,0.2399,0.2567,0.8413
+39-4000,Funeral Attendants (39-4),,,0.1931,0.235,0.8439
+39-5000,Hairdressers; Hairstylists; and Cosmetologists (39-5),,,0.1786,0.2406,0.8331
+39-6000,Baggage Porters and Bellhops (39-6),,,0.2748,0.272,0.8376
+39-7000,Tour Guides and Escorts (39-7),,,0.3938,0.3036,0.8356
+39-9000,Childcare Workers (39-9),,,0.2253,0.2513,0.8379
+41-1000,First-Line Supervisors of Retail Sales Workers (41-1),,,0.4118,0.3175,0.8318
+41-2000,Counter and Rental Clerks (41-2),,,0.2698,0.2635,0.8388
+41-3000,Securities; Commodities; and Financial Services Sales Agents (41-3),,,0.5258,0.3525,0.8225
+41-4000,Sales Representatives; Wholesale and Manufacturing; Technical and Scientific Products (41-4),,,0.4647,0.3398,0.8335
+41-9000,Telemarketers (41-9),0.05413944610064823,1.0,0.4489,0.0563,0.0995
+43-1000,First-Line Supervisors of Office and Administrative Support Workers (43-1),,,0.4968,0.3347,0.8216
+43-2000,Switchboard Operators; Including Answering Service (43-2),,,0.5376,0.3553,0.8261
+43-3000,Billing and Posting Clerks (43-3),,,0.4655,0.3333,0.8231
+43-4000,Eligibility Interviewers; Government Programs (43-4),0.23724684725930023,2.0,0.4743,0.2374,0.0705
+43-5000,Freight Forwarders (43-5),,,0.2543,0.249,0.8316
+43-6000,Executive Secretaries and Executive Administrative Assistants (43-6),,,0.511,0.3546,0.8336
+43-9000,Insurance Claims and Policy Processing Clerks (43-9),,,0.3513,0.2924,0.8218

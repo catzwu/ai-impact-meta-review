@@ -1,0 +1,60 @@
+code,title,observed,n_studies,aioe_baseline,estimate,posterior_std
+13-1000,Training and Development Specialists (13-1),0.12588024588900293,1.0,0.4583,0.1271,0.0995
+13-2000,Accountants and Auditors (13-2),0.28548344827308075,3.0,0.5274,0.2852,0.0576
+15-1000,Document Management Specialists (15-1),0.23704046795833483,6.0,0.4736,0.2371,0.0408
+15-2000,Actuaries (15-2),,,0.5143,0.2566,0.8168
+17-1000,Landscape Architects (17-1),,,0.3288,0.3196,0.8178
+17-2000,Fire-Prevention and Protection Engineers (17-2),,,0.4201,0.2829,0.836
+17-3000,Electrical and Electronics Drafters (17-3),,,0.2698,0.2502,0.8273
+19-1000,Animal Scientists (19-1),,,0.3865,0.2711,0.82
+19-2000,Climate Change Policy Analysts (19-2),,,0.4339,0.2362,0.8178
+19-3000,Economists (19-3),,,0.5368,0.3108,0.8176
+19-4000,Quality Control Analysts (19-4),,,0.2936,0.2513,0.8226
+19-5000,Occupational Health and Safety Technicians (19-5),,,,0.2646,1.0482
+21-1000,Mental Health Counselors (21-1),,,0.4705,0.3276,0.8325
+21-2000,Clergy (21-2),,,0.5554,0.3684,0.8426
+23-1000,Judicial Law Clerks (23-1),0.2505513399263667,2.0,0.5867,0.2506,0.0706
+23-2000,Title Examiners; Abstractors; and Searchers (23-2),,,0.544,0.3839,0.819
+25-1000,Business Teachers; Postsecondary (25-1),,,0.573,0.4104,0.9152
+25-2000,Kindergarten Teachers; Except Special Education (25-2),,,0.3988,0.3338,0.8448
+25-3000,Adult Basic Education; Adult Secondary Education; and English as a Second Language Instructors (25-3),,,0.4965,0.3581,0.8348
+25-4000,Archivists (25-4),,,0.3328,0.2683,0.8281
+25-9000,Teaching Assistants; Preschool; Elementary; Middle; and Secondary School; Except Special Education (25-9),,,0.48,0.3564,0.8266
+27-1000,Art Directors (27-1),0.7929925155296614,1.0,0.2744,0.7891,0.0995
+27-2000,Talent Directors (27-2),,,0.2853,0.31,0.8249
+27-3000,Poets; Lyricists and Creative Writers (27-3),0.3727128765446731,1.0,0.5239,0.3715,0.0995
+27-4000,Audio and Video Technicians (27-4),,,0.2496,0.3203,0.826
+29-1000,Oral and Maxillofacial Surgeons (29-1),-0.037751128203603754,1.0,0.3094,-0.035,0.0996
+29-2000,Cardiovascular Technologists and Technicians (29-2),,,0.2309,0.2297,0.8439
+29-9000,Athletic Trainers (29-9),,,0.3748,0.2722,0.8804
+31-1000,Orderlies (31-1),,,,0.2211,1.0993
+31-2000,Physical Therapist Aides (31-2),,,0.1902,0.2079,0.8936
+31-9000,Massage Therapists (31-9),,,0.2427,0.2212,0.8302
+33-1000,First-Line Supervisors of Security Workers (33-1),,,0.1746,0.2241,0.8377
+33-2000,Forest Fire Inspectors and Prevention Specialists (33-2),,,0.1334,0.205,0.8373
+33-3000,Correctional Officers and Jailers (33-3),,,0.1837,0.2277,0.8255
+33-9000,Animal Control Workers (33-9),,,0.2315,0.2431,0.8264
+35-1000,Chefs and Head Cooks (35-1),,,0.2244,0.27,0.8406
+35-2000,Cooks; Fast Food (35-2),,,0.1233,0.229,0.8325
+35-3000,Fast Food and Counter Workers (35-3),,,0.1654,0.2348,0.8488
+35-9000,Hosts and Hostesses; Restaurant; Lounge; and Coffee Shop (35-9),,,0.0611,0.1976,0.8436
+39-1000,First-Line Supervisors of Gambling Services Workers (39-1),,,,0.2675,1.0727
+39-2000,Animal Trainers (39-2),,,0.1261,0.2058,0.8787
+39-3000,Gambling Dealers (39-3),,,0.2399,0.2554,0.8456
+39-4000,Embalmers (39-4),,,0.1931,0.2336,0.8592
+39-5000,Skincare Specialists (39-5),,,0.1786,0.2427,0.8433
+39-6000,Concierges (39-6),,,0.2748,0.2678,0.8503
+39-7000,Tour Guides and Escorts (39-7),,,0.3938,0.2999,0.8418
+39-9000,Recreation Workers (39-9),,,0.2253,0.2358,0.8651
+41-1000,First-Line Supervisors of Retail Sales Workers (41-1),,,0.4118,0.3172,0.8458
+41-2000,Gambling Change Persons and Booth Cashiers (41-2),,,0.2698,0.2632,0.8543
+41-3000,Advertising Sales Agents (41-3),,,0.5258,0.3668,0.8345
+41-4000,Sales Representatives; Wholesale and Manufacturing; Technical and Scientific Products (41-4),,,0.4647,0.3431,0.8483
+41-9000,Door-to-Door Sales Workers; News and Street Vendors; and Related Workers (41-9),0.05413944610064823,1.0,0.4489,0.0563,0.0995
+43-1000,First-Line Supervisors of Office and Administrative Support Workers (43-1),,,0.4968,0.3416,0.8182
+43-2000,Switchboard Operators; Including Answering Service (43-2),,,0.5376,0.3658,0.8383
+43-3000,Billing and Posting Clerks (43-3),,,0.4655,0.3398,0.828
+43-4000,Hotel; Motel; and Resort Desk Clerks (43-4),0.23724684725930023,2.0,0.4743,0.2375,0.0705
+43-5000,Postal Service Clerks (43-5),,,0.2543,0.247,0.8418
+43-6000,Medical Secretaries and Administrative Assistants (43-6),,,0.511,0.3693,0.8739
+43-9000,Word Processors and Typists (43-9),,,0.3513,0.3013,0.8244

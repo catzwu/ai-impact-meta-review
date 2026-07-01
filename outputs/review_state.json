@@ -17,8 +17,8 @@
       "onet_label": "Information Security Analysts"
     },
     "2502.09479v1::speed::5": {
-      "onet_code": "11-3031.00",
-      "onet_label": "Financial Managers"
+      "onet_code": "13-2011.00",
+      "onet_label": "Accountants and Auditors"
     },
     "Can_AI_Improve_Marketing_Communications_for_Small_Businesses_Field_Evidence_fro::speed::16": {
       "onet_code": "WA-29",
@@ -27,6 +27,10 @@
     "schwarczetal::speed::40": {
       "onet_code": "23-1011.00",
       "onet_label": "Lawyers"
+    },
+    "Otis et al. 2023::quality::15": {
+      "onet_code": "13-1199.06",
+      "onet_label": "Online Merchants"
     }
   },
   "deleted": [

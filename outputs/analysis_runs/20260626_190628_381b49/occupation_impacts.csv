@@ -1,0 +1,16 @@
+code,title,observed,n_studies,aioe_baseline,estimate,posterior_std
+13,Business & Financial,0.23228238081172145,4.0,0.4776,0.2323,0.0499
+15,Computer & Math,0.23704046795833483,6.0,0.5075,0.237,0.0408
+17,Architecture & Engineering,,,0.3681,0.2725,0.8336
+19,Life; Physical; Social Science,,,0.4228,0.2745,0.8247
+21,Community & Social Service,,,0.4826,0.3062,0.8531
+23,Legal,0.2505513399263667,2.0,0.5745,0.2505,0.0706
+25,Education,,,0.5178,0.35,0.8909
+27,Arts; Design; Media,0.5828526960371673,2.0,0.3224,0.5814,0.0705
+29,Healthcare Practitioners,-0.037751128203603754,1.0,0.2798,-0.0354,0.0996
+31,Healthcare Support,,,0.2277,0.2009,0.8719
+33,Protective Service,,,0.1922,0.2047,0.8389
+35,Food Prep & Serving,,,0.1334,0.2016,0.8605
+39,Personal Care & Service,,,0.2239,0.2231,0.8708
+41,Sales,0.05413944610064823,1.0,0.4196,0.0559,0.0996
+43,Office & Admin Support,0.23724684725930023,2.0,0.4054,0.2373,0.0705

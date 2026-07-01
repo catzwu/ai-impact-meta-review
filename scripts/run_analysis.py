@@ -77,9 +77,12 @@ _HEAT_CACHE: dict[float, dict] = {}
 class RunParams:
     metric: str = "speed"            # "speed" or "quality"
     beta: float = 2.5                # Stage B specificity
-    # Analysis unit: False (default) = run on the 894 individual occupations;
-    # True = collapse to the 22 SOC major groups.
-    aggregate_to_socmajor: bool = False
+    # Analysis unit: "occupation" (default, 894 occs), "soc_minor" (~92 3-digit
+    # minor groups, XX-X000), or "soc_major" (22 2-digit major groups).
+    # Legacy ``aggregate_to_socmajor=True`` is still honored and maps to
+    # aggregation_level="soc_major".
+    aggregation_level: str = "occupation"
+    aggregate_to_socmajor: bool = False  # deprecated; kept for backward compat
     # Pruning: manual SOC-major-group selection + per-activity weight threshold.
     # (The old network-based prune is still available via legacy params below but
     # manual_prune=True is the default path now.)
@@ -290,15 +293,26 @@ def run(params: RunParams, run_id: Optional[str] = None,
         base = _aggregate_aioe_baseline(occ_codes, obs_mean, obs_sd)
         baseline_active = True
 
-    # Optional: collapse the 894 individual occupations to 22 SOC major groups.
-    # Aggregate W (row-mean per major), pool observations (inverse-variance weighted
-    # when SEs available; simple mean otherwise), and average the AIOE baseline
-    # within each major.
+    # Optional: collapse the 894 individual occupations to SOC minor (3-digit,
+    # XX-X000) or SOC major (2-digit) groups. Aggregate W (row-mean per group),
+    # pool observations (inverse-variance weighted when SEs available; simple
+    # mean otherwise), and average the AIOE baseline within each group.
+    # Resolve aggregation_level (with legacy aggregate_to_socmajor fallback).
+    agg_level = (params.aggregation_level or "occupation").lower()
+    if params.aggregate_to_socmajor and agg_level == "occupation":
+        agg_level = "soc_major"
     socmajor_aggregated = False
     socmajor_group_sizes: Optional[np.ndarray] = None
-    if params.aggregate_to_socmajor:
-        socmajor_aggregated = True
-        major = np.array([str(c)[:2] for c in occ_codes])
+    if agg_level in ("soc_major", "soc_minor"):
+        socmajor_aggregated = True  # name kept for downstream compat
+        if agg_level == "soc_major":
+            keyfn = lambda c: str(c)[:2]
+            title_for = lambda g: SOC_NAMES.get(g, g)
+        else:  # soc_minor: 3-digit prefix padded to XX-X000
+            keyfn = lambda c: str(c)[:4] + "000"
+            # Use most-numerous member occupation's title as a representative.
+            title_for = None  # filled in below
+        major = np.array([keyfn(c) for c in occ_codes])
         groups = sorted(set(major))
         m = len(groups)
         socmajor_group_sizes = np.array([int((major == g).sum()) for g in groups], dtype=float)
@@ -323,10 +337,26 @@ def run(params: RunParams, run_id: Optional[str] = None,
                 bmask = (major == gcode) & np.isfinite(base)
                 if bmask.any():
                     base_agg[gi] = float(np.mean(base[bmask]))
+        # Build titles.
+        if agg_level == "soc_major":
+            new_titles = np.array([title_for(g) for g in groups])
+        else:
+            # Representative title = title of the largest member by W row-norm
+            # (or just the first member with a usable title).
+            new_titles = []
+            for gcode in groups:  # NB: don't shadow outer ``g`` (activity obs vector)
+                idxs = np.where(major == gcode)[0]
+                # Pick the member with the largest W row sum (most concentrated weight).
+                if len(idxs):
+                    best = idxs[np.argmax(W[idxs].sum(axis=1))]
+                    new_titles.append(f"{occ_titles[best]} ({gcode[:4]})")
+                else:
+                    new_titles.append(gcode)
+            new_titles = np.array(new_titles)
         # Swap into the per-occupation slots so the rest of the pipeline is unchanged.
         W = W_agg
         occ_codes = np.array(groups)
-        occ_titles = np.array([SOC_NAMES.get(g, g) for g in groups])
+        occ_titles = new_titles
         f, fn, fse = f_agg, fn_agg, fse_agg
         base = base_agg
         obs_occ = np.isfinite(f)
@@ -452,6 +482,7 @@ def run(params: RunParams, run_id: Optional[str] = None,
         "n_col": n_col,
         "data_source": data_source,
         "socmajor_aggregated": socmajor_aggregated,
+        "aggregation_level": agg_level,
     }
     (out_dir / "run.json").write_text(json.dumps(meta, indent=2))
     return meta

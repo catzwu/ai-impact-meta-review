@@ -29,6 +29,7 @@ SCRIPTS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS_DIR))
 from common import OUTPUTS_DIR, REPO_ROOT  # noqa: E402
 import run_analysis as RA  # noqa: E402
+import transitions as TR  # noqa: E402
 import importlib.util as _ilu
 _buf_spec = _ilu.spec_from_file_location("build_upload_files", SCRIPTS_DIR / "build_upload_files.py")
 BUF = _ilu.module_from_spec(_buf_spec); _buf_spec.loader.exec_module(BUF)
@@ -587,6 +588,16 @@ def page_run():
     return RUN_HTML
 
 
+@app.route("/transitions")
+def page_transitions():
+    return TRANSITIONS_HTML
+
+
+@app.route("/api/transitions/data")
+def api_transitions_data():
+    return jsonify(TR.get_data())
+
+
 @app.route("/results")
 def page_results_index():
     return RESULTS_INDEX_HTML
@@ -604,6 +615,7 @@ def api_run():
         params = RA.RunParams(
             metric=body.get("metric", "speed"),
             beta=float(body.get("beta", 2.5)),
+            aggregation_level=str(body.get("aggregation_level", "occupation")),
             aggregate_to_socmajor=bool(body.get("aggregate_to_socmajor", False)),
             manual_prune=bool(body.get("manual_prune", True)),
             excluded_soc_majors=list(body.get("excluded_soc_majors", RA.DEFAULT_EXCLUDED_SOCS)),
@@ -803,6 +815,7 @@ INDEX_HTML = """<!doctype html>
   <button id="exportBtn" class="secondary">Export CSVs</button>
   <button id="uploadBtn" style="background:#0a7;">+ Upload PDF</button>
   <button id="jobsPill" style="display:none; background:#d2b048; color:#222;" onclick="showJobsList()"></button>
+  <a href="/transitions" style="text-decoration:none;"><button style="background:#2a7a8a;">Transitions →</button></a>
   <a href="/run" style="text-decoration:none;"><button style="background:#5b3aa6;">Run Analysis →</button></a>
   <input type="file" id="uploadFile" accept="application/pdf" style="display:none;"/>
 </header>
@@ -1466,13 +1479,18 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
     <div id="pruneSummary" style="margin-top:10px; padding:8px 12px; background:#f0f4f8; border-radius:4px; font-size:13px; color:#333;"></div>
 
     <div style="margin-top:14px; padding:10px 12px; border:1px solid #e0e0e0; border-radius:4px; background:#fafafa;">
-      <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-        <input type="checkbox" id="aggToSocmajor"/>
-        <span style="font-size:13px; font-weight:500;">Run with SOC major groups as the unit</span>
-      </label>
-      <div style="margin-left:24px; margin-top:3px; color:#888; font-size:12px;">
-        Off (default): the analysis runs over the ~894 individual O*NET occupations.
-        On: occupations are collapsed to the 22 SOC major groups (means for the W matrix; pooled means / IV-weighted when SEs available for observations). The output occupation table will have one row per SOC major instead of one per occupation.
+      <div style="font-size:13px; font-weight:500; margin-bottom:6px;">Analysis unit</div>
+      <div id="aggLevelSeg" style="display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; font-size:12px;">
+        <button type="button" data-val="occupation" class="agg-seg active" style="padding:6px 12px; border:0; background:#06c; color:#fff; cursor:pointer;">Occupation (~894)</button>
+        <button type="button" data-val="soc_minor" class="agg-seg" style="padding:6px 12px; border:0; background:#fff; color:#333; cursor:pointer; border-left:1px solid #ccc;">SOC minor (~92, XX-X000)</button>
+        <button type="button" data-val="soc_major" class="agg-seg" style="padding:6px 12px; border:0; background:#fff; color:#333; cursor:pointer; border-left:1px solid #ccc;">SOC major (22)</button>
+      </div>
+      <input type="hidden" id="aggregationLevel" value="occupation"/>
+      <div style="margin-top:6px; color:#888; font-size:12px;">
+        Occupation (default): runs over the ~894 individual O*NET occupations.
+        SOC minor: collapses to ~92 3-digit minor groups (e.g. 13-2000 Financial Specialists).
+        SOC major: collapses to the 22 2-digit major groups.
+        In aggregated modes, W is the per-group row-mean; observations are IV-weighted (or simple-mean fallback) within the group; AIOE baseline is averaged within the group.
       </div>
     </div>
   </div>
@@ -1555,6 +1573,17 @@ document.querySelectorAll('#metricSeg button').forEach(b=>{
     document.getElementById('use_baseline').disabled = METRIC!=='speed';
     document.getElementById('omega_base').disabled = METRIC!=='speed';
     loadHeatmap();  // observed overlays depend on metric
+  };
+});
+document.querySelectorAll('#aggLevelSeg .agg-seg').forEach(b=>{
+  b.onclick = () => {
+    document.querySelectorAll('#aggLevelSeg .agg-seg').forEach(x=>{
+      x.classList.remove('active');
+      x.style.background = '#fff'; x.style.color = '#333';
+    });
+    b.classList.add('active');
+    b.style.background = '#06c'; b.style.color = '#fff';
+    document.getElementById('aggregationLevel').value = b.dataset.val;
   };
 });
 function resetDefaults() {
@@ -1759,7 +1788,7 @@ document.getElementById('runBtn').onclick = async ()=>{
   const payload = {
     metric: METRIC,
     beta: parseFloat(document.getElementById('beta').value),
-    aggregate_to_socmajor: document.getElementById('aggToSocmajor').checked,
+    aggregation_level: document.getElementById('aggregationLevel').value,
     manual_prune: true,
     excluded_soc_majors: Array.from(EXCLUDED),
     activity_weight_threshold: parseFloat(document.getElementById('weightThreshold').value),
@@ -1962,6 +1991,438 @@ function exportCsv() {
 }
 
 load();
+</script></body></html>
+"""
+
+
+TRANSITIONS_HTML = r"""<!doctype html><html><head><meta charset="utf-8"><title>Occupational transitions</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; margin:0; padding:0; background:#fafafa; color:#222; }
+  header { display:flex; align-items:center; gap:14px; padding:10px 18px; border-bottom:1px solid #ddd; background:#fff; position:sticky; top:0; z-index:10; }
+  header h1 { margin:0; font-size:16px; font-weight:600; }
+  header a { color:#06c; text-decoration:none; font-size:13px; }
+  header a:hover { text-decoration:underline; }
+  .meta { color:#666; font-size:12px; margin-left:auto; }
+  #main { display:grid; grid-template-columns: minmax(0,1fr) 460px; gap:14px; padding:14px; align-items:start; }
+  .panel { background:#fff; border:1px solid #e5e5e5; border-radius:6px; padding:12px; }
+  .panel h2 { margin:0 0 8px; font-size:13px; font-weight:600; color:#444; text-transform:uppercase; letter-spacing:0.04em; }
+  .heatmap-wrap { position:relative; overflow:auto; max-height:78vh; }
+  .hm-grid { display:grid; grid-template-columns: var(--label-w) auto; grid-template-rows: var(--label-h) auto; gap:0; }
+  .hm-corner { background:#fff; }
+  canvas { display:block; cursor:crosshair; }
+  .axis { font-size:10px; color:#333; user-select:none; position:relative; }
+  /* Left axis: fixed-height rows so they line up with cells; truncate overflow. */
+  .axis.left .lbl {
+    height: var(--cell);
+    width: var(--label-w);
+    box-sizing: border-box;
+    padding: 0 6px 0 6px;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: var(--cell);
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+  }
+  /* Top axis: fixed-width columns; rotated text. Use a wrapper so the rotated
+     text doesn't blow up the column width. */
+  .axis.top .lbl {
+    width: var(--cell);
+    height: var(--label-h);
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    border-right: 1px solid transparent;
+    cursor: pointer;
+  }
+  .axis.top .lbl span {
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    transform-origin: 0 0;
+    transform: rotate(-90deg) translateY(50%);
+    white-space: nowrap;
+    line-height: var(--cell);
+    font-size: 10px;
+  }
+  .axis .lbl.major-end { border-bottom-color: rgba(60,60,60,0.5); }
+  .axis.top .lbl.major-end { border-bottom-color: transparent; border-right-color: rgba(60,60,60,0.5); }
+  .axis .lbl:hover { background:#eef5ff; }
+  .axis .lbl.selected { background:#dbe9ff; }
+  .legend { display:flex; align-items:center; gap:8px; margin-top:10px; font-size:11px; color:#666; flex-wrap:wrap; }
+  .legend-bar { height:10px; width:160px; background: linear-gradient(to right, #fff, #fde0a0, #ef7838, #6e1a08); border:1px solid #ccc; }
+  .tooltip { position:fixed; background:#222; color:#fff; padding:6px 10px; border-radius:4px; font-size:11px; pointer-events:none; z-index:1000; display:none; max-width:300px; line-height:1.4; }
+  .drill h3 { margin:6px 0 4px; font-size:14px; }
+  .drill .sub { color:#666; font-size:12px; margin-bottom:6px; }
+  .drill .est-line { display:flex; gap:8px; align-items:baseline; font-size:12px; margin-bottom:10px; }
+  .drill .est-line .v { font-weight:600; color:#222; font-size:14px; }
+  .drill .crumb { font-size:12px; color:#666; margin-bottom:8px; }
+  .drill .crumb a { color:#06c; cursor:pointer; }
+  table.tbl { width:100%; border-collapse:collapse; font-size:12px; }
+  table.tbl th { text-align:left; padding:4px 6px; color:#666; font-weight:500; border-bottom:1px solid #ddd; background:#fafafa; }
+  table.tbl td { padding:4px 6px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+  table.tbl td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  table.tbl tr.row-click { cursor:pointer; }
+  table.tbl tr.row-click:hover { background:#f5f9ff; }
+  .est-pos { color:#0a6f2a; }
+  .est-neg { color:#a00; }
+  .est-na { color:#aaa; }
+  .empty { color:#888; font-size:12px; padding:8px; text-align:center; }
+  .search { display:flex; gap:8px; margin-bottom:8px; }
+  .search input { flex:1; padding:6px 10px; border:1px solid #ccc; border-radius:4px; font-size:13px; }
+  .results { position:relative; }
+  .typeahead { position:absolute; background:#fff; border:1px solid #ccc; border-radius:4px; max-height:240px; overflow:auto; z-index:50; left:0; right:120px; top:38px; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:none; }
+  .typeahead .item { padding:5px 9px; font-size:12px; cursor:pointer; border-bottom:1px solid #f0f0f0; }
+  .typeahead .item:hover { background:#f5f9ff; }
+  .typeahead .item .code { color:#888; font-size:11px; }
+</style></head><body>
+<header>
+  <h1>Occupational transitions</h1>
+  <a href="/">← review</a>
+  <a href="/run">run analysis</a>
+  <a href="/results">runs</a>
+  <span class="meta" id="metaTxt">loading…</span>
+</header>
+<div id="main">
+  <div class="panel">
+    <h2>Transition probabilities by SOC minor group (source → target, row-conditional)</h2>
+    <div class="search results">
+      <input id="search" placeholder="Search occupation (title or SOC code)…" autocomplete="off"/>
+      <button id="clearBtn" style="background:#eee;border:0;padding:6px 12px;border-radius:4px;cursor:pointer;">Clear</button>
+      <div class="typeahead" id="typeahead"></div>
+    </div>
+    <div class="heatmap-wrap" id="hmWrap">
+      <div class="hm-grid" id="hmGrid">
+        <div class="hm-corner"></div>
+        <div class="axis top" id="axisTop"></div>
+        <div class="axis left" id="axisLeft"></div>
+        <canvas id="hm"></canvas>
+      </div>
+    </div>
+    <div class="legend">
+      <span>0</span><div class="legend-bar"></div><span>max share (sqrt-scaled)</span>
+      <span style="margin-left:14px;">Click a row label or cell to drill into a SOC minor group; click an occupation within it for outgoing &amp; incoming transitions.</span>
+    </div>
+  </div>
+  <div class="panel drill" id="drill">
+    <div class="empty">Click a minor group on the heatmap, or search an occupation above.</div>
+  </div>
+</div>
+<div class="tooltip" id="tip"></div>
+<script>
+const CELL = 14;            // px per minor-group cell
+const LABEL_W = 240;        // left label column
+const LABEL_H = 240;        // top label row
+let DATA = null;
+let MINOR_IDX = {};         // minor code -> index
+let SEL_MINOR = -1;
+let SEL_OCC = -1;
+
+async function load() {
+  const r = await fetch('/api/transitions/data');
+  DATA = await r.json();
+  DATA.minors.forEach((m,i)=>{ MINOR_IDX[m.code]=i; });
+  document.getElementById('metaTxt').textContent =
+    `${DATA.minors.length} SOC minor groups · ${DATA.occs.length} non-physical occupations · augmentation from run ${DATA.run_id||'(none)'}`;
+  drawHeatmap();
+  renderAxes();
+}
+
+function colorRamp(t) {
+  t = Math.max(0, Math.min(1, t));
+  if (t < 0.001) return [255,255,255];
+  const stops = [
+    [1.000, 1.000, 1.000],
+    [0.992, 0.878, 0.627],
+    [0.937, 0.470, 0.220],
+    [0.431, 0.102, 0.031],
+  ];
+  const s = t * (stops.length - 1);
+  const i = Math.floor(s);
+  const f = s - i;
+  const a = stops[i], b = stops[Math.min(i+1, stops.length-1)];
+  return [
+    Math.round((a[0] + (b[0]-a[0])*f) * 255),
+    Math.round((a[1] + (b[1]-a[1])*f) * 255),
+    Math.round((a[2] + (b[2]-a[2])*f) * 255),
+  ];
+}
+
+function drawHeatmap(highlight=-1) {
+  const M = DATA.minor_matrix;
+  const n = DATA.minors.length;
+  const cv = document.getElementById('hm');
+  const W = n * CELL, H = n * CELL;
+  cv.width = W; cv.height = H;
+  cv.style.width = W + 'px'; cv.style.height = H + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.fillStyle = '#fafafa';
+  ctx.fillRect(0,0,W,H);
+  let maxV = 0;
+  for (const row of M) for (const v of row) if (v>maxV) maxV=v;
+  // Per-cell fill with sqrt scale.
+  for (let i=0;i<n;i++) {
+    for (let j=0;j<n;j++) {
+      const v = M[i][j];
+      if (v <= 0) continue;
+      const t = Math.sqrt(v / maxV);
+      const [r,g,b] = colorRamp(t);
+      ctx.fillStyle = `rgb(${r},${g},${b})`;
+      ctx.fillRect(j*CELL, i*CELL, CELL, CELL);
+    }
+  }
+  // SOC major group dividers.
+  ctx.strokeStyle = 'rgba(60,60,60,0.45)';
+  ctx.lineWidth = 1;
+  for (let i=1;i<n;i++) {
+    if (DATA.minors[i].major !== DATA.minors[i-1].major) {
+      ctx.beginPath();
+      ctx.moveTo(0, i*CELL+0.5); ctx.lineTo(W, i*CELL+0.5);
+      ctx.moveTo(i*CELL+0.5, 0); ctx.lineTo(i*CELL+0.5, H);
+      ctx.stroke();
+    }
+  }
+  // Highlight selected row.
+  if (highlight >= 0) {
+    ctx.strokeStyle = '#06c';
+    ctx.lineWidth = 1.8;
+    ctx.strokeRect(0.5, highlight*CELL+0.5, W-1, CELL-1);
+  }
+}
+
+function renderAxes() {
+  const n = DATA.minors.length;
+  const left = document.getElementById('axisLeft');
+  const top = document.getElementById('axisTop');
+  // Expose CELL / LABEL sizes as CSS vars so the .lbl rules pick them up.
+  const root = document.getElementById('hmGrid');
+  root.style.setProperty('--cell', CELL + 'px');
+  root.style.setProperty('--label-w', LABEL_W + 'px');
+  root.style.setProperty('--label-h', LABEL_H + 'px');
+  left.style.display = 'flex';
+  left.style.flexDirection = 'column';
+  left.style.width = LABEL_W + 'px';
+  left.style.height = (n * CELL) + 'px';
+  top.style.display = 'flex';
+  top.style.flexDirection = 'row';
+  top.style.height = LABEL_H + 'px';
+  top.style.width = (n * CELL) + 'px';
+  top.style.alignItems = 'flex-end';
+  left.innerHTML = '';
+  top.innerHTML = '';
+  for (let i=0;i<n;i++) {
+    const m = DATA.minors[i];
+    const isEnd = (i+1<n && DATA.minors[i+1].major !== m.major);
+    const label = `${m.code.slice(0,4)} · ${m.title}`;
+    const tip = `${m.code} — ${m.title} (${m.n_occs} occs · ${socMajorLabel(m.major)})`;
+    const l = document.createElement('div');
+    l.className = 'lbl' + (isEnd ? ' major-end' : '');
+    l.textContent = label;
+    l.title = tip;
+    l.onclick = () => showMinor(i);
+    l.dataset.idx = i;
+    left.appendChild(l);
+    const t = document.createElement('div');
+    t.className = 'lbl' + (isEnd ? ' major-end' : '');
+    const inner = document.createElement('span');
+    inner.textContent = label;
+    t.appendChild(inner);
+    t.title = tip;
+    t.onclick = () => showMinor(i);
+    t.dataset.idx = i;
+    top.appendChild(t);
+  }
+}
+
+function estFmt(soc6) {
+  const e = DATA.estimates[soc6];
+  if (e === undefined) return '<span class="est-na">—</span>';
+  const cls = e >= 0 ? 'est-pos' : 'est-neg';
+  return `<span class="${cls}">${e.toFixed(3)}</span>`;
+}
+
+function socMajorLabel(major) { return DATA.soc_names[major] || major; }
+
+function minorLabel(code) {
+  const m = DATA.minors[MINOR_IDX[code]];
+  return m ? `${code.slice(0,4)} · ${m.title}` : code;
+}
+
+// ---- Drill: minor group panel ----
+function showMinor(mIdx) {
+  SEL_MINOR = mIdx; SEL_OCC = -1;
+  const m = DATA.minors[mIdx];
+  const occIdxs = DATA.minor_to_occs[m.code] || [];
+  // Sort member occupations by their source total_obs desc.
+  const sorted = occIdxs.slice().sort((a,b) => (DATA.totals[b]||0) - (DATA.totals[a]||0));
+  const occRows = sorted.map(i => {
+    const o = DATA.occs[i];
+    return `<tr class="row-click" data-occ="${i}">
+      <td>${escapeHtml(o.title)}<div style="color:#888;font-size:11px;">${o.code}</div></td>
+      <td class="num">${(DATA.totals[i]||0).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
+      <td class="num">${estFmt(o.code)}</td>
+    </tr>`;
+  }).join('');
+  // Top outgoing & incoming at the MINOR level.
+  const row = DATA.minor_matrix[mIdx];
+  const outRanked = row.map((v,j)=>[j,v]).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const incRanked = DATA.minor_matrix.map((r,i)=>[i, r[mIdx]]).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const drill = document.getElementById('drill');
+  drill.innerHTML = `
+    <h3>${escapeHtml(m.title)}</h3>
+    <div class="sub">SOC minor group ${m.code.slice(0,4)} · ${socMajorLabel(m.major)} · ${m.n_occs} occupations</div>
+    <h2 style="margin-top:6px;">Occupations in this group</h2>
+    <table class="tbl"><thead><tr><th>Occupation</th><th class="num">obs. transitions</th><th class="num">augment.</th></tr></thead>
+    <tbody>${occRows || '<tr><td colspan="3" class="empty">No occupations.</td></tr>'}</tbody></table>
+    <h2 style="margin-top:14px;">Top outgoing minor groups</h2>
+    ${minorTransTable(outRanked, 'target')}
+    <h2 style="margin-top:14px;">Top incoming minor groups</h2>
+    ${minorTransTable(incRanked, 'source')}
+  `;
+  drill.querySelectorAll('tr[data-occ]').forEach(tr => {
+    tr.onclick = () => showOcc(parseInt(tr.dataset.occ));
+  });
+  drill.querySelectorAll('tr[data-minor]').forEach(tr => {
+    tr.onclick = () => showMinor(parseInt(tr.dataset.minor));
+  });
+  drawHeatmap(mIdx);
+}
+
+function minorTransTable(arr, dirLabel) {
+  if (!arr.length) return '<div class="empty">No transitions.</div>';
+  const rows = arr.map(([idx, share]) => {
+    const m = DATA.minors[idx];
+    return `<tr class="row-click" data-minor="${idx}">
+      <td>${escapeHtml(m.title)}<div style="color:#888;font-size:11px;">${m.code.slice(0,4)} · ${escapeHtml(socMajorLabel(m.major))}</div></td>
+      <td class="num">${(share*100).toFixed(2)}%</td>
+    </tr>`;
+  }).join('');
+  return `<table class="tbl"><thead><tr>
+    <th>${dirLabel === 'target' ? 'Next minor group' : 'Previous minor group'}</th>
+    <th class="num">share</th>
+  </tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// ---- Drill: occupation panel ----
+function showOcc(i) {
+  SEL_OCC = i;
+  const occ = DATA.occs[i];
+  const total = DATA.totals[i] || 0;
+  const out = DATA.rows[i].slice(0, 15);
+  const inc = DATA.incoming[i].slice(0, 15);
+  const drill = document.getElementById('drill');
+  drill.innerHTML = `
+    <div class="crumb">
+      <a id="backToMinor">← back to ${escapeHtml(minorLabel(occ.minor))}</a>
+    </div>
+    <h3>${escapeHtml(occ.title)}</h3>
+    <div class="sub">SOC ${occ.code} · ${socMajorLabel(occ.major)} · ${total.toLocaleString(undefined,{maximumFractionDigits:0})} observed transitions</div>
+    <div class="est-line">Augmentation estimate: <span class="v">${estFmt(occ.code)}</span></div>
+    <h2 style="margin-top:6px;">Top outgoing (next occupations)</h2>
+    ${occTable(out, 'target')}
+    <h2 style="margin-top:14px;">Top incoming (previous occupations)</h2>
+    ${occTable(inc, 'source')}
+  `;
+  document.getElementById('backToMinor').onclick =
+    () => showMinor(MINOR_IDX[occ.minor]);
+  drill.querySelectorAll('tr[data-occ]').forEach(tr => {
+    tr.onclick = () => showOcc(parseInt(tr.dataset.occ));
+  });
+  // Highlight the minor group on the heatmap.
+  drawHeatmap(MINOR_IDX[occ.minor]);
+}
+
+function occTable(arr, dirLabel) {
+  if (!arr.length) return '<div class="empty">No transitions.</div>';
+  const rows = arr.map(([idx, share]) => {
+    const o = DATA.occs[idx];
+    return `<tr class="row-click" data-occ="${idx}">
+      <td>${escapeHtml(o.title)}<div style="color:#888;font-size:11px;">${o.code} · ${escapeHtml(socMajorLabel(o.major))}</div></td>
+      <td class="num">${(share*100).toFixed(2)}%</td>
+      <td class="num">${estFmt(o.code)}</td>
+    </tr>`;
+  }).join('');
+  return `<table class="tbl"><thead><tr>
+    <th>${dirLabel === 'target' ? 'Next occupation' : 'Previous occupation'}</th>
+    <th class="num">share</th><th class="num">augment.</th>
+  </tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Heatmap hover + click.
+document.addEventListener('DOMContentLoaded', () => {
+  const cv = document.getElementById('hm');
+  const tip = document.getElementById('tip');
+  cv.addEventListener('mousemove', e => {
+    if (!DATA) return;
+    const rect = cv.getBoundingClientRect();
+    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+    const i = Math.floor(y / CELL), j = Math.floor(x / CELL);
+    const n = DATA.minors.length;
+    if (i<0||j<0||i>=n||j>=n) { tip.style.display='none'; return; }
+    const share = DATA.minor_matrix[i][j];
+    const so = DATA.minors[i], to = DATA.minors[j];
+    tip.innerHTML =
+      `<b>${escapeHtml(so.title)}</b> <span style="opacity:.7">(${so.code.slice(0,4)})</span><br>
+       → <b>${escapeHtml(to.title)}</b> <span style="opacity:.7">(${to.code.slice(0,4)})</span><br>
+       ${(share*100).toFixed(2)}% of transitions from this minor group`;
+    tip.style.left = (e.clientX + 14) + 'px';
+    tip.style.top = (e.clientY + 14) + 'px';
+    tip.style.display = 'block';
+  });
+  cv.addEventListener('mouseleave', () => { tip.style.display='none'; });
+  cv.addEventListener('click', e => {
+    if (!DATA) return;
+    const rect = cv.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    const i = Math.floor(y / CELL);
+    if (i>=0 && i<DATA.minors.length) showMinor(i);
+  });
+
+  // Search typeahead over occupations.
+  const search = document.getElementById('search');
+  const ta = document.getElementById('typeahead');
+  function refreshTypeahead() {
+    const q = search.value.trim().toLowerCase();
+    if (!q) { ta.style.display='none'; return; }
+    const hits = [];
+    for (let i=0;i<DATA.occs.length && hits.length<25;i++) {
+      const o = DATA.occs[i];
+      if (o.code.toLowerCase().includes(q) || o.title.toLowerCase().includes(q)) hits.push(i);
+    }
+    if (!hits.length) { ta.style.display='none'; return; }
+    ta.innerHTML = hits.map(i => {
+      const o = DATA.occs[i];
+      return `<div class="item" data-occ="${i}">${escapeHtml(o.title)} <span class="code">${o.code}</span></div>`;
+    }).join('');
+    ta.style.display = 'block';
+    ta.querySelectorAll('.item').forEach(el => {
+      el.onclick = () => {
+        const idx = parseInt(el.dataset.occ);
+        search.value = '';
+        ta.style.display='none';
+        showOcc(idx);
+      };
+    });
+  }
+  search.addEventListener('input', refreshTypeahead);
+  search.addEventListener('focus', refreshTypeahead);
+  document.addEventListener('click', (e) => {
+    if (!ta.contains(e.target) && e.target !== search) ta.style.display='none';
+  });
+  document.getElementById('clearBtn').onclick = () => {
+    search.value = '';
+    ta.style.display='none';
+    document.getElementById('drill').innerHTML =
+      '<div class="empty">Click a minor group on the heatmap, or search an occupation above.</div>';
+    drawHeatmap();
+  };
+  load();
+});
 </script></body></html>
 """
 

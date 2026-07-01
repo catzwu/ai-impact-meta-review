@@ -1,0 +1,48 @@
+{
+  "run_id": "20260608_215320_cde23b",
+  "started_utc": "2026-06-09T01:53:20.394349Z",
+  "finished_utc": "2026-06-09T01:53:23.413883Z",
+  "params": {
+    "metric": "speed",
+    "beta": 2.5,
+    "aggregation_level": "soc_minor",
+    "aggregate_to_socmajor": false,
+    "manual_prune": true,
+    "excluded_soc_majors": [
+      "37",
+      "45",
+      "47",
+      "49",
+      "51",
+      "53"
+    ],
+    "activity_weight_threshold": 10.0,
+    "alpha": 0.7,
+    "hops": 4,
+    "c_occ": 1.0,
+    "prune_activities": false,
+    "c_act": 1.5,
+    "omega_ref": 100.0,
+    "sigma_ref": 0.1,
+    "eps": 1e-06,
+    "use_baseline": true,
+    "omega_base": 0.5
+  },
+  "onet_shape": [
+    894,
+    41
+  ],
+  "n_observed_occ": 8,
+  "n_observed_act": 8,
+  "n_kept_occ": 63,
+  "n_kept_act": 19,
+  "unmatched_occ_codes": [],
+  "unmatched_act_labels": [],
+  "baseline_active": true,
+  "metric_col": "speed_log_ratio_mean",
+  "se_col": "speed_log_ratio_se",
+  "n_col": "n_studies_speed",
+  "data_source": "csv_files",
+  "socmajor_aggregated": true,
+  "aggregation_level": "soc_minor"
+}
