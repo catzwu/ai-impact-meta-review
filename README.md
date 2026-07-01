@@ -1,5 +1,23 @@
 # AI Impact Meta-Analysis — Review & Imputation App
 
+## Browse the results online
+
+Live site: **https://catzwu.github.io/ai-impact-meta-review/**
+
+A static, read-only snapshot for anyone who just wants to see the data:
+- **Home** — per-paper speed and quality effect sizes; click a title for the full drawer (verbatim quotes, arms, outcomes, O\*NET mapping, reported statistics).
+- **All runs** — every analysis run on record; click through to per-run occupation / activity tables.
+- **Parameters** — the SOC-major × activity coverage heatmap and activity-importance bar chart, with an explanation of every knob (β, Ω_ref, Ω_base, thresholds, aggregation level, etc.).
+- **Transitions** — occupational transition heatmap with drill-down and per-occupation augmentation estimates.
+
+Regenerate with `.venv/bin/python scripts/build_static_site.py`.
+
+## Run it locally (interactive)
+
+Everything below drives a Flask app that also lets you *edit* the review table, upload new PDFs, and run new imputations with custom parameters.
+
+---
+
 A Flask web app + the underlying pipeline. Two interfaces:
 
 1. **CLI pipeline** (this README's original content, below): drop PDFs into `papers/`, run `orchestrator.py`, get effect-size tables.

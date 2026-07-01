@@ -1,0 +1,354 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>AI Impact Meta-Review</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; font-size:13px; color:#222; background:#fff; }
+  header.site { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  header.site h1 { margin:0; font-size:16px; }
+  header.site nav { display:flex; gap:12px; align-items:center; margin-left:auto; }
+  header.site nav a { color:#9cf; text-decoration:none; font-size:13px; }
+  header.site nav a:hover { text-decoration:underline; }
+  header.site nav a.gh { color:#fff; background:#333; padding:4px 10px; border-radius:4px; }
+  header.site nav a.gh:hover { background:#444; text-decoration:none; }
+  header.site .stats { color:#bbb; font-size:12px; }
+
+  table { border-collapse: collapse; table-layout: fixed; width: 100%; }
+  th, td { padding:8px 10px; border-bottom:1px solid #eee; vertical-align: top; text-align: left; overflow:hidden; text-overflow:ellipsis; }
+  th { background:#f7f7f9; position:sticky; top:0; cursor:pointer; user-select:none; font-size:11px; text-transform:uppercase;
+       font-weight:600; color:#555; letter-spacing:0.04em; border-bottom:2px solid #ddd; z-index:5; }
+  tbody tr:nth-child(even) { background:#fafafa; }
+  tbody tr:hover { background:#eef6ff; }
+  td.snippet { white-space: normal; word-break: break-word; color:#555; font-size:12px; line-height:1.4; }
+  td.title { white-space: normal; word-break: break-word; font-weight:500; font-size:13px; line-height:1.3; cursor:pointer; color:#0a3d7a; }
+  td.title:hover { text-decoration: underline; }
+  td.value { font-family: ui-monospace, Menlo, monospace; text-align: right; white-space: nowrap; font-weight:500; }
+  td.value.pos { color:#0a6c2c; }
+  td.value.neg { color:#b32020; }
+  td.cite { font-family: ui-monospace, Menlo, monospace; font-size:11px; color:#555; }
+  td.file { font-family: ui-monospace, Menlo, monospace; font-size:11px; color:#888; }
+  td.onet { font-size:12px; color:#333; }
+  td.onet .code { font-family: monospace; color:#888; margin-right:4px; }
+  .kind-speed   { background:#e6f3ff; color:#0463a3; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
+  .kind-quality { background:#ffe6f0; color:#a0286c; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
+  .conf-pill-cell { display:inline-block; padding:1px 7px; border-radius:10px; font-size:10px; text-transform:uppercase; font-weight:600; }
+  .conf-pill-cell.high   { background:#d4f4d4; color:#0a6c2c; }
+  .conf-pill-cell.medium { background:#fff0c0; color:#8a6900; }
+  .conf-pill-cell.low    { background:#ffd6d6; color:#a00; }
+
+  #backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.25); opacity:0; pointer-events:none; transition:opacity 0.2s; z-index:90; }
+  #backdrop.open { opacity:1; pointer-events:auto; }
+  #drawer { position:fixed; top:0; right:0; width:60%; min-width:560px; height:100%; background:#fff; box-shadow:-3px 0 12px rgba(0,0,0,0.2);
+            transform:translateX(100%); transition:transform 0.2s; overflow:auto; z-index:100; }
+  #drawer.open { transform:translateX(0); }
+  #drawer > header { background:#333; color:#fff; padding:10px 16px; display:flex; gap:12px; align-items:center; justify-content:space-between; }
+  #drawer > header h1 { margin:0; font-size:15px; font-family:monospace; }
+  #drawer > header button { background:#a00; color:#fff; border:0; padding:5px 12px; border-radius:3px; cursor:pointer; }
+
+  .pd-meta { padding: 14px 18px; background:#fafafa; border-bottom:1px solid #ddd; }
+  .pd-meta h2 { margin: 0 0 4px; font-size:18px; line-height:1.25; }
+  .pd-meta .authors { color:#444; font-size:12px; margin-bottom:4px; }
+  .pd-meta .ids { color:#666; font-size:11px; }
+  .pd-meta .ids .pill { display:inline-block; background:#eee; padding:1px 6px; border-radius:3px; margin-right:6px; font-family:monospace; }
+  .pd-effects { display:flex; gap:10px; padding: 12px 18px; border-bottom:1px solid #eee; }
+  .pd-effect { flex:1; border:1px solid #ddd; border-radius:6px; padding:10px; }
+  .pd-effect.empty { color:#999; border-style:dashed; }
+  .pd-effect h3 { margin:0 0 6px; font-size:13px; display:flex; justify-content:space-between; }
+  .pd-effect .value { font-family:monospace; font-size:18px; }
+  .pd-effect .row { display:flex; justify-content:space-between; font-size:11px; color:#555; margin-top:3px; }
+  .pd-effect .row b { color:#222; font-weight:500; }
+  .pd-effect .notes { margin-top:6px; font-size:11px; color:#777; line-height:1.4; }
+  .pd-section { padding: 4px 18px 12px; border-bottom:1px solid #f0f0f0; }
+  .pd-section h3 { margin:14px 0 6px; font-size:13px; text-transform:uppercase; color:#444; letter-spacing:0.04em; }
+  .pd-table { width:100%; border-collapse:collapse; font-size:12px; }
+  .pd-table th, .pd-table td { padding:4px 8px; border-bottom:1px solid #eee; text-align:left; vertical-align:top; }
+  .pd-table th { background:#f5f5f5; font-weight:500; font-size:11px; color:#555; }
+  .pd-onet-rationale { background:#f7faff; border-left:3px solid #69a; padding:8px 12px; margin-top:4px; font-size:12px; line-height:1.4; }
+  .pd-onet-alt { font-size:11px; color:#555; margin-top:4px; }
+  .pd-onet-alt .pill { display:inline-block; background:#eef; padding:1px 6px; margin:2px 4px 2px 0; border-radius:3px; font-family:monospace; }
+  .pd-quote { background:#fffce0; border-left:3px solid #c90; padding:6px 10px; margin:4px 0; font-size:12px; line-height:1.4; font-style:italic; }
+  .pd-quotes-block { max-height:260px; overflow-y:auto; }
+  .pd-stat { border:1px solid #eee; border-radius:4px; padding:6px 10px; margin:4px 0; font-size:11px; }
+  .pd-stat .head { display:flex; justify-content:space-between; font-size:12px; margin-bottom:2px; }
+  .pd-stat .head b { color:#222; }
+  .pd-stat .nums { font-family:monospace; color:#063; margin:2px 0; }
+  .pd-stat .vq { font-size:11px; color:#666; font-style:italic; }
+  details.pd-raw { margin: 0 18px 14px; }
+  details.pd-raw summary { cursor:pointer; padding:4px 0; font-size:12px; color:#666; }
+  details.pd-raw pre { background:#f7f7f7; padding:8px; font-size:10px; overflow:auto; max-height:300px; border-radius:3px; }
+  .conf-pill { padding:1px 6px; border-radius:3px; font-size:10px; text-transform:uppercase; }
+  .conf-pill.high   { background:#d4f4d4; color:#070; }
+  .conf-pill.medium { background:#fff0c0; color:#a60; }
+  .conf-pill.low    { background:#ffd6d6; color:#a00; }
+  .badge { display:inline-block; padding:1px 5px; font-size:10px; border-radius:2px; background:#eee; margin-left:4px; }
+
+  .downloads { margin: 18px 20px; padding: 14px 18px; background:#f7f7f9; border:1px solid #eee; border-radius:6px; }
+  .downloads h2 { margin: 0 0 8px; font-size:13px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
+  .downloads ul { margin:0; padding-left:20px; font-size:12px; }
+  .downloads a { color:#0a3d7a; }
+</style></head><body>
+
+<header class="site">
+  <h1>AI Impact Meta-Review</h1>
+  <span class="stats" id="stats"></span>
+  <nav><a href="index.html" style="text-decoration:underline;">Home</a><a href="runs.html">All runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+</header>
+
+<div style="padding:10px 16px; background:#fafafa; border-bottom:1px solid #eee; display:flex; gap:14px; align-items:center;">
+  <input type="text" id="search" placeholder="filter by citation, title, file, O*NET&hellip;" style="padding:5px 8px; border:1px solid #ccc; border-radius:4px; min-width:280px;"/>
+  <span style="color:#888; font-size:12px;">Click a title to open the paper drawer.</span>
+</div>
+<table id="table">
+  <colgroup>
+    <col style="width:70px"><col style="width:200px"><col style="width:280px"><col style="width:200px">
+    <col style="width:80px"><col style="width:60px"><col style="width:320px"><col style="width:340px">
+  </colgroup>
+  <thead><tr>
+    <th data-sort="kind">Kind</th>
+    <th data-sort="citation_key">Citation</th>
+    <th data-sort="title">Title</th>
+    <th data-sort="file_name">File</th>
+    <th data-sort="value">Value</th>
+    <th data-sort="confidence">Conf</th>
+    <th>O*NET</th>
+    <th>Task snippet</th>
+  </tr></thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<div class="downloads">
+  <h2>Downloads</h2>
+  <ul>
+    <li><a href="assets/speed_table.csv">speed_table.csv</a> &mdash; per-paper speed effects (log ratios)</li>
+    <li><a href="assets/quality_table.csv">quality_table.csv</a> &mdash; per-paper quality effects (Hedges' g)</li>
+    <li><a href="assets/onet_activities_impact.csv">onet_activities_impact.csv</a> &mdash; observed effects aggregated by O*NET work activity</li>
+    <li><a href="assets/onet_occupations_impact.csv">onet_occupations_impact.csv</a> &mdash; observed effects aggregated by O*NET occupation</li>
+    <li><a href="assets/papers_excluded.csv">papers_excluded.csv</a> &mdash; papers dropped by the pipeline, with reasons</li>
+  </ul>
+</div>
+
+<div id="backdrop" onclick="closeDrawer()"></div>
+<div id="drawer">
+  <header>
+    <h1 id="drawerTitle">Paper detail</h1>
+    <button onclick="closeDrawer()">Close</button>
+  </header>
+  <div id="drawerBody"></div>
+</div>
+
+<script>
+let ROWS=[], SORT={col:null,dir:1};
+
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function fmtNum(x, places){ if (x===null || x===undefined || x==='') return '—'; const n = parseFloat(x); return isNaN(n) ? x : n.toFixed(places===undefined?3:places); }
+function confPill(c){ if(!c) return ''; return `<span class="conf-pill ${c}">${c}</span>`; }
+
+async function load() {
+  const r = await (await fetch('data/rows.json')).json();
+  ROWS = r.rows;
+  render();
+}
+
+function render() {
+  const q = (document.getElementById('search').value || '').toLowerCase();
+  let rows = ROWS.filter(r =>
+    !q || (r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
+  if (SORT.col) {
+    rows = [...rows].sort((a,b)=> {
+      const x = (a[SORT.col]||'').toString(), y=(b[SORT.col]||'').toString();
+      if (SORT.col==='value') return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+      return x.localeCompare(y) * SORT.dir;
+    });
+  }
+  document.getElementById('stats').textContent = `${rows.length} rows (of ${ROWS.length} total)`;
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = rows.map(r => {
+    const v = parseFloat(r.value||0);
+    const vClass = v > 0.001 ? 'pos' : v < -0.001 ? 'neg' : '';
+    const onet = r.onet_code
+      ? `<span class="code">${escapeHtml(r.onet_code)}</span>${escapeHtml(r.onet_label||'')}`
+      : '<span style="color:#aaa;">—</span>';
+    return `
+    <tr data-row="${r.row_id}">
+      <td><span class="kind-${r.kind}">${r.kind}</span></td>
+      <td class="cite">${escapeHtml(r.citation_key)}</td>
+      <td class="title" title="Click to view paper detail" onclick="viewPaper('${r.paper_id}')">${escapeHtml(r.title)}</td>
+      <td class="file" title="${escapeHtml(r.file_name)}">${escapeHtml(r.file_name)}</td>
+      <td class="value ${vClass}">${v.toFixed(3)}</td>
+      <td>${r.confidence ? `<span class="conf-pill-cell ${r.confidence}">${r.confidence}</span>` : ''}</td>
+      <td class="onet">${onet}</td>
+      <td class="snippet" title="${escapeHtml(r.task_description||'')}">${escapeHtml(r.task_description||'')}</td>
+    </tr>`;
+  }).join('');
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.querySelectorAll('th[data-sort]').forEach(th=>{
+  th.addEventListener('click',()=>{
+    const c=th.dataset.sort; SORT.dir=(SORT.col===c?-SORT.dir:1); SORT.col=c; render();
+  });
+});
+
+async function viewPaper(pid) {
+  if (!pid) return alert('No paper_id resolved for this row.');
+  let d;
+  try { d = await (await fetch('data/papers/'+encodeURIComponent(pid)+'.json')).json(); }
+  catch (e) { return alert('Missing paper detail for '+pid); }
+  document.getElementById('drawerTitle').textContent = pid;
+  document.getElementById('drawerBody').innerHTML = renderPaperDetail(pid, d);
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('backdrop').classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('backdrop').classList.remove('open');
+}
+document.addEventListener('keydown', (e)=>{ if (e.key==='Escape') closeDrawer(); });
+
+function renderEffectCard(kind, eff) {
+  if (!eff || !eff.computed) {
+    return `<div class="pd-effect empty"><h3>${kind} effect</h3>No effect computed for this paper.</div>`;
+  }
+  const c = eff.computed, ex = eff.llm_extracted || {};
+  const isSpeed = kind === 'speed';
+  const headline = isSpeed ? fmtNum(c.log_ratio) : fmtNum(c.hedges_g);
+  const pct = isSpeed && c.percent_change_equivalent!=null ? ` (${(c.percent_change_equivalent*100).toFixed(1)}%)` : '';
+  const variance = isSpeed ? c.log_ratio_variance : c.variance;
+  return `<div class="pd-effect">
+    <h3>${kind} effect ${confPill(c.confidence)}</h3>
+    <div class="value">${isSpeed?'log ratio':"Hedges' g"} = ${headline}${pct}</div>
+    <div class="row"><b>variance</b><span>${fmtNum(variance, 6)}</span></div>
+    <div class="row"><b>method</b><span style="font-family:monospace;">${escapeHtml(c.computation_method||'—')}</span></div>
+    <div class="row"><b>arms</b><span>${escapeHtml(ex.human_arm_name||'?')} → ${escapeHtml(ex.ai_arm_name||'?')}</span></div>
+    <div class="row"><b>n (h / ai)</b><span>${c.n_human||'—'} / ${c.n_ai||'—'}</span></div>
+    ${ex.ai_arm_selection_rationale ? `<div class="notes"><b>Arm selection:</b> ${escapeHtml(ex.ai_arm_selection_rationale)}</div>`:''}
+    ${c.notes ? `<div class="notes">${escapeHtml(c.notes)}</div>`:''}
+  </div>`;
+}
+
+function renderQuotes(quotes) {
+  if (!quotes || !quotes.quotes) return '';
+  const q = quotes.quotes;
+  const sections = [];
+  for (const key of ['task','study_design','outcomes','arms','population']) {
+    const arr = q[key];
+    if (!arr || !arr.length) continue;
+    const items = arr.map(s => `<div class="pd-quote">${escapeHtml(s)}</div>`).join('');
+    sections.push(`<details ${key==='task'?'open':''}><summary><b>${key}</b> (${arr.length})</summary>${items}</details>`);
+  }
+  return sections.length ? `<div class="pd-section"><h3>Verbatim quotes (from 01a)</h3><div class="pd-quotes-block">${sections.join('')}</div></div>` : '';
+}
+
+function renderArms(arms) {
+  if (!arms || !arms.length) return '';
+  const rows = arms.map(a => `<tr>
+    <td><b>${escapeHtml(a.arm_name||'')}</b></td>
+    <td>${a.n!=null ? a.n : '—'}</td>
+    <td>${escapeHtml(a.description||'')}</td>
+  </tr>`).join('');
+  return `<div class="pd-section"><h3>Arms</h3><table class="pd-table">
+    <tr><th style="width:130px;">Name</th><th style="width:50px;">n</th><th>Description</th></tr>
+    ${rows}</table></div>`;
+}
+
+function renderOutcomes(ext, oc) {
+  const outs = (ext && ext.outcomes) || [];
+  if (!outs.length) return '';
+  const pCats = (oc && oc.per_outcome) || [];
+  const catFor = (name) => (pCats.find(x=>x.outcome_name===name)||{}).category || '';
+  const primarySpeed = oc && oc.primary_speed_outcome;
+  const primaryQual  = oc && oc.primary_quality_outcome;
+  const rows = outs.map(o=>{
+    const isPS = o.outcome_name===primarySpeed, isPQ = o.outcome_name===primaryQual;
+    const star = isPS ? '★ speed' : isPQ ? '★ quality' : '';
+    return `<tr><td><b>${escapeHtml(o.outcome_name||'')}</b>${star?` <span style="color:#a60;font-size:11px;">${star}</span>`:''}</td>
+      <td><span class="badge">${escapeHtml(catFor(o.outcome_name))}</span></td>
+      <td>${escapeHtml(o.measurement_unit||'')}</td>
+      <td>${escapeHtml(o.description||'')}</td></tr>`;
+  }).join('');
+  return `<div class="pd-section"><h3>Outcomes</h3><table class="pd-table">
+    <tr><th>Name</th><th>Category</th><th>Unit</th><th>Description</th></tr>
+    ${rows}</table></div>`;
+}
+
+function renderOnet(onet) {
+  if (!onet) return '';
+  const alts = (onet.alternates||[]).map(a => `<span class="pill" title="${escapeHtml(a.mapping_type||'')}">${escapeHtml(a.onet_code)} — ${escapeHtml(a.onet_label)}</span>`).join('');
+  return `<div class="pd-section"><h3>O*NET mapping</h3>
+    <div><span class="pill" style="background:#cef; padding:2px 8px; font-family:monospace; border-radius:3px;">${escapeHtml(onet.onet_code||'?')}</span>
+      <b>${escapeHtml(onet.onet_label||'')}</b> ${confPill(onet.mapping_confidence)}
+      <span style="color:#999;font-size:11px;">(${escapeHtml(onet.mapping_type||'')})</span></div>
+    ${onet.rationale ? `<div class="pd-onet-rationale">${escapeHtml(onet.rationale)}</div>`:''}
+    ${alts ? `<div class="pd-onet-alt"><b>Alternates:</b><br>${alts}</div>`:''}
+  </div>`;
+}
+
+function renderStats(stats) {
+  if (!stats || !stats.length) return '';
+  const items = stats.slice(0, 30).map(s => {
+    const m = s.means_and_sds || {};
+    const numParts = [];
+    for (const [arm, v] of Object.entries(m)) {
+      if (v && (v.mean!=null || v.sd!=null)) {
+        const bits = [];
+        if (v.mean!=null) bits.push(`mean=${v.mean}`);
+        if (v.sd!=null) bits.push(`SD=${v.sd}`);
+        if (v.se!=null) bits.push(`SE=${v.se}`);
+        numParts.push(`${arm}: ${bits.join(', ')}`);
+      }
+    }
+    const extras = [];
+    if (s.effect_in_outcome_units) extras.push(`effect: ${s.effect_in_outcome_units}`);
+    if (s.regression_coefficient) extras.push(`coef: ${s.regression_coefficient}`);
+    if (s.test_statistic) extras.push(`test: ${s.test_statistic}`);
+    if (s.p_value) extras.push(`p: ${s.p_value}`);
+    if (s.confidence_interval) extras.push(`CI: ${s.confidence_interval}`);
+    return `<div class="pd-stat">
+      <div class="head"><b>${escapeHtml(s.outcome_name||'?')}</b><span style="color:#666;">${escapeHtml(s.arm_comparison||'')}</span></div>
+      ${numParts.length ? `<div class="nums">${escapeHtml(numParts.join('  •  '))}</div>`:''}
+      ${extras.length ? `<div class="nums">${escapeHtml(extras.join('  •  '))}</div>`:''}
+      ${s.verbatim_quote ? `<div class="vq">"${escapeHtml(s.verbatim_quote)}"</div>`:''}
+    </div>`;
+  }).join('');
+  const more = stats.length>30 ? `<div style="color:#999;font-size:11px;">… ${stats.length-30} more</div>` : '';
+  return `<div class="pd-section"><h3>Reported statistics (${stats.length})</h3>${items}${more}</div>`;
+}
+
+function renderPaperDetail(pid, d) {
+  const ext = d['01_extraction'] || {};
+  const meth = d['02_method'] || {};
+  const oc = d['03_outcome'] || {};
+  const onet = d['04_onet'] || {};
+  const speed = d['05_speed'], quality = d['05_quality'];
+  const quotes = d['01a_quotes'] || null;
+  return `
+    <div class="pd-meta">
+      <h2>${escapeHtml(ext.title||pid)}</h2>
+      <div class="authors">${escapeHtml((ext.authors||[]).join('; '))}${ext.year?` (${ext.year})`:''}${ext.venue?` · <i>${escapeHtml(ext.venue)}</i>`:''}</div>
+      <div class="ids">
+        <span class="pill">${escapeHtml(ext.citation_key||'')}</span>
+        <span class="pill">${escapeHtml(pid)}.pdf</span>
+      </div>
+    </div>
+    <div class="pd-effects">
+      ${renderEffectCard('speed', speed)}
+      ${renderEffectCard('quality', quality)}
+    </div>
+    ${meth.classification ? `<div class="pd-section"><h3>Method classification</h3>
+      <div><b>${escapeHtml(meth.classification)}</b> ${confPill(meth.confidence)}</div>
+      ${meth.rationale ? `<div style="color:#555; font-size:12px; margin-top:4px;">${escapeHtml(meth.rationale)}</div>`:''}
+    </div>`:''}
+    ${renderOnet(onet)}
+    ${renderArms(ext.arms)}
+    ${renderOutcomes(ext, oc)}
+    ${renderStats(ext.reported_statistics)}
+    ${renderQuotes(quotes)}
+    <details class="pd-raw"><summary>Raw JSON (all stages)</summary>
+      <pre>${escapeHtml(JSON.stringify(d, null, 2))}</pre>
+    </details>
+  `;
+}
+
+load();
+</script>
+</body></html>

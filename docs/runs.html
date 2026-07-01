@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>All runs &mdash; AI Impact Meta-Review</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; font-size:13px; color:#222; background:#fff; }
+  header.site { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  header.site h1 { margin:0; font-size:16px; }
+  header.site nav { display:flex; gap:12px; align-items:center; margin-left:auto; }
+  header.site nav a { color:#9cf; text-decoration:none; font-size:13px; }
+  header.site nav a:hover { text-decoration:underline; }
+  header.site nav a.gh { color:#fff; background:#333; padding:4px 10px; border-radius:4px; }
+  header.site nav a.gh:hover { background:#444; text-decoration:none; }
+  header.site .stats { color:#bbb; font-size:12px; }
+
+  main { max-width:1100px; margin:24px auto; padding:0 18px; }
+  .intro { color:#555; font-size:13px; margin-bottom:14px; }
+  table { width:100%; background:#fff; border-collapse:collapse; border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
+  th, td { padding:9px 12px; text-align:left; border-bottom:1px solid #eee; }
+  th { background:#f7f7f9; font-size:11px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
+  tr.clickable:hover { background:#f0f6ff; cursor:pointer; }
+  .pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; }
+  .pill.speed { background:#e6f3ff; color:#0463a3; } .pill.quality { background:#ffe6f0; color:#a0286c; }
+  td.num { font-variant-numeric: tabular-nums; font-family: ui-monospace, Menlo, monospace; }
+</style></head><body>
+
+<header class="site">
+  <h1>AI Impact Meta-Review</h1>
+  <span class="stats" id="stats"></span>
+  <nav><a href="index.html">Home</a><a href="runs.html" style="text-decoration:underline;">All runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+</header>
+
+<main>
+  <p class="intro">
+    All analysis runs on record. Each row records a single (metric, &beta;, prune, baseline) combination.
+    Click a row to open its per-occupation / per-activity results.
+    See <a href="parameters.html">Parameters</a> for what these knobs do.
+  </p>
+  <table id="t"><thead><tr>
+    <th>Run ID</th><th>Started (UTC)</th><th>Metric</th><th>&beta;</th><th>Aggregation</th>
+    <th>&Omega;<sub>ref</sub></th><th>Baseline</th>
+    <th>Obs (occ/act)</th><th>Kept (occ/act)</th>
+  </tr></thead><tbody id="tb"></tbody></table>
+</main>
+<script>
+function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+fetch('data/runs/index.json').then(r=>r.json()).then(d=>{
+  const tb = document.getElementById('tb');
+  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="9" style="text-align:center; padding:20px; color:#888;">No runs on record.</td></tr>'; return; }
+  document.getElementById('stats').textContent = `${d.runs.length} runs`;
+  tb.innerHTML = d.runs.map(r=>{
+    const p = r.params||{};
+    return `<tr class="clickable" onclick="location.href='results.html?run='+encodeURIComponent('${r.run_id}')">
+      <td style="font-family:monospace; font-size:11px;">${escapeHtml(r.run_id)}</td>
+      <td>${escapeHtml((r.started_utc||'').replace('T',' ').slice(0,19))}</td>
+      <td><span class="pill ${p.metric}">${escapeHtml(p.metric||'')}</span></td>
+      <td class="num">${p.beta}</td>
+      <td>${escapeHtml(p.aggregation_level||'occupation')}</td>
+      <td class="num">${p.omega_ref}</td>
+      <td>${r.baseline_active ? `yes (Ω<sub>b</sub>=${p.omega_base})` : '—'}</td>
+      <td class="num">${r.n_observed_occ}/${r.n_observed_act}</td>
+      <td class="num">${r.n_kept_occ}/${r.n_kept_act}</td>
+    </tr>`;
+  }).join('');
+});
+</script>
+</body></html>

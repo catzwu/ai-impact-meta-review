@@ -1,0 +1,300 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Parameters &mdash; AI Impact Meta-Review</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; font-size:13px; color:#222; background:#fff; }
+  header.site { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  header.site h1 { margin:0; font-size:16px; }
+  header.site nav { display:flex; gap:12px; align-items:center; margin-left:auto; }
+  header.site nav a { color:#9cf; text-decoration:none; font-size:13px; }
+  header.site nav a:hover { text-decoration:underline; }
+  header.site nav a.gh { color:#fff; background:#333; padding:4px 10px; border-radius:4px; }
+  header.site nav a.gh:hover { background:#444; text-decoration:none; }
+  header.site .stats { color:#bbb; font-size:12px; }
+
+  main { max-width:1000px; margin: 20px auto; padding: 0 18px; }
+  .card { background:#fff; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); padding:20px 24px; margin-bottom:18px; }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:0.04em; color:#666; margin: 0 0 10px; }
+  .callout { padding: 12px 18px; background:#fff8e0; border:1px solid #d2b048; border-radius:6px; margin-bottom:18px; font-size:13px; color:#5a4200; line-height:1.5; }
+  .callout code { background:#fff; padding:1px 5px; border-radius:3px; font-size:12px; }
+  .seg { display:inline-flex; border:1px solid #ccc; border-radius:6px; overflow:hidden; }
+  .seg button { padding:6px 16px; background:#fff; border:0; cursor:pointer; font-size:13px; color:#555; }
+  .seg button.active { background:#5b3aa6; color:#fff; }
+  .help { color:#666; font-size:12px; line-height:1.5; }
+  .paramgrid { display:grid; grid-template-columns: 200px 1fr; gap: 6px 18px; align-items:baseline; margin-top: 4px; }
+  .paramgrid .k { font-weight:500; color:#333; font-family: ui-monospace, Menlo, monospace; font-size:13px; }
+  .paramgrid .v { color:#555; font-size:12px; line-height:1.5; }
+  .paramgrid .v b { color:#222; font-family: ui-monospace, Menlo, monospace; }
+  .threshold-row { display:flex; gap:14px; margin: 12px 0 6px; align-items:baseline; }
+  .threshold-row input[type=number] { padding:5px 7px; border:1px solid #ccc; border-radius:4px; font-size:13px; width:80px; }
+</style></head><body>
+
+<header class="site">
+  <h1>AI Impact Meta-Review</h1>
+  <span class="stats" id="stats"></span>
+  <nav><a href="index.html">Home</a><a href="runs.html">All runs</a><a href="parameters.html" style="text-decoration:underline;">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+</header>
+
+<main>
+  <div class="callout">
+    <b>Read-only view.</b> This page visualises the inputs to the imputation model at the canonical
+    setting (&beta; = 2.5). To launch new runs with different parameters, run the review app locally
+    (<code>python scripts/review_app.py</code>) and open <code>/run</code>.
+  </div>
+
+  <div class="card">
+    <h2>Metric</h2>
+    <div class="seg" id="metricSeg">
+      <button data-m="speed" class="active">speed</button>
+      <button data-m="quality">quality</button>
+    </div>
+    <div class="help" style="margin-top:6px;">A run targets one metric at a time. Switching swaps the observation
+      overlays (green vertical lines = observed activities, cyan horizontal lines = SOC majors with at least one observed
+      occupation).</div>
+  </div>
+
+  <div class="card">
+    <h2>Stage B → Coverage heatmap</h2>
+    <div class="help" style="margin-bottom:8px;">
+      Mean Stage-B weight per SOC major group &times; O*NET work activity. Weights come from applying a
+      row-wise softmax with temperature &beta; to each occupation's (Importance &times; Level / 5) profile, then
+      averaging within each SOC-major group. Cells are the average of a group's occupations. Click a row label
+      or checkbox to toggle its inclusion.
+    </div>
+    <div id="heatmap" style="overflow:auto;"></div>
+
+    <div class="threshold-row">
+      <label style="font-weight:500;">Activity weight threshold</label>
+      <input type="number" id="weightThreshold" value="10" step="0.5" min="0"/>
+      <div class="help">Activities whose summed weight (over kept occupations) is below this are dropped.
+        Observed activities are always kept.</div>
+    </div>
+    <div id="barchart" style="overflow:auto;"></div>
+    <div id="pruneSummary" style="margin-top:10px; padding:8px 12px; background:#f0f4f8; border-radius:4px; font-size:13px; color:#333;"></div>
+  </div>
+
+  <div class="card">
+    <h2>What every parameter does</h2>
+    <div class="paramgrid">
+      <div class="k">metric</div>
+      <div class="v">Which effect-size column feeds the observations. <b>speed</b> = mean log-ratio;
+        <b>quality</b> = mean Hedges' g. Two independent runs.</div>
+
+      <div class="k">&beta; (specificity)</div>
+      <div class="v">Softmax temperature for Stage B. Higher &beta; means each occupation concentrates on
+        fewer activities. Default <b>2.5</b> yields roughly 7 effective activities/occupation.</div>
+
+      <div class="k">aggregation level</div>
+      <div class="v"><b>occupation</b> (default, ~894 O*NET occupations), <b>soc_minor</b> (~92 3-digit groups
+        like <code>13-2000 Financial Specialists</code>), or <b>soc_major</b> (22 2-digit majors). In aggregated
+        modes, the composite weight matrix is the per-group row-mean; observations are IV-weighted (or simple-mean
+        fallback) within the group; the AIOE baseline is averaged within the group.</div>
+
+      <div class="k">excluded_soc_majors</div>
+      <div class="v">SOC 2-digit prefixes to drop entirely. Default excludes the physical majors
+        (37, 45, 47, 49, 51, 53) plus 11 &amp; anything the user has toggled off.</div>
+
+      <div class="k">activity_weight_threshold</div>
+      <div class="v">See the bar chart above &mdash; activities whose <i>summed</i> weight across the kept
+        occupations falls below this are pruned. Observed activities are always retained regardless.</div>
+
+      <div class="k">&Omega;<sub>ref</sub></div>
+      <div class="v">Stage D observation-trust precision. Higher pulls estimates harder toward the observed
+        values. Default <b>100</b>.</div>
+
+      <div class="k">use_baseline / &Omega;<sub>base</sub></div>
+      <div class="v"><b>speed only.</b> When on, mixes in the Felten et al. AIOE score
+        (moment-matched to the observed metric's mean and SD) as a per-occupation soft anchor. &Omega;<sub>base</sub>
+        controls the strength: <b>0.1</b> ≈ tiebreaker, <b>0.5</b> ≈ balanced, <b>1.0</b> ≈ AIOE-led,
+        <b>5.0</b> ≈ AIOE-replaces-graph.</div>
+
+      <div class="k">&sigma;<sub>ref</sub></div>
+      <div class="v">Stage D SE floor / scale (default <b>0.1</b>). Effectively converts a paper's SE into
+        an inverse-variance weight relative to &Omega;<sub>ref</sub>.</div>
+
+      <div class="k">&epsilon; (regularizer)</div>
+      <div class="v">Ridge added to the diagonal of the linear system to keep it invertible (default
+        <b>10<sup>-6</sup></b>).</div>
+    </div>
+  </div>
+</main>
+
+<script>
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+let METRIC='speed';
+let HEAT = null;
+let EXCLUDED = new Set();
+
+document.querySelectorAll('#metricSeg button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('#metricSeg button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); METRIC=b.dataset.m;
+    loadHeatmap();
+  };
+});
+document.getElementById('weightThreshold').addEventListener('input', renderBarChart);
+
+async function loadHeatmap() {
+  const r = await fetch('data/heatmap_' + METRIC + '.json');
+  if (!r.ok) { document.getElementById('heatmap').innerHTML = '<div style="color:#a00;">Missing heatmap data for '+METRIC+'.</div>'; return; }
+  HEAT = await r.json();
+  if (EXCLUDED.size === 0) EXCLUDED = new Set(HEAT.default_excluded_socs);
+  renderCharts();
+}
+
+function vColor(v, vmax) {
+  const stops = [[68,1,84],[59,82,139],[33,144,141],[93,200,99],[253,231,37]];
+  const t = Math.max(0, Math.min(1, v / vmax));
+  const idx = t * (stops.length-1);
+  const i = Math.floor(idx), f = idx - i;
+  const a = stops[i], b = stops[Math.min(i+1, stops.length-1)];
+  return `rgb(${Math.round(a[0]+(b[0]-a[0])*f)},${Math.round(a[1]+(b[1]-a[1])*f)},${Math.round(a[2]+(b[2]-a[2])*f)})`;
+}
+
+function renderHeatmap() {
+  if (!HEAT) return;
+  const rowOrder = HEAT.row_order, colOrder = HEAT.col_order;
+  const rows = rowOrder.map(i => HEAT.soc_groups[i]);
+  const cols = colOrder.map(j => HEAT.activities[j]);
+  const W = HEAT.weights;
+  const cell = 18;
+  const labelW = 240, topPad = 12, bottomLabelH = 200, padR = 30;
+  const labelH = topPad;
+  const width  = labelW + cols.length * cell + padR;
+  const height = labelH + rows.length * cell + bottomLabelH + 16;
+  const vals = []; W.forEach(row => row.forEach(v => { if (v > 0) vals.push(v); }));
+  vals.sort((a,b)=>a-b); const vmax = vals[Math.floor(vals.length*0.99)] || 1;
+
+  let cellsSvg = '';
+  for (let ri = 0; ri < rows.length; ri++) {
+    const realRow = rowOrder[ri];
+    for (let ci = 0; ci < cols.length; ci++) {
+      const v = W[realRow][colOrder[ci]];
+      const x = labelW + ci * cell, y = labelH + ri * cell;
+      cellsSvg += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${vColor(v, vmax)}"/>`;
+      if (v >= 0.06) {
+        const col = (v < vmax * 0.4) ? '#fff' : '#222';
+        cellsSvg += `<text x="${x+cell/2}" y="${y+cell/2+3}" text-anchor="middle" font-size="8" fill="${col}">${v.toFixed(2)}</text>`;
+      }
+    }
+  }
+  let overlaySvg = '';
+  rows.forEach((r, ri) => {
+    if (EXCLUDED.has(r.code)) {
+      overlaySvg += `<rect x="${labelW}" y="${labelH+ri*cell}" width="${cols.length*cell}" height="${cell}" fill="rgba(180,180,180,0.55)"/>`;
+    }
+  });
+  let lineSvg = '';
+  cols.forEach((c, ci) => {
+    if (c.observed) {
+      const x = labelW + ci*cell + cell/2;
+      lineSvg += `<line x1="${x}" y1="${labelH}" x2="${x}" y2="${labelH+rows.length*cell}" stroke="#39FF14" stroke-width="2"/>`;
+    }
+  });
+  rows.forEach((r, ri) => {
+    if (r.observed && !EXCLUDED.has(r.code)) {
+      const y = labelH + ri*cell + cell/2;
+      lineSvg += `<line x1="${labelW}" y1="${y}" x2="${labelW+cols.length*cell}" y2="${y}" stroke="#00E5FF" stroke-width="2"/>`;
+    }
+  });
+  const rowLabels = rows.map((r, ri) => {
+    const y = labelH + ri*cell;
+    const fade = EXCLUDED.has(r.code) ? 'color:#aaa;' : '';
+    const bold = r.observed ? 'font-weight:600; color:#0077aa;' : '';
+    return `<div style="position:absolute; left:0; top:${y}px; height:${cell}px; width:${labelW-6}px;
+                       display:flex; align-items:center; gap:5px; font-size:11px; ${fade}${bold} cursor:pointer;"
+                 onclick="toggleSoc('${r.code}')">
+              <input type="checkbox" ${EXCLUDED.has(r.code)?'':'checked'} onclick="event.stopPropagation(); toggleSoc('${r.code}');" style="margin:0 4px;">
+              <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(r.name)} (n=${r.n})">
+                ${escapeHtml(r.name)} <span style="color:#999; font-weight:400;">(n=${r.n})</span>
+              </span>
+            </div>`;
+  }).join('');
+  const colLabelY = labelH + rows.length * cell + 6;
+  const colLabels = cols.map((c, ci) => {
+    const x = labelW + ci*cell + cell/2;
+    const fill = c.observed ? '#1a9850' : '#444';
+    const fw = c.observed ? '600' : '400';
+    return `<text x="${x}" y="${colLabelY}" font-size="10" fill="${fill}" font-weight="${fw}"
+                  transform="rotate(60 ${x} ${colLabelY})" text-anchor="start">${escapeHtml(c.name)}</text>`;
+  }).join('');
+
+  document.getElementById('heatmap').innerHTML = `
+    <div style="position:relative; width:${width}px;">
+      ${rowLabels}
+      <svg width="${width}" height="${height}" style="display:block;">
+        ${cellsSvg}${overlaySvg}${lineSvg}${colLabels}
+      </svg>
+      <div style="display:flex; gap:18px; font-size:11px; color:#666; margin-top:6px;">
+        <span><span style="display:inline-block; width:10px; height:2px; background:#39FF14; vertical-align:middle;"></span> observed activity</span>
+        <span><span style="display:inline-block; width:10px; height:2px; background:#00E5FF; vertical-align:middle;"></span> SOC with observed occupation</span>
+        <span><span style="display:inline-block; width:10px; height:10px; background:rgba(180,180,180,0.55); vertical-align:middle;"></span> deselected</span>
+      </div>
+    </div>`;
+}
+
+function renderBarChart() {
+  if (!HEAT) return;
+  const threshold = parseFloat(document.getElementById('weightThreshold').value) || 10;
+  const acts0 = HEAT.activities.map((a, j) => {
+    let s = 0;
+    HEAT.soc_groups.forEach((g, i) => {
+      if (!EXCLUDED.has(g.code)) s += HEAT.weights[i][j] * g.n;
+    });
+    return {...a, j, total: s};
+  });
+  const acts = acts0.slice().sort((x, y) => y.total - x.total);
+  const sums = acts.map(a => a.total);
+  const vmax = Math.max(...sums, 1);
+  const barH = 14;
+  const labelW = 240, plotW = 480, padT = 12;
+  const height = padT + acts.length * barH + 16;
+
+  let bars = '';
+  acts.forEach((a, i) => {
+    const w = (sums[i] / vmax) * plotW;
+    const y = padT + i * barH;
+    const below = sums[i] < threshold;
+    const fill = a.observed ? '#0a6c2c' : '#4C72B0';
+    const opacity = below ? 0.35 : 1.0;
+    bars += `<rect x="${labelW}" y="${y+1}" width="${w}" height="${barH-3}" fill="${fill}" opacity="${opacity}"/>`;
+    bars += `<text x="${labelW + w + 4}" y="${y+barH-3}" font-size="9" fill="${below?'#999':'#333'}">${sums[i].toFixed(1)}</text>`;
+    const tcol = a.observed ? '#0a6c2c' : '#333';
+    bars += `<text x="${labelW-4}" y="${y+barH-3}" font-size="10" fill="${tcol}" text-anchor="end" font-weight="${a.observed?'600':'400'}">${escapeHtml(a.name)}</text>`;
+  });
+  const tx = labelW + (threshold / vmax) * plotW;
+  bars += `<line x1="${tx}" y1="${padT}" x2="${tx}" y2="${padT + acts.length*barH}" stroke="#a00" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  bars += `<text x="${tx + 3}" y="${padT - 2}" font-size="10" fill="#a00">threshold = ${threshold.toFixed(1)}</text>`;
+
+  document.getElementById('barchart').innerHTML = `
+    <svg width="${labelW + plotW + 70}" height="${height}" style="display:block;">${bars}</svg>
+    <div style="font-size:11px; color:#666; margin-top:4px;">
+      Bars below the red dashed line are dropped. Green label/bar = observed (given).
+    </div>`;
+
+  let occTotal = 0, occIncluded = 0;
+  HEAT.soc_groups.forEach(g => {
+    occTotal += g.n;
+    if (!EXCLUDED.has(g.code)) occIncluded += g.n;
+  });
+  const actTotal = HEAT.activities.length;
+  const actIncluded = acts.filter(a => a.observed || a.total >= threshold).length;
+  const socIncluded = HEAT.soc_groups.length - EXCLUDED.size;
+  document.getElementById('pruneSummary').innerHTML =
+    `<b>Included in analysis:</b> ${occIncluded.toLocaleString()} of ${occTotal.toLocaleString()} occupations ` +
+    `(${socIncluded} of ${HEAT.soc_groups.length} SOC major groups) · ` +
+    `${actIncluded} of ${actTotal} activities`;
+}
+
+function renderCharts() { renderHeatmap(); renderBarChart(); }
+
+function toggleSoc(code) {
+  if (EXCLUDED.has(code)) EXCLUDED.delete(code); else EXCLUDED.add(code);
+  renderCharts();
+}
+
+loadHeatmap();
+</script>
+</body></html>

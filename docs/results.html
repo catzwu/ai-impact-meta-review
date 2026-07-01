@@ -1,0 +1,158 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Run results &mdash; AI Impact Meta-Review</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; font-size:13px; color:#222; background:#fff; }
+  header.site { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  header.site h1 { margin:0; font-size:16px; }
+  header.site nav { display:flex; gap:12px; align-items:center; margin-left:auto; }
+  header.site nav a { color:#9cf; text-decoration:none; font-size:13px; }
+  header.site nav a:hover { text-decoration:underline; }
+  header.site nav a.gh { color:#fff; background:#333; padding:4px 10px; border-radius:4px; }
+  header.site nav a.gh:hover { background:#444; text-decoration:none; }
+  header.site .stats { color:#bbb; font-size:12px; }
+
+  main { padding: 16px 24px; background:#f5f5f7; min-height: calc(100vh - 50px); }
+  .toolbar { display:flex; gap:14px; align-items:center; background:#fff; padding:10px 14px; border-radius:6px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
+  .toolbar label { font-size:12px; color:#555; }
+  .toolbar input, .toolbar select { padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px; }
+  .toolbar .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; }
+  .toolbar .seg button { padding:4px 11px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
+  .toolbar .seg button.active { background:#5b3aa6; color:#fff; }
+  table { width:100%; background:#fff; border-collapse:collapse; border-radius:6px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; font-size:12px; }
+  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
+  tbody tr:nth-child(even) { background:#fafafa; }
+  tbody tr:hover { background:#eef6ff; }
+  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
+  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
+  .bar { display:inline-block; height:6px; vertical-align:middle; border-radius:2px; }
+  .bar.pos { background:#0a6c2c; } .bar.neg { background:#b32020; }
+  .badge { display:inline-block; padding:1px 7px; border-radius:10px; font-size:10px; font-weight:600; text-transform:uppercase; }
+  .badge.observed { background:#d4f4d4; color:#0a6c2c; } .badge.imputed { background:#eee; color:#555; }
+  .params { background:#fff; padding:10px 14px; border-radius:6px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05); font-size:12px; color:#555; }
+  .params b { color:#222; font-family: monospace; }
+</style></head><body>
+
+<header class="site">
+  <h1>AI Impact Meta-Review</h1>
+  <span class="stats" id="stats"></span>
+  <nav><a href="index.html">Home</a><a href="runs.html" style="text-decoration:underline;">All runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+</header>
+
+<main>
+  <div class="params" id="params">Loading&hellip;</div>
+  <div class="toolbar">
+    <div class="seg" id="viewSeg">
+      <button data-v="occ" class="active">Occupations</button>
+      <button data-v="act">Activities</button>
+    </div>
+    <label>std &le; <input type="number" id="stdFilter" value="5" step="0.05" style="width:60px;"/></label>
+    <label><input type="checkbox" id="onlyObserved"/> only observed</label>
+    <label>search <input type="text" id="search" placeholder="title/code&hellip;"/></label>
+    <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export view as CSV</button>
+  </div>
+  <div id="warn"></div>
+  <table id="t"><thead id="th"></thead><tbody id="tb"></tbody></table>
+</main>
+<script>
+const DEFAULT_RUN_ID = "20260626_194528_3d1907";
+let DATA = null, VIEW='occ', SORT={col:'estimate', dir:-1};
+
+function fmtNum(x, p){ if (x===null||x===undefined||x==='') return '—'; const n=parseFloat(x); return isNaN(n)?x:n.toFixed(p===undefined?3:p); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function load(){
+  const params = new URLSearchParams(location.search);
+  const runId = params.get('run') || DEFAULT_RUN_ID;
+  if (!runId) { document.body.innerHTML = '<p style="padding:30px;">No canonical run available. See <a href="runs.html">All runs</a>.</p>'; return; }
+  const r = await fetch('data/runs/' + encodeURIComponent(runId) + '.json');
+  if (!r.ok) { document.body.innerHTML = '<p style="padding:30px;">Unknown run: ' + escapeHtml(runId) + '. See <a href="runs.html">All runs</a>.</p>'; return; }
+  DATA = await r.json();
+  const p = DATA.params;
+  document.getElementById('stats').textContent =
+    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
+    ` · kept ${DATA.n_kept_occ}/${DATA.n_kept_act}`;
+  document.getElementById('params').innerHTML =
+    `<b>Run:</b> ${escapeHtml(DATA.run_id)} · <b>${p.metric}</b> · β=${p.beta} · agg=${escapeHtml(p.aggregation_level||'-')} · ` +
+    `Ω_ref=${p.omega_ref}${DATA.baseline_active?` · baseline Ω_b=${p.omega_base}`:''} · ` +
+    `n_obs occ/act = ${DATA.n_observed_occ}/${DATA.n_observed_act} · kept occ/act = ${DATA.n_kept_occ}/${DATA.n_kept_act} · ` +
+    `data_source=${escapeHtml(DATA.data_source||'-')}`;
+  const un = (DATA.unmatched_occ_codes||[]).concat(DATA.unmatched_act_labels||[]);
+  if (un.length) document.getElementById('warn').innerHTML =
+    `<div style="background:#fff8e0; border:1px solid #d2b048; padding:8px 12px; border-radius:4px; margin-bottom:10px; font-size:12px;">
+      ${un.length} unmatched observation(s) skipped: ${un.slice(0,10).join(', ')}${un.length>10?'…':''}
+    </div>`;
+  render();
+}
+
+document.querySelectorAll('#viewSeg button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#viewSeg button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); VIEW=b.dataset.v; render();};
+});
+document.getElementById('stdFilter').addEventListener('input', render);
+document.getElementById('onlyObserved').addEventListener('change', render);
+document.getElementById('search').addEventListener('input', render);
+
+function render(){
+  if (!DATA) return;
+  const rows = (VIEW==='occ' ? DATA.occupation_impacts : DATA.activity_impacts).slice();
+  const stdMax = parseFloat(document.getElementById('stdFilter').value) || 999;
+  const onlyObs = document.getElementById('onlyObserved').checked;
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let filtered = rows.filter(r => {
+    if (parseFloat(r.posterior_std) > stdMax) return false;
+    if (onlyObs && (r.observed===null || r.observed===undefined || isNaN(parseFloat(r.observed)))) return false;
+    const blob = (VIEW==='occ' ? (r.code+' '+r.title) : r.activity).toString().toLowerCase();
+    return !q || blob.includes(q);
+  });
+  filtered.sort((a,b)=>{
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+
+  const maxAbs = Math.max(...filtered.map(r=>Math.abs(parseFloat(r.estimate)||0)), 0.1);
+  const colName = VIEW==='occ' ? 'title' : 'activity';
+  const cols = VIEW==='occ'
+    ? ['code', colName, 'observed', 'aioe_baseline', 'estimate', 'posterior_std', 'n_studies']
+    : [colName, 'observed', 'estimate', 'posterior_std', 'n_studies'];
+
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c => {
+    const labels = {code:'Code', title:'Title', activity:'Activity', observed:'Observed', aioe_baseline:'AIOE', estimate:'Estimate', posterior_std:'Std', n_studies:'n'};
+    return `<th onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`;
+  }).join('') + '<th>Effect</th></tr>';
+
+  document.getElementById('tb').innerHTML = filtered.map(r=>{
+    const isObs = !(r.observed===null||r.observed===undefined||r.observed===''||isNaN(parseFloat(r.observed)));
+    const e = parseFloat(r.estimate)||0;
+    const eClass = e > 0.001 ? 'pos' : e < -0.001 ? 'neg' : '';
+    const barWidth = Math.min(100, Math.abs(e)/maxAbs * 100);
+    const bar = `<span class="bar ${eClass}" style="width:${barWidth}px;"></span>`;
+    return '<tr>' + cols.map(c => {
+      if (c==='observed') return `<td>${isObs ? `<span class="badge observed">${fmtNum(r.observed)}</span>` : '<span class="badge imputed">imputed</span>'}</td>`;
+      if (c==='estimate') return `<td class="num ${eClass}">${fmtNum(r.estimate)}</td>`;
+      if (c==='posterior_std') return `<td class="num">${fmtNum(r.posterior_std)}</td>`;
+      if (c==='aioe_baseline') return `<td class="num">${r.aioe_baseline===undefined||r.aioe_baseline===null?'':fmtNum(r.aioe_baseline)}</td>`;
+      if (c==='n_studies') return `<td class="num">${r.n_studies===null||r.n_studies===undefined||r.n_studies===''?'':parseInt(r.n_studies)}</td>`;
+      return `<td>${escapeHtml(r[c]||'')}</td>`;
+    }).join('') + `<td>${bar}</td></tr>`;
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; render(); }
+
+function exportCsv() {
+  const rows = (VIEW==='occ' ? DATA.occupation_impacts : DATA.activity_impacts);
+  const keys = Object.keys(rows[0]||{});
+  const csv = [keys.join(',')].concat(rows.map(r => keys.map(k => JSON.stringify(r[k]??'')).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${DATA.run_id}_${VIEW}.csv`; a.click();
+}
+
+load();
+</script>
+</body></html>

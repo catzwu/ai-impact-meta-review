@@ -22,3 +22,9 @@ logs/*.log
 # papers/
 # papers_hold/
 # outputs/
+
+# Auto-generated backups created by the review app's Export button
+outputs/final/*.pre_review.csv
+
+# Loose scratch screenshots at repo root
+/*.png
