@@ -22,7 +22,7 @@
   .pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; }
   .pill.speed { background:#e6f3ff; color:#0463a3; } .pill.quality { background:#ffe6f0; color:#a0286c; }
   td.num { font-variant-numeric: tabular-nums; font-family: ui-monospace, Menlo, monospace; }
-  th.num, td.num { text-align:right; }
+  th.num, td.num { text-align:right; white-space:nowrap; }
   h2 { font-size:17px; margin:26px 0 4px; }
   .blurb { color:#555; font-size:12.5px; margin:0 0 10px; max-width:80ch; line-height:1.5; }
   .rid { font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#888; }
@@ -35,12 +35,13 @@
 <header class="site">
   <h1>AI Impact Meta-Review</h1>
   <span class="stats" id="stats"></span>
-  <nav><a href="index.html">Home</a><a href="runs.html" style="text-decoration:underline;">Runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+  <nav><a href="index.html">Home</a><a href="summary.html">Summary</a><a href="runs.html" style="text-decoration:underline;">Runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
 </header>
 
 <main>
   <p class="intro" id="intro">
-    Published analysis runs. Click a row to open its results.
+    Published analysis runs. Click a row to open its results, or see the
+    <a href="summary.html">Summary</a> for charts and findings across the whole set.
     See <a href="parameters.html">Parameters</a> for what the knobs do.
   </p>
   <div id="groups"></div>

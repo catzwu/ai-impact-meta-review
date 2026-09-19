@@ -1,0 +1,275 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run summary &mdash; AI Impact Meta-Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; font-size:13px; color:#222; background:#fff; }
+  header.site { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  header.site h1 { margin:0; font-size:16px; }
+  header.site nav { display:flex; gap:12px; align-items:center; margin-left:auto; }
+  header.site nav a { color:#9cf; text-decoration:none; font-size:13px; }
+  header.site nav a:hover { text-decoration:underline; }
+  header.site nav a.gh { color:#fff; background:#333; padding:4px 10px; border-radius:4px; }
+  header.site nav a.gh:hover { background:#444; text-decoration:none; }
+  header.site .stats { color:#bbb; font-size:12px; }
+
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#1b2230; --ink-2:#4d5566; --muted:#7a8293; --rule:#dde1e8; --grid:#eceff3;
+  --speed:#2a78d6; --quality:#eb6834;
+  --good:#1a7f4b; --good-bg:#e3f3ea; --bad:#b8322a; --bad-bg:#fbe6e3; --neutral-bg:#eceef2;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#12151b; --surface:#1a1e26; --ink:#e8ecf2; --ink-2:#b7beca; --muted:#8a92a1; --rule:#2c323d; --grid:#242a33;
+    --speed:#3987e5; --quality:#d95926;
+    --good:#5cc48c; --good-bg:#15321f; --bad:#f07a6e; --bad-bg:#3a1c19; --neutral-bg:#262b34;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#12151b; --surface:#1a1e26; --ink:#e8ecf2; --ink-2:#b7beca; --muted:#8a92a1; --rule:#2c323d; --grid:#242a33;
+  --speed:#3987e5; --quality:#d95926;
+  --good:#5cc48c; --good-bg:#15321f; --bad:#f07a6e; --bad-bg:#3a1c19; --neutral-bg:#262b34;
+}
+body{background:var(--bg);color:var(--ink);font:14px/1.55 "IBM Plex Sans",system-ui,-apple-system,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 60px;display:flex;flex-direction:column;gap:34px}
+.wrap h1,.wrap h2{font-family:"Newsreader",Georgia,serif;font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.01em}
+.wrap h1{font-size:34px;line-height:1.1}
+.wrap h2{font-size:23px}
+.wrap h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:600}
+.wrap p{margin:0;max-width:68ch;color:var(--ink-2)}
+.wrap a{color:var(--speed)}
+.num{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.lede{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:6px;font-size:13px;color:var(--ink-2)}
+.facts b{color:var(--ink);font-family:"IBM Plex Mono",monospace;font-weight:500}
+section{display:flex;flex-direction:column;gap:14px}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.finding{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.finding p{font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;width:fit-content;letter-spacing:.02em}
+.chip.good{background:var(--good-bg);color:var(--good)} .chip.bad{background:var(--bad-bg);color:var(--bad)} .chip.neutral{background:var(--neutral-bg);color:var(--ink-2)}
+.key{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.key.speed{background:var(--speed)} .key.quality{background:var(--quality)}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:16px 18px}
+.scroll{overflow-x:auto}
+.wrap table{border-collapse:collapse;width:100%;font-size:13px}
+.wrap th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.wrap td{padding:7px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+.wrap tr:last-child td{border-bottom:0}
+.wrap td.num,.wrap th.num{text-align:right}
+.wrap tr.link{cursor:pointer} .wrap tr.link:hover td{background:var(--grid)}
+.rid{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--surface)}
+.seg button{font:inherit;font-size:13px;padding:5px 14px;border:0;background:transparent;color:var(--ink-2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--speed);outline-offset:-2px}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.level{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.level header{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.level header strong{font-size:15px}
+.meta{font-size:12px;color:var(--muted)}
+ol.top{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px;font-size:13px}
+ol.top li{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline}
+ol.top li span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obs{font-size:10px;font-weight:600;color:var(--good);margin-left:6px;letter-spacing:.04em}
+.chart svg{display:block;width:100%;height:auto}
+.chart text{fill:var(--ink-2);font-family:"IBM Plex Sans",sans-serif;font-size:12px}
+.chart .tick{fill:var(--muted);font-size:11px;font-family:"IBM Plex Mono",monospace}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--ink-2);align-items:center}
+.legend svg{vertical-align:middle;margin-right:4px}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:6px 9px;border-radius:5px;max-width:320px;line-height:1.4;z-index:5}
+ul.plain{margin:0;padding-left:18px;color:var(--ink-2);font-size:13px;display:flex;flex-direction:column;gap:4px;max-width:80ch}
+</style></head><body>
+
+<header class="site">
+  <h1>AI Impact Meta-Review</h1>
+  <span class="stats" id="stats"></span>
+  <nav><a href="index.html">Home</a><a href="summary.html" style="text-decoration:underline;">Summary</a><a href="runs.html">Runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+</header>
+
+<div class="wrap">
+  <header class="lede">
+    <span class="eyebrow">Imputation runs · overview</span>
+    <h1>What the published runs say</h1>
+    <p>These runs are the ones published on this site, all computed from one snapshot of the review table so they're directly comparable. They cover headline estimates at three aggregation levels, one-knob sensitivity checks against the occupation-level headline, and leave-one-out validation of rank recovery. Full tables are on <a href="runs.html">Runs</a>.</p>
+    <div class="facts" id="facts"></div>
+  </header>
+
+  <section>
+    <h2>Findings</h2>
+    <div class="findings" id="findings"></div>
+  </section>
+
+  <section>
+    <h2>Headline estimates</h2>
+    <p>Default parameters: β = 2.5, SOC majors 37/45/47/49/51/53 pruned, activity threshold 10, and the AIOE baseline for speed only. Lists show the five largest estimated effects. Speed is a log-ratio (higher = faster with AI); quality is Hedges' g. <span class="obs" style="margin:0">OBS</span> marks an observed (not imputed) node.</p>
+    <div><div class="seg" role="group" aria-label="Metric" id="metricSeg">
+      <button type="button" id="m-speed" data-m="speed" aria-pressed="true">Speed</button>
+      <button type="button" id="m-quality" data-m="quality" aria-pressed="false">Quality</button>
+    </div></div>
+    <div class="levels" id="levels"></div>
+  </section>
+
+  <section>
+    <h2>Does the ranking survive a changed knob?</h2>
+    <p>Each row changes one setting and compares the resulting estimates with the matching occupation-level headline run. The comparison uses Spearman ρ over the nodes both runs share, with coarser levels rolled up before joining. ρ near 1 means that choice doesn't change the ordering.</p>
+    <div class="panel">
+      <div class="legend" style="margin-bottom:8px">
+        <span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--ink-2)"/></svg>occupations</span>
+        <span><svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" transform="rotate(45 6 6)" fill="none" stroke="var(--ink-2)" stroke-width="2"/></svg>activities</span>
+        <span><span class="key speed"></span>speed</span><span><span class="key quality"></span>quality</span>
+      </div>
+      <div class="chart scroll" id="sensChart"></div>
+    </div>
+    <div class="panel scroll"><table id="sensTable"></table></div>
+  </section>
+
+  <section>
+    <h2>Can the graph recover held-out effects?</h2>
+    <p>Each observed node is held out and re-imputed. Kendall τ-b compares the order of held-out predictions with the order of the actual values. The bars are bootstrap 95% CIs over folds. An interval entirely right of 0 means the order is recovered; entirely left of 0 means it's reversed.</p>
+    <div class="panel"><div class="chart scroll" id="looChart"></div></div>
+    <div class="panel scroll"><table id="looTable"></table></div>
+  </section>
+
+  <section>
+    <h2>How these runs were chosen</h2>
+    <ul class="plain">
+      <li><b>Headline:</b> both metrics at occupation, SOC-minor and SOC-major level, with default parameters.</li>
+      <li><b>Sensitivity:</b> each run changes one knob from the occupation-level headline: β (1, 10), SOC pruning (keep all 22 majors; also drop Management, SOC 11), activity threshold (5), and, for speed only, removing the AIOE baseline. The baseline is speed-only, so a quality run without it would be identical to the headline.</li>
+      <li><b>Validation:</b> leave-one-out at each level for both metrics, plus speed without the baseline to test whether the AIOE prior helps recover held-out effects.</li>
+      <li>The set is defined in <span class="num">scripts/generate_site_runs.py</span>, which regenerates it from the live review table.</li>
+    </ul>
+  </section>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const f = (x, p=2) => x == null ? '—' : (+x).toFixed(p);
+const LV = {occupation:'Occupation', soc_minor:'SOC minor group', soc_major:'SOC major group'};
+const LVs = {occupation:'occupation', soc_minor:'SOC minor', soc_major:'SOC major'};
+const verdict = l => !l.tau_ci ? ['neutral','n/a'] : l.tau_ci[0] > 0 ? ['good','recovers order'] : l.tau_ci[1] < 0 ? ['bad','reverses order'] : ['neutral','no clear signal'];
+const go = (page, id) => `onclick="location.href='${page}?run=${encodeURIComponent(id)}'"`;
+let S, R;
+
+function findings(){
+  const out = [];
+  const ag = k => R[k] && R[k].agreement && R[k].agreement.occupation;
+  const prune = ['speed-allsoc','speed-excl11','speed-thr5','quality-allsoc','quality-excl11','quality-thr5'].map(ag).filter(Boolean);
+  if (prune.length) {
+    const lo = Math.min(...prune.map(a => a.spearman));
+    out.push(lo >= 0.9
+      ? ['good','Robust','Pruning choices don’t move the ranking', `Keeping every SOC major, also excluding Management (11), or lowering the activity threshold to 5 all give ρ ≥ ${f(lo)} against the headline run for both metrics.`]
+      : ['neutral','Sensitive','Pruning choices shift the ranking', `The lowest agreement among the pruning variants is ρ = ${f(lo)} against the headline run.`]);
+  }
+  const nb = ag('speed-nobase');
+  if (nb) out.push(nb.spearman < 0.8
+    ? ['neutral','Driver','The speed ranking mostly comes from AIOE', `Without the AIOE baseline, speed occupation ρ falls to ${f(nb.spearman)} and only ${nb.top10}/10 of the top occupations stay the same. With so few observed occupations, the prior shapes most of the imputed ordering.`]
+    : ['good','Robust','The speed ranking holds without AIOE', `Dropping the AIOE baseline still gives ρ = ${f(nb.spearman)} against the headline run.`]);
+  for (const m of ['speed','quality']) {
+    const runs = ['occupation','soc_minor','soc_major'].map(l => R[`loo-${m}-${l}`]).filter(Boolean);
+    if (!runs.length) continue;
+    const vs = runs.map(r => [r, verdict(r.loo)[0]]);
+    const txt = runs.map(r => `${LVs[r.level] || r.level} τ = ${f(r.loo.tau)} [${f(r.loo.tau_ci[0])}, ${f(r.loo.tau_ci[1])}]`).join('; ');
+    const M = m[0].toUpperCase() + m.slice(1);
+    if (vs.some(v => v[1] === 'bad'))
+      out.push(['bad','Warning',`${M} predictions reverse the true order at some levels`, `Held-out ${m}: ${txt}. At least one CI is below 0, so treat imputed ${m} rankings as unvalidated.`]);
+    else if (vs.some(v => v[1] === 'good'))
+      out.push(['neutral','Weak signal',`${M} recovery is positive but thin`, `Held-out ${m}: ${txt}. Only levels whose CI excludes 0 show reliable recovery.`]);
+    else
+      out.push(['neutral','No signal',`${M} recovery is indistinguishable from chance`, `Held-out ${m}: ${txt}.`]);
+  }
+  $('findings').innerHTML = out.map(([c,t,h,b]) => `<div class="finding"><span class="chip ${c}">${c==='good'?'✓':c==='bad'?'!':'•'} ${t}</span><strong>${h}</strong><p>${b}</p></div>`).join('');
+}
+
+function renderLevels(metric){
+  $('levels').innerHTML = ['occupation','soc_minor','soc_major'].map(lv => {
+    const r = R[`${metric}-${lv}`]; if (!r) return '';
+    const li = arr => arr.map(t => `<li><span title="${esc(t.label)}">${esc(t.label)}${t.obs!=null?'<span class="obs">OBS</span>':''}</span><span class="num">${f(t.est,3)}</span></li>`).join('');
+    const ag = r.agreement && r.agreement.occupation ? `<span class="meta">ρ vs occupation run: ${f(r.agreement.occupation.spearman)}</span>` : `<span class="meta">reference run</span>`;
+    return `<article class="level">
+      <header><strong><span class="key ${metric}"></span>${LV[lv]}</strong><a class="rid" href="results.html?run=${encodeURIComponent(r.run_id)}">${r.run_id}</a></header>
+      <div class="meta">observed ${r.obs[0]} / ${r.obs[1]} · kept ${r.kept[0]} occ / ${r.kept[1]} act · mean est. <span class="num">${f(r.occ_mean,3)}</span></div>
+      <h3>Top occupations</h3><ol class="top">${li(r.top_occ)}</ol>
+      <h3>Top activities</h3><ol class="top">${li(r.top_act)}</ol>
+      ${ag}
+    </article>`;
+  }).join('');
+}
+document.querySelectorAll('#metricSeg button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#metricSeg button').forEach(x => x.setAttribute('aria-pressed', x===b));
+  renderLevels(b.dataset.m);
+});
+
+const tip = $('tip');
+function bindTips(root){
+  root.querySelectorAll('[data-tip]').forEach(el => {
+    el.addEventListener('mousemove', e => { tip.hidden=false; tip.innerHTML=el.dataset.tip; tip.style.left=Math.min(e.clientX+14, innerWidth-330)+'px'; tip.style.top=(e.clientY+14)+'px'; });
+    el.addEventListener('mouseleave', () => tip.hidden=true);
+  });
+}
+
+function renderSens(){
+  const sens = S.runs.filter(r => r.group==='sensitivity' && r.agreement).sort((a,b) => (a.metric>b.metric?-1:a.metric<b.metric?1:0));
+  const rowH=30, padL=300, padR=20, padT=24, W=880, H=padT+sens.length*rowH+30;
+  const x0=0.2, x1=1.0, sx = v => padL + (Math.max(v,x0)-x0)/(x1-x0)*(W-padL-padR);
+  let g='';
+  [0.2,0.4,0.6,0.8,1.0].forEach(t => { g += `<line x1="${sx(t)}" x2="${sx(t)}" y1="${padT-6}" y2="${H-26}" stroke="var(--grid)"/><text class="tick" x="${sx(t)}" y="${H-10}" text-anchor="middle">${t.toFixed(1)}</text>`; });
+  g += `<text class="tick" x="${padL}" y="12">Spearman ρ vs headline occupation run →</text>`;
+  sens.forEach((r,i) => {
+    const y = padT + i*rowH + rowH/2, col = `var(--${r.metric})`;
+    if (i>0 && sens[i-1].metric!==r.metric) g += `<line x1="0" x2="${W}" y1="${y-rowH/2}" y2="${y-rowH/2}" stroke="var(--rule)"/>`;
+    g += `<text x="0" y="${y+4}"><tspan fill="${col}">●</tspan> ${esc(r.label.replace(/^(Speed|Quality) · /,''))}</text>`;
+    const oc=r.agreement.occupation, ac=r.agreement.activity;
+    if (oc && ac) g += `<line x1="${sx(oc.spearman)}" x2="${sx(ac.spearman)}" y1="${y}" y2="${y}" stroke="${col}" stroke-opacity=".35" stroke-width="2"/>`;
+    if (ac){ const cx=sx(ac.spearman); g += `<rect x="${cx-5}" y="${y-5}" width="10" height="10" transform="rotate(45 ${cx} ${y})" fill="var(--surface)" stroke="${col}" stroke-width="2" data-tip="${esc(r.label)}<br>activities: ρ = ${f(ac.spearman,3)} (n=${ac.n}) · top-10 overlap ${ac.top10??'—'}/10"/>`; }
+    if (oc) g += `<circle cx="${sx(oc.spearman)}" cy="${y}" r="6" fill="${col}" stroke="var(--surface)" stroke-width="2" data-tip="${esc(r.label)}<br>occupations: ρ = ${f(oc.spearman,3)} (n=${oc.n}) · top-10 overlap ${oc.top10??'—'}/10"/>`;
+  });
+  $('sensChart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="min-width:640px" role="img" aria-label="Spearman agreement of each sensitivity run with its headline run">${g}</svg>`;
+  bindTips($('sensChart'));
+  $('sensTable').innerHTML = `<thead><tr><th>Run</th><th>Change</th><th class="num">Kept occ/act</th><th class="num">Occ ρ</th><th class="num">Occ top-10</th><th class="num">Act ρ</th><th class="num">Act top-10</th></tr></thead><tbody>` +
+    sens.map(r => { const oc=r.agreement.occupation||{}, ac=r.agreement.activity||{};
+      return `<tr class="link" ${go('results.html', r.run_id)}><td class="rid">${r.run_id}</td><td><span class="key ${r.metric}"></span>${esc(r.label)}</td><td class="num">${r.kept[0]} / ${r.kept[1]}</td><td class="num">${f(oc.spearman)}</td><td class="num">${oc.top10??'—'}/10</td><td class="num">${f(ac.spearman)}</td><td class="num">${ac.top10??'—'}/10</td></tr>`; }).join('') + '</tbody>';
+}
+
+function renderLoo(){
+  const loo = S.runs.filter(r => r.kind==='loo' && r.loo && r.loo.tau_ci);
+  const rowH=34, padL=300, padR=20, padT=24, W=880, H=padT+loo.length*rowH+30;
+  const sx = v => padL + (v+1)/2*(W-padL-padR);
+  let g='';
+  [-1,-0.5,0,0.5,1].forEach(t => { g += `<line x1="${sx(t)}" x2="${sx(t)}" y1="${padT-6}" y2="${H-26}" stroke="${t===0?'var(--muted)':'var(--grid)'}" ${t===0?'stroke-dasharray="3 3"':''}/><text class="tick" x="${sx(t)}" y="${H-10}" text-anchor="middle">${t}</text>`; });
+  g += `<text class="tick" x="${sx(-1)}" y="12">← reversed</text><text class="tick" x="${sx(1)}" y="12" text-anchor="end">recovered →</text>`;
+  loo.forEach((r,i) => {
+    const l=r.loo, y=padT+i*rowH+rowH/2, col=`var(--${r.metric})`;
+    g += `<text x="0" y="${y+4}">${esc(r.label.replace(/^LOO · /,''))}</text>`;
+    g += `<line x1="${sx(l.tau_ci[0])}" x2="${sx(l.tau_ci[1])}" y1="${y}" y2="${y}" stroke="${col}" stroke-width="2.5" stroke-linecap="round"/>`;
+    g += `<circle cx="${sx(l.tau)}" cy="${y}" r="7" fill="${col}" stroke="var(--surface)" stroke-width="2" data-tip="${esc(r.label)}<br>τ-b = ${f(l.tau,3)} · 95% CI [${f(l.tau_ci[0])}, ${f(l.tau_ci[1])}]<br>Spearman ρ = ${f(l.spearman,3)} · ${l.n} folds · MAE ${f(l.mae,3)}"/>`;
+  });
+  $('looChart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="min-width:640px" role="img" aria-label="Kendall tau with 95% confidence intervals for each LOO run">${g}</svg>`;
+  bindTips($('looChart'));
+  $('looTable').innerHTML = `<thead><tr><th>Run</th><th>Setting</th><th class="num">Folds</th><th class="num">τ-b</th><th class="num">95% CI</th><th class="num">ρ</th><th class="num">MAE</th><th>Verdict</th><th>Largest rank miss</th></tr></thead><tbody>` +
+    loo.map(r => { const l=r.loo, [c,v]=verdict(l), w=(l.worst||[])[0];
+      return `<tr class="link" ${go('loo.html', r.run_id)}><td class="rid">${r.run_id}</td><td><span class="key ${r.metric}"></span>${esc(r.label.replace(/^LOO · /,''))}</td><td class="num">${l.n}</td><td class="num">${f(l.tau)}</td><td class="num">[${f(l.tau_ci[0])}, ${f(l.tau_ci[1])}]</td><td class="num">${f(l.spearman)}</td><td class="num">${f(l.mae,3)}</td><td><span class="chip ${c}">${v}</span></td><td style="font-size:12px">${w ? `${esc(w.label)} <span class="meta">(rank ${f(w.actual_rank,0)} → ${f(w.loo_rank,0)})</span>` : '—'}</td></tr>`; }).join('') + '</tbody>';
+}
+
+fetch('data/summary.json').then(r => r.json()).then(d => {
+  S = d; R = Object.fromEntries(S.runs.map(r => [r.key, r]));
+  const o = S.observations || {};
+  const n = g => S.runs.filter(r => r.group===g).length;
+  $('facts').innerHTML = [
+    `<span><b>${o.speed}</b> speed + <b>${o.quality}</b> quality effect rows</span>`,
+    `<span>→ <b>${o.occ_codes}</b> occupation · <b>${o.act_codes}</b> activity codes</span>`,
+    `<span><b>${S.runs.length}</b> runs: ${n('headline')} headline · ${n('sensitivity')} sensitivity · ${n('validation')} LOO</span>`,
+  ].join('');
+  const st = $('stats'); if (st) st.textContent = `${S.runs.length} curated runs`;
+  findings(); renderLevels('speed'); renderSens(); renderLoo();
+}).catch(() => { document.querySelector('.wrap').innerHTML = '<p>No run summary published. Build the site with a run manifest (scripts/generate_site_runs.py).</p>'; });
+</script>
+</body></html>
