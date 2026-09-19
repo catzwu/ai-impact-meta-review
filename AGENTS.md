@@ -22,8 +22,8 @@ current, and which numbers are safe to cite. `CLAUDE.md` covers the code itself
 | Propagation solver (upstream) | `../pipeline.py`, imported by `scripts/run_analysis.py` |
 | Per-study effect sizes | `outputs/final/speed_table.csv`, `outputs/final/quality_table.csv` |
 | Excluded papers + reason | `outputs/final/papers_excluded.csv` |
-| Curated run manifest (**source of truth for which runs count**) | `config/site_runs.json` (see §3; currently only on an unmerged branch) |
-| Per-run digest used by the site's Summary page | `docs/data/summary.json` (same branch) |
+| Curated run manifest (**source of truth for which runs count**) | `config/site_runs.json` (see §3) |
+| Per-run digest used by the site's Summary page | `docs/data/summary.json` |
 | Per-run outputs | `outputs/analysis_runs/<run_id>/` |
 | Source PDFs | `papers/` (105 PDFs) |
 
@@ -40,17 +40,14 @@ current, and which numbers are safe to cite. `CLAUDE.md` covers the code itself
   the server. All data sits in `docs/data/*.json`.
 - Pages: **Studies** (`index.html`, per-study effects with a drawer showing the
   verbatim quotes and O\*NET mapping), **Runs** (`runs.html`), **Results**
-  (`results.html?run=<run_id>`), **Parameters** (`parameters.html`, the coverage heatmap and
-  an explanation of each knob: β, Ω_ref, Ω_base, thresholds, aggregation), and
+  (`results.html?run=<run_id>`; with no `run` it shows the canonical run),
+  **Summary** (`summary.html`: headline findings, a sensitivity agreement plot,
+  and a LOO τ forest plot), **LOO** (`loo.html?run=<run_id>`),
+  **Parameters** (`parameters.html`: the coverage heatmap and an explanation of
+  each knob, including β, Ω_ref, Ω_base, thresholds and aggregation), and
   **Transitions** (`transitions.html`).
-- Once the curated-runs branch is merged (§3), two more pages appear:
-  **Summary** (`summary.html`) and **LOO** (`loo.html`).
-
-**⚠ The live site is currently stale for analysis runs.** As of 2026-09-19,
-`main` still publishes the old June 2026 run set (17 runs, `20260607_*` to
-`20260626_*`). **Do not take run IDs or imputation numbers for the paper from the
-live Runs page** until the §3 branch is merged. The Studies page (effect-size
-table) is current.
+- As of 2026-09-19 the live site publishes exactly the curated run set from §3,
+  so run IDs on the Runs page are safe to cite.
 
 **Local interactive app** (editing, uploads, new runs; you usually don't need it):
 
@@ -78,18 +75,15 @@ data snapshot:
 - **11 sensitivity runs**: one knob changed from the occupation-level headline run
 - **7 leave-one-out (LOO) validation runs**
 
-**Where it is:** branch `worktree-clean-static-runs` (pushed to origin, **not yet
-merged into `main`** as of 2026-09-19; commits `8da6faa`, `527f558`). Read files
-straight from the branch without checking it out:
+**Where it is:** on `main` (merged 2026-09-19, PR #2). If your local checkout is
+on a different branch, read from `origin/main` without switching:
 
 ```bash
 git fetch origin
-git show origin/worktree-clean-static-runs:config/site_runs.json
-git show origin/worktree-clean-static-runs:docs/data/summary.json
-git show origin/worktree-clean-static-runs:outputs/analysis_runs/<run_id>/occupation_impacts.csv
+git show origin/main:config/site_runs.json
+git show origin/main:docs/data/summary.json
+git show origin/main:outputs/analysis_runs/<run_id>/occupation_impacts.csv
 ```
-
-After the branch merges, the same paths work on `main` and on the live site.
 
 **Data snapshot behind every curated run:** 40 speed observations and 28 quality
 observations from 49 distinct studies (40 in the speed table, 27 in the quality
@@ -97,9 +91,11 @@ table). They map to 12 occupation codes and 11 work-activity codes. 66 papers ar
 listed in `papers_excluded.csv`.
 
 **Superseded / exploratory runs (do not cite):** every `outputs/analysis_runs/`
-directory **not** listed in `config/site_runs.json`. On `main` that includes the
-June runs and the `20260907_*` and `20260919_1325*_loo_*` runs. They either
-duplicate a curated run on an older data snapshot or were one-off experiments.
+directory **not** listed in `config/site_runs.json`. On `main` these are the
+seven June 2026 runs (`20260607_*` to `20260626_*`), which were kept as unique
+exploratory runs. Other local branches or checkouts may also hold `20260907_*`
+or `20260919_1325*_loo_*` runs. Those were deleted as duplicates of curated runs
+on an older data snapshot, so don't cite them either.
 
 ### 3a. Default parameters (headline runs)
 
@@ -217,9 +213,8 @@ rank statistics (concordance C, footrule, top-K precision vs. chance) are in `lo
 
 ```bash
 git fetch origin
-git log --oneline -5 origin/main                      # has the curated-runs branch merged?
-git ls-tree --name-only origin/main config/site_runs.json docs/loo.html   # present => merged, live site current
-git log -1 --format='%ci %s' origin/worktree-clean-static-runs -- config/site_runs.json
+git log -1 --format='%ci %h %s' origin/main -- config/site_runs.json   # last regeneration of the run set
+git show origin/main:config/site_runs.json | grep canonical              # snapshot: 20260919_134544_f33a5b
 ```
 
 If `config/site_runs.json` has been regenerated since 2026-09-19, the run IDs and
