@@ -1,0 +1,330 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Leave-one-out CV &mdash; AI Impact Meta-Review</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; font-size:13px; color:#222; background:#fff; }
+  header.site { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  header.site h1 { margin:0; font-size:16px; }
+  header.site nav { display:flex; gap:12px; align-items:center; margin-left:auto; }
+  header.site nav a { color:#9cf; text-decoration:none; font-size:13px; }
+  header.site nav a:hover { text-decoration:underline; }
+  header.site nav a.gh { color:#fff; background:#333; padding:4px 10px; border-radius:4px; }
+  header.site nav a.gh:hover { background:#444; text-decoration:none; }
+  header.site .stats { color:#bbb; font-size:12px; }
+
+  body { background:#f5f5f7; }
+  main { padding: 16px 24px; max-width:1200px; margin:0 auto; }
+  .card { background:#fff; border-radius:6px; padding:14px 18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .card h2 { margin:0 0 8px; font-size:13px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
+  .metric { background:#f7f8fa; border-radius:5px; padding:9px 12px; }
+  .metric .k { color:#666; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; }
+  .metric .v { font-family:ui-monospace,Menlo,monospace; font-size:16px; font-weight:600; color:#222; margin-top:2px; }
+  .subheads { display:flex; gap:22px; margin-top:10px; color:#666; font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; }
+  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
+  tbody tr:nth-child(even) { background:#fafafa; }
+  tbody tr:hover { background:#eef6ff; }
+  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
+  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
+  .toolbar { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+  .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; }
+  .seg button { padding:5px 12px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
+  .seg button.active { background:#8a5700; color:#fff; }
+  svg.scatter { display:block; background:#fff; }
+  svg.scatter .axis { stroke:#999; stroke-width:1; }
+  svg.scatter .grid { stroke:#eee; stroke-width:1; }
+  svg.scatter .tick { font-family:-apple-system,sans-serif; font-size:10px; fill:#666; }
+  svg.scatter .diag { stroke:#a00; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle.occ { fill:#234876; opacity:0.7; }
+  svg.scatter circle.act { fill:#8a5700; opacity:0.7; }
+  svg.scatter .band { fill:#a00; opacity:0.06; }
+  .metric .sub { color:#888; font-size:11px; font-family:-apple-system,sans-serif; font-weight:400; margin-top:2px; }
+  .note { font-size:11px; color:#666; margin-top:10px; line-height:1.5; }
+  .note ol { margin:4px 0 0 18px; padding:0; }
+  .charts { display:flex; flex-wrap:wrap; gap:18px; }
+  .charts > div { flex:1 1 420px; min-width:0; }
+  .charts h3 { margin:0 0 4px; font-size:12px; color:#555; font-weight:600; }
+</style></head><body>
+
+<header class="site">
+  <h1>AI Impact Meta-Review</h1>
+  <span class="stats" id="stats"></span>
+  <nav><a href="index.html">Home</a><a href="runs.html" style="text-decoration:underline;">Runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+</header>
+
+<main>
+  <div class="card">
+    <h2 id="runLabel">Run parameters</h2>
+    <div id="paramsLine" style="font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#333;">…</div>
+  </div>
+
+  <div class="card">
+    <h2>Overall accuracy</h2>
+    <div class="grid" id="overallGrid"></div>
+    <div class="subheads">
+      <div>Occupations: <span id="occSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities:  <span id="actSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Rank recovery (held-out)</h2>
+    <div style="font-size:12px; color:#555; margin-bottom:10px;">
+      Does the graph put held-out nodes in the right <b>order</b>? Each node is ranked by its held-out prediction and compared
+      with its rank by actual value. Rank statistics ignore uniform shrinkage, so they test ordering, not magnitude.
+    </div>
+    <div class="grid" id="rankGrid"></div>
+    <div class="subheads">
+      <div>Occupations (ranked within type): <span id="occRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities (ranked within type): <span id="actRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+    <div class="note" id="rankNote"></div>
+  </div>
+
+  <div class="card">
+    <h2>Held-out predictions</h2>
+    <div class="charts">
+      <div>
+        <h3>Value: actual vs predicted</h3>
+        <div id="scatterWrap"></div>
+        <div style="font-size:11px; color:#666; margin-top:6px;">Dashed line = perfect prediction (y = x).</div>
+      </div>
+      <div>
+        <h3>Rank: actual rank vs held-out rank</h3>
+        <div id="rankScatterWrap"></div>
+        <div style="font-size:11px; color:#666; margin-top:6px;">Rank 1 = largest effect. Shaded band = within ±2 ranks.</div>
+      </div>
+    </div>
+    <div style="font-size:11px; color:#666; margin-top:6px;">Blue points = occupation holdouts, orange = activity holdouts.</div>
+  </div>
+
+  <div class="card">
+    <h2>Per-observation table</h2>
+    <div class="toolbar">
+      <div class="seg" id="filterSeg">
+        <button data-f="all" class="active">All</button>
+        <button data-f="occupation">Occupations</button>
+        <button data-f="activity">Activities</button>
+      </div>
+      <label style="font-size:12px; color:#555;">search <input type="text" id="search" placeholder="label/code…" style="padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px;"/></label>
+      <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export CSV</button>
+    </div>
+    <table><thead id="th"></thead><tbody id="tb"></tbody></table>
+  </div>
+</main>
+<script>
+const RUN_ID = new URLSearchParams(location.search).get('run') || '';
+let DATA = null, FILTER='all', SORT={col:'abs_rank_delta', dir:-1};
+
+function fmt(x,p){ if(x==null) return '—'; const n=parseFloat(x); return isNaN(n) ? x : n.toFixed(p==null?3:p); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function load() {
+  const resp = await fetch('data/runs/' + encodeURIComponent(RUN_ID) + '.json');
+  if (!resp.ok) { document.querySelector('main').innerHTML = '<p style="padding:30px;">Unknown run: ' + escapeHtml(RUN_ID) + '. See <a href="runs.html">Runs</a>.</p>'; return; }
+  DATA = await resp.json();
+  if (!DATA.loo) { location.replace('results.html?run=' + encodeURIComponent(RUN_ID)); return; }
+  const p = DATA.params;
+  document.getElementById('stats').textContent =
+    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
+    ` · ${DATA.n_folds} folds`;
+  document.getElementById('paramsLine').textContent =
+    `metric=${p.metric} · β=${p.beta} · Ω_ref=${p.omega_ref} · ` +
+    `agg=${p.aggregation_level} · manual_prune=${p.manual_prune} · ` +
+    `weight_threshold=${p.activity_weight_threshold} · excluded=[${(p.excluded_soc_majors||[]).join(',')}]` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '');
+
+  if (DATA.label) document.getElementById('runLabel').textContent = DATA.label;
+  const s = DATA.loo.summary;
+  const grid = document.getElementById('overallGrid');
+  const o = s.overall || {};
+  const cells = [
+    ['n folds', o.n],
+    ['MAE', o.mae!=null ? fmt(o.mae, 4) : '—'],
+    ['RMSE', o.rmse!=null ? fmt(o.rmse, 4) : '—'],
+    ['bias', o.bias!=null ? fmt(o.bias, 4) : '—'],
+    ['R²', o.r2!=null ? fmt(o.r2, 3) : '—'],
+    ['Pearson r', o.pearson_r!=null ? fmt(o.pearson_r, 3) : '—'],
+    ['Spearman ρ', o.spearman_r!=null ? fmt(o.spearman_r, 3) : '—'],
+  ];
+  grid.innerHTML = cells.map(([k,v]) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+  const sub = (obj) => {
+    if (!obj || !obj.n) return 'no folds';
+    return `n=${obj.n} · MAE=${fmt(obj.mae,3)} · R²=${obj.r2!=null?fmt(obj.r2,3):'—'} · ρ=${obj.spearman_r!=null?fmt(obj.spearman_r,3):'—'}`;
+  };
+  document.getElementById('occSummary').textContent = sub(s.occupation);
+  document.getElementById('actSummary').textContent = sub(s.activity);
+
+  renderRankCard();
+  const rows = DATA.loo.rows;
+  renderScatter('scatterWrap', rows, 'actual', 'predicted', {xLabel:'actual (held-out)', yLabel:'predicted'});
+  if (rows.length && rows[0].loo_rank != null) {
+    renderScatter('rankScatterWrap', rows, 'actual_rank', 'loo_rank',
+      {xLabel:'actual rank', yLabel:'held-out rank', rank:true, band:2});
+  } else {
+    document.getElementById('rankScatterWrap').innerHTML = '<div style="color:#888;">No rank data.</div>';
+  }
+  renderTable();
+}
+
+function pfmt(p){ if(p==null) return ''; return p < 0.001 ? 'p<0.001' : 'p=' + p.toFixed(3); }
+
+function renderRankCard() {
+  const R = (DATA.loo.summary||{}).rank;
+  const grid = document.getElementById('rankGrid');
+  if (!R || !R.overall || !R.overall.n) { grid.innerHTML = '<div style="color:#888;">Not enough folds.</div>'; return; }
+  const o = R.overall;
+  const tk = o.topk || {};
+  const cell = (k, v, sub) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const cells = [
+    cell("Kendall τ-b", o.kendall_tau!=null?fmt(o.kendall_tau,3):'—', pfmt(o.kendall_p)),
+    cell("τ 95% CI", o.tau_ci ? `[${fmt(o.tau_ci[0],2)}, ${fmt(o.tau_ci[1],2)}]` : '—', 'bootstrap over folds'),
+    cell("Concordance C", o.concordance_c!=null?fmt(o.concordance_c,3):'—', 'P(pair ordered right) · chance 0.5'),
+    cell("Spearman ρ", o.spearman_r!=null?fmt(o.spearman_r,3):'—', pfmt(o.spearman_p)),
+    cell("Mean |Δrank|", o.mean_abs_rank_delta!=null?fmt(o.mean_abs_rank_delta,2):'—',
+         o.mean_abs_rank_delta_chance!=null?`chance ${fmt(o.mean_abs_rank_delta_chance,2)}`:''),
+    cell("Footrule (norm.)", o.footrule_norm!=null?fmt(o.footrule_norm,3):'—', '0 = identical · 1 = max'),
+  ];
+  for (const K of ['3','5','10']) {
+    if (tk[K]) cells.push(cell(`Top-${K} precision`, `${tk[K].hits}/${tk[K].K}`, `chance ${fmt(tk[K].chance,2)}`));
+  }
+  grid.innerHTML = cells.join('');
+  const sub = (x) => {
+    if (!x || !x.n) return 'no folds';
+    if (x.n < 3) return `n=${x.n} · too few folds`;
+    const t5 = (x.topk||{})['5'] || (x.topk||{})['3'];
+    return `n=${x.n} · τ=${x.kendall_tau!=null?fmt(x.kendall_tau,3):'—'} ${pfmt(x.kendall_p)} · C=${x.concordance_c!=null?fmt(x.concordance_c,3):'—'}` +
+           ` · |Δrank|=${fmt(x.mean_abs_rank_delta,2)} (chance ${fmt(x.mean_abs_rank_delta_chance,2)})` +
+           (t5 ? ` · top-${t5.K} ${t5.hits}/${t5.K}` : '');
+  };
+  document.getElementById('occRank').textContent = sub(R.occupation);
+  document.getElementById('actRank').textContent = sub(R.activity);
+  const m = R.method || {};
+  document.getElementById('rankNote').innerHTML =
+    (R.backfilled ? '<div style="color:#8a5700;">Rank stats computed on load for this older run.</div>' : '') +
+    escapeHtml(m.description||'') +
+    (m.citations && m.citations.length ? '<ol>' + m.citations.map(c=>`<li>${escapeHtml(c)}</li>`).join('') + '</ol>' : '');
+}
+
+function renderScatter(containerId, rows, xKey, yKey, opts) {
+  opts = opts || {};
+  const pad = {l:52, r:16, t:14, b:40};
+  const W = 520, H = 360;
+  const xs = rows.map(r=>+r[xKey]), ys = rows.map(r=>+r[yKey]);
+  let xL, xH;
+  if (opts.rank) {
+    xL = 0.5; xH = Math.max(...xs, ...ys, 1) + 0.5;
+  } else {
+    const lo = Math.min(...xs, ...ys, 0), hi = Math.max(...xs, ...ys, 0.001);
+    const range = hi - lo || 1; xL = lo - range*0.05; xH = hi + range*0.05;
+  }
+  // Rank axes are reversed so rank 1 (largest effect) sits top-right.
+  const fx = v => opts.rank ? (xH - v) / (xH - xL) : (v - xL) / (xH - xL);
+  const sx = v => pad.l + fx(v) * (W - pad.l - pad.r);
+  const sy = v => H - pad.b - fx(v) * (H - pad.t - pad.b);
+  function ticks(a,b,n){
+    const r=b-a||1, step=Math.pow(10,Math.floor(Math.log10(r/n))); const err=n*step/r;
+    let m=1; if(err<=0.15)m=10; else if(err<=0.35)m=5; else if(err<=0.75)m=2;
+    const s=Math.max(opts.rank?1:0, m*step); const t0=Math.ceil(a/s)*s; const out=[];
+    for(let v=t0; v<=b+1e-9; v+=s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const xt = ticks(xL, xH, 6);
+  const tf = t => opts.rank ? String(Math.round(t)) : t.toFixed(2);
+  const gridLines = xt.map(t=>{
+    const x=sx(t), y=sy(t);
+    return `<line class="grid" x1="${x}" y1="${pad.t}" x2="${x}" y2="${H-pad.b}"/>` +
+           `<line class="grid" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`;
+  }).join('');
+  const xTicks = xt.map(t=>`<text class="tick" x="${sx(t)}" y="${H-pad.b+14}" text-anchor="middle">${tf(t)}</text>`).join('');
+  const yTicks = xt.map(t=>`<text class="tick" x="${pad.l-6}" y="${sy(t)+3}" text-anchor="end">${tf(t)}</text>`).join('');
+  let band = '';
+  if (opts.band) {
+    const k = opts.band;
+    const pts = [[xL, xL+k],[xH, xH+k],[xH, xH-k],[xL, xL-k]]
+      .map(([x,y]) => `${sx(x)},${sy(y)}`).join(' ');
+    band = `<clipPath id="${containerId}_clip"><rect x="${pad.l}" y="${pad.t}" width="${W-pad.l-pad.r}" height="${H-pad.t-pad.b}"/></clipPath>` +
+           `<polygon class="band" clip-path="url(#${containerId}_clip)" points="${pts}"/>`;
+  }
+  const diag = `<line class="diag" x1="${sx(xL)}" y1="${sy(xL)}" x2="${sx(xH)}" y2="${sy(xH)}"/>`;
+  const pts = rows.map(r => {
+    const cls = r.node_type === 'occupation' ? 'occ' : 'act';
+    const title = opts.rank
+      ? `${r.label}: actual rank ${fmt(r[xKey],1)}, held-out rank ${fmt(r[yKey],1)} (Δ ${fmt(r.rank_delta,1)})`
+      : `${r.label}: actual ${fmt(r.actual,3)}, predicted ${fmt(r.predicted,3)}, resid ${fmt(r.residual,3)}`;
+    return `<circle class="${cls}" cx="${sx(+r[xKey])}" cy="${sy(+r[yKey])}" r="4"><title>${escapeHtml(title)}</title></circle>`;
+  }).join('');
+  const xAxis = `<line class="axis" x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}"/>`;
+  const yAxis = `<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  const xLabel = `<text class="tick" x="${(pad.l+W-pad.r)/2}" y="${H-6}" text-anchor="middle">${opts.xLabel||xKey}</text>`;
+  const yLabel = `<text class="tick" x="${-H/2}" y="14" text-anchor="middle" transform="rotate(-90)">${opts.yLabel||yKey}</text>`;
+  document.getElementById(containerId).innerHTML =
+    `<svg class="scatter" viewBox="0 0 ${W} ${H}" style="width:100%; max-width:${W}px; height:auto;">
+      ${gridLines}${band}${diag}${pts}${xAxis}${yAxis}${xTicks}${yTicks}${xLabel}${yLabel}
+    </svg>`;
+}
+
+document.getElementById('search').addEventListener('input', renderTable);
+document.querySelectorAll('#filterSeg button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#filterSeg button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); FILTER=b.dataset.f; renderTable();};
+});
+
+function renderTable() {
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let rows = DATA.loo.rows.map(r => Object.assign({}, r,
+    {abs_rank_delta: r.rank_delta != null ? Math.abs(r.rank_delta) : null}));
+  if (FILTER !== 'all') rows = rows.filter(r => r.node_type === FILTER);
+  if (q) rows = rows.filter(r => ((r.label||'')+' '+(r.code||'')).toLowerCase().includes(q));
+  rows.sort((a,b)=>{
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+  const cols = ['node_type','code','label','actual','predicted','residual','abs_error','posterior_std',
+                'actual_rank','loo_rank','rank_delta','abs_rank_delta'];
+  const labels = {node_type:'Type', code:'Code', label:'Label', actual:'Actual', predicted:'Predicted',
+                  residual:'Residual', abs_error:'|error|', posterior_std:'Post. std',
+                  actual_rank:'Actual rank', loo_rank:'Held-out rank', rank_delta:'Δrank', abs_rank_delta:'|Δrank|'};
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c =>
+    `<th onclick="sortBy('${c}')">${labels[c]}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`).join('') + '</tr>';
+  document.getElementById('tb').innerHTML = rows.map(r => {
+    const rc = parseFloat(r.residual)||0;
+    const rcls = rc > 0.001 ? 'pos' : rc < -0.001 ? 'neg' : '';
+    return '<tr>' +
+      `<td>${r.node_type}</td>` +
+      `<td style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#666;">${escapeHtml(r.code||'')}</td>` +
+      `<td>${escapeHtml(r.label||'')}</td>` +
+      `<td class="num">${fmt(r.actual,3)}</td>` +
+      `<td class="num">${fmt(r.predicted,3)}</td>` +
+      `<td class="num ${rcls}">${fmt(r.residual,3)}</td>` +
+      `<td class="num">${fmt(r.abs_error,3)}</td>` +
+      `<td class="num">${fmt(r.posterior_std,3)}</td>` +
+      `<td class="num">${fmt(r.actual_rank,1)}</td>` +
+      `<td class="num">${fmt(r.loo_rank,1)}</td>` +
+      `<td class="num">${fmt(r.rank_delta,1)}</td>` +
+      `<td class="num">${fmt(r.abs_rank_delta,1)}</td>` +
+      '</tr>';
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; renderTable(); }
+
+function exportCsv() {
+  const rows = DATA.loo.rows;
+  const keys = Object.keys(rows[0]||{});
+  const csv = [keys.join(',')].concat(rows.map(r => keys.map(k => JSON.stringify(r[k]??'')).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${RUN_ID}_loocv.csv`; a.click();
+}
+
+load();
+</script></body></html>

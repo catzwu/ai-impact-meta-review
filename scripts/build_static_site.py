@@ -42,6 +42,7 @@ OUTPUTS_DIR = ROOT / "outputs"
 CONFIG_DIR = ROOT / "config"
 RUNS_DIR = OUTPUTS_DIR / "analysis_runs"
 STATE_PATH = OUTPUTS_DIR / "review_state.json"
+SITE_RUNS_PATH = CONFIG_DIR / "site_runs.json"
 
 DOCS = ROOT / "docs"
 ASSETS = DOCS / "assets"
@@ -178,12 +179,48 @@ def _all_run_dirs() -> list[Path]:
     return sorted(out, key=lambda p: p.name, reverse=True)
 
 
+def _load_manifest() -> dict | None:
+    """Curated run set written by scripts/generate_site_runs.py. When present, only
+    these runs are published (in manifest order, grouped); otherwise every plain run."""
+    m = _read_json(SITE_RUNS_PATH)
+    if not m:
+        return None
+    missing = [e["run_id"] for e in m["runs"] if not (RUNS_DIR / e["run_id"] / "run.json").exists()]
+    if missing:
+        print(f"WARN: manifest lists missing runs {missing}; re-run scripts/generate_site_runs.py")
+        m["runs"] = [e for e in m["runs"] if e["run_id"] not in missing]
+    return m
+
+
+def _agreement(run_id: str, ref_id: str) -> dict | None:
+    """Compact rank agreement of a run with its reference run (for runs.html)."""
+    try:
+        import run_analysis as RA
+        c = RA.compare_runs(run_id, ref_id)
+    except Exception as e:  # noqa: BLE001
+        print(f"WARN: compare {run_id} vs {ref_id} failed: {e}")
+        return None
+    if not c:
+        return None
+    out = {"common_level": c["common_level"]}
+    for view, v in c["views"].items():
+        tk = v["topk_overlap"].get("10")
+        out[view] = {"n": v["n"], "spearman": v["metrics"].get("spearman_r"),
+                     "kendall": v["metrics"].get("kendall_tau"),
+                     "top10": tk["intersection"] if tk else None}
+    return out
+
+
 def _load_run_bundle(run_dir: Path) -> dict:
     meta = json.loads((run_dir / "run.json").read_text())
 
     def _read_impacts(p: Path) -> list[dict]:
         return [{k: (None if v == "" else v) for k, v in r.items()} for r in _read_csv(p)]
 
+    if (run_dir / "loocv.json").exists():
+        meta["type"] = "loo"
+        meta["loo"] = json.loads((run_dir / "loocv.json").read_text())
+        return meta
     meta["occupation_impacts"] = _read_impacts(run_dir / "occupation_impacts.csv")
     meta["activity_impacts"] = _read_impacts(run_dir / "activity_impacts.csv")
     return meta
@@ -195,7 +232,7 @@ def _header(active: str) -> str:
     """Shared top nav. `active` is one of 'home', 'runs', 'parameters', 'transitions'."""
     items = [
         ("index.html", "Home", "home"),
-        ("runs.html", "All runs", "runs"),
+        ("runs.html", "Runs", "runs"),
         ("parameters.html", "Parameters", "parameters"),
         ("transitions.html", "Transitions", "transitions"),
     ]
@@ -732,47 +769,408 @@ _RUNS_STYLE = _STYLE_COMMON + r"""
   .pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; }
   .pill.speed { background:#e6f3ff; color:#0463a3; } .pill.quality { background:#ffe6f0; color:#a0286c; }
   td.num { font-variant-numeric: tabular-nums; font-family: ui-monospace, Menlo, monospace; }
+  th.num, td.num { text-align:right; }
+  h2 { font-size:17px; margin:26px 0 4px; }
+  .blurb { color:#555; font-size:12.5px; margin:0 0 10px; max-width:80ch; line-height:1.5; }
+  .rid { font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#888; }
+  .verdict { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; }
+  .verdict.good { background:#d4f4d4; color:#0a6c2c; } .verdict.bad { background:#fde2df; color:#b32020; }
+  .verdict.neutral { background:#eee; color:#555; }
+  .agree { display:inline-block; height:6px; border-radius:2px; background:#5b3aa6; vertical-align:middle; margin-left:6px; opacity:.75; }
 """
 
 _RUNS_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><title>All runs &mdash; AI Impact Meta-Review</title>
+<html><head><meta charset="utf-8"><title>Runs &mdash; AI Impact Meta-Review</title>
 <style>__STYLE__</style></head><body>
 __HEADER__
 <main>
-  <p class="intro">
-    All analysis runs on record. Each row records a single (metric, &beta;, prune, baseline) combination.
-    Click a row to open its per-occupation / per-activity results.
-    See <a href="parameters.html">Parameters</a> for what these knobs do.
+  <p class="intro" id="intro">
+    Published analysis runs. Click a row to open its results.
+    See <a href="parameters.html">Parameters</a> for what the knobs do.
   </p>
-  <table id="t"><thead><tr>
-    <th>Run ID</th><th>Started (UTC)</th><th>Metric</th><th>&beta;</th><th>Aggregation</th>
-    <th>&Omega;<sub>ref</sub></th><th>Baseline</th>
-    <th>Obs (occ/act)</th><th>Kept (occ/act)</th>
-  </tr></thead><tbody id="tb"></tbody></table>
+  <div id="groups"></div>
 </main>
 <script>
 function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const f = (x,p) => x==null ? '—' : (+x).toFixed(p==null?2:p);
+const LV = {occupation:'occupation', soc_minor:'SOC minor', soc_major:'SOC major'};
+const href = r => (r.type==='loo' ? 'loo.html' : 'results.html') + '?run=' + encodeURIComponent(r.run_id);
+const pill = m => `<span class="pill ${m}">${escapeHtml(m)}</span>`;
+const lvl = r => LV[(r.params||{}).aggregation_level] || (r.params||{}).aggregation_level || 'occupation';
+const row = (r, cells) => `<tr class="clickable" onclick="location.href='${href(r)}'">${cells.join('')}</tr>`;
+const agreeCell = a => a ? `<td class="num">${f(a.spearman)}<span class="agree" style="width:${Math.max(0,a.spearman||0)*40}px"></span></td><td class="num">${a.top10==null?'—':a.top10+'/10'}</td>` : '<td class="num">—</td><td class="num">—</td>';
+function verdict(rk){
+  const ci = rk && rk.tau_ci; if (!ci) return '<span class="verdict neutral">n/a</span>';
+  if (ci[0] > 0) return '<span class="verdict good">recovers order</span>';
+  if (ci[1] < 0) return '<span class="verdict bad">reverses order</span>';
+  return '<span class="verdict neutral">no clear signal</span>';
+}
+
+function table(head, body){ return `<table><thead><tr>${head.map(h=>`<th${h[1]?' class="num"':''}>${h[0]}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table>`; }
+
+function renderGroup(g, runs){
+  let html = `<h2>${escapeHtml(g.title)}</h2><p class="blurb">${escapeHtml(g.blurb||'')}</p>`;
+  if (g.id === 'validation') {
+    html += table([['Run'],['Metric'],['Setting'],['Folds',1],['Kendall τ-b',1],['95% CI',1],['Spearman ρ',1],['MAE',1],['Verdict']],
+      runs.map(r => { const s=r.loo_summary||{}, rk=(s.rank||{}).overall||{}, o=s.overall||{};
+        return row(r, [`<td class="rid">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
+          `<td>${escapeHtml((r.label||'').replace(/^LOO · (Speed|Quality) · /,''))}</td>`, `<td class="num">${o.n??'—'}</td>`,
+          `<td class="num">${f(rk.kendall_tau)}</td>`, `<td class="num">${rk.tau_ci?`[${f(rk.tau_ci[0])}, ${f(rk.tau_ci[1])}]`:'—'}</td>`,
+          `<td class="num">${f(rk.spearman_r)}</td>`, `<td class="num">${f(o.mae,3)}</td>`, `<td>${verdict(rk)}</td>`]); }).join(''));
+  } else if (g.id === 'sensitivity') {
+    html += table([['Run'],['Metric'],['Change vs headline'],['Kept occ/act',1],['Occ ρ',1],['Occ top-10',1],['Act ρ',1],['Act top-10',1]],
+      runs.map(r => { const a=r.agreement||{};
+        return row(r, [`<td class="rid">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
+          `<td>${escapeHtml((r.label||'').replace(/^(Speed|Quality) · /,''))}</td>`, `<td class="num">${r.n_kept_occ}/${r.n_kept_act}</td>`,
+          agreeCell(a.occupation), agreeCell(a.activity)]); }).join(''));
+  } else {
+    html += table([['Run'],['Metric'],['Aggregation'],['β',1],['Baseline'],['Obs occ/act',1],['Kept occ/act',1],['Occ ρ vs occupation run',1]],
+      runs.map(r => { const p=r.params||{}, a=(r.agreement||{}).occupation;
+        return row(r, [`<td class="rid">${escapeHtml(r.run_id)}</td>`, `<td>${pill(p.metric)}</td>`, `<td>${escapeHtml(lvl(r))}</td>`,
+          `<td class="num">${p.beta}</td>`, `<td>${r.baseline_active?`AIOE (Ω<sub>b</sub>=${p.omega_base})`:'—'}</td>`,
+          `<td class="num">${r.n_observed_occ}/${r.n_observed_act}</td>`, `<td class="num">${r.n_kept_occ}/${r.n_kept_act}</td>`,
+          `<td class="num">${a?f(a.spearman):'reference'}</td>`]); }).join(''));
+  }
+  return html;
+}
+
 fetch('data/runs/index.json').then(r=>r.json()).then(d=>{
-  const tb = document.getElementById('tb');
-  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="9" style="text-align:center; padding:20px; color:#888;">No runs on record.</td></tr>'; return; }
+  const el = document.getElementById('groups');
+  if (!d.runs.length) { el.innerHTML='<p style="color:#888;">No runs published.</p>'; return; }
   document.getElementById('stats').textContent = `${d.runs.length} runs`;
-  tb.innerHTML = d.runs.map(r=>{
-    const p = r.params||{};
-    return `<tr class="clickable" onclick="location.href='results.html?run='+encodeURIComponent('${r.run_id}')">
-      <td style="font-family:monospace; font-size:11px;">${escapeHtml(r.run_id)}</td>
-      <td>${escapeHtml((r.started_utc||'').replace('T',' ').slice(0,19))}</td>
-      <td><span class="pill ${p.metric}">${escapeHtml(p.metric||'')}</span></td>
-      <td class="num">${p.beta}</td>
-      <td>${escapeHtml(p.aggregation_level||'occupation')}</td>
-      <td class="num">${p.omega_ref}</td>
-      <td>${r.baseline_active ? `yes (Ω<sub>b</sub>=${p.omega_base})` : '—'}</td>
-      <td class="num">${r.n_observed_occ}/${r.n_observed_act}</td>
-      <td class="num">${r.n_kept_occ}/${r.n_kept_act}</td>
-    </tr>`;
+  if (d.observations) {
+    const o = d.observations;
+    document.getElementById('intro').innerHTML +=
+      ` All runs share one data snapshot: ${o.speed} speed + ${o.quality} quality effect rows, aggregated to ` +
+      `${o.occ_codes} observed occupation and ${o.act_codes} activity codes.`;
+  }
+  const groups = (d.groups && d.groups.length) ? d.groups : [{id:'all', title:'All runs', blurb:''}];
+  el.innerHTML = groups.map(g => {
+    const runs = d.runs.filter(r => g.id==='all' || r.group===g.id);
+    return runs.length ? renderGroup(g, runs) : '';
   }).join('');
 });
 </script>
 </body></html>
+"""
+
+
+# ---------- loo.html (leave-one-out viewer; port of review_app.LOO_HTML) ----------
+
+_LOO_STYLE = _STYLE_COMMON + r"""
+  body { background:#f5f5f7; }
+  main { padding: 16px 24px; max-width:1200px; margin:0 auto; }
+  .card { background:#fff; border-radius:6px; padding:14px 18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .card h2 { margin:0 0 8px; font-size:13px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
+  .metric { background:#f7f8fa; border-radius:5px; padding:9px 12px; }
+  .metric .k { color:#666; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; }
+  .metric .v { font-family:ui-monospace,Menlo,monospace; font-size:16px; font-weight:600; color:#222; margin-top:2px; }
+  .subheads { display:flex; gap:22px; margin-top:10px; color:#666; font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; }
+  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
+  tbody tr:nth-child(even) { background:#fafafa; }
+  tbody tr:hover { background:#eef6ff; }
+  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
+  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
+  .toolbar { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+  .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; }
+  .seg button { padding:5px 12px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
+  .seg button.active { background:#8a5700; color:#fff; }
+  svg.scatter { display:block; background:#fff; }
+  svg.scatter .axis { stroke:#999; stroke-width:1; }
+  svg.scatter .grid { stroke:#eee; stroke-width:1; }
+  svg.scatter .tick { font-family:-apple-system,sans-serif; font-size:10px; fill:#666; }
+  svg.scatter .diag { stroke:#a00; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle.occ { fill:#234876; opacity:0.7; }
+  svg.scatter circle.act { fill:#8a5700; opacity:0.7; }
+  svg.scatter .band { fill:#a00; opacity:0.06; }
+  .metric .sub { color:#888; font-size:11px; font-family:-apple-system,sans-serif; font-weight:400; margin-top:2px; }
+  .note { font-size:11px; color:#666; margin-top:10px; line-height:1.5; }
+  .note ol { margin:4px 0 0 18px; padding:0; }
+  .charts { display:flex; flex-wrap:wrap; gap:18px; }
+  .charts > div { flex:1 1 420px; min-width:0; }
+  .charts h3 { margin:0 0 4px; font-size:12px; color:#555; font-weight:600; }
+"""
+
+_LOO_HTML = r"""<!doctype html>
+<html><head><meta charset="utf-8"><title>Leave-one-out CV &mdash; AI Impact Meta-Review</title>
+<style>__STYLE__</style></head><body>
+__HEADER__
+<main>
+  <div class="card">
+    <h2 id="runLabel">Run parameters</h2>
+    <div id="paramsLine" style="font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#333;">…</div>
+  </div>
+
+  <div class="card">
+    <h2>Overall accuracy</h2>
+    <div class="grid" id="overallGrid"></div>
+    <div class="subheads">
+      <div>Occupations: <span id="occSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities:  <span id="actSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Rank recovery (held-out)</h2>
+    <div style="font-size:12px; color:#555; margin-bottom:10px;">
+      Does the graph put held-out nodes in the right <b>order</b>? Each node is ranked by its held-out prediction and compared
+      with its rank by actual value. Rank statistics ignore uniform shrinkage, so they test ordering, not magnitude.
+    </div>
+    <div class="grid" id="rankGrid"></div>
+    <div class="subheads">
+      <div>Occupations (ranked within type): <span id="occRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities (ranked within type): <span id="actRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+    <div class="note" id="rankNote"></div>
+  </div>
+
+  <div class="card">
+    <h2>Held-out predictions</h2>
+    <div class="charts">
+      <div>
+        <h3>Value: actual vs predicted</h3>
+        <div id="scatterWrap"></div>
+        <div style="font-size:11px; color:#666; margin-top:6px;">Dashed line = perfect prediction (y = x).</div>
+      </div>
+      <div>
+        <h3>Rank: actual rank vs held-out rank</h3>
+        <div id="rankScatterWrap"></div>
+        <div style="font-size:11px; color:#666; margin-top:6px;">Rank 1 = largest effect. Shaded band = within ±2 ranks.</div>
+      </div>
+    </div>
+    <div style="font-size:11px; color:#666; margin-top:6px;">Blue points = occupation holdouts, orange = activity holdouts.</div>
+  </div>
+
+  <div class="card">
+    <h2>Per-observation table</h2>
+    <div class="toolbar">
+      <div class="seg" id="filterSeg">
+        <button data-f="all" class="active">All</button>
+        <button data-f="occupation">Occupations</button>
+        <button data-f="activity">Activities</button>
+      </div>
+      <label style="font-size:12px; color:#555;">search <input type="text" id="search" placeholder="label/code…" style="padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px;"/></label>
+      <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export CSV</button>
+    </div>
+    <table><thead id="th"></thead><tbody id="tb"></tbody></table>
+  </div>
+</main>
+<script>
+const RUN_ID = new URLSearchParams(location.search).get('run') || '';
+let DATA = null, FILTER='all', SORT={col:'abs_rank_delta', dir:-1};
+
+function fmt(x,p){ if(x==null) return '—'; const n=parseFloat(x); return isNaN(n) ? x : n.toFixed(p==null?3:p); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function load() {
+  const resp = await fetch('data/runs/' + encodeURIComponent(RUN_ID) + '.json');
+  if (!resp.ok) { document.querySelector('main').innerHTML = '<p style="padding:30px;">Unknown run: ' + escapeHtml(RUN_ID) + '. See <a href="runs.html">Runs</a>.</p>'; return; }
+  DATA = await resp.json();
+  if (!DATA.loo) { location.replace('results.html?run=' + encodeURIComponent(RUN_ID)); return; }
+  const p = DATA.params;
+  document.getElementById('stats').textContent =
+    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
+    ` · ${DATA.n_folds} folds`;
+  document.getElementById('paramsLine').textContent =
+    `metric=${p.metric} · β=${p.beta} · Ω_ref=${p.omega_ref} · ` +
+    `agg=${p.aggregation_level} · manual_prune=${p.manual_prune} · ` +
+    `weight_threshold=${p.activity_weight_threshold} · excluded=[${(p.excluded_soc_majors||[]).join(',')}]` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '');
+
+  if (DATA.label) document.getElementById('runLabel').textContent = DATA.label;
+  const s = DATA.loo.summary;
+  const grid = document.getElementById('overallGrid');
+  const o = s.overall || {};
+  const cells = [
+    ['n folds', o.n],
+    ['MAE', o.mae!=null ? fmt(o.mae, 4) : '—'],
+    ['RMSE', o.rmse!=null ? fmt(o.rmse, 4) : '—'],
+    ['bias', o.bias!=null ? fmt(o.bias, 4) : '—'],
+    ['R²', o.r2!=null ? fmt(o.r2, 3) : '—'],
+    ['Pearson r', o.pearson_r!=null ? fmt(o.pearson_r, 3) : '—'],
+    ['Spearman ρ', o.spearman_r!=null ? fmt(o.spearman_r, 3) : '—'],
+  ];
+  grid.innerHTML = cells.map(([k,v]) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+  const sub = (obj) => {
+    if (!obj || !obj.n) return 'no folds';
+    return `n=${obj.n} · MAE=${fmt(obj.mae,3)} · R²=${obj.r2!=null?fmt(obj.r2,3):'—'} · ρ=${obj.spearman_r!=null?fmt(obj.spearman_r,3):'—'}`;
+  };
+  document.getElementById('occSummary').textContent = sub(s.occupation);
+  document.getElementById('actSummary').textContent = sub(s.activity);
+
+  renderRankCard();
+  const rows = DATA.loo.rows;
+  renderScatter('scatterWrap', rows, 'actual', 'predicted', {xLabel:'actual (held-out)', yLabel:'predicted'});
+  if (rows.length && rows[0].loo_rank != null) {
+    renderScatter('rankScatterWrap', rows, 'actual_rank', 'loo_rank',
+      {xLabel:'actual rank', yLabel:'held-out rank', rank:true, band:2});
+  } else {
+    document.getElementById('rankScatterWrap').innerHTML = '<div style="color:#888;">No rank data.</div>';
+  }
+  renderTable();
+}
+
+function pfmt(p){ if(p==null) return ''; return p < 0.001 ? 'p<0.001' : 'p=' + p.toFixed(3); }
+
+function renderRankCard() {
+  const R = (DATA.loo.summary||{}).rank;
+  const grid = document.getElementById('rankGrid');
+  if (!R || !R.overall || !R.overall.n) { grid.innerHTML = '<div style="color:#888;">Not enough folds.</div>'; return; }
+  const o = R.overall;
+  const tk = o.topk || {};
+  const cell = (k, v, sub) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const cells = [
+    cell("Kendall τ-b", o.kendall_tau!=null?fmt(o.kendall_tau,3):'—', pfmt(o.kendall_p)),
+    cell("τ 95% CI", o.tau_ci ? `[${fmt(o.tau_ci[0],2)}, ${fmt(o.tau_ci[1],2)}]` : '—', 'bootstrap over folds'),
+    cell("Concordance C", o.concordance_c!=null?fmt(o.concordance_c,3):'—', 'P(pair ordered right) · chance 0.5'),
+    cell("Spearman ρ", o.spearman_r!=null?fmt(o.spearman_r,3):'—', pfmt(o.spearman_p)),
+    cell("Mean |Δrank|", o.mean_abs_rank_delta!=null?fmt(o.mean_abs_rank_delta,2):'—',
+         o.mean_abs_rank_delta_chance!=null?`chance ${fmt(o.mean_abs_rank_delta_chance,2)}`:''),
+    cell("Footrule (norm.)", o.footrule_norm!=null?fmt(o.footrule_norm,3):'—', '0 = identical · 1 = max'),
+  ];
+  for (const K of ['3','5','10']) {
+    if (tk[K]) cells.push(cell(`Top-${K} precision`, `${tk[K].hits}/${tk[K].K}`, `chance ${fmt(tk[K].chance,2)}`));
+  }
+  grid.innerHTML = cells.join('');
+  const sub = (x) => {
+    if (!x || !x.n) return 'no folds';
+    if (x.n < 3) return `n=${x.n} · too few folds`;
+    const t5 = (x.topk||{})['5'] || (x.topk||{})['3'];
+    return `n=${x.n} · τ=${x.kendall_tau!=null?fmt(x.kendall_tau,3):'—'} ${pfmt(x.kendall_p)} · C=${x.concordance_c!=null?fmt(x.concordance_c,3):'—'}` +
+           ` · |Δrank|=${fmt(x.mean_abs_rank_delta,2)} (chance ${fmt(x.mean_abs_rank_delta_chance,2)})` +
+           (t5 ? ` · top-${t5.K} ${t5.hits}/${t5.K}` : '');
+  };
+  document.getElementById('occRank').textContent = sub(R.occupation);
+  document.getElementById('actRank').textContent = sub(R.activity);
+  const m = R.method || {};
+  document.getElementById('rankNote').innerHTML =
+    (R.backfilled ? '<div style="color:#8a5700;">Rank stats computed on load for this older run.</div>' : '') +
+    escapeHtml(m.description||'') +
+    (m.citations && m.citations.length ? '<ol>' + m.citations.map(c=>`<li>${escapeHtml(c)}</li>`).join('') + '</ol>' : '');
+}
+
+function renderScatter(containerId, rows, xKey, yKey, opts) {
+  opts = opts || {};
+  const pad = {l:52, r:16, t:14, b:40};
+  const W = 520, H = 360;
+  const xs = rows.map(r=>+r[xKey]), ys = rows.map(r=>+r[yKey]);
+  let xL, xH;
+  if (opts.rank) {
+    xL = 0.5; xH = Math.max(...xs, ...ys, 1) + 0.5;
+  } else {
+    const lo = Math.min(...xs, ...ys, 0), hi = Math.max(...xs, ...ys, 0.001);
+    const range = hi - lo || 1; xL = lo - range*0.05; xH = hi + range*0.05;
+  }
+  // Rank axes are reversed so rank 1 (largest effect) sits top-right.
+  const fx = v => opts.rank ? (xH - v) / (xH - xL) : (v - xL) / (xH - xL);
+  const sx = v => pad.l + fx(v) * (W - pad.l - pad.r);
+  const sy = v => H - pad.b - fx(v) * (H - pad.t - pad.b);
+  function ticks(a,b,n){
+    const r=b-a||1, step=Math.pow(10,Math.floor(Math.log10(r/n))); const err=n*step/r;
+    let m=1; if(err<=0.15)m=10; else if(err<=0.35)m=5; else if(err<=0.75)m=2;
+    const s=Math.max(opts.rank?1:0, m*step); const t0=Math.ceil(a/s)*s; const out=[];
+    for(let v=t0; v<=b+1e-9; v+=s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const xt = ticks(xL, xH, 6);
+  const tf = t => opts.rank ? String(Math.round(t)) : t.toFixed(2);
+  const gridLines = xt.map(t=>{
+    const x=sx(t), y=sy(t);
+    return `<line class="grid" x1="${x}" y1="${pad.t}" x2="${x}" y2="${H-pad.b}"/>` +
+           `<line class="grid" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`;
+  }).join('');
+  const xTicks = xt.map(t=>`<text class="tick" x="${sx(t)}" y="${H-pad.b+14}" text-anchor="middle">${tf(t)}</text>`).join('');
+  const yTicks = xt.map(t=>`<text class="tick" x="${pad.l-6}" y="${sy(t)+3}" text-anchor="end">${tf(t)}</text>`).join('');
+  let band = '';
+  if (opts.band) {
+    const k = opts.band;
+    const pts = [[xL, xL+k],[xH, xH+k],[xH, xH-k],[xL, xL-k]]
+      .map(([x,y]) => `${sx(x)},${sy(y)}`).join(' ');
+    band = `<clipPath id="${containerId}_clip"><rect x="${pad.l}" y="${pad.t}" width="${W-pad.l-pad.r}" height="${H-pad.t-pad.b}"/></clipPath>` +
+           `<polygon class="band" clip-path="url(#${containerId}_clip)" points="${pts}"/>`;
+  }
+  const diag = `<line class="diag" x1="${sx(xL)}" y1="${sy(xL)}" x2="${sx(xH)}" y2="${sy(xH)}"/>`;
+  const pts = rows.map(r => {
+    const cls = r.node_type === 'occupation' ? 'occ' : 'act';
+    const title = opts.rank
+      ? `${r.label}: actual rank ${fmt(r[xKey],1)}, held-out rank ${fmt(r[yKey],1)} (Δ ${fmt(r.rank_delta,1)})`
+      : `${r.label}: actual ${fmt(r.actual,3)}, predicted ${fmt(r.predicted,3)}, resid ${fmt(r.residual,3)}`;
+    return `<circle class="${cls}" cx="${sx(+r[xKey])}" cy="${sy(+r[yKey])}" r="4"><title>${escapeHtml(title)}</title></circle>`;
+  }).join('');
+  const xAxis = `<line class="axis" x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}"/>`;
+  const yAxis = `<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  const xLabel = `<text class="tick" x="${(pad.l+W-pad.r)/2}" y="${H-6}" text-anchor="middle">${opts.xLabel||xKey}</text>`;
+  const yLabel = `<text class="tick" x="${-H/2}" y="14" text-anchor="middle" transform="rotate(-90)">${opts.yLabel||yKey}</text>`;
+  document.getElementById(containerId).innerHTML =
+    `<svg class="scatter" viewBox="0 0 ${W} ${H}" style="width:100%; max-width:${W}px; height:auto;">
+      ${gridLines}${band}${diag}${pts}${xAxis}${yAxis}${xTicks}${yTicks}${xLabel}${yLabel}
+    </svg>`;
+}
+
+document.getElementById('search').addEventListener('input', renderTable);
+document.querySelectorAll('#filterSeg button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#filterSeg button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); FILTER=b.dataset.f; renderTable();};
+});
+
+function renderTable() {
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let rows = DATA.loo.rows.map(r => Object.assign({}, r,
+    {abs_rank_delta: r.rank_delta != null ? Math.abs(r.rank_delta) : null}));
+  if (FILTER !== 'all') rows = rows.filter(r => r.node_type === FILTER);
+  if (q) rows = rows.filter(r => ((r.label||'')+' '+(r.code||'')).toLowerCase().includes(q));
+  rows.sort((a,b)=>{
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+  const cols = ['node_type','code','label','actual','predicted','residual','abs_error','posterior_std',
+                'actual_rank','loo_rank','rank_delta','abs_rank_delta'];
+  const labels = {node_type:'Type', code:'Code', label:'Label', actual:'Actual', predicted:'Predicted',
+                  residual:'Residual', abs_error:'|error|', posterior_std:'Post. std',
+                  actual_rank:'Actual rank', loo_rank:'Held-out rank', rank_delta:'Δrank', abs_rank_delta:'|Δrank|'};
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c =>
+    `<th onclick="sortBy('${c}')">${labels[c]}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`).join('') + '</tr>';
+  document.getElementById('tb').innerHTML = rows.map(r => {
+    const rc = parseFloat(r.residual)||0;
+    const rcls = rc > 0.001 ? 'pos' : rc < -0.001 ? 'neg' : '';
+    return '<tr>' +
+      `<td>${r.node_type}</td>` +
+      `<td style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#666;">${escapeHtml(r.code||'')}</td>` +
+      `<td>${escapeHtml(r.label||'')}</td>` +
+      `<td class="num">${fmt(r.actual,3)}</td>` +
+      `<td class="num">${fmt(r.predicted,3)}</td>` +
+      `<td class="num ${rcls}">${fmt(r.residual,3)}</td>` +
+      `<td class="num">${fmt(r.abs_error,3)}</td>` +
+      `<td class="num">${fmt(r.posterior_std,3)}</td>` +
+      `<td class="num">${fmt(r.actual_rank,1)}</td>` +
+      `<td class="num">${fmt(r.loo_rank,1)}</td>` +
+      `<td class="num">${fmt(r.rank_delta,1)}</td>` +
+      `<td class="num">${fmt(r.abs_rank_delta,1)}</td>` +
+      '</tr>';
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; renderTable(); }
+
+function exportCsv() {
+  const rows = DATA.loo.rows;
+  const keys = Object.keys(rows[0]||{});
+  const csv = [keys.join(',')].concat(rows.map(r => keys.map(k => JSON.stringify(r[k]??'')).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${RUN_ID}_loocv.csv`; a.click();
+}
+
+load();
+</script></body></html>
 """
 
 
@@ -1490,17 +1888,37 @@ def main():
         (PAPERS_DATA / f"{pid}.json").write_text(json.dumps(_paper_bundle(pid)))
     print(f"wrote {len(paper_ids)} per-paper bundles into data/papers/")
 
-    # 4. Runs (per-run + index)
-    run_dirs = _all_run_dirs()
+    # 4. Runs (per-run + index). The curated manifest decides what's published.
+    manifest = _load_manifest()
+    if manifest:
+        entries = {e["run_id"]: e for e in manifest["runs"]}
+        run_dirs = [RUNS_DIR / rid for rid in entries]
+    else:
+        entries = {}
+        run_dirs = _all_run_dirs()
     all_run_metas = []
     for d in run_dirs:
         bundle = _load_run_bundle(d)
+        e = entries.get(d.name)
+        if e:
+            bundle.update(label=e["label"], group=e["group"], reference_run_id=e.get("reference_run_id"))
+            if e.get("reference_run_id"):
+                bundle["agreement"] = _agreement(d.name, e["reference_run_id"])
         (RUNS_DATA / f"{d.name}.json").write_text(json.dumps(bundle))
-        meta_only = {k: v for k, v in bundle.items() if k not in ("occupation_impacts", "activity_impacts")}
+        meta_only = {k: v for k, v in bundle.items() if k not in ("occupation_impacts", "activity_impacts", "loo")}
+        if bundle.get("type") == "loo":
+            meta_only["loo_summary"] = bundle["loo"].get("summary")
         all_run_metas.append(meta_only)
-    (RUNS_DATA / "index.json").write_text(json.dumps({"runs": all_run_metas}))
-    canonical_run_id = run_dirs[0].name if run_dirs else ""
-    print(f"wrote {len(run_dirs)} run bundles into data/runs/ (canonical: {canonical_run_id or 'none'})")
+    canonical_run_id = (manifest or {}).get("canonical") or next(
+        (m["run_id"] for m in all_run_metas if m.get("type") != "loo"), "")
+    (RUNS_DATA / "index.json").write_text(json.dumps({
+        "runs": all_run_metas,
+        "groups": (manifest or {}).get("groups", []),
+        "observations": (manifest or {}).get("observations"),
+        "canonical": canonical_run_id,
+    }))
+    print(f"wrote {len(run_dirs)} run bundles into data/runs/ (canonical: {canonical_run_id or 'none'}"
+          f"{', curated' if manifest else ''})")
 
     # 5. Heatmap precompute (needs run_analysis + Work Activities.xlsx)
     try:
@@ -1540,6 +1958,7 @@ def main():
         ("results.html",     _RESULTS_HTML,     {"__STYLE__": _RESULTS_STYLE, "__HEADER__": _header("runs"),
                                                   "__DEFAULT_RUN_ID__": canonical_run_id}),
         ("runs.html",        _RUNS_HTML,        {"__STYLE__": _RUNS_STYLE,   "__HEADER__": _header("runs")}),
+        ("loo.html",         _LOO_HTML,         {"__STYLE__": _LOO_STYLE,    "__HEADER__": _header("runs")}),
         ("parameters.html",  _PARAMS_HTML,      {"__STYLE__": _PARAMS_STYLE, "__HEADER__": _header("parameters"),
                                                   "__BETA__": str(CANONICAL_BETA)}),
         ("transitions.html", _TRANSITIONS_HTML, {"__STYLE_COMMON__": _STYLE_COMMON, "__HEADER__": _header("transitions")}),

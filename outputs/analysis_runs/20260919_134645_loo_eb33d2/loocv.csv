@@ -1,0 +1,16 @@
+node_type,code,label,actual,predicted,residual,abs_error,posterior_std,actual_rank,loo_rank,rank_delta,actual_rank_within,loo_rank_within,rank_delta_within
+occupation,13,Business & Financial,0.2323,0.3144,0.0821,0.0821,0.8319,8.0,5.0,-3.0,5.0,4.0,-1.0
+occupation,15,Computer & Math,0.237,0.3169,0.0799,0.0799,0.821,7.0,4.0,-3.0,4.0,3.0,-1.0
+occupation,23,Legal,0.2506,0.3649,0.1143,0.1143,0.8423,5.0,2.0,-3.0,2.0,1.0,-1.0
+occupation,27,Arts; Design; Media,0.5829,0.3037,-0.2792,0.2792,0.8259,1.0,6.0,5.0,1.0,5.0,4.0
+occupation,29,Healthcare Practitioners,-0.0378,0.2629,0.3006,0.3006,0.8704,15.0,10.0,-5.0,7.0,7.0,0.0
+occupation,41,Sales,0.0541,0.3213,0.2671,0.2671,0.8549,12.0,3.0,-9.0,6.0,2.0,-4.0
+occupation,43,Office & Admin Support,0.2372,0.3001,0.0628,0.0628,0.838,6.0,7.0,1.0,3.0,6.0,3.0
+activity,,Analyzing Data or Information,0.0117,0.2678,0.2561,0.2561,1.207,14.0,9.0,-5.0,8.0,3.0,-5.0
+activity,,Communicating with People Outside the Organization,0.2314,0.2832,0.0518,0.0518,1.4519,9.0,8.0,-1.0,4.0,2.0,-2.0
+activity,,Documenting/Recording Information,0.0469,0.2455,0.1986,0.1986,1.6883,13.0,12.5,-0.5,7.0,5.5,-1.5
+activity,,Getting Information,0.3057,0.2377,-0.0679,0.0679,0.8066,3.0,14.0,11.0,2.0,7.0,5.0
+activity,,Monitoring Processes; Materials; or Surroundings,0.0945,0.2218,0.1273,0.1273,1.7085,11.0,15.0,4.0,6.0,8.0,2.0
+activity,,Processing Information,0.2625,0.2455,-0.017,0.017,1.1587,4.0,12.5,8.5,3.0,5.5,2.5
+activity,,Thinking Creatively,0.4274,0.4152,-0.0123,0.0123,1.1656,2.0,1.0,-1.0,1.0,1.0,0.0
+activity,,Working with Computers,0.227,0.2503,0.0233,0.0233,1.2664,10.0,11.0,1.0,5.0,4.0,-1.0

@@ -1,0 +1,23 @@
+activity,observed,n_studies,estimate,posterior_std
+Analyzing Data or Information,0.011727583053967785,4.0,0.0311,0.0485
+Assisting and Caring for Others,,,0.2717,0.214
+Coaching and Developing Others,,,0.3085,0.2792
+Communicating with People Outside the Organization,0.23136364186155733,1.0,0.2458,0.0913
+Communicating with Supervisors; Peers; or Subordinates,,,0.303,0.1627
+Documenting/Recording Information,0.04688358589885046,1.0,0.0908,0.091
+Establishing and Maintaining Interpersonal Relationships,,,0.3054,0.1588
+Evaluating Information to Determine Compliance with Standards,,,0.2968,0.235
+Getting Information,0.3056756374997935,1.0,0.3064,0.0843
+Handling and Moving Objects,,,0.2501,0.2824
+Identifying Objects; Actions; and Events,,,0.2902,0.195
+Interpreting the Meaning of Information for Others,,,0.3157,0.2635
+Making Decisions and Solving Problems,,,0.3001,0.164
+Monitoring Processes; Materials; or Surroundings,0.09447675960815247,1.0,0.0957,0.0178
+Organizing; Planning; and Prioritizing Work,,,0.3089,0.1706
+Performing for or Working Directly with the Public,,,0.2845,0.2284
+Processing Information,0.2625231020213536,3.0,0.2664,0.0551
+Resolving Conflicts and Negotiating with Others,,,0.3005,0.2662
+Thinking Creatively,0.4274410518727558,2.0,0.4144,0.0666
+Training and Teaching Others,,,0.3229,0.2379
+Updating and Using Relevant Knowledge,,,0.3002,0.1574
+Working with Computers,0.22700845562288027,9.0,0.2288,0.0329

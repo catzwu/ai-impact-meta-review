@@ -1,0 +1,386 @@
+{
+  "run_id": "20260919_134653_loo_45be60",
+  "summary": {
+    "overall": {
+      "n": 15,
+      "mae": 0.21529333333333334,
+      "rmse": 0.24717620165919427,
+      "bias": 0.03352000000000002,
+      "r2": -0.3412256671568008,
+      "pearson_r": -0.6148786296062909,
+      "spearman_r": -0.7464285714285712
+    },
+    "occupation": {
+      "n": 7,
+      "mae": 0.2545,
+      "rmse": 0.28025122148325626,
+      "bias": 0.1720428571428572,
+      "r2": -0.8369871358663235,
+      "pearson_r": -0.30639396511252237,
+      "spearman_r": -0.42857142857142866
+    },
+    "activity": {
+      "n": 8,
+      "mae": 0.1809875,
+      "rmse": 0.21408406351244363,
+      "bias": -0.0876875,
+      "r2": -0.5419566541562644,
+      "pearson_r": -0.6570499674758573,
+      "spearman_r": -0.8571428571428572
+    },
+    "rank": {
+      "overall": {
+        "n": 15,
+        "kendall_tau": -0.6000000000000001,
+        "kendall_p": 0.0012858607977242237,
+        "concordance_c": 0.19999999999999996,
+        "spearman_r": -0.7464285714285712,
+        "spearman_p": 0.0013914110890630544,
+        "footrule": 102.0,
+        "footrule_norm": 0.9107142857142857,
+        "mean_abs_rank_delta": 6.8,
+        "mean_abs_rank_delta_chance": 4.977777777777778,
+        "topk": {
+          "3": {
+            "K": 3,
+            "hits": 0,
+            "rate": 0.0,
+            "chance": 0.2
+          },
+          "5": {
+            "K": 5,
+            "hits": 1,
+            "rate": 0.2,
+            "chance": 0.3333333333333333
+          },
+          "10": {
+            "K": 10,
+            "hits": 5,
+            "rate": 0.5,
+            "chance": 0.6666666666666666
+          }
+        },
+        "tau_ci": [
+          -0.8586212121212121,
+          -0.3
+        ],
+        "tau_ci_boot_n": 2000
+      },
+      "occupation": {
+        "n": 7,
+        "kendall_tau": -0.33333333333333337,
+        "kendall_p": 0.3813492063492063,
+        "concordance_c": 0.3333333333333333,
+        "spearman_r": -0.42857142857142866,
+        "spearman_p": 0.3373683110858241,
+        "footrule": 22.0,
+        "footrule_norm": 0.9166666666666666,
+        "mean_abs_rank_delta": 3.142857142857143,
+        "mean_abs_rank_delta_chance": 2.2857142857142856,
+        "topk": {
+          "3": {
+            "K": 3,
+            "hits": 1,
+            "rate": 0.3333333333333333,
+            "chance": 0.42857142857142855
+          },
+          "5": {
+            "K": 5,
+            "hits": 3,
+            "rate": 0.6,
+            "chance": 0.7142857142857143
+          }
+        },
+        "tau_ci": [
+          -1.0,
+          0.411764705882353
+        ],
+        "tau_ci_boot_n": 2000
+      },
+      "activity": {
+        "n": 8,
+        "kendall_tau": -0.7857142857142856,
+        "kendall_p": 0.005505952380952381,
+        "concordance_c": 0.1071428571428572,
+        "spearman_r": -0.8571428571428572,
+        "spearman_p": 0.006530017254715293,
+        "footrule": 32.0,
+        "footrule_norm": 1.0,
+        "mean_abs_rank_delta": 4.0,
+        "mean_abs_rank_delta_chance": 2.625,
+        "topk": {
+          "3": {
+            "K": 3,
+            "hits": 0,
+            "rate": 0.0,
+            "chance": 0.375
+          },
+          "5": {
+            "K": 5,
+            "hits": 2,
+            "rate": 0.4,
+            "chance": 0.625
+          }
+        },
+        "tau_ci": [
+          -1.0,
+          -0.25000000000000006
+        ],
+        "tau_ci_boot_n": 2000
+      },
+      "method": {
+        "description": "Each observed node is held out in turn and its value re-imputed by the graph. Nodes are then ranked by their held-out predictions (1 = largest effect) and compared with their ranking by actual values. Scored with Kendall's tau-b (primary), the concordance index C = (tau+1)/2, Spearman's rho, mean absolute rank displacement / Spearman's footrule (vs. its random-permutation expectation), and top-K precision. 95% CI on tau-b is a percentile bootstrap over folds.",
+        "citations": [
+          "Kendall, M. G. (1938). A new measure of rank correlation. Biometrika, 30(1-2), 81-93.",
+          "Kendall, M. G. (1945). The treatment of ties in ranking problems. Biometrika, 33(3), 239-251.",
+          "Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating the yield of medical tests. JAMA, 247(18), 2543-2546.",
+          "Diaconis, P., & Graham, R. L. (1977). Spearman's footrule as a measure of disarray. JRSS Series B, 39(2), 262-268.",
+          "Spearman, C. (1904). The proof and measurement of association between two things. American Journal of Psychology, 15(1), 72-101.",
+          "Efron, B., & Tibshirani, R. J. (1993). An Introduction to the Bootstrap. Chapman & Hall."
+        ]
+      }
+    }
+  },
+  "rows": [
+    {
+      "node_type": "occupation",
+      "code": "13-1000",
+      "label": "Agents and Business Managers of Artists; Performers; and Athletes (13-1)",
+      "actual": 0.4664,
+      "predicted": 0.3978,
+      "residual": -0.0686,
+      "abs_error": 0.0686,
+      "posterior_std": 1.0228,
+      "actual_rank": 5.0,
+      "loo_rank": 5.0,
+      "rank_delta": 0.0,
+      "actual_rank_within": 2.0,
+      "loo_rank_within": 5.0,
+      "rank_delta_within": 3.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "13-2000",
+      "label": "Accountants and Auditors (13-2)",
+      "actual": 0.0012,
+      "predicted": 0.4428,
+      "residual": 0.4416,
+      "abs_error": 0.4416,
+      "posterior_std": 1.0146,
+      "actual_rank": 15.0,
+      "loo_rank": 2.0,
+      "rank_delta": -13.0,
+      "actual_rank_within": 7.0,
+      "loo_rank_within": 2.0,
+      "rank_delta_within": -5.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "15-1000",
+      "label": "Telecommunications Engineering Specialists (15-1)",
+      "actual": 0.1017,
+      "predicted": 0.4052,
+      "residual": 0.3036,
+      "abs_error": 0.3036,
+      "posterior_std": 1.0031,
+      "actual_rank": 12.0,
+      "loo_rank": 3.0,
+      "rank_delta": -9.0,
+      "actual_rank_within": 5.0,
+      "loo_rank_within": 3.0,
+      "rank_delta_within": -2.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "23-1000",
+      "label": "Judicial Law Clerks (23-1)",
+      "actual": 0.307,
+      "predicted": 0.4699,
+      "residual": 0.1629,
+      "abs_error": 0.1629,
+      "posterior_std": 1.0229,
+      "actual_rank": 10.0,
+      "loo_rank": 1.0,
+      "rank_delta": -9.0,
+      "actual_rank_within": 3.0,
+      "loo_rank_within": 1.0,
+      "rank_delta_within": -2.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "27-3000",
+      "label": "Broadcast Announcers and Radio Disc Jockeys (27-3)",
+      "actual": 0.1428,
+      "predicted": 0.3579,
+      "residual": 0.215,
+      "abs_error": 0.215,
+      "posterior_std": 1.0256,
+      "actual_rank": 11.0,
+      "loo_rank": 10.0,
+      "rank_delta": -1.0,
+      "actual_rank_within": 4.0,
+      "loo_rank_within": 7.0,
+      "rank_delta_within": 3.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "41-9000",
+      "label": "Telemarketers (41-9)",
+      "actual": 0.5802,
+      "predicted": 0.3602,
+      "residual": -0.2201,
+      "abs_error": 0.2201,
+      "posterior_std": 1.0392,
+      "actual_rank": 4.0,
+      "loo_rank": 9.0,
+      "rank_delta": 5.0,
+      "actual_rank_within": 1.0,
+      "loo_rank_within": 6.0,
+      "rank_delta_within": 5.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "43-4000",
+      "label": "Eligibility Interviewers; Government Programs (43-4)",
+      "actual": 0.0338,
+      "predicted": 0.4036,
+      "residual": 0.3698,
+      "abs_error": 0.3698,
+      "posterior_std": 1.0245,
+      "actual_rank": 14.0,
+      "loo_rank": 4.0,
+      "rank_delta": -10.0,
+      "actual_rank_within": 6.0,
+      "loo_rank_within": 4.0,
+      "rank_delta_within": -2.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Analyzing Data or Information",
+      "actual": 0.6187,
+      "predicted": 0.3285,
+      "residual": -0.2902,
+      "abs_error": 0.2902,
+      "posterior_std": 0.7373,
+      "actual_rank": 1.0,
+      "loo_rank": 14.0,
+      "rank_delta": 13.0,
+      "actual_rank_within": 1.0,
+      "loo_rank_within": 7.0,
+      "rank_delta_within": 6.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Documenting/Recording Information",
+      "actual": 0.3223,
+      "predicted": 0.367,
+      "residual": 0.0447,
+      "abs_error": 0.0447,
+      "posterior_std": 0.9149,
+      "actual_rank": 9.0,
+      "loo_rank": 7.0,
+      "rank_delta": -2.0,
+      "actual_rank_within": 7.0,
+      "loo_rank_within": 2.0,
+      "rank_delta_within": -5.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Interpreting the Meaning of Information for Others",
+      "actual": 0.5887,
+      "predicted": 0.332,
+      "residual": -0.2567,
+      "abs_error": 0.2567,
+      "posterior_std": 1.4143,
+      "actual_rank": 3.0,
+      "loo_rank": 12.0,
+      "rank_delta": 9.0,
+      "actual_rank_within": 3.0,
+      "loo_rank_within": 5.0,
+      "rank_delta_within": 2.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Making Decisions and Solving Problems",
+      "actual": 0.6018,
+      "predicted": 0.3319,
+      "residual": -0.27,
+      "abs_error": 0.27,
+      "posterior_std": 0.5799,
+      "actual_rank": 2.0,
+      "loo_rank": 13.0,
+      "rank_delta": 11.0,
+      "actual_rank_within": 2.0,
+      "loo_rank_within": 6.0,
+      "rank_delta_within": 4.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Processing Information",
+      "actual": 0.3928,
+      "predicted": 0.3659,
+      "residual": -0.0269,
+      "abs_error": 0.0269,
+      "posterior_std": 0.6369,
+      "actual_rank": 8.0,
+      "loo_rank": 8.0,
+      "rank_delta": 0.0,
+      "actual_rank_within": 6.0,
+      "loo_rank_within": 3.0,
+      "rank_delta_within": -3.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Thinking Creatively",
+      "actual": 0.0642,
+      "predicted": 0.3927,
+      "residual": 0.3285,
+      "abs_error": 0.3285,
+      "posterior_std": 0.7175,
+      "actual_rank": 13.0,
+      "loo_rank": 6.0,
+      "rank_delta": -7.0,
+      "actual_rank_within": 8.0,
+      "loo_rank_within": 1.0,
+      "rank_delta_within": -7.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Updating and Using Relevant Knowledge",
+      "actual": 0.4119,
+      "predicted": 0.3529,
+      "residual": -0.059,
+      "abs_error": 0.059,
+      "posterior_std": 0.5651,
+      "actual_rank": 7.0,
+      "loo_rank": 11.0,
+      "rank_delta": 4.0,
+      "actual_rank_within": 5.0,
+      "loo_rank_within": 4.0,
+      "rank_delta_within": -1.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Working with Computers",
+      "actual": 0.4492,
+      "predicted": 0.2772,
+      "residual": -0.1721,
+      "abs_error": 0.1721,
+      "posterior_std": 0.8081,
+      "actual_rank": 6.0,
+      "loo_rank": 15.0,
+      "rank_delta": 9.0,
+      "actual_rank_within": 4.0,
+      "loo_rank_within": 8.0,
+      "rank_delta_within": 4.0
+    }
+  ]
+}

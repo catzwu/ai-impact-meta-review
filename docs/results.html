@@ -38,7 +38,7 @@
 <header class="site">
   <h1>AI Impact Meta-Review</h1>
   <span class="stats" id="stats"></span>
-  <nav><a href="index.html">Home</a><a href="runs.html" style="text-decoration:underline;">All runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
+  <nav><a href="index.html">Home</a><a href="runs.html" style="text-decoration:underline;">Runs</a><a href="parameters.html">Parameters</a><a href="transitions.html">Transitions</a><a class="gh" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
 </header>
 
 <main>
@@ -57,7 +57,7 @@
   <table id="t"><thead id="th"></thead><tbody id="tb"></tbody></table>
 </main>
 <script>
-const DEFAULT_RUN_ID = "20260626_194528_3d1907";
+const DEFAULT_RUN_ID = "20260919_134544_f33a5b";
 let DATA = null, VIEW='occ', SORT={col:'estimate', dir:-1};
 
 function fmtNum(x, p){ if (x===null||x===undefined||x==='') return '—'; const n=parseFloat(x); return isNaN(n)?x:n.toFixed(p===undefined?3:p); }

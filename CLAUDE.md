@@ -91,6 +91,10 @@ The AIOE speed-only baseline is moment-matched to the observed metric's mean/SD 
 
 The matrix build reads a 73k-row xlsx and is cached per-β in `_HEAT_CACHE`.
 
+### Static site (`docs/`)
+
+`scripts/generate_site_runs.py` (re)creates the curated run set — headline, one-knob sensitivity, and LOO runs — from the live review state and writes `config/site_runs.json`; it deletes the runs from the previous manifest first. `scripts/build_static_site.py` then publishes only the manifest's runs (grouped, with agreement-vs-headline and LOO rank stats). Without a manifest it falls back to every plain run.
+
 ### Configuration
 
 `config/settings.yaml` is the source of truth for model assignments, max_tokens per stage, retry policy, and which stages run by default. Per-stage model overrides matter — Haiku for the mechanical 1a, Sonnet for everything that requires judgment. Stage 4 uses prompt caching on the O\*NET reference (drops input cost ~3× across the corpus). If you change a prompt, check `prompts/extract.txt` and `prompts/extract_quotes.txt` for the JSON-escaping rule.

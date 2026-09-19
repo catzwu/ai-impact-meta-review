@@ -1,0 +1,18 @@
+node_type,code,label,actual,predicted,residual,abs_error,posterior_std,actual_rank,loo_rank,rank_delta,actual_rank_within,loo_rank_within,rank_delta_within
+occupation,13-1000,Agents and Business Managers of Artists; Performers; and Athletes (13-1),0.1259,0.3282,0.2023,0.2023,0.8226,12.0,7.0,-5.0,7.0,6.0,-1.0
+occupation,13-2000,Accountants and Auditors (13-2),0.2855,0.3275,0.0421,0.0421,0.8195,5.0,8.0,3.0,3.0,7.0,4.0
+occupation,15-1000,Telecommunications Engineering Specialists (15-1),0.237,0.3267,0.0896,0.0896,0.8185,9.0,9.0,0.0,6.0,8.0,2.0
+occupation,23-1000,Judicial Law Clerks (23-1),0.2506,0.3811,0.1305,0.1305,0.834,7.0,2.0,-5.0,4.0,1.0,-3.0
+occupation,27-1000,Graphic Designers (27-1),0.793,0.3407,-0.4523,0.4523,0.8188,1.0,4.0,3.0,1.0,3.0,2.0
+occupation,27-3000,Broadcast Announcers and Radio Disc Jockeys (27-3),0.3727,0.3508,-0.0219,0.0219,0.8188,3.0,3.0,0.0,2.0,2.0,0.0
+occupation,29-1000,Critical Care Nurses (29-1),-0.0378,0.2838,0.3215,0.3215,0.8342,17.0,14.0,-3.0,9.0,9.0,0.0
+occupation,41-9000,Telemarketers (41-9),0.0541,0.3398,0.2856,0.2856,0.8271,14.0,5.0,-9.0,8.0,4.0,-4.0
+occupation,43-4000,Eligibility Interviewers; Government Programs (43-4),0.2372,0.3393,0.1021,0.1021,0.8226,8.0,6.0,-2.0,5.0,5.0,0.0
+activity,,Analyzing Data or Information,0.0117,0.3219,0.3101,0.3101,0.7001,16.0,10.0,-6.0,8.0,2.0,-6.0
+activity,,Communicating with People Outside the Organization,0.2314,0.2994,0.068,0.068,0.7002,10.0,11.0,1.0,4.0,3.0,-1.0
+activity,,Documenting/Recording Information,0.0469,0.2799,0.233,0.233,0.8858,15.0,16.0,1.0,7.0,7.0,0.0
+activity,,Getting Information,0.3057,0.2855,-0.0201,0.0201,0.4503,4.0,13.0,9.0,2.0,5.0,3.0
+activity,,Monitoring Processes; Materials; or Surroundings,0.0945,0.2706,0.1761,0.1761,0.8535,13.0,17.0,4.0,6.0,8.0,2.0
+activity,,Processing Information,0.2625,0.2919,0.0294,0.0294,0.6048,6.0,12.0,6.0,3.0,4.0,1.0
+activity,,Thinking Creatively,0.4274,0.4128,-0.0147,0.0147,0.6188,2.0,1.0,-1.0,1.0,1.0,0.0
+activity,,Working with Computers,0.227,0.2805,0.0535,0.0535,0.7955,11.0,15.0,4.0,5.0,6.0,1.0

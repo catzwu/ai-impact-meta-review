@@ -1,0 +1,220 @@
+{
+  "canonical": "20260919_134544_f33a5b",
+  "groups": [
+    {
+      "id": "headline",
+      "title": "Headline estimates",
+      "blurb": "Default parameters (\u03b2 = 2.5, manual pruning of the six physical-work SOC majors, activity threshold 10, AIOE baseline for speed) at each aggregation level."
+    },
+    {
+      "id": "sensitivity",
+      "title": "Sensitivity checks",
+      "blurb": "One parameter changed from the occupation-level headline run. Agreement columns compare each run's estimates with that headline run (Spearman \u03c1 over shared nodes; top-10 = overlap of the ten largest effects). High agreement means the ranking does not hinge on that choice."
+    },
+    {
+      "id": "validation",
+      "title": "Leave-one-out validation",
+      "blurb": "Each observed node is held out in turn and re-imputed from the rest of the graph. Kendall \u03c4-b measures whether held-out predictions recover the ORDER of observed effects; a 95% CI excluding 0 is a significant (positive or negative) result."
+    }
+  ],
+  "observations": {
+    "speed": 40,
+    "quality": 28,
+    "occ_codes": 12,
+    "act_codes": 11
+  },
+  "runs": [
+    {
+      "key": "speed-occupation",
+      "run_id": "20260919_134544_f33a5b",
+      "group": "headline",
+      "kind": "run",
+      "label": "Speed \u00b7 occupation",
+      "reference_run_id": null
+    },
+    {
+      "key": "speed-soc_minor",
+      "run_id": "20260919_134547_95c0e8",
+      "group": "headline",
+      "kind": "run",
+      "label": "Speed \u00b7 SOC minor group",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "speed-soc_major",
+      "run_id": "20260919_134550_e51185",
+      "group": "headline",
+      "kind": "run",
+      "label": "Speed \u00b7 SOC major group",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "quality-occupation",
+      "run_id": "20260919_134553_8b6fb9",
+      "group": "headline",
+      "kind": "run",
+      "label": "Quality \u00b7 occupation",
+      "reference_run_id": null
+    },
+    {
+      "key": "quality-soc_minor",
+      "run_id": "20260919_134556_4ef312",
+      "group": "headline",
+      "kind": "run",
+      "label": "Quality \u00b7 SOC minor group",
+      "reference_run_id": "20260919_134553_8b6fb9"
+    },
+    {
+      "key": "quality-soc_major",
+      "run_id": "20260919_134559_d3ef76",
+      "group": "headline",
+      "kind": "run",
+      "label": "Quality \u00b7 SOC major group",
+      "reference_run_id": "20260919_134553_8b6fb9"
+    },
+    {
+      "key": "speed-beta1",
+      "run_id": "20260919_134602_957cf5",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Speed \u00b7 \u03b2 = 1 (flatter activity weights)",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "speed-beta10",
+      "run_id": "20260919_134605_38f8d6",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Speed \u00b7 \u03b2 = 10 (sharper activity weights)",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "speed-allsoc",
+      "run_id": "20260919_134609_e074ab",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Speed \u00b7 All 22 SOC majors kept (no exclusion)",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "speed-excl11",
+      "run_id": "20260919_134612_c45b24",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Speed \u00b7 Also exclude Management (SOC 11)",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "speed-thr5",
+      "run_id": "20260919_134615_bb8490",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Speed \u00b7 Activity weight threshold 5 (keep more activities)",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "speed-nobase",
+      "run_id": "20260919_134618_86d1bd",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Speed \u00b7 No AIOE baseline",
+      "reference_run_id": "20260919_134544_f33a5b"
+    },
+    {
+      "key": "quality-beta1",
+      "run_id": "20260919_134621_240915",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Quality \u00b7 \u03b2 = 1 (flatter activity weights)",
+      "reference_run_id": "20260919_134553_8b6fb9"
+    },
+    {
+      "key": "quality-beta10",
+      "run_id": "20260919_134624_7a9ec5",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Quality \u00b7 \u03b2 = 10 (sharper activity weights)",
+      "reference_run_id": "20260919_134553_8b6fb9"
+    },
+    {
+      "key": "quality-allsoc",
+      "run_id": "20260919_134627_a32b4c",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Quality \u00b7 All 22 SOC majors kept (no exclusion)",
+      "reference_run_id": "20260919_134553_8b6fb9"
+    },
+    {
+      "key": "quality-excl11",
+      "run_id": "20260919_134630_35b1ac",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Quality \u00b7 Also exclude Management (SOC 11)",
+      "reference_run_id": "20260919_134553_8b6fb9"
+    },
+    {
+      "key": "quality-thr5",
+      "run_id": "20260919_134633_13c6d0",
+      "group": "sensitivity",
+      "kind": "run",
+      "label": "Quality \u00b7 Activity weight threshold 5 (keep more activities)",
+      "reference_run_id": "20260919_134553_8b6fb9"
+    },
+    {
+      "key": "loo-speed-occupation",
+      "run_id": "20260919_134636_loo_e2e6af",
+      "group": "validation",
+      "kind": "loo",
+      "label": "LOO \u00b7 Speed \u00b7 occupation",
+      "reference_run_id": null
+    },
+    {
+      "key": "loo-speed-soc_minor",
+      "run_id": "20260919_134641_loo_ea0a10",
+      "group": "validation",
+      "kind": "loo",
+      "label": "LOO \u00b7 Speed \u00b7 SOC minor group",
+      "reference_run_id": null
+    },
+    {
+      "key": "loo-speed-soc_major",
+      "run_id": "20260919_134645_loo_eb33d2",
+      "group": "validation",
+      "kind": "loo",
+      "label": "LOO \u00b7 Speed \u00b7 SOC major group",
+      "reference_run_id": null
+    },
+    {
+      "key": "loo-quality-occupation",
+      "run_id": "20260919_134649_loo_4c0ed4",
+      "group": "validation",
+      "kind": "loo",
+      "label": "LOO \u00b7 Quality \u00b7 occupation",
+      "reference_run_id": null
+    },
+    {
+      "key": "loo-quality-soc_minor",
+      "run_id": "20260919_134653_loo_45be60",
+      "group": "validation",
+      "kind": "loo",
+      "label": "LOO \u00b7 Quality \u00b7 SOC minor group",
+      "reference_run_id": null
+    },
+    {
+      "key": "loo-quality-soc_major",
+      "run_id": "20260919_134657_loo_5708cb",
+      "group": "validation",
+      "kind": "loo",
+      "label": "LOO \u00b7 Quality \u00b7 SOC major group",
+      "reference_run_id": null
+    },
+    {
+      "key": "loo-speed-nobase",
+      "run_id": "20260919_134701_loo_ac0b6e",
+      "group": "validation",
+      "kind": "loo",
+      "label": "LOO \u00b7 Speed \u00b7 occupation \u00b7 no AIOE baseline",
+      "reference_run_id": null
+    }
+  ]
+}
