@@ -30,6 +30,7 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 from common import OUTPUTS_DIR, REPO_ROOT  # noqa: E402
 import run_analysis as RA  # noqa: E402
 import transitions as TR  # noqa: E402
+import site_theme  # noqa: E402
 import importlib.util as _ilu
 _buf_spec = _ilu.spec_from_file_location("build_upload_files", SCRIPTS_DIR / "build_upload_files.py")
 BUF = _ilu.module_from_spec(_buf_spec); _buf_spec.loader.exec_module(BUF)
@@ -351,6 +352,7 @@ def _build_rows():
                 "row_id": row_id,
                 "paper_id": pid,
                 "citation_key": ck,
+                "citation": site_theme.short_citation((ext or {}).get("authors"), (ext or {}).get("year"), ck),
                 "file_name": f"{pid}.pdf" if pid else "",
                 "title": title,
                 "kind": kind,
@@ -666,6 +668,93 @@ def api_runs():
     return jsonify({"runs": RA.list_runs()})
 
 
+def _observations_from_state():
+    """Aggregate the LIVE review-table state (edits/deletes/merges applied) into
+    the occ_rows/act_rows shape run_analysis expects. Shared by /api/run, /api/loo,
+    and /api/heatmap_data."""
+    state = _load_state()
+    rows = _apply_state(_build_rows(), state)
+    speed_raw, quality_raw = [], []
+    for r in rows:
+        if r["_deleted"]:
+            continue
+        raw = dict(r["raw"])
+        raw["onet_code"] = r.get("onet_code", raw.get("onet_code", ""))
+        raw["onet_label"] = r.get("onet_label", raw.get("onet_label", ""))
+        code = (raw.get("onet_code") or "").strip()
+        if code.startswith("WA-"):
+            raw["mapping_type"] = "work_activity"
+        elif code:
+            raw["mapping_type"] = "occupation"
+        (speed_raw if r["kind"] == "speed" else quality_raw).append(raw)
+    occ_rows, act_rows = BUF.collect_from_iters(speed_raw, quality_raw)
+    return occ_rows, act_rows, len(speed_raw), len(quality_raw)
+
+
+@app.route("/api/loo", methods=["POST"])
+def api_loo():
+    """Leave-one-out cross-validation using the LIVE table state."""
+    body = request.json or {}
+    try:
+        params = RA.RunParams(
+            metric=body.get("metric", "speed"),
+            beta=float(body.get("beta", 2.5)),
+            aggregation_level=str(body.get("aggregation_level", "occupation")),
+            aggregate_to_socmajor=bool(body.get("aggregate_to_socmajor", False)),
+            manual_prune=bool(body.get("manual_prune", True)),
+            excluded_soc_majors=list(body.get("excluded_soc_majors", RA.DEFAULT_EXCLUDED_SOCS)),
+            activity_weight_threshold=float(body.get("activity_weight_threshold", 10.0)),
+            alpha=float(body.get("alpha", 0.7)),
+            hops=int(body.get("hops", 4)),
+            c_occ=float(body.get("c_occ", 1.0)),
+            prune_activities=bool(body.get("prune_activities", False)),
+            c_act=float(body.get("c_act", 1.5)),
+            omega_ref=float(body.get("omega_ref", 100.0)),
+            sigma_ref=float(body.get("sigma_ref", 0.1)),
+            eps=float(body.get("eps", 1e-6)),
+            use_baseline=bool(body.get("use_baseline", True)),
+            omega_base=float(body.get("omega_base", 0.5)),
+        )
+    except Exception as e:  # noqa: BLE001
+        return jsonify({"ok": False, "error": f"bad params: {e}"}), 400
+    if params.metric not in ("speed", "quality"):
+        return jsonify({"ok": False, "error": "metric must be 'speed' or 'quality'"}), 400
+    occ_rows, act_rows, n_speed, n_qual = _observations_from_state()
+    meta = RA.run_loo(params, occ_rows=occ_rows, act_rows=act_rows)
+    meta["n_observations_used"] = {"speed": n_speed, "quality": n_qual,
+                                    "occ_codes": len(occ_rows), "act_codes": len(act_rows)}
+    return jsonify({"ok": True, "run_id": meta["run_id"], "meta": meta})
+
+
+@app.route("/loo/<run_id>")
+def page_loo(run_id):
+    return LOO_HTML.replace("__RUN_ID__", run_id)
+
+
+@app.route("/api/loo/<run_id>")
+def api_loo_get(run_id):
+    d = RA.load_loo(run_id)
+    if not d:
+        return jsonify({"ok": False, "error": "not a LOO run or not found"}), 404
+    return jsonify({"ok": True, "data": d})
+
+
+@app.route("/compare")
+def page_compare():
+    return COMPARE_HTML
+
+
+@app.route("/api/compare")
+def api_compare():
+    a = request.args.get("a"); b = request.args.get("b")
+    if not a or not b:
+        return jsonify({"ok": False, "error": "need a= and b= run ids"}), 400
+    d = RA.compare_runs(a, b)
+    if d is None:
+        return jsonify({"ok": False, "error": "one or both runs not found"}), 404
+    return jsonify({"ok": True, "data": d})
+
+
 @app.route("/api/heatmap_data")
 def api_heatmap_data():
     """SOC-major × activity weight matrix + observed overlays for the given metric.
@@ -706,153 +795,104 @@ def api_results(run_id):
 # ---------- frontend ----------
 
 INDEX_HTML = """<!doctype html>
-<html><head><meta charset="utf-8"><title>Meta-Analysis Review</title>
+<html lang="en"><head><meta charset="utf-8"><title>Studies · AI Impact Meta-Review</title>
+__THEME_HEAD__
 <style>
-  body { font-family: -apple-system, sans-serif; margin: 0; font-size: 13px; }
-  header { background:#222; color:#fff; padding:10px 16px; display:flex; gap:16px; align-items:center; }
-  header h1 { margin:0; font-size:16px; }
-  header .stats { color:#bbb; font-size:12px; }
-  header button { background:#0a7; color:#fff; border:0; padding:6px 12px; border-radius:4px; cursor:pointer; }
-  header button.secondary { background:#444; }
-  header input[type=text] { padding:5px 8px; border-radius:4px; border:0; min-width:200px; }
-  table { border-collapse: collapse; table-layout: fixed; width: 100%; }
-  th, td { padding:8px 10px; border-bottom:1px solid #eee; vertical-align: top; text-align: left; overflow:hidden; text-overflow:ellipsis; }
-  th { background:#f7f7f9; position:sticky; top:0; cursor:pointer; user-select:none; font-size:11px; text-transform:uppercase;
-       font-weight:600; color:#555; letter-spacing:0.04em; position: relative; border-bottom:2px solid #ddd; }
+  /* review table */
+  #table { table-layout: fixed; min-width:1300px; }
+  #table th, #table td { overflow:hidden; text-overflow:ellipsis; }
+  #table th { position:sticky; top:0; z-index:5; }
   th .resizer { position:absolute; right:-3px; top:0; width:8px; height:100%; cursor:col-resize; user-select:none; z-index:2; }
-  th .resizer:hover { background:#aac; }
-  th .resizer:active { background:#88a; }
-  tbody tr:nth-child(even) { background:#fafafa; }
-  tbody tr:hover { background:#eef6ff; }
-  tr.deleted { opacity:0.5; background:#fee !important; }
-  tr.merged-into { background:#fffce0 !important; }
-  td.snippet { white-space: normal; word-break: break-word; color:#555; font-size:12px; line-height:1.4; }
-  td.title { white-space: normal; word-break: break-word; font-weight:500; font-size:13px; line-height:1.3; cursor:pointer; color:#0a3d7a; }
-  td.title:hover { text-decoration: underline; }
-  td.value { font-family: ui-monospace, Menlo, monospace; text-align: right; white-space: nowrap; font-weight:500; }
-  td.value.pos { color:#0a6c2c; }
-  td.value.neg { color:#b32020; }
-  td.cite { font-family: ui-monospace, Menlo, monospace; font-size:11px; color:#555; }
-  td.file { font-family: ui-monospace, Menlo, monospace; font-size:11px; color:#888; }
+  th .resizer:hover, th .resizer:active { background:var(--accent-soft); }
+  tr.deleted { opacity:0.5; background:var(--err-bg) !important; }
+  tr.deleted td.title { text-decoration:line-through; }
+  tr.merged-into { background:var(--warn-bg) !important; }
+  td.snippet { white-space:normal; word-break:break-word; color:var(--ink-2); font-size:12.5px; line-height:1.45; }
+  td.title { white-space:normal; word-break:break-word; font-family:var(--serif); font-size:14.5px; line-height:1.35; cursor:pointer; color:var(--ink); }
+  td.title:hover { color:var(--link); text-decoration:underline; text-underline-offset:2px; }
+  td.cite { font-size:13.5px; color:var(--ink); white-space:normal; }
+  td.file { font-family:var(--mono); font-size:11px; color:var(--muted); }
   /* searchable onet picker */
   .onet-picker { position:relative; max-width:320px; }
-  .onet-picker .display { border:1px solid #ccc; padding:4px 6px; font-size:12px; cursor:pointer; background:#fff; border-radius:3px; min-height:18px; }
-  .onet-picker .display.empty { color:#999; }
-  #onetPanel { position:absolute; background:#fff; border:1px solid #888; box-shadow:0 4px 12px rgba(0,0,0,0.18); z-index:200;
-               width:380px; max-height:400px; display:none; }
+  .onet-picker .display { border:1px solid var(--rule); padding:4px 8px; font-size:12.5px; cursor:pointer; background:var(--surface); border-radius:4px; min-height:18px; line-height:1.4; }
+  .onet-picker .display:hover { border-color:var(--accent); }
+  .onet-picker .display.empty { color:var(--muted); font-style:italic; }
+  #onetPanel { position:absolute; background:var(--surface); border:1px solid var(--rule); border-radius:6px; box-shadow:0 10px 30px rgba(29,31,35,0.16); z-index:200;
+               width:400px; max-height:420px; display:none; overflow:hidden; }
   #onetPanel.open { display:block; }
-  #onetPanel input.search { width:calc(100% - 12px); margin:6px; padding:5px 8px; box-sizing:border-box; font-size:12px; border:1px solid #ccc; border-radius:3px; }
-  #onetPanel .list { max-height:340px; overflow-y:auto; font-size:12px; }
-  #onetPanel .group-hdr { background:#eef; padding:4px 8px; font-weight:bold; font-size:11px; text-transform:uppercase; color:#336; position:sticky; top:0; }
+  #onetPanel input.search { width:calc(100% - 16px); margin:8px; }
+  #onetPanel .list { max-height:340px; overflow-y:auto; font-size:13px; }
+  #onetPanel .group-hdr { background:var(--surface-2); padding:5px 10px; font-weight:600; font-size:12px; color:var(--ink-2); position:sticky; top:0; }
   #onetPanel .item { padding:5px 10px; cursor:pointer; }
-  #onetPanel .item:hover, #onetPanel .item.active { background:#cef; }
-  #onetPanel .code { font-family:monospace; color:#888; font-size:11px; margin-right:6px; }
-  #onetPanel .clear { padding:5px 10px; color:#a00; cursor:pointer; border-top:1px solid #eee; font-size:11px; }
-  .kind-speed   { background:#e6f3ff; color:#0463a3; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
-  .kind-quality { background:#ffe6f0; color:#a0286c; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
-  .conf-pill-cell { display:inline-block; padding:1px 7px; border-radius:10px; font-size:10px; text-transform:uppercase; font-weight:600; }
-  .conf-pill-cell.high   { background:#d4f4d4; color:#0a6c2c; }
-  .conf-pill-cell.medium { background:#fff0c0; color:#8a6900; }
-  .conf-pill-cell.low    { background:#ffd6d6; color:#a00; }
-  button.row-btn { padding:3px 10px; font-size:11px; cursor:pointer; margin-right:4px; background:#fff; border:1px solid #ccc; border-radius:3px; color:#333; }
-  button.row-btn:hover { background:#f0f0f0; }
-  button.row-btn.danger { color:#a00; border-color:#e0b0b0; }
-  button.row-btn.danger:hover { background:#fee; }
-  /* drawer */
-  #backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.25); opacity:0; pointer-events:none;
-              transition:opacity 0.2s; z-index:90; }
-  #backdrop.open { opacity:1; pointer-events:auto; }
-  #drawer { position:fixed; top:0; right:0; width:60%; min-width:560px; height:100%; background:#fff; box-shadow:-3px 0 12px rgba(0,0,0,0.2);
-            transform:translateX(100%); transition:transform 0.2s; overflow:auto; z-index:100; }
-  #drawer.open { transform:translateX(0); }
-  #drawer header { background:#333; }
-  #drawer .close { background:#a00; }
-  /* paper detail sections */
-  .pd-meta { padding: 14px 18px; background:#fafafa; border-bottom:1px solid #ddd; }
-  .pd-meta h2 { margin: 0 0 4px; font-size:18px; line-height:1.25; }
-  .pd-meta .authors { color:#444; font-size:12px; margin-bottom:4px; }
-  .pd-meta .ids { color:#666; font-size:11px; }
-  .pd-meta .ids .pill { display:inline-block; background:#eee; padding:1px 6px; border-radius:3px; margin-right:6px; font-family:monospace; }
-  .pd-meta a { color:#06c; margin-right:14px; }
-  .pd-effects { display:flex; gap:10px; padding: 12px 18px; border-bottom:1px solid #eee; }
-  .pd-effect { flex:1; border:1px solid #ddd; border-radius:6px; padding:10px; }
-  .pd-effect.empty { color:#999; border-style:dashed; }
-  .pd-effect h3 { margin:0 0 6px; font-size:13px; display:flex; justify-content:space-between; }
-  .pd-effect .value { font-family:monospace; font-size:18px; }
-  .pd-effect .row { display:flex; justify-content:space-between; font-size:11px; color:#555; margin-top:3px; }
-  .pd-effect .row b { color:#222; font-weight:500; }
-  .pd-effect .notes { margin-top:6px; font-size:11px; color:#777; line-height:1.4; }
-  .pd-section { padding: 4px 18px 12px; border-bottom:1px solid #f0f0f0; }
-  .pd-section h3 { margin:14px 0 6px; font-size:13px; text-transform:uppercase; color:#444; letter-spacing:0.04em; }
-  .pd-table { width:100%; border-collapse:collapse; font-size:12px; }
-  .pd-table th, .pd-table td { padding:4px 8px; border-bottom:1px solid #eee; text-align:left; vertical-align:top; }
-  .pd-table th { background:#f5f5f5; font-weight:500; font-size:11px; color:#555; }
-  .pd-onet-rationale { background:#f7faff; border-left:3px solid #69a; padding:8px 12px; margin-top:4px; font-size:12px; line-height:1.4; }
-  .pd-onet-alt { font-size:11px; color:#555; margin-top:4px; }
-  .pd-onet-alt .pill { display:inline-block; background:#eef; padding:1px 6px; margin:2px 4px 2px 0; border-radius:3px; font-family:monospace; }
-  .pd-quote { background:#fffce0; border-left:3px solid #c90; padding:6px 10px; margin:4px 0; font-size:12px; line-height:1.4; font-style:italic; }
-  .pd-quotes-block { max-height:240px; overflow-y:auto; }
-  .pd-stat { border:1px solid #eee; border-radius:4px; padding:6px 10px; margin:4px 0; font-size:11px; }
-  .pd-stat .head { display:flex; justify-content:space-between; font-size:12px; margin-bottom:2px; }
-  .pd-stat .head b { color:#222; }
-  .pd-stat .nums { font-family:monospace; color:#063; margin:2px 0; }
-  .pd-stat .vq { font-size:11px; color:#666; font-style:italic; }
-  details.pd-raw { margin: 0 18px 14px; }
-  details.pd-raw summary { cursor:pointer; padding:4px 0; font-size:12px; color:#666; }
-  details.pd-raw pre { background:#f7f7f7; padding:8px; font-size:10px; overflow:auto; max-height:300px; border-radius:3px; }
-  .conf-pill { padding:1px 6px; border-radius:3px; font-size:10px; text-transform:uppercase; }
-  .conf-pill.high   { background:#d4f4d4; color:#070; }
-  .conf-pill.medium { background:#fff0c0; color:#a60; }
-  .conf-pill.low    { background:#ffd6d6; color:#a00; }
-  .badge { display:inline-block; padding:1px 5px; font-size:10px; border-radius:2px; background:#eee; margin-left:4px; }
+  #onetPanel .item:hover, #onetPanel .item.active { background:var(--accent-soft); }
+  #onetPanel .code { font-family:var(--mono); color:var(--muted); font-size:11px; margin-right:6px; }
+  #onetPanel .clear { padding:7px 10px; color:var(--neg); cursor:pointer; border-top:1px solid var(--rule); font-size:12px; }
+  .pd-meta a { margin-left:auto; }
+  .stage-list { border:1px solid var(--rule); border-radius:5px; padding:8px 14px; margin-top:10px; }
+  .stage-list .st { display:flex; gap:10px; font-size:13px; padding:2px 0; color:var(--muted); font-family:var(--mono); }
+  .stage-list .st.done { color:var(--pos); }
+  .dup { border:1px solid var(--rule); border-radius:5px; padding:10px 14px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+  .dup .t { font-family:var(--serif); font-size:15px; }
+  .dup .m { font-size:12px; color:var(--muted); margin-top:2px; }
 </style></head><body>
-<header>
-  <h1>Meta-Analysis Review</h1>
-  <span class="stats" id="stats"></span>
-  <input type="text" id="search" placeholder="filter by citation, title, file..." />
-  <button id="mergeBtn" class="secondary">Merge selected</button>
-  <button id="deleteBtn" class="secondary">Delete selected</button>
-  <button id="exportBtn" class="secondary">Export CSVs</button>
-  <button id="uploadBtn" style="background:#0a7;">+ Upload PDF</button>
-  <button id="jobsPill" style="display:none; background:#d2b048; color:#222;" onclick="showJobsList()"></button>
-  <a href="/transitions" style="text-decoration:none;"><button style="background:#2a7a8a;">Transitions →</button></a>
-  <a href="/run" style="text-decoration:none;"><button style="background:#5b3aa6;">Run Analysis →</button></a>
-  <input type="file" id="uploadFile" accept="application/pdf" style="display:none;"/>
-</header>
-<div id="uploadModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:300; align-items:flex-start; justify-content:center; padding-top:60px;">
-  <div style="background:#fff; border-radius:8px; width:min(720px, 92vw); max-height:80vh; overflow:auto; box-shadow:0 8px 32px rgba(0,0,0,0.3);">
-    <div style="padding:14px 20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
-      <h2 style="margin:0; font-size:15px;">Upload PDF</h2>
-      <button onclick="closeUpload()" style="background:#a00; color:#fff; border:0; padding:4px 12px; border-radius:3px; cursor:pointer;">Close</button>
+__MASTHEAD__
+<div class="wrap wide">
+  <section class="page-head">
+    <div>
+      <h1>Coded studies</h1>
+      <p class="lede">One row per extracted effect. Click a title to read the paper's extraction and evidence.
+        Edits, merges, and deletions are saved as an overlay; the source CSVs are only changed by <i>Export CSVs</i>.</p>
     </div>
-    <div id="uploadBody" style="padding:18px 22px;"></div>
+    <div class="page-actions">
+      <button id="jobsPill" class="btn btn-warn" style="display:none;" onclick="showJobsList()"></button>
+      <button id="uploadBtn" class="btn btn-primary">Upload paper (PDF)</button>
+    </div>
+  </section>
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="Filter by citation, title, file, or O*NET&hellip;" style="min-width:320px; flex:0 1 420px;"/>
+    <span class="page-meta" id="stats"></span>
+    <span style="flex:1"></span>
+    <span class="help">Selected rows:</span>
+    <button id="mergeBtn" class="btn">Merge</button>
+    <button id="deleteBtn" class="btn btn-danger">Delete</button>
+    <button id="restoreBtn" class="btn" title="Undo delete for the selected rows">Restore</button>
+    <button id="exportBtn" class="btn" title="Write the edited tables back to outputs/final/*.csv">Export CSVs</button>
+  </div>
+  <input type="file" id="uploadFile" accept="application/pdf" style="display:none;"/>
+<div id="uploadModal" class="modal-shade" style="display:none;">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Upload a paper</h2>
+      <button class="btn btn-quiet" onclick="closeUpload()" aria-label="Close">Close</button>
+    </div>
+    <div id="uploadBody" class="modal-body"></div>
   </div>
 </div>
+<div class="table-scroll">
 <table id="table">
   <colgroup>
-    <col style="width:32px"><col style="width:70px"><col style="width:200px"><col style="width:240px">
-    <col style="width:200px"><col style="width:70px"><col style="width:60px"><col style="width:320px">
-    <col style="width:340px"><col style="width:80px">
+    <col style="width:36px"><col style="width:80px"><col style="width:180px"><col style="width:280px">
+    <col style="width:80px"><col style="width:100px"><col style="width:300px"><col>
   </colgroup>
   <thead><tr>
     <th><input type="checkbox" id="selAll"/><div class="resizer"></div></th>
     <th data-sort="kind">Kind<div class="resizer"></div></th>
-    <th data-sort="citation_key">Citation<div class="resizer"></div></th>
+    <th data-sort="citation">Citation<div class="resizer"></div></th>
     <th data-sort="title">Title<div class="resizer"></div></th>
-    <th data-sort="file_name">File<div class="resizer"></div></th>
-    <th data-sort="value">Value<div class="resizer"></div></th>
-    <th data-sort="confidence">Conf<div class="resizer"></div></th>
+    <th data-sort="value" style="text-align:right">Value<div class="resizer"></div></th>
+    <th data-sort="confidence">Confidence<div class="resizer"></div></th>
     <th>O*NET<div class="resizer"></div></th>
     <th>Task snippet<div class="resizer"></div></th>
-    <th>Actions<div class="resizer"></div></th>
   </tr></thead>
   <tbody id="tbody"></tbody>
 </table>
+</div>
+</div>
 <div id="backdrop" onclick="closeDrawer()"></div>
 <div id="drawer">
-  <header style="display:flex; justify-content:space-between;">
+  <header>
     <h1 id="drawerTitle">Paper detail</h1>
-    <button class="close" onclick="closeDrawer()">Close</button>
+    <button class="btn btn-quiet" onclick="closeDrawer()">Close &times;</button>
   </header>
   <div id="drawerBody"></div>
 </div>
@@ -872,7 +912,7 @@ async function load() {
 }
 
 function onetDisplay(code, label) {
-  if (!code) return '<div class="display empty">(none — click to set)</div>';
+  if (!code) return '<div class="display empty">Not mapped. Click to set</div>';
   return `<div class="display">${escapeHtml(code)} — ${escapeHtml(label||'')}</div>`;
 }
 
@@ -933,16 +973,16 @@ async function applyPicked(code, label) {
 function render() {
   const q = (document.getElementById('search').value || '').toLowerCase();
   let rows = ROWS.filter(r =>
-    !q || (r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
+    !q || (r.citation+r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
   if (SORT.col) {
     rows = [...rows].sort((a,b)=> {
       const x = (a[SORT.col]||'').toString(), y=(b[SORT.col]||'').toString();
-      if (SORT.col==='value') return (parseFloat(x)||0 - parseFloat(y)||0) * SORT.dir;
+      if (SORT.col==='value') return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
       return x.localeCompare(y) * SORT.dir;
     });
   }
   const live = rows.filter(r => !r._deleted).length;
-  document.getElementById('stats').textContent = `${rows.length} rows (${live} live, ${rows.length-live} dropped)`;
+  document.getElementById('stats').textContent = `${rows.length} rows · ${live} live · ${rows.length-live} dropped`;
   const tbody = document.getElementById('tbody');
   tbody.innerHTML = rows.map(r => {
     const v = parseFloat(r.value||0);
@@ -951,9 +991,8 @@ function render() {
     <tr class="${r._deleted?'deleted':''}${r._merged_into?' merged-into':''}" data-row="${r.row_id}">
       <td><input type="checkbox" class="sel"/></td>
       <td><span class="kind-${r.kind}">${r.kind}</span>${r._merged_into?'<span class="badge">merged</span>':''}</td>
-      <td class="cite">${escapeHtml(r.citation_key)}</td>
+      <td class="cite" title="${escapeHtml(r.citation_key)}">${escapeHtml(r.citation||r.citation_key)}</td>
       <td class="title" title="Click to view paper detail" onclick="viewPaper('${r.paper_id}','${r.row_id}')">${escapeHtml(r.title)}</td>
-      <td class="file" title="${escapeHtml(r.file_name)}">${escapeHtml(r.file_name)}</td>
       <td class="value ${vClass}">${v.toFixed(3)}</td>
       <td>${r.confidence ? `<span class="conf-pill-cell ${r.confidence}">${r.confidence}</span>` : ''}</td>
       <td>
@@ -962,11 +1001,6 @@ function render() {
         </div>
       </td>
       <td class="snippet" title="${escapeHtml(r.task_description||'')}">${escapeHtml(r.task_description||'')}</td>
-      <td>
-        ${r._deleted
-          ? `<button class="row-btn" onclick="undeleteRow('${r.row_id}')">Restore</button>`
-          : `<button class="row-btn danger" onclick="deleteRow('${r.row_id}')">Delete</button>`}
-      </td>
     </tr>`;
   }).join('');
 }
@@ -999,6 +1033,11 @@ document.getElementById('deleteBtn').addEventListener('click', async ()=>{
   const ids = selectedIds(); if (!ids.length) return;
   if (!confirm(`Delete ${ids.length} rows?`)) return;
   for (const id of ids) await fetch('/api/row/'+encodeURIComponent(id)+'/delete',{method:'POST'});
+  await load();
+});
+document.getElementById('restoreBtn').addEventListener('click', async ()=>{
+  const ids = selectedIds(); if (!ids.length) return;
+  for (const id of ids) await fetch('/api/row/'+encodeURIComponent(id)+'/undelete',{method:'POST'});
   await load();
 });
 document.getElementById('mergeBtn').addEventListener('click', async ()=>{
@@ -1041,7 +1080,7 @@ function confPill(c){ if(!c) return ''; return `<span class="conf-pill ${c}">${c
 
 function renderEffectCard(kind, eff) {
   if (!eff || !eff.computed) {
-    return `<div class="pd-effect empty"><h3>${kind} effect</h3>No effect computed for this paper.</div>`;
+    return `<div class="pd-effect empty"><h3>${kind} effect</h3>No ${kind} effect was computed for this paper.</div>`;
   }
   const c = eff.computed, ex = eff.llm_extracted || {};
   const isSpeed = kind === 'speed';
@@ -1068,9 +1107,9 @@ function renderQuotes(quotes) {
     const arr = q[key];
     if (!arr || !arr.length) continue;
     const items = arr.map(s => `<div class="pd-quote">${escapeHtml(s)}</div>`).join('');
-    sections.push(`<details ${key==='task'?'open':''}><summary><b>${key}</b> (${arr.length})</summary>${items}</details>`);
+    sections.push(`<details ${key==='task'?'open':''}><summary><b>${key.replace('_',' ')}</b> <span class="help">(${arr.length})</span></summary>${items}</details>`);
   }
-  return sections.length ? `<div class="pd-section"><h3>Verbatim quotes (from 01a)</h3><div class="pd-quotes-block">${sections.join('')}</div></div>` : '';
+  return sections.length ? `<div class="pd-section"><h3>Verbatim quotes</h3><div class="pd-quotes-block">${sections.join('')}</div></div>` : '';
 }
 
 function renderArms(arms) {
@@ -1095,7 +1134,7 @@ function renderOutcomes(ext, oc) {
   const rows = outs.map(o=>{
     const isPS = o.outcome_name===primarySpeed, isPQ = o.outcome_name===primaryQual;
     const star = isPS ? '★ speed' : isPQ ? '★ quality' : '';
-    return `<tr><td><b>${escapeHtml(o.outcome_name||'')}</b>${star?` <span style="color:#a60;font-size:11px;">${star}</span>`:''}</td>
+    return `<tr><td><b>${escapeHtml(o.outcome_name||'')}</b>${star?` <span class="pill" style="background:var(--warn-bg); color:var(--warn-ink);">${star}</span>`:''}</td>
       <td><span class="badge">${escapeHtml(catFor(o.outcome_name))}</span></td>
       <td>${escapeHtml(o.measurement_unit||'')}</td>
       <td>${escapeHtml(o.description||'')}</td></tr>`;
@@ -1109,9 +1148,9 @@ function renderOnet(onet) {
   if (!onet) return '';
   const alts = (onet.alternates||[]).map(a => `<span class="pill" title="${escapeHtml(a.mapping_type||'')}">${escapeHtml(a.onet_code)} — ${escapeHtml(a.onet_label)}</span>`).join('');
   return `<div class="pd-section"><h3>O*NET mapping (pipeline's choice)</h3>
-    <div><span class="pill" style="background:#cef; padding:2px 8px; font-family:monospace; border-radius:3px;">${escapeHtml(onet.onet_code||'?')}</span>
+    <div><span class="pill" style="background:var(--accent-soft); color:var(--accent); font-family:var(--mono); border-radius:3px;">${escapeHtml(onet.onet_code||'?')}</span>
       <b>${escapeHtml(onet.onet_label||'')}</b> ${confPill(onet.mapping_confidence)}
-      <span style="color:#999;font-size:11px;">(${escapeHtml(onet.mapping_type||'')})</span></div>
+      <span class="help">(${escapeHtml((onet.mapping_type||'').replace('_',' '))})</span></div>
     ${onet.rationale ? `<div class="pd-onet-rationale">${escapeHtml(onet.rationale)}</div>`:''}
     ${alts ? `<div class="pd-onet-alt"><b>Alternates:</b><br>${alts}</div>`:''}
   </div>`;
@@ -1138,13 +1177,13 @@ function renderStats(stats) {
     if (s.p_value) extras.push(`p: ${s.p_value}`);
     if (s.confidence_interval) extras.push(`CI: ${s.confidence_interval}`);
     return `<div class="pd-stat">
-      <div class="head"><b>${escapeHtml(s.outcome_name||'?')}</b><span style="color:#666;">${escapeHtml(s.arm_comparison||'')}</span></div>
+      <div class="head"><b>${escapeHtml(s.outcome_name||'?')}</b><span class="help">${escapeHtml(s.arm_comparison||'')}</span></div>
       ${numParts.length ? `<div class="nums">${escapeHtml(numParts.join('  •  '))}</div>`:''}
       ${extras.length ? `<div class="nums">${escapeHtml(extras.join('  •  '))}</div>`:''}
       ${s.verbatim_quote ? `<div class="vq">"${escapeHtml(s.verbatim_quote)}"</div>`:''}
     </div>`;
   }).join('');
-  const more = stats.length>30 ? `<div style="color:#999;font-size:11px;">… ${stats.length-30} more</div>` : '';
+  const more = stats.length>30 ? `<div class="help">… ${stats.length-30} more</div>` : '';
   return `<div class="pd-section"><h3>Reported statistics (${stats.length})</h3>${items}${more}</div>`;
 }
 
@@ -1170,8 +1209,8 @@ function renderPaperDetail(pid, d) {
       ${renderEffectCard('quality', quality)}
     </div>
     ${meth.classification ? `<div class="pd-section"><h3>Method classification</h3>
-      <div><b>${escapeHtml(meth.classification)}</b> ${confPill(meth.confidence)}</div>
-      ${meth.rationale ? `<div style="color:#555; font-size:12px; margin-top:4px;">${escapeHtml(meth.rationale)}</div>`:''}
+      <div><b>${escapeHtml(meth.classification.replace(/_/g,' '))}</b> ${confPill(meth.confidence)}</div>
+      ${meth.rationale ? `<div style="color:var(--ink-2); font-size:13.5px; margin-top:6px; line-height:1.55;">${escapeHtml(meth.rationale)}</div>`:''}
     </div>`:''}
     ${renderOnet(onet)}
     ${renderArms(ext.arms)}
@@ -1200,7 +1239,7 @@ function refreshJobsPill() {
   const pill = document.getElementById('jobsPill');
   if (!ACTIVE_JOBS.length) { pill.style.display = 'none'; return; }
   pill.style.display = '';
-  pill.textContent = `⚙ ${ACTIVE_JOBS.length} running`;
+  pill.textContent = `${ACTIVE_JOBS.length} pipeline job${ACTIVE_JOBS.length>1?'s':''} running`;
 }
 
 function openUpload(html){
@@ -1219,15 +1258,15 @@ function closeUpload(){
 document.getElementById('uploadBtn').onclick = ()=> document.getElementById('uploadFile').click();
 document.getElementById('uploadFile').onchange = async (e)=>{
   const file = e.target.files[0]; if (!file) return;
-  openUpload(`<div style="color:#666;">Uploading <b>${escapeHtml(file.name)}</b> and checking for duplicates…</div>`);
+  openUpload(`<div class="help">Uploading <b>${escapeHtml(file.name)}</b> and checking for duplicates…</div>`);
   const fd = new FormData(); fd.append('pdf', file);
   let r;
   try {
     r = await (await fetch('/api/upload/check', {method:'POST', body: fd})).json();
   } catch (err) {
-    openUpload(`<div style="color:#a00;">Upload failed: ${escapeHtml(err.message)}</div>`); return;
+    openUpload(`<div class="err">Upload failed: ${escapeHtml(err.message)}</div>`); return;
   }
-  if (!r.ok) { openUpload(`<div style="color:#a00;">${escapeHtml(r.error)}</div>`); return; }
+  if (!r.ok) { openUpload(`<div class="err">${escapeHtml(r.error)}</div>`); return; }
   UPLOAD.staged = r;
   e.target.value = ''; // reset for next upload
   renderDupCheck(r);
@@ -1237,46 +1276,44 @@ function renderDupCheck(r) {
   const dups = r.duplicate_candidates || [];
   let dupBlock;
   if (!dups.length) {
-    dupBlock = `<div style="background:#e6f4ea; color:#0a6c2c; padding:10px 14px; border-radius:4px; margin:14px 0; font-size:13px;">
-      ✓ No likely duplicates found in the corpus.
-    </div>`;
+    dupBlock = `<div class="callout ok" style="margin:14px 0;">No likely duplicates found in the corpus.</div>`;
   } else {
-    dupBlock = `<div style="background:#fff4d6; color:#7a5800; padding:10px 14px; border-radius:4px; margin:14px 0 8px; font-size:13px;">
-      ⚠ Found ${dups.length} possible duplicate${dups.length>1?'s':''}. Review before running.
+    dupBlock = `<div class="callout warn" style="margin:14px 0 10px;">
+      Found ${dups.length} possible duplicate${dups.length>1?'s':''} already in the corpus. Please check before running the pipeline.
     </div>` + dups.map((d, i) => `
-      <div style="border:1px solid #ddd; border-radius:4px; padding:10px 12px; margin-bottom:8px;">
-        <div style="display:flex; justify-content:space-between; align-items:start; gap:10px;">
-          <div style="flex:1;">
-            <div style="font-weight:500; font-size:13px;">${escapeHtml(d.title)}</div>
-            <div style="font-size:11px; color:#666; margin-top:2px;">
-              <span style="font-family:monospace;">${escapeHtml(d.citation_key||'')}</span> ·
-              ${escapeHtml((d.authors||[]).join('; '))}${d.year?` (${d.year})`:''} ·
-              <b>${Math.round(d.score*100)}% match</b> with <span style="font-family:monospace;">${escapeHtml(d.paper_id)}</span>
-            </div>
+      <div class="dup">
+        <div style="flex:1;">
+          <div class="t">${escapeHtml(d.title)}</div>
+          <div class="m">
+            <span class="mono">${escapeHtml(d.citation_key||'')}</span> ·
+            ${escapeHtml((d.authors||[]).join('; '))}${d.year?` (${d.year})`:''} ·
+            <b>${Math.round(d.score*100)}% title match</b> with <span class="mono">${escapeHtml(d.paper_id)}</span>
           </div>
-          <button onclick="viewPaper('${d.paper_id}','dup')" class="row-btn">View existing</button>
         </div>
+        <button onclick="viewPaper('${d.paper_id}','dup')" class="row-btn">View existing</button>
       </div>`).join('');
   }
   openUpload(`
-    <div><b>Title detected:</b> ${escapeHtml(r.extracted_title || '(none — title heuristic failed)')}</div>
-    <div style="font-size:11px; color:#888; margin-top:2px;">Will be saved as <code>${escapeHtml(r.target_paper_id)}.pdf</code></div>
+    <div class="help">Detected title</div>
+    <div style="font-family:var(--serif); font-size:17px; line-height:1.3;">${escapeHtml(r.extracted_title || '(none — title heuristic failed)')}</div>
+    <div class="help" style="margin-top:4px;">Will be saved as <code>${escapeHtml(r.target_paper_id)}.pdf</code></div>
     ${dupBlock}
-    <div style="display:flex; gap:10px; margin-top:14px;">
-      <button class="row-btn" onclick="closeUpload()">Cancel (discard upload)</button>
-      <button onclick="confirmUploadRun()" style="background:#0a7; color:#fff; border:0; padding:6px 16px; border-radius:3px; cursor:pointer;">
+    <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
+      <button class="btn" onclick="closeUpload()">Cancel and discard</button>
+      <button class="btn btn-primary" onclick="confirmUploadRun()">
         ${dups.length ? 'Add anyway and run pipeline' : 'Run pipeline'}
       </button>
     </div>
+    <p class="help" style="margin:12px 0 0;">The full pipeline takes a few minutes and costs roughly $0.13 in API calls.</p>
   `);
 }
 
 async function confirmUploadRun() {
   const r = UPLOAD.staged; if (!r) return;
-  openUpload(`<div style="color:#555;">Starting pipeline for <code>${escapeHtml(r.target_paper_id)}</code>…</div>`);
+  openUpload(`<div class="help">Starting pipeline for <code>${escapeHtml(r.target_paper_id)}</code>…</div>`);
   const res = await (await fetch('/api/upload/run', {method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({staged_id: r.staged_id, target_paper_id: r.target_paper_id})})).json();
-  if (!res.ok) { openUpload(`<div style="color:#a00;">${escapeHtml(res.error)}</div>`); return; }
+  if (!res.ok) { openUpload(`<div class="err">${escapeHtml(res.error)}</div>`); return; }
   // remember this job so we can re-attach later
   const list = ACTIVE_JOBS.filter(j=>j.job_id !== res.job_id);
   list.unshift({job_id: res.job_id, paper_id: r.target_paper_id, started: Date.now()});
@@ -1297,14 +1334,14 @@ async function showJobsList() {
   }
   // Multi-job picker
   const items = jobs.slice(0,15).map(j => `
-    <div style="border:1px solid #ddd; border-radius:4px; padding:8px 12px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+    <div class="dup" style="align-items:center;">
       <div>
-        <div style="font-family:monospace; font-size:12px;">${escapeHtml(j.paper_id)}</div>
-        <div style="font-size:11px; color:#666;">state: <b>${j.state}</b> · job ${escapeHtml(j.job_id)}</div>
+        <div class="mono">${escapeHtml(j.paper_id)}</div>
+        <div class="m">${j.state} · job ${escapeHtml(j.job_id)}</div>
       </div>
       <button class="row-btn" onclick="pollUpload('${j.job_id}','${escapeHtml(j.paper_id)}')">Open</button>
     </div>`).join('');
-  openUpload(`<div><b>Pipeline jobs</b> (last 15)</div>${items || '<div style="color:#888;">No jobs yet.</div>'}`);
+  openUpload(`<div class="help" style="margin-bottom:8px;">Pipeline jobs (most recent 15)</div>${items || '<div class="help">No jobs yet.</div>'}`);
 }
 
 const STAGE_NAMES = ['extract_quotes','structure','classify_method','classify_outcome','map_onet','compute_speed','compute_quality'];
@@ -1318,27 +1355,22 @@ async function pollUpload(jobId, paperId) {
     if (POLL_JOB !== jobId || !UPLOAD_OPEN) return;
     const r = await (await fetch('/api/upload/status/'+encodeURIComponent(jobId))).json();
     if (!r.ok) {
-      if (UPLOAD_OPEN) openUpload(`<div style="color:#a00;">${escapeHtml(r.error)}</div>`);
+      if (UPLOAD_OPEN) openUpload(`<div class="err">${escapeHtml(r.error)}</div>`);
       return;
     }
     const state = r.job.state;
     const done = STAGE_NAMES.filter(s => r.stages[s]).length;
     const stageList = STAGE_NAMES.map(s =>
-      `<div style="display:flex; gap:8px; font-size:12px; padding:2px 0;">
-         <span style="width:14px;">${r.stages[s]?'✓':'·'}</span>
-         <span style="color:${r.stages[s]?'#0a6c2c':'#888'};">${s}</span>
-       </div>`).join('');
+      `<div class="st ${r.stages[s]?'done':''}"><span style="width:14px;">${r.stages[s]?'✓':'·'}</span><span>${s}</span></div>`).join('');
     let footer = '';
     if (state === 'done') {
       const o = r.job.outcome || {};
       const added = (o.speed_added || o.quality_added);
       const reasons = (o.reasons||[]).map(s=>`<li>${escapeHtml(s)}</li>`).join('');
-      const bg = added ? '#e6f4ea' : '#fff8e0';
-      const fg = added ? '#0a6c2c' : '#7a5800';
       const headline = added
-        ? '✓ Pipeline complete — new row(s) added to the table.'
-        : '⚠ Pipeline complete, but nothing was added to the table.';
-      footer = `<div style="background:${bg}; color:${fg}; padding:10px 14px; border-radius:4px; margin-top:10px;">
+        ? 'Pipeline complete. New row(s) were added to the table.'
+        : 'Pipeline complete, but nothing was added to the table.';
+      footer = `<div class="callout ${added?'ok':'warn'}" style="margin-top:12px;">
         <div><b>${headline}</b></div>
         ${reasons ? `<ul style="margin:6px 0 0; padding-left:20px;">${reasons}</ul>` : ''}
         <div style="margin-top:8px;">
@@ -1347,16 +1379,16 @@ async function pollUpload(jobId, paperId) {
         </div></div>`;
       updateActiveJobs(ACTIVE_JOBS.filter(j=>j.job_id !== jobId));
     } else if (state === 'failed') {
-      footer = `<div style="background:#fee; color:#a00; padding:10px 14px; border-radius:4px; margin-top:10px;">
-        ✗ Pipeline failed: ${escapeHtml(r.job.error||'')}<br><span style="font-size:11px;">See logs/upload_${escapeHtml(paperId)}.log</span></div>`;
+      footer = `<div class="err">
+        Pipeline failed: ${escapeHtml(r.job.error||'')}<br><span style="font-size:12px;">See <code>logs/upload_${escapeHtml(paperId)}.log</code></span></div>`;
       updateActiveJobs(ACTIVE_JOBS.filter(j=>j.job_id !== jobId));
     } else {
-      footer = `<div style="color:#888; font-size:12px; margin-top:8px;">running… (${done}/${STAGE_NAMES.length} stages) — closing this window will not stop the job</div>`;
+      footer = `<div class="help" style="margin-top:10px;">Running: ${done} of ${STAGE_NAMES.length} stages complete. Closing this window will not stop the job.</div>`;
     }
     if (UPLOAD_OPEN && POLL_JOB === jobId) {
       openUpload(`
-        <div><b>Processing</b> <code>${escapeHtml(paperId)}</code> — state: <b>${state}</b></div>
-        <div style="margin-top:10px; border:1px solid #eee; border-radius:4px; padding:8px 12px;">${stageList}</div>
+        <div>Processing <code>${escapeHtml(paperId)}</code> <span class="pill">${state}</span></div>
+        <div class="stage-list">${stageList}</div>
         ${footer}
       `);
     }
@@ -1382,7 +1414,7 @@ async function pollUpload(jobId, paperId) {
   const ths  = document.querySelectorAll('#table thead th');
   // restore saved widths first
   ths.forEach((th, i)=>{
-    try { const w = localStorage.getItem('colw_'+i); if (w && cols[i]) cols[i].style.width = w; } catch(_){}
+    try { const w = localStorage.getItem('colw2_'+i); if (w && cols[i]) cols[i].style.width = w; } catch(_){}
   });
   document.querySelectorAll('#table th .resizer').forEach((r, i)=>{
     let dragging = false;
@@ -1401,7 +1433,7 @@ async function pollUpload(jobId, paperId) {
         document.removeEventListener('mousemove', move);
         document.removeEventListener('mouseup', up);
         document.body.style.cursor = '';
-        try{ localStorage.setItem('colw_'+i, col.style.width); }catch(_){}
+        try{ localStorage.setItem('colw2_'+i, col.style.width); }catch(_){}
         setTimeout(()=>{ dragging=false; }, 0);
       };
       document.addEventListener('mousemove', move);
@@ -1418,75 +1450,70 @@ load();
 """
 
 
-RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analysis</title>
+RUN_HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Run analysis · AI Impact Meta-Review</title>
+__THEME_HEAD__
 <style>
-  body { font-family:-apple-system,sans-serif; margin:0; background:#f5f5f7; }
-  header { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; }
-  header h1 { margin:0; font-size:16px; }
-  header a { color:#9cf; text-decoration:none; font-size:13px; }
-  main { max-width:780px; margin: 24px auto; padding: 0 18px; }
-  .card { background:#fff; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); padding:20px 24px; margin-bottom:18px; }
-  h2 { font-size:14px; text-transform:uppercase; letter-spacing:0.04em; color:#666; margin: 0 0 12px; }
-  .row { display:flex; gap:14px; margin-bottom:10px; align-items:baseline; }
-  .row label { width:170px; font-size:13px; color:#333; font-weight:500; }
+  :root { --page-w: 1080px; }
+  .row { display:flex; gap:18px; margin-bottom:14px; align-items:baseline; }
+  .row label { width:200px; flex:none; font-size:14px; color:var(--ink); font-weight:500; }
   .row .ctl { flex:1; }
-  .row .ctl input[type=number], .row .ctl input[type=text], .row .ctl select { padding:5px 8px; border:1px solid #ccc; border-radius:4px; font-size:13px; width:120px; }
-  .row .help { color:#888; font-size:11px; margin-top:2px; }
-  .seg { display:inline-flex; border:1px solid #ccc; border-radius:6px; overflow:hidden; }
-  .seg button { padding:6px 16px; background:#fff; border:0; cursor:pointer; font-size:13px; color:#555; }
-  .seg button.active { background:#5b3aa6; color:#fff; }
-  details { margin-top:14px; }
-  details summary { cursor:pointer; font-size:12px; color:#666; padding:4px 0; }
-  .actions { display:flex; gap:10px; align-items:center; margin-top:16px; }
-  button.primary { background:#5b3aa6; color:#fff; border:0; padding:8px 22px; border-radius:4px; cursor:pointer; font-size:14px; }
-  button.primary:disabled { background:#aaa; cursor:wait; }
-  button.secondary { background:#eee; color:#333; border:0; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:13px; }
-  .status { font-size:13px; color:#555; }
-  .err { background:#ffe4e4; border:1px solid #f99; color:#a00; padding:8px 12px; border-radius:4px; margin-top:10px; font-size:13px; }
+  .row .ctl input[type=number], .row .ctl input[type=text], .row .ctl select { width:130px; }
+  .row .help { margin-top:3px; }
+  .actions { display:flex; gap:10px; align-items:center; margin-top:18px; }
+  .status { font-size:13px; color:var(--ink-2); }
+  .step { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%;
+          background:var(--accent-soft); color:var(--accent); font-family:var(--sans); font-size:12px; font-weight:600; margin-right:8px; vertical-align:2px; }
+  .inset { margin-top:16px; padding:14px 16px; border:1px solid var(--rule); border-radius:5px; background:var(--surface-2); }
+  .inset .t { font-weight:600; margin-bottom:8px; }
+  .summary-line { margin-top:12px; padding:10px 14px; background:var(--accent-soft); border-radius:4px; font-size:13.5px; color:var(--ink); }
+  #heatmap, #barchart { overflow:auto; border:1px solid var(--rule-soft); border-radius:4px; padding:8px; background:var(--surface); }
 </style></head><body>
-<header>
-  <h1>Run Analysis</h1>
-  <a href="/">← back to review</a>
-  <a href="/results" style="margin-left:auto;">Past runs →</a>
-</header>
-<main>
-  <div id="liveCount" style="color:#666; font-size:12px; margin: 0 0 12px 4px;">checking current table…</div>
+__MASTHEAD__
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <h1>Run an imputation analysis</h1>
+      <p class="lede">Propagate the observed study effects across the O*NET occupation&ndash;activity graph to estimate impacts where no study exists.
+        Runs use the live state of the studies table, including your edits.</p>
+    </div>
+  </section>
+  <div id="liveCount" class="callout" style="margin:0 0 18px;">Checking current table…</div>
 
   <div class="card">
-    <h2>Metric</h2>
+    <h2><span class="step">1</span>Outcome metric</h2>
     <div class="seg" id="metricSeg">
       <button data-m="speed" class="active">speed</button>
       <button data-m="quality">quality</button>
     </div>
-    <div class="help" style="margin-top:6px; color:#888; font-size:12px;">A run targets one metric at a time. Switching swaps the observation columns consumed by the pipeline.</div>
+    <div class="help" style="margin-top:8px;">A run targets one metric at a time. Switching swaps the observation columns consumed by the pipeline.</div>
   </div>
 
   <div class="card">
-    <h2>Pruning: O*NET coverage</h2>
-    <div style="font-size:12px; color:#666; line-height:1.5; margin-bottom:8px;">
-      Heatmap of mean Stage-B weight per SOC major group × activity. Green vertical lines = observed activities for this metric.
-      Cyan horizontal lines = SOC majors containing an observed occupation. Translucent gray = deselected (excluded from analysis).
-      Click a row label or its checkbox to toggle.
-    </div>
-    <div id="heatmap" style="overflow:auto;"></div>
+    <h2><span class="step">2</span>Scope: which parts of O*NET to include</h2>
+    <p class="help" style="margin-top:0;">
+      Each cell is the mean Stage-B weight of an activity within a SOC major group. Red markers and bold labels flag activities and SOC major groups
+      with an observed effect for this metric. Shaded rows are excluded from the analysis.
+      Click a row label or its checkbox to include or exclude it.
+    </p>
+    <div id="heatmap"></div>
 
-    <div style="display:flex; gap:18px; margin:14px 0 6px; align-items:baseline;">
-      <label style="font-weight:500;">Activity weight threshold</label>
-      <input type="number" id="weightThreshold" value="10" step="0.5" min="0" style="width:80px; padding:5px 7px;"/>
-      <div class="help" style="color:#888; font-size:12px;">activities whose summed weight (over selected occupations) is below this are dropped</div>
+    <div style="display:flex; gap:14px; margin:18px 0 8px; align-items:baseline; flex-wrap:wrap;">
+      <label for="weightThreshold" style="font-weight:600;">Activity weight threshold</label>
+      <input type="number" id="weightThreshold" value="10" step="0.5" min="0" style="width:90px;"/>
+      <div class="help">Activities whose summed weight across the included occupations falls below this are dropped.</div>
     </div>
-    <div id="barchart" style="overflow:auto;"></div>
-    <div id="pruneSummary" style="margin-top:10px; padding:8px 12px; background:#f0f4f8; border-radius:4px; font-size:13px; color:#333;"></div>
+    <div id="barchart"></div>
+    <div id="pruneSummary" class="summary-line"></div>
 
-    <div style="margin-top:14px; padding:10px 12px; border:1px solid #e0e0e0; border-radius:4px; background:#fafafa;">
-      <div style="font-size:13px; font-weight:500; margin-bottom:6px;">Analysis unit</div>
-      <div id="aggLevelSeg" style="display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; font-size:12px;">
-        <button type="button" data-val="occupation" class="agg-seg active" style="padding:6px 12px; border:0; background:#06c; color:#fff; cursor:pointer;">Occupation (~894)</button>
-        <button type="button" data-val="soc_minor" class="agg-seg" style="padding:6px 12px; border:0; background:#fff; color:#333; cursor:pointer; border-left:1px solid #ccc;">SOC minor (~92, XX-X000)</button>
-        <button type="button" data-val="soc_major" class="agg-seg" style="padding:6px 12px; border:0; background:#fff; color:#333; cursor:pointer; border-left:1px solid #ccc;">SOC major (22)</button>
+    <div class="inset">
+      <div class="t">Unit of analysis</div>
+      <div id="aggLevelSeg" class="seg">
+        <button type="button" data-val="occupation" class="agg-seg active">Occupation (~894)</button>
+        <button type="button" data-val="soc_minor" class="agg-seg">SOC minor group (~92)</button>
+        <button type="button" data-val="soc_major" class="agg-seg">SOC major group (22)</button>
       </div>
       <input type="hidden" id="aggregationLevel" value="occupation"/>
-      <div style="margin-top:6px; color:#888; font-size:12px;">
+      <div class="help" style="margin-top:8px;">
         Occupation (default): runs over the ~894 individual O*NET occupations.
         SOC minor: collapses to ~92 3-digit minor groups (e.g. 13-2000 Financial Specialists).
         SOC major: collapses to the 22 2-digit major groups.
@@ -1496,7 +1523,7 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
   </div>
 
   <details class="card">
-    <summary>Advanced parameters</summary>
+    <summary>Advanced parameters <span class="help" style="font-family:var(--sans); font-weight:400;">&nbsp;optional; defaults follow the methodology spec</span></summary>
     <div class="row">
       <label>Specificity (β)</label>
       <div class="ctl">
@@ -1516,7 +1543,7 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
         <label>AIOE baseline (speed only)</label>
         <div class="ctl">
           <input type="checkbox" id="use_baseline" checked/>
-          <span style="font-size:12px; color:#888;">Felten et al. AIOE moment-matched to observed mean/SD</span>
+          <span class="help">Felten et al. AIOE, moment-matched to the observed mean and SD</span>
         </div>
       </div>
       <div class="row">
@@ -1538,6 +1565,15 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
   </details>
 
   <div class="card">
+    <h2><span class="step">3</span>Run</h2>
+    <div class="seg" id="runTypeSeg" style="margin-bottom:8px;">
+      <button data-t="full" class="active">Full run</button>
+      <button data-t="loo">Leave-one-out CV</button>
+    </div>
+    <div class="help" id="runTypeHelp">
+      A full run produces occupation + activity impact estimates.
+      LOO CV holds out each observation one at a time, re-solves, and reports how well the graph recovers the held-out value (MAE / RMSE / R²) and, more importantly, its rank among the observed nodes (Kendall τ-b, concordance, top-K precision).
+    </div>
     <div class="actions">
       <button class="primary" id="runBtn">Run analysis</button>
       <button class="secondary" onclick="resetDefaults()">Reset to defaults</button>
@@ -1558,9 +1594,9 @@ function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&a
     const qual  = rows.filter(x => x.kind==='quality').length;
     const withOnet = rows.filter(x => x.onet_code).length;
     document.getElementById('liveCount').innerHTML =
-      `Current table: <b>${speed}</b> speed · <b>${qual}</b> quality (live, deleted/merged rows excluded) · <b>${withOnet}</b> have an O*NET code`;
+      `The current table has <b>${speed}</b> speed and <b>${qual}</b> quality effects (deleted and merged rows excluded); <b>${withOnet}</b> have an O*NET code.`;
   } catch (e) {
-    document.getElementById('liveCount').textContent = 'could not load live count';
+    document.getElementById('liveCount').textContent = 'Could not load the current table.';
   }
 })();
 
@@ -1577,12 +1613,8 @@ document.querySelectorAll('#metricSeg button').forEach(b=>{
 });
 document.querySelectorAll('#aggLevelSeg .agg-seg').forEach(b=>{
   b.onclick = () => {
-    document.querySelectorAll('#aggLevelSeg .agg-seg').forEach(x=>{
-      x.classList.remove('active');
-      x.style.background = '#fff'; x.style.color = '#333';
-    });
+    document.querySelectorAll('#aggLevelSeg .agg-seg').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
-    b.style.background = '#06c'; b.style.color = '#fff';
     document.getElementById('aggregationLevel').value = b.dataset.val;
   };
 });
@@ -1606,7 +1638,7 @@ async function loadHeatmap() {
   const beta = parseFloat(document.getElementById('beta').value) || 2.5;
   const url = `/api/heatmap_data?metric=${METRIC}&beta=${beta}`;
   const r = await (await fetch(url)).json();
-  if (!r.ok) { document.getElementById('heatmap').innerHTML = `<div style="color:#a00;">${r.error}</div>`; return; }
+  if (!r.ok) { document.getElementById('heatmap').innerHTML = `<div class="err">${escapeHtml(r.error)}</div>`; return; }
   HEAT = r;
   if (EXCLUDED.size === 0) EXCLUDED = new Set(r.default_excluded_socs);
   renderCharts();
@@ -1656,7 +1688,7 @@ function renderHeatmap() {
   let overlaySvg = '';
   rows.forEach((r, ri) => {
     if (EXCLUDED.has(r.code)) {
-      overlaySvg += `<rect x="${labelW}" y="${labelH+ri*cell}" width="${cols.length*cell}" height="${cell}" fill="rgba(180,180,180,0.55)"/>`;
+      overlaySvg += `<rect x="${labelW}" y="${labelH+ri*cell}" width="${cols.length*cell}" height="${cell}" fill="rgba(244,241,234,0.85)"/>`;
     }
   });
   // observed overlays
@@ -1664,26 +1696,26 @@ function renderHeatmap() {
   cols.forEach((c, ci) => {
     if (c.observed) {
       const x = labelW + ci*cell + cell/2;
-      lineSvg += `<line x1="${x}" y1="${labelH}" x2="${x}" y2="${labelH+rows.length*cell}" stroke="#39FF14" stroke-width="2"/>`;
+      lineSvg += `<rect x="${x-cell/2+2}" y="${labelH-7}" width="${cell-4}" height="5" rx="1" fill="#d1492e"/>`;
     }
   });
   rows.forEach((r, ri) => {
     if (r.observed && !EXCLUDED.has(r.code)) {
       const y = labelH + ri*cell + cell/2;
-      lineSvg += `<line x1="${labelW}" y1="${y}" x2="${labelW+cols.length*cell}" y2="${y}" stroke="#00E5FF" stroke-width="2"/>`;
+      lineSvg += `<rect x="${labelW-6}" y="${y-cell/2+2}" width="5" height="${cell-4}" rx="1" fill="#d1492e"/>`;
     }
   });
   // row labels with checkboxes (HTML overlay because checkboxes in SVG are clunky)
   const rowLabels = rows.map((r, ri) => {
     const y = labelH + ri*cell;
-    const fade = EXCLUDED.has(r.code) ? 'color:#aaa;' : '';
-    const bold = r.observed ? 'font-weight:600; color:#0077aa;' : '';
+    const fade = EXCLUDED.has(r.code) ? 'color:#a9a59c;' : '';
+    const bold = r.observed ? 'font-weight:600;' : '';
     return `<div style="position:absolute; left:0; top:${y}px; height:${cell}px; width:${labelW-6}px;
                        display:flex; align-items:center; gap:5px; font-size:11px; ${fade}${bold} cursor:pointer;"
                  onclick="toggleSoc('${r.code}')">
               <input type="checkbox" ${EXCLUDED.has(r.code)?'':'checked'} onclick="event.stopPropagation(); toggleSoc('${r.code}');" style="margin:0 4px;">
               <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(r.name)} (n=${r.n})">
-                ${escapeHtml(r.name)} <span style="color:#999; font-weight:400;">(n=${r.n})</span>
+                ${escapeHtml(r.name)} <span style="color:var(--muted); font-weight:400;">(n=${r.n})</span>
               </span>
             </div>`;
   }).join('');
@@ -1691,7 +1723,7 @@ function renderHeatmap() {
   const colLabelY = labelH + rows.length * cell + 6;
   const colLabels = cols.map((c, ci) => {
     const x = labelW + ci*cell + cell/2;
-    const fill = c.observed ? '#1a9850' : '#444';
+    const fill = c.observed ? '#1d1f23' : '#5b5f67';
     const fw = c.observed ? '600' : '400';
     return `<text x="${x}" y="${colLabelY}" font-size="10" fill="${fill}" font-weight="${fw}"
                   transform="rotate(60 ${x} ${colLabelY})" text-anchor="start">${escapeHtml(c.name)}</text>`;
@@ -1703,10 +1735,10 @@ function renderHeatmap() {
       <svg width="${width}" height="${height}" style="display:block;">
         ${cellsSvg}${overlaySvg}${lineSvg}${colLabels}
       </svg>
-      <div style="display:flex; gap:18px; font-size:11px; color:#666; margin-top:6px;">
-        <span><span style="display:inline-block; width:10px; height:2px; background:#39FF14; vertical-align:middle;"></span> observed activity</span>
-        <span><span style="display:inline-block; width:10px; height:2px; background:#00E5FF; vertical-align:middle;"></span> SOC with observed occupation</span>
-        <span><span style="display:inline-block; width:10px; height:10px; background:rgba(180,180,180,0.55); vertical-align:middle;"></span> deselected (excluded)</span>
+      <div class="chart-legend">
+        <span><span class="sw" style="background:#d1492e; width:10px; height:5px;"></span>Marker above a column / left of a row, with bold label: has an observed effect for this metric</span>
+        <span><span class="sw" style="background:#f4f1ea; border:1px solid #e2ddd2;"></span>Excluded</span>
+        <span>Weight <span class="sw" style="width:70px; margin:0 4px; background:linear-gradient(90deg, rgb(68,1,84), rgb(59,82,139), rgb(33,144,141), rgb(93,200,99), rgb(253,231,37));"></span>low &rarr; high</span>
       </div>
     </div>`;
 }
@@ -1736,22 +1768,24 @@ function renderBarChart() {
     const w = (sums[i] / vmax) * plotW;
     const y = padT + i * barH;
     const below = sums[i] < threshold;
-    const fill = a.observed ? '#0a6c2c' : '#4C72B0';   // green = given/observed; blue = other
+    const fill = a.observed ? '#23406a' : '#a9b4c2';   // navy = observed; gray-blue = other
     const opacity = below ? 0.35 : 1.0;
     bars += `<rect x="${labelW}" y="${y+1}" width="${w}" height="${barH-3}" fill="${fill}" opacity="${opacity}"/>`;
-    bars += `<text x="${labelW + w + 4}" y="${y+barH-3}" font-size="9" fill="${below?'#999':'#333'}">${sums[i].toFixed(1)}</text>`;
-    const tcol = a.observed ? '#0a6c2c' : '#333';
+    bars += `<text x="${labelW + w + 4}" y="${y+barH-3}" font-size="9" fill="${below?'#a9a59c':'#474b53'}">${sums[i].toFixed(1)}</text>`;
+    const tcol = below ? '#a9a59c' : '#1d1f23';
     bars += `<text x="${labelW-4}" y="${y+barH-3}" font-size="10" fill="${tcol}" text-anchor="end" font-weight="${a.observed?'600':'400'}">${escapeHtml(a.name)}</text>`;
   });
   // threshold line
   const tx = labelW + (threshold / vmax) * plotW;
-  bars += `<line x1="${tx}" y1="${padT}" x2="${tx}" y2="${padT + acts.length*barH}" stroke="#a00" stroke-width="1.5" stroke-dasharray="4 3"/>`;
-  bars += `<text x="${tx + 3}" y="${padT - 2}" font-size="10" fill="#a00">threshold = ${threshold.toFixed(1)}</text>`;
+  bars += `<line x1="${tx}" y1="${padT}" x2="${tx}" y2="${padT + acts.length*barH}" stroke="#1d1f23" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  bars += `<text x="${tx + 3}" y="${padT - 2}" font-size="10" fill="#1d1f23">threshold = ${threshold.toFixed(1)}</text>`;
 
   document.getElementById('barchart').innerHTML = `
     <svg width="${labelW + plotW + 70}" height="${height}" style="display:block;">${bars}</svg>
-    <div style="font-size:11px; color:#666; margin-top:4px;">
-      Bars below the red dashed line are dropped. Green label/bar = observed (given).
+    <div class="chart-legend">
+      <span><span class="sw" style="background:#23406a;"></span>Observed activity (always kept)</span>
+      <span><span class="sw" style="background:#a9b4c2;"></span>Other activity</span>
+      <span>Faded bars fall left of the dashed threshold and are dropped.</span>
     </div>`;
 
   // Bottom summary: how many occupations and activities will feed the analysis
@@ -1765,7 +1799,7 @@ function renderBarChart() {
   const actIncluded = acts.filter(a => a.observed || a.total >= threshold).length;
   const socIncluded = HEAT.soc_groups.length - EXCLUDED.size;
   document.getElementById('pruneSummary').innerHTML =
-    `<b>Included in analysis:</b> ${occIncluded.toLocaleString()} of ${occTotal.toLocaleString()} occupations ` +
+    `<b>Included:</b> ${occIncluded.toLocaleString()} of ${occTotal.toLocaleString()} occupations ` +
     `(${socIncluded} of ${HEAT.soc_groups.length} SOC major groups) · ` +
     `${actIncluded} of ${actTotal} activities`;
 }
@@ -1780,11 +1814,22 @@ function toggleSoc(code) {
 document.getElementById('weightThreshold').addEventListener('input', renderBarChart);
 document.getElementById('beta').addEventListener('change', loadHeatmap);
 loadHeatmap();
+let RUN_TYPE = 'full';
+document.querySelectorAll('#runTypeSeg button').forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll('#runTypeSeg button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); RUN_TYPE = b.dataset.t;
+    document.getElementById('runBtn').textContent = RUN_TYPE==='loo' ? 'Run LOO cross-validation' : 'Run analysis';
+  };
+});
+
 document.getElementById('runBtn').onclick = async ()=>{
   const btn = document.getElementById('runBtn');
   const status = document.getElementById('status');
   const err = document.getElementById('errBox');
-  btn.disabled = true; status.textContent='running… (≈30s)'; err.innerHTML='';
+  btn.disabled = true;
+  status.textContent = RUN_TYPE==='loo' ? 'Running leave-one-out CV (one solve per observation, about 1–2 min)…' : 'Running (about 30 s)…';
+  err.innerHTML = '';
   const payload = {
     metric: METRIC,
     beta: parseFloat(document.getElementById('beta').value),
@@ -1798,13 +1843,14 @@ document.getElementById('runBtn').onclick = async ()=>{
     sigma_ref: parseFloat(document.getElementById('sigma_ref').value),
     eps: parseFloat(document.getElementById('eps').value),
   };
+  const endpoint = RUN_TYPE==='loo' ? '/api/loo' : '/api/run';
   try {
-    const r = await (await fetch('/api/run', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})).json();
+    const r = await (await fetch(endpoint, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})).json();
     if (!r.ok) throw new Error(r.error||'unknown');
-    status.textContent = 'done — redirecting…';
-    location.href = '/results/' + encodeURIComponent(r.run_id);
+    status.textContent = 'Done. Opening results…';
+    location.href = (RUN_TYPE==='loo' ? '/loo/' : '/results/') + encodeURIComponent(r.run_id);
   } catch(e) {
-    err.innerHTML = '<div class="err">'+e.message+'</div>';
+    err.innerHTML = '<div class="err">'+escapeHtml(e.message)+'</div>';
     status.textContent=''; btn.disabled=false;
   }
 };
@@ -1813,42 +1859,74 @@ document.getElementById('runBtn').onclick = async ()=>{
 """
 
 
-RESULTS_INDEX_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Past runs</title>
+RESULTS_INDEX_HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Past runs · AI Impact Meta-Review</title>
+__THEME_HEAD__
 <style>
-  body { font-family:-apple-system,sans-serif; margin:0; background:#f5f5f7; }
-  header { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; }
-  header h1 { margin:0; font-size:16px; }
-  header a { color:#9cf; text-decoration:none; font-size:13px; }
-  main { max-width:1000px; margin:24px auto; padding:0 18px; }
-  table { width:100%; background:#fff; border-collapse:collapse; border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
-  th, td { padding:9px 12px; text-align:left; border-bottom:1px solid #eee; }
-  th { background:#f7f7f9; font-size:11px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
-  tr:hover { background:#f0f6ff; cursor:pointer; }
-  .pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; }
-  .pill.speed { background:#e6f3ff; color:#0463a3; } .pill.quality { background:#ffe6f0; color:#a0286c; }
-  a { color:#5b3aa6; text-decoration:none; }
+  :root { --page-w: 1120px; }
+  #t tbody tr { cursor:pointer; }
+  #t td.id { font-family:var(--mono); font-size:11.5px; color:var(--ink-2); }
 </style></head><body>
-<header><h1>Past analysis runs</h1><a href="/">← review</a><a href="/run">+ new run</a></header>
-<main>
-  <table id="t"><thead><tr>
-    <th>Run ID</th><th>Started</th><th>Metric</th><th>β</th><th>Ω_ref</th><th>Baseline</th>
-    <th>Obs (occ/act)</th><th>Kept (occ/act)</th>
+__MASTHEAD__
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <h1>Past analysis runs</h1>
+      <p class="lede">Every imputation run is stored with its parameters and outputs. Click a row to open it.
+        To compare two full runs, tick their boxes and choose <i>Compare</i>. Leave-one-out runs (<span class="tag loo">LOO</span>)
+        open a cross-validation report and can&rsquo;t be compared.</p>
+    </div>
+    <div class="page-actions">
+      <button id="cmpBtn" class="btn" disabled>Compare selected (0/2)</button>
+      <a class="btn btn-primary" href="/run">New run</a>
+    </div>
+  </section>
+  <table id="t" class="data"><thead><tr>
+    <th style="width:28px;"></th>
+    <th>Run ID</th><th>Started (UTC)</th><th>Type</th><th>Metric</th><th>&beta;</th><th>&Omega;<sub>ref</sub></th><th>Baseline</th>
+    <th>Observed (occ/act)</th><th>Kept (occ/act)</th>
   </tr></thead><tbody id="tb"></tbody></table>
 </main>
 <script>
+const SELECTED = new Set();
+function refreshCompareBtn() {
+  const btn = document.getElementById('cmpBtn');
+  const n = SELECTED.size;
+  btn.textContent = `Compare selected (${n}/2)`;
+  btn.disabled = n !== 2;
+  btn.classList.toggle('btn-primary', n === 2);
+}
+function toggleSel(id, checked) {
+  if (checked) SELECTED.add(id); else SELECTED.delete(id);
+  refreshCompareBtn();
+}
+document.getElementById('cmpBtn').onclick = () => {
+  if (SELECTED.size !== 2) return;
+  const [a, b] = [...SELECTED];
+  location.href = `/compare?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`;
+};
 fetch('/api/runs').then(r=>r.json()).then(d=>{
   const tb = document.getElementById('tb');
-  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="8" style="text-align:center; padding:20px; color:#888;">No runs yet. <a href="/run">Start one</a>.</td></tr>'; return; }
+  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="10" style="text-align:center; padding:28px; color:var(--muted);">No runs yet. <a href="/run">Start one</a>.</td></tr>'; return; }
   tb.innerHTML = d.runs.map(r=>{
     const p = r.params||{};
-    return `<tr onclick="location.href='/results/${encodeURIComponent(r.run_id)}'">
-      <td style="font-family:monospace; font-size:11px;">${r.run_id}</td>
+    const isLoo = r.type === 'loo';
+    const typeTag = isLoo
+      ? '<span class="tag loo">LOO</span>'
+      : '<span class="help">Full</span>';
+    const href = isLoo ? '/loo/' + encodeURIComponent(r.run_id) : '/results/' + encodeURIComponent(r.run_id);
+    const cb = isLoo
+      ? '<span title="LOO runs cannot be compared" style="color:var(--rule);">—</span>'
+      : `<input type="checkbox" onclick="event.stopPropagation(); toggleSel('${r.run_id}', this.checked);"/>`;
+    return `<tr onclick="if (event.target.tagName!=='INPUT') location.href='${href}'">
+      <td onclick="event.stopPropagation();">${cb}</td>
+      <td class="id">${r.run_id}</td>
       <td>${(r.started_utc||'').replace('T',' ').slice(0,19)}</td>
+      <td>${typeTag}</td>
       <td><span class="pill ${p.metric}">${p.metric||''}</span></td>
-      <td>${p.beta}</td><td>${p.omega_ref}</td>
-      <td>${r.baseline_active ? `yes (Ω<sub>b</sub>=${p.omega_base})` : '—'}</td>
-      <td>${r.n_observed_occ}/${r.n_observed_act}</td>
-      <td>${r.n_kept_occ}/${r.n_kept_act}</td>
+      <td class="num">${p.beta}</td><td class="num">${p.omega_ref}</td>
+      <td>${r.baseline_active ? `AIOE, Ω<sub>b</sub>=${p.omega_base}` : '—'}</td>
+      <td class="num">${r.n_observed_occ} / ${r.n_observed_act}</td>
+      <td class="num">${r.n_kept_occ} / ${r.n_kept_act}</td>
     </tr>`;
   }).join('');
 });
@@ -1856,71 +1934,88 @@ fetch('/api/runs').then(r=>r.json()).then(d=>{
 """
 
 
-RESULTS_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run results</title>
+RESULTS_HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Run results · AI Impact Meta-Review</title>
+__THEME_HEAD__
 <style>
-  body { font-family:-apple-system,sans-serif; margin:0; background:#f5f5f7; font-size:13px; }
-  header { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; }
-  header h1 { margin:0; font-size:16px; }
-  header a { color:#9cf; text-decoration:none; font-size:13px; }
-  header .stats { color:#bbb; font-size:11px; margin-left:auto; }
-  main { padding: 16px 24px; }
-  .toolbar { display:flex; gap:14px; align-items:center; background:#fff; padding:10px 14px; border-radius:6px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-  .toolbar label { font-size:12px; color:#555; }
-  .toolbar input, .toolbar select { padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px; }
-  .toolbar .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; }
-  .toolbar .seg button { padding:4px 11px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
-  .toolbar .seg button.active { background:#5b3aa6; color:#fff; }
-  table { width:100%; background:#fff; border-collapse:collapse; border-radius:6px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; font-size:12px; }
-  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
-  tbody tr:nth-child(even) { background:#fafafa; }
-  tbody tr:hover { background:#eef6ff; }
-  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
-  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
   .bar { display:inline-block; height:6px; vertical-align:middle; border-radius:2px; }
-  .bar.pos { background:#0a6c2c; } .bar.neg { background:#b32020; }
-  .badge { display:inline-block; padding:1px 7px; border-radius:10px; font-size:10px; font-weight:600; text-transform:uppercase; }
-  .badge.observed { background:#d4f4d4; color:#0a6c2c; } .badge.imputed { background:#eee; color:#555; }
-  .help { color:#888; font-size:11px; }
+  .bar.pos { background:var(--pos); } .bar.neg { background:var(--neg); }
+  #t th { cursor:pointer; user-select:none; }
+  .chart-panel .chart-sub { margin:-4px 0 12px; }
+  .chart-svg { width:100%; display:block; overflow:visible; }
+  .chart-svg .lbl { font-family:var(--sans); font-size:12px; fill:#1d1f23; }
+  .chart-svg .val { font-family:var(--mono); font-size:10.5px; fill:#474b53; }
+  .chart-svg .axis { stroke:#9a968d; stroke-width:1; }
+  .chart-svg .tick { font-family:var(--sans); font-size:11px; fill:#787c84; }
+  .chart-svg .grid { stroke:#eeebe4; stroke-width:1; }
+  .chart-svg .bar.observed { fill:#23406a; } .chart-svg .bar.imputed { fill:#b9c1cc; }
+  .chart-svg .bar.observed.neg { fill:#9c2f2f; } .chart-svg .bar.imputed.neg { fill:#e0bdb8; }
+  .chart-svg g:hover .bar { opacity:0.8; }
+  .sw.observed { background:#23406a; } .sw.imputed { background:#b9c1cc; }
 </style></head><body>
-<header>
-  <h1>Run results</h1><a href="/results">← all runs</a><a href="/run">+ new</a>
-  <span class="stats" id="stats">…</span>
-</header>
-<main>
+__MASTHEAD__
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <div class="crumbs"><a href="/results">Past runs</a> / <span class="mono">__RUN_ID__</span></div>
+      <h1>Run results</h1>
+      <p class="page-meta" id="stats" style="margin:6px 0 0;">…</p>
+    </div>
+    <div class="page-actions">
+      <button class="btn" onclick="exportCsv()">Download this view (CSV)</button>
+      <a class="btn" href="/run">New run</a>
+    </div>
+  </section>
+  <div id="warn"></div>
+  <div class="card chart-panel">
+    <h2 id="chartTitle">…</h2>
+    <div class="help chart-sub" id="chartSub"></div>
+    <div id="chartWrap"></div>
+    <div class="chart-legend"><span><span class="sw observed"></span>Observed in at least one study</span><span><span class="sw imputed"></span>Imputed</span><span>Darker red / lighter red: negative estimates</span></div>
+  </div>
   <div class="toolbar">
     <div class="seg" id="viewSeg">
       <button data-v="occ" class="active">Occupations</button>
       <button data-v="act">Activities</button>
     </div>
-    <label>std ≤ <input type="number" id="stdFilter" value="5" step="0.05" style="width:60px;"/></label>
-    <label><input type="checkbox" id="onlyObserved"/> only observed</label>
-    <label>search <input type="text" id="search" placeholder="title/code…"/></label>
-    <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export view as CSV</button>
+    <label>Posterior SD &le; <input type="number" id="stdFilter" value="5" step="0.05" style="width:70px;"/></label>
+    <label><input type="checkbox" id="onlyObserved"/> Observed only</label>
+    <input type="search" id="search" placeholder="Search title or code…" style="margin-left:auto; min-width:240px;"/>
   </div>
-  <div id="warn"></div>
-  <table id="t"><thead id="th"></thead><tbody id="tb"></tbody></table>
+  <table id="t" class="data"><thead id="th"></thead><tbody id="tb"></tbody></table>
 </main>
 <script>
 const RUN_ID = "__RUN_ID__";
 let DATA = null, VIEW='occ', SORT={col:'estimate', dir:-1};
 
+const SOC_NAMES = {
+  "11":"Management","13":"Business & Financial","15":"Computer & Math",
+  "17":"Architecture & Engineering","19":"Life, Physical, Social Science",
+  "21":"Community & Social Service","23":"Legal","25":"Education",
+  "27":"Arts, Design, Media","29":"Healthcare Practitioners","31":"Healthcare Support",
+  "33":"Protective Service","35":"Food Prep & Serving","37":"Building & Grounds Cleaning",
+  "39":"Personal Care & Service","41":"Sales","43":"Office & Admin Support",
+  "45":"Farming, Fishing, Forestry","47":"Construction & Extraction",
+  "49":"Installation, Maint, Repair","51":"Production","53":"Transportation & Material Moving"
+};
+
 function fmtNum(x, p){ if (x===null||x===undefined||x==='') return '—'; const n=parseFloat(x); return isNaN(n)?x:n.toFixed(p===undefined?3:p); }
 function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function hasObs(r){ return !(r.observed===null||r.observed===undefined||r.observed===''||isNaN(parseFloat(r.observed))); }
+function mean(xs){ return xs.length ? xs.reduce((a,b)=>a+b,0)/xs.length : 0; }
 
 async function load(){
   const r = await (await fetch('/api/results/'+encodeURIComponent(RUN_ID))).json();
-  if (!r.ok) { document.body.innerHTML = '<p style="padding:30px;">'+r.error+'</p>'; return; }
+  if (!r.ok) { document.querySelector('main').innerHTML = '<div class="err" style="margin-top:30px;">'+escapeHtml(r.error)+'</div>'; return; }
   DATA = r.data;
   const p = DATA.params;
   document.getElementById('stats').textContent =
-    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
-    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
-    ` · kept ${DATA.n_kept_occ}/${DATA.n_kept_act}`;
+    `Metric: ${p.metric} · β = ${p.beta} · Ω_ref = ${p.omega_ref}` +
+    (DATA.baseline_active ? ` · AIOE baseline Ω_b = ${p.omega_base}` : '') +
+    ` · kept ${DATA.n_kept_occ} occupations, ${DATA.n_kept_act} activities`;
   const un = (DATA.unmatched_occ_codes||[]).concat(DATA.unmatched_act_labels||[]);
   if (un.length) document.getElementById('warn').innerHTML =
-    `<div style="background:#fff8e0; border:1px solid #d2b048; padding:8px 12px; border-radius:4px; margin-bottom:10px; font-size:12px;">
-      ${un.length} unmatched observation(s) skipped: ${un.slice(0,10).join(', ')}${un.length>10?'…':''}
+    `<div class="callout warn" style="margin-bottom:14px;">
+      ${un.length} observation(s) could not be matched to O*NET and were skipped: ${escapeHtml(un.slice(0,10).join(', '))}${un.length>10?'…':''}
     </div>`;
   render();
 }
@@ -1957,8 +2052,9 @@ function render(){
     : [colName, 'observed', 'estimate', 'posterior_std', 'n_studies'];
 
   document.getElementById('th').innerHTML = '<tr>' + cols.map(c => {
-    const labels = {code:'Code', title:'Title', activity:'Activity', observed:'Observed', aioe_baseline:'AIOE', estimate:'Estimate', posterior_std:'Std', n_studies:'n'};
-    return `<th onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`;
+    const labels = {code:'SOC code', title:'Occupation', activity:'Work activity', observed:'Observed', aioe_baseline:'AIOE', estimate:'Estimate', posterior_std:'Posterior SD', n_studies:'Studies'};
+    const num = ['aioe_baseline','estimate','posterior_std','n_studies'].includes(c) ? ' style="text-align:right"' : '';
+    return `<th${num} onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`;
   }).join('') + (VIEW==='occ'?'<th>Effect</th>':'<th>Effect</th>') + '</tr>';
 
   document.getElementById('tb').innerHTML = filtered.map(r=>{
@@ -1973,9 +2069,141 @@ function render(){
       if (c==='posterior_std') return `<td class="num">${fmtNum(r.posterior_std)}</td>`;
       if (c==='aioe_baseline') return `<td class="num">${r.aioe_baseline===undefined?'':fmtNum(r.aioe_baseline)}</td>`;
       if (c==='n_studies') return `<td class="num">${r.n_studies===null||r.n_studies===undefined||r.n_studies===''?'':parseInt(r.n_studies)}</td>`;
+      if (c==='code') return `<td class="mono" style="font-size:12px; color:var(--ink-2);">${escapeHtml(r[c]||'')}</td>`;
       return `<td>${escapeHtml(r[c]||'')}</td>`;
     }).join('') + `<td>${bar}</td></tr>`;
   }).join('');
+
+  renderChart();
+}
+
+function buildChartRows(){
+  const isOcc = VIEW === 'occ';
+  const agg = (DATA.params && DATA.params.aggregation_level) || 'occupation';
+  const alreadyAgg = DATA.socmajor_aggregated || agg === 'soc_major' || agg === 'soc_minor';
+  if (isOcc && !alreadyAgg) {
+    // Aggregate the 894 occupation-level estimates into 22 SOC major groups
+    // so the chart is legible. Each group's estimate is the mean over its
+    // member occupations; observed value is the mean over observed members
+    // (imputed if none are observed).
+    const groups = {};
+    for (const r of DATA.occupation_impacts) {
+      const g = (r.code||'').split('-')[0];
+      if (!SOC_NAMES[g]) continue;
+      if (!groups[g]) groups[g] = {est:[], obs:[]};
+      const e = parseFloat(r.estimate);
+      if (!isNaN(e)) groups[g].est.push(e);
+      if (hasObs(r)) groups[g].obs.push(parseFloat(r.observed));
+    }
+    return Object.entries(groups).map(([code, g]) => ({
+      label: SOC_NAMES[code],
+      code, estimate: mean(g.est),
+      observed: g.obs.length ? mean(g.obs) : null,
+      isObserved: g.obs.length > 0,
+      n_obs: g.obs.length,
+    }));
+  }
+  if (isOcc) {
+    return DATA.occupation_impacts.map(r => ({
+      label: r.title || r.code, code: r.code,
+      estimate: parseFloat(r.estimate)||0,
+      observed: hasObs(r) ? parseFloat(r.observed) : null,
+      isObserved: hasObs(r),
+    }));
+  }
+  return DATA.activity_impacts.map(r => ({
+    label: r.activity, code: null,
+    estimate: parseFloat(r.estimate)||0,
+    observed: hasObs(r) ? parseFloat(r.observed) : null,
+    isObserved: hasObs(r),
+  }));
+}
+
+function renderChart(){
+  const rows = buildChartRows().slice().sort((a,b) => b.estimate - a.estimate);
+  const metric = (DATA.params.metric||'speed').toLowerCase();
+  const metricNoun = metric === 'quality' ? 'quality gain (Hedges\\' g)' : 'speed gain (log points)';
+  const isOcc = VIEW === 'occ';
+  const agg = (DATA.params && DATA.params.aggregation_level) || 'occupation';
+  const alreadyAgg = DATA.socmajor_aggregated || agg === 'soc_major' || agg === 'soc_minor';
+  const title = isOcc
+    ? (alreadyAgg ? 'By SOC major group' : 'By SOC major group (mean over occupations)')
+    : 'By work activity';
+  document.getElementById('chartTitle').textContent = `Estimated ${metricNoun} — ${title}`;
+  document.getElementById('chartSub').textContent = isOcc && !alreadyAgg
+    ? `Occupation-level results averaged into ${rows.length} SOC major groups for display; observed = mean over group members with an observed value.`
+    : `${rows.length} rows, sorted by estimate.`;
+
+  // Layout
+  const rowH = 22;
+  const labelW = 340;
+  const rightPad = 60;
+  const topPad = 8;
+  const bottomPad = 30;
+  const chartW = 640; // px reserved for bars+axis
+  const totalW = labelW + chartW + rightPad;
+  const totalH = topPad + rows.length * rowH + bottomPad;
+
+  const maxV = Math.max(0.1, ...rows.map(r => Math.max(0, r.estimate)));
+  const minV = Math.min(0, ...rows.map(r => r.estimate));
+  const x0 = labelW - minV / (maxV - minV) * chartW;  // x for value=0
+  const xScale = v => labelW + (v - minV) / (maxV - minV) * chartW;
+
+  // Nice ticks
+  function niceTicks(lo, hi, n){
+    const range = hi - lo || 1;
+    const step = Math.pow(10, Math.floor(Math.log10(range/n)));
+    const err = n * step / range;
+    let mult = 1;
+    if (err <= 0.15) mult = 10;
+    else if (err <= 0.35) mult = 5;
+    else if (err <= 0.75) mult = 2;
+    const s = mult * step;
+    const t0 = Math.ceil(lo / s) * s;
+    const out = [];
+    for (let v = t0; v <= hi + 1e-9; v += s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const ticks = niceTicks(minV, maxV, 5);
+
+  const bars = rows.map((r, i) => {
+    const y = topPad + i * rowH;
+    const cls = (r.isObserved ? 'observed' : 'imputed') + (r.estimate < 0 ? ' neg' : '');
+    const xVal = xScale(r.estimate);
+    const xZero = xScale(0);
+    const x = Math.min(xVal, xZero);
+    const w = Math.abs(xVal - xZero);
+    const label = escapeHtml(r.label);
+    const val = fmtNum(r.estimate);
+    const valX = r.estimate >= 0 ? xVal + 4 : xVal - 4;
+    const valAnchor = r.estimate >= 0 ? 'start' : 'end';
+    const title = `${r.label}: ${val}${r.isObserved ? ` (observed${r.n_obs?`, n=${r.n_obs}`:''})` : ' (imputed)'}`;
+    return `
+      <g>
+        <title>${escapeHtml(title)}</title>
+        <text class="lbl" x="${labelW - 8}" y="${y + rowH/2 + 4}" text-anchor="end">${label}</text>
+        <rect class="bar ${cls}" x="${x}" y="${y + 3}" width="${Math.max(0.5, w)}" height="${rowH - 6}" rx="1.5"/>
+        <text class="val" x="${valX}" y="${y + rowH/2 + 4}" text-anchor="${valAnchor}">${val}</text>
+      </g>`;
+  }).join('');
+
+  const axisY = topPad + rows.length * rowH + 2;
+  const gridlines = ticks.map(t => {
+    const x = xScale(t);
+    return `<line class="grid" x1="${x}" y1="${topPad}" x2="${x}" y2="${axisY}"/>`;
+  }).join('');
+  const tickLbls = ticks.map(t => {
+    const x = xScale(t);
+    return `<text class="tick" x="${x}" y="${axisY + 14}" text-anchor="middle">${t.toFixed(2)}</text>`;
+  }).join('');
+  const zeroLine = `<line class="axis" x1="${xScale(0)}" y1="${topPad}" x2="${xScale(0)}" y2="${axisY}"/>`;
+  const axisLine = `<line class="axis" x1="${labelW}" y1="${axisY}" x2="${labelW + chartW}" y2="${axisY}"/>`;
+  const xLbl = `<text class="tick" x="${labelW + chartW/2}" y="${axisY + 26}" text-anchor="middle">Estimated ${metricNoun}</text>`;
+
+  document.getElementById('chartWrap').innerHTML =
+    `<svg class="chart-svg" viewBox="0 0 ${totalW} ${totalH + 10}" preserveAspectRatio="xMinYMin meet">
+      ${gridlines}${bars}${zeroLine}${axisLine}${tickLbls}${xLbl}
+    </svg>`;
 }
 
 function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; render(); }
@@ -1995,17 +2223,13 @@ load();
 """
 
 
-TRANSITIONS_HTML = r"""<!doctype html><html><head><meta charset="utf-8"><title>Occupational transitions</title>
+TRANSITIONS_HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Occupational transitions · AI Impact Meta-Review</title>
+__THEME_HEAD__
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; margin:0; padding:0; background:#fafafa; color:#222; }
-  header { display:flex; align-items:center; gap:14px; padding:10px 18px; border-bottom:1px solid #ddd; background:#fff; position:sticky; top:0; z-index:10; }
-  header h1 { margin:0; font-size:16px; font-weight:600; }
-  header a { color:#06c; text-decoration:none; font-size:13px; }
-  header a:hover { text-decoration:underline; }
-  .meta { color:#666; font-size:12px; margin-left:auto; }
-  #main { display:grid; grid-template-columns: minmax(0,1fr) 460px; gap:14px; padding:14px; align-items:start; }
-  .panel { background:#fff; border:1px solid #e5e5e5; border-radius:6px; padding:12px; }
-  .panel h2 { margin:0 0 8px; font-size:13px; font-weight:600; color:#444; text-transform:uppercase; letter-spacing:0.04em; }
+  #main { display:grid; grid-template-columns: minmax(0,1fr) 460px; gap:18px; padding:0 28px 32px; align-items:start; }
+  @media (max-width: 1100px) { #main { grid-template-columns: minmax(0,1fr); } }
+  .panel { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:16px 18px; }
+  .panel h2 { margin:0 0 10px; font-size:17px; }
   .heatmap-wrap { position:relative; overflow:auto; max-height:78vh; }
   .hm-grid { display:grid; grid-template-columns: var(--label-w) auto; grid-template-rows: var(--label-h) auto; gap:0; }
   .hm-corner { background:#fff; }
@@ -2037,59 +2261,61 @@ TRANSITIONS_HTML = r"""<!doctype html><html><head><meta charset="utf-8"><title>O
     cursor: pointer;
   }
   .axis.top .lbl span {
-    position: absolute;
-    left: 50%;
-    bottom: 4px;
-    transform-origin: 0 0;
-    transform: rotate(-90deg) translateY(50%);
-    white-space: nowrap;
-    line-height: var(--cell);
-    font-size: 10px;
+    position: absolute; left: 0; right: 0; bottom: 4px;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-height: calc(var(--label-h) - 8px);
+    line-height: var(--cell); font-size: 10px;
   }
   .axis .lbl.major-end { border-bottom-color: rgba(60,60,60,0.5); }
   .axis.top .lbl.major-end { border-bottom-color: transparent; border-right-color: rgba(60,60,60,0.5); }
-  .axis .lbl:hover { background:#eef5ff; }
-  .axis .lbl.selected { background:#dbe9ff; }
-  .legend { display:flex; align-items:center; gap:8px; margin-top:10px; font-size:11px; color:#666; flex-wrap:wrap; }
-  .legend-bar { height:10px; width:160px; background: linear-gradient(to right, #fff, #fde0a0, #ef7838, #6e1a08); border:1px solid #ccc; }
-  .tooltip { position:fixed; background:#222; color:#fff; padding:6px 10px; border-radius:4px; font-size:11px; pointer-events:none; z-index:1000; display:none; max-width:300px; line-height:1.4; }
-  .drill h3 { margin:6px 0 4px; font-size:14px; }
-  .drill .sub { color:#666; font-size:12px; margin-bottom:6px; }
-  .drill .est-line { display:flex; gap:8px; align-items:baseline; font-size:12px; margin-bottom:10px; }
-  .drill .est-line .v { font-weight:600; color:#222; font-size:14px; }
-  .drill .crumb { font-size:12px; color:#666; margin-bottom:8px; }
-  .drill .crumb a { color:#06c; cursor:pointer; }
-  table.tbl { width:100%; border-collapse:collapse; font-size:12px; }
-  table.tbl th { text-align:left; padding:4px 6px; color:#666; font-weight:500; border-bottom:1px solid #ddd; background:#fafafa; }
-  table.tbl td { padding:4px 6px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
-  table.tbl td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .axis .lbl:hover { background:var(--hover); }
+  .axis .lbl.selected { background:var(--accent-soft); font-weight:600; }
+  .legend { display:flex; align-items:center; gap:8px; margin-top:12px; font-size:12px; color:var(--muted); flex-wrap:wrap; }
+  .legend-bar { height:10px; width:160px; background: linear-gradient(to right, #fff, #fde0a0, #ef7838, #6e1a08); border:1px solid var(--rule); border-radius:2px; }
+  .tooltip { position:fixed; background:var(--ink); color:#fff; padding:7px 11px; border-radius:4px; font-size:12px; pointer-events:none; z-index:1000; display:none; max-width:320px; line-height:1.45; box-shadow:0 6px 18px rgba(0,0,0,0.18); }
+  .drill h3 { margin:6px 0 4px; font-size:18px; line-height:1.3; }
+  .drill h2 { font-size:15px !important; margin-top:18px !important; }
+  .drill .sub { color:var(--muted); font-size:13px; margin-bottom:8px; }
+  .drill .est-line { display:flex; gap:8px; align-items:baseline; font-size:13px; margin-bottom:10px; color:var(--ink-2); }
+  .drill .est-line .v { font-family:var(--mono); font-weight:500; color:var(--ink); font-size:15px; }
+  .drill .crumb { font-size:13px; color:var(--muted); margin-bottom:8px; }
+  .drill .crumb a { color:var(--link); cursor:pointer; }
+  table.tbl { width:100%; border-collapse:collapse; font-size:13px; }
+  table.tbl th { padding:5px 6px; color:var(--muted); font-weight:500; font-size:12px; border-bottom:1px solid var(--rule); background:transparent; }
+  table.tbl td { padding:5px 6px; border-bottom:1px solid var(--rule-soft); vertical-align:top; font-size:13px; }
+  table.tbl td.num { text-align:right; font-family:var(--mono); font-size:12px; }
   table.tbl tr.row-click { cursor:pointer; }
-  table.tbl tr.row-click:hover { background:#f5f9ff; }
-  .est-pos { color:#0a6f2a; }
-  .est-neg { color:#a00; }
-  .est-na { color:#aaa; }
-  .empty { color:#888; font-size:12px; padding:8px; text-align:center; }
-  .search { display:flex; gap:8px; margin-bottom:8px; }
-  .search input { flex:1; padding:6px 10px; border:1px solid #ccc; border-radius:4px; font-size:13px; }
+  table.tbl tr.row-click:hover { background:var(--hover); }
+  .est-pos { color:var(--pos); }
+  .est-neg { color:var(--neg); }
+  .est-na { color:var(--muted); }
+  .empty { color:var(--muted); font-size:14px; padding:24px 8px; text-align:center; font-style:italic; font-family:var(--serif); }
+  .search { display:flex; gap:8px; margin-bottom:10px; }
+  .search input { flex:1; }
   .results { position:relative; }
-  .typeahead { position:absolute; background:#fff; border:1px solid #ccc; border-radius:4px; max-height:240px; overflow:auto; z-index:50; left:0; right:120px; top:38px; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:none; }
-  .typeahead .item { padding:5px 9px; font-size:12px; cursor:pointer; border-bottom:1px solid #f0f0f0; }
-  .typeahead .item:hover { background:#f5f9ff; }
-  .typeahead .item .code { color:#888; font-size:11px; }
+  .typeahead { position:absolute; background:var(--surface); border:1px solid var(--rule); border-radius:5px; max-height:260px; overflow:auto; z-index:50; left:0; right:90px; top:40px; box-shadow:0 10px 30px rgba(29,31,35,0.14); display:none; }
+  .typeahead .item { padding:6px 10px; font-size:13px; cursor:pointer; border-bottom:1px solid var(--rule-soft); }
+  .typeahead .item:hover { background:var(--accent-soft); }
+  .typeahead .item .code { color:var(--muted); font-size:11px; font-family:var(--mono); }
 </style></head><body>
-<header>
-  <h1>Occupational transitions</h1>
-  <a href="/">← review</a>
-  <a href="/run">run analysis</a>
-  <a href="/results">runs</a>
-  <span class="meta" id="metaTxt">loading…</span>
-</header>
+__MASTHEAD__
+<div class="wrap wide" style="padding:0 28px;">
+  <section class="page-head">
+    <div>
+      <h1>Occupational transitions</h1>
+      <p class="lede">How often workers move from one occupation to another. Rows are source SOC minor groups and columns are
+        destinations; each row sums to one.</p>
+    </div>
+    <span class="page-meta" id="metaTxt">Loading…</span>
+  </section>
+</div>
 <div id="main">
   <div class="panel">
-    <h2>Transition probabilities by SOC minor group (source → target, row-conditional)</h2>
+    <h2>Transition shares by SOC minor group</h2>
     <div class="search results">
       <input id="search" placeholder="Search occupation (title or SOC code)…" autocomplete="off"/>
-      <button id="clearBtn" style="background:#eee;border:0;padding:6px 12px;border-radius:4px;cursor:pointer;">Clear</button>
+      <button id="clearBtn" class="btn">Clear</button>
       <div class="typeahead" id="typeahead"></div>
     </div>
     <div class="heatmap-wrap" id="hmWrap">
@@ -2101,7 +2327,7 @@ TRANSITIONS_HTML = r"""<!doctype html><html><head><meta charset="utf-8"><title>O
       </div>
     </div>
     <div class="legend">
-      <span>0</span><div class="legend-bar"></div><span>max share (sqrt-scaled)</span>
+      <span>0</span><div class="legend-bar"></div><span>max share (square-root scale)</span>
       <span style="margin-left:14px;">Click a row label or cell to drill into a SOC minor group; click an occupation within it for outgoing &amp; incoming transitions.</span>
     </div>
   </div>
@@ -2259,7 +2485,7 @@ function showMinor(mIdx) {
   const occRows = sorted.map(i => {
     const o = DATA.occs[i];
     return `<tr class="row-click" data-occ="${i}">
-      <td>${escapeHtml(o.title)}<div style="color:#888;font-size:11px;">${o.code}</div></td>
+      <td>${escapeHtml(o.title)}<div style="color:var(--muted);font-size:11px;" class="mono">${o.code}</div></td>
       <td class="num">${(DATA.totals[i]||0).toLocaleString(undefined,{maximumFractionDigits:0})}</td>
       <td class="num">${estFmt(o.code)}</td>
     </tr>`;
@@ -2427,5 +2653,551 @@ document.addEventListener('DOMContentLoaded', () => {
 """
 
 
+LOO_HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Leave-one-out CV · AI Impact Meta-Review</title>
+__THEME_HEAD__
+<style>
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px; }
+  .subheads { display:flex; gap:24px; margin-top:12px; color:var(--muted); font-size:13px; flex-wrap:wrap; }
+  .subheads span { color:var(--ink) !important; font-family:var(--mono) !important; font-size:12.5px; }
+  .card table { border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); }
+  .card table th { cursor:pointer; user-select:none; }
+  .card .toolbar { border:0; padding:0; background:transparent; }
+  svg.scatter { display:block; background:var(--surface); }
+  svg.scatter .axis { stroke:#9a968d; stroke-width:1; }
+  svg.scatter .grid { stroke:#eeebe4; stroke-width:1; }
+  svg.scatter .tick { font-family:var(--sans); font-size:11px; fill:#787c84; }
+  svg.scatter .diag { stroke:#1d1f23; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle { stroke:#fff; stroke-width:1; }
+  svg.scatter circle.occ { fill:#2e67a8; opacity:0.8; }
+  svg.scatter circle.act { fill:#c0762b; opacity:0.8; }
+  svg.scatter .band { fill:#23406a; opacity:0.06; }
+  .note ol { margin:4px 0 0 18px; padding:0; }
+  .charts { display:flex; flex-wrap:wrap; gap:24px; }
+  .charts > div { flex:1 1 420px; min-width:0; }
+  .charts h3 { margin:0 0 6px; font-size:15px; }
+</style></head><body>
+__MASTHEAD__
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <div class="crumbs"><a href="/results">Past runs</a> / <span class="mono">__RUN_ID__</span></div>
+      <h1>Leave-one-out cross-validation</h1>
+      <p class="lede">Each observed effect is held out in turn and re-predicted from the rest of the graph. This tests whether the graph recovers held-out values and their ordering.</p>
+    </div>
+    <div class="page-actions"><span class="page-meta" id="stats">…</span></div>
+  </section>
+  <div class="card">
+    <h2>Run parameters</h2>
+    <div id="paramsLine" class="mono" style="font-size:12.5px; color:var(--ink-2);">…</div>
+  </div>
+
+  <div class="card">
+    <h2>Overall accuracy</h2>
+    <div class="grid" id="overallGrid"></div>
+    <div class="subheads">
+      <div>Occupations: <span id="occSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities:  <span id="actSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Rank recovery (held-out)</h2>
+    <div class="help" style="margin-bottom:12px;">
+      Does the graph put held-out nodes in the right <b>order</b>? Each node is ranked by its held-out prediction and compared
+      with its rank by actual value. Rank statistics ignore uniform shrinkage, so they test ordering, not magnitude.
+    </div>
+    <div class="grid" id="rankGrid"></div>
+    <div class="subheads">
+      <div>Occupations (ranked within type): <span id="occRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities (ranked within type): <span id="actRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+    <div class="note" id="rankNote"></div>
+  </div>
+
+  <div class="card">
+    <h2>Held-out predictions</h2>
+    <div class="charts">
+      <div>
+        <h3>Value: actual vs predicted</h3>
+        <div id="scatterWrap"></div>
+        <div class="help" style="margin-top:6px;">Dashed line: perfect prediction (y = x).</div>
+      </div>
+      <div>
+        <h3>Rank: actual rank vs held-out rank</h3>
+        <div id="rankScatterWrap"></div>
+        <div class="help" style="margin-top:6px;">Rank 1 is the largest effect. Shaded band: within &plusmn;2 ranks.</div>
+      </div>
+    </div>
+    <div class="chart-legend"><span><span class="sw" style="background:#2e67a8; border-radius:50%; width:10px;"></span>Occupation held out</span><span><span class="sw" style="background:#c0762b; border-radius:50%; width:10px;"></span>Activity held out</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Per-observation table</h2>
+    <div class="toolbar">
+      <div class="seg" id="filterSeg">
+        <button data-f="all" class="active">All</button>
+        <button data-f="occupation">Occupations</button>
+        <button data-f="activity">Activities</button>
+      </div>
+      <input type="search" id="search" placeholder="Search label or code…" style="min-width:240px;"/>
+      <button class="btn" onclick="exportCsv()" style="margin-left:auto;">Download CSV</button>
+    </div>
+    <table><thead id="th"></thead><tbody id="tb"></tbody></table>
+  </div>
+</main>
+<script>
+const RUN_ID = "__RUN_ID__";
+let DATA = null, FILTER='all', SORT={col:'abs_rank_delta', dir:-1};
+
+function fmt(x,p){ if(x==null) return '—'; const n=parseFloat(x); return isNaN(n) ? x : n.toFixed(p==null?3:p); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function load() {
+  const r = await (await fetch('/api/loo/'+encodeURIComponent(RUN_ID))).json();
+  if (!r.ok) { document.querySelector('main').innerHTML='<div class="err" style="margin-top:30px;">'+escapeHtml(r.error)+'</div>'; return; }
+  DATA = r.data;
+  const p = DATA.params;
+  document.getElementById('stats').textContent =
+    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
+    ` · ${DATA.n_folds} folds`;
+  document.getElementById('paramsLine').textContent =
+    `metric=${p.metric} · β=${p.beta} · Ω_ref=${p.omega_ref} · ` +
+    `agg=${p.aggregation_level} · manual_prune=${p.manual_prune} · ` +
+    `weight_threshold=${p.activity_weight_threshold} · excluded=[${(p.excluded_soc_majors||[]).join(',')}]` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '');
+
+  const s = DATA.loo.summary;
+  const grid = document.getElementById('overallGrid');
+  const o = s.overall || {};
+  const cells = [
+    ['n folds', o.n],
+    ['MAE', o.mae!=null ? fmt(o.mae, 4) : '—'],
+    ['RMSE', o.rmse!=null ? fmt(o.rmse, 4) : '—'],
+    ['bias', o.bias!=null ? fmt(o.bias, 4) : '—'],
+    ['R²', o.r2!=null ? fmt(o.r2, 3) : '—'],
+    ['Pearson r', o.pearson_r!=null ? fmt(o.pearson_r, 3) : '—'],
+    ['Spearman ρ', o.spearman_r!=null ? fmt(o.spearman_r, 3) : '—'],
+  ];
+  grid.innerHTML = cells.map(([k,v]) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+  const sub = (obj) => {
+    if (!obj || !obj.n) return 'no folds';
+    return `n=${obj.n} · MAE=${fmt(obj.mae,3)} · R²=${obj.r2!=null?fmt(obj.r2,3):'—'} · ρ=${obj.spearman_r!=null?fmt(obj.spearman_r,3):'—'}`;
+  };
+  document.getElementById('occSummary').textContent = sub(s.occupation);
+  document.getElementById('actSummary').textContent = sub(s.activity);
+
+  renderRankCard();
+  const rows = DATA.loo.rows;
+  renderScatter('scatterWrap', rows, 'actual', 'predicted', {xLabel:'actual (held-out)', yLabel:'predicted'});
+  if (rows.length && rows[0].loo_rank != null) {
+    renderScatter('rankScatterWrap', rows, 'actual_rank', 'loo_rank',
+      {xLabel:'actual rank', yLabel:'held-out rank', rank:true, band:2});
+  } else {
+    document.getElementById('rankScatterWrap').innerHTML = '<div style="color:#888;">No rank data.</div>';
+  }
+  renderTable();
+}
+
+function pfmt(p){ if(p==null) return ''; return p < 0.001 ? 'p<0.001' : 'p=' + p.toFixed(3); }
+
+function renderRankCard() {
+  const R = (DATA.loo.summary||{}).rank;
+  const grid = document.getElementById('rankGrid');
+  if (!R || !R.overall || !R.overall.n) { grid.innerHTML = '<div style="color:#888;">Not enough folds.</div>'; return; }
+  const o = R.overall;
+  const tk = o.topk || {};
+  const cell = (k, v, sub) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const cells = [
+    cell("Kendall τ-b", o.kendall_tau!=null?fmt(o.kendall_tau,3):'—', pfmt(o.kendall_p)),
+    cell("τ 95% CI", o.tau_ci ? `[${fmt(o.tau_ci[0],2)}, ${fmt(o.tau_ci[1],2)}]` : '—', 'bootstrap over folds'),
+    cell("Concordance C", o.concordance_c!=null?fmt(o.concordance_c,3):'—', 'P(pair ordered right) · chance 0.5'),
+    cell("Spearman ρ", o.spearman_r!=null?fmt(o.spearman_r,3):'—', pfmt(o.spearman_p)),
+    cell("Mean |Δrank|", o.mean_abs_rank_delta!=null?fmt(o.mean_abs_rank_delta,2):'—',
+         o.mean_abs_rank_delta_chance!=null?`chance ${fmt(o.mean_abs_rank_delta_chance,2)}`:''),
+    cell("Footrule (norm.)", o.footrule_norm!=null?fmt(o.footrule_norm,3):'—', '0 = identical · 1 = max'),
+  ];
+  for (const K of ['3','5','10']) {
+    if (tk[K]) cells.push(cell(`Top-${K} precision`, `${tk[K].hits}/${tk[K].K}`, `chance ${fmt(tk[K].chance,2)}`));
+  }
+  grid.innerHTML = cells.join('');
+  const sub = (x) => {
+    if (!x || !x.n) return 'no folds';
+    if (x.n < 3) return `n=${x.n} · too few folds`;
+    const t5 = (x.topk||{})['5'] || (x.topk||{})['3'];
+    return `n=${x.n} · τ=${x.kendall_tau!=null?fmt(x.kendall_tau,3):'—'} ${pfmt(x.kendall_p)} · C=${x.concordance_c!=null?fmt(x.concordance_c,3):'—'}` +
+           ` · |Δrank|=${fmt(x.mean_abs_rank_delta,2)} (chance ${fmt(x.mean_abs_rank_delta_chance,2)})` +
+           (t5 ? ` · top-${t5.K} ${t5.hits}/${t5.K}` : '');
+  };
+  document.getElementById('occRank').textContent = sub(R.occupation);
+  document.getElementById('actRank').textContent = sub(R.activity);
+  const m = R.method || {};
+  document.getElementById('rankNote').innerHTML =
+    (R.backfilled ? '<div style="color:var(--warn-ink);">Rank stats computed on load for this older run.</div>' : '') +
+    escapeHtml(m.description||'') +
+    (m.citations && m.citations.length ? '<ol>' + m.citations.map(c=>`<li>${escapeHtml(c)}</li>`).join('') + '</ol>' : '');
+}
+
+function renderScatter(containerId, rows, xKey, yKey, opts) {
+  opts = opts || {};
+  const pad = {l:52, r:16, t:14, b:40};
+  const W = 520, H = 360;
+  const xs = rows.map(r=>+r[xKey]), ys = rows.map(r=>+r[yKey]);
+  let xL, xH;
+  if (opts.rank) {
+    xL = 0.5; xH = Math.max(...xs, ...ys, 1) + 0.5;
+  } else {
+    const lo = Math.min(...xs, ...ys, 0), hi = Math.max(...xs, ...ys, 0.001);
+    const range = hi - lo || 1; xL = lo - range*0.05; xH = hi + range*0.05;
+  }
+  // Rank axes are reversed so rank 1 (largest effect) sits top-right.
+  const fx = v => opts.rank ? (xH - v) / (xH - xL) : (v - xL) / (xH - xL);
+  const sx = v => pad.l + fx(v) * (W - pad.l - pad.r);
+  const sy = v => H - pad.b - fx(v) * (H - pad.t - pad.b);
+  function ticks(a,b,n){
+    const r=b-a||1, step=Math.pow(10,Math.floor(Math.log10(r/n))); const err=n*step/r;
+    let m=1; if(err<=0.15)m=10; else if(err<=0.35)m=5; else if(err<=0.75)m=2;
+    const s=Math.max(opts.rank?1:0, m*step); const t0=Math.ceil(a/s)*s; const out=[];
+    for(let v=t0; v<=b+1e-9; v+=s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const xt = ticks(xL, xH, 6);
+  const tf = t => opts.rank ? String(Math.round(t)) : t.toFixed(2);
+  const gridLines = xt.map(t=>{
+    const x=sx(t), y=sy(t);
+    return `<line class="grid" x1="${x}" y1="${pad.t}" x2="${x}" y2="${H-pad.b}"/>` +
+           `<line class="grid" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`;
+  }).join('');
+  const xTicks = xt.map(t=>`<text class="tick" x="${sx(t)}" y="${H-pad.b+14}" text-anchor="middle">${tf(t)}</text>`).join('');
+  const yTicks = xt.map(t=>`<text class="tick" x="${pad.l-6}" y="${sy(t)+3}" text-anchor="end">${tf(t)}</text>`).join('');
+  let band = '';
+  if (opts.band) {
+    const k = opts.band;
+    const pts = [[xL, xL+k],[xH, xH+k],[xH, xH-k],[xL, xL-k]]
+      .map(([x,y]) => `${sx(x)},${sy(y)}`).join(' ');
+    band = `<clipPath id="${containerId}_clip"><rect x="${pad.l}" y="${pad.t}" width="${W-pad.l-pad.r}" height="${H-pad.t-pad.b}"/></clipPath>` +
+           `<polygon class="band" clip-path="url(#${containerId}_clip)" points="${pts}"/>`;
+  }
+  const diag = `<line class="diag" x1="${sx(xL)}" y1="${sy(xL)}" x2="${sx(xH)}" y2="${sy(xH)}"/>`;
+  const pts = rows.map(r => {
+    const cls = r.node_type === 'occupation' ? 'occ' : 'act';
+    const title = opts.rank
+      ? `${r.label}: actual rank ${fmt(r[xKey],1)}, held-out rank ${fmt(r[yKey],1)} (Δ ${fmt(r.rank_delta,1)})`
+      : `${r.label}: actual ${fmt(r.actual,3)}, predicted ${fmt(r.predicted,3)}, resid ${fmt(r.residual,3)}`;
+    return `<circle class="${cls}" cx="${sx(+r[xKey])}" cy="${sy(+r[yKey])}" r="4"><title>${escapeHtml(title)}</title></circle>`;
+  }).join('');
+  const xAxis = `<line class="axis" x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}"/>`;
+  const yAxis = `<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  const xLabel = `<text class="tick" x="${(pad.l+W-pad.r)/2}" y="${H-6}" text-anchor="middle">${opts.xLabel||xKey}</text>`;
+  const yLabel = `<text class="tick" x="${-H/2}" y="14" text-anchor="middle" transform="rotate(-90)">${opts.yLabel||yKey}</text>`;
+  document.getElementById(containerId).innerHTML =
+    `<svg class="scatter" viewBox="0 0 ${W} ${H}" style="width:100%; max-width:${W}px; height:auto;">
+      ${gridLines}${band}${diag}${pts}${xAxis}${yAxis}${xTicks}${yTicks}${xLabel}${yLabel}
+    </svg>`;
+}
+
+document.getElementById('search').addEventListener('input', renderTable);
+document.querySelectorAll('#filterSeg button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#filterSeg button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); FILTER=b.dataset.f; renderTable();};
+});
+
+function renderTable() {
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let rows = DATA.loo.rows.map(r => Object.assign({}, r,
+    {abs_rank_delta: r.rank_delta != null ? Math.abs(r.rank_delta) : null}));
+  if (FILTER !== 'all') rows = rows.filter(r => r.node_type === FILTER);
+  if (q) rows = rows.filter(r => ((r.label||'')+' '+(r.code||'')).toLowerCase().includes(q));
+  rows.sort((a,b)=>{
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+  const cols = ['node_type','code','label','actual','predicted','residual','abs_error','posterior_std',
+                'actual_rank','loo_rank','rank_delta','abs_rank_delta'];
+  const labels = {node_type:'Type', code:'Code', label:'Label', actual:'Actual', predicted:'Predicted',
+                  residual:'Residual', abs_error:'|error|', posterior_std:'Post. std',
+                  actual_rank:'Actual rank', loo_rank:'Held-out rank', rank_delta:'Δrank', abs_rank_delta:'|Δrank|'};
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c =>
+    `<th onclick="sortBy('${c}')">${labels[c]}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`).join('') + '</tr>';
+  document.getElementById('tb').innerHTML = rows.map(r => {
+    const rc = parseFloat(r.residual)||0;
+    const rcls = rc > 0.001 ? 'pos' : rc < -0.001 ? 'neg' : '';
+    return '<tr>' +
+      `<td>${r.node_type}</td>` +
+      `<td class="mono" style="font-size:11.5px; color:var(--muted);">${escapeHtml(r.code||'')}</td>` +
+      `<td>${escapeHtml(r.label||'')}</td>` +
+      `<td class="num">${fmt(r.actual,3)}</td>` +
+      `<td class="num">${fmt(r.predicted,3)}</td>` +
+      `<td class="num ${rcls}">${fmt(r.residual,3)}</td>` +
+      `<td class="num">${fmt(r.abs_error,3)}</td>` +
+      `<td class="num">${fmt(r.posterior_std,3)}</td>` +
+      `<td class="num">${fmt(r.actual_rank,1)}</td>` +
+      `<td class="num">${fmt(r.loo_rank,1)}</td>` +
+      `<td class="num">${fmt(r.rank_delta,1)}</td>` +
+      `<td class="num">${fmt(r.abs_rank_delta,1)}</td>` +
+      '</tr>';
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; renderTable(); }
+
+function exportCsv() {
+  const rows = DATA.loo.rows;
+  const keys = Object.keys(rows[0]||{});
+  const csv = [keys.join(',')].concat(rows.map(r => keys.map(k => JSON.stringify(r[k]??'')).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${RUN_ID}_loocv.csv`; a.click();
+}
+
+load();
+</script></body></html>
+"""
+
+
+COMPARE_HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Compare runs · AI Impact Meta-Review</title>
+__THEME_HEAD__
+<style>
+  .rr { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .rr .col { background:var(--surface-2); border-radius:5px; padding:10px 14px; font-size:13px; }
+  .rr .col .id { font-family:var(--mono); font-size:11.5px; color:var(--muted); }
+  .rr .col .kv { color:var(--ink-2); margin-top:4px; line-height:1.55; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px; }
+  .card h2 + .seg { margin-bottom:8px; }
+  .card table { border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); }
+  .card table th { cursor:pointer; user-select:none; }
+  .card table.topk-table { border:0; background:transparent !important; }
+  .topk-table td, .topk-table th { padding:4px 12px; font-family:var(--mono); font-size:12px; }
+  svg.scatter { display:block; background:var(--surface); }
+  svg.scatter .axis { stroke:#9a968d; stroke-width:1; }
+  svg.scatter .grid { stroke:#eeebe4; stroke-width:1; }
+  svg.scatter .tick { font-family:var(--sans); font-size:11px; fill:#787c84; }
+  svg.scatter .diag { stroke:#1d1f23; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle { fill:#2e67a8; opacity:0.6; stroke:#fff; stroke-width:1; }
+</style></head><body>
+__MASTHEAD__
+<div class="wrap">
+  <section class="page-head">
+    <div>
+      <div class="crumbs"><a href="/results">Past runs</a> / compare</div>
+      <h1>Compare two runs</h1>
+      <p class="lede">How much do the imputed rankings change between two parameter settings?</p>
+    </div>
+    <span class="page-meta" id="stats">Loading…</span>
+  </section>
+</div>
+<main id="body" class="page wrap"><div class="card help">Loading…</div></main>
+<script>
+const qs = new URLSearchParams(location.search);
+const A = qs.get('a'), B = qs.get('b');
+
+function fmt(x, p){ if (x==null) return '—'; const n=parseFloat(x); return isNaN(n)?x:n.toFixed(p==null?3:p); }
+function fmtP(p){ if (p==null || isNaN(parseFloat(p))) return ''; const n=parseFloat(p); return n < 0.001 ? 'p < 0.001' : 'p = ' + n.toFixed(3); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+let DATA=null, VIEW='occupation', SORT={col:'rank_delta', dir:-1};
+
+async function load() {
+  if (!A || !B) { document.getElementById('body').innerHTML='<div class="err">Two run IDs are needed (?a=…&amp;b=…). Pick them on the <a href="/results">past runs</a> page.</div>'; return; }
+  const r = await (await fetch(`/api/compare?a=${encodeURIComponent(A)}&b=${encodeURIComponent(B)}`)).json();
+  if (!r.ok) { document.getElementById('body').innerHTML='<div class="err">'+escapeHtml(r.error||'error')+'</div>'; return; }
+  DATA = r.data;
+  document.getElementById('stats').textContent = `A=${A.slice(-6)} · B=${B.slice(-6)}`;
+  render();
+}
+
+function paramsLine(m) {
+  const p = m.params||{};
+  return `${p.metric||'?'} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (m.baseline_active ? ` · Ω_b=${p.omega_base}` : '') +
+    ` · agg=${p.aggregation_level||'occupation'}` +
+    ` · kept ${m.n_kept_occ}/${m.n_kept_act}`;
+}
+
+function render() {
+  const body = document.getElementById('body');
+  const views = DATA.views || {};
+  const viewList = Object.keys(views);
+  if (!viewList.length) { body.innerHTML='<div class="card">No comparable outputs.</div>'; return; }
+  if (!views[VIEW]) VIEW = viewList[0];
+  const v = views[VIEW];
+  const m = v.metrics || {};
+  const levelBanner = DATA.levels_differ
+    ? `<div class="callout warn" style="margin-top:10px;">
+         ⚠ Aggregation levels differ: A is <b>${escapeHtml(DATA.level_a)}</b>, B is <b>${escapeHtml(DATA.level_b)}</b>.
+         Occupations from the finer-grained run are rolled up to <b>${escapeHtml(DATA.common_level)}</b>
+         (mean estimate within each ${escapeHtml(DATA.common_level)} group) before comparing.
+       </div>`
+    : `<div class="help" style="margin-top:8px;">Both runs use aggregation level <b>${escapeHtml(DATA.common_level)}</b>.</div>`;
+  body.innerHTML = `
+    <div class="card">
+      <h2>Runs being compared</h2>
+      <div class="rr">
+        <div class="col"><div class="id">A · ${escapeHtml(DATA.a.run_id)}</div><div class="kv">${escapeHtml(paramsLine(DATA.a))}</div></div>
+        <div class="col"><div class="id">B · ${escapeHtml(DATA.b.run_id)}</div><div class="kv">${escapeHtml(paramsLine(DATA.b))}</div></div>
+      </div>
+      ${levelBanner}
+    </div>
+
+    <div class="card">
+      <h2>View</h2>
+      <div class="seg" id="viewSeg">
+        ${viewList.map(k => `<button data-v="${k}" class="${k===VIEW?'active':''}">${k}s (${views[k].n})</button>`).join('')}
+      </div>
+
+      <h2 style="margin-top:14px;">Ranking agreement (${VIEW}s)</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">n compared</div><div class="v">${m.n||0}</div></div>
+        <div class="metric"><div class="k">Spearman ρ</div><div class="v">${m.spearman_r!=null?fmt(m.spearman_r,3):'—'}</div><div class="p">${fmtP(m.spearman_p)}</div></div>
+        <div class="metric"><div class="k">Kendall τ</div><div class="v">${m.kendall_tau!=null?fmt(m.kendall_tau,3):'—'}</div><div class="p">${fmtP(m.kendall_p)}</div></div>
+        <div class="metric"><div class="k">Pearson r</div><div class="v">${m.pearson_r!=null?fmt(m.pearson_r,3):'—'}</div><div class="p">${fmtP(m.pearson_p)}</div></div>
+      </div>
+
+      <h2 style="margin-top:14px;">Top-K overlap (Jaccard on top-K sets)</h2>
+      <table class="topk-table" style="width:auto;">
+        <thead><tr><th>K</th><th>intersection</th><th>Jaccard</th></tr></thead>
+        <tbody>
+          ${Object.entries(v.topk_overlap||{}).map(([k,o]) =>
+            `<tr><td>${k}</td><td>${o.intersection}</td><td>${fmt(o.jaccard,3)}</td></tr>`).join('') || '<tr><td colspan="3">—</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Estimate A vs estimate B (${VIEW}s)</h2>
+      <div id="scatterWrap"></div>
+      <div class="help" style="margin-top:6px;">Dashed line: identical estimates (y = x).</div>
+    </div>
+
+    <div class="card">
+      <h2>Row-by-row comparison</h2>
+      <input type="search" id="search" placeholder="Search label or code…" style="margin-bottom:10px; width:280px;"/>
+      <table><thead id="th"></thead><tbody id="tb"></tbody></table>
+    </div>
+  `;
+  document.querySelectorAll('#viewSeg button').forEach(b=>{
+    b.onclick = ()=>{ VIEW=b.dataset.v; render(); };
+  });
+  document.getElementById('search').addEventListener('input', renderTable);
+  renderScatter();
+  renderTable();
+}
+
+function renderScatter() {
+  const v = DATA.views[VIEW];
+  const rows = v.rows;
+  const pad = {l:60, r:20, t:16, b:44};
+  const W = 620, H = 380;
+  const xs = rows.map(r=>parseFloat(r.estimate_a));
+  const ys = rows.map(r=>parseFloat(r.estimate_b));
+  const lo = Math.min(...xs, ...ys, 0);
+  const hi = Math.max(...xs, ...ys, 0.001);
+  const range = hi - lo || 1;
+  const xL = lo - range*0.05, xH = hi + range*0.05;
+  const sx = v => pad.l + (v - xL) / (xH - xL) * (W - pad.l - pad.r);
+  const sy = v => H - pad.b - (v - xL) / (xH - xL) * (H - pad.t - pad.b);
+  function ticks(a,b,n){
+    const r=b-a||1, step=Math.pow(10,Math.floor(Math.log10(r/n))); const err=n*step/r;
+    let m=1; if(err<=0.15)m=10; else if(err<=0.35)m=5; else if(err<=0.75)m=2;
+    const s=m*step; const t0=Math.ceil(a/s)*s; const out=[];
+    for(let v=t0; v<=b+1e-9; v+=s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const xt = ticks(xL, xH, 6);
+  const gridLines = xt.map(t=>{
+    const x=sx(t), y=sy(t);
+    return `<line class="grid" x1="${x}" y1="${pad.t}" x2="${x}" y2="${H-pad.b}"/>` +
+           `<line class="grid" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`;
+  }).join('');
+  const xTicks = xt.map(t=>`<text class="tick" x="${sx(t)}" y="${H-pad.b+14}" text-anchor="middle">${t.toFixed(2)}</text>`).join('');
+  const yTicks = xt.map(t=>`<text class="tick" x="${pad.l-6}" y="${sy(t)+3}" text-anchor="end">${t.toFixed(2)}</text>`).join('');
+  const diag = `<line class="diag" x1="${sx(xL)}" y1="${sy(xL)}" x2="${sx(xH)}" y2="${sy(xH)}"/>`;
+  const label = (r) => (v.labelcol === v.keycol) ? (r[v.keycol]||'') : (r[v.labelcol]||r[v.keycol]||'');
+  const pts = rows.map(r => {
+    const title = `${label(r)} — A ${fmt(r.estimate_a,3)}, B ${fmt(r.estimate_b,3)}, Δ ${fmt(r.delta,3)}`;
+    return `<circle cx="${sx(parseFloat(r.estimate_a))}" cy="${sy(parseFloat(r.estimate_b))}" r="4"><title>${escapeHtml(title)}</title></circle>`;
+  }).join('');
+  const xAxis = `<line class="axis" x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}"/>`;
+  const yAxis = `<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  const xLabel = `<text class="tick" x="${(pad.l+W-pad.r)/2}" y="${H-6}" text-anchor="middle">estimate A</text>`;
+  const yLabel = `<text class="tick" x="${-H/2}" y="14" text-anchor="middle" transform="rotate(-90)">estimate B</text>`;
+  document.getElementById('scatterWrap').innerHTML =
+    `<svg class="scatter" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+      ${gridLines}${diag}${pts}${xAxis}${yAxis}${xTicks}${yTicks}${xLabel}${yLabel}
+    </svg>`;
+}
+
+function renderTable() {
+  const v = DATA.views[VIEW];
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let rows = v.rows.slice();
+  if (q) {
+    rows = rows.filter(r => {
+      const blob = (r[v.labelcol]||'') + ' ' + (r[v.keycol]||'');
+      return blob.toLowerCase().includes(q);
+    });
+  }
+  rows.sort((a,b) => {
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+  const keycol = v.keycol, labelcol = v.labelcol;
+  const cols = keycol === labelcol
+    ? [keycol, 'estimate_a', 'rank_a', 'estimate_b', 'rank_b', 'delta', 'rank_delta']
+    : [keycol, labelcol, 'estimate_a', 'rank_a', 'estimate_b', 'rank_b', 'delta', 'rank_delta'];
+  const labels = {code:'Code', title:'Title', activity:'Activity',
+                  estimate_a:'Est. A', rank_a:'Rank A', estimate_b:'Est. B', rank_b:'Rank B',
+                  delta:'Δ (A−B)', rank_delta:'ΔRank'};
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c =>
+    `<th onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`).join('') + '</tr>';
+  document.getElementById('tb').innerHTML = rows.map(r => {
+    const dd = parseFloat(r.delta)||0;
+    const dcls = dd > 0.001 ? 'pos' : dd < -0.001 ? 'neg' : '';
+    return '<tr>' + cols.map(c => {
+      if (c === keycol) return `<td style="font-family:ui-monospace,Menlo,monospace; font-size:11px;">${escapeHtml(r[c]||'')}</td>`;
+      if (c === labelcol) return `<td>${escapeHtml(r[c]||'')}</td>`;
+      if (c === 'delta') return `<td class="num ${dcls}">${fmt(r[c],3)}</td>`;
+      if (c === 'rank_delta') {
+        const rd = parseFloat(r[c])||0;
+        return `<td class="num ${rd>0?'pos':rd<0?'neg':''}">${rd>=0?'+':''}${fmt(r[c],1)}</td>`;
+      }
+      if (c.startsWith('rank')) return `<td class="num">${fmt(r[c],1)}</td>`;
+      return `<td class="num">${fmt(r[c],3)}</td>`;
+    }).join('') + '</tr>';
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; renderTable(); }
+
+load();
+</script></body></html>
+"""
+
+
+# ---------- shared theme: fill __THEME_HEAD__ / __MASTHEAD__ in every page ----------
+
+_NAV = [("/", "Studies", "studies"), ("/run", "Run analysis", "run"),
+        ("/results", "Past runs", "runs"), ("/transitions", "Transitions", "transitions")]
+
+
+def _themed(html: str, active: str) -> str:
+    return site_theme.apply(html, site_theme.masthead(_NAV, active, home_href="/"))
+
+
+INDEX_HTML = _themed(INDEX_HTML, "studies")
+RUN_HTML = _themed(RUN_HTML, "run")
+RESULTS_INDEX_HTML = _themed(RESULTS_INDEX_HTML, "runs")
+RESULTS_HTML = _themed(RESULTS_HTML, "runs")
+LOO_HTML = _themed(LOO_HTML, "runs")
+COMPARE_HTML = _themed(COMPARE_HTML, "runs")
+TRANSITIONS_HTML = _themed(TRANSITIONS_HTML, "transitions")
+
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    import os
+    app.run(debug=True, port=int(os.environ.get("PORT", 5050)))

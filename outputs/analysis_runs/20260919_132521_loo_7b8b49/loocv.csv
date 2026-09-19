@@ -1,0 +1,17 @@
+node_type,code,label,actual,predicted,residual,abs_error,posterior_std,actual_rank,loo_rank,rank_delta,actual_rank_within,loo_rank_within,rank_delta_within
+occupation,13-1111.00,Management Analysts,2.1408,0.422,-1.7188,1.7188,1.0067,1.0,10.0,9.0,1.0,7.0,6.0
+occupation,13-1199.06,Online Merchants,0.04,0.4417,0.4018,0.4018,1.0022,14.0,5.0,-9.0,6.0,4.0,-2.0
+occupation,13-2099.01,Financial Quantitative Analysts,0.0012,0.4784,0.4772,0.4772,1.0012,16.0,3.0,-13.0,8.0,2.0,-6.0
+occupation,15-1252.00,Software Developers,0.1017,0.3423,0.2407,0.2407,1.0009,12.0,16.0,4.0,5.0,8.0,3.0
+occupation,23-1011.00,Lawyers,0.307,0.461,0.1539,0.1539,1.0053,10.0,4.0,-6.0,3.0,3.0,0.0
+occupation,27-3091.00,Interpreters and Translators,0.1428,0.5257,0.3828,0.3828,1.024,11.0,1.0,-10.0,4.0,1.0,-3.0
+occupation,41-9022.00,Real Estate Sales Agents,0.5802,0.4273,-0.1529,0.1529,1.0076,5.0,8.0,3.0,2.0,5.0,3.0
+occupation,43-4051.00,Customer Service Representatives,0.0338,0.4258,0.3919,0.3919,1.0048,15.0,9.0,-6.0,7.0,6.0,-1.0
+activity,,Analyzing Data or Information,0.6187,0.3907,-0.228,0.228,0.2292,2.0,13.0,11.0,1.0,6.0,5.0
+activity,,Documenting/Recording Information,0.3223,0.435,0.1127,0.1127,0.3029,9.0,7.0,-2.0,7.0,3.0,-4.0
+activity,,Interpreting the Meaning of Information for Others,0.5887,0.3803,-0.2084,0.2084,0.4274,4.0,15.0,11.0,3.0,8.0,5.0
+activity,,Making Decisions and Solving Problems,0.6018,0.3946,-0.2073,0.2073,0.1908,3.0,12.0,9.0,2.0,5.0,3.0
+activity,,Processing Information,0.3928,0.4404,0.0476,0.0476,0.2142,8.0,6.0,-2.0,6.0,2.0,-4.0
+activity,,Thinking Creatively,0.0642,0.4805,0.4162,0.4162,0.2574,13.0,2.0,-11.0,8.0,1.0,-7.0
+activity,,Updating and Using Relevant Knowledge,0.4119,0.4185,0.0065,0.0065,0.1788,7.0,11.0,4.0,5.0,4.0,-1.0
+activity,,Working with Computers,0.4492,0.3891,-0.0601,0.0601,0.2715,6.0,14.0,8.0,4.0,7.0,3.0

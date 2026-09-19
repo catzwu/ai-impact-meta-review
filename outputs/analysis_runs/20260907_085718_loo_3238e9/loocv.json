@@ -1,0 +1,224 @@
+{
+  "run_id": "20260907_085718_loo_3238e9",
+  "summary": {
+    "overall": {
+      "n": 19,
+      "mae": 0.1669578947368421,
+      "rmse": 0.2101900142853203,
+      "bias": 0.10066315789473686,
+      "r2": -0.3119277038385533,
+      "pearson_r": 0.07541735333452115,
+      "spearman_r": 0.21228070175438596
+    },
+    "occupation": {
+      "n": 11,
+      "mae": 0.1851636363636364,
+      "rmse": 0.23155353200030915,
+      "bias": 0.08676363636363638,
+      "r2": -0.2133859180274591,
+      "pearson_r": -0.010935403165593119,
+      "spearman_r": 0.1272727272727273
+    },
+    "activity": {
+      "n": 8,
+      "mae": 0.141925,
+      "rmse": 0.17664568350231488,
+      "bias": 0.11977499999999999,
+      "r2": -0.8020555454796501,
+      "pearson_r": 0.16523990164000488,
+      "spearman_r": 0.11904761904761905
+    }
+  },
+  "rows": [
+    {
+      "node_type": "occupation",
+      "code": "13-1111.00",
+      "label": "Management Analysts",
+      "actual": 0.1259,
+      "predicted": 0.4003,
+      "residual": 0.2744,
+      "abs_error": 0.2744,
+      "posterior_std": 0.8186
+    },
+    {
+      "node_type": "occupation",
+      "code": "13-2011.00",
+      "label": "Accountants and Auditors",
+      "actual": 0.4155,
+      "predicted": 0.3531,
+      "residual": -0.0624,
+      "abs_error": 0.0624,
+      "posterior_std": 0.8175
+    },
+    {
+      "node_type": "occupation",
+      "code": "13-2099.01",
+      "label": "Financial Quantitative Analysts",
+      "actual": 0.1555,
+      "predicted": 0.2948,
+      "residual": 0.1394,
+      "abs_error": 0.1394,
+      "posterior_std": 0.8168
+    },
+    {
+      "node_type": "occupation",
+      "code": "15-1212.00",
+      "label": "Information Security Analysts",
+      "actual": 0.1953,
+      "predicted": 0.2614,
+      "residual": 0.0661,
+      "abs_error": 0.0661,
+      "posterior_std": 1.0013
+    },
+    {
+      "node_type": "occupation",
+      "code": "15-1252.00",
+      "label": "Software Developers",
+      "actual": 0.2788,
+      "predicted": 0.3623,
+      "residual": 0.0835,
+      "abs_error": 0.0835,
+      "posterior_std": 0.8169
+    },
+    {
+      "node_type": "occupation",
+      "code": "23-1011.00",
+      "label": "Lawyers",
+      "actual": 0.2506,
+      "predicted": 0.3947,
+      "residual": 0.1442,
+      "abs_error": 0.1442,
+      "posterior_std": 0.8186
+    },
+    {
+      "node_type": "occupation",
+      "code": "27-1013.00",
+      "label": "Fine Artists; Including Painters; Sculptors; and Illustrators",
+      "actual": 0.793,
+      "predicted": 0.3142,
+      "residual": -0.4788,
+      "abs_error": 0.4788,
+      "posterior_std": 0.8177
+    },
+    {
+      "node_type": "occupation",
+      "code": "27-3091.00",
+      "label": "Interpreters and Translators",
+      "actual": 0.3727,
+      "predicted": 0.3862,
+      "residual": 0.0135,
+      "abs_error": 0.0135,
+      "posterior_std": 0.8185
+    },
+    {
+      "node_type": "occupation",
+      "code": "29-1224.00",
+      "label": "Radiologists",
+      "actual": -0.0378,
+      "predicted": 0.322,
+      "residual": 0.3598,
+      "abs_error": 0.3598,
+      "posterior_std": 0.8197
+    },
+    {
+      "node_type": "occupation",
+      "code": "41-9022.00",
+      "label": "Real Estate Sales Agents",
+      "actual": 0.0541,
+      "predicted": 0.3456,
+      "residual": 0.2914,
+      "abs_error": 0.2914,
+      "posterior_std": 0.8183
+    },
+    {
+      "node_type": "occupation",
+      "code": "43-4051.00",
+      "label": "Customer Service Representatives",
+      "actual": 0.2372,
+      "predicted": 0.3606,
+      "residual": 0.1233,
+      "abs_error": 0.1233,
+      "posterior_std": 0.8177
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Analyzing Data or Information",
+      "actual": 0.0117,
+      "predicted": 0.362,
+      "residual": 0.3503,
+      "abs_error": 0.3503,
+      "posterior_std": 0.2047
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Communicating with People Outside the Organization",
+      "actual": 0.2314,
+      "predicted": 0.3467,
+      "residual": 0.1153,
+      "abs_error": 0.1153,
+      "posterior_std": 0.2661
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Documenting/Recording Information",
+      "actual": 0.0469,
+      "predicted": 0.295,
+      "residual": 0.2481,
+      "abs_error": 0.2481,
+      "posterior_std": 0.2855
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Getting Information",
+      "actual": 0.3057,
+      "predicted": 0.3259,
+      "residual": 0.0202,
+      "abs_error": 0.0202,
+      "posterior_std": 0.1544
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Monitoring Processes; Materials; or Surroundings",
+      "actual": 0.0945,
+      "predicted": 0.2822,
+      "residual": 0.1877,
+      "abs_error": 0.1877,
+      "posterior_std": 0.2808
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Processing Information",
+      "actual": 0.2625,
+      "predicted": 0.3058,
+      "residual": 0.0433,
+      "abs_error": 0.0433,
+      "posterior_std": 0.1918
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Thinking Creatively",
+      "actual": 0.4274,
+      "predicted": 0.3388,
+      "residual": -0.0886,
+      "abs_error": 0.0886,
+      "posterior_std": 0.2154
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Working with Computers",
+      "actual": 0.227,
+      "predicted": 0.3089,
+      "residual": 0.0819,
+      "abs_error": 0.0819,
+      "posterior_std": 0.2549
+    }
+  ]
+}

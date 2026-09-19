@@ -217,18 +217,14 @@ def _metric_cols(metric: str) -> tuple[str, str, str]:
     raise ValueError(f"unknown metric: {metric}")
 
 
-def run(params: RunParams, run_id: Optional[str] = None,
-        occ_rows: Optional[list[dict]] = None,
-        act_rows: Optional[list[dict]] = None) -> dict:
-    """If `occ_rows`/`act_rows` are provided, use them directly (in-memory) instead
-    of reading from the on-disk `onet_*_impact.csv` files. The dicts must match the
-    `build_upload_files.collect_from_iters` output shape."""
-    started = dt.datetime.utcnow().isoformat() + "Z"
-    if run_id is None:
-        run_id = dt.datetime.now().strftime("%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:6]
-    out_dir = RUNS_DIR / run_id
-    out_dir.mkdir(parents=True, exist_ok=True)
+def _prepare_system(params: RunParams,
+                    occ_rows: Optional[list[dict]] = None,
+                    act_rows: Optional[list[dict]] = None) -> dict:
+    """Build the linear system arrays shared by run() and run_loo().
 
+    Everything up through Stage C (pruning) and the pre-solve Ω / L / y construction —
+    but not the final `A = L + Ω + ...` assembly or solve. Returned as a namespace so
+    the caller can perturb `om`/`y` (LOO) before assembling A."""
     metric_col, se_col, n_col = _metric_cols(params.metric)
 
     # Stage A
@@ -408,7 +404,7 @@ def run(params: RunParams, run_id: Optional[str] = None,
     base_k = base[ko] if base is not None else None
     mk, nk = Wf.shape
 
-    # Stage D
+    # Stage D — assemble the pieces the solve step needs
     of = PIPELINE.build_omega(fn_k, fse_k, params.omega_ref, params.sigma_ref)
     og = PIPELINE.build_omega(gn_k, gse_k, params.omega_ref, params.sigma_ref)
     W_sp = csr_matrix(Wf)
@@ -433,27 +429,58 @@ def run(params: RunParams, run_id: Optional[str] = None,
         om_b = np.zeros(Nk)
         y_b = np.zeros(Nk)
 
-    A = L + np.diag(om) + np.diag(om_b) + params.eps * np.eye(Nk)
+    return {
+        "L": L, "om": om, "y": y, "om_b": om_b, "y_b": y_b,
+        "x_obs": x_obs, "observed": observed,
+        "f_k": f_k, "g_k": g_k, "fn_k": fn_k, "gn_k": gn_k,
+        "act_names": act_names, "occ_codes_k": occ_codes_k, "occ_titles_k": occ_titles_k,
+        "base_k": base_k, "baseline_active": baseline_active,
+        "mk": int(mk), "nk": int(nk),
+        "n_obs_occ": n_obs_occ, "n_obs_act": n_obs_act,
+        "unmatched_occ": unmatched_occ, "unmatched_act": unmatched_act,
+        "metric_col": metric_col, "se_col": se_col, "n_col": n_col,
+        "data_source": data_source, "onet_shape": list(onet_shape),
+        "socmajor_aggregated": socmajor_aggregated, "agg_level": agg_level,
+    }
+
+
+def run(params: RunParams, run_id: Optional[str] = None,
+        occ_rows: Optional[list[dict]] = None,
+        act_rows: Optional[list[dict]] = None) -> dict:
+    """If `occ_rows`/`act_rows` are provided, use them directly (in-memory) instead
+    of reading from the on-disk `onet_*_impact.csv` files. The dicts must match the
+    `build_upload_files.collect_from_iters` output shape."""
+    started = dt.datetime.utcnow().isoformat() + "Z"
+    if run_id is None:
+        run_id = dt.datetime.now().strftime("%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:6]
+    out_dir = RUNS_DIR / run_id
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    P = _prepare_system(params, occ_rows=occ_rows, act_rows=act_rows)
+    mk, nk = P["mk"], P["nk"]
+    Nk = mk + nk
+
+    A = P["L"] + np.diag(P["om"]) + np.diag(P["om_b"]) + params.eps * np.eye(Nk)
     Ainv = np.linalg.inv(A)
-    x = Ainv @ (om * y + om_b * y_b)
+    x = Ainv @ (P["om"] * P["y"] + P["om_b"] * P["y_b"])
     std = np.sqrt(np.diag(Ainv))
     fh, gh = x[:mk], x[mk:]
     fs, gs = std[:mk], std[mk:]
 
     occ_out = pd.DataFrame({
-        "code": occ_codes_k,
-        "title": occ_titles_k,
-        "observed": f_k,
-        "n_studies": fn_k,
+        "code": P["occ_codes_k"],
+        "title": P["occ_titles_k"],
+        "observed": P["f_k"],
+        "n_studies": P["fn_k"],
         "estimate": fh.round(4),
         "posterior_std": fs.round(4),
     })
-    if baseline_active:
-        occ_out.insert(4, "aioe_baseline", np.round(base_k, 4))
+    if P["baseline_active"]:
+        occ_out.insert(4, "aioe_baseline", np.round(P["base_k"], 4))
     act_out = pd.DataFrame({
-        "activity": act_names,
-        "observed": g_k,
-        "n_studies": gn_k,
+        "activity": P["act_names"],
+        "observed": P["g_k"],
+        "n_studies": P["gn_k"],
         "estimate": gh.round(4),
         "posterior_std": gs.round(4),
     })
@@ -466,26 +493,486 @@ def run(params: RunParams, run_id: Optional[str] = None,
 
     meta = {
         "run_id": run_id,
+        "type": "run",
         "started_utc": started,
         "finished_utc": dt.datetime.utcnow().isoformat() + "Z",
         "params": asdict(params),
-        "onet_shape": list(onet_shape),
-        "n_observed_occ": n_obs_occ,
-        "n_observed_act": n_obs_act,
+        "onet_shape": P["onet_shape"],
+        "n_observed_occ": P["n_obs_occ"],
+        "n_observed_act": P["n_obs_act"],
         "n_kept_occ": int(mk),
         "n_kept_act": int(nk),
-        "unmatched_occ_codes": unmatched_occ,
-        "unmatched_act_labels": unmatched_act,
-        "baseline_active": baseline_active,
-        "metric_col": metric_col,
-        "se_col": se_col,
-        "n_col": n_col,
-        "data_source": data_source,
-        "socmajor_aggregated": socmajor_aggregated,
-        "aggregation_level": agg_level,
+        "unmatched_occ_codes": P["unmatched_occ"],
+        "unmatched_act_labels": P["unmatched_act"],
+        "baseline_active": P["baseline_active"],
+        "metric_col": P["metric_col"],
+        "se_col": P["se_col"],
+        "n_col": P["n_col"],
+        "data_source": P["data_source"],
+        "socmajor_aggregated": P["socmajor_aggregated"],
+        "aggregation_level": P["agg_level"],
     }
     (out_dir / "run.json").write_text(json.dumps(meta, indent=2))
     return meta
+
+
+# ---------------------------------------------------------------------------
+# Rank-recovery evaluation for LOO
+#
+# Claim being tested: point estimates are noisy/shrunk, but the ORDERING of nodes
+# is trustworthy. For each fold we keep the held-out node's LOO prediction, then
+# rank all nodes by their LOO predictions and compare with the ranking by actual
+# values. Rank statistics are invariant to any monotone distortion of the
+# estimates (e.g. uniform shrinkage toward the mean), so they isolate ordering.
+#
+# NB: an earlier "plug-in rank" (rank pred_i among the OTHER nodes' actuals) was
+# rejected: removing node i's own actual from the comparison set leaks its truth
+# into its rank (a constant predictor scored tau ~0.76). Ranking predictions
+# against predictions has no such leakage and yields true permutations, so the
+# footrule chance level and top-K set overlap are well defined.
+# ---------------------------------------------------------------------------
+
+LOO_RANK_METHOD = {
+    "description": (
+        "Each observed node is held out in turn and its value re-imputed by the graph. "
+        "Nodes are then ranked by their held-out predictions (1 = largest effect) and "
+        "compared with their ranking by actual values. Scored with Kendall's tau-b "
+        "(primary), the concordance index C = (tau+1)/2, Spearman's rho, mean absolute "
+        "rank displacement / Spearman's footrule (vs. its random-permutation expectation), "
+        "and top-K precision. 95% CI on tau-b is a percentile bootstrap over folds."
+    ),
+    "citations": [
+        "Kendall, M. G. (1938). A new measure of rank correlation. Biometrika, 30(1-2), 81-93.",
+        "Kendall, M. G. (1945). The treatment of ties in ranking problems. Biometrika, 33(3), 239-251.",
+        "Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating "
+        "the yield of medical tests. JAMA, 247(18), 2543-2546.",
+        "Diaconis, P., & Graham, R. L. (1977). Spearman's footrule as a measure of disarray. "
+        "JRSS Series B, 39(2), 262-268.",
+        "Spearman, C. (1904). The proof and measurement of association between two things. "
+        "American Journal of Psychology, 15(1), 72-101.",
+        "Efron, B., & Tibshirani, R. J. (1993). An Introduction to the Bootstrap. Chapman & Hall.",
+    ],
+}
+
+
+def _loo_ranks(actual: np.ndarray, pred: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Return (actual_rank, loo_rank): descending average ranks (1 = largest) of the
+    actual values and of the held-out predictions, each within its own vector."""
+    from scipy.stats import rankdata
+    actual = np.asarray(actual, dtype=float)
+    pred = np.asarray(pred, dtype=float)
+    if len(actual) == 0:
+        return np.array([]), np.array([])
+    return rankdata(-actual, method="average"), rankdata(-pred, method="average")
+
+
+def _add_loo_ranks(rows: list[dict]) -> list[dict]:
+    """Add rank columns to LOO rows (returns new dicts; input untouched).
+
+    actual_rank / loo_rank / rank_delta               — ranked across ALL observed nodes
+    actual_rank_within / loo_rank_within / rank_delta_within — ranked within node_type"""
+    out = [dict(r) for r in rows]
+    if not out:
+        return out
+
+    def _fill(idx: list[int], suffix: str) -> None:
+        if not idx:
+            return
+        a = np.array([float(out[k]["actual"]) for k in idx])
+        p = np.array([float(out[k]["predicted"]) for k in idx])
+        ar, lr = _loo_ranks(a, p)
+        for k, x, y in zip(idx, ar, lr):
+            out[k]["actual_rank" + suffix] = float(x)
+            out[k]["loo_rank" + suffix] = float(y)
+            out[k]["rank_delta" + suffix] = float(y - x)
+
+    _fill(list(range(len(out))), "")
+    for t in ("occupation", "activity"):
+        _fill([k for k, r in enumerate(out) if r.get("node_type") == t], "_within")
+    return out
+
+
+def _rank_recovery(sub: pd.DataFrame, actual_rank_col: str = "actual_rank",
+                   loo_rank_col: str = "loo_rank", n_boot: int = 2000,
+                   seed: int = 0) -> dict:
+    """Rank-recovery statistics on a set of LOO folds (see LOO_RANK_METHOD)."""
+    n = int(len(sub))
+    out: dict = {"n": n}
+    if n < 3 or actual_rank_col not in sub.columns or loo_rank_col not in sub.columns:
+        return out
+    ar = sub[actual_rank_col].to_numpy(dtype=float)
+    lr = sub[loo_rank_col].to_numpy(dtype=float)
+
+    m = _rank_metrics(ar, lr)
+    tau = m.get("kendall_tau")
+    out.update({
+        "kendall_tau": tau,
+        "kendall_p": m.get("kendall_p"),
+        "concordance_c": (tau + 1.0) / 2.0 if tau is not None and np.isfinite(tau) else None,
+        "spearman_r": m.get("spearman_r"),
+        "spearman_p": m.get("spearman_p"),
+    })
+
+    # Spearman footrule (Diaconis & Graham 1977)
+    d = np.abs(lr - ar)
+    footrule = float(d.sum())
+    out["footrule"] = footrule
+    out["footrule_norm"] = footrule / float((n * n) // 2)
+    out["mean_abs_rank_delta"] = float(d.mean())
+    # E|pi(i) - i| under a uniformly random permutation = (n^2 - 1) / (3n)
+    out["mean_abs_rank_delta_chance"] = (n * n - 1) / (3.0 * n)
+
+    # Top-K precision: |true top-K  ∩  predicted top-K| / K.
+    topk = {}
+    for K in (3, 5, 10):
+        if K >= n:
+            continue
+        true_top = set(np.argsort(ar, kind="stable")[:K].tolist())
+        pred_top = set(np.argsort(lr, kind="stable")[:K].tolist())
+        hits = len(true_top & pred_top)
+        topk[str(K)] = {"K": K, "hits": hits, "rate": hits / K, "chance": K / n}
+    out["topk"] = topk
+
+    # Percentile bootstrap CI on tau-b, resampling folds.
+    try:
+        from scipy.stats import kendalltau
+        rng = np.random.default_rng(seed)
+        taus = []
+        for _ in range(n_boot):
+            idx = rng.integers(0, n, n)
+            a, b = ar[idx], lr[idx]
+            if np.std(a) == 0 or np.std(b) == 0:
+                continue
+            t = kendalltau(a, b).statistic
+            if np.isfinite(t):
+                taus.append(t)
+        if len(taus) >= 100:
+            out["tau_ci"] = [float(np.percentile(taus, 2.5)), float(np.percentile(taus, 97.5))]
+            out["tau_ci_boot_n"] = len(taus)
+    except Exception:
+        pass
+    # Non-finite -> None so the browser's JSON.parse accepts the payload.
+    for k, v in list(out.items()):
+        if isinstance(v, float) and not np.isfinite(v):
+            out[k] = None
+    return out
+
+
+def _rank_summary(rows: list[dict]) -> dict:
+    """Overall block uses cross-type ranks; per-type blocks use within-type ranks."""
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return {"overall": {"n": 0}, "occupation": {"n": 0}, "activity": {"n": 0},
+                "method": LOO_RANK_METHOD}
+    res = {"overall": _rank_recovery(df)}
+    for t in ("occupation", "activity"):
+        res[t] = _rank_recovery(df[df["node_type"] == t],
+                                "actual_rank_within", "loo_rank_within")
+    res["method"] = LOO_RANK_METHOD
+    return res
+
+
+def run_loo(params: RunParams, run_id: Optional[str] = None,
+            occ_rows: Optional[list[dict]] = None,
+            act_rows: Optional[list[dict]] = None) -> dict:
+    """Leave-one-out cross validation: for each observed value, hold it out, re-solve
+    the propagation, and record the imputed posterior at that node vs the actual.
+
+    Writes:
+      outputs/analysis_runs/<run_id>/loocv.csv    — one row per held-out observation
+      outputs/analysis_runs/<run_id>/loocv.json   — {summary, rows}
+      outputs/analysis_runs/<run_id>/run.json     — meta with type='loo' and loo_summary
+    """
+    started = dt.datetime.utcnow().isoformat() + "Z"
+    if run_id is None:
+        run_id = dt.datetime.now().strftime("%Y%m%d_%H%M%S_loo_") + uuid.uuid4().hex[:6]
+    out_dir = RUNS_DIR / run_id
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    P = _prepare_system(params, occ_rows=occ_rows, act_rows=act_rows)
+    mk, nk = P["mk"], P["nk"]; Nk = mk + nk
+    L, om, y, om_b, y_b = P["L"], P["om"], P["y"], P["om_b"], P["y_b"]
+    observed, x_obs = P["observed"], P["x_obs"]
+
+    obs_indices = np.where(observed)[0]
+    loo_rows = []
+    for i in obs_indices:
+        om_i = om.copy(); y_i = y.copy()
+        om_i[i] = 0.0; y_i[i] = 0.0
+        # If a baseline exists for this node it can now activate (matches the
+        # semantic of the observation truly being absent).
+        om_b_i = om_b.copy(); y_b_i = y_b.copy()
+        if P["baseline_active"] and i < mk and np.isfinite(P["base_k"][i]):
+            om_b_i[i] = params.omega_base
+            y_b_i[i] = float(P["base_k"][i])
+        A = L + np.diag(om_i) + np.diag(om_b_i) + params.eps * np.eye(Nk)
+        try:
+            Ainv = np.linalg.inv(A)
+        except np.linalg.LinAlgError:
+            continue
+        x = Ainv @ (om_i * y_i + om_b_i * y_b_i)
+        std = np.sqrt(np.diag(Ainv))
+        pred = float(x[i]); pstd = float(std[i]); actual = float(x_obs[i])
+        if i < mk:
+            node_type = "occupation"
+            code = str(P["occ_codes_k"][i])
+            label = str(P["occ_titles_k"][i]).replace(",", ";")
+        else:
+            node_type = "activity"
+            code = ""
+            label = str(P["act_names"][i - mk]).replace(",", ";")
+        loo_rows.append({
+            "node_type": node_type,
+            "code": code, "label": label,
+            "actual": round(actual, 4),
+            "predicted": round(pred, 4),
+            "residual": round(pred - actual, 4),
+            "abs_error": round(abs(pred - actual), 4),
+            "posterior_std": round(pstd, 4),
+        })
+
+    loo_rows = _add_loo_ranks(loo_rows)
+    df = pd.DataFrame(loo_rows)
+    df.to_csv(out_dir / "loocv.csv", index=False)
+
+    def _summary(sub: pd.DataFrame) -> dict:
+        n = len(sub)
+        if n == 0:
+            return {"n": 0}
+        a = sub["actual"].to_numpy(dtype=float)
+        p = sub["predicted"].to_numpy(dtype=float)
+        r = p - a
+        ss_tot = float(np.sum((a - a.mean())**2)) if n > 1 else 0.0
+        out = {
+            "n": n,
+            "mae": float(np.mean(np.abs(r))),
+            "rmse": float(np.sqrt(np.mean(r**2))),
+            "bias": float(np.mean(r)),
+            "r2": (1 - float(np.sum(r**2)) / ss_tot) if ss_tot > 0 else None,
+        }
+        try:
+            from scipy.stats import pearsonr, spearmanr
+            if n > 1 and float(np.std(a)) > 0 and float(np.std(p)) > 0:
+                out["pearson_r"] = float(pearsonr(a, p).statistic)
+                out["spearman_r"] = float(spearmanr(a, p).statistic)
+            else:
+                out["pearson_r"] = out["spearman_r"] = None
+        except Exception:
+            out["pearson_r"] = out["spearman_r"] = None
+        return out
+
+    summary = {
+        "overall":    _summary(df),
+        "occupation": _summary(df[df["node_type"] == "occupation"]),
+        "activity":   _summary(df[df["node_type"] == "activity"]),
+        "rank":       _rank_summary(loo_rows),
+    }
+
+    meta = {
+        "run_id": run_id,
+        "type": "loo",
+        "started_utc": started,
+        "finished_utc": dt.datetime.utcnow().isoformat() + "Z",
+        "params": asdict(params),
+        "onet_shape": P["onet_shape"],
+        "n_observed_occ": P["n_obs_occ"],
+        "n_observed_act": P["n_obs_act"],
+        "n_kept_occ": int(mk),
+        "n_kept_act": int(nk),
+        "unmatched_occ_codes": P["unmatched_occ"],
+        "unmatched_act_labels": P["unmatched_act"],
+        "baseline_active": P["baseline_active"],
+        "metric_col": P["metric_col"],
+        "data_source": P["data_source"],
+        "socmajor_aggregated": P["socmajor_aggregated"],
+        "aggregation_level": P["agg_level"],
+        "loo_summary": summary,
+        "n_folds": int(len(df)),
+    }
+    (out_dir / "run.json").write_text(json.dumps(meta, indent=2))
+    (out_dir / "loocv.json").write_text(json.dumps(
+        {"run_id": run_id, "summary": summary, "rows": loo_rows}, indent=2
+    ))
+    return meta
+
+
+def load_loo(run_id: str) -> dict | None:
+    d = RUNS_DIR / run_id
+    if not (d / "loocv.json").exists():
+        return None
+    meta = json.loads((d / "run.json").read_text())
+    payload = json.loads((d / "loocv.json").read_text())
+    rows = payload.get("rows") or []
+    # Back-fill rank-recovery stats for runs made before they existed (in memory only).
+    if rows and "loo_rank" not in rows[0]:
+        payload["rows"] = _add_loo_ranks(rows)
+    summary = payload.setdefault("summary", {})
+    if "rank" not in summary:
+        summary["rank"] = _rank_summary(payload["rows"])
+        summary["rank"]["backfilled"] = True
+    meta["loo"] = payload
+    return meta
+
+
+def _rank_metrics(a: np.ndarray, b: np.ndarray) -> dict:
+    """Rank/agreement metrics on two aligned numeric vectors (NaNs already removed)."""
+    n = len(a)
+    if n < 2:
+        return {
+            "n": n, "pearson_r": None, "pearson_p": None,
+            "spearman_r": None, "spearman_p": None,
+            "kendall_tau": None, "kendall_p": None,
+        }
+    out = {"n": int(n)}
+    try:
+        from scipy.stats import pearsonr, spearmanr, kendalltau
+        if np.std(a) > 0 and np.std(b) > 0:
+            pear = pearsonr(a, b)
+            out["pearson_r"] = float(pear.statistic)
+            out["pearson_p"] = float(pear.pvalue)
+        else:
+            out["pearson_r"] = out["pearson_p"] = None
+        spear = spearmanr(a, b)
+        out["spearman_r"] = float(spear.statistic)
+        out["spearman_p"] = float(spear.pvalue)
+        kend = kendalltau(a, b)
+        out["kendall_tau"] = float(kend.statistic)
+        out["kendall_p"] = float(kend.pvalue)
+    except Exception:
+        out["pearson_r"] = out["pearson_p"] = None
+        out["spearman_r"] = out["spearman_p"] = None
+        out["kendall_tau"] = out["kendall_p"] = None
+    return out
+
+
+_LEVEL_RANK = {"occupation": 0, "soc_minor": 1, "soc_major": 2}
+
+
+def _agg_level_of(meta: dict) -> str:
+    p = meta.get("params") or {}
+    lvl = (p.get("aggregation_level") or "occupation").lower()
+    if p.get("aggregate_to_socmajor") and lvl == "occupation":
+        lvl = "soc_major"
+    return lvl if lvl in _LEVEL_RANK else "occupation"
+
+
+def _aggregate_occ_up(df: pd.DataFrame, from_level: str, to_level: str) -> pd.DataFrame:
+    """Roll occupation-level results up to a coarser SOC key. No-op when already
+    at (or coarser than) `to_level`. Aggregation: mean of `estimate` and
+    `observed`; title becomes the SOC-major name for soc_major, or an arbitrary
+    member title for soc_minor."""
+    if _LEVEL_RANK[from_level] >= _LEVEL_RANK[to_level]:
+        return df
+    if to_level == "soc_major":
+        keyfn = lambda c: str(c)[:2]
+    else:  # soc_minor
+        keyfn = lambda c: str(c)[:4] + "000"
+    df = df.copy()
+    df["code"] = df["code"].astype(str)
+    df["_k"] = df["code"].map(keyfn)
+    for col in ("estimate", "observed"):
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+    agg_spec: dict = {"estimate": "mean", "observed": "mean"}
+    if "title" in df.columns:
+        agg_spec["title"] = "first"
+    out = df.groupby("_k", as_index=False).agg(agg_spec)
+    out = out.rename(columns={"_k": "code"})
+    if to_level == "soc_major" and "title" in out.columns:
+        out["title"] = out["code"].map(lambda c: SOC_NAMES.get(c, c))
+    return out
+
+
+def compare_runs(a_id: str, b_id: str) -> dict | None:
+    """Rank/agreement comparison of two runs' occupation and activity results.
+    Joins on the display key (occupation `code`, activity `activity`), keeps rows
+    where both runs produced an estimate, and returns per-view metrics + rows.
+
+    If the two runs used different aggregation levels for occupations (occupation
+    vs soc_minor vs soc_major), the finer-grained run is rolled up to the coarser
+    run's level before joining, so the comparison is on a common key."""
+    ra = RUNS_DIR / a_id
+    rb = RUNS_DIR / b_id
+    if not (ra / "run.json").exists() or not (rb / "run.json").exists():
+        return None
+    ma = json.loads((ra / "run.json").read_text())
+    mb = json.loads((rb / "run.json").read_text())
+
+    def _load(d: Path, name: str) -> pd.DataFrame | None:
+        p = d / name
+        if not p.exists():
+            return None
+        return pd.read_csv(p)
+
+    lvl_a = _agg_level_of(ma)
+    lvl_b = _agg_level_of(mb)
+    # Coarsest common level = the one with the higher rank.
+    common_level = lvl_a if _LEVEL_RANK[lvl_a] >= _LEVEL_RANK[lvl_b] else lvl_b
+
+    result = {
+        "a": ma, "b": mb,
+        "level_a": lvl_a, "level_b": lvl_b,
+        "common_level": common_level,
+        "levels_differ": lvl_a != lvl_b,
+        "views": {},
+    }
+    for view, name, keycol, labelcol in (
+        ("occupation", "occupation_impacts.csv", "code",     "title"),
+        ("activity",   "activity_impacts.csv",   "activity", "activity"),
+    ):
+        da = _load(ra, name); db = _load(rb, name)
+        if da is None or db is None:
+            continue
+        # Roll occupations up to the coarser side's level before joining. Activities
+        # aren't stratified by SOC, so their rows just pass through.
+        if view == "occupation":
+            da = _aggregate_occ_up(da, lvl_a, common_level)
+            db = _aggregate_occ_up(db, lvl_b, common_level)
+            # `code` at soc_major is "11"/"13"/... which pandas would otherwise
+            # infer as int64 on one side and str on the other — force str.
+            da["code"] = da["code"].astype(str)
+            db["code"] = db["code"].astype(str)
+        # Keep the label + estimate + observed columns from A; join estimate/observed from B
+        cols_a = [keycol, "estimate", "observed"] + ([labelcol] if labelcol != keycol and labelcol in da.columns else [])
+        cols_b = [keycol, "estimate", "observed"]
+        left = da[cols_a].rename(columns={"estimate": "estimate_a", "observed": "observed_a"})
+        right = db[cols_b].rename(columns={"estimate": "estimate_b", "observed": "observed_b"})
+        merged = pd.merge(left, right, on=keycol, how="inner")
+        # Drop rows where either estimate is NaN
+        merged = merged[np.isfinite(pd.to_numeric(merged["estimate_a"], errors="coerce")) &
+                        np.isfinite(pd.to_numeric(merged["estimate_b"], errors="coerce"))].copy()
+        merged["estimate_a"] = pd.to_numeric(merged["estimate_a"], errors="coerce")
+        merged["estimate_b"] = pd.to_numeric(merged["estimate_b"], errors="coerce")
+        merged["rank_a"] = merged["estimate_a"].rank(ascending=False, method="average")
+        merged["rank_b"] = merged["estimate_b"].rank(ascending=False, method="average")
+        merged["rank_delta"] = (merged["rank_a"] - merged["rank_b"]).round(1)
+        merged["delta"] = (merged["estimate_a"] - merged["estimate_b"]).round(4)
+        a_vec = merged["estimate_a"].to_numpy()
+        b_vec = merged["estimate_b"].to_numpy()
+        metrics = _rank_metrics(a_vec, b_vec)
+        # Top-K rank overlap (Jaccard on the top-K sets by each run's ordering)
+        overlap = {}
+        for K in (5, 10, 25, 50):
+            if len(merged) < K:
+                continue
+            top_a = set(merged.nsmallest(K, "rank_a")[keycol].astype(str).tolist())
+            top_b = set(merged.nsmallest(K, "rank_b")[keycol].astype(str).tolist())
+            inter = top_a & top_b
+            union = top_a | top_b
+            overlap[str(K)] = {
+                "intersection": len(inter),
+                "jaccard": (len(inter) / len(union)) if union else None,
+            }
+        # NaN → None so jsonify emits valid JSON
+        rows = merged.astype(object).where(lambda x: x.notna(), None).to_dict(orient="records")
+        result["views"][view] = {
+            "metrics": metrics,
+            "topk_overlap": overlap,
+            "n": int(len(merged)),
+            "keycol": keycol, "labelcol": labelcol,
+            "rows": rows,
+        }
+    return result
 
 
 def list_runs() -> list[dict]:
