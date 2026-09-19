@@ -31,9 +31,9 @@ current, and which numbers are safe to cite. `CLAUDE.md` covers the code itself
 
 ## 2. The website
 
-**Public, read-only static site:** https://catzwu.github.io/ai-impact-meta-review/
-(it 301-redirects to `http://photos.catzwu.com/ai-impact-meta-review/`; cite the
-`github.io` URL in the paper.)
+**Public, read-only static site:** https://ai-impact.catzwu.com/
+(custom domain for this repo's GitHub Pages site; the old
+`catzwu.github.io/ai-impact-meta-review/` URL redirects here. Cite this URL in the paper.)
 
 - Served by GitHub Pages from `main:/docs`, so it shows **whatever is on `origin/main`**.
 - Built by `scripts/build_static_site.py`, which writes `docs/`. Nothing runs on

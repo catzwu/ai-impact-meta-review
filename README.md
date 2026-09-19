@@ -2,7 +2,7 @@
 
 ## Browse the results online
 
-Live site: **https://catzwu.github.io/ai-impact-meta-review/**
+Live site: **https://ai-impact.catzwu.com/**
 
 A static, read-only snapshot for anyone who just wants to see the data:
 - **Home** — per-paper speed and quality effect sizes; click a title for the full drawer (verbatim quotes, arms, outcomes, O\*NET mapping, reported statistics).

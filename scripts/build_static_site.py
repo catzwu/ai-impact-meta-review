@@ -56,6 +56,9 @@ PAPERS_DATA = DATA / "papers"
 RUNS_DATA = DATA / "runs"
 
 REPO_URL = "https://github.com/catzwu/ai-impact-meta-review"
+# GitHub Pages custom domain. main() rewrites docs/ from scratch, so it must re-emit
+# docs/CNAME itself — otherwise the next rebuild deletes it and Pages drops the domain.
+SITE_DOMAIN = "ai-impact.catzwu.com"
 CANONICAL_BETA = 2.5
 
 
@@ -2111,6 +2114,7 @@ def main():
     RUNS_DATA.mkdir(parents=True)
 
     (DOCS / ".nojekyll").write_text("")
+    (DOCS / "CNAME").write_text(SITE_DOMAIN + "\n")
 
     # 1. Rows (review-state overlay applied)
     state = _load_state()
