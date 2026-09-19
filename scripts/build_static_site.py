@@ -121,6 +121,7 @@ def _build_rows(pid_map: dict[str, str]) -> list[dict]:
                 "row_id": row_id,
                 "paper_id": pid,
                 "citation_key": ck,
+                "citation": site_theme.short_citation((ext or {}).get("authors"), (ext or {}).get("year"), ck),
                 "file_name": f"{pid}.pdf" if pid else "",
                 "title": title,
                 "kind": kind,
@@ -223,12 +224,12 @@ _INDEX_STYLE = _STYLE_COMMON + r"""
   .tiles .metric .v { font-family:var(--serif); font-size:28px; font-weight:600; }
   @media (max-width: 860px) { .intro { grid-template-columns: 1fr; } }
   .table-scroll { max-height:none; }
-  #table { table-layout: fixed; min-width:1350px; }
+  #table { table-layout: fixed; min-width:1200px; }
   #table th { position:sticky; top:0; z-index:5; }
   td.snippet { white-space:normal; word-break:break-word; color:var(--ink-2); font-size:12.5px; line-height:1.45; }
   td.title { white-space:normal; word-break:break-word; font-family:var(--serif); font-size:14.5px; line-height:1.35; cursor:pointer; color:var(--ink); }
   td.title:hover { color:var(--link); text-decoration:underline; text-underline-offset:2px; }
-  td.cite { font-family:var(--mono); font-size:11.5px; color:var(--ink-2); overflow:hidden; text-overflow:ellipsis; }
+  td.cite { font-size:13.5px; color:var(--ink); white-space:normal; }
   td.file { font-family:var(--mono); font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; }
   td.onet { font-size:12.5px; color:var(--ink); }
   td.onet .code { font-family:var(--mono); font-size:11px; color:var(--muted); margin-right:4px; }
@@ -270,15 +271,14 @@ __HEADER__
 <div class="table-scroll">
 <table id="table">
   <colgroup>
-    <col style="width:76px"><col style="width:190px"><col style="width:290px"><col style="width:160px">
-    <col style="width:80px"><col style="width:96px"><col style="width:300px"><col style="width:340px">
+    <col style="width:80px"><col style="width:180px"><col style="width:280px">
+    <col style="width:80px"><col style="width:100px"><col style="width:300px"><col>
   </colgroup>
   <thead><tr>
     <th data-sort="kind">Kind</th>
-    <th data-sort="citation_key">Citation</th>
+    <th data-sort="citation">Citation</th>
     <th data-sort="title">Title</th>
-    <th data-sort="file_name">File</th>
-    <th data-sort="value">Value</th>
+    <th data-sort="value" style="text-align:right">Value</th>
     <th data-sort="confidence">Confidence</th>
     <th>O*NET</th>
     <th>Task snippet</th>
@@ -329,7 +329,7 @@ async function load() {
 function render() {
   const q = (document.getElementById('search').value || '').toLowerCase();
   let rows = ROWS.filter(r =>
-    !q || (r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
+    !q || (r.citation+r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
   if (SORT.col) {
     rows = [...rows].sort((a,b)=> {
       const x = (a[SORT.col]||'').toString(), y=(b[SORT.col]||'').toString();
@@ -348,9 +348,8 @@ function render() {
     return `
     <tr data-row="${r.row_id}">
       <td><span class="kind-${r.kind}">${r.kind}</span></td>
-      <td class="cite">${escapeHtml(r.citation_key)}</td>
+      <td class="cite" title="${escapeHtml(r.citation_key)}">${escapeHtml(r.citation||r.citation_key)}</td>
       <td class="title" title="Click to view paper detail" onclick="viewPaper('${r.paper_id}')">${escapeHtml(r.title)}</td>
-      <td class="file" title="${escapeHtml(r.file_name)}">${escapeHtml(r.file_name)}</td>
       <td class="value ${vClass}">${v.toFixed(3)}</td>
       <td>${r.confidence ? `<span class="conf-pill-cell ${r.confidence}">${r.confidence}</span>` : ''}</td>
       <td class="onet">${onet}</td>

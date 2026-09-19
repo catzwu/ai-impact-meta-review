@@ -244,6 +244,45 @@ THEME_CSS = r"""
 """
 
 
+_PARTICLES = {"van", "von", "de", "der", "den", "del", "della", "di", "da", "du", "la", "le", "dos", "das", "st."}
+_SUFFIXES = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv"}
+
+
+def _surname(name: str) -> str:
+    """'Erik Brynjolfsson' -> 'Brynjolfsson'; 'Hansen, R. R.' -> 'Hansen'; keeps 'van der' particles."""
+    name = (name or "").strip()
+    if "," in name:
+        return name.split(",", 1)[0].strip()
+    parts = [p for p in name.split() if p.lower() not in _SUFFIXES]
+    if not parts:
+        return name
+    i = len(parts) - 1
+    while i > 0 and parts[i - 1].lower() in _PARTICLES:
+        i -= 1
+    return " ".join(parts[i:])
+
+
+def short_citation(authors: list[str] | None, year, citation_key: str = "") -> str:
+    """Author-year label: 'Surname (2024)', 'A & B (2024)', or 'A et al. (2024)'.
+
+    Falls back to the `surname_year_...` citation_key when the extraction lacks authors or year.
+    """
+    key_parts = (citation_key or "").split("_")
+    key_year = next((p for p in key_parts if len(p) == 4 and p.isdigit()), "")
+    names = [_surname(a) for a in (authors or []) if a and a.strip()]
+    if not names:
+        names = [key_parts[0].capitalize()] if key_parts and key_parts[0] else []
+    if not names:
+        return citation_key
+    if len(names) == 1:
+        who = names[0]
+    elif len(names) == 2:
+        who = f"{names[0]} & {names[1]}"
+    else:
+        who = f"{names[0]} et al."
+    return f"{who} ({year or key_year or 'n.d.'})"
+
+
 def masthead(items: list[tuple[str, str, str]], active: str, home_href: str,
              external: list[tuple[str, str]] | None = None) -> str:
     """items = [(href, label, key)]; external = [(href, label)] opened in a new tab."""

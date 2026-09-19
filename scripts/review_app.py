@@ -352,6 +352,7 @@ def _build_rows():
                 "row_id": row_id,
                 "paper_id": pid,
                 "citation_key": ck,
+                "citation": site_theme.short_citation((ext or {}).get("authors"), (ext or {}).get("year"), ck),
                 "file_name": f"{pid}.pdf" if pid else "",
                 "title": title,
                 "kind": kind,
@@ -798,7 +799,7 @@ INDEX_HTML = """<!doctype html>
 __THEME_HEAD__
 <style>
   /* review table */
-  #table { table-layout: fixed; min-width:1600px; }
+  #table { table-layout: fixed; min-width:1300px; }
   #table th, #table td { overflow:hidden; text-overflow:ellipsis; }
   #table th { position:sticky; top:0; z-index:5; }
   th .resizer { position:absolute; right:-3px; top:0; width:8px; height:100%; cursor:col-resize; user-select:none; z-index:2; }
@@ -809,7 +810,7 @@ __THEME_HEAD__
   td.snippet { white-space:normal; word-break:break-word; color:var(--ink-2); font-size:12.5px; line-height:1.45; }
   td.title { white-space:normal; word-break:break-word; font-family:var(--serif); font-size:14.5px; line-height:1.35; cursor:pointer; color:var(--ink); }
   td.title:hover { color:var(--link); text-decoration:underline; text-underline-offset:2px; }
-  td.cite { font-family:var(--mono); font-size:11.5px; color:var(--ink-2); }
+  td.cite { font-size:13.5px; color:var(--ink); white-space:normal; }
   td.file { font-family:var(--mono); font-size:11px; color:var(--muted); }
   /* searchable onet picker */
   .onet-picker { position:relative; max-width:320px; }
@@ -854,6 +855,7 @@ __MASTHEAD__
     <span class="help">Selected rows:</span>
     <button id="mergeBtn" class="btn">Merge</button>
     <button id="deleteBtn" class="btn btn-danger">Delete</button>
+    <button id="restoreBtn" class="btn" title="Undo delete for the selected rows">Restore</button>
     <button id="exportBtn" class="btn" title="Write the edited tables back to outputs/final/*.csv">Export CSVs</button>
   </div>
   <input type="file" id="uploadFile" accept="application/pdf" style="display:none;"/>
@@ -869,21 +871,18 @@ __MASTHEAD__
 <div class="table-scroll">
 <table id="table">
   <colgroup>
-    <col style="width:32px"><col style="width:70px"><col style="width:200px"><col style="width:240px">
-    <col style="width:200px"><col style="width:70px"><col style="width:60px"><col style="width:320px">
-    <col style="width:340px"><col style="width:80px">
+    <col style="width:36px"><col style="width:80px"><col style="width:180px"><col style="width:280px">
+    <col style="width:80px"><col style="width:100px"><col style="width:300px"><col>
   </colgroup>
   <thead><tr>
     <th><input type="checkbox" id="selAll"/><div class="resizer"></div></th>
     <th data-sort="kind">Kind<div class="resizer"></div></th>
-    <th data-sort="citation_key">Citation<div class="resizer"></div></th>
+    <th data-sort="citation">Citation<div class="resizer"></div></th>
     <th data-sort="title">Title<div class="resizer"></div></th>
-    <th data-sort="file_name">File<div class="resizer"></div></th>
-    <th data-sort="value">Value<div class="resizer"></div></th>
-    <th data-sort="confidence">Conf<div class="resizer"></div></th>
+    <th data-sort="value" style="text-align:right">Value<div class="resizer"></div></th>
+    <th data-sort="confidence">Confidence<div class="resizer"></div></th>
     <th>O*NET<div class="resizer"></div></th>
     <th>Task snippet<div class="resizer"></div></th>
-    <th>Actions<div class="resizer"></div></th>
   </tr></thead>
   <tbody id="tbody"></tbody>
 </table>
@@ -974,7 +973,7 @@ async function applyPicked(code, label) {
 function render() {
   const q = (document.getElementById('search').value || '').toLowerCase();
   let rows = ROWS.filter(r =>
-    !q || (r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
+    !q || (r.citation+r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
   if (SORT.col) {
     rows = [...rows].sort((a,b)=> {
       const x = (a[SORT.col]||'').toString(), y=(b[SORT.col]||'').toString();
@@ -992,9 +991,8 @@ function render() {
     <tr class="${r._deleted?'deleted':''}${r._merged_into?' merged-into':''}" data-row="${r.row_id}">
       <td><input type="checkbox" class="sel"/></td>
       <td><span class="kind-${r.kind}">${r.kind}</span>${r._merged_into?'<span class="badge">merged</span>':''}</td>
-      <td class="cite">${escapeHtml(r.citation_key)}</td>
+      <td class="cite" title="${escapeHtml(r.citation_key)}">${escapeHtml(r.citation||r.citation_key)}</td>
       <td class="title" title="Click to view paper detail" onclick="viewPaper('${r.paper_id}','${r.row_id}')">${escapeHtml(r.title)}</td>
-      <td class="file" title="${escapeHtml(r.file_name)}">${escapeHtml(r.file_name)}</td>
       <td class="value ${vClass}">${v.toFixed(3)}</td>
       <td>${r.confidence ? `<span class="conf-pill-cell ${r.confidence}">${r.confidence}</span>` : ''}</td>
       <td>
@@ -1003,11 +1001,6 @@ function render() {
         </div>
       </td>
       <td class="snippet" title="${escapeHtml(r.task_description||'')}">${escapeHtml(r.task_description||'')}</td>
-      <td>
-        ${r._deleted
-          ? `<button class="row-btn" onclick="undeleteRow('${r.row_id}')">Restore</button>`
-          : `<button class="row-btn danger" onclick="deleteRow('${r.row_id}')">Delete</button>`}
-      </td>
     </tr>`;
   }).join('');
 }
@@ -1040,6 +1033,11 @@ document.getElementById('deleteBtn').addEventListener('click', async ()=>{
   const ids = selectedIds(); if (!ids.length) return;
   if (!confirm(`Delete ${ids.length} rows?`)) return;
   for (const id of ids) await fetch('/api/row/'+encodeURIComponent(id)+'/delete',{method:'POST'});
+  await load();
+});
+document.getElementById('restoreBtn').addEventListener('click', async ()=>{
+  const ids = selectedIds(); if (!ids.length) return;
+  for (const id of ids) await fetch('/api/row/'+encodeURIComponent(id)+'/undelete',{method:'POST'});
   await load();
 });
 document.getElementById('mergeBtn').addEventListener('click', async ()=>{
@@ -1416,7 +1414,7 @@ async function pollUpload(jobId, paperId) {
   const ths  = document.querySelectorAll('#table thead th');
   // restore saved widths first
   ths.forEach((th, i)=>{
-    try { const w = localStorage.getItem('colw_'+i); if (w && cols[i]) cols[i].style.width = w; } catch(_){}
+    try { const w = localStorage.getItem('colw2_'+i); if (w && cols[i]) cols[i].style.width = w; } catch(_){}
   });
   document.querySelectorAll('#table th .resizer').forEach((r, i)=>{
     let dragging = false;
@@ -1435,7 +1433,7 @@ async function pollUpload(jobId, paperId) {
         document.removeEventListener('mousemove', move);
         document.removeEventListener('mouseup', up);
         document.body.style.cursor = '';
-        try{ localStorage.setItem('colw_'+i, col.style.width); }catch(_){}
+        try{ localStorage.setItem('colw2_'+i, col.style.width); }catch(_){}
         setTimeout(()=>{ dragging=false; }, 0);
       };
       document.addEventListener('mousemove', move);
