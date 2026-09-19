@@ -1,0 +1,17 @@
+code,title,observed,n_studies,estimate,posterior_std
+11,Management,,,0.345,1.0665
+13,Business & Financial,0.003252793335436666,4.0,0.0033,0.0047
+15,Computer & Math,0.10165040528573137,1.0,0.1024,0.0478
+17,Architecture & Engineering,,,0.3937,1.0168
+19,Life; Physical; Social Science,,,0.3978,1.0208
+21,Community & Social Service,,,0.3287,1.095
+23,Legal,0.30701549803641615,2.0,0.3098,0.1795
+25,Education,,,0.3237,1.1364
+27,Arts; Design; Media,0.14282137790441232,1.0,0.143,0.0365
+29,Healthcare Practitioners,,,0.3698,1.1021
+31,Healthcare Support,,,0.3292,1.1596
+33,Protective Service,,,0.3492,1.0609
+35,Food Prep & Serving,,,0.3089,1.1096
+39,Personal Care & Service,,,0.3146,1.1298
+41,Sales,0.5802411227104969,1.0,0.5664,0.2391
+43,Office & Admin Support,0.033835583753123226,1.0,0.034,0.023

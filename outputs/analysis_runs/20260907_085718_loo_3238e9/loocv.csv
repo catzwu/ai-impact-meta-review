@@ -1,0 +1,20 @@
+node_type,code,label,actual,predicted,residual,abs_error,posterior_std
+occupation,13-1111.00,Management Analysts,0.1259,0.4003,0.2744,0.2744,0.8186
+occupation,13-2011.00,Accountants and Auditors,0.4155,0.3531,-0.0624,0.0624,0.8175
+occupation,13-2099.01,Financial Quantitative Analysts,0.1555,0.2948,0.1394,0.1394,0.8168
+occupation,15-1212.00,Information Security Analysts,0.1953,0.2614,0.0661,0.0661,1.0013
+occupation,15-1252.00,Software Developers,0.2788,0.3623,0.0835,0.0835,0.8169
+occupation,23-1011.00,Lawyers,0.2506,0.3947,0.1442,0.1442,0.8186
+occupation,27-1013.00,Fine Artists; Including Painters; Sculptors; and Illustrators,0.793,0.3142,-0.4788,0.4788,0.8177
+occupation,27-3091.00,Interpreters and Translators,0.3727,0.3862,0.0135,0.0135,0.8185
+occupation,29-1224.00,Radiologists,-0.0378,0.322,0.3598,0.3598,0.8197
+occupation,41-9022.00,Real Estate Sales Agents,0.0541,0.3456,0.2914,0.2914,0.8183
+occupation,43-4051.00,Customer Service Representatives,0.2372,0.3606,0.1233,0.1233,0.8177
+activity,,Analyzing Data or Information,0.0117,0.362,0.3503,0.3503,0.2047
+activity,,Communicating with People Outside the Organization,0.2314,0.3467,0.1153,0.1153,0.2661
+activity,,Documenting/Recording Information,0.0469,0.295,0.2481,0.2481,0.2855
+activity,,Getting Information,0.3057,0.3259,0.0202,0.0202,0.1544
+activity,,Monitoring Processes; Materials; or Surroundings,0.0945,0.2822,0.1877,0.1877,0.2808
+activity,,Processing Information,0.2625,0.3058,0.0433,0.0433,0.1918
+activity,,Thinking Creatively,0.4274,0.3388,-0.0886,0.0886,0.2154
+activity,,Working with Computers,0.227,0.3089,0.0819,0.0819,0.2549

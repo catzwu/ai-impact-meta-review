@@ -666,6 +666,93 @@ def api_runs():
     return jsonify({"runs": RA.list_runs()})
 
 
+def _observations_from_state():
+    """Aggregate the LIVE review-table state (edits/deletes/merges applied) into
+    the occ_rows/act_rows shape run_analysis expects. Shared by /api/run, /api/loo,
+    and /api/heatmap_data."""
+    state = _load_state()
+    rows = _apply_state(_build_rows(), state)
+    speed_raw, quality_raw = [], []
+    for r in rows:
+        if r["_deleted"]:
+            continue
+        raw = dict(r["raw"])
+        raw["onet_code"] = r.get("onet_code", raw.get("onet_code", ""))
+        raw["onet_label"] = r.get("onet_label", raw.get("onet_label", ""))
+        code = (raw.get("onet_code") or "").strip()
+        if code.startswith("WA-"):
+            raw["mapping_type"] = "work_activity"
+        elif code:
+            raw["mapping_type"] = "occupation"
+        (speed_raw if r["kind"] == "speed" else quality_raw).append(raw)
+    occ_rows, act_rows = BUF.collect_from_iters(speed_raw, quality_raw)
+    return occ_rows, act_rows, len(speed_raw), len(quality_raw)
+
+
+@app.route("/api/loo", methods=["POST"])
+def api_loo():
+    """Leave-one-out cross-validation using the LIVE table state."""
+    body = request.json or {}
+    try:
+        params = RA.RunParams(
+            metric=body.get("metric", "speed"),
+            beta=float(body.get("beta", 2.5)),
+            aggregation_level=str(body.get("aggregation_level", "occupation")),
+            aggregate_to_socmajor=bool(body.get("aggregate_to_socmajor", False)),
+            manual_prune=bool(body.get("manual_prune", True)),
+            excluded_soc_majors=list(body.get("excluded_soc_majors", RA.DEFAULT_EXCLUDED_SOCS)),
+            activity_weight_threshold=float(body.get("activity_weight_threshold", 10.0)),
+            alpha=float(body.get("alpha", 0.7)),
+            hops=int(body.get("hops", 4)),
+            c_occ=float(body.get("c_occ", 1.0)),
+            prune_activities=bool(body.get("prune_activities", False)),
+            c_act=float(body.get("c_act", 1.5)),
+            omega_ref=float(body.get("omega_ref", 100.0)),
+            sigma_ref=float(body.get("sigma_ref", 0.1)),
+            eps=float(body.get("eps", 1e-6)),
+            use_baseline=bool(body.get("use_baseline", True)),
+            omega_base=float(body.get("omega_base", 0.5)),
+        )
+    except Exception as e:  # noqa: BLE001
+        return jsonify({"ok": False, "error": f"bad params: {e}"}), 400
+    if params.metric not in ("speed", "quality"):
+        return jsonify({"ok": False, "error": "metric must be 'speed' or 'quality'"}), 400
+    occ_rows, act_rows, n_speed, n_qual = _observations_from_state()
+    meta = RA.run_loo(params, occ_rows=occ_rows, act_rows=act_rows)
+    meta["n_observations_used"] = {"speed": n_speed, "quality": n_qual,
+                                    "occ_codes": len(occ_rows), "act_codes": len(act_rows)}
+    return jsonify({"ok": True, "run_id": meta["run_id"], "meta": meta})
+
+
+@app.route("/loo/<run_id>")
+def page_loo(run_id):
+    return LOO_HTML.replace("__RUN_ID__", run_id)
+
+
+@app.route("/api/loo/<run_id>")
+def api_loo_get(run_id):
+    d = RA.load_loo(run_id)
+    if not d:
+        return jsonify({"ok": False, "error": "not a LOO run or not found"}), 404
+    return jsonify({"ok": True, "data": d})
+
+
+@app.route("/compare")
+def page_compare():
+    return COMPARE_HTML
+
+
+@app.route("/api/compare")
+def api_compare():
+    a = request.args.get("a"); b = request.args.get("b")
+    if not a or not b:
+        return jsonify({"ok": False, "error": "need a= and b= run ids"}), 400
+    d = RA.compare_runs(a, b)
+    if d is None:
+        return jsonify({"ok": False, "error": "one or both runs not found"}), 404
+    return jsonify({"ok": True, "data": d})
+
+
 @app.route("/api/heatmap_data")
 def api_heatmap_data():
     """SOC-major × activity weight matrix + observed overlays for the given metric.
@@ -1538,6 +1625,15 @@ RUN_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run Analys
   </details>
 
   <div class="card">
+    <h2>Run type</h2>
+    <div class="seg" id="runTypeSeg" style="margin-bottom:8px;">
+      <button data-t="full" class="active">Full run</button>
+      <button data-t="loo">Leave-one-out CV</button>
+    </div>
+    <div class="help" style="color:#888; font-size:12px;" id="runTypeHelp">
+      A full run produces occupation + activity impact estimates.
+      LOO CV holds out each observation one at a time, re-solves, and reports how well the graph recovers the held-out value (MAE / RMSE / R²) and, more importantly, its rank among the observed nodes (Kendall τ-b, concordance, top-K precision).
+    </div>
     <div class="actions">
       <button class="primary" id="runBtn">Run analysis</button>
       <button class="secondary" onclick="resetDefaults()">Reset to defaults</button>
@@ -1780,11 +1876,22 @@ function toggleSoc(code) {
 document.getElementById('weightThreshold').addEventListener('input', renderBarChart);
 document.getElementById('beta').addEventListener('change', loadHeatmap);
 loadHeatmap();
+let RUN_TYPE = 'full';
+document.querySelectorAll('#runTypeSeg button').forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll('#runTypeSeg button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); RUN_TYPE = b.dataset.t;
+    document.getElementById('runBtn').textContent = RUN_TYPE==='loo' ? 'Run LOO cross-validation' : 'Run analysis';
+  };
+});
+
 document.getElementById('runBtn').onclick = async ()=>{
   const btn = document.getElementById('runBtn');
   const status = document.getElementById('status');
   const err = document.getElementById('errBox');
-  btn.disabled = true; status.textContent='running… (≈30s)'; err.innerHTML='';
+  btn.disabled = true;
+  status.textContent = RUN_TYPE==='loo' ? 'running LOO CV… (one solve per observation, ≈1–2 min)' : 'running… (≈30s)';
+  err.innerHTML = '';
   const payload = {
     metric: METRIC,
     beta: parseFloat(document.getElementById('beta').value),
@@ -1798,11 +1905,12 @@ document.getElementById('runBtn').onclick = async ()=>{
     sigma_ref: parseFloat(document.getElementById('sigma_ref').value),
     eps: parseFloat(document.getElementById('eps').value),
   };
+  const endpoint = RUN_TYPE==='loo' ? '/api/loo' : '/api/run';
   try {
-    const r = await (await fetch('/api/run', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})).json();
+    const r = await (await fetch(endpoint, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})).json();
     if (!r.ok) throw new Error(r.error||'unknown');
     status.textContent = 'done — redirecting…';
-    location.href = '/results/' + encodeURIComponent(r.run_id);
+    location.href = (RUN_TYPE==='loo' ? '/loo/' : '/results/') + encodeURIComponent(r.run_id);
   } catch(e) {
     err.innerHTML = '<div class="err">'+e.message+'</div>';
     status.textContent=''; btn.disabled=false;
@@ -1828,22 +1936,59 @@ RESULTS_INDEX_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>
   .pill.speed { background:#e6f3ff; color:#0463a3; } .pill.quality { background:#ffe6f0; color:#a0286c; }
   a { color:#5b3aa6; text-decoration:none; }
 </style></head><body>
-<header><h1>Past analysis runs</h1><a href="/">← review</a><a href="/run">+ new run</a></header>
+<header>
+  <h1>Past analysis runs</h1>
+  <a href="/">← review</a>
+  <a href="/run">+ new run</a>
+  <button id="cmpBtn" disabled style="margin-left:auto; background:#5b3aa6; color:#fff; border:0; padding:6px 14px; border-radius:4px; cursor:pointer; opacity:0.4;">Compare selected (0/2)</button>
+</header>
 <main>
+  <div style="color:#666; font-size:12px; margin-bottom:8px;">
+    Check exactly two FULL runs, then click <b>Compare</b> for a rank-correlation view.
+    LOO CV runs (marked <span style="background:#f4e8d0; color:#8a5700; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600;">LOO</span>) open a cross-validation report; they can't be compared.
+  </div>
   <table id="t"><thead><tr>
-    <th>Run ID</th><th>Started</th><th>Metric</th><th>β</th><th>Ω_ref</th><th>Baseline</th>
+    <th style="width:24px;"></th>
+    <th>Run ID</th><th>Started</th><th>Type</th><th>Metric</th><th>β</th><th>Ω_ref</th><th>Baseline</th>
     <th>Obs (occ/act)</th><th>Kept (occ/act)</th>
   </tr></thead><tbody id="tb"></tbody></table>
 </main>
 <script>
+const SELECTED = new Set();
+function refreshCompareBtn() {
+  const btn = document.getElementById('cmpBtn');
+  const n = SELECTED.size;
+  btn.textContent = `Compare selected (${n}/2)`;
+  btn.disabled = n !== 2;
+  btn.style.opacity = n === 2 ? 1 : 0.4;
+}
+function toggleSel(id, checked) {
+  if (checked) SELECTED.add(id); else SELECTED.delete(id);
+  refreshCompareBtn();
+}
+document.getElementById('cmpBtn').onclick = () => {
+  if (SELECTED.size !== 2) return;
+  const [a, b] = [...SELECTED];
+  location.href = `/compare?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`;
+};
 fetch('/api/runs').then(r=>r.json()).then(d=>{
   const tb = document.getElementById('tb');
-  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="8" style="text-align:center; padding:20px; color:#888;">No runs yet. <a href="/run">Start one</a>.</td></tr>'; return; }
+  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="10" style="text-align:center; padding:20px; color:#888;">No runs yet. <a href="/run">Start one</a>.</td></tr>'; return; }
   tb.innerHTML = d.runs.map(r=>{
     const p = r.params||{};
-    return `<tr onclick="location.href='/results/${encodeURIComponent(r.run_id)}'">
+    const isLoo = r.type === 'loo';
+    const typeTag = isLoo
+      ? '<span style="background:#f4e8d0; color:#8a5700; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600;">LOO</span>'
+      : '<span style="color:#888; font-size:11px;">run</span>';
+    const href = isLoo ? '/loo/' + encodeURIComponent(r.run_id) : '/results/' + encodeURIComponent(r.run_id);
+    const cb = isLoo
+      ? '<span title="LOO runs cannot be compared" style="color:#ccc;">—</span>'
+      : `<input type="checkbox" onclick="event.stopPropagation(); toggleSel('${r.run_id}', this.checked);"/>`;
+    return `<tr onclick="if (event.target.tagName!=='INPUT') location.href='${href}'">
+      <td onclick="event.stopPropagation();">${cb}</td>
       <td style="font-family:monospace; font-size:11px;">${r.run_id}</td>
       <td>${(r.started_utc||'').replace('T',' ').slice(0,19)}</td>
+      <td>${typeTag}</td>
       <td><span class="pill ${p.metric}">${p.metric||''}</span></td>
       <td>${p.beta}</td><td>${p.omega_ref}</td>
       <td>${r.baseline_active ? `yes (Ω<sub>b</sub>=${p.omega_base})` : '—'}</td>
@@ -1882,6 +2027,21 @@ RESULTS_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run re
   .badge { display:inline-block; padding:1px 7px; border-radius:10px; font-size:10px; font-weight:600; text-transform:uppercase; }
   .badge.observed { background:#d4f4d4; color:#0a6c2c; } .badge.imputed { background:#eee; color:#555; }
   .help { color:#888; font-size:11px; }
+  .chart-panel { background:#fff; border-radius:6px; padding:14px 16px 10px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .chart-panel h2 { margin:0 0 4px; font-size:14px; font-weight:600; color:#222; }
+  .chart-panel .chart-sub { color:#666; font-size:11px; margin-bottom:8px; }
+  .chart-panel .legend { display:inline-flex; gap:14px; font-size:11px; color:#555; margin-left:12px; vertical-align:middle; }
+  .chart-panel .legend .sw { display:inline-block; width:12px; height:10px; vertical-align:middle; margin-right:4px; border-radius:1px; }
+  .chart-panel .legend .sw.observed { background:#234876; }
+  .chart-panel .legend .sw.imputed { background:#c8ccd1; }
+  .chart-svg { width:100%; display:block; overflow:visible; }
+  .chart-svg .lbl { font-family:-apple-system,sans-serif; font-size:11px; fill:#333; }
+  .chart-svg .val { font-family:ui-monospace,Menlo,monospace; font-size:10px; fill:#333; }
+  .chart-svg .axis { stroke:#bbb; stroke-width:1; }
+  .chart-svg .tick { font-family:-apple-system,sans-serif; font-size:10px; fill:#666; }
+  .chart-svg .grid { stroke:#eee; stroke-width:1; }
+  .chart-svg .bar.observed { fill:#234876; } .chart-svg .bar.imputed { fill:#c8ccd1; }
+  .chart-svg .bar.observed.neg { fill:#8f3030; } .chart-svg .bar.imputed.neg { fill:#e6b8b8; }
 </style></head><body>
 <header>
   <h1>Run results</h1><a href="/results">← all runs</a><a href="/run">+ new</a>
@@ -1899,14 +2059,33 @@ RESULTS_HTML = """<!doctype html><html><head><meta charset="utf-8"><title>Run re
     <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export view as CSV</button>
   </div>
   <div id="warn"></div>
+  <div class="chart-panel">
+    <h2 id="chartTitle">…</h2>
+    <div class="chart-sub" id="chartSub"></div>
+    <div id="chartWrap"></div>
+    <div class="legend"><span><span class="sw observed"></span>Observed</span><span><span class="sw imputed"></span>Imputed</span></div>
+  </div>
   <table id="t"><thead id="th"></thead><tbody id="tb"></tbody></table>
 </main>
 <script>
 const RUN_ID = "__RUN_ID__";
 let DATA = null, VIEW='occ', SORT={col:'estimate', dir:-1};
 
+const SOC_NAMES = {
+  "11":"Management","13":"Business & Financial","15":"Computer & Math",
+  "17":"Architecture & Engineering","19":"Life, Physical, Social Science",
+  "21":"Community & Social Service","23":"Legal","25":"Education",
+  "27":"Arts, Design, Media","29":"Healthcare Practitioners","31":"Healthcare Support",
+  "33":"Protective Service","35":"Food Prep & Serving","37":"Building & Grounds Cleaning",
+  "39":"Personal Care & Service","41":"Sales","43":"Office & Admin Support",
+  "45":"Farming, Fishing, Forestry","47":"Construction & Extraction",
+  "49":"Installation, Maint, Repair","51":"Production","53":"Transportation & Material Moving"
+};
+
 function fmtNum(x, p){ if (x===null||x===undefined||x==='') return '—'; const n=parseFloat(x); return isNaN(n)?x:n.toFixed(p===undefined?3:p); }
 function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function hasObs(r){ return !(r.observed===null||r.observed===undefined||r.observed===''||isNaN(parseFloat(r.observed))); }
+function mean(xs){ return xs.length ? xs.reduce((a,b)=>a+b,0)/xs.length : 0; }
 
 async function load(){
   const r = await (await fetch('/api/results/'+encodeURIComponent(RUN_ID))).json();
@@ -1976,6 +2155,137 @@ function render(){
       return `<td>${escapeHtml(r[c]||'')}</td>`;
     }).join('') + `<td>${bar}</td></tr>`;
   }).join('');
+
+  renderChart();
+}
+
+function buildChartRows(){
+  const isOcc = VIEW === 'occ';
+  const agg = (DATA.params && DATA.params.aggregation_level) || 'occupation';
+  const alreadyAgg = DATA.socmajor_aggregated || agg === 'soc_major' || agg === 'soc_minor';
+  if (isOcc && !alreadyAgg) {
+    // Aggregate the 894 occupation-level estimates into 22 SOC major groups
+    // so the chart is legible. Each group's estimate is the mean over its
+    // member occupations; observed value is the mean over observed members
+    // (imputed if none are observed).
+    const groups = {};
+    for (const r of DATA.occupation_impacts) {
+      const g = (r.code||'').split('-')[0];
+      if (!SOC_NAMES[g]) continue;
+      if (!groups[g]) groups[g] = {est:[], obs:[]};
+      const e = parseFloat(r.estimate);
+      if (!isNaN(e)) groups[g].est.push(e);
+      if (hasObs(r)) groups[g].obs.push(parseFloat(r.observed));
+    }
+    return Object.entries(groups).map(([code, g]) => ({
+      label: SOC_NAMES[code],
+      code, estimate: mean(g.est),
+      observed: g.obs.length ? mean(g.obs) : null,
+      isObserved: g.obs.length > 0,
+      n_obs: g.obs.length,
+    }));
+  }
+  if (isOcc) {
+    return DATA.occupation_impacts.map(r => ({
+      label: r.title || r.code, code: r.code,
+      estimate: parseFloat(r.estimate)||0,
+      observed: hasObs(r) ? parseFloat(r.observed) : null,
+      isObserved: hasObs(r),
+    }));
+  }
+  return DATA.activity_impacts.map(r => ({
+    label: r.activity, code: null,
+    estimate: parseFloat(r.estimate)||0,
+    observed: hasObs(r) ? parseFloat(r.observed) : null,
+    isObserved: hasObs(r),
+  }));
+}
+
+function renderChart(){
+  const rows = buildChartRows().slice().sort((a,b) => b.estimate - a.estimate);
+  const metric = (DATA.params.metric||'speed').toLowerCase();
+  const metricNoun = metric === 'quality' ? 'quality gain (Hedges\\' g)' : 'speed gain (log points)';
+  const isOcc = VIEW === 'occ';
+  const agg = (DATA.params && DATA.params.aggregation_level) || 'occupation';
+  const alreadyAgg = DATA.socmajor_aggregated || agg === 'soc_major' || agg === 'soc_minor';
+  const title = isOcc
+    ? (alreadyAgg ? 'By SOC major group' : 'By SOC major group (mean over occupations)')
+    : 'By work activity';
+  document.getElementById('chartTitle').textContent = `Estimated ${metricNoun} — ${title}`;
+  document.getElementById('chartSub').textContent = isOcc && !alreadyAgg
+    ? `Occupation-level results averaged into ${rows.length} SOC major groups for display; observed = mean over group members with an observed value.`
+    : `${rows.length} rows, sorted by estimate.`;
+
+  // Layout
+  const rowH = 22;
+  const labelW = 340;
+  const rightPad = 60;
+  const topPad = 8;
+  const bottomPad = 30;
+  const chartW = 640; // px reserved for bars+axis
+  const totalW = labelW + chartW + rightPad;
+  const totalH = topPad + rows.length * rowH + bottomPad;
+
+  const maxV = Math.max(0.1, ...rows.map(r => Math.max(0, r.estimate)));
+  const minV = Math.min(0, ...rows.map(r => r.estimate));
+  const x0 = labelW - minV / (maxV - minV) * chartW;  // x for value=0
+  const xScale = v => labelW + (v - minV) / (maxV - minV) * chartW;
+
+  // Nice ticks
+  function niceTicks(lo, hi, n){
+    const range = hi - lo || 1;
+    const step = Math.pow(10, Math.floor(Math.log10(range/n)));
+    const err = n * step / range;
+    let mult = 1;
+    if (err <= 0.15) mult = 10;
+    else if (err <= 0.35) mult = 5;
+    else if (err <= 0.75) mult = 2;
+    const s = mult * step;
+    const t0 = Math.ceil(lo / s) * s;
+    const out = [];
+    for (let v = t0; v <= hi + 1e-9; v += s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const ticks = niceTicks(minV, maxV, 5);
+
+  const bars = rows.map((r, i) => {
+    const y = topPad + i * rowH;
+    const cls = (r.isObserved ? 'observed' : 'imputed') + (r.estimate < 0 ? ' neg' : '');
+    const xVal = xScale(r.estimate);
+    const xZero = xScale(0);
+    const x = Math.min(xVal, xZero);
+    const w = Math.abs(xVal - xZero);
+    const label = escapeHtml(r.label);
+    const val = fmtNum(r.estimate);
+    const valX = r.estimate >= 0 ? xVal + 4 : xVal - 4;
+    const valAnchor = r.estimate >= 0 ? 'start' : 'end';
+    const title = `${r.label}: ${val}${r.isObserved ? ` (observed${r.n_obs?`, n=${r.n_obs}`:''})` : ' (imputed)'}`;
+    return `
+      <g>
+        <title>${escapeHtml(title)}</title>
+        <text class="lbl" x="${labelW - 8}" y="${y + rowH/2 + 4}" text-anchor="end">${label}</text>
+        <rect class="bar ${cls}" x="${x}" y="${y + 3}" width="${Math.max(0.5, w)}" height="${rowH - 6}" rx="1.5"/>
+        <text class="val" x="${valX}" y="${y + rowH/2 + 4}" text-anchor="${valAnchor}">${val}</text>
+      </g>`;
+  }).join('');
+
+  const axisY = topPad + rows.length * rowH + 2;
+  const gridlines = ticks.map(t => {
+    const x = xScale(t);
+    return `<line class="grid" x1="${x}" y1="${topPad}" x2="${x}" y2="${axisY}"/>`;
+  }).join('');
+  const tickLbls = ticks.map(t => {
+    const x = xScale(t);
+    return `<text class="tick" x="${x}" y="${axisY + 14}" text-anchor="middle">${t.toFixed(2)}</text>`;
+  }).join('');
+  const zeroLine = `<line class="axis" x1="${xScale(0)}" y1="${topPad}" x2="${xScale(0)}" y2="${axisY}"/>`;
+  const axisLine = `<line class="axis" x1="${labelW}" y1="${axisY}" x2="${labelW + chartW}" y2="${axisY}"/>`;
+  const xLbl = `<text class="tick" x="${labelW + chartW/2}" y="${axisY + 26}" text-anchor="middle">Estimated ${metricNoun}</text>`;
+
+  document.getElementById('chartWrap').innerHTML =
+    `<svg class="chart-svg" viewBox="0 0 ${totalW} ${totalH + 10}" preserveAspectRatio="xMinYMin meet">
+      ${gridlines}${bars}${zeroLine}${axisLine}${tickLbls}${xLbl}
+    </svg>`;
 }
 
 function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; render(); }
@@ -2427,5 +2737,559 @@ document.addEventListener('DOMContentLoaded', () => {
 """
 
 
+LOO_HTML = r"""<!doctype html><html><head><meta charset="utf-8"><title>LOO CV results</title>
+<style>
+  body { font-family:-apple-system,sans-serif; margin:0; background:#f5f5f7; font-size:13px; color:#222; }
+  header { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; }
+  header h1 { margin:0; font-size:16px; }
+  header a { color:#9cf; text-decoration:none; font-size:13px; }
+  header .stats { color:#bbb; font-size:11px; margin-left:auto; }
+  main { padding: 16px 24px; max-width:1200px; margin:0 auto; }
+  .card { background:#fff; border-radius:6px; padding:14px 18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .card h2 { margin:0 0 8px; font-size:13px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
+  .metric { background:#f7f8fa; border-radius:5px; padding:9px 12px; }
+  .metric .k { color:#666; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; }
+  .metric .v { font-family:ui-monospace,Menlo,monospace; font-size:16px; font-weight:600; color:#222; margin-top:2px; }
+  .subheads { display:flex; gap:22px; margin-top:10px; color:#666; font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; }
+  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
+  tbody tr:nth-child(even) { background:#fafafa; }
+  tbody tr:hover { background:#eef6ff; }
+  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
+  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
+  .toolbar { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+  .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; }
+  .seg button { padding:5px 12px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
+  .seg button.active { background:#8a5700; color:#fff; }
+  svg.scatter { display:block; background:#fff; }
+  svg.scatter .axis { stroke:#999; stroke-width:1; }
+  svg.scatter .grid { stroke:#eee; stroke-width:1; }
+  svg.scatter .tick { font-family:-apple-system,sans-serif; font-size:10px; fill:#666; }
+  svg.scatter .diag { stroke:#a00; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle.occ { fill:#234876; opacity:0.7; }
+  svg.scatter circle.act { fill:#8a5700; opacity:0.7; }
+  svg.scatter .band { fill:#a00; opacity:0.06; }
+  .metric .sub { color:#888; font-size:11px; font-family:-apple-system,sans-serif; font-weight:400; margin-top:2px; }
+  .note { font-size:11px; color:#666; margin-top:10px; line-height:1.5; }
+  .note ol { margin:4px 0 0 18px; padding:0; }
+  .charts { display:flex; flex-wrap:wrap; gap:18px; }
+  .charts > div { flex:1 1 420px; min-width:0; }
+  .charts h3 { margin:0 0 4px; font-size:12px; color:#555; font-weight:600; }
+</style></head><body>
+<header>
+  <h1>Leave-one-out CV</h1>
+  <a href="/results">← all runs</a>
+  <a href="/run">+ new</a>
+  <span class="stats" id="stats">…</span>
+</header>
+<main>
+  <div class="card">
+    <h2>Run parameters</h2>
+    <div id="paramsLine" style="font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#333;">…</div>
+  </div>
+
+  <div class="card">
+    <h2>Overall accuracy</h2>
+    <div class="grid" id="overallGrid"></div>
+    <div class="subheads">
+      <div>Occupations: <span id="occSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities:  <span id="actSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Rank recovery (held-out)</h2>
+    <div style="font-size:12px; color:#555; margin-bottom:10px;">
+      Does the graph put held-out nodes in the right <b>order</b>? Each node is ranked by its held-out prediction and compared
+      with its rank by actual value. Rank statistics ignore uniform shrinkage, so they test ordering, not magnitude.
+    </div>
+    <div class="grid" id="rankGrid"></div>
+    <div class="subheads">
+      <div>Occupations (ranked within type): <span id="occRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities (ranked within type): <span id="actRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+    <div class="note" id="rankNote"></div>
+  </div>
+
+  <div class="card">
+    <h2>Held-out predictions</h2>
+    <div class="charts">
+      <div>
+        <h3>Value: actual vs predicted</h3>
+        <div id="scatterWrap"></div>
+        <div style="font-size:11px; color:#666; margin-top:6px;">Dashed line = perfect prediction (y = x).</div>
+      </div>
+      <div>
+        <h3>Rank: actual rank vs held-out rank</h3>
+        <div id="rankScatterWrap"></div>
+        <div style="font-size:11px; color:#666; margin-top:6px;">Rank 1 = largest effect. Shaded band = within ±2 ranks.</div>
+      </div>
+    </div>
+    <div style="font-size:11px; color:#666; margin-top:6px;">Blue points = occupation holdouts, orange = activity holdouts.</div>
+  </div>
+
+  <div class="card">
+    <h2>Per-observation table</h2>
+    <div class="toolbar">
+      <div class="seg" id="filterSeg">
+        <button data-f="all" class="active">All</button>
+        <button data-f="occupation">Occupations</button>
+        <button data-f="activity">Activities</button>
+      </div>
+      <label style="font-size:12px; color:#555;">search <input type="text" id="search" placeholder="label/code…" style="padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px;"/></label>
+      <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export CSV</button>
+    </div>
+    <table><thead id="th"></thead><tbody id="tb"></tbody></table>
+  </div>
+</main>
+<script>
+const RUN_ID = "__RUN_ID__";
+let DATA = null, FILTER='all', SORT={col:'abs_rank_delta', dir:-1};
+
+function fmt(x,p){ if(x==null) return '—'; const n=parseFloat(x); return isNaN(n) ? x : n.toFixed(p==null?3:p); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function load() {
+  const r = await (await fetch('/api/loo/'+encodeURIComponent(RUN_ID))).json();
+  if (!r.ok) { document.body.innerHTML='<p style="padding:30px;">'+r.error+'</p>'; return; }
+  DATA = r.data;
+  const p = DATA.params;
+  document.getElementById('stats').textContent =
+    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
+    ` · ${DATA.n_folds} folds`;
+  document.getElementById('paramsLine').textContent =
+    `metric=${p.metric} · β=${p.beta} · Ω_ref=${p.omega_ref} · ` +
+    `agg=${p.aggregation_level} · manual_prune=${p.manual_prune} · ` +
+    `weight_threshold=${p.activity_weight_threshold} · excluded=[${(p.excluded_soc_majors||[]).join(',')}]` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '');
+
+  const s = DATA.loo.summary;
+  const grid = document.getElementById('overallGrid');
+  const o = s.overall || {};
+  const cells = [
+    ['n folds', o.n],
+    ['MAE', o.mae!=null ? fmt(o.mae, 4) : '—'],
+    ['RMSE', o.rmse!=null ? fmt(o.rmse, 4) : '—'],
+    ['bias', o.bias!=null ? fmt(o.bias, 4) : '—'],
+    ['R²', o.r2!=null ? fmt(o.r2, 3) : '—'],
+    ['Pearson r', o.pearson_r!=null ? fmt(o.pearson_r, 3) : '—'],
+    ['Spearman ρ', o.spearman_r!=null ? fmt(o.spearman_r, 3) : '—'],
+  ];
+  grid.innerHTML = cells.map(([k,v]) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+  const sub = (obj) => {
+    if (!obj || !obj.n) return 'no folds';
+    return `n=${obj.n} · MAE=${fmt(obj.mae,3)} · R²=${obj.r2!=null?fmt(obj.r2,3):'—'} · ρ=${obj.spearman_r!=null?fmt(obj.spearman_r,3):'—'}`;
+  };
+  document.getElementById('occSummary').textContent = sub(s.occupation);
+  document.getElementById('actSummary').textContent = sub(s.activity);
+
+  renderRankCard();
+  const rows = DATA.loo.rows;
+  renderScatter('scatterWrap', rows, 'actual', 'predicted', {xLabel:'actual (held-out)', yLabel:'predicted'});
+  if (rows.length && rows[0].loo_rank != null) {
+    renderScatter('rankScatterWrap', rows, 'actual_rank', 'loo_rank',
+      {xLabel:'actual rank', yLabel:'held-out rank', rank:true, band:2});
+  } else {
+    document.getElementById('rankScatterWrap').innerHTML = '<div style="color:#888;">No rank data.</div>';
+  }
+  renderTable();
+}
+
+function pfmt(p){ if(p==null) return ''; return p < 0.001 ? 'p<0.001' : 'p=' + p.toFixed(3); }
+
+function renderRankCard() {
+  const R = (DATA.loo.summary||{}).rank;
+  const grid = document.getElementById('rankGrid');
+  if (!R || !R.overall || !R.overall.n) { grid.innerHTML = '<div style="color:#888;">Not enough folds.</div>'; return; }
+  const o = R.overall;
+  const tk = o.topk || {};
+  const cell = (k, v, sub) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const cells = [
+    cell("Kendall τ-b", o.kendall_tau!=null?fmt(o.kendall_tau,3):'—', pfmt(o.kendall_p)),
+    cell("τ 95% CI", o.tau_ci ? `[${fmt(o.tau_ci[0],2)}, ${fmt(o.tau_ci[1],2)}]` : '—', 'bootstrap over folds'),
+    cell("Concordance C", o.concordance_c!=null?fmt(o.concordance_c,3):'—', 'P(pair ordered right) · chance 0.5'),
+    cell("Spearman ρ", o.spearman_r!=null?fmt(o.spearman_r,3):'—', pfmt(o.spearman_p)),
+    cell("Mean |Δrank|", o.mean_abs_rank_delta!=null?fmt(o.mean_abs_rank_delta,2):'—',
+         o.mean_abs_rank_delta_chance!=null?`chance ${fmt(o.mean_abs_rank_delta_chance,2)}`:''),
+    cell("Footrule (norm.)", o.footrule_norm!=null?fmt(o.footrule_norm,3):'—', '0 = identical · 1 = max'),
+  ];
+  for (const K of ['3','5','10']) {
+    if (tk[K]) cells.push(cell(`Top-${K} precision`, `${tk[K].hits}/${tk[K].K}`, `chance ${fmt(tk[K].chance,2)}`));
+  }
+  grid.innerHTML = cells.join('');
+  const sub = (x) => {
+    if (!x || !x.n) return 'no folds';
+    if (x.n < 3) return `n=${x.n} · too few folds`;
+    const t5 = (x.topk||{})['5'] || (x.topk||{})['3'];
+    return `n=${x.n} · τ=${x.kendall_tau!=null?fmt(x.kendall_tau,3):'—'} ${pfmt(x.kendall_p)} · C=${x.concordance_c!=null?fmt(x.concordance_c,3):'—'}` +
+           ` · |Δrank|=${fmt(x.mean_abs_rank_delta,2)} (chance ${fmt(x.mean_abs_rank_delta_chance,2)})` +
+           (t5 ? ` · top-${t5.K} ${t5.hits}/${t5.K}` : '');
+  };
+  document.getElementById('occRank').textContent = sub(R.occupation);
+  document.getElementById('actRank').textContent = sub(R.activity);
+  const m = R.method || {};
+  document.getElementById('rankNote').innerHTML =
+    (R.backfilled ? '<div style="color:#8a5700;">Rank stats computed on load for this older run.</div>' : '') +
+    escapeHtml(m.description||'') +
+    (m.citations && m.citations.length ? '<ol>' + m.citations.map(c=>`<li>${escapeHtml(c)}</li>`).join('') + '</ol>' : '');
+}
+
+function renderScatter(containerId, rows, xKey, yKey, opts) {
+  opts = opts || {};
+  const pad = {l:52, r:16, t:14, b:40};
+  const W = 520, H = 360;
+  const xs = rows.map(r=>+r[xKey]), ys = rows.map(r=>+r[yKey]);
+  let xL, xH;
+  if (opts.rank) {
+    xL = 0.5; xH = Math.max(...xs, ...ys, 1) + 0.5;
+  } else {
+    const lo = Math.min(...xs, ...ys, 0), hi = Math.max(...xs, ...ys, 0.001);
+    const range = hi - lo || 1; xL = lo - range*0.05; xH = hi + range*0.05;
+  }
+  // Rank axes are reversed so rank 1 (largest effect) sits top-right.
+  const fx = v => opts.rank ? (xH - v) / (xH - xL) : (v - xL) / (xH - xL);
+  const sx = v => pad.l + fx(v) * (W - pad.l - pad.r);
+  const sy = v => H - pad.b - fx(v) * (H - pad.t - pad.b);
+  function ticks(a,b,n){
+    const r=b-a||1, step=Math.pow(10,Math.floor(Math.log10(r/n))); const err=n*step/r;
+    let m=1; if(err<=0.15)m=10; else if(err<=0.35)m=5; else if(err<=0.75)m=2;
+    const s=Math.max(opts.rank?1:0, m*step); const t0=Math.ceil(a/s)*s; const out=[];
+    for(let v=t0; v<=b+1e-9; v+=s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const xt = ticks(xL, xH, 6);
+  const tf = t => opts.rank ? String(Math.round(t)) : t.toFixed(2);
+  const gridLines = xt.map(t=>{
+    const x=sx(t), y=sy(t);
+    return `<line class="grid" x1="${x}" y1="${pad.t}" x2="${x}" y2="${H-pad.b}"/>` +
+           `<line class="grid" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`;
+  }).join('');
+  const xTicks = xt.map(t=>`<text class="tick" x="${sx(t)}" y="${H-pad.b+14}" text-anchor="middle">${tf(t)}</text>`).join('');
+  const yTicks = xt.map(t=>`<text class="tick" x="${pad.l-6}" y="${sy(t)+3}" text-anchor="end">${tf(t)}</text>`).join('');
+  let band = '';
+  if (opts.band) {
+    const k = opts.band;
+    const pts = [[xL, xL+k],[xH, xH+k],[xH, xH-k],[xL, xL-k]]
+      .map(([x,y]) => `${sx(x)},${sy(y)}`).join(' ');
+    band = `<clipPath id="${containerId}_clip"><rect x="${pad.l}" y="${pad.t}" width="${W-pad.l-pad.r}" height="${H-pad.t-pad.b}"/></clipPath>` +
+           `<polygon class="band" clip-path="url(#${containerId}_clip)" points="${pts}"/>`;
+  }
+  const diag = `<line class="diag" x1="${sx(xL)}" y1="${sy(xL)}" x2="${sx(xH)}" y2="${sy(xH)}"/>`;
+  const pts = rows.map(r => {
+    const cls = r.node_type === 'occupation' ? 'occ' : 'act';
+    const title = opts.rank
+      ? `${r.label}: actual rank ${fmt(r[xKey],1)}, held-out rank ${fmt(r[yKey],1)} (Δ ${fmt(r.rank_delta,1)})`
+      : `${r.label}: actual ${fmt(r.actual,3)}, predicted ${fmt(r.predicted,3)}, resid ${fmt(r.residual,3)}`;
+    return `<circle class="${cls}" cx="${sx(+r[xKey])}" cy="${sy(+r[yKey])}" r="4"><title>${escapeHtml(title)}</title></circle>`;
+  }).join('');
+  const xAxis = `<line class="axis" x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}"/>`;
+  const yAxis = `<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  const xLabel = `<text class="tick" x="${(pad.l+W-pad.r)/2}" y="${H-6}" text-anchor="middle">${opts.xLabel||xKey}</text>`;
+  const yLabel = `<text class="tick" x="${-H/2}" y="14" text-anchor="middle" transform="rotate(-90)">${opts.yLabel||yKey}</text>`;
+  document.getElementById(containerId).innerHTML =
+    `<svg class="scatter" viewBox="0 0 ${W} ${H}" style="width:100%; max-width:${W}px; height:auto;">
+      ${gridLines}${band}${diag}${pts}${xAxis}${yAxis}${xTicks}${yTicks}${xLabel}${yLabel}
+    </svg>`;
+}
+
+document.getElementById('search').addEventListener('input', renderTable);
+document.querySelectorAll('#filterSeg button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#filterSeg button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); FILTER=b.dataset.f; renderTable();};
+});
+
+function renderTable() {
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let rows = DATA.loo.rows.map(r => Object.assign({}, r,
+    {abs_rank_delta: r.rank_delta != null ? Math.abs(r.rank_delta) : null}));
+  if (FILTER !== 'all') rows = rows.filter(r => r.node_type === FILTER);
+  if (q) rows = rows.filter(r => ((r.label||'')+' '+(r.code||'')).toLowerCase().includes(q));
+  rows.sort((a,b)=>{
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+  const cols = ['node_type','code','label','actual','predicted','residual','abs_error','posterior_std',
+                'actual_rank','loo_rank','rank_delta','abs_rank_delta'];
+  const labels = {node_type:'Type', code:'Code', label:'Label', actual:'Actual', predicted:'Predicted',
+                  residual:'Residual', abs_error:'|error|', posterior_std:'Post. std',
+                  actual_rank:'Actual rank', loo_rank:'Held-out rank', rank_delta:'Δrank', abs_rank_delta:'|Δrank|'};
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c =>
+    `<th onclick="sortBy('${c}')">${labels[c]}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`).join('') + '</tr>';
+  document.getElementById('tb').innerHTML = rows.map(r => {
+    const rc = parseFloat(r.residual)||0;
+    const rcls = rc > 0.001 ? 'pos' : rc < -0.001 ? 'neg' : '';
+    return '<tr>' +
+      `<td>${r.node_type}</td>` +
+      `<td style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#666;">${escapeHtml(r.code||'')}</td>` +
+      `<td>${escapeHtml(r.label||'')}</td>` +
+      `<td class="num">${fmt(r.actual,3)}</td>` +
+      `<td class="num">${fmt(r.predicted,3)}</td>` +
+      `<td class="num ${rcls}">${fmt(r.residual,3)}</td>` +
+      `<td class="num">${fmt(r.abs_error,3)}</td>` +
+      `<td class="num">${fmt(r.posterior_std,3)}</td>` +
+      `<td class="num">${fmt(r.actual_rank,1)}</td>` +
+      `<td class="num">${fmt(r.loo_rank,1)}</td>` +
+      `<td class="num">${fmt(r.rank_delta,1)}</td>` +
+      `<td class="num">${fmt(r.abs_rank_delta,1)}</td>` +
+      '</tr>';
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; renderTable(); }
+
+function exportCsv() {
+  const rows = DATA.loo.rows;
+  const keys = Object.keys(rows[0]||{});
+  const csv = [keys.join(',')].concat(rows.map(r => keys.map(k => JSON.stringify(r[k]??'')).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${RUN_ID}_loocv.csv`; a.click();
+}
+
+load();
+</script></body></html>
+"""
+
+
+COMPARE_HTML = r"""<!doctype html><html><head><meta charset="utf-8"><title>Compare runs</title>
+<style>
+  body { font-family:-apple-system,sans-serif; margin:0; background:#f5f5f7; font-size:13px; color:#222; }
+  header { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; }
+  header h1 { margin:0; font-size:16px; }
+  header a { color:#9cf; text-decoration:none; font-size:13px; }
+  header .stats { color:#bbb; font-size:11px; margin-left:auto; }
+  main { padding: 16px 24px; max-width:1200px; margin:0 auto; }
+  .card { background:#fff; border-radius:6px; padding:14px 18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .card h2 { margin:0 0 8px; font-size:13px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
+  .rr { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .rr .col { background:#f7f8fa; border-radius:5px; padding:9px 12px; font-size:12px; }
+  .rr .col .id { font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#666; }
+  .rr .col .kv { color:#333; margin-top:4px; line-height:1.5; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
+  .metric { background:#f7f8fa; border-radius:5px; padding:9px 12px; }
+  .metric .k { color:#666; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; }
+  .metric .v { font-family:ui-monospace,Menlo,monospace; font-size:16px; font-weight:600; color:#222; margin-top:2px; }
+  .metric .p { font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#888; margin-top:2px; }
+  .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; margin-bottom:8px; }
+  .seg button { padding:5px 12px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
+  .seg button.active { background:#5b3aa6; color:#fff; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; }
+  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
+  tbody tr:nth-child(even) { background:#fafafa; }
+  tbody tr:hover { background:#eef6ff; }
+  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
+  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
+  svg.scatter { display:block; background:#fff; }
+  svg.scatter .axis { stroke:#999; stroke-width:1; }
+  svg.scatter .grid { stroke:#eee; stroke-width:1; }
+  svg.scatter .tick { font-family:-apple-system,sans-serif; font-size:10px; fill:#666; }
+  svg.scatter .diag { stroke:#a00; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle { fill:#5b3aa6; opacity:0.55; }
+  .topk-table { font-size:12px; }
+  .topk-table td, .topk-table th { padding:3px 8px; }
+  .err { background:#ffe4e4; border:1px solid #f99; color:#a00; padding:8px 12px; border-radius:4px; }
+</style></head><body>
+<header>
+  <h1>Compare runs</h1>
+  <a href="/results">← all runs</a>
+  <span class="stats" id="stats">loading…</span>
+</header>
+<main id="body"><div class="card">loading…</div></main>
+<script>
+const qs = new URLSearchParams(location.search);
+const A = qs.get('a'), B = qs.get('b');
+
+function fmt(x, p){ if (x==null) return '—'; const n=parseFloat(x); return isNaN(n)?x:n.toFixed(p==null?3:p); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+let DATA=null, VIEW='occupation', SORT={col:'rank_delta', dir:-1};
+
+async function load() {
+  if (!A || !B) { document.getElementById('body').innerHTML='<div class="card err">need ?a=&amp;b= run ids</div>'; return; }
+  const r = await (await fetch(`/api/compare?a=${encodeURIComponent(A)}&b=${encodeURIComponent(B)}`)).json();
+  if (!r.ok) { document.getElementById('body').innerHTML='<div class="card err">'+escapeHtml(r.error||'error')+'</div>'; return; }
+  DATA = r.data;
+  document.getElementById('stats').textContent = `A=${A.slice(-6)} · B=${B.slice(-6)}`;
+  render();
+}
+
+function paramsLine(m) {
+  const p = m.params||{};
+  return `${p.metric||'?'} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (m.baseline_active ? ` · Ω_b=${p.omega_base}` : '') +
+    ` · agg=${p.aggregation_level||'occupation'}` +
+    ` · kept ${m.n_kept_occ}/${m.n_kept_act}`;
+}
+
+function render() {
+  const body = document.getElementById('body');
+  const views = DATA.views || {};
+  const viewList = Object.keys(views);
+  if (!viewList.length) { body.innerHTML='<div class="card">No comparable outputs.</div>'; return; }
+  if (!views[VIEW]) VIEW = viewList[0];
+  const v = views[VIEW];
+  const m = v.metrics || {};
+  const levelBanner = DATA.levels_differ
+    ? `<div style="background:#fff4d6; border:1px solid #d2b048; color:#7a5800; padding:8px 12px; border-radius:4px; margin-top:10px; font-size:12px;">
+         ⚠ Aggregation levels differ: A is <b>${escapeHtml(DATA.level_a)}</b>, B is <b>${escapeHtml(DATA.level_b)}</b>.
+         Occupations from the finer-grained run are rolled up to <b>${escapeHtml(DATA.common_level)}</b>
+         (mean estimate within each ${escapeHtml(DATA.common_level)} group) before comparing.
+       </div>`
+    : `<div style="color:#666; font-size:12px; margin-top:8px;">Both runs use aggregation level <b>${escapeHtml(DATA.common_level)}</b>.</div>`;
+  body.innerHTML = `
+    <div class="card">
+      <h2>Runs being compared</h2>
+      <div class="rr">
+        <div class="col"><div class="id">A · ${escapeHtml(DATA.a.run_id)}</div><div class="kv">${escapeHtml(paramsLine(DATA.a))}</div></div>
+        <div class="col"><div class="id">B · ${escapeHtml(DATA.b.run_id)}</div><div class="kv">${escapeHtml(paramsLine(DATA.b))}</div></div>
+      </div>
+      ${levelBanner}
+    </div>
+
+    <div class="card">
+      <h2>View</h2>
+      <div class="seg" id="viewSeg">
+        ${viewList.map(k => `<button data-v="${k}" class="${k===VIEW?'active':''}">${k}s (${views[k].n})</button>`).join('')}
+      </div>
+
+      <h2 style="margin-top:14px;">Ranking agreement (${VIEW}s)</h2>
+      <div class="grid">
+        <div class="metric"><div class="k">n compared</div><div class="v">${m.n||0}</div></div>
+        <div class="metric"><div class="k">Spearman ρ</div><div class="v">${m.spearman_r!=null?fmt(m.spearman_r,3):'—'}</div><div class="p">${fmtP(m.spearman_p)}</div></div>
+        <div class="metric"><div class="k">Kendall τ</div><div class="v">${m.kendall_tau!=null?fmt(m.kendall_tau,3):'—'}</div><div class="p">${fmtP(m.kendall_p)}</div></div>
+        <div class="metric"><div class="k">Pearson r</div><div class="v">${m.pearson_r!=null?fmt(m.pearson_r,3):'—'}</div><div class="p">${fmtP(m.pearson_p)}</div></div>
+      </div>
+
+      <h2 style="margin-top:14px;">Top-K overlap (Jaccard on top-K sets)</h2>
+      <table class="topk-table" style="width:auto; background:#f7f8fa; border-radius:5px;">
+        <thead><tr><th>K</th><th>intersection</th><th>Jaccard</th></tr></thead>
+        <tbody>
+          ${Object.entries(v.topk_overlap||{}).map(([k,o]) =>
+            `<tr><td>${k}</td><td>${o.intersection}</td><td>${fmt(o.jaccard,3)}</td></tr>`).join('') || '<tr><td colspan="3">—</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Estimate A vs estimate B (${VIEW}s)</h2>
+      <div id="scatterWrap"></div>
+      <div style="font-size:11px; color:#666; margin-top:6px;">Dashed red line = identical estimates (y = x).</div>
+    </div>
+
+    <div class="card">
+      <h2>Row-by-row comparison</h2>
+      <input type="text" id="search" placeholder="search label/code…" style="padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px; margin-bottom:8px; width:280px;"/>
+      <table><thead id="th"></thead><tbody id="tb"></tbody></table>
+    </div>
+  `;
+  document.querySelectorAll('#viewSeg button').forEach(b=>{
+    b.onclick = ()=>{ VIEW=b.dataset.v; render(); };
+  });
+  document.getElementById('search').addEventListener('input', renderTable);
+  renderScatter();
+  renderTable();
+}
+
+function renderScatter() {
+  const v = DATA.views[VIEW];
+  const rows = v.rows;
+  const pad = {l:60, r:20, t:16, b:44};
+  const W = 620, H = 380;
+  const xs = rows.map(r=>parseFloat(r.estimate_a));
+  const ys = rows.map(r=>parseFloat(r.estimate_b));
+  const lo = Math.min(...xs, ...ys, 0);
+  const hi = Math.max(...xs, ...ys, 0.001);
+  const range = hi - lo || 1;
+  const xL = lo - range*0.05, xH = hi + range*0.05;
+  const sx = v => pad.l + (v - xL) / (xH - xL) * (W - pad.l - pad.r);
+  const sy = v => H - pad.b - (v - xL) / (xH - xL) * (H - pad.t - pad.b);
+  function ticks(a,b,n){
+    const r=b-a||1, step=Math.pow(10,Math.floor(Math.log10(r/n))); const err=n*step/r;
+    let m=1; if(err<=0.15)m=10; else if(err<=0.35)m=5; else if(err<=0.75)m=2;
+    const s=m*step; const t0=Math.ceil(a/s)*s; const out=[];
+    for(let v=t0; v<=b+1e-9; v+=s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const xt = ticks(xL, xH, 6);
+  const gridLines = xt.map(t=>{
+    const x=sx(t), y=sy(t);
+    return `<line class="grid" x1="${x}" y1="${pad.t}" x2="${x}" y2="${H-pad.b}"/>` +
+           `<line class="grid" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`;
+  }).join('');
+  const xTicks = xt.map(t=>`<text class="tick" x="${sx(t)}" y="${H-pad.b+14}" text-anchor="middle">${t.toFixed(2)}</text>`).join('');
+  const yTicks = xt.map(t=>`<text class="tick" x="${pad.l-6}" y="${sy(t)+3}" text-anchor="end">${t.toFixed(2)}</text>`).join('');
+  const diag = `<line class="diag" x1="${sx(xL)}" y1="${sy(xL)}" x2="${sx(xH)}" y2="${sy(xH)}"/>`;
+  const label = (r) => (v.labelcol === v.keycol) ? (r[v.keycol]||'') : (r[v.labelcol]||r[v.keycol]||'');
+  const pts = rows.map(r => {
+    const title = `${label(r)} — A ${fmt(r.estimate_a,3)}, B ${fmt(r.estimate_b,3)}, Δ ${fmt(r.delta,3)}`;
+    return `<circle cx="${sx(parseFloat(r.estimate_a))}" cy="${sy(parseFloat(r.estimate_b))}" r="4"><title>${escapeHtml(title)}</title></circle>`;
+  }).join('');
+  const xAxis = `<line class="axis" x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}"/>`;
+  const yAxis = `<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  const xLabel = `<text class="tick" x="${(pad.l+W-pad.r)/2}" y="${H-6}" text-anchor="middle">estimate A</text>`;
+  const yLabel = `<text class="tick" x="${-H/2}" y="14" text-anchor="middle" transform="rotate(-90)">estimate B</text>`;
+  document.getElementById('scatterWrap').innerHTML =
+    `<svg class="scatter" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+      ${gridLines}${diag}${pts}${xAxis}${yAxis}${xTicks}${yTicks}${xLabel}${yLabel}
+    </svg>`;
+}
+
+function renderTable() {
+  const v = DATA.views[VIEW];
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let rows = v.rows.slice();
+  if (q) {
+    rows = rows.filter(r => {
+      const blob = (r[v.labelcol]||'') + ' ' + (r[v.keycol]||'');
+      return blob.toLowerCase().includes(q);
+    });
+  }
+  rows.sort((a,b) => {
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+  const keycol = v.keycol, labelcol = v.labelcol;
+  const cols = keycol === labelcol
+    ? [keycol, 'estimate_a', 'rank_a', 'estimate_b', 'rank_b', 'delta', 'rank_delta']
+    : [keycol, labelcol, 'estimate_a', 'rank_a', 'estimate_b', 'rank_b', 'delta', 'rank_delta'];
+  const labels = {code:'Code', title:'Title', activity:'Activity',
+                  estimate_a:'Est. A', rank_a:'Rank A', estimate_b:'Est. B', rank_b:'Rank B',
+                  delta:'Δ (A−B)', rank_delta:'ΔRank'};
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c =>
+    `<th onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`).join('') + '</tr>';
+  document.getElementById('tb').innerHTML = rows.map(r => {
+    const dd = parseFloat(r.delta)||0;
+    const dcls = dd > 0.001 ? 'pos' : dd < -0.001 ? 'neg' : '';
+    return '<tr>' + cols.map(c => {
+      if (c === keycol) return `<td style="font-family:ui-monospace,Menlo,monospace; font-size:11px;">${escapeHtml(r[c]||'')}</td>`;
+      if (c === labelcol) return `<td>${escapeHtml(r[c]||'')}</td>`;
+      if (c === 'delta') return `<td class="num ${dcls}">${fmt(r[c],3)}</td>`;
+      if (c === 'rank_delta') {
+        const rd = parseFloat(r[c])||0;
+        return `<td class="num ${rd>0?'pos':rd<0?'neg':''}">${rd>=0?'+':''}${fmt(r[c],1)}</td>`;
+      }
+      if (c.startsWith('rank')) return `<td class="num">${fmt(r[c],1)}</td>`;
+      return `<td class="num">${fmt(r[c],3)}</td>`;
+    }).join('') + '</tr>';
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; renderTable(); }
+
+load();
+</script></body></html>
+"""
+
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    import os
+    app.run(debug=True, port=int(os.environ.get("PORT", 5050)))

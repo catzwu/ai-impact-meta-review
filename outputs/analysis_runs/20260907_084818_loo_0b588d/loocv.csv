@@ -1,0 +1,17 @@
+node_type,code,label,actual,predicted,residual,abs_error,posterior_std
+occupation,13-1111.00,Management Analysts,0.1259,0.2764,0.1505,0.1505,0.8182
+occupation,13-2099.01,Financial Quantitative Analysts,0.1555,0.2287,0.0732,0.0732,0.8167
+occupation,15-1252.00,Software Developers,0.15,0.307,0.157,0.157,0.8167
+occupation,23-1011.00,Lawyers,0.2755,0.272,-0.0034,0.0034,0.8176
+occupation,27-3091.00,Interpreters and Translators,0.3727,0.2699,-0.1029,0.1029,0.8184
+occupation,29-1224.00,Radiologists,-0.0378,0.2292,0.267,0.267,0.8195
+occupation,41-9022.00,Real Estate Sales Agents,0.0541,0.249,0.1949,0.1949,0.8184
+occupation,43-4051.00,Customer Service Representatives,0.2372,0.2577,0.0205,0.0205,0.8172
+activity,,Analyzing Data or Information,0.0925,0.2654,0.173,0.173,0.2043
+activity,,Communicating with Supervisors; Peers; or Subordinates,0.2314,0.2428,0.0115,0.0115,0.1625
+activity,,Documenting/Recording Information,0.1363,0.2246,0.0884,0.0884,0.2853
+activity,,Getting Information,0.3057,0.2387,-0.067,0.067,0.1537
+activity,,Making Decisions and Solving Problems,0.1953,0.2403,0.045,0.045,0.1654
+activity,,Processing Information,0.2228,0.2351,0.0124,0.0124,0.1914
+activity,,Thinking Creatively,0.5493,0.2225,-0.3268,0.3268,0.2183
+activity,,Working with Computers,0.2612,0.2429,-0.0182,0.0182,0.2555
