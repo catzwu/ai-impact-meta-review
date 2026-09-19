@@ -1,3 +1,4 @@
 anthropic>=0.40.0
 pyyaml>=6.0
 pypdf>=4.0
+matplotlib>=3.8   # scripts/demographic_correlates.py

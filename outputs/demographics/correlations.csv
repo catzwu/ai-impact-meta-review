@@ -1,0 +1,25 @@
+characteristic,label,score,n,pearson_r,spearman_rho
+median_salary_2021,Median Salary 2021 (Thousands of Dollars),speed,732,0.4,0.45
+median_salary_2021,Median Salary 2021 (Thousands of Dollars),quality,732,0.068,0.275
+median_salary_2021,Median Salary 2021 (Thousands of Dollars),lm_aioe,731,0.474,0.495
+occ_req_education,Occupation Required Education Level,speed,773,0.612,0.709
+occ_req_education,Occupation Required Education Level,quality,773,0.045,0.26
+occ_req_education,Occupation Required Education Level,lm_aioe,773,0.715,0.768
+avg_creative_weight,Relative Weight of Creative Abilities,speed,773,0.824,0.849
+avg_creative_weight,Relative Weight of Creative Abilities,quality,773,-0.058,0.182
+avg_creative_weight,Relative Weight of Creative Abilities,lm_aioe,773,0.856,0.866
+mean_female,Percent Female Employment,speed,616,0.519,0.534
+mean_female,Percent Female Employment,quality,616,-0.051,0.019
+mean_female,Percent Female Employment,lm_aioe,615,0.533,0.555
+mean_white,Percent White Employment,speed,616,0.139,0.125
+mean_white,Percent White Employment,quality,616,0.032,0.106
+mean_white,Percent White Employment,lm_aioe,615,0.17,0.139
+mean_black,Percent Black Employment,speed,616,-0.179,-0.187
+mean_black,Percent Black Employment,quality,616,0.018,-0.052
+mean_black,Percent Black Employment,lm_aioe,615,-0.179,-0.174
+mean_asian,Percent Asian Employment,speed,616,0.345,0.513
+mean_asian,Percent Asian Employment,quality,616,-0.01,0.101
+mean_asian,Percent Asian Employment,lm_aioe,615,0.356,0.51
+mean_hispanic,Percent Hispanic Employment,speed,616,-0.484,-0.476
+mean_hispanic,Percent Hispanic Employment,quality,616,-0.046,-0.228
+mean_hispanic,Percent Hispanic Employment,lm_aioe,615,-0.531,-0.528

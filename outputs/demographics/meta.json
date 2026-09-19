@@ -1,0 +1,19 @@
+{
+  "speed_run": "20260919_141217_c3aecd",
+  "quality_run": "20260919_141221_c27712",
+  "speed_aioe_baseline": true,
+  "n_occupations": 774,
+  "n_observed_speed": 8,
+  "n_observed_quality": 8,
+  "coverage": {
+    "median_salary_2021": 732,
+    "occ_req_education": 773,
+    "avg_creative_weight": 773,
+    "mean_female": 616,
+    "mean_white": 616,
+    "mean_black": 616,
+    "mean_asian": 616,
+    "mean_hispanic": 616
+  },
+  "n_bins": 20
+}

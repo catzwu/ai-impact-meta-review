@@ -1,0 +1,25 @@
+activity,observed,n_studies,estimate,posterior_std
+Analyzing Data or Information,0.0924851552355073,5.0,0.0993,0.0438
+Assisting and Caring for Others,,,0.2433,0.2156
+Communicating with People Outside the Organization,,,0.251,0.2752
+Communicating with Supervisors; Peers; or Subordinates,0.2313636418615573,1.0,0.238,0.0856
+Controlling Machines and Processes,,,0.2547,0.2363
+Documenting/Recording Information,0.1362651337155893,2.0,0.1432,0.0686
+Establishing and Maintaining Interpersonal Relationships,,,0.2561,0.1609
+Evaluating Information to Determine Compliance with Standards,,,0.242,0.2775
+Getting Information,0.3056756374997935,1.0,0.2843,0.0847
+Handling and Moving Objects,,,0.2545,0.1826
+Identifying Objects; Actions; and Events,,,0.2466,0.2166
+Inspecting Equipment; Structures; or Materials,,,0.2484,0.3003
+Making Decisions and Solving Problems,0.1952577674013655,1.0,0.2122,0.0854
+Monitoring Processes; Materials; or Surroundings,,,0.2471,0.2207
+Operating Vehicles; Mechanized Devices; or Equipment,,,0.2508,0.394
+Organizing; Planning; and Prioritizing Work,,,0.255,0.1759
+Performing General Physical Activities,,,0.2546,0.2383
+Performing for or Working Directly with the Public,,,0.2563,0.246
+Processing Information,0.2227585011587381,5.0,0.2232,0.0436
+Repairing and Maintaining Mechanical Equipment,,,0.2516,0.3645
+Thinking Creatively,0.549291539758391,3.0,0.5301,0.056
+Training and Teaching Others,,,0.268,0.2952
+Updating and Using Relevant Knowledge,,,0.2503,0.1547
+Working with Computers,0.2611534351592363,11.0,0.2611,0.0299

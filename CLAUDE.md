@@ -91,6 +91,10 @@ The AIOE speed-only baseline is moment-matched to the observed metric's mean/SD 
 
 The matrix build reads a 73k-row xlsx and is cached per-β in `_HEAT_CACHE`.
 
+### Occupational characteristics (`scripts/demographic_correlates.py`)
+
+Joins imputed occupation-level speed/quality (averaged to 6-digit SOC 2018) to the Felten–Raj–Seamans data in `demos/` (salary, required education, creative-ability weight, ACS race/gender shares, LM/IG AIOE) and draws the CACM-2024-style 20-bin binscatter. SOC-2010 files go through `demos/crosswalks/onet_soc_2010_to_2019.csv`; ACS codes fall back to aggregated `xx-xxx0`-style codes. Outputs land in `outputs/demographics/` (and `outputs/demographics/no_aioe_baseline/` with `--no-speed-baseline`). The default speed imputation leans on the LM-AIOE baseline (r≈0.86 with AIOE), so compare against the no-baseline variant before reading speed correlations as findings.
+
 ### Configuration
 
 `config/settings.yaml` is the source of truth for model assignments, max_tokens per stage, retry policy, and which stages run by default. Per-stage model overrides matter — Haiku for the mechanical 1a, Sonnet for everything that requires judgment. Stage 4 uses prompt caching on the O\*NET reference (drops input cost ~3× across the corpus). If you change a prompt, check `prompts/extract.txt` and `prompts/extract_quotes.txt` for the JSON-escaping rule.
