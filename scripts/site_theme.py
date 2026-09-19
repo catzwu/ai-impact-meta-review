@@ -1,5 +1,26 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+"""Shared visual theme for the Flask review app and the static GitHub Pages site.
+
+Both front ends embed their HTML as Python strings. Each page's <head> carries a
+`__THEME_HEAD__` placeholder (fonts + base stylesheet) and its body opens with a
+`__MASTHEAD__` placeholder (site title + nav). `apply()` fills both in, so the two
+front ends stay visually identical without a build step.
+
+Page-specific <style> blocks come *after* the theme and hold only layout that is
+unique to that page; colors there should use the CSS variables defined below.
+"""
+from __future__ import annotations
+
+from html import escape
+
+FONTS_LINK = (
+    '<link rel="preconnect" href="https://fonts.googleapis.com">'
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+    'family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400'
+    '&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">'
+)
+
+THEME_CSS = r"""
   :root {
     color-scheme: light;
     --paper:      #faf8f4;   /* page background: warm off-white */
@@ -220,57 +241,26 @@
     .page-head h1 { font-size:23px; }
     #drawer { width:100%; min-width:0; }
   }
-</style><title>All runs &mdash; AI Impact Meta-Review</title>
-<style>
-  :root { --page-w: 1120px; }
-  tr.clickable { cursor:pointer; }
-  td.id { font-family:var(--mono); font-size:11.5px; color:var(--ink-2); }
-</style></head><body>
-<header class="masthead"><div class="mh-inner">
-  <a class="mh-title" href="index.html">AI Impact Meta-Review
+"""
+
+
+def masthead(items: list[tuple[str, str, str]], active: str, home_href: str,
+             external: list[tuple[str, str]] | None = None) -> str:
+    """items = [(href, label, key)]; external = [(href, label)] opened in a new tab."""
+    links = []
+    for href, label, key in items:
+        cls = ' class="active" aria-current="page"' if key == active else ""
+        links.append(f'<a href="{escape(href)}"{cls}>{escape(label)}</a>')
+    for href, label in external or []:
+        links.append(f'<a class="ext" href="{escape(href)}" target="_blank" rel="noopener">{escape(label)} &#8599;</a>')
+    return f"""<header class="masthead"><div class="mh-inner">
+  <a class="mh-title" href="{escape(home_href)}">AI Impact Meta-Review
     <span class="mh-sub">Effects of generative AI on work, mapped to O*NET</span></a>
-  <nav class="mh-nav"><a href="index.html">Studies</a><a href="runs.html" class="active" aria-current="page">Imputation runs</a><a href="parameters.html">Method</a><a href="transitions.html">Transitions</a><a class="ext" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
-</div></header>
-<main class="page wrap">
-  <section class="page-head">
-    <div>
-      <h1>Imputation runs</h1>
-      <p class="lede">Each run propagates the observed effects across the O*NET graph under one combination of metric, &beta;,
-        pruning, and baseline settings. Click a row to see its occupation- and activity-level estimates;
-        the <a href="parameters.html">method</a> page explains each setting.</p>
-    </div>
-    <span class="page-meta" id="stats"></span>
-  </section>
-  <table id="t" class="data"><thead><tr>
-    <th>Run ID</th><th>Started (UTC)</th><th>Metric</th><th>&beta;</th><th>Aggregation</th>
-    <th>&Omega;<sub>ref</sub></th><th>Baseline</th>
-    <th style="text-align:right">Observed (occ/act)</th><th style="text-align:right">Kept (occ/act)</th>
-  </tr></thead><tbody id="tb"></tbody></table>
-</main>
-<script>
-function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-fetch('data/runs/index.json').then(r=>r.json()).then(d=>{
-  const tb = document.getElementById('tb');
-  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="9" style="text-align:center; padding:28px; color:var(--muted);">No runs on record.</td></tr>'; return; }
-  document.getElementById('stats').textContent = `${d.runs.length} runs`;
-  tb.innerHTML = d.runs.map(r=>{
-    const p = r.params||{};
-    return `<tr class="clickable" onclick="location.href='results.html?run='+encodeURIComponent('${r.run_id}')">
-      <td class="id">${escapeHtml(r.run_id)}</td>
-      <td>${escapeHtml((r.started_utc||'').replace('T',' ').slice(0,19))}</td>
-      <td><span class="pill ${p.metric}">${escapeHtml(p.metric||'')}</span></td>
-      <td class="num">${p.beta}</td>
-      <td>${escapeHtml((p.aggregation_level||'occupation').replace('_',' '))}</td>
-      <td class="num">${p.omega_ref}</td>
-      <td>${r.baseline_active ? `AIOE, Ω<sub>b</sub>=${p.omega_base}` : '—'}</td>
-      <td class="num">${r.n_observed_occ} / ${r.n_observed_act}</td>
-      <td class="num">${r.n_kept_occ} / ${r.n_kept_act}</td>
-    </tr>`;
-  }).join('');
-});
-</script>
-<footer class="site"><div class="wrap">
-  AI Impact Meta-Review &middot; effect sizes extracted from the research literature and mapped to O*NET.
-  Data and code: <a href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub</a>.
-</div></footer>
-</body></html>
+  <nav class="mh-nav">{"".join(links)}</nav>
+</div></header>"""
+
+
+def apply(html: str, masthead_html: str) -> str:
+    """Fill the __THEME_HEAD__ and __MASTHEAD__ placeholders in a page template."""
+    head = f'<meta name="viewport" content="width=device-width, initial-scale=1">{FONTS_LINK}<style>{THEME_CSS}</style>'
+    return html.replace("__THEME_HEAD__", head).replace("__MASTHEAD__", masthead_html)
