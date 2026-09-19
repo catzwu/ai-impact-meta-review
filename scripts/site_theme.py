@@ -1,5 +1,26 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+"""Shared visual theme for the Flask review app and the static GitHub Pages site.
+
+Both front ends embed their HTML as Python strings. Each page's <head> carries a
+`__THEME_HEAD__` placeholder (fonts + base stylesheet) and its body opens with a
+`__MASTHEAD__` placeholder (site title + nav). `apply()` fills both in, so the two
+front ends stay visually identical without a build step.
+
+Page-specific <style> blocks come *after* the theme and hold only layout that is
+unique to that page; colors there should use the CSS variables defined below.
+"""
+from __future__ import annotations
+
+from html import escape
+
+FONTS_LINK = (
+    '<link rel="preconnect" href="https://fonts.googleapis.com">'
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+    'family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400'
+    '&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">'
+)
+
+THEME_CSS = r"""
   :root {
     color-scheme: light;
     --paper:      #faf8f4;   /* page background: warm off-white */
@@ -220,146 +241,65 @@
     .page-head h1 { font-size:23px; }
     #drawer { width:100%; min-width:0; }
   }
-</style><title>Run results &mdash; AI Impact Meta-Review</title>
-<style>
-  .bar { display:inline-block; height:6px; vertical-align:middle; border-radius:2px; }
-  .bar.pos { background:var(--pos); } .bar.neg { background:var(--neg); }
-  #t th { cursor:pointer; user-select:none; }
-  .params { font-family:var(--mono); font-size:12px; color:var(--ink-2); line-height:1.7; }
-</style></head><body>
-<header class="masthead"><div class="mh-inner">
-  <a class="mh-title" href="index.html">AI Impact Meta-Review
+"""
+
+
+_PARTICLES = {"van", "von", "de", "der", "den", "del", "della", "di", "da", "du", "la", "le", "dos", "das", "st."}
+_SUFFIXES = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv"}
+
+
+def _surname(name: str) -> str:
+    """'Erik Brynjolfsson' -> 'Brynjolfsson'; 'Hansen, R. R.' -> 'Hansen'; keeps 'van der' particles."""
+    name = (name or "").strip()
+    if "," in name:
+        return name.split(",", 1)[0].strip()
+    parts = [p for p in name.split() if p.lower() not in _SUFFIXES]
+    if not parts:
+        return name
+    i = len(parts) - 1
+    while i > 0 and parts[i - 1].lower() in _PARTICLES:
+        i -= 1
+    return " ".join(parts[i:])
+
+
+def short_citation(authors: list[str] | None, year, citation_key: str = "") -> str:
+    """Author-year label: 'Surname (2024)', 'A & B (2024)', or 'A et al. (2024)'.
+
+    Falls back to the `surname_year_...` citation_key when the extraction lacks authors or year.
+    """
+    key_parts = (citation_key or "").split("_")
+    key_year = next((p for p in key_parts if len(p) == 4 and p.isdigit()), "")
+    names = [_surname(a) for a in (authors or []) if a and a.strip()]
+    if not names:
+        names = [key_parts[0].capitalize()] if key_parts and key_parts[0] else []
+    if not names:
+        return citation_key
+    if len(names) == 1:
+        who = names[0]
+    elif len(names) == 2:
+        who = f"{names[0]} & {names[1]}"
+    else:
+        who = f"{names[0]} et al."
+    return f"{who} ({year or key_year or 'n.d.'})"
+
+
+def masthead(items: list[tuple[str, str, str]], active: str, home_href: str,
+             external: list[tuple[str, str]] | None = None) -> str:
+    """items = [(href, label, key)]; external = [(href, label)] opened in a new tab."""
+    links = []
+    for href, label, key in items:
+        cls = ' class="active" aria-current="page"' if key == active else ""
+        links.append(f'<a href="{escape(href)}"{cls}>{escape(label)}</a>')
+    for href, label in external or []:
+        links.append(f'<a class="ext" href="{escape(href)}" target="_blank" rel="noopener">{escape(label)} &#8599;</a>')
+    return f"""<header class="masthead"><div class="mh-inner">
+  <a class="mh-title" href="{escape(home_href)}">AI Impact Meta-Review
     <span class="mh-sub">Effects of generative AI on work, mapped to O*NET</span></a>
-  <nav class="mh-nav"><a href="index.html">Studies</a><a href="summary.html">Summary</a><a href="runs.html" class="active" aria-current="page">Imputation runs</a><a href="parameters.html">Method</a><a href="transitions.html">Transitions</a><a class="ext" href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub &#8599;</a></nav>
-</div></header>
-<main class="page wrap">
-  <section class="page-head">
-    <div>
-      <div class="crumbs"><a href="runs.html">Imputation runs</a> / <span id="crumbId" class="mono"></span></div>
-      <h1>Imputed impacts</h1>
-      <p class="lede">Estimated effects for every occupation and work activity after propagating the observed studies across
-        the O*NET graph. <span class="badge observed">Observed</span> rows are anchored by at least one study; the rest are imputed.</p>
-      <p class="page-meta" id="stats" style="margin:8px 0 0;"></p>
-    </div>
-    <div class="page-actions"><button class="btn" onclick="exportCsv()">Download this view (CSV)</button></div>
-  </section>
-  <details class="card"><summary>Run parameters</summary><div class="params" id="params">Loading&hellip;</div></details>
-  <div id="warn"></div>
-  <div class="toolbar">
-    <div class="seg" id="viewSeg">
-      <button data-v="occ" class="active">Occupations</button>
-      <button data-v="act">Activities</button>
-    </div>
-    <label>Posterior SD &le; <input type="number" id="stdFilter" value="5" step="0.05" style="width:70px;"/></label>
-    <label><input type="checkbox" id="onlyObserved"/> Observed only</label>
-    <input type="search" id="search" placeholder="Search title or code&hellip;" style="margin-left:auto; min-width:240px;"/>
-  </div>
-  <table id="t" class="data"><thead id="th"></thead><tbody id="tb"></tbody></table>
-</main>
-<script>
-const DEFAULT_RUN_ID = "20260919_134544_f33a5b";
-let DATA = null, VIEW='occ', SORT={col:'estimate', dir:-1};
+  <nav class="mh-nav">{"".join(links)}</nav>
+</div></header>"""
 
-function fmtNum(x, p){ if (x===null||x===undefined||x==='') return '—'; const n=parseFloat(x); return isNaN(n)?x:n.toFixed(p===undefined?3:p); }
-function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
-async function load(){
-  const params = new URLSearchParams(location.search);
-  const runId = params.get('run') || DEFAULT_RUN_ID;
-  if (!runId) { document.querySelector('main').innerHTML = '<div class="err" style="margin-top:30px;">No canonical run is available. See <a href="runs.html">all runs</a>.</div>'; return; }
-  const r = await fetch('data/runs/' + encodeURIComponent(runId) + '.json');
-  if (!r.ok) { document.querySelector('main').innerHTML = '<div class="err" style="margin-top:30px;">Unknown run: ' + escapeHtml(runId) + '. See <a href="runs.html">all runs</a>.</div>'; return; }
-  DATA = await r.json();
-  const p = DATA.params;
-  document.getElementById('crumbId').textContent = DATA.run_id;
-  document.getElementById('stats').textContent =
-    `Metric: ${p.metric} · β = ${p.beta} · Ω_ref = ${p.omega_ref}` +
-    (DATA.baseline_active ? ` · AIOE baseline Ω_b = ${p.omega_base}` : '') +
-    ` · ${DATA.n_kept_occ} occupations and ${DATA.n_kept_act} activities kept`;
-  document.getElementById('params').innerHTML =
-    `<b>Run:</b> ${escapeHtml(DATA.run_id)} · <b>${p.metric}</b> · β=${p.beta} · agg=${escapeHtml(p.aggregation_level||'-')} · ` +
-    `Ω_ref=${p.omega_ref}${DATA.baseline_active?` · baseline Ω_b=${p.omega_base}`:''} · ` +
-    `n_obs occ/act = ${DATA.n_observed_occ}/${DATA.n_observed_act} · kept occ/act = ${DATA.n_kept_occ}/${DATA.n_kept_act} · ` +
-    `data_source=${escapeHtml(DATA.data_source||'-')}`;
-  const un = (DATA.unmatched_occ_codes||[]).concat(DATA.unmatched_act_labels||[]);
-  if (un.length) document.getElementById('warn').innerHTML =
-    `<div class="callout warn" style="margin-bottom:14px;">
-      ${un.length} observation(s) could not be matched to O*NET and were skipped: ${escapeHtml(un.slice(0,10).join(', '))}${un.length>10?'…':''}
-    </div>`;
-  render();
-}
-
-document.querySelectorAll('#viewSeg button').forEach(b=>{
-  b.onclick=()=>{document.querySelectorAll('#viewSeg button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); VIEW=b.dataset.v; render();};
-});
-document.getElementById('stdFilter').addEventListener('input', render);
-document.getElementById('onlyObserved').addEventListener('change', render);
-document.getElementById('search').addEventListener('input', render);
-
-function render(){
-  if (!DATA) return;
-  const rows = (VIEW==='occ' ? DATA.occupation_impacts : DATA.activity_impacts).slice();
-  const stdMax = parseFloat(document.getElementById('stdFilter').value) || 999;
-  const onlyObs = document.getElementById('onlyObserved').checked;
-  const q = (document.getElementById('search').value||'').toLowerCase();
-  let filtered = rows.filter(r => {
-    if (parseFloat(r.posterior_std) > stdMax) return false;
-    if (onlyObs && (r.observed===null || r.observed===undefined || isNaN(parseFloat(r.observed)))) return false;
-    const blob = (VIEW==='occ' ? (r.code+' '+r.title) : r.activity).toString().toLowerCase();
-    return !q || blob.includes(q);
-  });
-  filtered.sort((a,b)=>{
-    let x=a[SORT.col], y=b[SORT.col];
-    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
-    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
-  });
-
-  const maxAbs = Math.max(...filtered.map(r=>Math.abs(parseFloat(r.estimate)||0)), 0.1);
-  const colName = VIEW==='occ' ? 'title' : 'activity';
-  const cols = VIEW==='occ'
-    ? ['code', colName, 'observed', 'aioe_baseline', 'estimate', 'posterior_std', 'n_studies']
-    : [colName, 'observed', 'estimate', 'posterior_std', 'n_studies'];
-
-  document.getElementById('th').innerHTML = '<tr>' + cols.map(c => {
-    const labels = {code:'SOC code', title:'Occupation', activity:'Work activity', observed:'Observed', aioe_baseline:'AIOE', estimate:'Estimate', posterior_std:'Posterior SD', n_studies:'Studies'};
-    const num = ['aioe_baseline','estimate','posterior_std','n_studies'].includes(c) ? ' style="text-align:right"' : '';
-    return `<th${num} onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`;
-  }).join('') + '<th>Effect</th></tr>';
-
-  document.getElementById('tb').innerHTML = filtered.map(r=>{
-    const isObs = !(r.observed===null||r.observed===undefined||r.observed===''||isNaN(parseFloat(r.observed)));
-    const e = parseFloat(r.estimate)||0;
-    const eClass = e > 0.001 ? 'pos' : e < -0.001 ? 'neg' : '';
-    const barWidth = Math.min(100, Math.abs(e)/maxAbs * 100);
-    const bar = `<span class="bar ${eClass}" style="width:${barWidth}px;"></span>`;
-    return '<tr>' + cols.map(c => {
-      if (c==='observed') return `<td>${isObs ? `<span class="badge observed">${fmtNum(r.observed)}</span>` : '<span class="badge imputed">imputed</span>'}</td>`;
-      if (c==='estimate') return `<td class="num ${eClass}">${fmtNum(r.estimate)}</td>`;
-      if (c==='posterior_std') return `<td class="num">${fmtNum(r.posterior_std)}</td>`;
-      if (c==='aioe_baseline') return `<td class="num">${r.aioe_baseline===undefined||r.aioe_baseline===null?'':fmtNum(r.aioe_baseline)}</td>`;
-      if (c==='n_studies') return `<td class="num">${r.n_studies===null||r.n_studies===undefined||r.n_studies===''?'':parseInt(r.n_studies)}</td>`;
-      if (c==='code') return `<td class="mono" style="font-size:12px; color:var(--ink-2);">${escapeHtml(r[c]||'')}</td>`;
-      return `<td>${escapeHtml(r[c]||'')}</td>`;
-    }).join('') + `<td>${bar}</td></tr>`;
-  }).join('');
-}
-
-function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; render(); }
-
-function exportCsv() {
-  const rows = (VIEW==='occ' ? DATA.occupation_impacts : DATA.activity_impacts);
-  const keys = Object.keys(rows[0]||{});
-  const csv = [keys.join(',')].concat(rows.map(r => keys.map(k => JSON.stringify(r[k]??'')).join(','))).join('\n');
-  const blob = new Blob([csv], {type:'text/csv'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `${DATA.run_id}_${VIEW}.csv`; a.click();
-}
-
-load();
-</script>
-<footer class="site"><div class="wrap">
-  AI Impact Meta-Review &middot; effect sizes extracted from the research literature and mapped to O*NET.
-  Data and code: <a href="https://github.com/catzwu/ai-impact-meta-review" target="_blank" rel="noopener">GitHub</a>.
-</div></footer>
-</body></html>
+def apply(html: str, masthead_html: str) -> str:
+    """Fill the __THEME_HEAD__ and __MASTHEAD__ placeholders in a page template."""
+    head = f'<meta name="viewport" content="width=device-width, initial-scale=1">{FONTS_LINK}<style>{THEME_CSS}</style>'
+    return html.replace("__THEME_HEAD__", head).replace("__MASTHEAD__", masthead_html)

@@ -40,7 +40,9 @@ ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-OUT = ROOT / "outputs" / "final"
+import site_theme  # noqa: E402
+
+OUT =ROOT / "outputs" / "final"
 OUTPUTS_DIR = ROOT / "outputs"
 CONFIG_DIR = ROOT / "config"
 RUNS_DIR = OUTPUTS_DIR / "analysis_runs"
@@ -123,6 +125,7 @@ def _build_rows(pid_map: dict[str, str]) -> list[dict]:
                 "row_id": row_id,
                 "paper_id": pid,
                 "citation_key": ck,
+                "citation": site_theme.short_citation((ext or {}).get("authors"), (ext or {}).get("year"), ck),
                 "file_name": f"{pid}.pdf" if pid else "",
                 "title": title,
                 "kind": kind,
@@ -270,164 +273,116 @@ def _load_run_bundle(run_dir: Path) -> dict:
 # ---------- HTML template plumbing ----------
 
 def _header(active: str) -> str:
-    """Shared top nav. `active` is one of 'home', 'summary', 'runs', 'parameters', 'transitions'."""
+    """Shared masthead. `active` is one of 'home', 'summary', 'runs', 'parameters', 'transitions'."""
     items = [
-        ("index.html", "Home", "home"),
+        ("index.html", "Studies", "home"),
         ("summary.html", "Summary", "summary"),
-        ("runs.html", "Runs", "runs"),
-        ("parameters.html", "Parameters", "parameters"),
+        ("runs.html", "Imputation runs", "runs"),
+        ("parameters.html", "Method", "parameters"),
         ("transitions.html", "Transitions", "transitions"),
     ]
-    links = []
-    for href, label, key in items:
-        style = ' style="text-decoration:underline;"' if key == active else ""
-        links.append(f'<a href="{href}"{style}>{label}</a>')
-    links.append(f'<a class="gh" href="{REPO_URL}" target="_blank" rel="noopener">GitHub &#8599;</a>')
-    return f"""
-<header class="site">
-  <h1>AI Impact Meta-Review</h1>
-  <span class="stats" id="stats"></span>
-  <nav>{"".join(links)}</nav>
-</header>
-"""
+    return site_theme.masthead(items, active, home_href="index.html", external=[(REPO_URL, "GitHub")])
 
 
-_STYLE_COMMON = r"""
-  :root { color-scheme: light; }
-  * { box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin:0; font-size:13px; color:#222; background:#fff; }
-  header.site { background:#222; color:#fff; padding:10px 16px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
-  header.site h1 { margin:0; font-size:16px; }
-  header.site nav { display:flex; gap:12px; align-items:center; margin-left:auto; }
-  header.site nav a { color:#9cf; text-decoration:none; font-size:13px; }
-  header.site nav a:hover { text-decoration:underline; }
-  header.site nav a.gh { color:#fff; background:#333; padding:4px 10px; border-radius:4px; }
-  header.site nav a.gh:hover { background:#444; text-decoration:none; }
-  header.site .stats { color:#bbb; font-size:12px; }
-"""
+_FOOTER = f"""<footer class="site"><div class="wrap">
+  AI Impact Meta-Review &middot; effect sizes extracted from the research literature and mapped to O*NET.
+  Data and code: <a href="{REPO_URL}" target="_blank" rel="noopener">GitHub</a>.
+</div></footer>"""
+
+# The theme stylesheet is injected via __THEME_HEAD__; page styles below hold only page-specific rules.
+_STYLE_COMMON = ""
 
 
 # ---------- index.html (review table + drawer) ----------
 
 _INDEX_STYLE = _STYLE_COMMON + r"""
-  table { border-collapse: collapse; table-layout: fixed; width: 100%; }
-  th, td { padding:8px 10px; border-bottom:1px solid #eee; vertical-align: top; text-align: left; overflow:hidden; text-overflow:ellipsis; }
-  th { background:#f7f7f9; position:sticky; top:0; cursor:pointer; user-select:none; font-size:11px; text-transform:uppercase;
-       font-weight:600; color:#555; letter-spacing:0.04em; border-bottom:2px solid #ddd; z-index:5; }
-  tbody tr:nth-child(even) { background:#fafafa; }
-  tbody tr:hover { background:#eef6ff; }
-  td.snippet { white-space: normal; word-break: break-word; color:#555; font-size:12px; line-height:1.4; }
-  td.title { white-space: normal; word-break: break-word; font-weight:500; font-size:13px; line-height:1.3; cursor:pointer; color:#0a3d7a; }
-  td.title:hover { text-decoration: underline; }
-  td.value { font-family: ui-monospace, Menlo, monospace; text-align: right; white-space: nowrap; font-weight:500; }
-  td.value.pos { color:#0a6c2c; }
-  td.value.neg { color:#b32020; }
-  td.cite { font-family: ui-monospace, Menlo, monospace; font-size:11px; color:#555; }
-  td.file { font-family: ui-monospace, Menlo, monospace; font-size:11px; color:#888; }
-  td.onet { font-size:12px; color:#333; }
-  td.onet .code { font-family: monospace; color:#888; margin-right:4px; }
-  .kind-speed   { background:#e6f3ff; color:#0463a3; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
-  .kind-quality { background:#ffe6f0; color:#a0286c; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
-  .conf-pill-cell { display:inline-block; padding:1px 7px; border-radius:10px; font-size:10px; text-transform:uppercase; font-weight:600; }
-  .conf-pill-cell.high   { background:#d4f4d4; color:#0a6c2c; }
-  .conf-pill-cell.medium { background:#fff0c0; color:#8a6900; }
-  .conf-pill-cell.low    { background:#ffd6d6; color:#a00; }
-
-  #backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.25); opacity:0; pointer-events:none; transition:opacity 0.2s; z-index:90; }
-  #backdrop.open { opacity:1; pointer-events:auto; }
-  #drawer { position:fixed; top:0; right:0; width:60%; min-width:560px; height:100%; background:#fff; box-shadow:-3px 0 12px rgba(0,0,0,0.2);
-            transform:translateX(100%); transition:transform 0.2s; overflow:auto; z-index:100; }
-  #drawer.open { transform:translateX(0); }
-  #drawer > header { background:#333; color:#fff; padding:10px 16px; display:flex; gap:12px; align-items:center; justify-content:space-between; }
-  #drawer > header h1 { margin:0; font-size:15px; font-family:monospace; }
-  #drawer > header button { background:#a00; color:#fff; border:0; padding:5px 12px; border-radius:3px; cursor:pointer; }
-
-  .pd-meta { padding: 14px 18px; background:#fafafa; border-bottom:1px solid #ddd; }
-  .pd-meta h2 { margin: 0 0 4px; font-size:18px; line-height:1.25; }
-  .pd-meta .authors { color:#444; font-size:12px; margin-bottom:4px; }
-  .pd-meta .ids { color:#666; font-size:11px; }
-  .pd-meta .ids .pill { display:inline-block; background:#eee; padding:1px 6px; border-radius:3px; margin-right:6px; font-family:monospace; }
-  .pd-effects { display:flex; gap:10px; padding: 12px 18px; border-bottom:1px solid #eee; }
-  .pd-effect { flex:1; border:1px solid #ddd; border-radius:6px; padding:10px; }
-  .pd-effect.empty { color:#999; border-style:dashed; }
-  .pd-effect h3 { margin:0 0 6px; font-size:13px; display:flex; justify-content:space-between; }
-  .pd-effect .value { font-family:monospace; font-size:18px; }
-  .pd-effect .row { display:flex; justify-content:space-between; font-size:11px; color:#555; margin-top:3px; }
-  .pd-effect .row b { color:#222; font-weight:500; }
-  .pd-effect .notes { margin-top:6px; font-size:11px; color:#777; line-height:1.4; }
-  .pd-section { padding: 4px 18px 12px; border-bottom:1px solid #f0f0f0; }
-  .pd-section h3 { margin:14px 0 6px; font-size:13px; text-transform:uppercase; color:#444; letter-spacing:0.04em; }
-  .pd-table { width:100%; border-collapse:collapse; font-size:12px; }
-  .pd-table th, .pd-table td { padding:4px 8px; border-bottom:1px solid #eee; text-align:left; vertical-align:top; }
-  .pd-table th { background:#f5f5f5; font-weight:500; font-size:11px; color:#555; }
-  .pd-onet-rationale { background:#f7faff; border-left:3px solid #69a; padding:8px 12px; margin-top:4px; font-size:12px; line-height:1.4; }
-  .pd-onet-alt { font-size:11px; color:#555; margin-top:4px; }
-  .pd-onet-alt .pill { display:inline-block; background:#eef; padding:1px 6px; margin:2px 4px 2px 0; border-radius:3px; font-family:monospace; }
-  .pd-quote { background:#fffce0; border-left:3px solid #c90; padding:6px 10px; margin:4px 0; font-size:12px; line-height:1.4; font-style:italic; }
-  .pd-quotes-block { max-height:260px; overflow-y:auto; }
-  .pd-stat { border:1px solid #eee; border-radius:4px; padding:6px 10px; margin:4px 0; font-size:11px; }
-  .pd-stat .head { display:flex; justify-content:space-between; font-size:12px; margin-bottom:2px; }
-  .pd-stat .head b { color:#222; }
-  .pd-stat .nums { font-family:monospace; color:#063; margin:2px 0; }
-  .pd-stat .vq { font-size:11px; color:#666; font-style:italic; }
-  details.pd-raw { margin: 0 18px 14px; }
-  details.pd-raw summary { cursor:pointer; padding:4px 0; font-size:12px; color:#666; }
-  details.pd-raw pre { background:#f7f7f7; padding:8px; font-size:10px; overflow:auto; max-height:300px; border-radius:3px; }
-  .conf-pill { padding:1px 6px; border-radius:3px; font-size:10px; text-transform:uppercase; }
-  .conf-pill.high   { background:#d4f4d4; color:#070; }
-  .conf-pill.medium { background:#fff0c0; color:#a60; }
-  .conf-pill.low    { background:#ffd6d6; color:#a00; }
-  .badge { display:inline-block; padding:1px 5px; font-size:10px; border-radius:2px; background:#eee; margin-left:4px; }
-
-  .downloads { margin: 18px 20px; padding: 14px 18px; background:#f7f7f9; border:1px solid #eee; border-radius:6px; }
-  .downloads h2 { margin: 0 0 8px; font-size:13px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
-  .downloads ul { margin:0; padding-left:20px; font-size:12px; }
-  .downloads a { color:#0a3d7a; }
+  .intro { display:grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr); gap:32px; align-items:start; padding:34px 0 22px; }
+  .intro h1 { margin:0 0 10px; font-size:32px; line-height:1.15; }
+  .intro p { margin:0 0 10px; color:var(--ink-2); font-size:15.5px; line-height:1.6; max-width:68ch; }
+  .tiles { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+  .tiles .metric .v { font-family:var(--serif); font-size:28px; font-weight:600; }
+  @media (max-width: 860px) { .intro { grid-template-columns: 1fr; } }
+  .table-scroll { max-height:none; }
+  #table { table-layout: fixed; min-width:1200px; }
+  #table th { position:sticky; top:0; z-index:5; }
+  td.snippet { white-space:normal; word-break:break-word; color:var(--ink-2); font-size:12.5px; line-height:1.45; }
+  td.title { white-space:normal; word-break:break-word; font-family:var(--serif); font-size:14.5px; line-height:1.35; cursor:pointer; color:var(--ink); }
+  td.title:hover { color:var(--link); text-decoration:underline; text-underline-offset:2px; }
+  td.cite { font-size:13.5px; color:var(--ink); white-space:normal; }
+  td.file { font-family:var(--mono); font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; }
+  td.onet { font-size:12.5px; color:var(--ink); }
+  td.onet .code { font-family:var(--mono); font-size:11px; color:var(--muted); margin-right:4px; }
+  .downloads { margin:28px 0 0; }
+  .downloads ul { margin:0; padding-left:20px; line-height:1.9; }
+  .downloads code { color:var(--link); }
 """
 
 
 _INDEX_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><title>AI Impact Meta-Review</title>
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>AI Impact Meta-Review</title>
 <style>__STYLE__</style></head><body>
 __HEADER__
-<div style="padding:10px 16px; background:#fafafa; border-bottom:1px solid #eee; display:flex; gap:14px; align-items:center;">
-  <input type="text" id="search" placeholder="filter by citation, title, file, O*NET&hellip;" style="padding:5px 8px; border:1px solid #ccc; border-radius:4px; min-width:280px;"/>
-  <span style="color:#888; font-size:12px;">Click a title to open the paper drawer.</span>
-</div>
+<main class="page wrap">
+  <section class="intro">
+    <div>
+      <h1>What does generative AI do to work?</h1>
+      <p>This site collects empirical studies of generative AI in the workplace and puts their
+        results on a common scale: <b>speed</b> effects as log ratios of task time or output, and <b>quality</b> effects as
+        Hedges&rsquo; <i>g</i>. Each effect is linked to an O*NET occupation or work activity, so the evidence can be
+        read against the structure of the labor market.</p>
+      <p>Browse the coded studies below, and click a title to see what was extracted from the paper and why.
+        The <a href="runs.html">imputation runs</a> extend these observations across the O*NET graph; the
+        <a href="parameters.html">method</a> page explains how.</p>
+    </div>
+    <div class="tiles" id="tiles">
+      <div class="metric"><div class="k">Studies</div><div class="v" id="tPapers">&ndash;</div></div>
+      <div class="metric"><div class="k">Effects coded</div><div class="v" id="tRows">&ndash;</div></div>
+      <div class="metric"><div class="k">Speed effects</div><div class="v" id="tSpeed">&ndash;</div></div>
+      <div class="metric"><div class="k">Quality effects</div><div class="v" id="tQual">&ndash;</div></div>
+    </div>
+  </section>
+  <h2 class="section-title">Coded studies</h2>
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="Filter by citation, title, file, or O*NET&hellip;" style="min-width:300px; flex:0 1 420px;"/>
+    <span class="page-meta" id="stats"></span>
+    <span class="help" style="margin-left:auto;">Click a column header to sort &middot; click a title for details</span>
+  </div>
+<div class="table-scroll">
 <table id="table">
   <colgroup>
-    <col style="width:70px"><col style="width:200px"><col style="width:280px"><col style="width:200px">
-    <col style="width:80px"><col style="width:60px"><col style="width:320px"><col style="width:340px">
+    <col style="width:80px"><col style="width:180px"><col style="width:280px">
+    <col style="width:80px"><col style="width:100px"><col style="width:300px"><col>
   </colgroup>
   <thead><tr>
     <th data-sort="kind">Kind</th>
-    <th data-sort="citation_key">Citation</th>
+    <th data-sort="citation">Citation</th>
     <th data-sort="title">Title</th>
-    <th data-sort="file_name">File</th>
-    <th data-sort="value">Value</th>
-    <th data-sort="confidence">Conf</th>
+    <th data-sort="value" style="text-align:right">Value</th>
+    <th data-sort="confidence">Confidence</th>
     <th>O*NET</th>
     <th>Task snippet</th>
   </tr></thead>
   <tbody id="tbody"></tbody>
 </table>
+</div>
 
-<div class="downloads">
-  <h2>Downloads</h2>
+<div class="downloads card">
+  <h2>Download the data</h2>
   <ul>
-    <li><a href="assets/speed_table.csv">speed_table.csv</a> &mdash; per-paper speed effects (log ratios)</li>
-    <li><a href="assets/quality_table.csv">quality_table.csv</a> &mdash; per-paper quality effects (Hedges' g)</li>
-    <li><a href="assets/onet_activities_impact.csv">onet_activities_impact.csv</a> &mdash; observed effects aggregated by O*NET work activity</li>
-    <li><a href="assets/onet_occupations_impact.csv">onet_occupations_impact.csv</a> &mdash; observed effects aggregated by O*NET occupation</li>
-    <li><a href="assets/papers_excluded.csv">papers_excluded.csv</a> &mdash; papers dropped by the pipeline, with reasons</li>
+    <li><a href="assets/speed_table.csv"><code>speed_table.csv</code></a> &mdash; per-paper speed effects (log ratios)</li>
+    <li><a href="assets/quality_table.csv"><code>quality_table.csv</code></a> &mdash; per-paper quality effects (Hedges' g)</li>
+    <li><a href="assets/onet_activities_impact.csv"><code>onet_activities_impact.csv</code></a> &mdash; observed effects aggregated by O*NET work activity</li>
+    <li><a href="assets/onet_occupations_impact.csv"><code>onet_occupations_impact.csv</code></a> &mdash; observed effects aggregated by O*NET occupation</li>
+    <li><a href="assets/papers_excluded.csv"><code>papers_excluded.csv</code></a> &mdash; papers dropped by the pipeline, with reasons</li>
   </ul>
 </div>
+</main>
 
 <div id="backdrop" onclick="closeDrawer()"></div>
 <div id="drawer">
   <header>
     <h1 id="drawerTitle">Paper detail</h1>
-    <button onclick="closeDrawer()">Close</button>
+    <button class="btn btn-quiet" onclick="closeDrawer()">Close &times;</button>
   </header>
   <div id="drawerBody"></div>
 </div>
@@ -442,13 +397,18 @@ function confPill(c){ if(!c) return ''; return `<span class="conf-pill ${c}">${c
 async function load() {
   const r = await (await fetch('data/rows.json')).json();
   ROWS = r.rows;
+  const papers = new Set(ROWS.map(x => x.paper_id || x.citation_key));
+  document.getElementById('tPapers').textContent = papers.size;
+  document.getElementById('tRows').textContent = ROWS.length;
+  document.getElementById('tSpeed').textContent = ROWS.filter(x => x.kind === 'speed').length;
+  document.getElementById('tQual').textContent = ROWS.filter(x => x.kind === 'quality').length;
   render();
 }
 
 function render() {
   const q = (document.getElementById('search').value || '').toLowerCase();
   let rows = ROWS.filter(r =>
-    !q || (r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
+    !q || (r.citation+r.citation_key+r.title+r.file_name+r.onet_code+r.onet_label).toLowerCase().includes(q));
   if (SORT.col) {
     rows = [...rows].sort((a,b)=> {
       const x = (a[SORT.col]||'').toString(), y=(b[SORT.col]||'').toString();
@@ -456,20 +416,19 @@ function render() {
       return x.localeCompare(y) * SORT.dir;
     });
   }
-  document.getElementById('stats').textContent = `${rows.length} rows (of ${ROWS.length} total)`;
+  document.getElementById('stats').textContent = rows.length === ROWS.length ? `${ROWS.length} effects` : `${rows.length} of ${ROWS.length} effects`;
   const tbody = document.getElementById('tbody');
   tbody.innerHTML = rows.map(r => {
     const v = parseFloat(r.value||0);
     const vClass = v > 0.001 ? 'pos' : v < -0.001 ? 'neg' : '';
     const onet = r.onet_code
       ? `<span class="code">${escapeHtml(r.onet_code)}</span>${escapeHtml(r.onet_label||'')}`
-      : '<span style="color:#aaa;">—</span>';
+      : '<span style="color:var(--muted);">—</span>';
     return `
     <tr data-row="${r.row_id}">
       <td><span class="kind-${r.kind}">${r.kind}</span></td>
-      <td class="cite">${escapeHtml(r.citation_key)}</td>
+      <td class="cite" title="${escapeHtml(r.citation_key)}">${escapeHtml(r.citation||r.citation_key)}</td>
       <td class="title" title="Click to view paper detail" onclick="viewPaper('${r.paper_id}')">${escapeHtml(r.title)}</td>
-      <td class="file" title="${escapeHtml(r.file_name)}">${escapeHtml(r.file_name)}</td>
       <td class="value ${vClass}">${v.toFixed(3)}</td>
       <td>${r.confidence ? `<span class="conf-pill-cell ${r.confidence}">${r.confidence}</span>` : ''}</td>
       <td class="onet">${onet}</td>
@@ -486,10 +445,10 @@ document.querySelectorAll('th[data-sort]').forEach(th=>{
 });
 
 async function viewPaper(pid) {
-  if (!pid) return alert('No paper_id resolved for this row.');
+  if (!pid) return;
   let d;
   try { d = await (await fetch('data/papers/'+encodeURIComponent(pid)+'.json')).json(); }
-  catch (e) { return alert('Missing paper detail for '+pid); }
+  catch (e) { d = {}; }
   document.getElementById('drawerTitle').textContent = pid;
   document.getElementById('drawerBody').innerHTML = renderPaperDetail(pid, d);
   document.getElementById('drawer').classList.add('open');
@@ -503,7 +462,7 @@ document.addEventListener('keydown', (e)=>{ if (e.key==='Escape') closeDrawer();
 
 function renderEffectCard(kind, eff) {
   if (!eff || !eff.computed) {
-    return `<div class="pd-effect empty"><h3>${kind} effect</h3>No effect computed for this paper.</div>`;
+    return `<div class="pd-effect empty"><h3>${kind} effect</h3>No ${kind} effect was computed for this paper.</div>`;
   }
   const c = eff.computed, ex = eff.llm_extracted || {};
   const isSpeed = kind === 'speed';
@@ -530,9 +489,9 @@ function renderQuotes(quotes) {
     const arr = q[key];
     if (!arr || !arr.length) continue;
     const items = arr.map(s => `<div class="pd-quote">${escapeHtml(s)}</div>`).join('');
-    sections.push(`<details ${key==='task'?'open':''}><summary><b>${key}</b> (${arr.length})</summary>${items}</details>`);
+    sections.push(`<details ${key==='task'?'open':''}><summary><b>${key.replace('_',' ')}</b> <span class="help">(${arr.length})</span></summary>${items}</details>`);
   }
-  return sections.length ? `<div class="pd-section"><h3>Verbatim quotes (from 01a)</h3><div class="pd-quotes-block">${sections.join('')}</div></div>` : '';
+  return sections.length ? `<div class="pd-section"><h3>Verbatim quotes</h3><div class="pd-quotes-block">${sections.join('')}</div></div>` : '';
 }
 
 function renderArms(arms) {
@@ -557,7 +516,7 @@ function renderOutcomes(ext, oc) {
   const rows = outs.map(o=>{
     const isPS = o.outcome_name===primarySpeed, isPQ = o.outcome_name===primaryQual;
     const star = isPS ? '★ speed' : isPQ ? '★ quality' : '';
-    return `<tr><td><b>${escapeHtml(o.outcome_name||'')}</b>${star?` <span style="color:#a60;font-size:11px;">${star}</span>`:''}</td>
+    return `<tr><td><b>${escapeHtml(o.outcome_name||'')}</b>${star?` <span class="pill" style="background:var(--warn-bg); color:var(--warn-ink);">${star}</span>`:''}</td>
       <td><span class="badge">${escapeHtml(catFor(o.outcome_name))}</span></td>
       <td>${escapeHtml(o.measurement_unit||'')}</td>
       <td>${escapeHtml(o.description||'')}</td></tr>`;
@@ -571,9 +530,9 @@ function renderOnet(onet) {
   if (!onet) return '';
   const alts = (onet.alternates||[]).map(a => `<span class="pill" title="${escapeHtml(a.mapping_type||'')}">${escapeHtml(a.onet_code)} — ${escapeHtml(a.onet_label)}</span>`).join('');
   return `<div class="pd-section"><h3>O*NET mapping</h3>
-    <div><span class="pill" style="background:#cef; padding:2px 8px; font-family:monospace; border-radius:3px;">${escapeHtml(onet.onet_code||'?')}</span>
+    <div><span class="pill" style="background:var(--accent-soft); color:var(--accent); font-family:var(--mono); border-radius:3px;">${escapeHtml(onet.onet_code||'?')}</span>
       <b>${escapeHtml(onet.onet_label||'')}</b> ${confPill(onet.mapping_confidence)}
-      <span style="color:#999;font-size:11px;">(${escapeHtml(onet.mapping_type||'')})</span></div>
+      <span class="help">(${escapeHtml((onet.mapping_type||'').replace('_',' '))})</span></div>
     ${onet.rationale ? `<div class="pd-onet-rationale">${escapeHtml(onet.rationale)}</div>`:''}
     ${alts ? `<div class="pd-onet-alt"><b>Alternates:</b><br>${alts}</div>`:''}
   </div>`;
@@ -600,13 +559,13 @@ function renderStats(stats) {
     if (s.p_value) extras.push(`p: ${s.p_value}`);
     if (s.confidence_interval) extras.push(`CI: ${s.confidence_interval}`);
     return `<div class="pd-stat">
-      <div class="head"><b>${escapeHtml(s.outcome_name||'?')}</b><span style="color:#666;">${escapeHtml(s.arm_comparison||'')}</span></div>
+      <div class="head"><b>${escapeHtml(s.outcome_name||'?')}</b><span class="help">${escapeHtml(s.arm_comparison||'')}</span></div>
       ${numParts.length ? `<div class="nums">${escapeHtml(numParts.join('  •  '))}</div>`:''}
       ${extras.length ? `<div class="nums">${escapeHtml(extras.join('  •  '))}</div>`:''}
       ${s.verbatim_quote ? `<div class="vq">"${escapeHtml(s.verbatim_quote)}"</div>`:''}
     </div>`;
   }).join('');
-  const more = stats.length>30 ? `<div style="color:#999;font-size:11px;">… ${stats.length-30} more</div>` : '';
+  const more = stats.length>30 ? `<div class="help">… ${stats.length-30} more</div>` : '';
   return `<div class="pd-section"><h3>Reported statistics (${stats.length})</h3>${items}${more}</div>`;
 }
 
@@ -631,8 +590,8 @@ function renderPaperDetail(pid, d) {
       ${renderEffectCard('quality', quality)}
     </div>
     ${meth.classification ? `<div class="pd-section"><h3>Method classification</h3>
-      <div><b>${escapeHtml(meth.classification)}</b> ${confPill(meth.confidence)}</div>
-      ${meth.rationale ? `<div style="color:#555; font-size:12px; margin-top:4px;">${escapeHtml(meth.rationale)}</div>`:''}
+      <div><b>${escapeHtml(meth.classification.replace(/_/g,' '))}</b> ${confPill(meth.confidence)}</div>
+      ${meth.rationale ? `<div style="color:var(--ink-2); font-size:13.5px; margin-top:6px; line-height:1.55;">${escapeHtml(meth.rationale)}</div>`:''}
     </div>`:''}
     ${renderOnet(onet)}
     ${renderArms(ext.arms)}
@@ -654,47 +613,40 @@ load();
 # ---------- results.html (per-run viewer) ----------
 
 _RESULTS_STYLE = _STYLE_COMMON + r"""
-  main { padding: 16px 24px; background:#f5f5f7; min-height: calc(100vh - 50px); }
-  .toolbar { display:flex; gap:14px; align-items:center; background:#fff; padding:10px 14px; border-radius:6px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
-  .toolbar label { font-size:12px; color:#555; }
-  .toolbar input, .toolbar select { padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px; }
-  .toolbar .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; }
-  .toolbar .seg button { padding:4px 11px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
-  .toolbar .seg button.active { background:#5b3aa6; color:#fff; }
-  table { width:100%; background:#fff; border-collapse:collapse; border-radius:6px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; font-size:12px; }
-  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
-  tbody tr:nth-child(even) { background:#fafafa; }
-  tbody tr:hover { background:#eef6ff; }
-  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
-  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
   .bar { display:inline-block; height:6px; vertical-align:middle; border-radius:2px; }
-  .bar.pos { background:#0a6c2c; } .bar.neg { background:#b32020; }
-  .badge { display:inline-block; padding:1px 7px; border-radius:10px; font-size:10px; font-weight:600; text-transform:uppercase; }
-  .badge.observed { background:#d4f4d4; color:#0a6c2c; } .badge.imputed { background:#eee; color:#555; }
-  .params { background:#fff; padding:10px 14px; border-radius:6px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05); font-size:12px; color:#555; }
-  .params b { color:#222; font-family: monospace; }
+  .bar.pos { background:var(--pos); } .bar.neg { background:var(--neg); }
+  #t th { cursor:pointer; user-select:none; }
+  .params { font-family:var(--mono); font-size:12px; color:var(--ink-2); line-height:1.7; }
 """
 
 
 _RESULTS_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><title>Run results &mdash; AI Impact Meta-Review</title>
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>Run results &mdash; AI Impact Meta-Review</title>
 <style>__STYLE__</style></head><body>
 __HEADER__
-<main>
-  <div class="params" id="params">Loading&hellip;</div>
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <div class="crumbs"><a href="runs.html">Imputation runs</a> / <span id="crumbId" class="mono"></span></div>
+      <h1>Imputed impacts</h1>
+      <p class="lede">Estimated effects for every occupation and work activity after propagating the observed studies across
+        the O*NET graph. <span class="badge observed">Observed</span> rows are anchored by at least one study; the rest are imputed.</p>
+      <p class="page-meta" id="stats" style="margin:8px 0 0;"></p>
+    </div>
+    <div class="page-actions"><button class="btn" onclick="exportCsv()">Download this view (CSV)</button></div>
+  </section>
+  <details class="card"><summary>Run parameters</summary><div class="params" id="params">Loading&hellip;</div></details>
+  <div id="warn"></div>
   <div class="toolbar">
     <div class="seg" id="viewSeg">
       <button data-v="occ" class="active">Occupations</button>
       <button data-v="act">Activities</button>
     </div>
-    <label>std &le; <input type="number" id="stdFilter" value="5" step="0.05" style="width:60px;"/></label>
-    <label><input type="checkbox" id="onlyObserved"/> only observed</label>
-    <label>search <input type="text" id="search" placeholder="title/code&hellip;"/></label>
-    <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export view as CSV</button>
+    <label>Posterior SD &le; <input type="number" id="stdFilter" value="5" step="0.05" style="width:70px;"/></label>
+    <label><input type="checkbox" id="onlyObserved"/> Observed only</label>
+    <input type="search" id="search" placeholder="Search title or code&hellip;" style="margin-left:auto; min-width:240px;"/>
   </div>
-  <div id="warn"></div>
-  <table id="t"><thead id="th"></thead><tbody id="tb"></tbody></table>
+  <table id="t" class="data"><thead id="th"></thead><tbody id="tb"></tbody></table>
 </main>
 <script>
 const DEFAULT_RUN_ID = "__DEFAULT_RUN_ID__";
@@ -706,15 +658,16 @@ function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&a
 async function load(){
   const params = new URLSearchParams(location.search);
   const runId = params.get('run') || DEFAULT_RUN_ID;
-  if (!runId) { document.body.innerHTML = '<p style="padding:30px;">No canonical run available. See <a href="runs.html">All runs</a>.</p>'; return; }
+  if (!runId) { document.querySelector('main').innerHTML = '<div class="err" style="margin-top:30px;">No canonical run is available. See <a href="runs.html">all runs</a>.</div>'; return; }
   const r = await fetch('data/runs/' + encodeURIComponent(runId) + '.json');
-  if (!r.ok) { document.body.innerHTML = '<p style="padding:30px;">Unknown run: ' + escapeHtml(runId) + '. See <a href="runs.html">All runs</a>.</p>'; return; }
+  if (!r.ok) { document.querySelector('main').innerHTML = '<div class="err" style="margin-top:30px;">Unknown run: ' + escapeHtml(runId) + '. See <a href="runs.html">all runs</a>.</div>'; return; }
   DATA = await r.json();
   const p = DATA.params;
+  document.getElementById('crumbId').textContent = DATA.run_id;
   document.getElementById('stats').textContent =
-    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
-    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
-    ` · kept ${DATA.n_kept_occ}/${DATA.n_kept_act}`;
+    `Metric: ${p.metric} · β = ${p.beta} · Ω_ref = ${p.omega_ref}` +
+    (DATA.baseline_active ? ` · AIOE baseline Ω_b = ${p.omega_base}` : '') +
+    ` · ${DATA.n_kept_occ} occupations and ${DATA.n_kept_act} activities kept`;
   document.getElementById('params').innerHTML =
     `<b>Run:</b> ${escapeHtml(DATA.run_id)} · <b>${p.metric}</b> · β=${p.beta} · agg=${escapeHtml(p.aggregation_level||'-')} · ` +
     `Ω_ref=${p.omega_ref}${DATA.baseline_active?` · baseline Ω_b=${p.omega_base}`:''} · ` +
@@ -722,8 +675,8 @@ async function load(){
     `data_source=${escapeHtml(DATA.data_source||'-')}`;
   const un = (DATA.unmatched_occ_codes||[]).concat(DATA.unmatched_act_labels||[]);
   if (un.length) document.getElementById('warn').innerHTML =
-    `<div style="background:#fff8e0; border:1px solid #d2b048; padding:8px 12px; border-radius:4px; margin-bottom:10px; font-size:12px;">
-      ${un.length} unmatched observation(s) skipped: ${un.slice(0,10).join(', ')}${un.length>10?'…':''}
+    `<div class="callout warn" style="margin-bottom:14px;">
+      ${un.length} observation(s) could not be matched to O*NET and were skipped: ${escapeHtml(un.slice(0,10).join(', '))}${un.length>10?'…':''}
     </div>`;
   render();
 }
@@ -760,8 +713,9 @@ function render(){
     : [colName, 'observed', 'estimate', 'posterior_std', 'n_studies'];
 
   document.getElementById('th').innerHTML = '<tr>' + cols.map(c => {
-    const labels = {code:'Code', title:'Title', activity:'Activity', observed:'Observed', aioe_baseline:'AIOE', estimate:'Estimate', posterior_std:'Std', n_studies:'n'};
-    return `<th onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`;
+    const labels = {code:'SOC code', title:'Occupation', activity:'Work activity', observed:'Observed', aioe_baseline:'AIOE', estimate:'Estimate', posterior_std:'Posterior SD', n_studies:'Studies'};
+    const num = ['aioe_baseline','estimate','posterior_std','n_studies'].includes(c) ? ' style="text-align:right"' : '';
+    return `<th${num} onclick="sortBy('${c}')">${labels[c]||c}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`;
   }).join('') + '<th>Effect</th></tr>';
 
   document.getElementById('tb').innerHTML = filtered.map(r=>{
@@ -776,6 +730,7 @@ function render(){
       if (c==='posterior_std') return `<td class="num">${fmtNum(r.posterior_std)}</td>`;
       if (c==='aioe_baseline') return `<td class="num">${r.aioe_baseline===undefined||r.aioe_baseline===null?'':fmtNum(r.aioe_baseline)}</td>`;
       if (c==='n_studies') return `<td class="num">${r.n_studies===null||r.n_studies===undefined||r.n_studies===''?'':parseInt(r.n_studies)}</td>`;
+      if (c==='code') return `<td class="mono" style="font-size:12px; color:var(--ink-2);">${escapeHtml(r[c]||'')}</td>`;
       return `<td>${escapeHtml(r[c]||'')}</td>`;
     }).join('') + `<td>${bar}</td></tr>`;
   }).join('');
@@ -802,35 +757,33 @@ load();
 # ---------- runs.html (all runs index) ----------
 
 _RUNS_STYLE = _STYLE_COMMON + r"""
-  main { max-width:1100px; margin:24px auto; padding:0 18px; }
-  .intro { color:#555; font-size:13px; margin-bottom:14px; }
-  table { width:100%; background:#fff; border-collapse:collapse; border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
-  th, td { padding:9px 12px; text-align:left; border-bottom:1px solid #eee; }
-  th { background:#f7f7f9; font-size:11px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
-  tr.clickable:hover { background:#f0f6ff; cursor:pointer; }
-  .pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; }
-  .pill.speed { background:#e6f3ff; color:#0463a3; } .pill.quality { background:#ffe6f0; color:#a0286c; }
-  td.num { font-variant-numeric: tabular-nums; font-family: ui-monospace, Menlo, monospace; }
+  :root { --page-w: 1120px; }
+  tr.clickable { cursor:pointer; }
+  td.id { font-family:var(--mono); font-size:11.5px; color:var(--ink-2); white-space:nowrap; }
   th.num, td.num { text-align:right; white-space:nowrap; }
-  h2 { font-size:17px; margin:26px 0 4px; }
-  .blurb { color:#555; font-size:12.5px; margin:0 0 10px; max-width:80ch; line-height:1.5; }
-  .rid { font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#888; }
-  .verdict { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; }
-  .verdict.good { background:#d4f4d4; color:#0a6c2c; } .verdict.bad { background:#fde2df; color:#b32020; }
-  .verdict.neutral { background:#eee; color:#555; }
-  .agree { display:inline-block; height:6px; border-radius:2px; background:#5b3aa6; vertical-align:middle; margin-left:6px; opacity:.75; }
+  .group { margin-top:30px; }
+  .group h2 { margin:0 0 4px; }
+  .group .blurb { color:var(--ink-2); margin:0 0 12px; max-width:80ch; }
+  .verdict { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11.5px; font-weight:600; white-space:nowrap; }
+  .verdict.good { background:var(--ok-bg); color:var(--ok-ink); } .verdict.bad { background:var(--err-bg); color:var(--err-ink); }
+  .verdict.neutral { background:var(--surface-2); color:var(--ink-2); }
+  .agree { display:inline-block; height:6px; border-radius:2px; background:var(--accent); vertical-align:middle; margin-left:6px; opacity:.7; }
 """
 
 _RUNS_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><title>Runs &mdash; AI Impact Meta-Review</title>
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>Imputation runs &mdash; AI Impact Meta-Review</title>
 <style>__STYLE__</style></head><body>
 __HEADER__
-<main>
-  <p class="intro" id="intro">
-    Published analysis runs. Click a row to open its results, or see the
-    <a href="summary.html">Summary</a> for charts and findings across the whole set.
-    See <a href="parameters.html">Parameters</a> for what the knobs do.
-  </p>
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <h1>Imputation runs</h1>
+      <p class="lede" id="intro">Each run propagates the observed effects across the O*NET graph under one combination of metric, &beta;,
+        pruning, and baseline settings. Click a row to see its results; the <a href="summary.html">summary</a> charts
+        findings across the whole set, and the <a href="parameters.html">method</a> page explains each setting.</p>
+    </div>
+    <span class="page-meta" id="stats"></span>
+  </section>
   <div id="groups"></div>
 </main>
 <script>
@@ -849,37 +802,37 @@ function verdict(rk){
   return '<span class="verdict neutral">no clear signal</span>';
 }
 
-function table(head, body){ return `<table><thead><tr>${head.map(h=>`<th${h[1]?' class="num"':''}>${h[0]}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table>`; }
+function table(head, body){ return `<table class="data"><thead><tr>${head.map(h=>`<th${h[1]?' class="num"':''}>${h[0]}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table>`; }
 
 function renderGroup(g, runs){
-  let html = `<h2>${escapeHtml(g.title)}</h2><p class="blurb">${escapeHtml(g.blurb||'')}</p>`;
+  let html = `<section class="group"><h2>${escapeHtml(g.title)}</h2><p class="blurb">${escapeHtml(g.blurb||'')}</p>`;
   if (g.id === 'validation') {
     html += table([['Run'],['Metric'],['Setting'],['Folds',1],['Kendall τ-b',1],['95% CI',1],['Spearman ρ',1],['MAE',1],['Verdict']],
       runs.map(r => { const s=r.loo_summary||{}, rk=(s.rank||{}).overall||{}, o=s.overall||{};
-        return row(r, [`<td class="rid">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
+        return row(r, [`<td class="id">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
           `<td>${escapeHtml((r.label||'').replace(/^LOO · (Speed|Quality) · /,''))}</td>`, `<td class="num">${o.n??'—'}</td>`,
           `<td class="num">${f(rk.kendall_tau)}</td>`, `<td class="num">${rk.tau_ci?`[${f(rk.tau_ci[0])}, ${f(rk.tau_ci[1])}]`:'—'}</td>`,
           `<td class="num">${f(rk.spearman_r)}</td>`, `<td class="num">${f(o.mae,3)}</td>`, `<td>${verdict(rk)}</td>`]); }).join(''));
   } else if (g.id === 'sensitivity') {
     html += table([['Run'],['Metric'],['Change vs headline'],['Kept occ/act',1],['Occ ρ',1],['Occ top-10',1],['Act ρ',1],['Act top-10',1]],
       runs.map(r => { const a=r.agreement||{};
-        return row(r, [`<td class="rid">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
-          `<td>${escapeHtml((r.label||'').replace(/^(Speed|Quality) · /,''))}</td>`, `<td class="num">${r.n_kept_occ}/${r.n_kept_act}</td>`,
+        return row(r, [`<td class="id">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
+          `<td>${escapeHtml((r.label||'').replace(/^(Speed|Quality) · /,''))}</td>`, `<td class="num">${r.n_kept_occ} / ${r.n_kept_act}</td>`,
           agreeCell(a.occupation), agreeCell(a.activity)]); }).join(''));
   } else {
-    html += table([['Run'],['Metric'],['Aggregation'],['β',1],['Baseline'],['Obs occ/act',1],['Kept occ/act',1],['Occ ρ vs occupation run',1]],
+    html += table([['Run'],['Metric'],['Aggregation'],['β',1],['Baseline'],['Observed occ/act',1],['Kept occ/act',1],['Occ ρ vs occupation run',1]],
       runs.map(r => { const p=r.params||{}, a=(r.agreement||{}).occupation;
-        return row(r, [`<td class="rid">${escapeHtml(r.run_id)}</td>`, `<td>${pill(p.metric)}</td>`, `<td>${escapeHtml(lvl(r))}</td>`,
-          `<td class="num">${p.beta}</td>`, `<td>${r.baseline_active?`AIOE (Ω<sub>b</sub>=${p.omega_base})`:'—'}</td>`,
-          `<td class="num">${r.n_observed_occ}/${r.n_observed_act}</td>`, `<td class="num">${r.n_kept_occ}/${r.n_kept_act}</td>`,
+        return row(r, [`<td class="id">${escapeHtml(r.run_id)}</td>`, `<td>${pill(p.metric)}</td>`, `<td>${escapeHtml(lvl(r))}</td>`,
+          `<td class="num">${p.beta}</td>`, `<td>${r.baseline_active?`AIOE, Ω<sub>b</sub>=${p.omega_base}`:'—'}</td>`,
+          `<td class="num">${r.n_observed_occ} / ${r.n_observed_act}</td>`, `<td class="num">${r.n_kept_occ} / ${r.n_kept_act}</td>`,
           `<td class="num">${a?f(a.spearman):'reference'}</td>`]); }).join(''));
   }
-  return html;
+  return html + '</section>';
 }
 
 fetch('data/runs/index.json').then(r=>r.json()).then(d=>{
   const el = document.getElementById('groups');
-  if (!d.runs.length) { el.innerHTML='<p style="color:#888;">No runs published.</p>'; return; }
+  if (!d.runs.length) { el.innerHTML='<p style="color:var(--muted);">No runs published.</p>'; return; }
   document.getElementById('stats').textContent = `${d.runs.length} runs`;
   if (d.observations) {
     const o = d.observations;
@@ -900,51 +853,42 @@ fetch('data/runs/index.json').then(r=>r.json()).then(d=>{
 
 # ---------- loo.html (leave-one-out viewer; port of review_app.LOO_HTML) ----------
 
-_LOO_STYLE = _STYLE_COMMON + r"""
-  body { background:#f5f5f7; }
-  main { padding: 16px 24px; max-width:1200px; margin:0 auto; }
-  .card { background:#fff; border-radius:6px; padding:14px 18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-  .card h2 { margin:0 0 8px; font-size:13px; text-transform:uppercase; color:#555; letter-spacing:0.04em; }
-  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
-  .metric { background:#f7f8fa; border-radius:5px; padding:9px 12px; }
-  .metric .k { color:#666; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; }
-  .metric .v { font-family:ui-monospace,Menlo,monospace; font-size:16px; font-weight:600; color:#222; margin-top:2px; }
-  .subheads { display:flex; gap:22px; margin-top:10px; color:#666; font-size:12px; }
-  table { width:100%; border-collapse:collapse; font-size:12px; }
-  th, td { padding:6px 10px; text-align:left; border-bottom:1px solid #eee; }
-  th { background:#f7f7f9; font-size:10px; text-transform:uppercase; color:#555; cursor:pointer; user-select:none; letter-spacing:0.04em; }
-  tbody tr:nth-child(even) { background:#fafafa; }
-  tbody tr:hover { background:#eef6ff; }
-  td.num { font-family:ui-monospace,Menlo,monospace; text-align:right; }
-  td.num.pos { color:#0a6c2c; } td.num.neg { color:#b32020; }
-  .toolbar { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
-  .seg { display:inline-flex; border:1px solid #ccc; border-radius:4px; overflow:hidden; }
-  .seg button { padding:5px 12px; background:#fff; border:0; cursor:pointer; color:#555; font-size:12px; }
-  .seg button.active { background:#8a5700; color:#fff; }
-  svg.scatter { display:block; background:#fff; }
-  svg.scatter .axis { stroke:#999; stroke-width:1; }
-  svg.scatter .grid { stroke:#eee; stroke-width:1; }
-  svg.scatter .tick { font-family:-apple-system,sans-serif; font-size:10px; fill:#666; }
-  svg.scatter .diag { stroke:#a00; stroke-width:1; stroke-dasharray:4 3; }
-  svg.scatter circle.occ { fill:#234876; opacity:0.7; }
-  svg.scatter circle.act { fill:#8a5700; opacity:0.7; }
-  svg.scatter .band { fill:#a00; opacity:0.06; }
-  .metric .sub { color:#888; font-size:11px; font-family:-apple-system,sans-serif; font-weight:400; margin-top:2px; }
-  .note { font-size:11px; color:#666; margin-top:10px; line-height:1.5; }
+_LOO_HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Leave-one-out CV · AI Impact Meta-Review</title>
+__THEME_HEAD__
+<style>
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px; }
+  .subheads { display:flex; gap:24px; margin-top:12px; color:var(--muted); font-size:13px; flex-wrap:wrap; }
+  .subheads span { color:var(--ink) !important; font-family:var(--mono) !important; font-size:12.5px; }
+  .card table { border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); }
+  .card table th { cursor:pointer; user-select:none; }
+  .card .toolbar { border:0; padding:0; background:transparent; }
+  svg.scatter { display:block; background:var(--surface); }
+  svg.scatter .axis { stroke:#9a968d; stroke-width:1; }
+  svg.scatter .grid { stroke:#eeebe4; stroke-width:1; }
+  svg.scatter .tick { font-family:var(--sans); font-size:11px; fill:#787c84; }
+  svg.scatter .diag { stroke:#1d1f23; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle { stroke:#fff; stroke-width:1; }
+  svg.scatter circle.occ { fill:#2e67a8; opacity:0.8; }
+  svg.scatter circle.act { fill:#c0762b; opacity:0.8; }
+  svg.scatter .band { fill:#23406a; opacity:0.06; }
   .note ol { margin:4px 0 0 18px; padding:0; }
-  .charts { display:flex; flex-wrap:wrap; gap:18px; }
+  .charts { display:flex; flex-wrap:wrap; gap:24px; }
   .charts > div { flex:1 1 420px; min-width:0; }
-  .charts h3 { margin:0 0 4px; font-size:12px; color:#555; font-weight:600; }
-"""
-
-_LOO_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><title>Leave-one-out CV &mdash; AI Impact Meta-Review</title>
-<style>__STYLE__</style></head><body>
+  .charts h3 { margin:0 0 6px; font-size:15px; }
+</style></head><body>
 __HEADER__
-<main>
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <div class="crumbs"><a href="runs.html">Imputation runs</a> / <span class="mono" id="crumbId"></span></div>
+      <h1>Leave-one-out cross-validation</h1>
+      <p class="lede">Each observed effect is held out in turn and re-predicted from the rest of the graph. This tests whether the graph recovers held-out values and their ordering.</p>
+    </div>
+    <div class="page-actions"><span class="page-meta" id="stats">…</span></div>
+  </section>
   <div class="card">
-    <h2 id="runLabel">Run parameters</h2>
-    <div id="paramsLine" style="font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#333;">…</div>
+    <h2>Run parameters</h2>
+    <div id="paramsLine" class="mono" style="font-size:12.5px; color:var(--ink-2);">…</div>
   </div>
 
   <div class="card">
@@ -958,7 +902,7 @@ __HEADER__
 
   <div class="card">
     <h2>Rank recovery (held-out)</h2>
-    <div style="font-size:12px; color:#555; margin-bottom:10px;">
+    <div class="help" style="margin-bottom:12px;">
       Does the graph put held-out nodes in the right <b>order</b>? Each node is ranked by its held-out prediction and compared
       with its rank by actual value. Rank statistics ignore uniform shrinkage, so they test ordering, not magnitude.
     </div>
@@ -976,15 +920,15 @@ __HEADER__
       <div>
         <h3>Value: actual vs predicted</h3>
         <div id="scatterWrap"></div>
-        <div style="font-size:11px; color:#666; margin-top:6px;">Dashed line = perfect prediction (y = x).</div>
+        <div class="help" style="margin-top:6px;">Dashed line: perfect prediction (y = x).</div>
       </div>
       <div>
         <h3>Rank: actual rank vs held-out rank</h3>
         <div id="rankScatterWrap"></div>
-        <div style="font-size:11px; color:#666; margin-top:6px;">Rank 1 = largest effect. Shaded band = within ±2 ranks.</div>
+        <div class="help" style="margin-top:6px;">Rank 1 is the largest effect. Shaded band: within &plusmn;2 ranks.</div>
       </div>
     </div>
-    <div style="font-size:11px; color:#666; margin-top:6px;">Blue points = occupation holdouts, orange = activity holdouts.</div>
+    <div class="chart-legend"><span><span class="sw" style="background:#2e67a8; border-radius:50%; width:10px;"></span>Occupation held out</span><span><span class="sw" style="background:#c0762b; border-radius:50%; width:10px;"></span>Activity held out</span></div>
   </div>
 
   <div class="card">
@@ -995,8 +939,8 @@ __HEADER__
         <button data-f="occupation">Occupations</button>
         <button data-f="activity">Activities</button>
       </div>
-      <label style="font-size:12px; color:#555;">search <input type="text" id="search" placeholder="label/code…" style="padding:4px 7px; border:1px solid #ccc; border-radius:3px; font-size:12px;"/></label>
-      <button onclick="exportCsv()" style="margin-left:auto; padding:4px 10px; cursor:pointer;">Export CSV</button>
+      <input type="search" id="search" placeholder="Search label or code…" style="min-width:240px;"/>
+      <button class="btn" onclick="exportCsv()" style="margin-left:auto;">Download CSV</button>
     </div>
     <table><thead id="th"></thead><tbody id="tb"></tbody></table>
   </div>
@@ -1009,10 +953,12 @@ function fmt(x,p){ if(x==null) return '—'; const n=parseFloat(x); return isNaN
 function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
 async function load() {
+  document.getElementById('crumbId').textContent = RUN_ID;
   const resp = await fetch('data/runs/' + encodeURIComponent(RUN_ID) + '.json');
-  if (!resp.ok) { document.querySelector('main').innerHTML = '<p style="padding:30px;">Unknown run: ' + escapeHtml(RUN_ID) + '. See <a href="runs.html">Runs</a>.</p>'; return; }
+  if (!resp.ok) { document.querySelector('main').innerHTML = '<div class="err" style="margin-top:30px;">Unknown run: ' + escapeHtml(RUN_ID) + '. See <a href="runs.html">Imputation runs</a>.</div>'; return; }
   DATA = await resp.json();
   if (!DATA.loo) { location.replace('results.html?run=' + encodeURIComponent(RUN_ID)); return; }
+  if (DATA.label) document.querySelector('.page-head h1').textContent = DATA.label;
   const p = DATA.params;
   document.getElementById('stats').textContent =
     `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
@@ -1024,7 +970,6 @@ async function load() {
     `weight_threshold=${p.activity_weight_threshold} · excluded=[${(p.excluded_soc_majors||[]).join(',')}]` +
     (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '');
 
-  if (DATA.label) document.getElementById('runLabel').textContent = DATA.label;
   const s = DATA.loo.summary;
   const grid = document.getElementById('overallGrid');
   const o = s.overall || {};
@@ -1091,7 +1036,7 @@ function renderRankCard() {
   document.getElementById('actRank').textContent = sub(R.activity);
   const m = R.method || {};
   document.getElementById('rankNote').innerHTML =
-    (R.backfilled ? '<div style="color:#8a5700;">Rank stats computed on load for this older run.</div>' : '') +
+    (R.backfilled ? '<div style="color:var(--warn-ink);">Rank stats computed on load for this older run.</div>' : '') +
     escapeHtml(m.description||'') +
     (m.citations && m.citations.length ? '<ol>' + m.citations.map(c=>`<li>${escapeHtml(c)}</li>`).join('') + '</ol>' : '');
 }
@@ -1185,7 +1130,7 @@ function renderTable() {
     const rcls = rc > 0.001 ? 'pos' : rc < -0.001 ? 'neg' : '';
     return '<tr>' +
       `<td>${r.node_type}</td>` +
-      `<td style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#666;">${escapeHtml(r.code||'')}</td>` +
+      `<td class="mono" style="font-size:11.5px; color:var(--muted);">${escapeHtml(r.code||'')}</td>` +
       `<td>${escapeHtml(r.label||'')}</td>` +
       `<td class="num">${fmt(r.actual,3)}</td>` +
       `<td class="num">${fmt(r.predicted,3)}</td>` +
@@ -1217,93 +1162,72 @@ load();
 """
 
 
-# ---------- summary.html (curated-run overview; same design as the review artifact) ----------
+# ---------- summary.html (curated-run overview: findings, agreement and LOO charts) ----------
 
 _SUMMARY_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Run summary &mdash; AI Impact Meta-Review</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap">
-<style>__STYLE_COMMON__
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>Run summary &mdash; AI Impact Meta-Review</title>
+<style>
 :root{
-  --bg:#f5f6f8; --surface:#ffffff; --ink:#1b2230; --ink-2:#4d5566; --muted:#7a8293; --rule:#dde1e8; --grid:#eceff3;
-  --speed:#2a78d6; --quality:#eb6834;
-  --good:#1a7f4b; --good-bg:#e3f3ea; --bad:#b8322a; --bad-bg:#fbe6e3; --neutral-bg:#eceef2;
+  --page-w:1120px;
+  --grid:var(--rule-soft); --good:var(--ok-ink); --good-bg:var(--ok-bg);
+  --bad:var(--err-ink); --bad-bg:var(--err-bg); --neutral-bg:var(--surface-2);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme: dark;
-    --bg:#12151b; --surface:#1a1e26; --ink:#e8ecf2; --ink-2:#b7beca; --muted:#8a92a1; --rule:#2c323d; --grid:#242a33;
-    --speed:#3987e5; --quality:#d95926;
-    --good:#5cc48c; --good-bg:#15321f; --bad:#f07a6e; --bad-bg:#3a1c19; --neutral-bg:#262b34;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme: dark;
-  --bg:#12151b; --surface:#1a1e26; --ink:#e8ecf2; --ink-2:#b7beca; --muted:#8a92a1; --rule:#2c323d; --grid:#242a33;
-  --speed:#3987e5; --quality:#d95926;
-  --good:#5cc48c; --good-bg:#15321f; --bad:#f07a6e; --bad-bg:#3a1c19; --neutral-bg:#262b34;
-}
-body{background:var(--bg);color:var(--ink);font:14px/1.55 "IBM Plex Sans",system-ui,-apple-system,sans-serif}
-.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 60px;display:flex;flex-direction:column;gap:34px}
-.wrap h1,.wrap h2{font-family:"Newsreader",Georgia,serif;font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.01em}
-.wrap h1{font-size:34px;line-height:1.1}
-.wrap h2{font-size:23px}
-.wrap h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:600}
-.wrap p{margin:0;max-width:68ch;color:var(--ink-2)}
-.wrap a{color:var(--speed)}
-.num{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
-.lede{display:flex;flex-direction:column;gap:12px}
-.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:6px;font-size:13px;color:var(--ink-2)}
-.facts b{color:var(--ink);font-family:"IBM Plex Mono",monospace;font-weight:500}
-section{display:flex;flex-direction:column;gap:14px}
+.sum section{display:flex;flex-direction:column;gap:14px;margin-top:34px}
+.sum section.page-head{display:flex;flex-direction:row;margin-top:0}
+.sum h2{margin:0}
+.sum h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:600;font-family:var(--sans)}
+.sum p{margin:0;max-width:72ch;color:var(--ink-2)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:10px;font-size:13px;color:var(--ink-2)}
+.facts b{color:var(--ink);font-family:var(--mono);font-weight:500}
 .findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.finding{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
-.finding p{font-size:13px}
+.finding{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.finding strong{font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.3}
+.finding p{font-size:13.5px}
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;width:fit-content;letter-spacing:.02em}
 .chip.good{background:var(--good-bg);color:var(--good)} .chip.bad{background:var(--bad-bg);color:var(--bad)} .chip.neutral{background:var(--neutral-bg);color:var(--ink-2)}
 .key{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
 .key.speed{background:var(--speed)} .key.quality{background:var(--quality)}
-.panel{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:16px 18px}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 18px}
 .scroll{overflow-x:auto}
-.wrap table{border-collapse:collapse;width:100%;font-size:13px}
-.wrap th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
-.wrap td{padding:7px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
-.wrap tr:last-child td{border-bottom:0}
-.wrap td.num,.wrap th.num{text-align:right}
-.wrap tr.link{cursor:pointer} .wrap tr.link:hover td{background:var(--grid)}
-.rid{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
-.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--surface)}
-.seg button{font:inherit;font-size:13px;padding:5px 14px;border:0;background:transparent;color:var(--ink-2);cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.seg button:focus-visible{outline:2px solid var(--speed);outline-offset:-2px}
+.sum .panel table{border-collapse:collapse;width:100%;font-size:13px}
+.sum .panel th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;background:transparent}
+.sum .panel td{padding:7px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+.sum .panel tr:last-child td{border-bottom:0}
+.sum td.num,.sum th.num{text-align:right;white-space:nowrap}
+.sum tr.link{cursor:pointer} .sum tr.link:hover td{background:var(--hover)}
+.rid{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.sum .seg{display:inline-flex;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.sum .seg button{font:inherit;font-size:13px;padding:5px 14px;border:0;background:transparent;color:var(--ink-2);cursor:pointer}
+.sum .seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.sum .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
-.level{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.level{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .level header{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .level header strong{font-size:15px}
 .meta{font-size:12px;color:var(--muted)}
 ol.top{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px;font-size:13px}
-ol.top li{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline}
+ol.top li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline}
 ol.top li span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .obs{font-size:10px;font-weight:600;color:var(--good);margin-left:6px;letter-spacing:.04em}
 .chart svg{display:block;width:100%;height:auto}
-.chart text{fill:var(--ink-2);font-family:"IBM Plex Sans",sans-serif;font-size:12px}
-.chart .tick{fill:var(--muted);font-size:11px;font-family:"IBM Plex Mono",monospace}
+.chart text{fill:var(--ink-2);font-family:var(--sans);font-size:12px}
+.chart .tick{fill:var(--muted);font-size:11px;font-family:var(--mono)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--ink-2);align-items:center}
 .legend svg{vertical-align:middle;margin-right:4px}
-#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:6px 9px;border-radius:5px;max-width:320px;line-height:1.4;z-index:5}
-ul.plain{margin:0;padding-left:18px;color:var(--ink-2);font-size:13px;display:flex;flex-direction:column;gap:4px;max-width:80ch}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font-size:12px;padding:6px 9px;border-radius:5px;max-width:320px;line-height:1.4;z-index:5}
+ul.plain{margin:0;padding-left:18px;color:var(--ink-2);font-size:13.5px;display:flex;flex-direction:column;gap:4px;max-width:80ch}
 </style></head><body>
 __HEADER__
-<div class="wrap">
-  <header class="lede">
-    <span class="eyebrow">Imputation runs · overview</span>
-    <h1>What the published runs say</h1>
-    <p>These runs are the ones published on this site, all computed from one snapshot of the review table so they're directly comparable. They cover headline estimates at three aggregation levels, one-knob sensitivity checks against the occupation-level headline, and leave-one-out validation of rank recovery. Full tables are on <a href="runs.html">Runs</a>.</p>
-    <div class="facts" id="facts"></div>
-  </header>
-
+<main class="page wrap sum">
+  <section class="page-head">
+    <div>
+      <h1>What the published runs say</h1>
+      <p class="lede">These runs are the ones published on this site, all computed from one snapshot of the review table so they're directly comparable. They cover headline estimates at three aggregation levels, one-knob sensitivity checks against the occupation-level headline, and leave-one-out validation of rank recovery. Full tables are on <a href="runs.html">Imputation runs</a>.</p>
+      <div class="facts" id="facts"></div>
+    </div>
+    <span class="page-meta" id="stats"></span>
+  </section>
   <section>
     <h2>Findings</h2>
     <div class="findings" id="findings"></div>
@@ -1349,7 +1273,7 @@ __HEADER__
       <li>The set is defined in <span class="num">scripts/generate_site_runs.py</span>, which regenerates it from the live review table.</li>
     </ul>
   </section>
-</div>
+</main>
 <div id="tip" hidden></div>
 
 <script>
@@ -1473,7 +1397,7 @@ fetch('data/summary.json').then(r => r.json()).then(d => {
   ].join('');
   const st = $('stats'); if (st) st.textContent = `${S.runs.length} curated runs`;
   findings(); renderLevels('speed'); renderSens(); renderLoo();
-}).catch(() => { document.querySelector('.wrap').innerHTML = '<p>No run summary published. Build the site with a run manifest (scripts/generate_site_runs.py).</p>'; });
+}).catch(() => { document.querySelector('main.sum').innerHTML = '<p>No run summary published. Build the site with a run manifest (scripts/generate_site_runs.py).</p>'; });
 </script>
 </body></html>
 """
@@ -1482,32 +1406,34 @@ fetch('data/summary.json').then(r => r.json()).then(d => {
 # ---------- parameters.html (heatmap + bar chart + explanations, no submit) ----------
 
 _PARAMS_STYLE = _STYLE_COMMON + r"""
-  main { max-width:1000px; margin: 20px auto; padding: 0 18px; }
-  .card { background:#fff; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); padding:20px 24px; margin-bottom:18px; }
-  h2 { font-size:14px; text-transform:uppercase; letter-spacing:0.04em; color:#666; margin: 0 0 10px; }
-  .callout { padding: 12px 18px; background:#fff8e0; border:1px solid #d2b048; border-radius:6px; margin-bottom:18px; font-size:13px; color:#5a4200; line-height:1.5; }
-  .callout code { background:#fff; padding:1px 5px; border-radius:3px; font-size:12px; }
-  .seg { display:inline-flex; border:1px solid #ccc; border-radius:6px; overflow:hidden; }
-  .seg button { padding:6px 16px; background:#fff; border:0; cursor:pointer; font-size:13px; color:#555; }
-  .seg button.active { background:#5b3aa6; color:#fff; }
-  .help { color:#666; font-size:12px; line-height:1.5; }
-  .paramgrid { display:grid; grid-template-columns: 200px 1fr; gap: 6px 18px; align-items:baseline; margin-top: 4px; }
-  .paramgrid .k { font-weight:500; color:#333; font-family: ui-monospace, Menlo, monospace; font-size:13px; }
-  .paramgrid .v { color:#555; font-size:12px; line-height:1.5; }
-  .paramgrid .v b { color:#222; font-family: ui-monospace, Menlo, monospace; }
-  .threshold-row { display:flex; gap:14px; margin: 12px 0 6px; align-items:baseline; }
-  .threshold-row input[type=number] { padding:5px 7px; border:1px solid #ccc; border-radius:4px; font-size:13px; width:80px; }
+  :root { --page-w: 1080px; }
+  .paramgrid { display:grid; grid-template-columns: 210px 1fr; gap:10px 22px; align-items:baseline; margin-top:6px; }
+  .paramgrid .k { font-weight:500; color:var(--ink); font-family:var(--mono); font-size:13px; }
+  .paramgrid .v { color:var(--ink-2); font-size:14px; line-height:1.6; }
+  .paramgrid .v b { color:var(--ink); font-family:var(--mono); font-weight:500; font-size:13px; }
+  .threshold-row { display:flex; gap:14px; margin:18px 0 8px; align-items:baseline; flex-wrap:wrap; }
+  .threshold-row input[type=number] { width:90px; }
+  .summary-line { margin-top:12px; padding:10px 14px; background:var(--accent-soft); border-radius:4px; font-size:13.5px; color:var(--ink); }
+  #heatmap, #barchart { overflow:auto; border:1px solid var(--rule-soft); border-radius:4px; padding:8px; background:var(--surface); }
+  @media (max-width: 720px) { .paramgrid { grid-template-columns: 1fr; gap:2px 0; } .paramgrid .v { margin-bottom:10px; } }
 """
 
 
 _PARAMS_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><title>Parameters &mdash; AI Impact Meta-Review</title>
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>Method &mdash; AI Impact Meta-Review</title>
 <style>__STYLE__</style></head><body>
 __HEADER__
-<main>
-  <div class="callout">
-    <b>Read-only view.</b> This page visualises the inputs to the imputation model at the canonical
-    setting (&beta; = __BETA__). To launch new runs with different parameters, run the review app locally
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <h1>Method: from studies to O*NET-wide estimates</h1>
+      <p class="lede">The imputation model spreads observed effects from the occupations and activities that were studied to
+        those that weren&rsquo;t, following how strongly each occupation relies on each work activity.
+        This page shows the inputs to that model at the canonical setting (&beta; = __BETA__) and explains every parameter.</p>
+    </div>
+  </section>
+  <div class="callout" style="margin-bottom:18px;">
+    This is a read-only view. To launch runs with other settings, run the review app locally
     (<code>python scripts/review_app.py</code>) and open <code>/run</code>.
   </div>
 
@@ -1517,33 +1443,32 @@ __HEADER__
       <button data-m="speed" class="active">speed</button>
       <button data-m="quality">quality</button>
     </div>
-    <div class="help" style="margin-top:6px;">A run targets one metric at a time. Switching swaps the observation
-      overlays (green vertical lines = observed activities, cyan horizontal lines = SOC majors with at least one observed
-      occupation).</div>
+    <div class="help" style="margin-top:8px;">A run targets one metric at a time. Switching changes which activities and
+      SOC groups are flagged as observed in the charts below.</div>
   </div>
 
   <div class="card">
-    <h2>Stage B → Coverage heatmap</h2>
-    <div class="help" style="margin-bottom:8px;">
+    <h2>Stage B: how occupations load on work activities</h2>
+    <div class="help" style="margin-bottom:10px;">
       Mean Stage-B weight per SOC major group &times; O*NET work activity. Weights come from applying a
       row-wise softmax with temperature &beta; to each occupation's (Importance &times; Level / 5) profile, then
-      averaging within each SOC-major group. Cells are the average of a group's occupations. Click a row label
-      or checkbox to toggle its inclusion.
+      averaging within each SOC-major group. Red markers and bold labels flag activities and groups with an observed
+      effect for this metric; shaded rows are excluded. Click a row label or checkbox to toggle its inclusion.
     </div>
-    <div id="heatmap" style="overflow:auto;"></div>
+    <div id="heatmap"></div>
 
     <div class="threshold-row">
-      <label style="font-weight:500;">Activity weight threshold</label>
+      <label for="weightThreshold" style="font-weight:600;">Activity weight threshold</label>
       <input type="number" id="weightThreshold" value="10" step="0.5" min="0"/>
       <div class="help">Activities whose summed weight (over kept occupations) is below this are dropped.
         Observed activities are always kept.</div>
     </div>
-    <div id="barchart" style="overflow:auto;"></div>
-    <div id="pruneSummary" style="margin-top:10px; padding:8px 12px; background:#f0f4f8; border-radius:4px; font-size:13px; color:#333;"></div>
+    <div id="barchart"></div>
+    <div id="pruneSummary" class="summary-line"></div>
   </div>
 
   <div class="card">
-    <h2>What every parameter does</h2>
+    <h2>What each parameter does</h2>
     <div class="paramgrid">
       <div class="k">metric</div>
       <div class="v">Which effect-size column feeds the observations. <b>speed</b> = mean log-ratio;
@@ -1606,7 +1531,7 @@ document.getElementById('weightThreshold').addEventListener('input', renderBarCh
 
 async function loadHeatmap() {
   const r = await fetch('data/heatmap_' + METRIC + '.json');
-  if (!r.ok) { document.getElementById('heatmap').innerHTML = '<div style="color:#a00;">Missing heatmap data for '+METRIC+'.</div>'; return; }
+  if (!r.ok) { document.getElementById('heatmap').innerHTML = '<div class="err">Missing heatmap data for '+METRIC+'.</div>'; return; }
   HEAT = await r.json();
   if (EXCLUDED.size === 0) EXCLUDED = new Set(HEAT.default_excluded_socs);
   renderCharts();
@@ -1651,39 +1576,39 @@ function renderHeatmap() {
   let overlaySvg = '';
   rows.forEach((r, ri) => {
     if (EXCLUDED.has(r.code)) {
-      overlaySvg += `<rect x="${labelW}" y="${labelH+ri*cell}" width="${cols.length*cell}" height="${cell}" fill="rgba(180,180,180,0.55)"/>`;
+      overlaySvg += `<rect x="${labelW}" y="${labelH+ri*cell}" width="${cols.length*cell}" height="${cell}" fill="rgba(244,241,234,0.85)"/>`;
     }
   });
   let lineSvg = '';
   cols.forEach((c, ci) => {
     if (c.observed) {
       const x = labelW + ci*cell + cell/2;
-      lineSvg += `<line x1="${x}" y1="${labelH}" x2="${x}" y2="${labelH+rows.length*cell}" stroke="#39FF14" stroke-width="2"/>`;
+      lineSvg += `<rect x="${x-cell/2+2}" y="${labelH-7}" width="${cell-4}" height="5" rx="1" fill="#d1492e"/>`;
     }
   });
   rows.forEach((r, ri) => {
     if (r.observed && !EXCLUDED.has(r.code)) {
       const y = labelH + ri*cell + cell/2;
-      lineSvg += `<line x1="${labelW}" y1="${y}" x2="${labelW+cols.length*cell}" y2="${y}" stroke="#00E5FF" stroke-width="2"/>`;
+      lineSvg += `<rect x="${labelW-6}" y="${y-cell/2+2}" width="5" height="${cell-4}" rx="1" fill="#d1492e"/>`;
     }
   });
   const rowLabels = rows.map((r, ri) => {
     const y = labelH + ri*cell;
-    const fade = EXCLUDED.has(r.code) ? 'color:#aaa;' : '';
-    const bold = r.observed ? 'font-weight:600; color:#0077aa;' : '';
+    const fade = EXCLUDED.has(r.code) ? 'color:#a9a59c;' : '';
+    const bold = r.observed ? 'font-weight:600;' : '';
     return `<div style="position:absolute; left:0; top:${y}px; height:${cell}px; width:${labelW-6}px;
                        display:flex; align-items:center; gap:5px; font-size:11px; ${fade}${bold} cursor:pointer;"
                  onclick="toggleSoc('${r.code}')">
               <input type="checkbox" ${EXCLUDED.has(r.code)?'':'checked'} onclick="event.stopPropagation(); toggleSoc('${r.code}');" style="margin:0 4px;">
               <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(r.name)} (n=${r.n})">
-                ${escapeHtml(r.name)} <span style="color:#999; font-weight:400;">(n=${r.n})</span>
+                ${escapeHtml(r.name)} <span style="color:var(--muted); font-weight:400;">(n=${r.n})</span>
               </span>
             </div>`;
   }).join('');
   const colLabelY = labelH + rows.length * cell + 6;
   const colLabels = cols.map((c, ci) => {
     const x = labelW + ci*cell + cell/2;
-    const fill = c.observed ? '#1a9850' : '#444';
+    const fill = c.observed ? '#1d1f23' : '#5b5f67';
     const fw = c.observed ? '600' : '400';
     return `<text x="${x}" y="${colLabelY}" font-size="10" fill="${fill}" font-weight="${fw}"
                   transform="rotate(60 ${x} ${colLabelY})" text-anchor="start">${escapeHtml(c.name)}</text>`;
@@ -1695,10 +1620,10 @@ function renderHeatmap() {
       <svg width="${width}" height="${height}" style="display:block;">
         ${cellsSvg}${overlaySvg}${lineSvg}${colLabels}
       </svg>
-      <div style="display:flex; gap:18px; font-size:11px; color:#666; margin-top:6px;">
-        <span><span style="display:inline-block; width:10px; height:2px; background:#39FF14; vertical-align:middle;"></span> observed activity</span>
-        <span><span style="display:inline-block; width:10px; height:2px; background:#00E5FF; vertical-align:middle;"></span> SOC with observed occupation</span>
-        <span><span style="display:inline-block; width:10px; height:10px; background:rgba(180,180,180,0.55); vertical-align:middle;"></span> deselected</span>
+      <div class="chart-legend">
+        <span><span class="sw" style="background:#d1492e; width:10px; height:5px;"></span>Marker above a column / left of a row, with bold label: has an observed effect for this metric</span>
+        <span><span class="sw" style="background:#f4f1ea; border:1px solid #e2ddd2;"></span>Excluded</span>
+        <span>Weight <span class="sw" style="width:70px; margin:0 4px; background:linear-gradient(90deg, rgb(68,1,84), rgb(59,82,139), rgb(33,144,141), rgb(93,200,99), rgb(253,231,37));"></span>low &rarr; high</span>
       </div>
     </div>`;
 }
@@ -1725,21 +1650,23 @@ function renderBarChart() {
     const w = (sums[i] / vmax) * plotW;
     const y = padT + i * barH;
     const below = sums[i] < threshold;
-    const fill = a.observed ? '#0a6c2c' : '#4C72B0';
+    const fill = a.observed ? '#23406a' : '#a9b4c2';
     const opacity = below ? 0.35 : 1.0;
     bars += `<rect x="${labelW}" y="${y+1}" width="${w}" height="${barH-3}" fill="${fill}" opacity="${opacity}"/>`;
-    bars += `<text x="${labelW + w + 4}" y="${y+barH-3}" font-size="9" fill="${below?'#999':'#333'}">${sums[i].toFixed(1)}</text>`;
-    const tcol = a.observed ? '#0a6c2c' : '#333';
+    bars += `<text x="${labelW + w + 4}" y="${y+barH-3}" font-size="9" fill="${below?'#a9a59c':'#474b53'}">${sums[i].toFixed(1)}</text>`;
+    const tcol = below ? '#a9a59c' : '#1d1f23';
     bars += `<text x="${labelW-4}" y="${y+barH-3}" font-size="10" fill="${tcol}" text-anchor="end" font-weight="${a.observed?'600':'400'}">${escapeHtml(a.name)}</text>`;
   });
   const tx = labelW + (threshold / vmax) * plotW;
-  bars += `<line x1="${tx}" y1="${padT}" x2="${tx}" y2="${padT + acts.length*barH}" stroke="#a00" stroke-width="1.5" stroke-dasharray="4 3"/>`;
-  bars += `<text x="${tx + 3}" y="${padT - 2}" font-size="10" fill="#a00">threshold = ${threshold.toFixed(1)}</text>`;
+  bars += `<line x1="${tx}" y1="${padT}" x2="${tx}" y2="${padT + acts.length*barH}" stroke="#1d1f23" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  bars += `<text x="${tx + 3}" y="${padT - 2}" font-size="10" fill="#1d1f23">threshold = ${threshold.toFixed(1)}</text>`;
 
   document.getElementById('barchart').innerHTML = `
     <svg width="${labelW + plotW + 70}" height="${height}" style="display:block;">${bars}</svg>
-    <div style="font-size:11px; color:#666; margin-top:4px;">
-      Bars below the red dashed line are dropped. Green label/bar = observed (given).
+    <div class="chart-legend">
+      <span><span class="sw" style="background:#23406a;"></span>Observed activity (always kept)</span>
+      <span><span class="sw" style="background:#a9b4c2;"></span>Other activity</span>
+      <span>Faded bars fall left of the dashed threshold and are dropped.</span>
     </div>`;
 
   let occTotal = 0, occIncluded = 0;
@@ -1751,7 +1678,7 @@ function renderBarChart() {
   const actIncluded = acts.filter(a => a.observed || a.total >= threshold).length;
   const socIncluded = HEAT.soc_groups.length - EXCLUDED.size;
   document.getElementById('pruneSummary').innerHTML =
-    `<b>Included in analysis:</b> ${occIncluded.toLocaleString()} of ${occTotal.toLocaleString()} occupations ` +
+    `<b>Included:</b> ${occIncluded.toLocaleString()} of ${occTotal.toLocaleString()} occupations ` +
     `(${socIncluded} of ${HEAT.soc_groups.length} SOC major groups) · ` +
     `${actIncluded} of ${actTotal} activities`;
 }
@@ -1772,12 +1699,12 @@ loadHeatmap();
 # ---------- transitions.html (occupational transitions heatmap) ----------
 
 _TRANSITIONS_HTML = r"""<!doctype html>
-<html><head><meta charset="utf-8"><title>Occupational transitions &mdash; AI Impact Meta-Review</title>
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>Occupational transitions &mdash; AI Impact Meta-Review</title>
 <style>
-  __STYLE_COMMON__
-  #main { display:grid; grid-template-columns: minmax(0,1fr) 460px; gap:14px; padding:14px; align-items:start; background:#fafafa; }
-  .panel { background:#fff; border:1px solid #e5e5e5; border-radius:6px; padding:12px; }
-  .panel h2 { margin:0 0 8px; font-size:13px; font-weight:600; color:#444; text-transform:uppercase; letter-spacing:0.04em; }
+  #main { display:grid; grid-template-columns: minmax(0,1fr) 460px; gap:18px; padding:0 28px 32px; align-items:start; }
+  @media (max-width: 1100px) { #main { grid-template-columns: minmax(0,1fr); } }
+  .panel { background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius); padding:16px 18px; }
+  .panel h2 { margin:0 0 10px; font-size:17px; }
   .heatmap-wrap { position:relative; overflow:auto; max-height:78vh; }
   .hm-grid { display:grid; grid-template-columns: var(--label-w) auto; grid-template-rows: var(--label-h) auto; gap:0; }
   .hm-corner { background:#fff; }
@@ -1793,45 +1720,58 @@ _TRANSITIONS_HTML = r"""<!doctype html>
     position: relative; border-right: 1px solid transparent; cursor: pointer;
   }
   .axis.top .lbl span {
-    position: absolute; left: 50%; bottom: 4px; transform-origin: 0 0;
-    transform: rotate(-90deg) translateY(50%); white-space: nowrap;
+    position: absolute; left: 0; right: 0; bottom: 4px;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-height: calc(var(--label-h) - 8px);
     line-height: var(--cell); font-size: 10px;
   }
   .axis .lbl.major-end { border-bottom-color: rgba(60,60,60,0.5); }
   .axis.top .lbl.major-end { border-bottom-color: transparent; border-right-color: rgba(60,60,60,0.5); }
-  .axis .lbl:hover { background:#eef5ff; }
-  .axis .lbl.selected { background:#dbe9ff; }
-  .legend { display:flex; align-items:center; gap:8px; margin-top:10px; font-size:11px; color:#666; flex-wrap:wrap; }
-  .legend-bar { height:10px; width:160px; background: linear-gradient(to right, #fff, #fde0a0, #ef7838, #6e1a08); border:1px solid #ccc; }
-  .tooltip { position:fixed; background:#222; color:#fff; padding:6px 10px; border-radius:4px; font-size:11px; pointer-events:none; z-index:1000; display:none; max-width:300px; line-height:1.4; }
-  .drill h3 { margin:6px 0 4px; font-size:14px; }
-  .drill .sub { color:#666; font-size:12px; margin-bottom:6px; }
-  .drill .est-line { display:flex; gap:8px; align-items:baseline; font-size:12px; margin-bottom:10px; }
-  .drill .est-line .v { font-weight:600; color:#222; font-size:14px; }
-  .drill .crumb { font-size:12px; color:#666; margin-bottom:8px; }
-  .drill .crumb a { color:#06c; cursor:pointer; }
-  table.tbl { width:100%; border-collapse:collapse; font-size:12px; }
-  table.tbl th { text-align:left; padding:4px 6px; color:#666; font-weight:500; border-bottom:1px solid #ddd; background:#fafafa; }
-  table.tbl td { padding:4px 6px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
-  table.tbl td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .axis .lbl:hover { background:var(--hover); }
+  .axis .lbl.selected { background:var(--accent-soft); font-weight:600; }
+  .legend { display:flex; align-items:center; gap:8px; margin-top:12px; font-size:12px; color:var(--muted); flex-wrap:wrap; }
+  .legend-bar { height:10px; width:160px; background: linear-gradient(to right, #fff, #fde0a0, #ef7838, #6e1a08); border:1px solid var(--rule); border-radius:2px; }
+  .tooltip { position:fixed; background:var(--ink); color:#fff; padding:7px 11px; border-radius:4px; font-size:12px; pointer-events:none; z-index:1000; display:none; max-width:320px; line-height:1.45; box-shadow:0 6px 18px rgba(0,0,0,0.18); }
+  .drill h3 { margin:6px 0 4px; font-size:18px; line-height:1.3; }
+  .drill h2 { font-size:15px !important; margin-top:18px !important; }
+  .drill .sub { color:var(--muted); font-size:13px; margin-bottom:8px; }
+  .drill .est-line { display:flex; gap:8px; align-items:baseline; font-size:13px; margin-bottom:10px; color:var(--ink-2); }
+  .drill .est-line .v { font-family:var(--mono); font-weight:500; color:var(--ink); font-size:15px; }
+  .drill .crumb { font-size:13px; color:var(--muted); margin-bottom:8px; }
+  .drill .crumb a { color:var(--link); cursor:pointer; }
+  table.tbl { width:100%; border-collapse:collapse; font-size:13px; }
+  table.tbl th { padding:5px 6px; color:var(--muted); font-weight:500; font-size:12px; border-bottom:1px solid var(--rule); background:transparent; }
+  table.tbl td { padding:5px 6px; border-bottom:1px solid var(--rule-soft); vertical-align:top; font-size:13px; }
+  table.tbl td.num { text-align:right; font-family:var(--mono); font-size:12px; }
   table.tbl tr.row-click { cursor:pointer; }
-  table.tbl tr.row-click:hover { background:#f5f9ff; }
-  .est-pos { color:#0a6f2a; } .est-neg { color:#a00; } .est-na { color:#aaa; }
-  .empty { color:#888; font-size:12px; padding:8px; text-align:center; }
-  .search { display:flex; gap:8px; margin-bottom:8px; position: relative; }
-  .search input { flex:1; padding:6px 10px; border:1px solid #ccc; border-radius:4px; font-size:13px; }
-  .typeahead { position:absolute; background:#fff; border:1px solid #ccc; border-radius:4px; max-height:240px; overflow:auto; z-index:50; left:0; right:120px; top:38px; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:none; }
-  .typeahead .item { padding:5px 9px; font-size:12px; cursor:pointer; border-bottom:1px solid #f0f0f0; }
-  .typeahead .item:hover { background:#f5f9ff; }
-  .typeahead .item .code { color:#888; font-size:11px; }
+  table.tbl tr.row-click:hover { background:var(--hover); }
+  .est-pos { color:var(--pos); } .est-neg { color:var(--neg); } .est-na { color:var(--muted); }
+  .empty { color:var(--muted); font-size:14px; padding:24px 8px; text-align:center; font-style:italic; font-family:var(--serif); }
+  .search { display:flex; gap:8px; margin-bottom:10px; position: relative; }
+  .search input { flex:1; }
+  .typeahead { position:absolute; background:var(--surface); border:1px solid var(--rule); border-radius:5px; max-height:260px; overflow:auto; z-index:50; left:0; right:90px; top:40px; box-shadow:0 10px 30px rgba(29,31,35,0.14); display:none; }
+  .typeahead .item { padding:6px 10px; font-size:13px; cursor:pointer; border-bottom:1px solid var(--rule-soft); }
+  .typeahead .item:hover { background:var(--accent-soft); }
+  .typeahead .item .code { color:var(--muted); font-size:11px; font-family:var(--mono); }
 </style></head><body>
 __HEADER__
+<div class="wrap wide" style="padding:0 28px;">
+  <section class="page-head">
+    <div>
+      <h1>Occupational transitions</h1>
+      <p class="lede">How often workers move from one occupation to another. Rows are source SOC minor groups and columns are
+        destinations; each row sums to one.</p>
+    </div>
+    <span class="page-meta" id="stats">Loading&hellip;</span>
+  </section>
+</div>
 <div id="main">
   <div class="panel">
-    <h2>Transition probabilities by SOC minor group (source → target, row-conditional)</h2>
+    <h2>Transition shares by SOC minor group</h2>
     <div class="search results">
       <input id="search" placeholder="Search occupation (title or SOC code)&hellip;" autocomplete="off"/>
-      <button id="clearBtn" style="background:#eee;border:0;padding:6px 12px;border-radius:4px;cursor:pointer;">Clear</button>
+      <button id="clearBtn" class="btn">Clear</button>
       <div class="typeahead" id="typeahead"></div>
     </div>
     <div class="heatmap-wrap" id="hmWrap">
@@ -1843,7 +1783,7 @@ __HEADER__
       </div>
     </div>
     <div class="legend">
-      <span>0</span><div class="legend-bar"></div><span>max share (sqrt-scaled)</span>
+      <span>0</span><div class="legend-bar"></div><span>max share (square-root scale)</span>
       <span style="margin-left:14px;">Click a row label or cell to drill into a SOC minor group; click an occupation within it for outgoing &amp; incoming transitions.</span>
     </div>
   </div>
@@ -2156,7 +2096,7 @@ def _render(template: str, replacements: dict[str, str]) -> str:
     out = template
     for k, v in replacements.items():
         out = out.replace(k, v)
-    return out
+    return site_theme.apply(out, "").replace("</body></html>", _FOOTER + "\n</body></html>")
 
 
 # ---------- main ----------
@@ -2268,12 +2208,12 @@ def main():
         ("index.html",       _INDEX_HTML,       {"__STYLE__": _INDEX_STYLE,  "__HEADER__": _header("home")}),
         ("results.html",     _RESULTS_HTML,     {"__STYLE__": _RESULTS_STYLE, "__HEADER__": _header("runs"),
                                                   "__DEFAULT_RUN_ID__": canonical_run_id}),
-        ("summary.html",     _SUMMARY_HTML,     {"__STYLE_COMMON__": _STYLE_COMMON, "__HEADER__": _header("summary")}),
+        ("summary.html",     _SUMMARY_HTML,     {"__HEADER__": _header("summary")}),
         ("runs.html",        _RUNS_HTML,        {"__STYLE__": _RUNS_STYLE,   "__HEADER__": _header("runs")}),
-        ("loo.html",         _LOO_HTML,         {"__STYLE__": _LOO_STYLE,    "__HEADER__": _header("runs")}),
+        ("loo.html",         _LOO_HTML,         {"__HEADER__": _header("runs")}),
         ("parameters.html",  _PARAMS_HTML,      {"__STYLE__": _PARAMS_STYLE, "__HEADER__": _header("parameters"),
                                                   "__BETA__": str(CANONICAL_BETA)}),
-        ("transitions.html", _TRANSITIONS_HTML, {"__STYLE_COMMON__": _STYLE_COMMON, "__HEADER__": _header("transitions")}),
+        ("transitions.html", _TRANSITIONS_HTML, {"__HEADER__": _header("transitions")}),
     ]
     for name, template, repl in pages:
         (DOCS / name).write_text(_render(template, repl))
