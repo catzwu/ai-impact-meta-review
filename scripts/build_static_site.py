@@ -3,7 +3,9 @@
 Emits into ./docs:
   index.html               — review table + paper drawer (read-only port of INDEX_HTML)
   results.html             — analysis-run viewer; accepts ?run=<id>, defaults to canonical
-  runs.html                — index of all runs (port of RESULTS_INDEX_HTML)
+  summary.html             — overview of the curated run set (findings, agreement, LOO charts)
+  runs.html                — index of published runs, grouped (port of RESULTS_INDEX_HTML)
+  loo.html                 — leave-one-out viewer; accepts ?run=<id>
   parameters.html          — heatmap + activity bar chart + parameter explanations
   transitions.html         — occupational transitions heatmap (port of TRANSITIONS_HTML)
   .nojekyll
@@ -12,6 +14,7 @@ Emits into ./docs:
   data/papers/*.json       — one per paper (mirror of GET /api/paper/<id>)
   data/runs/index.json     — { runs: [meta, ...] } (mirror of GET /api/runs)
   data/runs/<id>.json      — full bundle per run (mirror of GET /api/results/<id>)
+  data/summary.json        — per-run digest for summary.html (only with config/site_runs.json)
   data/heatmap_speed.json  — precomputed heatmap at canonical β for the parameters page
   data/heatmap_quality.json
   data/transitions.json    — mirror of GET /api/transitions/data
@@ -44,6 +47,7 @@ OUTPUTS_DIR = ROOT / "outputs"
 CONFIG_DIR = ROOT / "config"
 RUNS_DIR = OUTPUTS_DIR / "analysis_runs"
 STATE_PATH = OUTPUTS_DIR / "review_state.json"
+SITE_RUNS_PATH = CONFIG_DIR / "site_runs.json"
 
 DOCS = ROOT / "docs"
 ASSETS = DOCS / "assets"
@@ -181,12 +185,86 @@ def _all_run_dirs() -> list[Path]:
     return sorted(out, key=lambda p: p.name, reverse=True)
 
 
+def _load_manifest() -> dict | None:
+    """Curated run set written by scripts/generate_site_runs.py. When present, only
+    these runs are published (in manifest order, grouped); otherwise every plain run."""
+    m = _read_json(SITE_RUNS_PATH)
+    if not m:
+        return None
+    missing = [e["run_id"] for e in m["runs"] if not (RUNS_DIR / e["run_id"] / "run.json").exists()]
+    if missing:
+        print(f"WARN: manifest lists missing runs {missing}; re-run scripts/generate_site_runs.py")
+        m["runs"] = [e for e in m["runs"] if e["run_id"] not in missing]
+    return m
+
+
+def _agreement(run_id: str, ref_id: str) -> dict | None:
+    """Compact rank agreement of a run with its reference run (for runs.html)."""
+    try:
+        import run_analysis as RA
+        c = RA.compare_runs(run_id, ref_id)
+    except Exception as e:  # noqa: BLE001
+        print(f"WARN: compare {run_id} vs {ref_id} failed: {e}")
+        return None
+    if not c:
+        return None
+    out = {"common_level": c["common_level"]}
+    for view, v in c["views"].items():
+        tk = v["topk_overlap"].get("10")
+        out[view] = {"n": v["n"], "spearman": v["metrics"].get("spearman_r"),
+                     "kendall": v["metrics"].get("kendall_tau"),
+                     "top10": tk["intersection"] if tk else None}
+    return out
+
+
+def _summary_record(entry: dict, bundle: dict) -> dict:
+    """Compact per-run digest for summary.html: top effects, agreement, LOO stats."""
+    p = bundle.get("params") or {}
+    rec = {k: entry[k] for k in ("key", "run_id", "group", "kind", "label")}
+    rec.update(metric=p.get("metric"), level=bundle.get("aggregation_level"),
+               obs=[bundle.get("n_observed_occ"), bundle.get("n_observed_act")],
+               kept=[bundle.get("n_kept_occ"), bundle.get("n_kept_act")])
+
+    def _top(rows, labelcol, n=5):
+        vals = []
+        for r in rows:
+            try:
+                est = float(r["estimate"])
+            except (TypeError, ValueError):
+                continue
+            obs = r.get("observed")
+            vals.append({"label": str(r.get(labelcol) or ""), "est": round(est, 3),
+                         "obs": None if obs in (None, "") else round(float(obs), 3)})
+        return sorted(vals, key=lambda v: -v["est"])[:n]
+
+    if bundle.get("type") == "loo":
+        s = bundle["loo"]["summary"]
+        rk = (s.get("rank") or {}).get("overall") or {}
+        worst = sorted(bundle["loo"]["rows"], key=lambda r: -abs(r.get("rank_delta") or 0))[:1]
+        rec["loo"] = {"n": s["overall"].get("n"), "mae": s["overall"].get("mae"),
+                      "spearman": rk.get("spearman_r"), "tau": rk.get("kendall_tau"), "tau_ci": rk.get("tau_ci"),
+                      "worst": [{k: w.get(k) for k in ("label", "actual_rank", "loo_rank")} for w in worst]}
+    else:
+        occ = bundle["occupation_impacts"]
+        ests = [float(r["estimate"]) for r in occ if r.get("estimate") not in (None, "")]
+        rec.update(occ_mean=round(sum(ests) / len(ests), 3) if ests else None,
+                   top_occ=_top(occ, "title"), top_act=_top(bundle["activity_impacts"], "activity"))
+        if bundle.get("agreement"):
+            rec["agreement"] = bundle["agreement"]
+            rec["agreement_level"] = bundle["agreement"].get("common_level")
+    return rec
+
+
 def _load_run_bundle(run_dir: Path) -> dict:
     meta = json.loads((run_dir / "run.json").read_text())
 
     def _read_impacts(p: Path) -> list[dict]:
         return [{k: (None if v == "" else v) for k, v in r.items()} for r in _read_csv(p)]
 
+    if (run_dir / "loocv.json").exists():
+        meta["type"] = "loo"
+        meta["loo"] = json.loads((run_dir / "loocv.json").read_text())
+        return meta
     meta["occupation_impacts"] = _read_impacts(run_dir / "occupation_impacts.csv")
     meta["activity_impacts"] = _read_impacts(run_dir / "activity_impacts.csv")
     return meta
@@ -195,9 +273,10 @@ def _load_run_bundle(run_dir: Path) -> dict:
 # ---------- HTML template plumbing ----------
 
 def _header(active: str) -> str:
-    """Shared masthead. `active` is one of 'home', 'runs', 'parameters', 'transitions'."""
+    """Shared masthead. `active` is one of 'home', 'summary', 'runs', 'parameters', 'transitions'."""
     items = [
         ("index.html", "Studies", "home"),
+        ("summary.html", "Summary", "summary"),
         ("runs.html", "Imputation runs", "runs"),
         ("parameters.html", "Method", "parameters"),
         ("transitions.html", "Transitions", "transitions"),
@@ -680,50 +759,645 @@ load();
 _RUNS_STYLE = _STYLE_COMMON + r"""
   :root { --page-w: 1120px; }
   tr.clickable { cursor:pointer; }
-  td.id { font-family:var(--mono); font-size:11.5px; color:var(--ink-2); }
+  td.id { font-family:var(--mono); font-size:11.5px; color:var(--ink-2); white-space:nowrap; }
+  th.num, td.num { text-align:right; white-space:nowrap; }
+  .group { margin-top:30px; }
+  .group h2 { margin:0 0 4px; }
+  .group .blurb { color:var(--ink-2); margin:0 0 12px; max-width:80ch; }
+  .verdict { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11.5px; font-weight:600; white-space:nowrap; }
+  .verdict.good { background:var(--ok-bg); color:var(--ok-ink); } .verdict.bad { background:var(--err-bg); color:var(--err-ink); }
+  .verdict.neutral { background:var(--surface-2); color:var(--ink-2); }
+  .agree { display:inline-block; height:6px; border-radius:2px; background:var(--accent); vertical-align:middle; margin-left:6px; opacity:.7; }
 """
 
 _RUNS_HTML = r"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>All runs &mdash; AI Impact Meta-Review</title>
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>Imputation runs &mdash; AI Impact Meta-Review</title>
 <style>__STYLE__</style></head><body>
 __HEADER__
 <main class="page wrap">
   <section class="page-head">
     <div>
       <h1>Imputation runs</h1>
-      <p class="lede">Each run propagates the observed effects across the O*NET graph under one combination of metric, &beta;,
-        pruning, and baseline settings. Click a row to see its occupation- and activity-level estimates;
-        the <a href="parameters.html">method</a> page explains each setting.</p>
+      <p class="lede" id="intro">Each run propagates the observed effects across the O*NET graph under one combination of metric, &beta;,
+        pruning, and baseline settings. Click a row to see its results; the <a href="summary.html">summary</a> charts
+        findings across the whole set, and the <a href="parameters.html">method</a> page explains each setting.</p>
     </div>
     <span class="page-meta" id="stats"></span>
   </section>
-  <table id="t" class="data"><thead><tr>
-    <th>Run ID</th><th>Started (UTC)</th><th>Metric</th><th>&beta;</th><th>Aggregation</th>
-    <th>&Omega;<sub>ref</sub></th><th>Baseline</th>
-    <th style="text-align:right">Observed (occ/act)</th><th style="text-align:right">Kept (occ/act)</th>
-  </tr></thead><tbody id="tb"></tbody></table>
+  <div id="groups"></div>
 </main>
 <script>
 function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const f = (x,p) => x==null ? '—' : (+x).toFixed(p==null?2:p);
+const LV = {occupation:'occupation', soc_minor:'SOC minor', soc_major:'SOC major'};
+const href = r => (r.type==='loo' ? 'loo.html' : 'results.html') + '?run=' + encodeURIComponent(r.run_id);
+const pill = m => `<span class="pill ${m}">${escapeHtml(m)}</span>`;
+const lvl = r => LV[(r.params||{}).aggregation_level] || (r.params||{}).aggregation_level || 'occupation';
+const row = (r, cells) => `<tr class="clickable" onclick="location.href='${href(r)}'">${cells.join('')}</tr>`;
+const agreeCell = a => a ? `<td class="num">${f(a.spearman)}<span class="agree" style="width:${Math.max(0,a.spearman||0)*40}px"></span></td><td class="num">${a.top10==null?'—':a.top10+'/10'}</td>` : '<td class="num">—</td><td class="num">—</td>';
+function verdict(rk){
+  const ci = rk && rk.tau_ci; if (!ci) return '<span class="verdict neutral">n/a</span>';
+  if (ci[0] > 0) return '<span class="verdict good">recovers order</span>';
+  if (ci[1] < 0) return '<span class="verdict bad">reverses order</span>';
+  return '<span class="verdict neutral">no clear signal</span>';
+}
+
+function table(head, body){ return `<table class="data"><thead><tr>${head.map(h=>`<th${h[1]?' class="num"':''}>${h[0]}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table>`; }
+
+function renderGroup(g, runs){
+  let html = `<section class="group"><h2>${escapeHtml(g.title)}</h2><p class="blurb">${escapeHtml(g.blurb||'')}</p>`;
+  if (g.id === 'validation') {
+    html += table([['Run'],['Metric'],['Setting'],['Folds',1],['Kendall τ-b',1],['95% CI',1],['Spearman ρ',1],['MAE',1],['Verdict']],
+      runs.map(r => { const s=r.loo_summary||{}, rk=(s.rank||{}).overall||{}, o=s.overall||{};
+        return row(r, [`<td class="id">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
+          `<td>${escapeHtml((r.label||'').replace(/^LOO · (Speed|Quality) · /,''))}</td>`, `<td class="num">${o.n??'—'}</td>`,
+          `<td class="num">${f(rk.kendall_tau)}</td>`, `<td class="num">${rk.tau_ci?`[${f(rk.tau_ci[0])}, ${f(rk.tau_ci[1])}]`:'—'}</td>`,
+          `<td class="num">${f(rk.spearman_r)}</td>`, `<td class="num">${f(o.mae,3)}</td>`, `<td>${verdict(rk)}</td>`]); }).join(''));
+  } else if (g.id === 'sensitivity') {
+    html += table([['Run'],['Metric'],['Change vs headline'],['Kept occ/act',1],['Occ ρ',1],['Occ top-10',1],['Act ρ',1],['Act top-10',1]],
+      runs.map(r => { const a=r.agreement||{};
+        return row(r, [`<td class="id">${escapeHtml(r.run_id)}</td>`, `<td>${pill(r.params.metric)}</td>`,
+          `<td>${escapeHtml((r.label||'').replace(/^(Speed|Quality) · /,''))}</td>`, `<td class="num">${r.n_kept_occ} / ${r.n_kept_act}</td>`,
+          agreeCell(a.occupation), agreeCell(a.activity)]); }).join(''));
+  } else {
+    html += table([['Run'],['Metric'],['Aggregation'],['β',1],['Baseline'],['Observed occ/act',1],['Kept occ/act',1],['Occ ρ vs occupation run',1]],
+      runs.map(r => { const p=r.params||{}, a=(r.agreement||{}).occupation;
+        return row(r, [`<td class="id">${escapeHtml(r.run_id)}</td>`, `<td>${pill(p.metric)}</td>`, `<td>${escapeHtml(lvl(r))}</td>`,
+          `<td class="num">${p.beta}</td>`, `<td>${r.baseline_active?`AIOE, Ω<sub>b</sub>=${p.omega_base}`:'—'}</td>`,
+          `<td class="num">${r.n_observed_occ} / ${r.n_observed_act}</td>`, `<td class="num">${r.n_kept_occ} / ${r.n_kept_act}</td>`,
+          `<td class="num">${a?f(a.spearman):'reference'}</td>`]); }).join(''));
+  }
+  return html + '</section>';
+}
+
 fetch('data/runs/index.json').then(r=>r.json()).then(d=>{
-  const tb = document.getElementById('tb');
-  if (!d.runs.length) { tb.innerHTML='<tr><td colspan="9" style="text-align:center; padding:28px; color:var(--muted);">No runs on record.</td></tr>'; return; }
+  const el = document.getElementById('groups');
+  if (!d.runs.length) { el.innerHTML='<p style="color:var(--muted);">No runs published.</p>'; return; }
   document.getElementById('stats').textContent = `${d.runs.length} runs`;
-  tb.innerHTML = d.runs.map(r=>{
-    const p = r.params||{};
-    return `<tr class="clickable" onclick="location.href='results.html?run='+encodeURIComponent('${r.run_id}')">
-      <td class="id">${escapeHtml(r.run_id)}</td>
-      <td>${escapeHtml((r.started_utc||'').replace('T',' ').slice(0,19))}</td>
-      <td><span class="pill ${p.metric}">${escapeHtml(p.metric||'')}</span></td>
-      <td class="num">${p.beta}</td>
-      <td>${escapeHtml((p.aggregation_level||'occupation').replace('_',' '))}</td>
-      <td class="num">${p.omega_ref}</td>
-      <td>${r.baseline_active ? `AIOE, Ω<sub>b</sub>=${p.omega_base}` : '—'}</td>
-      <td class="num">${r.n_observed_occ} / ${r.n_observed_act}</td>
-      <td class="num">${r.n_kept_occ} / ${r.n_kept_act}</td>
-    </tr>`;
+  if (d.observations) {
+    const o = d.observations;
+    document.getElementById('intro').innerHTML +=
+      ` All runs share one data snapshot: ${o.speed} speed + ${o.quality} quality effect rows, aggregated to ` +
+      `${o.occ_codes} observed occupation and ${o.act_codes} activity codes.`;
+  }
+  const groups = (d.groups && d.groups.length) ? d.groups : [{id:'all', title:'All runs', blurb:''}];
+  el.innerHTML = groups.map(g => {
+    const runs = d.runs.filter(r => g.id==='all' || r.group===g.id);
+    return runs.length ? renderGroup(g, runs) : '';
   }).join('');
 });
+</script>
+</body></html>
+"""
+
+
+# ---------- loo.html (leave-one-out viewer; port of review_app.LOO_HTML) ----------
+
+_LOO_HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Leave-one-out CV · AI Impact Meta-Review</title>
+__THEME_HEAD__
+<style>
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px; }
+  .subheads { display:flex; gap:24px; margin-top:12px; color:var(--muted); font-size:13px; flex-wrap:wrap; }
+  .subheads span { color:var(--ink) !important; font-family:var(--mono) !important; font-size:12.5px; }
+  .card table { border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); }
+  .card table th { cursor:pointer; user-select:none; }
+  .card .toolbar { border:0; padding:0; background:transparent; }
+  svg.scatter { display:block; background:var(--surface); }
+  svg.scatter .axis { stroke:#9a968d; stroke-width:1; }
+  svg.scatter .grid { stroke:#eeebe4; stroke-width:1; }
+  svg.scatter .tick { font-family:var(--sans); font-size:11px; fill:#787c84; }
+  svg.scatter .diag { stroke:#1d1f23; stroke-width:1; stroke-dasharray:4 3; }
+  svg.scatter circle { stroke:#fff; stroke-width:1; }
+  svg.scatter circle.occ { fill:#2e67a8; opacity:0.8; }
+  svg.scatter circle.act { fill:#c0762b; opacity:0.8; }
+  svg.scatter .band { fill:#23406a; opacity:0.06; }
+  .note ol { margin:4px 0 0 18px; padding:0; }
+  .charts { display:flex; flex-wrap:wrap; gap:24px; }
+  .charts > div { flex:1 1 420px; min-width:0; }
+  .charts h3 { margin:0 0 6px; font-size:15px; }
+</style></head><body>
+__HEADER__
+<main class="page wrap">
+  <section class="page-head">
+    <div>
+      <div class="crumbs"><a href="runs.html">Imputation runs</a> / <span class="mono" id="crumbId"></span></div>
+      <h1>Leave-one-out cross-validation</h1>
+      <p class="lede">Each observed effect is held out in turn and re-predicted from the rest of the graph. This tests whether the graph recovers held-out values and their ordering.</p>
+    </div>
+    <div class="page-actions"><span class="page-meta" id="stats">…</span></div>
+  </section>
+  <div class="card">
+    <h2>Run parameters</h2>
+    <div id="paramsLine" class="mono" style="font-size:12.5px; color:var(--ink-2);">…</div>
+  </div>
+
+  <div class="card">
+    <h2>Overall accuracy</h2>
+    <div class="grid" id="overallGrid"></div>
+    <div class="subheads">
+      <div>Occupations: <span id="occSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities:  <span id="actSummary" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Rank recovery (held-out)</h2>
+    <div class="help" style="margin-bottom:12px;">
+      Does the graph put held-out nodes in the right <b>order</b>? Each node is ranked by its held-out prediction and compared
+      with its rank by actual value. Rank statistics ignore uniform shrinkage, so they test ordering, not magnitude.
+    </div>
+    <div class="grid" id="rankGrid"></div>
+    <div class="subheads">
+      <div>Occupations (ranked within type): <span id="occRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+      <div>Activities (ranked within type): <span id="actRank" style="color:#333; font-family:ui-monospace,Menlo,monospace;">…</span></div>
+    </div>
+    <div class="note" id="rankNote"></div>
+  </div>
+
+  <div class="card">
+    <h2>Held-out predictions</h2>
+    <div class="charts">
+      <div>
+        <h3>Value: actual vs predicted</h3>
+        <div id="scatterWrap"></div>
+        <div class="help" style="margin-top:6px;">Dashed line: perfect prediction (y = x).</div>
+      </div>
+      <div>
+        <h3>Rank: actual rank vs held-out rank</h3>
+        <div id="rankScatterWrap"></div>
+        <div class="help" style="margin-top:6px;">Rank 1 is the largest effect. Shaded band: within &plusmn;2 ranks.</div>
+      </div>
+    </div>
+    <div class="chart-legend"><span><span class="sw" style="background:#2e67a8; border-radius:50%; width:10px;"></span>Occupation held out</span><span><span class="sw" style="background:#c0762b; border-radius:50%; width:10px;"></span>Activity held out</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Per-observation table</h2>
+    <div class="toolbar">
+      <div class="seg" id="filterSeg">
+        <button data-f="all" class="active">All</button>
+        <button data-f="occupation">Occupations</button>
+        <button data-f="activity">Activities</button>
+      </div>
+      <input type="search" id="search" placeholder="Search label or code…" style="min-width:240px;"/>
+      <button class="btn" onclick="exportCsv()" style="margin-left:auto;">Download CSV</button>
+    </div>
+    <table><thead id="th"></thead><tbody id="tb"></tbody></table>
+  </div>
+</main>
+<script>
+const RUN_ID = new URLSearchParams(location.search).get('run') || '';
+let DATA = null, FILTER='all', SORT={col:'abs_rank_delta', dir:-1};
+
+function fmt(x,p){ if(x==null) return '—'; const n=parseFloat(x); return isNaN(n) ? x : n.toFixed(p==null?3:p); }
+function escapeHtml(s){return (s||'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function load() {
+  document.getElementById('crumbId').textContent = RUN_ID;
+  const resp = await fetch('data/runs/' + encodeURIComponent(RUN_ID) + '.json');
+  if (!resp.ok) { document.querySelector('main').innerHTML = '<div class="err" style="margin-top:30px;">Unknown run: ' + escapeHtml(RUN_ID) + '. See <a href="runs.html">Imputation runs</a>.</div>'; return; }
+  DATA = await resp.json();
+  if (!DATA.loo) { location.replace('results.html?run=' + encodeURIComponent(RUN_ID)); return; }
+  if (DATA.label) document.querySelector('.page-head h1').textContent = DATA.label;
+  const p = DATA.params;
+  document.getElementById('stats').textContent =
+    `${p.metric.toUpperCase()} · β=${p.beta} · Ω_ref=${p.omega_ref}` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '') +
+    ` · ${DATA.n_folds} folds`;
+  document.getElementById('paramsLine').textContent =
+    `metric=${p.metric} · β=${p.beta} · Ω_ref=${p.omega_ref} · ` +
+    `agg=${p.aggregation_level} · manual_prune=${p.manual_prune} · ` +
+    `weight_threshold=${p.activity_weight_threshold} · excluded=[${(p.excluded_soc_majors||[]).join(',')}]` +
+    (DATA.baseline_active ? ` · baseline Ω_b=${p.omega_base}` : '');
+
+  const s = DATA.loo.summary;
+  const grid = document.getElementById('overallGrid');
+  const o = s.overall || {};
+  const cells = [
+    ['n folds', o.n],
+    ['MAE', o.mae!=null ? fmt(o.mae, 4) : '—'],
+    ['RMSE', o.rmse!=null ? fmt(o.rmse, 4) : '—'],
+    ['bias', o.bias!=null ? fmt(o.bias, 4) : '—'],
+    ['R²', o.r2!=null ? fmt(o.r2, 3) : '—'],
+    ['Pearson r', o.pearson_r!=null ? fmt(o.pearson_r, 3) : '—'],
+    ['Spearman ρ', o.spearman_r!=null ? fmt(o.spearman_r, 3) : '—'],
+  ];
+  grid.innerHTML = cells.map(([k,v]) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+  const sub = (obj) => {
+    if (!obj || !obj.n) return 'no folds';
+    return `n=${obj.n} · MAE=${fmt(obj.mae,3)} · R²=${obj.r2!=null?fmt(obj.r2,3):'—'} · ρ=${obj.spearman_r!=null?fmt(obj.spearman_r,3):'—'}`;
+  };
+  document.getElementById('occSummary').textContent = sub(s.occupation);
+  document.getElementById('actSummary').textContent = sub(s.activity);
+
+  renderRankCard();
+  const rows = DATA.loo.rows;
+  renderScatter('scatterWrap', rows, 'actual', 'predicted', {xLabel:'actual (held-out)', yLabel:'predicted'});
+  if (rows.length && rows[0].loo_rank != null) {
+    renderScatter('rankScatterWrap', rows, 'actual_rank', 'loo_rank',
+      {xLabel:'actual rank', yLabel:'held-out rank', rank:true, band:2});
+  } else {
+    document.getElementById('rankScatterWrap').innerHTML = '<div style="color:#888;">No rank data.</div>';
+  }
+  renderTable();
+}
+
+function pfmt(p){ if(p==null) return ''; return p < 0.001 ? 'p<0.001' : 'p=' + p.toFixed(3); }
+
+function renderRankCard() {
+  const R = (DATA.loo.summary||{}).rank;
+  const grid = document.getElementById('rankGrid');
+  if (!R || !R.overall || !R.overall.n) { grid.innerHTML = '<div style="color:#888;">Not enough folds.</div>'; return; }
+  const o = R.overall;
+  const tk = o.topk || {};
+  const cell = (k, v, sub) => `<div class="metric"><div class="k">${k}</div><div class="v">${v}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const cells = [
+    cell("Kendall τ-b", o.kendall_tau!=null?fmt(o.kendall_tau,3):'—', pfmt(o.kendall_p)),
+    cell("τ 95% CI", o.tau_ci ? `[${fmt(o.tau_ci[0],2)}, ${fmt(o.tau_ci[1],2)}]` : '—', 'bootstrap over folds'),
+    cell("Concordance C", o.concordance_c!=null?fmt(o.concordance_c,3):'—', 'P(pair ordered right) · chance 0.5'),
+    cell("Spearman ρ", o.spearman_r!=null?fmt(o.spearman_r,3):'—', pfmt(o.spearman_p)),
+    cell("Mean |Δrank|", o.mean_abs_rank_delta!=null?fmt(o.mean_abs_rank_delta,2):'—',
+         o.mean_abs_rank_delta_chance!=null?`chance ${fmt(o.mean_abs_rank_delta_chance,2)}`:''),
+    cell("Footrule (norm.)", o.footrule_norm!=null?fmt(o.footrule_norm,3):'—', '0 = identical · 1 = max'),
+  ];
+  for (const K of ['3','5','10']) {
+    if (tk[K]) cells.push(cell(`Top-${K} precision`, `${tk[K].hits}/${tk[K].K}`, `chance ${fmt(tk[K].chance,2)}`));
+  }
+  grid.innerHTML = cells.join('');
+  const sub = (x) => {
+    if (!x || !x.n) return 'no folds';
+    if (x.n < 3) return `n=${x.n} · too few folds`;
+    const t5 = (x.topk||{})['5'] || (x.topk||{})['3'];
+    return `n=${x.n} · τ=${x.kendall_tau!=null?fmt(x.kendall_tau,3):'—'} ${pfmt(x.kendall_p)} · C=${x.concordance_c!=null?fmt(x.concordance_c,3):'—'}` +
+           ` · |Δrank|=${fmt(x.mean_abs_rank_delta,2)} (chance ${fmt(x.mean_abs_rank_delta_chance,2)})` +
+           (t5 ? ` · top-${t5.K} ${t5.hits}/${t5.K}` : '');
+  };
+  document.getElementById('occRank').textContent = sub(R.occupation);
+  document.getElementById('actRank').textContent = sub(R.activity);
+  const m = R.method || {};
+  document.getElementById('rankNote').innerHTML =
+    (R.backfilled ? '<div style="color:var(--warn-ink);">Rank stats computed on load for this older run.</div>' : '') +
+    escapeHtml(m.description||'') +
+    (m.citations && m.citations.length ? '<ol>' + m.citations.map(c=>`<li>${escapeHtml(c)}</li>`).join('') + '</ol>' : '');
+}
+
+function renderScatter(containerId, rows, xKey, yKey, opts) {
+  opts = opts || {};
+  const pad = {l:52, r:16, t:14, b:40};
+  const W = 520, H = 360;
+  const xs = rows.map(r=>+r[xKey]), ys = rows.map(r=>+r[yKey]);
+  let xL, xH;
+  if (opts.rank) {
+    xL = 0.5; xH = Math.max(...xs, ...ys, 1) + 0.5;
+  } else {
+    const lo = Math.min(...xs, ...ys, 0), hi = Math.max(...xs, ...ys, 0.001);
+    const range = hi - lo || 1; xL = lo - range*0.05; xH = hi + range*0.05;
+  }
+  // Rank axes are reversed so rank 1 (largest effect) sits top-right.
+  const fx = v => opts.rank ? (xH - v) / (xH - xL) : (v - xL) / (xH - xL);
+  const sx = v => pad.l + fx(v) * (W - pad.l - pad.r);
+  const sy = v => H - pad.b - fx(v) * (H - pad.t - pad.b);
+  function ticks(a,b,n){
+    const r=b-a||1, step=Math.pow(10,Math.floor(Math.log10(r/n))); const err=n*step/r;
+    let m=1; if(err<=0.15)m=10; else if(err<=0.35)m=5; else if(err<=0.75)m=2;
+    const s=Math.max(opts.rank?1:0, m*step); const t0=Math.ceil(a/s)*s; const out=[];
+    for(let v=t0; v<=b+1e-9; v+=s) out.push(Math.round(v/s)*s);
+    return out;
+  }
+  const xt = ticks(xL, xH, 6);
+  const tf = t => opts.rank ? String(Math.round(t)) : t.toFixed(2);
+  const gridLines = xt.map(t=>{
+    const x=sx(t), y=sy(t);
+    return `<line class="grid" x1="${x}" y1="${pad.t}" x2="${x}" y2="${H-pad.b}"/>` +
+           `<line class="grid" x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}"/>`;
+  }).join('');
+  const xTicks = xt.map(t=>`<text class="tick" x="${sx(t)}" y="${H-pad.b+14}" text-anchor="middle">${tf(t)}</text>`).join('');
+  const yTicks = xt.map(t=>`<text class="tick" x="${pad.l-6}" y="${sy(t)+3}" text-anchor="end">${tf(t)}</text>`).join('');
+  let band = '';
+  if (opts.band) {
+    const k = opts.band;
+    const pts = [[xL, xL+k],[xH, xH+k],[xH, xH-k],[xL, xL-k]]
+      .map(([x,y]) => `${sx(x)},${sy(y)}`).join(' ');
+    band = `<clipPath id="${containerId}_clip"><rect x="${pad.l}" y="${pad.t}" width="${W-pad.l-pad.r}" height="${H-pad.t-pad.b}"/></clipPath>` +
+           `<polygon class="band" clip-path="url(#${containerId}_clip)" points="${pts}"/>`;
+  }
+  const diag = `<line class="diag" x1="${sx(xL)}" y1="${sy(xL)}" x2="${sx(xH)}" y2="${sy(xH)}"/>`;
+  const pts = rows.map(r => {
+    const cls = r.node_type === 'occupation' ? 'occ' : 'act';
+    const title = opts.rank
+      ? `${r.label}: actual rank ${fmt(r[xKey],1)}, held-out rank ${fmt(r[yKey],1)} (Δ ${fmt(r.rank_delta,1)})`
+      : `${r.label}: actual ${fmt(r.actual,3)}, predicted ${fmt(r.predicted,3)}, resid ${fmt(r.residual,3)}`;
+    return `<circle class="${cls}" cx="${sx(+r[xKey])}" cy="${sy(+r[yKey])}" r="4"><title>${escapeHtml(title)}</title></circle>`;
+  }).join('');
+  const xAxis = `<line class="axis" x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}"/>`;
+  const yAxis = `<line class="axis" x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}"/>`;
+  const xLabel = `<text class="tick" x="${(pad.l+W-pad.r)/2}" y="${H-6}" text-anchor="middle">${opts.xLabel||xKey}</text>`;
+  const yLabel = `<text class="tick" x="${-H/2}" y="14" text-anchor="middle" transform="rotate(-90)">${opts.yLabel||yKey}</text>`;
+  document.getElementById(containerId).innerHTML =
+    `<svg class="scatter" viewBox="0 0 ${W} ${H}" style="width:100%; max-width:${W}px; height:auto;">
+      ${gridLines}${band}${diag}${pts}${xAxis}${yAxis}${xTicks}${yTicks}${xLabel}${yLabel}
+    </svg>`;
+}
+
+document.getElementById('search').addEventListener('input', renderTable);
+document.querySelectorAll('#filterSeg button').forEach(b=>{
+  b.onclick=()=>{document.querySelectorAll('#filterSeg button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); FILTER=b.dataset.f; renderTable();};
+});
+
+function renderTable() {
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  let rows = DATA.loo.rows.map(r => Object.assign({}, r,
+    {abs_rank_delta: r.rank_delta != null ? Math.abs(r.rank_delta) : null}));
+  if (FILTER !== 'all') rows = rows.filter(r => r.node_type === FILTER);
+  if (q) rows = rows.filter(r => ((r.label||'')+' '+(r.code||'')).toLowerCase().includes(q));
+  rows.sort((a,b)=>{
+    let x=a[SORT.col], y=b[SORT.col];
+    if (typeof x==='string' || typeof y==='string') return ((x||'')+'').localeCompare((y||'')+'') * SORT.dir;
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return ((parseFloat(x)||0) - (parseFloat(y)||0)) * SORT.dir;
+  });
+  const cols = ['node_type','code','label','actual','predicted','residual','abs_error','posterior_std',
+                'actual_rank','loo_rank','rank_delta','abs_rank_delta'];
+  const labels = {node_type:'Type', code:'Code', label:'Label', actual:'Actual', predicted:'Predicted',
+                  residual:'Residual', abs_error:'|error|', posterior_std:'Post. std',
+                  actual_rank:'Actual rank', loo_rank:'Held-out rank', rank_delta:'Δrank', abs_rank_delta:'|Δrank|'};
+  document.getElementById('th').innerHTML = '<tr>' + cols.map(c =>
+    `<th onclick="sortBy('${c}')">${labels[c]}${SORT.col===c?(SORT.dir<0?' ↓':' ↑'):''}</th>`).join('') + '</tr>';
+  document.getElementById('tb').innerHTML = rows.map(r => {
+    const rc = parseFloat(r.residual)||0;
+    const rcls = rc > 0.001 ? 'pos' : rc < -0.001 ? 'neg' : '';
+    return '<tr>' +
+      `<td>${r.node_type}</td>` +
+      `<td class="mono" style="font-size:11.5px; color:var(--muted);">${escapeHtml(r.code||'')}</td>` +
+      `<td>${escapeHtml(r.label||'')}</td>` +
+      `<td class="num">${fmt(r.actual,3)}</td>` +
+      `<td class="num">${fmt(r.predicted,3)}</td>` +
+      `<td class="num ${rcls}">${fmt(r.residual,3)}</td>` +
+      `<td class="num">${fmt(r.abs_error,3)}</td>` +
+      `<td class="num">${fmt(r.posterior_std,3)}</td>` +
+      `<td class="num">${fmt(r.actual_rank,1)}</td>` +
+      `<td class="num">${fmt(r.loo_rank,1)}</td>` +
+      `<td class="num">${fmt(r.rank_delta,1)}</td>` +
+      `<td class="num">${fmt(r.abs_rank_delta,1)}</td>` +
+      '</tr>';
+  }).join('');
+}
+
+function sortBy(col){ SORT.dir = SORT.col===col ? -SORT.dir : -1; SORT.col=col; renderTable(); }
+
+function exportCsv() {
+  const rows = DATA.loo.rows;
+  const keys = Object.keys(rows[0]||{});
+  const csv = [keys.join(',')].concat(rows.map(r => keys.map(k => JSON.stringify(r[k]??'')).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${RUN_ID}_loocv.csv`; a.click();
+}
+
+load();
+</script></body></html>
+"""
+
+
+# ---------- summary.html (curated-run overview: findings, agreement and LOO charts) ----------
+
+_SUMMARY_HTML = r"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">__THEME_HEAD__<title>Run summary &mdash; AI Impact Meta-Review</title>
+<style>
+:root{
+  --page-w:1120px;
+  --grid:var(--rule-soft); --good:var(--ok-ink); --good-bg:var(--ok-bg);
+  --bad:var(--err-ink); --bad-bg:var(--err-bg); --neutral-bg:var(--surface-2);
+}
+.sum section{display:flex;flex-direction:column;gap:14px;margin-top:34px}
+.sum section.page-head{display:flex;flex-direction:row;margin-top:0}
+.sum h2{margin:0}
+.sum h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0;font-weight:600;font-family:var(--sans)}
+.sum p{margin:0;max-width:72ch;color:var(--ink-2)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:10px;font-size:13px;color:var(--ink-2)}
+.facts b{color:var(--ink);font-family:var(--mono);font-weight:500}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.finding{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.finding strong{font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.3}
+.finding p{font-size:13.5px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;width:fit-content;letter-spacing:.02em}
+.chip.good{background:var(--good-bg);color:var(--good)} .chip.bad{background:var(--bad-bg);color:var(--bad)} .chip.neutral{background:var(--neutral-bg);color:var(--ink-2)}
+.key{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.key.speed{background:var(--speed)} .key.quality{background:var(--quality)}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:16px 18px}
+.scroll{overflow-x:auto}
+.sum .panel table{border-collapse:collapse;width:100%;font-size:13px}
+.sum .panel th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;background:transparent}
+.sum .panel td{padding:7px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+.sum .panel tr:last-child td{border-bottom:0}
+.sum td.num,.sum th.num{text-align:right;white-space:nowrap}
+.sum tr.link{cursor:pointer} .sum tr.link:hover td{background:var(--hover)}
+.rid{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.sum .seg{display:inline-flex;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.sum .seg button{font:inherit;font-size:13px;padding:5px 14px;border:0;background:transparent;color:var(--ink-2);cursor:pointer}
+.sum .seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.sum .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.level{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.level header{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.level header strong{font-size:15px}
+.meta{font-size:12px;color:var(--muted)}
+ol.top{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px;font-size:13px}
+ol.top li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline}
+ol.top li span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obs{font-size:10px;font-weight:600;color:var(--good);margin-left:6px;letter-spacing:.04em}
+.chart svg{display:block;width:100%;height:auto}
+.chart text{fill:var(--ink-2);font-family:var(--sans);font-size:12px}
+.chart .tick{fill:var(--muted);font-size:11px;font-family:var(--mono)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--ink-2);align-items:center}
+.legend svg{vertical-align:middle;margin-right:4px}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font-size:12px;padding:6px 9px;border-radius:5px;max-width:320px;line-height:1.4;z-index:5}
+ul.plain{margin:0;padding-left:18px;color:var(--ink-2);font-size:13.5px;display:flex;flex-direction:column;gap:4px;max-width:80ch}
+</style></head><body>
+__HEADER__
+<main class="page wrap sum">
+  <section class="page-head">
+    <div>
+      <h1>What the published runs say</h1>
+      <p class="lede">These runs are the ones published on this site, all computed from one snapshot of the review table so they're directly comparable. They cover headline estimates at three aggregation levels, one-knob sensitivity checks against the occupation-level headline, and leave-one-out validation of rank recovery. Full tables are on <a href="runs.html">Imputation runs</a>.</p>
+      <div class="facts" id="facts"></div>
+    </div>
+    <span class="page-meta" id="stats"></span>
+  </section>
+  <section>
+    <h2>Findings</h2>
+    <div class="findings" id="findings"></div>
+  </section>
+
+  <section>
+    <h2>Headline estimates</h2>
+    <p>Default parameters: β = 2.5, SOC majors 37/45/47/49/51/53 pruned, activity threshold 10, and the AIOE baseline for speed only. Lists show the five largest estimated effects. Speed is a log-ratio (higher = faster with AI); quality is Hedges' g. <span class="obs" style="margin:0">OBS</span> marks an observed (not imputed) node.</p>
+    <div><div class="seg" role="group" aria-label="Metric" id="metricSeg">
+      <button type="button" id="m-speed" data-m="speed" aria-pressed="true">Speed</button>
+      <button type="button" id="m-quality" data-m="quality" aria-pressed="false">Quality</button>
+    </div></div>
+    <div class="levels" id="levels"></div>
+  </section>
+
+  <section>
+    <h2>Does the ranking survive a changed knob?</h2>
+    <p>Each row changes one setting and compares the resulting estimates with the matching occupation-level headline run. The comparison uses Spearman ρ over the nodes both runs share, with coarser levels rolled up before joining. ρ near 1 means that choice doesn't change the ordering.</p>
+    <div class="panel">
+      <div class="legend" style="margin-bottom:8px">
+        <span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--ink-2)"/></svg>occupations</span>
+        <span><svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" transform="rotate(45 6 6)" fill="none" stroke="var(--ink-2)" stroke-width="2"/></svg>activities</span>
+        <span><span class="key speed"></span>speed</span><span><span class="key quality"></span>quality</span>
+      </div>
+      <div class="chart scroll" id="sensChart"></div>
+    </div>
+    <div class="panel scroll"><table id="sensTable"></table></div>
+  </section>
+
+  <section>
+    <h2>Can the graph recover held-out effects?</h2>
+    <p>Each observed node is held out and re-imputed. Kendall τ-b compares the order of held-out predictions with the order of the actual values. The bars are bootstrap 95% CIs over folds. An interval entirely right of 0 means the order is recovered; entirely left of 0 means it's reversed.</p>
+    <div class="panel"><div class="chart scroll" id="looChart"></div></div>
+    <div class="panel scroll"><table id="looTable"></table></div>
+  </section>
+
+  <section>
+    <h2>How these runs were chosen</h2>
+    <ul class="plain">
+      <li><b>Headline:</b> both metrics at occupation, SOC-minor and SOC-major level, with default parameters.</li>
+      <li><b>Sensitivity:</b> each run changes one knob from the occupation-level headline: β (1, 10), SOC pruning (keep all 22 majors; also drop Management, SOC 11), activity threshold (5), and, for speed only, removing the AIOE baseline. The baseline is speed-only, so a quality run without it would be identical to the headline.</li>
+      <li><b>Validation:</b> leave-one-out at each level for both metrics, plus speed without the baseline to test whether the AIOE prior helps recover held-out effects.</li>
+      <li>The set is defined in <span class="num">scripts/generate_site_runs.py</span>, which regenerates it from the live review table.</li>
+    </ul>
+  </section>
+</main>
+<div id="tip" hidden></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const f = (x, p=2) => x == null ? '—' : (+x).toFixed(p);
+const LV = {occupation:'Occupation', soc_minor:'SOC minor group', soc_major:'SOC major group'};
+const LVs = {occupation:'occupation', soc_minor:'SOC minor', soc_major:'SOC major'};
+const verdict = l => !l.tau_ci ? ['neutral','n/a'] : l.tau_ci[0] > 0 ? ['good','recovers order'] : l.tau_ci[1] < 0 ? ['bad','reverses order'] : ['neutral','no clear signal'];
+const go = (page, id) => `onclick="location.href='${page}?run=${encodeURIComponent(id)}'"`;
+let S, R;
+
+function findings(){
+  const out = [];
+  const ag = k => R[k] && R[k].agreement && R[k].agreement.occupation;
+  const prune = ['speed-allsoc','speed-excl11','speed-thr5','quality-allsoc','quality-excl11','quality-thr5'].map(ag).filter(Boolean);
+  if (prune.length) {
+    const lo = Math.min(...prune.map(a => a.spearman));
+    out.push(lo >= 0.9
+      ? ['good','Robust','Pruning choices don’t move the ranking', `Keeping every SOC major, also excluding Management (11), or lowering the activity threshold to 5 all give ρ ≥ ${f(lo)} against the headline run for both metrics.`]
+      : ['neutral','Sensitive','Pruning choices shift the ranking', `The lowest agreement among the pruning variants is ρ = ${f(lo)} against the headline run.`]);
+  }
+  const nb = ag('speed-nobase');
+  if (nb) out.push(nb.spearman < 0.8
+    ? ['neutral','Driver','The speed ranking mostly comes from AIOE', `Without the AIOE baseline, speed occupation ρ falls to ${f(nb.spearman)} and only ${nb.top10}/10 of the top occupations stay the same. With so few observed occupations, the prior shapes most of the imputed ordering.`]
+    : ['good','Robust','The speed ranking holds without AIOE', `Dropping the AIOE baseline still gives ρ = ${f(nb.spearman)} against the headline run.`]);
+  for (const m of ['speed','quality']) {
+    const runs = ['occupation','soc_minor','soc_major'].map(l => R[`loo-${m}-${l}`]).filter(Boolean);
+    if (!runs.length) continue;
+    const vs = runs.map(r => [r, verdict(r.loo)[0]]);
+    const txt = runs.map(r => `${LVs[r.level] || r.level} τ = ${f(r.loo.tau)} [${f(r.loo.tau_ci[0])}, ${f(r.loo.tau_ci[1])}]`).join('; ');
+    const M = m[0].toUpperCase() + m.slice(1);
+    if (vs.some(v => v[1] === 'bad'))
+      out.push(['bad','Warning',`${M} predictions reverse the true order at some levels`, `Held-out ${m}: ${txt}. At least one CI is below 0, so treat imputed ${m} rankings as unvalidated.`]);
+    else if (vs.some(v => v[1] === 'good'))
+      out.push(['neutral','Weak signal',`${M} recovery is positive but thin`, `Held-out ${m}: ${txt}. Only levels whose CI excludes 0 show reliable recovery.`]);
+    else
+      out.push(['neutral','No signal',`${M} recovery is indistinguishable from chance`, `Held-out ${m}: ${txt}.`]);
+  }
+  $('findings').innerHTML = out.map(([c,t,h,b]) => `<div class="finding"><span class="chip ${c}">${c==='good'?'✓':c==='bad'?'!':'•'} ${t}</span><strong>${h}</strong><p>${b}</p></div>`).join('');
+}
+
+function renderLevels(metric){
+  $('levels').innerHTML = ['occupation','soc_minor','soc_major'].map(lv => {
+    const r = R[`${metric}-${lv}`]; if (!r) return '';
+    const li = arr => arr.map(t => `<li><span title="${esc(t.label)}">${esc(t.label)}${t.obs!=null?'<span class="obs">OBS</span>':''}</span><span class="num">${f(t.est,3)}</span></li>`).join('');
+    const ag = r.agreement && r.agreement.occupation ? `<span class="meta">ρ vs occupation run: ${f(r.agreement.occupation.spearman)}</span>` : `<span class="meta">reference run</span>`;
+    return `<article class="level">
+      <header><strong><span class="key ${metric}"></span>${LV[lv]}</strong><a class="rid" href="results.html?run=${encodeURIComponent(r.run_id)}">${r.run_id}</a></header>
+      <div class="meta">observed ${r.obs[0]} / ${r.obs[1]} · kept ${r.kept[0]} occ / ${r.kept[1]} act · mean est. <span class="num">${f(r.occ_mean,3)}</span></div>
+      <h3>Top occupations</h3><ol class="top">${li(r.top_occ)}</ol>
+      <h3>Top activities</h3><ol class="top">${li(r.top_act)}</ol>
+      ${ag}
+    </article>`;
+  }).join('');
+}
+document.querySelectorAll('#metricSeg button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#metricSeg button').forEach(x => x.setAttribute('aria-pressed', x===b));
+  renderLevels(b.dataset.m);
+});
+
+const tip = $('tip');
+function bindTips(root){
+  root.querySelectorAll('[data-tip]').forEach(el => {
+    el.addEventListener('mousemove', e => { tip.hidden=false; tip.innerHTML=el.dataset.tip; tip.style.left=Math.min(e.clientX+14, innerWidth-330)+'px'; tip.style.top=(e.clientY+14)+'px'; });
+    el.addEventListener('mouseleave', () => tip.hidden=true);
+  });
+}
+
+function renderSens(){
+  const sens = S.runs.filter(r => r.group==='sensitivity' && r.agreement).sort((a,b) => (a.metric>b.metric?-1:a.metric<b.metric?1:0));
+  const rowH=30, padL=300, padR=20, padT=24, W=880, H=padT+sens.length*rowH+30;
+  const x0=0.2, x1=1.0, sx = v => padL + (Math.max(v,x0)-x0)/(x1-x0)*(W-padL-padR);
+  let g='';
+  [0.2,0.4,0.6,0.8,1.0].forEach(t => { g += `<line x1="${sx(t)}" x2="${sx(t)}" y1="${padT-6}" y2="${H-26}" stroke="var(--grid)"/><text class="tick" x="${sx(t)}" y="${H-10}" text-anchor="middle">${t.toFixed(1)}</text>`; });
+  g += `<text class="tick" x="${padL}" y="12">Spearman ρ vs headline occupation run →</text>`;
+  sens.forEach((r,i) => {
+    const y = padT + i*rowH + rowH/2, col = `var(--${r.metric})`;
+    if (i>0 && sens[i-1].metric!==r.metric) g += `<line x1="0" x2="${W}" y1="${y-rowH/2}" y2="${y-rowH/2}" stroke="var(--rule)"/>`;
+    g += `<text x="0" y="${y+4}"><tspan fill="${col}">●</tspan> ${esc(r.label.replace(/^(Speed|Quality) · /,''))}</text>`;
+    const oc=r.agreement.occupation, ac=r.agreement.activity;
+    if (oc && ac) g += `<line x1="${sx(oc.spearman)}" x2="${sx(ac.spearman)}" y1="${y}" y2="${y}" stroke="${col}" stroke-opacity=".35" stroke-width="2"/>`;
+    if (ac){ const cx=sx(ac.spearman); g += `<rect x="${cx-5}" y="${y-5}" width="10" height="10" transform="rotate(45 ${cx} ${y})" fill="var(--surface)" stroke="${col}" stroke-width="2" data-tip="${esc(r.label)}<br>activities: ρ = ${f(ac.spearman,3)} (n=${ac.n}) · top-10 overlap ${ac.top10??'—'}/10"/>`; }
+    if (oc) g += `<circle cx="${sx(oc.spearman)}" cy="${y}" r="6" fill="${col}" stroke="var(--surface)" stroke-width="2" data-tip="${esc(r.label)}<br>occupations: ρ = ${f(oc.spearman,3)} (n=${oc.n}) · top-10 overlap ${oc.top10??'—'}/10"/>`;
+  });
+  $('sensChart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="min-width:640px" role="img" aria-label="Spearman agreement of each sensitivity run with its headline run">${g}</svg>`;
+  bindTips($('sensChart'));
+  $('sensTable').innerHTML = `<thead><tr><th>Run</th><th>Change</th><th class="num">Kept occ/act</th><th class="num">Occ ρ</th><th class="num">Occ top-10</th><th class="num">Act ρ</th><th class="num">Act top-10</th></tr></thead><tbody>` +
+    sens.map(r => { const oc=r.agreement.occupation||{}, ac=r.agreement.activity||{};
+      return `<tr class="link" ${go('results.html', r.run_id)}><td class="rid">${r.run_id}</td><td><span class="key ${r.metric}"></span>${esc(r.label)}</td><td class="num">${r.kept[0]} / ${r.kept[1]}</td><td class="num">${f(oc.spearman)}</td><td class="num">${oc.top10??'—'}/10</td><td class="num">${f(ac.spearman)}</td><td class="num">${ac.top10??'—'}/10</td></tr>`; }).join('') + '</tbody>';
+}
+
+function renderLoo(){
+  const loo = S.runs.filter(r => r.kind==='loo' && r.loo && r.loo.tau_ci);
+  const rowH=34, padL=300, padR=20, padT=24, W=880, H=padT+loo.length*rowH+30;
+  const sx = v => padL + (v+1)/2*(W-padL-padR);
+  let g='';
+  [-1,-0.5,0,0.5,1].forEach(t => { g += `<line x1="${sx(t)}" x2="${sx(t)}" y1="${padT-6}" y2="${H-26}" stroke="${t===0?'var(--muted)':'var(--grid)'}" ${t===0?'stroke-dasharray="3 3"':''}/><text class="tick" x="${sx(t)}" y="${H-10}" text-anchor="middle">${t}</text>`; });
+  g += `<text class="tick" x="${sx(-1)}" y="12">← reversed</text><text class="tick" x="${sx(1)}" y="12" text-anchor="end">recovered →</text>`;
+  loo.forEach((r,i) => {
+    const l=r.loo, y=padT+i*rowH+rowH/2, col=`var(--${r.metric})`;
+    g += `<text x="0" y="${y+4}">${esc(r.label.replace(/^LOO · /,''))}</text>`;
+    g += `<line x1="${sx(l.tau_ci[0])}" x2="${sx(l.tau_ci[1])}" y1="${y}" y2="${y}" stroke="${col}" stroke-width="2.5" stroke-linecap="round"/>`;
+    g += `<circle cx="${sx(l.tau)}" cy="${y}" r="7" fill="${col}" stroke="var(--surface)" stroke-width="2" data-tip="${esc(r.label)}<br>τ-b = ${f(l.tau,3)} · 95% CI [${f(l.tau_ci[0])}, ${f(l.tau_ci[1])}]<br>Spearman ρ = ${f(l.spearman,3)} · ${l.n} folds · MAE ${f(l.mae,3)}"/>`;
+  });
+  $('looChart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="min-width:640px" role="img" aria-label="Kendall tau with 95% confidence intervals for each LOO run">${g}</svg>`;
+  bindTips($('looChart'));
+  $('looTable').innerHTML = `<thead><tr><th>Run</th><th>Setting</th><th class="num">Folds</th><th class="num">τ-b</th><th class="num">95% CI</th><th class="num">ρ</th><th class="num">MAE</th><th>Verdict</th><th>Largest rank miss</th></tr></thead><tbody>` +
+    loo.map(r => { const l=r.loo, [c,v]=verdict(l), w=(l.worst||[])[0];
+      return `<tr class="link" ${go('loo.html', r.run_id)}><td class="rid">${r.run_id}</td><td><span class="key ${r.metric}"></span>${esc(r.label.replace(/^LOO · /,''))}</td><td class="num">${l.n}</td><td class="num">${f(l.tau)}</td><td class="num">[${f(l.tau_ci[0])}, ${f(l.tau_ci[1])}]</td><td class="num">${f(l.spearman)}</td><td class="num">${f(l.mae,3)}</td><td><span class="chip ${c}">${v}</span></td><td style="font-size:12px">${w ? `${esc(w.label)} <span class="meta">(rank ${f(w.actual_rank,0)} → ${f(w.loo_rank,0)})</span>` : '—'}</td></tr>`; }).join('') + '</tbody>';
+}
+
+fetch('data/summary.json').then(r => r.json()).then(d => {
+  S = d; R = Object.fromEntries(S.runs.map(r => [r.key, r]));
+  const o = S.observations || {};
+  const n = g => S.runs.filter(r => r.group===g).length;
+  $('facts').innerHTML = [
+    `<span><b>${o.speed}</b> speed + <b>${o.quality}</b> quality effect rows</span>`,
+    `<span>→ <b>${o.occ_codes}</b> occupation · <b>${o.act_codes}</b> activity codes</span>`,
+    `<span><b>${S.runs.length}</b> runs: ${n('headline')} headline · ${n('sensitivity')} sensitivity · ${n('validation')} LOO</span>`,
+  ].join('');
+  const st = $('stats'); if (st) st.textContent = `${S.runs.length} curated runs`;
+  findings(); renderLevels('speed'); renderSens(); renderLoo();
+}).catch(() => { document.querySelector('main.sum').innerHTML = '<p>No run summary published. Build the site with a run manifest (scripts/generate_site_runs.py).</p>'; });
 </script>
 </body></html>
 """
@@ -1459,17 +2133,43 @@ def main():
         (PAPERS_DATA / f"{pid}.json").write_text(json.dumps(_paper_bundle(pid)))
     print(f"wrote {len(paper_ids)} per-paper bundles into data/papers/")
 
-    # 4. Runs (per-run + index)
-    run_dirs = _all_run_dirs()
+    # 4. Runs (per-run + index). The curated manifest decides what's published.
+    manifest = _load_manifest()
+    if manifest:
+        entries = {e["run_id"]: e for e in manifest["runs"]}
+        run_dirs = [RUNS_DIR / rid for rid in entries]
+    else:
+        entries = {}
+        run_dirs = _all_run_dirs()
     all_run_metas = []
+    summary_runs = []
     for d in run_dirs:
         bundle = _load_run_bundle(d)
+        e = entries.get(d.name)
+        if e:
+            bundle.update(label=e["label"], group=e["group"], reference_run_id=e.get("reference_run_id"))
+            if e.get("reference_run_id"):
+                bundle["agreement"] = _agreement(d.name, e["reference_run_id"])
+            summary_runs.append(_summary_record(e, bundle))
         (RUNS_DATA / f"{d.name}.json").write_text(json.dumps(bundle))
-        meta_only = {k: v for k, v in bundle.items() if k not in ("occupation_impacts", "activity_impacts")}
+        meta_only = {k: v for k, v in bundle.items() if k not in ("occupation_impacts", "activity_impacts", "loo")}
+        if bundle.get("type") == "loo":
+            meta_only["loo_summary"] = bundle["loo"].get("summary")
         all_run_metas.append(meta_only)
-    (RUNS_DATA / "index.json").write_text(json.dumps({"runs": all_run_metas}))
-    canonical_run_id = run_dirs[0].name if run_dirs else ""
-    print(f"wrote {len(run_dirs)} run bundles into data/runs/ (canonical: {canonical_run_id or 'none'})")
+    canonical_run_id = (manifest or {}).get("canonical") or next(
+        (m["run_id"] for m in all_run_metas if m.get("type") != "loo"), "")
+    (RUNS_DATA / "index.json").write_text(json.dumps({
+        "runs": all_run_metas,
+        "groups": (manifest or {}).get("groups", []),
+        "observations": (manifest or {}).get("observations"),
+        "canonical": canonical_run_id,
+    }))
+    print(f"wrote {len(run_dirs)} run bundles into data/runs/ (canonical: {canonical_run_id or 'none'}"
+          f"{', curated' if manifest else ''})")
+    if manifest:
+        (DATA / "summary.json").write_text(json.dumps({
+            "observations": manifest.get("observations"), "runs": summary_runs}))
+        print(f"wrote summary.json ({len(summary_runs)} runs)")
 
     # 5. Heatmap precompute (needs run_analysis + Work Activities.xlsx)
     try:
@@ -1508,7 +2208,9 @@ def main():
         ("index.html",       _INDEX_HTML,       {"__STYLE__": _INDEX_STYLE,  "__HEADER__": _header("home")}),
         ("results.html",     _RESULTS_HTML,     {"__STYLE__": _RESULTS_STYLE, "__HEADER__": _header("runs"),
                                                   "__DEFAULT_RUN_ID__": canonical_run_id}),
+        ("summary.html",     _SUMMARY_HTML,     {"__HEADER__": _header("summary")}),
         ("runs.html",        _RUNS_HTML,        {"__STYLE__": _RUNS_STYLE,   "__HEADER__": _header("runs")}),
+        ("loo.html",         _LOO_HTML,         {"__HEADER__": _header("runs")}),
         ("parameters.html",  _PARAMS_HTML,      {"__STYLE__": _PARAMS_STYLE, "__HEADER__": _header("parameters"),
                                                   "__BETA__": str(CANONICAL_BETA)}),
         ("transitions.html", _TRANSITIONS_HTML, {"__HEADER__": _header("transitions")}),

@@ -1,0 +1,15 @@
+node_type,code,label,actual,predicted,residual,abs_error,posterior_std,actual_rank,loo_rank,rank_delta,actual_rank_within,loo_rank_within,rank_delta_within
+occupation,13,Business & Financial,0.0033,0.3999,0.3967,0.3967,1.049,14.0,3.0,-11.0,6.0,3.0,-3.0
+occupation,15,Computer & Math,0.1017,0.4132,0.3116,0.3116,1.0044,11.0,1.0,-10.0,4.0,1.0,-3.0
+occupation,23,Legal,0.307,0.407,0.1,0.1,1.0691,9.0,2.0,-7.0,2.0,2.0,0.0
+occupation,27,Arts; Design; Media,0.1428,0.2505,0.1077,0.1077,1.0275,10.0,10.5,0.5,3.0,6.0,3.0
+occupation,41,Sales,0.5802,0.2821,-0.2981,0.2981,1.1093,4.0,7.0,3.0,1.0,5.0,4.0
+occupation,43,Office & Admin Support,0.0338,0.367,0.3331,0.3331,1.064,13.0,4.0,-9.0,5.0,4.0,-1.0
+activity,,Analyzing Data or Information,0.6187,0.2236,-0.3951,0.3951,1.2315,1.0,12.0,11.0,1.0,6.0,5.0
+activity,,Documenting/Recording Information,0.3223,0.2983,-0.024,0.024,1.7203,8.0,5.0,-3.0,7.0,1.0,-6.0
+activity,,Interpreting the Meaning of Information for Others,0.5887,0.2693,-0.3194,0.3194,2.7729,3.0,9.0,6.0,3.0,4.0,1.0
+activity,,Making Decisions and Solving Problems,0.6018,0.2832,-0.3186,0.3186,0.968,2.0,6.0,4.0,2.0,2.0,0.0
+activity,,Processing Information,0.3928,0.2505,-0.1422,0.1422,1.1806,7.0,10.5,3.5,6.0,5.0,-1.0
+activity,,Thinking Creatively,0.0642,0.2191,0.1549,0.1549,1.1846,12.0,13.0,1.0,8.0,7.0,-1.0
+activity,,Updating and Using Relevant Knowledge,0.4119,0.2768,-0.1351,0.1351,1.0116,6.0,8.0,2.0,5.0,3.0,-2.0
+activity,,Working with Computers,0.4492,0.1791,-0.2702,0.2702,1.2751,5.0,14.0,9.0,4.0,8.0,4.0

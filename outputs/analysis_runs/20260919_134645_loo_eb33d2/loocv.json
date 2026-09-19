@@ -1,0 +1,386 @@
+{
+  "run_id": "20260919_134645_loo_eb33d2",
+  "summary": {
+    "overall": {
+      "n": 15,
+      "mae": 0.12937333333333334,
+      "rmse": 0.163184296630119,
+      "bias": 0.0791866666666667,
+      "r2": -0.08673766429986496,
+      "pearson_r": 0.4237291934931177,
+      "spearman_r": 0.2913316623548092
+    },
+    "occupation": {
+      "n": 7,
+      "mae": 0.16947142857142858,
+      "rmse": 0.19636492631250188,
+      "bias": 0.08970000000000002,
+      "r2": -0.1874041385162526,
+      "pearson_r": 0.27145071120497416,
+      "spearman_r": 0.21428571428571433
+    },
+    "activity": {
+      "n": 8,
+      "mae": 0.0942875,
+      "rmse": 0.12724112444489005,
+      "bias": 0.06998750000000001,
+      "r2": 0.0649881586729435,
+      "pearson_r": 0.6173534670151954,
+      "spearman_r": 0.19162020190612142
+    },
+    "rank": {
+      "overall": {
+        "n": 15,
+        "kendall_tau": 0.22966770070528586,
+        "kendall_p": 0.23438104887262345,
+        "concordance_c": 0.6148338503526429,
+        "spearman_r": 0.2913316623548092,
+        "spearman_p": 0.2921077402090994,
+        "footrule": 61.0,
+        "footrule_norm": 0.5446428571428571,
+        "mean_abs_rank_delta": 4.066666666666666,
+        "mean_abs_rank_delta_chance": 4.977777777777778,
+        "topk": {
+          "3": {
+            "K": 3,
+            "hits": 1,
+            "rate": 0.3333333333333333,
+            "chance": 0.2
+          },
+          "5": {
+            "K": 5,
+            "hits": 2,
+            "rate": 0.4,
+            "chance": 0.3333333333333333
+          },
+          "10": {
+            "K": 10,
+            "hits": 7,
+            "rate": 0.7,
+            "chance": 0.6666666666666666
+          }
+        },
+        "tau_ci": [
+          -0.2143518205763671,
+          0.6210526315789474
+        ],
+        "tau_ci_boot_n": 2000
+      },
+      "occupation": {
+        "n": 7,
+        "kendall_tau": 0.14285714285714288,
+        "kendall_p": 0.7726190476190476,
+        "concordance_c": 0.5714285714285714,
+        "spearman_r": 0.21428571428571433,
+        "spearman_p": 0.6445115810207203,
+        "footrule": 14.0,
+        "footrule_norm": 0.5833333333333334,
+        "mean_abs_rank_delta": 2.0,
+        "mean_abs_rank_delta_chance": 2.2857142857142856,
+        "topk": {
+          "3": {
+            "K": 3,
+            "hits": 1,
+            "rate": 0.3333333333333333,
+            "chance": 0.42857142857142855
+          },
+          "5": {
+            "K": 5,
+            "hits": 4,
+            "rate": 0.8,
+            "chance": 0.7142857142857143
+          }
+        },
+        "tau_ci": [
+          -0.7647058823529412,
+          0.9999999999999999
+        ],
+        "tau_ci_boot_n": 2000
+      },
+      "activity": {
+        "n": 8,
+        "kendall_tau": 0.1091089451179962,
+        "kendall_p": 0.7083840532183997,
+        "concordance_c": 0.5545544725589981,
+        "spearman_r": 0.19162020190612142,
+        "spearman_p": 0.6494102011224531,
+        "footrule": 19.0,
+        "footrule_norm": 0.59375,
+        "mean_abs_rank_delta": 2.375,
+        "mean_abs_rank_delta_chance": 2.625,
+        "topk": {
+          "3": {
+            "K": 3,
+            "hits": 1,
+            "rate": 0.3333333333333333,
+            "chance": 0.375
+          },
+          "5": {
+            "K": 5,
+            "hits": 3,
+            "rate": 0.6,
+            "chance": 0.625
+          }
+        },
+        "tau_ci": [
+          -0.7146103896103896,
+          0.7500000000000001
+        ],
+        "tau_ci_boot_n": 2000
+      },
+      "method": {
+        "description": "Each observed node is held out in turn and its value re-imputed by the graph. Nodes are then ranked by their held-out predictions (1 = largest effect) and compared with their ranking by actual values. Scored with Kendall's tau-b (primary), the concordance index C = (tau+1)/2, Spearman's rho, mean absolute rank displacement / Spearman's footrule (vs. its random-permutation expectation), and top-K precision. 95% CI on tau-b is a percentile bootstrap over folds.",
+        "citations": [
+          "Kendall, M. G. (1938). A new measure of rank correlation. Biometrika, 30(1-2), 81-93.",
+          "Kendall, M. G. (1945). The treatment of ties in ranking problems. Biometrika, 33(3), 239-251.",
+          "Harrell, F. E., Califf, R. M., Pryor, D. B., Lee, K. L., & Rosati, R. A. (1982). Evaluating the yield of medical tests. JAMA, 247(18), 2543-2546.",
+          "Diaconis, P., & Graham, R. L. (1977). Spearman's footrule as a measure of disarray. JRSS Series B, 39(2), 262-268.",
+          "Spearman, C. (1904). The proof and measurement of association between two things. American Journal of Psychology, 15(1), 72-101.",
+          "Efron, B., & Tibshirani, R. J. (1993). An Introduction to the Bootstrap. Chapman & Hall."
+        ]
+      }
+    }
+  },
+  "rows": [
+    {
+      "node_type": "occupation",
+      "code": "13",
+      "label": "Business & Financial",
+      "actual": 0.2323,
+      "predicted": 0.3144,
+      "residual": 0.0821,
+      "abs_error": 0.0821,
+      "posterior_std": 0.8319,
+      "actual_rank": 8.0,
+      "loo_rank": 5.0,
+      "rank_delta": -3.0,
+      "actual_rank_within": 5.0,
+      "loo_rank_within": 4.0,
+      "rank_delta_within": -1.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "15",
+      "label": "Computer & Math",
+      "actual": 0.237,
+      "predicted": 0.3169,
+      "residual": 0.0799,
+      "abs_error": 0.0799,
+      "posterior_std": 0.821,
+      "actual_rank": 7.0,
+      "loo_rank": 4.0,
+      "rank_delta": -3.0,
+      "actual_rank_within": 4.0,
+      "loo_rank_within": 3.0,
+      "rank_delta_within": -1.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "23",
+      "label": "Legal",
+      "actual": 0.2506,
+      "predicted": 0.3649,
+      "residual": 0.1143,
+      "abs_error": 0.1143,
+      "posterior_std": 0.8423,
+      "actual_rank": 5.0,
+      "loo_rank": 2.0,
+      "rank_delta": -3.0,
+      "actual_rank_within": 2.0,
+      "loo_rank_within": 1.0,
+      "rank_delta_within": -1.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "27",
+      "label": "Arts; Design; Media",
+      "actual": 0.5829,
+      "predicted": 0.3037,
+      "residual": -0.2792,
+      "abs_error": 0.2792,
+      "posterior_std": 0.8259,
+      "actual_rank": 1.0,
+      "loo_rank": 6.0,
+      "rank_delta": 5.0,
+      "actual_rank_within": 1.0,
+      "loo_rank_within": 5.0,
+      "rank_delta_within": 4.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "29",
+      "label": "Healthcare Practitioners",
+      "actual": -0.0378,
+      "predicted": 0.2629,
+      "residual": 0.3006,
+      "abs_error": 0.3006,
+      "posterior_std": 0.8704,
+      "actual_rank": 15.0,
+      "loo_rank": 10.0,
+      "rank_delta": -5.0,
+      "actual_rank_within": 7.0,
+      "loo_rank_within": 7.0,
+      "rank_delta_within": 0.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "41",
+      "label": "Sales",
+      "actual": 0.0541,
+      "predicted": 0.3213,
+      "residual": 0.2671,
+      "abs_error": 0.2671,
+      "posterior_std": 0.8549,
+      "actual_rank": 12.0,
+      "loo_rank": 3.0,
+      "rank_delta": -9.0,
+      "actual_rank_within": 6.0,
+      "loo_rank_within": 2.0,
+      "rank_delta_within": -4.0
+    },
+    {
+      "node_type": "occupation",
+      "code": "43",
+      "label": "Office & Admin Support",
+      "actual": 0.2372,
+      "predicted": 0.3001,
+      "residual": 0.0628,
+      "abs_error": 0.0628,
+      "posterior_std": 0.838,
+      "actual_rank": 6.0,
+      "loo_rank": 7.0,
+      "rank_delta": 1.0,
+      "actual_rank_within": 3.0,
+      "loo_rank_within": 6.0,
+      "rank_delta_within": 3.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Analyzing Data or Information",
+      "actual": 0.0117,
+      "predicted": 0.2678,
+      "residual": 0.2561,
+      "abs_error": 0.2561,
+      "posterior_std": 1.207,
+      "actual_rank": 14.0,
+      "loo_rank": 9.0,
+      "rank_delta": -5.0,
+      "actual_rank_within": 8.0,
+      "loo_rank_within": 3.0,
+      "rank_delta_within": -5.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Communicating with People Outside the Organization",
+      "actual": 0.2314,
+      "predicted": 0.2832,
+      "residual": 0.0518,
+      "abs_error": 0.0518,
+      "posterior_std": 1.4519,
+      "actual_rank": 9.0,
+      "loo_rank": 8.0,
+      "rank_delta": -1.0,
+      "actual_rank_within": 4.0,
+      "loo_rank_within": 2.0,
+      "rank_delta_within": -2.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Documenting/Recording Information",
+      "actual": 0.0469,
+      "predicted": 0.2455,
+      "residual": 0.1986,
+      "abs_error": 0.1986,
+      "posterior_std": 1.6883,
+      "actual_rank": 13.0,
+      "loo_rank": 12.5,
+      "rank_delta": -0.5,
+      "actual_rank_within": 7.0,
+      "loo_rank_within": 5.5,
+      "rank_delta_within": -1.5
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Getting Information",
+      "actual": 0.3057,
+      "predicted": 0.2377,
+      "residual": -0.0679,
+      "abs_error": 0.0679,
+      "posterior_std": 0.8066,
+      "actual_rank": 3.0,
+      "loo_rank": 14.0,
+      "rank_delta": 11.0,
+      "actual_rank_within": 2.0,
+      "loo_rank_within": 7.0,
+      "rank_delta_within": 5.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Monitoring Processes; Materials; or Surroundings",
+      "actual": 0.0945,
+      "predicted": 0.2218,
+      "residual": 0.1273,
+      "abs_error": 0.1273,
+      "posterior_std": 1.7085,
+      "actual_rank": 11.0,
+      "loo_rank": 15.0,
+      "rank_delta": 4.0,
+      "actual_rank_within": 6.0,
+      "loo_rank_within": 8.0,
+      "rank_delta_within": 2.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Processing Information",
+      "actual": 0.2625,
+      "predicted": 0.2455,
+      "residual": -0.017,
+      "abs_error": 0.017,
+      "posterior_std": 1.1587,
+      "actual_rank": 4.0,
+      "loo_rank": 12.5,
+      "rank_delta": 8.5,
+      "actual_rank_within": 3.0,
+      "loo_rank_within": 5.5,
+      "rank_delta_within": 2.5
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Thinking Creatively",
+      "actual": 0.4274,
+      "predicted": 0.4152,
+      "residual": -0.0123,
+      "abs_error": 0.0123,
+      "posterior_std": 1.1656,
+      "actual_rank": 2.0,
+      "loo_rank": 1.0,
+      "rank_delta": -1.0,
+      "actual_rank_within": 1.0,
+      "loo_rank_within": 1.0,
+      "rank_delta_within": 0.0
+    },
+    {
+      "node_type": "activity",
+      "code": "",
+      "label": "Working with Computers",
+      "actual": 0.227,
+      "predicted": 0.2503,
+      "residual": 0.0233,
+      "abs_error": 0.0233,
+      "posterior_std": 1.2664,
+      "actual_rank": 10.0,
+      "loo_rank": 11.0,
+      "rank_delta": 1.0,
+      "actual_rank_within": 5.0,
+      "loo_rank_within": 4.0,
+      "rank_delta_within": -1.0
+    }
+  ]
+}

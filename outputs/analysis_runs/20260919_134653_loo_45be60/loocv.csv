@@ -1,0 +1,16 @@
+node_type,code,label,actual,predicted,residual,abs_error,posterior_std,actual_rank,loo_rank,rank_delta,actual_rank_within,loo_rank_within,rank_delta_within
+occupation,13-1000,Agents and Business Managers of Artists; Performers; and Athletes (13-1),0.4664,0.3978,-0.0686,0.0686,1.0228,5.0,5.0,0.0,2.0,5.0,3.0
+occupation,13-2000,Accountants and Auditors (13-2),0.0012,0.4428,0.4416,0.4416,1.0146,15.0,2.0,-13.0,7.0,2.0,-5.0
+occupation,15-1000,Telecommunications Engineering Specialists (15-1),0.1017,0.4052,0.3036,0.3036,1.0031,12.0,3.0,-9.0,5.0,3.0,-2.0
+occupation,23-1000,Judicial Law Clerks (23-1),0.307,0.4699,0.1629,0.1629,1.0229,10.0,1.0,-9.0,3.0,1.0,-2.0
+occupation,27-3000,Broadcast Announcers and Radio Disc Jockeys (27-3),0.1428,0.3579,0.215,0.215,1.0256,11.0,10.0,-1.0,4.0,7.0,3.0
+occupation,41-9000,Telemarketers (41-9),0.5802,0.3602,-0.2201,0.2201,1.0392,4.0,9.0,5.0,1.0,6.0,5.0
+occupation,43-4000,Eligibility Interviewers; Government Programs (43-4),0.0338,0.4036,0.3698,0.3698,1.0245,14.0,4.0,-10.0,6.0,4.0,-2.0
+activity,,Analyzing Data or Information,0.6187,0.3285,-0.2902,0.2902,0.7373,1.0,14.0,13.0,1.0,7.0,6.0
+activity,,Documenting/Recording Information,0.3223,0.367,0.0447,0.0447,0.9149,9.0,7.0,-2.0,7.0,2.0,-5.0
+activity,,Interpreting the Meaning of Information for Others,0.5887,0.332,-0.2567,0.2567,1.4143,3.0,12.0,9.0,3.0,5.0,2.0
+activity,,Making Decisions and Solving Problems,0.6018,0.3319,-0.27,0.27,0.5799,2.0,13.0,11.0,2.0,6.0,4.0
+activity,,Processing Information,0.3928,0.3659,-0.0269,0.0269,0.6369,8.0,8.0,0.0,6.0,3.0,-3.0
+activity,,Thinking Creatively,0.0642,0.3927,0.3285,0.3285,0.7175,13.0,6.0,-7.0,8.0,1.0,-7.0
+activity,,Updating and Using Relevant Knowledge,0.4119,0.3529,-0.059,0.059,0.5651,7.0,11.0,4.0,5.0,4.0,-1.0
+activity,,Working with Computers,0.4492,0.2772,-0.1721,0.1721,0.8081,6.0,15.0,9.0,4.0,8.0,4.0
