@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Writing the paper?** Read `AGENTS.md` first. It covers the website, which analysis runs are current, and the numbers to cite.
+
 ## What this repo is
 
 Two systems in one Python codebase:
