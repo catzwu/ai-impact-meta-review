@@ -142,6 +142,11 @@ def _run_imputation(metric: str, excluded: list[str], use_baseline: bool = True)
     return run_id
 
 
+def _run_uses_baseline(run_id: str) -> bool:
+    meta = json.loads((RUNS_DIR / run_id / "run.json").read_text())
+    return bool(meta.get("params", {}).get("use_baseline", True))
+
+
 def load_scores(speed_run: str, quality_run: str) -> pd.DataFrame:
     """Imputed estimates per O*NET-SOC code, averaged up to 6-digit SOC 2018."""
     frames = []
@@ -197,7 +202,10 @@ def binscatter_bins(df: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(out, ignore_index=True)
 
 
-def plot(bins: pd.DataFrame, corr: pd.DataFrame, path_stem: Path, meta: str) -> None:
+def plot(bins: pd.DataFrame, corr: pd.DataFrame, path_stem: Path, meta: str,
+         series: list = SERIES, annot: str = "speed/quality") -> None:
+    """`annot` picks the per-panel r line: the two imputed metrics, or (in
+    --compare mode) the same metric with and without the AIOE baseline."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -212,17 +220,21 @@ def plot(bins: pd.DataFrame, corr: pd.DataFrame, path_stem: Path, meta: str) -> 
         b = bins[bins.characteristic == x]
         ax.axhline(0, color=muted, lw=0.8, zorder=1)
         ax.grid(axis="y", color=grid, lw=0.6, zorder=0)
-        for col, name, color, marker in SERIES:
+        for col, name, color, marker in series:
             ref = col == "lm_aioe_z"
             ax.scatter(b["x_mean"], b[f"{col}_mean"], s=22 if ref else 30,
                        marker=marker, color=color, linewidths=1.0 if ref else 0.8,
                        edgecolors="white" if not ref else None,
                        alpha=0.9, zorder=2 if ref else 3, label=name)
         c = corr[corr.characteristic == x].set_index("score")
-        ax.text(0.0, 1.02,
-                f"r(speed) = {c.loc['speed', 'pearson_r']:+.2f}    "
-                f"r(quality) = {c.loc['quality', 'pearson_r']:+.2f}",
-                transform=ax.transAxes, va="bottom", ha="left", fontsize=8, color=ink)
+        if annot == "compare":
+            line = (f"r(speed, with AIOE) = {c.loc['speed_with', 'pearson_r']:+.2f}    "
+                    f"r(speed, study only) = {c.loc['speed_without', 'pearson_r']:+.2f}")
+        else:
+            line = (f"r(speed) = {c.loc['speed', 'pearson_r']:+.2f}    "
+                    f"r(quality) = {c.loc['quality', 'pearson_r']:+.2f}")
+        ax.text(0.0, 1.02, line, transform=ax.transAxes, va="bottom", ha="left",
+                fontsize=8, color=ink)
         if fmt == "pct":
             ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.0%}"))
         ax.set_xlabel(label)
@@ -238,6 +250,63 @@ def plot(bins: pd.DataFrame, corr: pd.DataFrame, path_stem: Path, meta: str) -> 
     plt.close(fig)
 
 
+COMPARE_SERIES = [
+    ("speed_with_z", "Speed (with AIOE baseline)", "#2a78d6", "o"),
+    ("speed_without_z", "Speed (study data only)", "#eb6834", "D"),
+    ("lm_aioe_z", "Language-modeling AIOE (reference)", "#9a9a94", "x"),
+]
+
+
+def compare(main_dir: Path) -> None:
+    """Overlay the two speed imputations panel by panel. Both variants must have
+    been generated already; quality and the characteristics are identical across
+    them, so only the speed series differs."""
+    alt_dir = main_dir / "no_aioe_baseline"
+    for d in (main_dir, alt_dir):
+        if not (d / "binscatter_bins.csv").exists():
+            raise SystemExit(f"missing {d}/binscatter_bins.csv - generate it first")
+
+    keys = ["characteristic", "bin"]
+    mb = pd.read_csv(main_dir / "binscatter_bins.csv")
+    ab = pd.read_csv(alt_dir / "binscatter_bins.csv")
+    bins = (mb.rename(columns={"speed_z_mean": "speed_with_z_mean"})
+              .merge(ab[[*keys, "speed_z_mean", "x_mean"]]
+                     .rename(columns={"speed_z_mean": "speed_without_z_mean",
+                                      "x_mean": "x_mean_alt"}), on=keys))
+    drift = (bins["x_mean"] - bins["x_mean_alt"]).abs().max()
+    if drift > 1e-9:  # bins must line up or the overlay compares different x
+        raise SystemExit(f"bin x-means differ between variants (max {drift})")
+
+    mc = pd.read_csv(main_dir / "correlations.csv")
+    ac = pd.read_csv(alt_dir / "correlations.csv")
+    corr = pd.concat([
+        mc[mc.score == "speed"].assign(score="speed_with"),
+        ac[ac.score == "speed"].assign(score="speed_without"),
+        mc[mc.score.isin(["quality", "lm_aioe"])],
+    ], ignore_index=True)
+
+    wide = (corr.pivot(index=["characteristic", "label"], columns="score",
+                       values="pearson_r").reset_index())
+    wide["delta_speed"] = (wide["speed_with"] - wide["speed_without"]).round(3)
+    order = {c: i for i, (c, *_) in enumerate(CHARACTERISTICS)}
+    wide = wide.sort_values("characteristic", key=lambda s: s.map(order))
+    wide.to_csv(main_dir / "baseline_comparison.csv", index=False)
+
+    meta_main = json.loads((main_dir / "meta.json").read_text())
+    meta_alt = json.loads((alt_dir / "meta.json").read_text())
+    meta = (f"Speed imputation with the LM-AIOE baseline (run {meta_main['speed_run']}) vs "
+            f"without it (run {meta_alt['speed_run']}); identical quality run and "
+            f"{meta_main['n_occupations']} occupations. Without the baseline, speed is "
+            f"propagated from {meta_main['n_observed_speed']} observed occupations alone.")
+    plot(bins, corr, main_dir / "binscatter_baseline_comparison", meta,
+         series=COMPARE_SERIES, annot="compare")
+
+    cols = ["label", "speed_with", "speed_without", "delta_speed", "lm_aioe"]
+    print(wide[cols].to_string(index=False))
+    print(f"\nwrote {main_dir}/baseline_comparison.csv + "
+          f"binscatter_baseline_comparison.png/.pdf")
+
+
 # ---------------------------------------------------------------- main
 
 def main() -> None:
@@ -250,11 +319,17 @@ def main() -> None:
     ap.add_argument("--no-speed-baseline", action="store_true",
                     help="fresh speed run without the AIOE baseline prior, so speed "
                          "reflects only the study data (writes to <out-dir>/no_aioe_baseline)")
+    ap.add_argument("--compare", action="store_true",
+                    help="overlay the with- and without-AIOE-baseline speed variants "
+                         "(both must already be generated) and exit")
     ap.add_argument("--out-dir", type=Path, default=OUT_DIR)
     args = ap.parse_args()
+    if args.compare:
+        compare(args.out_dir)
+        return
     if args.no_speed_baseline:
-        if args.speed_run:
-            ap.error("--no-speed-baseline runs a fresh speed imputation; drop --speed-run")
+        if args.speed_run and _run_uses_baseline(args.speed_run):
+            ap.error(f"--speed-run {args.speed_run} was imputed WITH the AIOE baseline")
         args.out_dir = args.out_dir / "no_aioe_baseline"
 
     excluded = [s for s in args.excluded_socs.split(",") if s]

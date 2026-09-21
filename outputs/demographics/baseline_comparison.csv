@@ -1,0 +1,9 @@
+characteristic,label,lm_aioe,quality,speed_with,speed_without,delta_speed
+median_salary_2021,Median Salary 2021 (Thousands of Dollars),0.474,0.068,0.4,-0.087,0.487
+occ_req_education,Occupation Required Education Level,0.715,0.045,0.612,-0.06,0.672
+avg_creative_weight,Relative Weight of Creative Abilities,0.856,-0.058,0.824,0.143,0.681
+mean_female,Percent Female Employment,0.533,-0.051,0.519,0.084,0.435
+mean_white,Percent White Employment,0.17,0.032,0.139,-0.009,0.148
+mean_black,Percent Black Employment,-0.179,0.018,-0.179,-0.065,-0.114
+mean_asian,Percent Asian Employment,0.356,-0.01,0.345,0.008,0.337
+mean_hispanic,Percent Hispanic Employment,-0.531,-0.046,-0.484,0.037,-0.521
