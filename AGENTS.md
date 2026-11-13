@@ -41,13 +41,14 @@ current, and which numbers are safe to cite. `CLAUDE.md` covers the code itself
 - Pages: **Studies** (`index.html`, per-study effects with a drawer showing the
   verbatim quotes and O\*NET mapping), **Runs** (`runs.html`), **Results**
   (`results.html?run=<run_id>`; with no `run` it shows the canonical run),
-  **Summary** (`summary.html`: headline findings, a sensitivity agreement plot,
-  and a LOO τ forest plot), **LOO** (`loo.html?run=<run_id>`),
+  **Summary** (`summary.html`: headline findings and a sensitivity agreement plot),
   **Parameters** (`parameters.html`: the coverage heatmap and an explanation of
   each knob, including β, Ω_ref, Ω_base, thresholds and aggregation), and
   **Transitions** (`transitions.html`).
 - As of 2026-09-19 the live site publishes exactly the curated run set from §3,
-  so run IDs on the Runs page are safe to cite.
+  so run IDs on the Runs page are safe to cite. The exception is the 7 LOO
+  validation runs: they're still part of the curated set, but since 2026-11-13
+  they're not shown on the site. Cite them from `outputs/analysis_runs/` (§3).
 
 **Local interactive app** (editing, uploads, new runs; you usually don't need it):
 
